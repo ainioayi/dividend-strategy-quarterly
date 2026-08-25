@@ -1,0 +1,135 @@
+name: 季度策略自动更新
+
+on:
+  schedule:
+    # UTC 11:30 = 北京时间 19:30；季度后首月前 10 日逐日检查，脚本负责幂等门禁。
+    - cron: "30 11 1-10 1,4,7,10 *"
+  workflow_dispatch:
+    inputs:
+      force:
+        description: 忽略季度窗口和已处理状态，强制重新生成
+        required: false
+        default: false
+        type: boolean
+
+permissions:
+  contents: write
+
+concurrency:
+  group: quarterly-update
+  cancel-in-progress: false
+
+jobs:
+  update:
+    name: 刷新季度模型账本与报告
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - name: 检出策略仓库
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: 设置 Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: 安装依赖
+        run: python -m pip install -r requirements.txt
+
+      - name: 检查季度更新门禁
+        id: gate
+        shell: bash
+        run: |
+          set -euo pipefail
+          args=()
+          if [[ "${{ inputs.force || false }}" == "true" ]]; then
+            args+=(--force)
+          fi
+          python scripts/schedule.py "${args[@]}" | tee /tmp/quarterly-gate.txt
+          cat /tmp/quarterly-gate.txt >> "$GITHUB_OUTPUT"
+
+      - name: 读取固定上游版本
+        if: steps.gate.outputs.due == 'true'
+        id: upstream
+        shell: bash
+        run: |
+          set -euo pipefail
+          python - <<'PY' >> "$GITHUB_OUTPUT"
+          import json
+          from pathlib import Path
+
+          config = json.loads(Path("config/strategy.json").read_text(encoding="utf-8"))
+          print(f"repository={config['upstream_repository']}")
+          print(f"commit={config['upstream_commit']}")
+          PY
+
+      - name: 检出固定上游提交
+        if: steps.gate.outputs.due == 'true'
+        uses: actions/checkout@v4
+        with:
+          repository: ${{ steps.upstream.outputs.repository }}
+          ref: ${{ steps.upstream.outputs.commit }}
+          path: _upstream
+          persist-credentials: false
+
+      - name: 校验上游提交
+        if: steps.gate.outputs.due == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          test "$(git -C _upstream rev-parse HEAD)" = "${{ steps.upstream.outputs.commit }}"
+          test -d _upstream/dividend-calculator/src
+          test -s _upstream/dividend-calculator/site/screener/latest.json
+
+      - name: 刷新核验快照
+        if: steps.gate.outputs.due == 'true'
+        run: >-
+          python scripts/refresh_snapshot.py
+          --upstream-root _upstream/dividend-calculator
+          --as-of "${{ steps.gate.outputs.data_date }}"
+          --out data/snapshot_current.json
+
+      - name: 更新季度模型账本
+        if: steps.gate.outputs.due == 'true'
+        run: >-
+          python scripts/update_portfolio.py
+          --period "${{ steps.gate.outputs.period }}"
+          --as-of "${{ steps.gate.outputs.data_date }}"
+          ${{ inputs.force && '--force' || '' }}
+
+      - name: 生成站点报告
+        if: steps.gate.outputs.due == 'true'
+        run: python scripts/generate_report.py
+
+      - name: 核验生成产物
+        if: steps.gate.outputs.due == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          test -s site/index.html
+          test -s site/audit.json
+          python -m json.tool site/audit.json >/dev/null
+          python -m json.tool data/snapshot_current.json >/dev/null
+          python -m json.tool "data/snapshots/${{ steps.gate.outputs.period }}.json" >/dev/null
+
+      - name: 提交有变化的季度产物
+        if: steps.gate.outputs.due == 'true'
+        shell: bash
+        run: |
+          set -euo pipefail
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add -- site data/snapshot_current.json data/snapshots data/ledgers
+          if git diff --cached --quiet; then
+            echo "季度产物无变化，不提交"
+            exit 0
+          fi
+          git commit -m "chore: 更新 ${{ steps.gate.outputs.period }} 季度策略报告"
+          git push
+
+      - name: 记录门禁跳过原因
+        if: steps.gate.outputs.due != 'true'
+        run: echo "跳过：${{ steps.gate.outputs.reason }}"

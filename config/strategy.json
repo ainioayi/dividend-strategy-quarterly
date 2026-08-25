@@ -1,0 +1,33 @@
+{
+  "strategy_name": "放宽稳定性季度高股息策略",
+  "initial_capital": 100000.0,
+  "candidate_source": "https://flyshub.github.io/dividend-calculator/screener/latest.json",
+  "candidate_source_fallback": "https://raw.githubusercontent.com/flyshub/dividend-calculator/main/dividend-calculator/site/screener/latest.json",
+  "upstream_repository": "flyshub/dividend-calculator",
+  "upstream_commit": "eb26a1bc4bdd4d9e6b204e7855a9cd098e6ac520",
+  "rules": {
+    "min_persistence": 0,
+    "entry_yield": 5.0,
+    "entry_pr": 0.85,
+    "hold_yield": 4.5,
+    "hold_pr": 1.05,
+    "exit_yield": 4.25,
+    "exit_pr": 1.2,
+    "exit_confirm_quarters": 2,
+    "max_holdings": 10,
+    "max_sector": 2,
+    "max_banks": 2,
+    "lot_size": 100,
+    "buy_commission_rate": 0.0003,
+    "sell_commission_rate": 0.0003,
+    "stamp_duty_rate": 0.0005,
+    "transfer_fee_rate": 0.00001,
+    "min_commission": 5.0
+  },
+  "automatic_update": {
+    "timezone": "Asia/Shanghai",
+    "window": "每年1、4、7、10月的首个可用交易日收盘后",
+    "mode": "模型账本，不连接券商、不自动下单"
+  }
+}
+
