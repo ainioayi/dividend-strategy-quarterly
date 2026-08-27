@@ -810,7 +810,9 @@ def run_backtest(rules=None, codes=None, rebalance_dates=None,
                  reinvest=False, verbose=True, dynamic_pool: bool | None = None,
                  manifest_path=None, rebalance_dates_path=None,
                  track_holdings: bool = False,
-                 return_events: bool = False):
+                 return_events: bool = False,
+                 listing_windows: dict[str, dict[str, str]] | None = None,
+                 delisting_recovery_rate: float | None = None):
     active = dict(BACKTEST_RULES)
     if rules:
         active.update(rules)
@@ -820,6 +822,28 @@ def run_backtest(rules=None, codes=None, rebalance_dates=None,
         active["reinvest_dividends"] = True
     dynamic_pool = _dynamic_pool_enabled(active, dynamic_pool)
     codes, universe = _resolve_universe_codes(codes, dynamic_pool, manifest_path)
+    listing_windows = listing_windows or {}
+    if delisting_recovery_rate is not None and not 0 <= float(delisting_recovery_rate) <= 1:
+        raise ValueError("delisting_recovery_rate 必须在 0 到 1 之间")
+    for code, window in listing_windows.items():
+        list_date = str((window or {}).get("list_date") or "")[:10]
+        delist_date = str((window or {}).get("delist_date") or "")[:10]
+        if list_date and not re.fullmatch(r"\d{4}-\d{2}-\d{2}", list_date):
+            raise ValueError(f"{code} 的 list_date 无效")
+        if delist_date and not re.fullmatch(r"\d{4}-\d{2}-\d{2}", delist_date):
+            raise ValueError(f"{code} 的 delist_date 无效")
+        if list_date and delist_date and delist_date < list_date:
+            raise ValueError(f"{code} 的退市日早于上市日")
+
+    def listed_on(code, signal_date):
+        window = listing_windows.get(str(code).zfill(6))
+        if not window:
+            return True
+        list_date = str(window.get("list_date") or "")[:10]
+        delist_date = str(window.get("delist_date") or "")[:10]
+        return (not list_date or list_date <= signal_date) and (
+            not delist_date or signal_date <= delist_date
+        )
     if universe.get("kind") == "manifest":
         from universe_manifest import load_manifest, verify_cache_snapshot
         manifest_file = Path(universe["path"])
@@ -1012,6 +1036,24 @@ def run_backtest(rules=None, codes=None, rebalance_dates=None,
         return entry
 
     for rb in rdates:
+        if state is not None and delisting_recovery_rate is not None:
+            for code, holding in list((state.get("holdings") or {}).items()):
+                window = listing_windows.get(code) or {}
+                delist_date = str(window.get("delist_date") or "")[:10]
+                if not delist_date or rb <= delist_date:
+                    continue
+                last_price = _find_price(klines.get(code, {}), delist_date) or 0.0
+                shares = float(holding.get("shares") or 0)
+                proceeds = round(shares * last_price * float(delisting_recovery_rate), 2)
+                state["cash"] = round(float(state.get("cash") or 0) + proceeds, 2)
+                del state["holdings"][code]
+                state.setdefault("events", []).append({
+                    "side": "delisting", "code": code, "date": rb,
+                    "delist_date": delist_date, "shares": shares,
+                    "last_price": last_price,
+                    "recovery_rate": float(delisting_recovery_rate),
+                    "proceeds": proceeds,
+                })
         if dynamic_pool:
             min_yr = int(active.get("pool_min_consecutive_years") or 8)
             pool_codes = screen_dynamic_pool(
@@ -1020,6 +1062,7 @@ def run_backtest(rules=None, codes=None, rebalance_dates=None,
             )
         else:
             pool_codes = list(codes)
+        pool_codes = [code for code in pool_codes if listed_on(code, rb)]
         pool_codes = sorted(set(pool_codes))
         pool_provenance.append({
             "signal_date": rb,
@@ -1137,6 +1180,7 @@ def run_backtest(rules=None, codes=None, rebalance_dates=None,
                 )
             else:
                 final_pool = list(codes)
+            final_pool = [code for code in final_pool if listed_on(code, final_date)]
             final_codes = sorted(set(final_pool) | set(state.get("holdings", {})))
             final_signal_rows = signal_rows_for(final_codes, final_date)
             final_rows = execution_rows(final_signal_rows, final_date)
@@ -1182,6 +1226,16 @@ def run_backtest(rules=None, codes=None, rebalance_dates=None,
             for k, v in (state or {}).get("holdings", {}).items()
         ] if state else [],
     }
+
+    if listing_windows:
+        result["listing_windows"] = {
+            "count": len(listing_windows),
+            "sha256": hashlib.sha256(json.dumps(
+                listing_windows, ensure_ascii=False, sort_keys=True,
+                separators=(",", ":"),
+            ).encode("utf-8")).hexdigest(),
+            "delisting_recovery_rate": delisting_recovery_rate,
+        }
 
     if return_events:
         result["_events"] = events

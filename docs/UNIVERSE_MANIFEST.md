@@ -70,3 +70,28 @@ python scripts/build_rebalance_dates.py `
 刷新任何 K 线或分红明细后，必须按新的 `as_of` 重建 manifest 和日期文件，
 再运行完整回测与测试。不能只替换单个缓存文件，也不能继续引用旧哈希对应
 的 `current_best.json` 或实验结论。
+
+## 历史股票池状态
+
+`data/historical_universe_status.json` 是历史点时股票池补齐状态的权威机器文件。
+截至 2026-08-27：
+
+- 股票主数据 5,549 只，其中在市 5,212 只、退市 337 只；
+- 2015 年后退市目标 255 只，分红查询 255/255 完成；
+- 139 只曾连续三年正现金分红，价格查询 139/139 完成；
+- 数据源流水线完成，但 `independently_verified=false`，因此总体状态仍是
+  `incomplete`，`manifest_generation_allowed=false`。
+
+`scripts/build_historical_v1_replay.py` 会把这些原始数据和冻结 V1 缓存复制到
+临时的 `data/historical_v1_cache/` 后回放。该目录可重建，已由 Git 忽略；
+可审计结果保存在 `data/historical_v1_provisional.json`。临时回放只补了
+退市高息股票，没有重建 5,212 只在市股票的完整历史分红，因此不能生成正式
+历史 manifest，也不能替换本页顶部的冻结 manifest。
+
+## 前向输入隔离
+
+模拟盘只使用 `data/forward/cache/` 和 `data/forward/inputs/`。初始前向缓存
+来自冻结 V1，但后续月末刷新只写 `data/forward/`，不会修改
+`data/backtest_cache/`、`data/universe_manifest.json` 或
+`data/rebalance_dates_monthly.json`。每次信号和执行都会保存当时 manifest、
+日期文件与缓存文件哈希，扩展输入如果改变了信号日前的历史内容会被拒绝。

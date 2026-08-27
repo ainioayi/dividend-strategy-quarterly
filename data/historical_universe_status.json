@@ -1,0 +1,41 @@
+{
+  "schema_version": 2,
+  "source_snapshot_date": "2026-08-27",
+  "status": "incomplete",
+  "manifest_generation_allowed": false,
+  "provider_pipeline_complete": true,
+  "independently_verified": false,
+  "artifacts": {
+    "security_master": {
+      "path": "data/historical/security_master.json",
+      "exists": true,
+      "file_sha256": "6bc96817e1a62f4d4dba0fd32b21e19093610730d372401da8341590ba8b46d7",
+      "provider_complete": true,
+      "independently_verified": false,
+      "record_count": 5549,
+      "target_count": 5549,
+      "failed_stock_count": 0
+    },
+    "delisted_dividends": {
+      "path": "data/historical/delisted_dividends.json",
+      "exists": true,
+      "file_sha256": "199c90f1b8303c5830762da613989e8ec7f5e05f940ce2ca3278421c69290926",
+      "provider_complete": true,
+      "independently_verified": false,
+      "record_count": 1121,
+      "target_count": 255,
+      "failed_stock_count": 0
+    },
+    "eligible_delisted_prices": {
+      "path": "data/historical/eligible_delisted_prices.json",
+      "exists": true,
+      "file_sha256": "c0a17b90de5deb041bcd4c42e99ae68683791471ce20988c6ca4b6b2378b793f",
+      "provider_complete": true,
+      "independently_verified": false,
+      "record_count": 265566,
+      "target_count": 139,
+      "failed_stock_count": 0
+    }
+  },
+  "limitation": "数据源查询完整与独立验证是两层状态；未独立验证前拒绝生成正式 manifest。"
+}

@@ -25,6 +25,7 @@ def test_pool_provenance_is_deterministic_and_backward_compatible():
     assert row['execution_date'] in ('2020-01-31', None)
     assert 'dynamic_pool' in result
     assert 'metrics' in result
+    assert 'listing_windows' not in result
 
 
 def test_pool_provenance_keeps_execution_gap_when_no_price_rows():
@@ -71,3 +72,32 @@ def test_rebalance_dates_metadata_uses_portable_path():
         verbose=False,
     )
     assert result['rebalance_dates']['path'] == 'data/rebalance_dates_monthly.json'
+
+
+def test_listing_window_excludes_stock_after_delisting():
+    result = run_backtest(
+        rules={'pool_mode': 'curated', 'momentum_months': 0, 'execution_lag_days': 0},
+        dynamic_pool=False,
+        codes=['000333'],
+        rebalance_dates=['2020-01-31'],
+        listing_windows={'000333': {'list_date': '1996-08-30', 'delist_date': '2019-12-31'}},
+        verbose=False,
+    )
+    assert result['pool_provenance'][0]['pool_count'] == 0
+    assert result['listing_windows']['count'] == 1
+
+
+def test_listing_window_rejects_inverted_dates():
+    import pytest
+    with pytest.raises(ValueError, match='退市日早于上市日'):
+        run_backtest(
+            codes=['000333'], rebalance_dates=['2020-01-31'], verbose=False,
+            listing_windows={'000333': {'list_date': '2020-01-01', 'delist_date': '2019-01-01'}},
+        )
+
+
+def test_delisting_recovery_rate_is_bounded():
+    import pytest
+    with pytest.raises(ValueError, match='0 到 1'):
+        run_backtest(codes=['000333'], rebalance_dates=['2020-01-31'], verbose=False,
+                     delisting_recovery_rate=1.1)

@@ -26,3 +26,6 @@ Thumbs.db
 *.tmp
 *.bak
 *~
+
+# 可由 scripts/build_historical_v1_replay.py 重建的临时回放缓存
+data/historical_v1_cache/

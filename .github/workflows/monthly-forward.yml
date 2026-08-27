@@ -1,0 +1,132 @@
+name: 月度 V1 前向观察
+
+on:
+  schedule:
+    - cron: "30 8 * * *"
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Asia/Shanghai 当前日期 YYYY-MM-DD；留空自动取当天"
+        required: false
+        type: string
+      mode:
+        description: "门禁模式；显式动作仍必须通过真实交易日校验"
+        required: true
+        default: auto
+        type: choice
+        options: [auto, signal, execute]
+
+permissions:
+  contents: write
+
+concurrency:
+  group: monthly-forward-v1
+  cancel-in-progress: false
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    timeout-minutes: 90
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: 安装依赖
+        run: pip install -r requirements.txt
+
+      - name: 计算北京时间截止日
+        id: date
+        shell: pwsh
+        env:
+          INPUT_DATE: ${{ inputs.date }}
+        run: |
+          $today = [System.TimeZoneInfo]::ConvertTimeBySystemTimeZoneId([DateTime]::UtcNow, "Asia/Shanghai").ToString("yyyy-MM-dd")
+          $asOf = if ([string]::IsNullOrWhiteSpace($env:INPUT_DATE)) { $today } else { $env:INPUT_DATE }
+          if ($asOf -ne $today) { throw "显式日期必须等于 Asia/Shanghai 当前日期，禁止历史回写" }
+          "as_of=$asOf" >> $env:GITHUB_OUTPUT
+
+      - name: 先计算交易日门禁
+        id: plan
+        shell: pwsh
+        env:
+          INPUT_MODE: ${{ inputs.mode }}
+        run: |
+          $mode = if ([string]::IsNullOrWhiteSpace($env:INPUT_MODE)) { "auto" } else { $env:INPUT_MODE }
+          $planPath = Join-Path $env:RUNNER_TEMP "forward-plan.json"
+          python scripts/forward_daily.py `
+            --date "${{ steps.date.outputs.as_of }}" `
+            --mode $mode `
+            --plan-only `
+            --plan-json $planPath
+          $plan = Get-Content -Raw -Encoding UTF8 $planPath | ConvertFrom-Json
+          "action=$($plan.action)" >> $env:GITHUB_OUTPUT
+          "reason=$($plan.reason)" >> $env:GITHUB_OUTPUT
+
+      - name: 刷新不复权行情与完整已实施分红
+        if: steps.plan.outputs.action == 'signal' || steps.plan.outputs.action == 'execute'
+        shell: pwsh
+        run: |
+          python scripts/refresh_backtest_cache.py `
+            --as-of "${{ steps.date.outputs.as_of }}" `
+            --cache-dir data/forward/cache `
+            --source sina `
+            --interval 1.05 `
+            --dividend-interval 1.05
+
+      - name: 重建版本化输入
+        if: steps.plan.outputs.action == 'signal' || steps.plan.outputs.action == 'execute'
+        shell: pwsh
+        run: |
+          python scripts/build_universe_manifest.py `
+            --from-cache data/forward/cache `
+            --as-of "${{ steps.date.outputs.as_of }}" `
+            --top 0 `
+            --min-years 0 `
+            --pool-min-years 3 `
+            --output data/forward/inputs/universe_manifest.json
+          python scripts/build_rebalance_dates.py `
+            --manifest data/forward/inputs/universe_manifest.json `
+            --cache-dir data/forward/cache `
+            --as-of "${{ steps.date.outputs.as_of }}" `
+            --output data/forward/inputs/rebalance_dates_monthly.json
+
+      - name: 运行交易日门禁与前向账本
+        if: steps.plan.outputs.action == 'signal' || steps.plan.outputs.action == 'execute'
+        shell: pwsh
+        run: |
+          python scripts/forward_daily.py `
+            --date "${{ steps.date.outputs.as_of }}" `
+            --mode "${{ steps.plan.outputs.action }}"
+
+      - name: 验证前向模块
+        if: steps.plan.outputs.action == 'signal' || steps.plan.outputs.action == 'execute'
+        shell: pwsh
+        run: |
+          pytest -q tests/test_monthly_forward.py tests/test_forward_daily.py tests/test_refresh_backtest_cache.py
+          python -m compileall -q scripts tests
+          git diff --check
+
+      - name: 提交输入、账本、快照与报告
+        if: steps.plan.outputs.action == 'signal' || steps.plan.outputs.action == 'execute'
+        shell: pwsh
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add data/forward
+          git diff --cached --quiet
+          if ($LASTEXITCODE -eq 0) {
+            Write-Host "没有需要提交的前向变化"
+            exit 0
+          }
+          git commit -m "更新月度 V1 前向观察 ${{ steps.date.outputs.as_of }}"
+          git push
+
+      - name: 记录无动作原因
+        if: steps.plan.outputs.action == 'noop'
+        run: echo "本日不刷新、不写账本：${{ steps.plan.outputs.reason }}"

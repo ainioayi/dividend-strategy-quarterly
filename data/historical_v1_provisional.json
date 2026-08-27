@@ -1,0 +1,3126 @@
+{
+  "schema_version": 1,
+  "status": "provisional",
+  "authoritative_baseline_replaced": false,
+  "through_date": "2026-08-25",
+  "frozen_v1_rules_sha256": "d3265a0af79c1915244edb7d54322ea038183dd90b9b01ef00c216238597bd23",
+  "baseline_manifest_records_sha256": "24de009d9bb60c857fc89e8f7510b93583b17f9abde50350ea63a6a5830a7409",
+  "inputs": {
+    "security_master_sha256": "6bc96817e1a62f4d4dba0fd32b21e19093610730d372401da8341590ba8b46d7",
+    "delisted_dividends_sha256": "199c90f1b8303c5830762da613989e8ec7f5e05f940ce2ca3278421c69290926",
+    "eligible_delisted_prices_sha256": "c0a17b90de5deb041bcd4c42e99ae68683791471ce20988c6ca4b6b2378b793f"
+  },
+  "cache": {
+    "path": "data/historical_v1_cache",
+    "copied_frozen_files": 631,
+    "baseline_codes": 210,
+    "eligible_delisted_codes": 139,
+    "combined_codes": 349
+  },
+  "provider_complete": true,
+  "independently_verified": false,
+  "same_cache_control": {
+    "matches_frozen_v1": true,
+    "expected_core_metrics": {
+      "cagr": 41.38,
+      "max_drawdown": 28.06,
+      "trade_count": 75
+    },
+    "actual_core_metrics": {
+      "cagr": 41.38,
+      "max_drawdown": 28.06,
+      "trade_count": 75
+    },
+    "metrics": {
+      "cagr": 41.38,
+      "max_drawdown": 28.06,
+      "volatility": 30.81,
+      "sharpe": 1.217,
+      "ending_nav": 3876245.51,
+      "total_return": 3776.25,
+      "observations": 128,
+      "trade_count": 75,
+      "buy_count": 57,
+      "sell_count": 18,
+      "dividend_event_count": 19,
+      "split_event_count": 0,
+      "ending_cash": 569.51
+    },
+    "codes": 210,
+    "cache_path": "data/historical_v1_cache",
+    "rebalance_dates_path": "data/rebalance_dates_monthly.json"
+  },
+  "baseline_metrics": {
+    "cagr": 41.38,
+    "max_drawdown": 28.06,
+    "volatility": 30.81,
+    "sharpe": 1.217,
+    "ending_nav": 3876245.51,
+    "total_return": 3776.25,
+    "observations": 128,
+    "trade_count": 75,
+    "buy_count": 57,
+    "sell_count": 18,
+    "dividend_event_count": 19,
+    "split_event_count": 0,
+    "ending_cash": 569.51
+  },
+  "scenarios": {
+    "zero_recovery": {
+      "recovery_rate": 0.0,
+      "metrics": {
+        "cagr": -61.75,
+        "max_drawdown": 100.0,
+        "volatility": 48.06,
+        "sharpe": -0.04,
+        "ending_nav": 3.9,
+        "total_return": -100.0,
+        "observations": 128,
+        "trade_count": 40,
+        "buy_count": 32,
+        "sell_count": 8,
+        "dividend_event_count": 8,
+        "split_event_count": 0,
+        "ending_cash": 3.9
+      },
+      "traded_delisted_codes": [
+        "600466",
+        "600565"
+      ],
+      "delisting_events": [
+        {
+          "side": "delisting",
+          "code": "600466",
+          "date": "2023-06-30",
+          "delist_date": "2023-06-06",
+          "shares": 318500.0,
+          "last_price": 0.4,
+          "recovery_rate": 0.0,
+          "proceeds": 0.0
+        }
+      ],
+      "unresolved_delisted_final_holdings": [],
+      "result": {
+        "rules": {
+          "initial_capital": 100000.0,
+          "frequency": "monthly",
+          "entry_yield": 7.5,
+          "entry_pr": 999.0,
+          "hold_yield": 5.5,
+          "loss_hold_yield": 5.5,
+          "hold_pr": 999.0,
+          "exit_yield": 5.3,
+          "exit_pr": 999.0,
+          "exit_confirm_quarters": 1,
+          "max_holdings": 2,
+          "max_sector": 2,
+          "max_banks": 2,
+          "max_position_pct": 1.0,
+          "lot_size": 100,
+          "reinvest_dividends": true,
+          "reinvest_cash_reserve": 0,
+          "rebalance_threshold": 2.0,
+          "stop_loss_pct": 0.0,
+          "buy_commission_rate": 0.0003,
+          "sell_commission_rate": 0.0003,
+          "stamp_duty_rate": 0.0005,
+          "transfer_fee_rate": 1e-05,
+          "min_commission": 5.0,
+          "pool_mode": "dynamic",
+          "pool_min_consecutive_years": 3,
+          "pool_switch_month": 7,
+          "momentum_months": 4,
+          "momentum_threshold": 0.85,
+          "momentum_periods": "",
+          "rank_by": "yield",
+          "max_yield": 999.0,
+          "execution_lag_days": 1,
+          "dividend_information_lag_days": 0,
+          "through_date": "2026-08-25"
+        },
+        "dynamic_pool": true,
+        "universe": {
+          "kind": "explicit",
+          "count": 349
+        },
+        "pool_provenance": [
+          {
+            "signal_date": "2016-01-29",
+            "pool_count": 146,
+            "pool_codes_sha256": "1b7106aea7389f626d836accfe471b9a66cf273d2c000a9148d198469ad7eb58",
+            "execution_date": "2016-02-01"
+          },
+          {
+            "signal_date": "2016-02-29",
+            "pool_count": 146,
+            "pool_codes_sha256": "1b7106aea7389f626d836accfe471b9a66cf273d2c000a9148d198469ad7eb58",
+            "execution_date": "2016-03-01"
+          },
+          {
+            "signal_date": "2016-03-31",
+            "pool_count": 146,
+            "pool_codes_sha256": "1b7106aea7389f626d836accfe471b9a66cf273d2c000a9148d198469ad7eb58",
+            "execution_date": "2016-04-01"
+          },
+          {
+            "signal_date": "2016-04-29",
+            "pool_count": 146,
+            "pool_codes_sha256": "1b7106aea7389f626d836accfe471b9a66cf273d2c000a9148d198469ad7eb58",
+            "execution_date": "2016-05-03"
+          },
+          {
+            "signal_date": "2016-05-31",
+            "pool_count": 146,
+            "pool_codes_sha256": "1b7106aea7389f626d836accfe471b9a66cf273d2c000a9148d198469ad7eb58",
+            "execution_date": "2016-06-01"
+          },
+          {
+            "signal_date": "2016-06-30",
+            "pool_count": 146,
+            "pool_codes_sha256": "1b7106aea7389f626d836accfe471b9a66cf273d2c000a9148d198469ad7eb58",
+            "execution_date": "2016-07-01"
+          },
+          {
+            "signal_date": "2016-07-29",
+            "pool_count": 160,
+            "pool_codes_sha256": "7c0777cec7392e995c45fd9afdbcf2668619acdb572c6684315c5f5997a69c73",
+            "execution_date": "2016-08-01"
+          },
+          {
+            "signal_date": "2016-08-31",
+            "pool_count": 165,
+            "pool_codes_sha256": "c5d2e31ff6e262b53f17be2aa79a2ce4e85bd38b7973d641d3a5a5e3c18afba4",
+            "execution_date": "2016-09-01"
+          },
+          {
+            "signal_date": "2016-09-30",
+            "pool_count": 165,
+            "pool_codes_sha256": "c5d2e31ff6e262b53f17be2aa79a2ce4e85bd38b7973d641d3a5a5e3c18afba4",
+            "execution_date": "2016-10-10"
+          },
+          {
+            "signal_date": "2016-10-31",
+            "pool_count": 165,
+            "pool_codes_sha256": "c5d2e31ff6e262b53f17be2aa79a2ce4e85bd38b7973d641d3a5a5e3c18afba4",
+            "execution_date": "2016-11-01"
+          },
+          {
+            "signal_date": "2016-11-30",
+            "pool_count": 165,
+            "pool_codes_sha256": "c5d2e31ff6e262b53f17be2aa79a2ce4e85bd38b7973d641d3a5a5e3c18afba4",
+            "execution_date": "2016-12-01"
+          },
+          {
+            "signal_date": "2016-12-30",
+            "pool_count": 165,
+            "pool_codes_sha256": "c5d2e31ff6e262b53f17be2aa79a2ce4e85bd38b7973d641d3a5a5e3c18afba4",
+            "execution_date": "2017-01-03"
+          },
+          {
+            "signal_date": "2017-01-26",
+            "pool_count": 164,
+            "pool_codes_sha256": "19a2c099ecdd0b044fbe905b3caf6567a8cfc98d5e49f83bd5a05bd0b0359fbc",
+            "execution_date": "2017-02-03"
+          },
+          {
+            "signal_date": "2017-02-28",
+            "pool_count": 163,
+            "pool_codes_sha256": "dd21ca6c61d1aa6b40a99dbc3dec18db007b8a1515fd4c802b1628c4a70c3d11",
+            "execution_date": "2017-03-01"
+          },
+          {
+            "signal_date": "2017-03-31",
+            "pool_count": 163,
+            "pool_codes_sha256": "dd21ca6c61d1aa6b40a99dbc3dec18db007b8a1515fd4c802b1628c4a70c3d11",
+            "execution_date": "2017-04-05"
+          },
+          {
+            "signal_date": "2017-04-28",
+            "pool_count": 163,
+            "pool_codes_sha256": "dd21ca6c61d1aa6b40a99dbc3dec18db007b8a1515fd4c802b1628c4a70c3d11",
+            "execution_date": "2017-05-02"
+          },
+          {
+            "signal_date": "2017-05-31",
+            "pool_count": 163,
+            "pool_codes_sha256": "dd21ca6c61d1aa6b40a99dbc3dec18db007b8a1515fd4c802b1628c4a70c3d11",
+            "execution_date": "2017-06-01"
+          },
+          {
+            "signal_date": "2017-06-30",
+            "pool_count": 163,
+            "pool_codes_sha256": "dd21ca6c61d1aa6b40a99dbc3dec18db007b8a1515fd4c802b1628c4a70c3d11",
+            "execution_date": "2017-07-03"
+          },
+          {
+            "signal_date": "2017-07-31",
+            "pool_count": 155,
+            "pool_codes_sha256": "e8ad4a747e6004f6c1f11ef461f3a492701414793f27a8cc747e11a21c21c18e",
+            "execution_date": "2017-08-01"
+          },
+          {
+            "signal_date": "2017-08-31",
+            "pool_count": 161,
+            "pool_codes_sha256": "11ca539c974b872fb469b6819d255410b538a0d9c086698fdd2c735964d1597a",
+            "execution_date": "2017-09-01"
+          },
+          {
+            "signal_date": "2017-09-29",
+            "pool_count": 161,
+            "pool_codes_sha256": "11ca539c974b872fb469b6819d255410b538a0d9c086698fdd2c735964d1597a",
+            "execution_date": "2017-10-09"
+          },
+          {
+            "signal_date": "2017-10-31",
+            "pool_count": 161,
+            "pool_codes_sha256": "11ca539c974b872fb469b6819d255410b538a0d9c086698fdd2c735964d1597a",
+            "execution_date": "2017-11-01"
+          },
+          {
+            "signal_date": "2017-11-30",
+            "pool_count": 161,
+            "pool_codes_sha256": "11ca539c974b872fb469b6819d255410b538a0d9c086698fdd2c735964d1597a",
+            "execution_date": "2017-12-01"
+          },
+          {
+            "signal_date": "2017-12-29",
+            "pool_count": 160,
+            "pool_codes_sha256": "ba264174c9bc447ea196351cfdfa57c2173a9de628c72db6372d7ecb2d7887a2",
+            "execution_date": "2018-01-02"
+          },
+          {
+            "signal_date": "2018-01-31",
+            "pool_count": 160,
+            "pool_codes_sha256": "ba264174c9bc447ea196351cfdfa57c2173a9de628c72db6372d7ecb2d7887a2",
+            "execution_date": "2018-02-01"
+          },
+          {
+            "signal_date": "2018-02-28",
+            "pool_count": 160,
+            "pool_codes_sha256": "ba264174c9bc447ea196351cfdfa57c2173a9de628c72db6372d7ecb2d7887a2",
+            "execution_date": "2018-03-01"
+          },
+          {
+            "signal_date": "2018-03-30",
+            "pool_count": 160,
+            "pool_codes_sha256": "ba264174c9bc447ea196351cfdfa57c2173a9de628c72db6372d7ecb2d7887a2",
+            "execution_date": "2018-04-02"
+          },
+          {
+            "signal_date": "2018-04-27",
+            "pool_count": 160,
+            "pool_codes_sha256": "ba264174c9bc447ea196351cfdfa57c2173a9de628c72db6372d7ecb2d7887a2",
+            "execution_date": "2018-05-02"
+          },
+          {
+            "signal_date": "2018-05-31",
+            "pool_count": 160,
+            "pool_codes_sha256": "ba264174c9bc447ea196351cfdfa57c2173a9de628c72db6372d7ecb2d7887a2",
+            "execution_date": "2018-06-01"
+          },
+          {
+            "signal_date": "2018-06-29",
+            "pool_count": 160,
+            "pool_codes_sha256": "ba264174c9bc447ea196351cfdfa57c2173a9de628c72db6372d7ecb2d7887a2",
+            "execution_date": "2018-07-02"
+          },
+          {
+            "signal_date": "2018-07-31",
+            "pool_count": 164,
+            "pool_codes_sha256": "88a2041133867d5b905e017ddc27fbf4639e75cc13c68df611eb0a6784c2ccf1",
+            "execution_date": "2018-08-01"
+          },
+          {
+            "signal_date": "2018-08-31",
+            "pool_count": 173,
+            "pool_codes_sha256": "34d1e4e375b5230179f0411d04678e83874084bc7a8de4730bfb3b3d5d9380ec",
+            "execution_date": "2018-09-03"
+          },
+          {
+            "signal_date": "2018-09-28",
+            "pool_count": 173,
+            "pool_codes_sha256": "34d1e4e375b5230179f0411d04678e83874084bc7a8de4730bfb3b3d5d9380ec",
+            "execution_date": "2018-10-08"
+          },
+          {
+            "signal_date": "2018-10-31",
+            "pool_count": 173,
+            "pool_codes_sha256": "34d1e4e375b5230179f0411d04678e83874084bc7a8de4730bfb3b3d5d9380ec",
+            "execution_date": "2018-11-01"
+          },
+          {
+            "signal_date": "2018-11-30",
+            "pool_count": 173,
+            "pool_codes_sha256": "34d1e4e375b5230179f0411d04678e83874084bc7a8de4730bfb3b3d5d9380ec",
+            "execution_date": "2018-12-03"
+          },
+          {
+            "signal_date": "2018-12-28",
+            "pool_count": 172,
+            "pool_codes_sha256": "1cc44f106c153e2772fb42860abb300e93ee6d9ead1bf182bf9734e530d3780d",
+            "execution_date": "2019-01-02"
+          },
+          {
+            "signal_date": "2019-01-31",
+            "pool_count": 170,
+            "pool_codes_sha256": "5c36c5ad90d9ab922d4ea1e81f276d5dec84c7a180cabc54643d143f12ffc8c1",
+            "execution_date": "2019-02-01"
+          },
+          {
+            "signal_date": "2019-02-28",
+            "pool_count": 170,
+            "pool_codes_sha256": "5c36c5ad90d9ab922d4ea1e81f276d5dec84c7a180cabc54643d143f12ffc8c1",
+            "execution_date": "2019-03-01"
+          },
+          {
+            "signal_date": "2019-03-29",
+            "pool_count": 170,
+            "pool_codes_sha256": "5c36c5ad90d9ab922d4ea1e81f276d5dec84c7a180cabc54643d143f12ffc8c1",
+            "execution_date": "2019-04-01"
+          },
+          {
+            "signal_date": "2019-04-30",
+            "pool_count": 170,
+            "pool_codes_sha256": "5c36c5ad90d9ab922d4ea1e81f276d5dec84c7a180cabc54643d143f12ffc8c1",
+            "execution_date": "2019-05-06"
+          },
+          {
+            "signal_date": "2019-05-31",
+            "pool_count": 170,
+            "pool_codes_sha256": "5c36c5ad90d9ab922d4ea1e81f276d5dec84c7a180cabc54643d143f12ffc8c1",
+            "execution_date": "2019-06-03"
+          },
+          {
+            "signal_date": "2019-06-28",
+            "pool_count": 169,
+            "pool_codes_sha256": "11af14b9ad9f94d5ec86f05abfd20db01903cd061d2a4ebd06528b915c7c4a1b",
+            "execution_date": "2019-07-01"
+          },
+          {
+            "signal_date": "2019-07-31",
+            "pool_count": 171,
+            "pool_codes_sha256": "b34467ed657a62160ead557c2ce5e2aa6534361da85b5293bb2692e84efeb0e1",
+            "execution_date": "2019-08-01"
+          },
+          {
+            "signal_date": "2019-08-30",
+            "pool_count": 183,
+            "pool_codes_sha256": "035b2e66abe2c1ec2f4d757af29cad7d9b85177859866eda4e1dea81fff10cdd",
+            "execution_date": "2019-09-02"
+          },
+          {
+            "signal_date": "2019-09-30",
+            "pool_count": 183,
+            "pool_codes_sha256": "035b2e66abe2c1ec2f4d757af29cad7d9b85177859866eda4e1dea81fff10cdd",
+            "execution_date": "2019-10-08"
+          },
+          {
+            "signal_date": "2019-10-31",
+            "pool_count": 182,
+            "pool_codes_sha256": "8c1850557743006740ee859debdaea567cffda7966efea42484c573a42db5606",
+            "execution_date": "2019-11-01"
+          },
+          {
+            "signal_date": "2019-11-29",
+            "pool_count": 181,
+            "pool_codes_sha256": "96710d0f85914a451462b709172005bb52f44060aed94c99d5832ebabbaf8219",
+            "execution_date": "2019-12-02"
+          },
+          {
+            "signal_date": "2019-12-31",
+            "pool_count": 180,
+            "pool_codes_sha256": "3b71bd8f815547901db30dee4e4ec73029b39ef3cf824f0ba4a68577ed1f1e14",
+            "execution_date": "2020-01-02"
+          },
+          {
+            "signal_date": "2020-01-23",
+            "pool_count": 180,
+            "pool_codes_sha256": "3b71bd8f815547901db30dee4e4ec73029b39ef3cf824f0ba4a68577ed1f1e14",
+            "execution_date": "2020-02-03"
+          },
+          {
+            "signal_date": "2020-02-28",
+            "pool_count": 179,
+            "pool_codes_sha256": "138ba3218b584a556f62151634cf1aa20638ff28bb6e32401a66cf497836e4eb",
+            "execution_date": "2020-03-02"
+          },
+          {
+            "signal_date": "2020-03-31",
+            "pool_count": 179,
+            "pool_codes_sha256": "138ba3218b584a556f62151634cf1aa20638ff28bb6e32401a66cf497836e4eb",
+            "execution_date": "2020-04-01"
+          },
+          {
+            "signal_date": "2020-04-30",
+            "pool_count": 179,
+            "pool_codes_sha256": "138ba3218b584a556f62151634cf1aa20638ff28bb6e32401a66cf497836e4eb",
+            "execution_date": "2020-05-06"
+          },
+          {
+            "signal_date": "2020-05-29",
+            "pool_count": 179,
+            "pool_codes_sha256": "138ba3218b584a556f62151634cf1aa20638ff28bb6e32401a66cf497836e4eb",
+            "execution_date": "2020-06-01"
+          },
+          {
+            "signal_date": "2020-06-30",
+            "pool_count": 179,
+            "pool_codes_sha256": "138ba3218b584a556f62151634cf1aa20638ff28bb6e32401a66cf497836e4eb",
+            "execution_date": "2020-07-01"
+          },
+          {
+            "signal_date": "2020-07-31",
+            "pool_count": 167,
+            "pool_codes_sha256": "f38086bcc6f0bcee7364c7eeaa1856a4f25ea190d02c3fc707fffbcf53130ead",
+            "execution_date": "2020-08-03"
+          },
+          {
+            "signal_date": "2020-08-31",
+            "pool_count": 176,
+            "pool_codes_sha256": "d90ef42a1033075b578fd7575eee9e420e470f3192cbf632a42f6c09f82a9be7",
+            "execution_date": "2020-09-01"
+          },
+          {
+            "signal_date": "2020-09-30",
+            "pool_count": 176,
+            "pool_codes_sha256": "d90ef42a1033075b578fd7575eee9e420e470f3192cbf632a42f6c09f82a9be7",
+            "execution_date": "2020-10-09"
+          },
+          {
+            "signal_date": "2020-10-30",
+            "pool_count": 176,
+            "pool_codes_sha256": "d90ef42a1033075b578fd7575eee9e420e470f3192cbf632a42f6c09f82a9be7",
+            "execution_date": "2020-11-02"
+          },
+          {
+            "signal_date": "2020-11-30",
+            "pool_count": 176,
+            "pool_codes_sha256": "d90ef42a1033075b578fd7575eee9e420e470f3192cbf632a42f6c09f82a9be7",
+            "execution_date": "2020-12-01"
+          },
+          {
+            "signal_date": "2020-12-31",
+            "pool_count": 176,
+            "pool_codes_sha256": "d90ef42a1033075b578fd7575eee9e420e470f3192cbf632a42f6c09f82a9be7",
+            "execution_date": "2021-01-04"
+          },
+          {
+            "signal_date": "2021-01-29",
+            "pool_count": 176,
+            "pool_codes_sha256": "d90ef42a1033075b578fd7575eee9e420e470f3192cbf632a42f6c09f82a9be7",
+            "execution_date": "2021-02-01"
+          },
+          {
+            "signal_date": "2021-02-26",
+            "pool_count": 175,
+            "pool_codes_sha256": "28177a0a336b4a8d85bfda8c8ed932b238f0e289c550156fd2745c1ca2bd33b2",
+            "execution_date": "2021-03-01"
+          },
+          {
+            "signal_date": "2021-03-31",
+            "pool_count": 173,
+            "pool_codes_sha256": "06b3e6aaf230a4b6706bcdf3b741387312082d96d983c666eefaa694d90369a3",
+            "execution_date": "2021-04-01"
+          },
+          {
+            "signal_date": "2021-04-30",
+            "pool_count": 173,
+            "pool_codes_sha256": "06b3e6aaf230a4b6706bcdf3b741387312082d96d983c666eefaa694d90369a3",
+            "execution_date": "2021-05-06"
+          },
+          {
+            "signal_date": "2021-05-31",
+            "pool_count": 173,
+            "pool_codes_sha256": "06b3e6aaf230a4b6706bcdf3b741387312082d96d983c666eefaa694d90369a3",
+            "execution_date": "2021-06-01"
+          },
+          {
+            "signal_date": "2021-06-30",
+            "pool_count": 173,
+            "pool_codes_sha256": "06b3e6aaf230a4b6706bcdf3b741387312082d96d983c666eefaa694d90369a3",
+            "execution_date": "2021-07-01"
+          },
+          {
+            "signal_date": "2021-07-30",
+            "pool_count": 150,
+            "pool_codes_sha256": "60637ba2e123bf73398b39e9a63f279322c65dca87620d67306ef16a8cc44497",
+            "execution_date": "2021-08-02"
+          },
+          {
+            "signal_date": "2021-08-31",
+            "pool_count": 158,
+            "pool_codes_sha256": "d1360331c0101175b12028ebc5db649b64733ace689a64564f098eac6536879c",
+            "execution_date": "2021-09-01"
+          },
+          {
+            "signal_date": "2021-09-30",
+            "pool_count": 157,
+            "pool_codes_sha256": "262e3c777e314e710e65d0f0a97e3911b4a418469d7824488242e9c850efe040",
+            "execution_date": "2021-10-08"
+          },
+          {
+            "signal_date": "2021-10-29",
+            "pool_count": 156,
+            "pool_codes_sha256": "83f3ef1f81691b0b660ca9fc6573a29b76e8f452a7c6d11907df97039df6f93a",
+            "execution_date": "2021-11-01"
+          },
+          {
+            "signal_date": "2021-11-30",
+            "pool_count": 156,
+            "pool_codes_sha256": "83f3ef1f81691b0b660ca9fc6573a29b76e8f452a7c6d11907df97039df6f93a",
+            "execution_date": "2021-12-01"
+          },
+          {
+            "signal_date": "2021-12-31",
+            "pool_count": 156,
+            "pool_codes_sha256": "83f3ef1f81691b0b660ca9fc6573a29b76e8f452a7c6d11907df97039df6f93a",
+            "execution_date": "2022-01-04"
+          },
+          {
+            "signal_date": "2022-01-28",
+            "pool_count": 156,
+            "pool_codes_sha256": "83f3ef1f81691b0b660ca9fc6573a29b76e8f452a7c6d11907df97039df6f93a",
+            "execution_date": "2022-02-07"
+          },
+          {
+            "signal_date": "2022-02-28",
+            "pool_count": 156,
+            "pool_codes_sha256": "83f3ef1f81691b0b660ca9fc6573a29b76e8f452a7c6d11907df97039df6f93a",
+            "execution_date": "2022-03-01"
+          },
+          {
+            "signal_date": "2022-03-31",
+            "pool_count": 156,
+            "pool_codes_sha256": "83f3ef1f81691b0b660ca9fc6573a29b76e8f452a7c6d11907df97039df6f93a",
+            "execution_date": "2022-04-01"
+          },
+          {
+            "signal_date": "2022-04-29",
+            "pool_count": 156,
+            "pool_codes_sha256": "83f3ef1f81691b0b660ca9fc6573a29b76e8f452a7c6d11907df97039df6f93a",
+            "execution_date": "2022-05-05"
+          },
+          {
+            "signal_date": "2022-05-31",
+            "pool_count": 156,
+            "pool_codes_sha256": "83f3ef1f81691b0b660ca9fc6573a29b76e8f452a7c6d11907df97039df6f93a",
+            "execution_date": "2022-06-01"
+          },
+          {
+            "signal_date": "2022-06-30",
+            "pool_count": 155,
+            "pool_codes_sha256": "1d37a9e14f12a8250ca015567f6ae65c50ef14819ea1547df59073d833746197",
+            "execution_date": "2022-07-01"
+          },
+          {
+            "signal_date": "2022-07-29",
+            "pool_count": 151,
+            "pool_codes_sha256": "9566c6630d207f50c984e9963c8dab2ba9800bf192891aaecfcb00f24b7b19ab",
+            "execution_date": "2022-08-01"
+          },
+          {
+            "signal_date": "2022-08-31",
+            "pool_count": 156,
+            "pool_codes_sha256": "3685301e772aedf57df92d05b2f918ccdcdf56d916ef6de69786d793eef42e7f",
+            "execution_date": "2022-09-01"
+          },
+          {
+            "signal_date": "2022-09-30",
+            "pool_count": 156,
+            "pool_codes_sha256": "3685301e772aedf57df92d05b2f918ccdcdf56d916ef6de69786d793eef42e7f",
+            "execution_date": "2022-10-10"
+          },
+          {
+            "signal_date": "2022-10-31",
+            "pool_count": 156,
+            "pool_codes_sha256": "3685301e772aedf57df92d05b2f918ccdcdf56d916ef6de69786d793eef42e7f",
+            "execution_date": "2022-11-01"
+          },
+          {
+            "signal_date": "2022-11-30",
+            "pool_count": 156,
+            "pool_codes_sha256": "3685301e772aedf57df92d05b2f918ccdcdf56d916ef6de69786d793eef42e7f",
+            "execution_date": "2022-12-01"
+          },
+          {
+            "signal_date": "2022-12-30",
+            "pool_count": 156,
+            "pool_codes_sha256": "3685301e772aedf57df92d05b2f918ccdcdf56d916ef6de69786d793eef42e7f",
+            "execution_date": "2023-01-03"
+          },
+          {
+            "signal_date": "2023-01-31",
+            "pool_count": 156,
+            "pool_codes_sha256": "3685301e772aedf57df92d05b2f918ccdcdf56d916ef6de69786d793eef42e7f",
+            "execution_date": "2023-02-01"
+          },
+          {
+            "signal_date": "2023-02-28",
+            "pool_count": 156,
+            "pool_codes_sha256": "3685301e772aedf57df92d05b2f918ccdcdf56d916ef6de69786d793eef42e7f",
+            "execution_date": "2023-03-01"
+          },
+          {
+            "signal_date": "2023-03-31",
+            "pool_count": 155,
+            "pool_codes_sha256": "4c31d266fc00dabb5d538168a000a1e3c3b7cfb01ff684616558dc8884fc8b07",
+            "execution_date": "2023-04-03"
+          },
+          {
+            "signal_date": "2023-04-28",
+            "pool_count": 155,
+            "pool_codes_sha256": "4c31d266fc00dabb5d538168a000a1e3c3b7cfb01ff684616558dc8884fc8b07",
+            "execution_date": "2023-05-04"
+          },
+          {
+            "signal_date": "2023-05-31",
+            "pool_count": 155,
+            "pool_codes_sha256": "4c31d266fc00dabb5d538168a000a1e3c3b7cfb01ff684616558dc8884fc8b07",
+            "execution_date": "2023-06-01"
+          },
+          {
+            "signal_date": "2023-06-30",
+            "pool_count": 155,
+            "pool_codes_sha256": "4c31d266fc00dabb5d538168a000a1e3c3b7cfb01ff684616558dc8884fc8b07",
+            "execution_date": "2023-07-03"
+          },
+          {
+            "signal_date": "2023-07-31",
+            "pool_count": 156,
+            "pool_codes_sha256": "2a094edd7b61b95d3e998a0b7581bae551d08c8ab71410334c882da6a29326cb",
+            "execution_date": "2023-08-01"
+          },
+          {
+            "signal_date": "2023-08-31",
+            "pool_count": 160,
+            "pool_codes_sha256": "5b24633fa398ad23902442c48d2c8441146661739d82600353b9743c91d19e85",
+            "execution_date": "2023-09-01"
+          },
+          {
+            "signal_date": "2023-09-28",
+            "pool_count": 160,
+            "pool_codes_sha256": "5b24633fa398ad23902442c48d2c8441146661739d82600353b9743c91d19e85",
+            "execution_date": "2023-10-09"
+          },
+          {
+            "signal_date": "2023-10-31",
+            "pool_count": 159,
+            "pool_codes_sha256": "acf48ae563790471d8ba380f6e0e08001ad866e95bc5db72d5b8c805d15a9324",
+            "execution_date": "2023-11-01"
+          },
+          {
+            "signal_date": "2023-11-30",
+            "pool_count": 159,
+            "pool_codes_sha256": "acf48ae563790471d8ba380f6e0e08001ad866e95bc5db72d5b8c805d15a9324",
+            "execution_date": "2023-12-01"
+          },
+          {
+            "signal_date": "2023-12-29",
+            "pool_count": 159,
+            "pool_codes_sha256": "acf48ae563790471d8ba380f6e0e08001ad866e95bc5db72d5b8c805d15a9324",
+            "execution_date": "2024-01-02"
+          },
+          {
+            "signal_date": "2024-01-31",
+            "pool_count": 159,
+            "pool_codes_sha256": "acf48ae563790471d8ba380f6e0e08001ad866e95bc5db72d5b8c805d15a9324",
+            "execution_date": "2024-02-01"
+          },
+          {
+            "signal_date": "2024-02-29",
+            "pool_count": 159,
+            "pool_codes_sha256": "acf48ae563790471d8ba380f6e0e08001ad866e95bc5db72d5b8c805d15a9324",
+            "execution_date": "2024-03-01"
+          },
+          {
+            "signal_date": "2024-03-29",
+            "pool_count": 159,
+            "pool_codes_sha256": "acf48ae563790471d8ba380f6e0e08001ad866e95bc5db72d5b8c805d15a9324",
+            "execution_date": "2024-04-01"
+          },
+          {
+            "signal_date": "2024-04-30",
+            "pool_count": 159,
+            "pool_codes_sha256": "acf48ae563790471d8ba380f6e0e08001ad866e95bc5db72d5b8c805d15a9324",
+            "execution_date": "2024-05-06"
+          },
+          {
+            "signal_date": "2024-05-31",
+            "pool_count": 159,
+            "pool_codes_sha256": "acf48ae563790471d8ba380f6e0e08001ad866e95bc5db72d5b8c805d15a9324",
+            "execution_date": "2024-06-03"
+          },
+          {
+            "signal_date": "2024-06-28",
+            "pool_count": 158,
+            "pool_codes_sha256": "0f488400c53b63541284736ba89340b838ac9a8ac29b8d5dbee02cdf0008bdfc",
+            "execution_date": "2024-07-01"
+          },
+          {
+            "signal_date": "2024-07-31",
+            "pool_count": 160,
+            "pool_codes_sha256": "5d41abf62fdc3a780f8eb9b2391541fec4b819b6877703c6231ec0e8596b137e",
+            "execution_date": "2024-08-01"
+          },
+          {
+            "signal_date": "2024-08-30",
+            "pool_count": 167,
+            "pool_codes_sha256": "4dcb80ab2e51bed3ddcd8a569e7a17bebc9117818afd0080dba738d1a362c385",
+            "execution_date": "2024-09-02"
+          },
+          {
+            "signal_date": "2024-09-30",
+            "pool_count": 167,
+            "pool_codes_sha256": "4dcb80ab2e51bed3ddcd8a569e7a17bebc9117818afd0080dba738d1a362c385",
+            "execution_date": "2024-10-08"
+          },
+          {
+            "signal_date": "2024-10-31",
+            "pool_count": 167,
+            "pool_codes_sha256": "4dcb80ab2e51bed3ddcd8a569e7a17bebc9117818afd0080dba738d1a362c385",
+            "execution_date": "2024-11-01"
+          },
+          {
+            "signal_date": "2024-11-29",
+            "pool_count": 167,
+            "pool_codes_sha256": "4dcb80ab2e51bed3ddcd8a569e7a17bebc9117818afd0080dba738d1a362c385",
+            "execution_date": "2024-12-02"
+          },
+          {
+            "signal_date": "2024-12-31",
+            "pool_count": 167,
+            "pool_codes_sha256": "4dcb80ab2e51bed3ddcd8a569e7a17bebc9117818afd0080dba738d1a362c385",
+            "execution_date": "2025-01-02"
+          },
+          {
+            "signal_date": "2025-01-27",
+            "pool_count": 167,
+            "pool_codes_sha256": "4dcb80ab2e51bed3ddcd8a569e7a17bebc9117818afd0080dba738d1a362c385",
+            "execution_date": "2025-02-05"
+          },
+          {
+            "signal_date": "2025-02-28",
+            "pool_count": 166,
+            "pool_codes_sha256": "c095534966de47d95dc1ca8ce938ae0bb6450e3378a35aa2897ae019f15a7dd4",
+            "execution_date": "2025-03-03"
+          },
+          {
+            "signal_date": "2025-03-31",
+            "pool_count": 165,
+            "pool_codes_sha256": "69279f309fb1dbfd56ffede12b64c772a4100aaae578fc39555d6b7e32575276",
+            "execution_date": "2025-04-01"
+          },
+          {
+            "signal_date": "2025-04-30",
+            "pool_count": 165,
+            "pool_codes_sha256": "69279f309fb1dbfd56ffede12b64c772a4100aaae578fc39555d6b7e32575276",
+            "execution_date": "2025-05-06"
+          },
+          {
+            "signal_date": "2025-05-30",
+            "pool_count": 163,
+            "pool_codes_sha256": "c721a9383dc4c72a9077131940a682904a423d525191a39419d95f5ecd409005",
+            "execution_date": "2025-06-03"
+          },
+          {
+            "signal_date": "2025-06-30",
+            "pool_count": 163,
+            "pool_codes_sha256": "c721a9383dc4c72a9077131940a682904a423d525191a39419d95f5ecd409005",
+            "execution_date": "2025-07-01"
+          },
+          {
+            "signal_date": "2025-07-31",
+            "pool_count": 166,
+            "pool_codes_sha256": "010eae3b26def0b9c89b529953a277b73e74340e985fdf9a79c46717997e9108",
+            "execution_date": "2025-08-01"
+          },
+          {
+            "signal_date": "2025-08-29",
+            "pool_count": 168,
+            "pool_codes_sha256": "809868b0adf94ae0d36fd132907e6adb65bb99c82f1da71bf4b89da80d723e9a",
+            "execution_date": "2025-09-01"
+          },
+          {
+            "signal_date": "2025-09-30",
+            "pool_count": 168,
+            "pool_codes_sha256": "809868b0adf94ae0d36fd132907e6adb65bb99c82f1da71bf4b89da80d723e9a",
+            "execution_date": "2025-10-09"
+          },
+          {
+            "signal_date": "2025-10-31",
+            "pool_count": 168,
+            "pool_codes_sha256": "809868b0adf94ae0d36fd132907e6adb65bb99c82f1da71bf4b89da80d723e9a",
+            "execution_date": "2025-11-03"
+          },
+          {
+            "signal_date": "2025-11-28",
+            "pool_count": 168,
+            "pool_codes_sha256": "809868b0adf94ae0d36fd132907e6adb65bb99c82f1da71bf4b89da80d723e9a",
+            "execution_date": "2025-12-01"
+          },
+          {
+            "signal_date": "2025-12-31",
+            "pool_count": 168,
+            "pool_codes_sha256": "809868b0adf94ae0d36fd132907e6adb65bb99c82f1da71bf4b89da80d723e9a",
+            "execution_date": "2026-01-05"
+          },
+          {
+            "signal_date": "2026-01-30",
+            "pool_count": 168,
+            "pool_codes_sha256": "809868b0adf94ae0d36fd132907e6adb65bb99c82f1da71bf4b89da80d723e9a",
+            "execution_date": "2026-02-02"
+          },
+          {
+            "signal_date": "2026-02-27",
+            "pool_count": 168,
+            "pool_codes_sha256": "809868b0adf94ae0d36fd132907e6adb65bb99c82f1da71bf4b89da80d723e9a",
+            "execution_date": "2026-03-02"
+          },
+          {
+            "signal_date": "2026-03-31",
+            "pool_count": 168,
+            "pool_codes_sha256": "809868b0adf94ae0d36fd132907e6adb65bb99c82f1da71bf4b89da80d723e9a",
+            "execution_date": "2026-04-01"
+          },
+          {
+            "signal_date": "2026-04-30",
+            "pool_count": 168,
+            "pool_codes_sha256": "809868b0adf94ae0d36fd132907e6adb65bb99c82f1da71bf4b89da80d723e9a",
+            "execution_date": "2026-05-06"
+          },
+          {
+            "signal_date": "2026-05-29",
+            "pool_count": 168,
+            "pool_codes_sha256": "809868b0adf94ae0d36fd132907e6adb65bb99c82f1da71bf4b89da80d723e9a",
+            "execution_date": "2026-06-01"
+          },
+          {
+            "signal_date": "2026-06-30",
+            "pool_count": 167,
+            "pool_codes_sha256": "b0779530550620db62b2ca2f9832a53f23e7f5d1d8ceec1df553c77d847e86c6",
+            "execution_date": "2026-07-01"
+          },
+          {
+            "signal_date": "2026-07-31",
+            "pool_count": 166,
+            "pool_codes_sha256": "643601620dde646e083d94346c9e877f695de9fef39ba88e143be080abfa6e08",
+            "execution_date": "2026-08-03"
+          },
+          {
+            "signal_date": "2026-08-25",
+            "pool_count": 169,
+            "pool_codes_sha256": "18fd598ec4842fb283963c23cf4288414cdc7550b70ab448a4e172f2e45072fe",
+            "execution_date": null
+          }
+        ],
+        "data_cutoff": "2026-08-25",
+        "rebalance_dates": {
+          "count": 128,
+          "first": "2016-01-29",
+          "last": "2026-08-25",
+          "path": "data/rebalance_dates_monthly.json",
+          "sha256": "f62fc22c2f2f972e3b29dea42e2a41202bfa620e702acc3c750e26f8c959ec3e"
+        },
+        "reinvest": true,
+        "reinvest_cli_flag": false,
+        "metrics": {
+          "cagr": -61.75,
+          "max_drawdown": 100.0,
+          "volatility": 48.06,
+          "sharpe": -0.04,
+          "ending_nav": 3.9,
+          "total_return": -100.0,
+          "observations": 128,
+          "trade_count": 40,
+          "buy_count": 32,
+          "sell_count": 8,
+          "dividend_event_count": 8,
+          "split_event_count": 0,
+          "ending_cash": 3.9
+        },
+        "nav_series": [
+          {
+            "date": "2016-02-01",
+            "nav": 99969.13,
+            "cash": 393.13
+          },
+          {
+            "date": "2016-03-01",
+            "nav": 104181.13,
+            "cash": 393.13
+          },
+          {
+            "date": "2016-04-01",
+            "nav": 99969.13,
+            "cash": 393.13
+          },
+          {
+            "date": "2016-05-03",
+            "nav": 99969.13,
+            "cash": 393.13
+          },
+          {
+            "date": "2016-06-01",
+            "nav": 99969.13,
+            "cash": 393.13
+          },
+          {
+            "date": "2016-07-01",
+            "nav": 99969.13,
+            "cash": 393.13
+          },
+          {
+            "date": "2016-08-01",
+            "nav": 107259.13,
+            "cash": 7683.13
+          },
+          {
+            "date": "2016-09-01",
+            "nav": 107259.13,
+            "cash": 7683.13
+          },
+          {
+            "date": "2016-10-10",
+            "nav": 127072.06,
+            "cash": 1045.06
+          },
+          {
+            "date": "2016-11-01",
+            "nav": 128725.06,
+            "cash": 1045.06
+          },
+          {
+            "date": "2016-12-01",
+            "nav": 175266.83,
+            "cash": 175266.83
+          },
+          {
+            "date": "2017-01-03",
+            "nav": 175251.74,
+            "cash": 126576.74
+          },
+          {
+            "date": "2017-02-03",
+            "nav": 177037.92,
+            "cash": 1297.92
+          },
+          {
+            "date": "2017-03-01",
+            "nav": 180169.92,
+            "cash": 1297.92
+          },
+          {
+            "date": "2017-04-05",
+            "nav": 190000.92,
+            "cash": 1297.92
+          },
+          {
+            "date": "2017-05-02",
+            "nav": 174775.92,
+            "cash": 1297.92
+          },
+          {
+            "date": "2017-06-01",
+            "nav": 181039.92,
+            "cash": 1297.92
+          },
+          {
+            "date": "2017-07-03",
+            "nav": 200965.96,
+            "cash": 151195.96
+          },
+          {
+            "date": "2017-08-01",
+            "nav": 196215.39,
+            "cash": 929.39
+          },
+          {
+            "date": "2017-09-01",
+            "nav": 205679.39,
+            "cash": 929.39
+          },
+          {
+            "date": "2017-10-09",
+            "nav": 224516.39,
+            "cash": 929.39
+          },
+          {
+            "date": "2017-11-01",
+            "nav": 239895.39,
+            "cash": 929.39
+          },
+          {
+            "date": "2017-12-01",
+            "nav": 227246.39,
+            "cash": 929.39
+          },
+          {
+            "date": "2018-01-02",
+            "nav": 250542.39,
+            "cash": 929.39
+          },
+          {
+            "date": "2018-02-01",
+            "nav": 254364.39,
+            "cash": 929.39
+          },
+          {
+            "date": "2018-03-01",
+            "nav": 250906.39,
+            "cash": 929.39
+          },
+          {
+            "date": "2018-04-02",
+            "nav": 226609.39,
+            "cash": 929.39
+          },
+          {
+            "date": "2018-05-02",
+            "nav": 235071.88,
+            "cash": 235071.88
+          },
+          {
+            "date": "2018-06-01",
+            "nav": 235071.88,
+            "cash": 235071.88
+          },
+          {
+            "date": "2018-07-02",
+            "nav": 235056.43,
+            "cash": 185207.43
+          },
+          {
+            "date": "2018-08-01",
+            "nav": 237685.12,
+            "cash": 280.12
+          },
+          {
+            "date": "2018-09-03",
+            "nav": 243397.12,
+            "cash": 280.12
+          },
+          {
+            "date": "2018-10-08",
+            "nav": 241749.87,
+            "cash": 119.87
+          },
+          {
+            "date": "2018-11-01",
+            "nav": 228609.87,
+            "cash": 119.87
+          },
+          {
+            "date": "2018-12-03",
+            "nav": 221309.87,
+            "cash": 119.87
+          },
+          {
+            "date": "2019-01-02",
+            "nav": 182984.87,
+            "cash": 119.87
+          },
+          {
+            "date": "2019-02-01",
+            "nav": 209395.46,
+            "cash": 679.46
+          },
+          {
+            "date": "2019-03-01",
+            "nav": 239319.46,
+            "cash": 679.46
+          },
+          {
+            "date": "2019-04-01",
+            "nav": 255843.46,
+            "cash": 679.46
+          },
+          {
+            "date": "2019-05-06",
+            "nav": 235969.46,
+            "cash": 679.46
+          },
+          {
+            "date": "2019-06-03",
+            "nav": 240301.4,
+            "cash": 1691.4
+          },
+          {
+            "date": "2019-07-01",
+            "nav": 241062.4,
+            "cash": 1194.4
+          },
+          {
+            "date": "2019-08-01",
+            "nav": 231193.4,
+            "cash": 709.4
+          },
+          {
+            "date": "2019-09-02",
+            "nav": 229868.84,
+            "cash": 1296.84
+          },
+          {
+            "date": "2019-10-08",
+            "nav": 239193.84,
+            "cash": 857.84
+          },
+          {
+            "date": "2019-11-01",
+            "nav": 228869.84,
+            "cash": 857.84
+          },
+          {
+            "date": "2019-12-02",
+            "nav": 237509.84,
+            "cash": 857.84
+          },
+          {
+            "date": "2020-01-02",
+            "nav": 275777.84,
+            "cash": 857.84
+          },
+          {
+            "date": "2020-02-03",
+            "nav": 252489.41,
+            "cash": 165.41
+          },
+          {
+            "date": "2020-03-02",
+            "nav": 294869.41,
+            "cash": 165.41
+          },
+          {
+            "date": "2020-04-01",
+            "nav": 280525.41,
+            "cash": 165.41
+          },
+          {
+            "date": "2020-05-06",
+            "nav": 298781.41,
+            "cash": 165.41
+          },
+          {
+            "date": "2020-06-01",
+            "nav": 294869.41,
+            "cash": 165.41
+          },
+          {
+            "date": "2020-07-01",
+            "nav": 315728.16,
+            "cash": 166.16
+          },
+          {
+            "date": "2020-08-03",
+            "nav": 449579.64,
+            "cash": 936.64
+          },
+          {
+            "date": "2020-09-01",
+            "nav": 460060.64,
+            "cash": 617.64
+          },
+          {
+            "date": "2020-10-09",
+            "nav": 447074.64,
+            "cash": 322.64
+          },
+          {
+            "date": "2020-11-02",
+            "nav": 423620.64,
+            "cash": 322.64
+          },
+          {
+            "date": "2020-12-01",
+            "nav": 498970.64,
+            "cash": 322.64
+          },
+          {
+            "date": "2021-01-04",
+            "nav": 448886.64,
+            "cash": 322.64
+          },
+          {
+            "date": "2021-02-01",
+            "nav": 387985.53,
+            "cash": 360.53
+          },
+          {
+            "date": "2021-03-01",
+            "nav": 463295.53,
+            "cash": 360.53
+          },
+          {
+            "date": "2021-04-01",
+            "nav": 598853.53,
+            "cash": 360.53
+          },
+          {
+            "date": "2021-05-06",
+            "nav": 614801.53,
+            "cash": 360.53
+          },
+          {
+            "date": "2021-06-01",
+            "nav": 624985.53,
+            "cash": 1.53
+          },
+          {
+            "date": "2021-07-01",
+            "nav": 658155.53,
+            "cash": 1.53
+          },
+          {
+            "date": "2021-08-02",
+            "nav": 773760.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2021-09-01",
+            "nav": 662320.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2021-10-08",
+            "nav": 659136.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2021-11-01",
+            "nav": 554064.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2021-12-01",
+            "nav": 538144.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2022-01-04",
+            "nav": 665504.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2022-02-07",
+            "nav": 601824.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2022-03-01",
+            "nav": 592272.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2022-04-01",
+            "nav": 710080.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2022-05-05",
+            "nav": 579536.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2022-06-01",
+            "nav": 538144.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2022-07-01",
+            "nav": 499936.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2022-08-01",
+            "nav": 461728.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2022-09-01",
+            "nav": 455360.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2022-10-10",
+            "nav": 401232.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2022-11-01",
+            "nav": 369392.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2022-12-01",
+            "nav": 439440.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2023-01-03",
+            "nav": 375760.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2023-02-01",
+            "nav": 372576.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2023-03-01",
+            "nav": 356656.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2023-04-03",
+            "nav": 331184.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2023-05-04",
+            "nav": 146512.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2023-06-01",
+            "nav": 127403.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2023-07-03",
+            "nav": 3.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2023-08-01",
+            "nav": 3.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2023-09-01",
+            "nav": 3.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2023-10-09",
+            "nav": 3.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2023-11-01",
+            "nav": 3.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2023-12-01",
+            "nav": 3.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2024-01-02",
+            "nav": 3.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2024-02-01",
+            "nav": 3.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2024-03-01",
+            "nav": 3.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2024-04-01",
+            "nav": 3.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2024-05-06",
+            "nav": 3.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2024-06-03",
+            "nav": 3.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2024-07-01",
+            "nav": 3.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2024-08-01",
+            "nav": 3.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2024-09-02",
+            "nav": 3.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2024-10-08",
+            "nav": 3.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2024-11-01",
+            "nav": 3.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2024-12-02",
+            "nav": 3.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2025-01-02",
+            "nav": 3.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2025-02-05",
+            "nav": 3.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2025-03-03",
+            "nav": 3.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2025-04-01",
+            "nav": 3.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2025-05-06",
+            "nav": 3.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2025-06-03",
+            "nav": 3.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2025-07-01",
+            "nav": 3.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2025-08-01",
+            "nav": 3.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2025-09-01",
+            "nav": 3.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2025-10-09",
+            "nav": 3.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2025-11-03",
+            "nav": 3.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2025-12-01",
+            "nav": 3.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2026-01-05",
+            "nav": 3.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2026-02-02",
+            "nav": 3.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2026-03-02",
+            "nav": 3.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2026-04-01",
+            "nav": 3.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2026-05-06",
+            "nav": 3.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2026-06-01",
+            "nav": 3.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2026-07-01",
+            "nav": 3.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2026-08-03",
+            "nav": 3.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2026-08-25",
+            "nav": 3.9,
+            "cash": 3.9
+          }
+        ],
+        "final_holdings": [],
+        "listing_windows": {
+          "count": 340,
+          "sha256": "c6b53e885db7afd09dfc2274a3b72be86c795b882e8c1b36280590d2371d8fae",
+          "delisting_recovery_rate": 0.0
+        }
+      }
+    },
+    "last_close_recovery": {
+      "recovery_rate": 1.0,
+      "metrics": {
+        "cagr": 8.45,
+        "max_drawdown": 84.12,
+        "volatility": 38.74,
+        "sharpe": 0.366,
+        "ending_nav": 235531.86,
+        "total_return": 135.53,
+        "observations": 128,
+        "trade_count": 68,
+        "buy_count": 54,
+        "sell_count": 14,
+        "dividend_event_count": 15,
+        "split_event_count": 0,
+        "ending_cash": 1095.86
+      },
+      "traded_delisted_codes": [
+        "600466",
+        "600565"
+      ],
+      "delisting_events": [
+        {
+          "side": "delisting",
+          "code": "600466",
+          "date": "2023-06-30",
+          "delist_date": "2023-06-06",
+          "shares": 318500.0,
+          "last_price": 0.4,
+          "recovery_rate": 1.0,
+          "proceeds": 127400.0
+        }
+      ],
+      "unresolved_delisted_final_holdings": [],
+      "result": {
+        "rules": {
+          "initial_capital": 100000.0,
+          "frequency": "monthly",
+          "entry_yield": 7.5,
+          "entry_pr": 999.0,
+          "hold_yield": 5.5,
+          "loss_hold_yield": 5.5,
+          "hold_pr": 999.0,
+          "exit_yield": 5.3,
+          "exit_pr": 999.0,
+          "exit_confirm_quarters": 1,
+          "max_holdings": 2,
+          "max_sector": 2,
+          "max_banks": 2,
+          "max_position_pct": 1.0,
+          "lot_size": 100,
+          "reinvest_dividends": true,
+          "reinvest_cash_reserve": 0,
+          "rebalance_threshold": 2.0,
+          "stop_loss_pct": 0.0,
+          "buy_commission_rate": 0.0003,
+          "sell_commission_rate": 0.0003,
+          "stamp_duty_rate": 0.0005,
+          "transfer_fee_rate": 1e-05,
+          "min_commission": 5.0,
+          "pool_mode": "dynamic",
+          "pool_min_consecutive_years": 3,
+          "pool_switch_month": 7,
+          "momentum_months": 4,
+          "momentum_threshold": 0.85,
+          "momentum_periods": "",
+          "rank_by": "yield",
+          "max_yield": 999.0,
+          "execution_lag_days": 1,
+          "dividend_information_lag_days": 0,
+          "through_date": "2026-08-25"
+        },
+        "dynamic_pool": true,
+        "universe": {
+          "kind": "explicit",
+          "count": 349
+        },
+        "pool_provenance": [
+          {
+            "signal_date": "2016-01-29",
+            "pool_count": 146,
+            "pool_codes_sha256": "1b7106aea7389f626d836accfe471b9a66cf273d2c000a9148d198469ad7eb58",
+            "execution_date": "2016-02-01"
+          },
+          {
+            "signal_date": "2016-02-29",
+            "pool_count": 146,
+            "pool_codes_sha256": "1b7106aea7389f626d836accfe471b9a66cf273d2c000a9148d198469ad7eb58",
+            "execution_date": "2016-03-01"
+          },
+          {
+            "signal_date": "2016-03-31",
+            "pool_count": 146,
+            "pool_codes_sha256": "1b7106aea7389f626d836accfe471b9a66cf273d2c000a9148d198469ad7eb58",
+            "execution_date": "2016-04-01"
+          },
+          {
+            "signal_date": "2016-04-29",
+            "pool_count": 146,
+            "pool_codes_sha256": "1b7106aea7389f626d836accfe471b9a66cf273d2c000a9148d198469ad7eb58",
+            "execution_date": "2016-05-03"
+          },
+          {
+            "signal_date": "2016-05-31",
+            "pool_count": 146,
+            "pool_codes_sha256": "1b7106aea7389f626d836accfe471b9a66cf273d2c000a9148d198469ad7eb58",
+            "execution_date": "2016-06-01"
+          },
+          {
+            "signal_date": "2016-06-30",
+            "pool_count": 146,
+            "pool_codes_sha256": "1b7106aea7389f626d836accfe471b9a66cf273d2c000a9148d198469ad7eb58",
+            "execution_date": "2016-07-01"
+          },
+          {
+            "signal_date": "2016-07-29",
+            "pool_count": 160,
+            "pool_codes_sha256": "7c0777cec7392e995c45fd9afdbcf2668619acdb572c6684315c5f5997a69c73",
+            "execution_date": "2016-08-01"
+          },
+          {
+            "signal_date": "2016-08-31",
+            "pool_count": 165,
+            "pool_codes_sha256": "c5d2e31ff6e262b53f17be2aa79a2ce4e85bd38b7973d641d3a5a5e3c18afba4",
+            "execution_date": "2016-09-01"
+          },
+          {
+            "signal_date": "2016-09-30",
+            "pool_count": 165,
+            "pool_codes_sha256": "c5d2e31ff6e262b53f17be2aa79a2ce4e85bd38b7973d641d3a5a5e3c18afba4",
+            "execution_date": "2016-10-10"
+          },
+          {
+            "signal_date": "2016-10-31",
+            "pool_count": 165,
+            "pool_codes_sha256": "c5d2e31ff6e262b53f17be2aa79a2ce4e85bd38b7973d641d3a5a5e3c18afba4",
+            "execution_date": "2016-11-01"
+          },
+          {
+            "signal_date": "2016-11-30",
+            "pool_count": 165,
+            "pool_codes_sha256": "c5d2e31ff6e262b53f17be2aa79a2ce4e85bd38b7973d641d3a5a5e3c18afba4",
+            "execution_date": "2016-12-01"
+          },
+          {
+            "signal_date": "2016-12-30",
+            "pool_count": 165,
+            "pool_codes_sha256": "c5d2e31ff6e262b53f17be2aa79a2ce4e85bd38b7973d641d3a5a5e3c18afba4",
+            "execution_date": "2017-01-03"
+          },
+          {
+            "signal_date": "2017-01-26",
+            "pool_count": 164,
+            "pool_codes_sha256": "19a2c099ecdd0b044fbe905b3caf6567a8cfc98d5e49f83bd5a05bd0b0359fbc",
+            "execution_date": "2017-02-03"
+          },
+          {
+            "signal_date": "2017-02-28",
+            "pool_count": 163,
+            "pool_codes_sha256": "dd21ca6c61d1aa6b40a99dbc3dec18db007b8a1515fd4c802b1628c4a70c3d11",
+            "execution_date": "2017-03-01"
+          },
+          {
+            "signal_date": "2017-03-31",
+            "pool_count": 163,
+            "pool_codes_sha256": "dd21ca6c61d1aa6b40a99dbc3dec18db007b8a1515fd4c802b1628c4a70c3d11",
+            "execution_date": "2017-04-05"
+          },
+          {
+            "signal_date": "2017-04-28",
+            "pool_count": 163,
+            "pool_codes_sha256": "dd21ca6c61d1aa6b40a99dbc3dec18db007b8a1515fd4c802b1628c4a70c3d11",
+            "execution_date": "2017-05-02"
+          },
+          {
+            "signal_date": "2017-05-31",
+            "pool_count": 163,
+            "pool_codes_sha256": "dd21ca6c61d1aa6b40a99dbc3dec18db007b8a1515fd4c802b1628c4a70c3d11",
+            "execution_date": "2017-06-01"
+          },
+          {
+            "signal_date": "2017-06-30",
+            "pool_count": 163,
+            "pool_codes_sha256": "dd21ca6c61d1aa6b40a99dbc3dec18db007b8a1515fd4c802b1628c4a70c3d11",
+            "execution_date": "2017-07-03"
+          },
+          {
+            "signal_date": "2017-07-31",
+            "pool_count": 155,
+            "pool_codes_sha256": "e8ad4a747e6004f6c1f11ef461f3a492701414793f27a8cc747e11a21c21c18e",
+            "execution_date": "2017-08-01"
+          },
+          {
+            "signal_date": "2017-08-31",
+            "pool_count": 161,
+            "pool_codes_sha256": "11ca539c974b872fb469b6819d255410b538a0d9c086698fdd2c735964d1597a",
+            "execution_date": "2017-09-01"
+          },
+          {
+            "signal_date": "2017-09-29",
+            "pool_count": 161,
+            "pool_codes_sha256": "11ca539c974b872fb469b6819d255410b538a0d9c086698fdd2c735964d1597a",
+            "execution_date": "2017-10-09"
+          },
+          {
+            "signal_date": "2017-10-31",
+            "pool_count": 161,
+            "pool_codes_sha256": "11ca539c974b872fb469b6819d255410b538a0d9c086698fdd2c735964d1597a",
+            "execution_date": "2017-11-01"
+          },
+          {
+            "signal_date": "2017-11-30",
+            "pool_count": 161,
+            "pool_codes_sha256": "11ca539c974b872fb469b6819d255410b538a0d9c086698fdd2c735964d1597a",
+            "execution_date": "2017-12-01"
+          },
+          {
+            "signal_date": "2017-12-29",
+            "pool_count": 160,
+            "pool_codes_sha256": "ba264174c9bc447ea196351cfdfa57c2173a9de628c72db6372d7ecb2d7887a2",
+            "execution_date": "2018-01-02"
+          },
+          {
+            "signal_date": "2018-01-31",
+            "pool_count": 160,
+            "pool_codes_sha256": "ba264174c9bc447ea196351cfdfa57c2173a9de628c72db6372d7ecb2d7887a2",
+            "execution_date": "2018-02-01"
+          },
+          {
+            "signal_date": "2018-02-28",
+            "pool_count": 160,
+            "pool_codes_sha256": "ba264174c9bc447ea196351cfdfa57c2173a9de628c72db6372d7ecb2d7887a2",
+            "execution_date": "2018-03-01"
+          },
+          {
+            "signal_date": "2018-03-30",
+            "pool_count": 160,
+            "pool_codes_sha256": "ba264174c9bc447ea196351cfdfa57c2173a9de628c72db6372d7ecb2d7887a2",
+            "execution_date": "2018-04-02"
+          },
+          {
+            "signal_date": "2018-04-27",
+            "pool_count": 160,
+            "pool_codes_sha256": "ba264174c9bc447ea196351cfdfa57c2173a9de628c72db6372d7ecb2d7887a2",
+            "execution_date": "2018-05-02"
+          },
+          {
+            "signal_date": "2018-05-31",
+            "pool_count": 160,
+            "pool_codes_sha256": "ba264174c9bc447ea196351cfdfa57c2173a9de628c72db6372d7ecb2d7887a2",
+            "execution_date": "2018-06-01"
+          },
+          {
+            "signal_date": "2018-06-29",
+            "pool_count": 160,
+            "pool_codes_sha256": "ba264174c9bc447ea196351cfdfa57c2173a9de628c72db6372d7ecb2d7887a2",
+            "execution_date": "2018-07-02"
+          },
+          {
+            "signal_date": "2018-07-31",
+            "pool_count": 164,
+            "pool_codes_sha256": "88a2041133867d5b905e017ddc27fbf4639e75cc13c68df611eb0a6784c2ccf1",
+            "execution_date": "2018-08-01"
+          },
+          {
+            "signal_date": "2018-08-31",
+            "pool_count": 173,
+            "pool_codes_sha256": "34d1e4e375b5230179f0411d04678e83874084bc7a8de4730bfb3b3d5d9380ec",
+            "execution_date": "2018-09-03"
+          },
+          {
+            "signal_date": "2018-09-28",
+            "pool_count": 173,
+            "pool_codes_sha256": "34d1e4e375b5230179f0411d04678e83874084bc7a8de4730bfb3b3d5d9380ec",
+            "execution_date": "2018-10-08"
+          },
+          {
+            "signal_date": "2018-10-31",
+            "pool_count": 173,
+            "pool_codes_sha256": "34d1e4e375b5230179f0411d04678e83874084bc7a8de4730bfb3b3d5d9380ec",
+            "execution_date": "2018-11-01"
+          },
+          {
+            "signal_date": "2018-11-30",
+            "pool_count": 173,
+            "pool_codes_sha256": "34d1e4e375b5230179f0411d04678e83874084bc7a8de4730bfb3b3d5d9380ec",
+            "execution_date": "2018-12-03"
+          },
+          {
+            "signal_date": "2018-12-28",
+            "pool_count": 172,
+            "pool_codes_sha256": "1cc44f106c153e2772fb42860abb300e93ee6d9ead1bf182bf9734e530d3780d",
+            "execution_date": "2019-01-02"
+          },
+          {
+            "signal_date": "2019-01-31",
+            "pool_count": 170,
+            "pool_codes_sha256": "5c36c5ad90d9ab922d4ea1e81f276d5dec84c7a180cabc54643d143f12ffc8c1",
+            "execution_date": "2019-02-01"
+          },
+          {
+            "signal_date": "2019-02-28",
+            "pool_count": 170,
+            "pool_codes_sha256": "5c36c5ad90d9ab922d4ea1e81f276d5dec84c7a180cabc54643d143f12ffc8c1",
+            "execution_date": "2019-03-01"
+          },
+          {
+            "signal_date": "2019-03-29",
+            "pool_count": 170,
+            "pool_codes_sha256": "5c36c5ad90d9ab922d4ea1e81f276d5dec84c7a180cabc54643d143f12ffc8c1",
+            "execution_date": "2019-04-01"
+          },
+          {
+            "signal_date": "2019-04-30",
+            "pool_count": 170,
+            "pool_codes_sha256": "5c36c5ad90d9ab922d4ea1e81f276d5dec84c7a180cabc54643d143f12ffc8c1",
+            "execution_date": "2019-05-06"
+          },
+          {
+            "signal_date": "2019-05-31",
+            "pool_count": 170,
+            "pool_codes_sha256": "5c36c5ad90d9ab922d4ea1e81f276d5dec84c7a180cabc54643d143f12ffc8c1",
+            "execution_date": "2019-06-03"
+          },
+          {
+            "signal_date": "2019-06-28",
+            "pool_count": 169,
+            "pool_codes_sha256": "11af14b9ad9f94d5ec86f05abfd20db01903cd061d2a4ebd06528b915c7c4a1b",
+            "execution_date": "2019-07-01"
+          },
+          {
+            "signal_date": "2019-07-31",
+            "pool_count": 171,
+            "pool_codes_sha256": "b34467ed657a62160ead557c2ce5e2aa6534361da85b5293bb2692e84efeb0e1",
+            "execution_date": "2019-08-01"
+          },
+          {
+            "signal_date": "2019-08-30",
+            "pool_count": 183,
+            "pool_codes_sha256": "035b2e66abe2c1ec2f4d757af29cad7d9b85177859866eda4e1dea81fff10cdd",
+            "execution_date": "2019-09-02"
+          },
+          {
+            "signal_date": "2019-09-30",
+            "pool_count": 183,
+            "pool_codes_sha256": "035b2e66abe2c1ec2f4d757af29cad7d9b85177859866eda4e1dea81fff10cdd",
+            "execution_date": "2019-10-08"
+          },
+          {
+            "signal_date": "2019-10-31",
+            "pool_count": 182,
+            "pool_codes_sha256": "8c1850557743006740ee859debdaea567cffda7966efea42484c573a42db5606",
+            "execution_date": "2019-11-01"
+          },
+          {
+            "signal_date": "2019-11-29",
+            "pool_count": 181,
+            "pool_codes_sha256": "96710d0f85914a451462b709172005bb52f44060aed94c99d5832ebabbaf8219",
+            "execution_date": "2019-12-02"
+          },
+          {
+            "signal_date": "2019-12-31",
+            "pool_count": 180,
+            "pool_codes_sha256": "3b71bd8f815547901db30dee4e4ec73029b39ef3cf824f0ba4a68577ed1f1e14",
+            "execution_date": "2020-01-02"
+          },
+          {
+            "signal_date": "2020-01-23",
+            "pool_count": 180,
+            "pool_codes_sha256": "3b71bd8f815547901db30dee4e4ec73029b39ef3cf824f0ba4a68577ed1f1e14",
+            "execution_date": "2020-02-03"
+          },
+          {
+            "signal_date": "2020-02-28",
+            "pool_count": 179,
+            "pool_codes_sha256": "138ba3218b584a556f62151634cf1aa20638ff28bb6e32401a66cf497836e4eb",
+            "execution_date": "2020-03-02"
+          },
+          {
+            "signal_date": "2020-03-31",
+            "pool_count": 179,
+            "pool_codes_sha256": "138ba3218b584a556f62151634cf1aa20638ff28bb6e32401a66cf497836e4eb",
+            "execution_date": "2020-04-01"
+          },
+          {
+            "signal_date": "2020-04-30",
+            "pool_count": 179,
+            "pool_codes_sha256": "138ba3218b584a556f62151634cf1aa20638ff28bb6e32401a66cf497836e4eb",
+            "execution_date": "2020-05-06"
+          },
+          {
+            "signal_date": "2020-05-29",
+            "pool_count": 179,
+            "pool_codes_sha256": "138ba3218b584a556f62151634cf1aa20638ff28bb6e32401a66cf497836e4eb",
+            "execution_date": "2020-06-01"
+          },
+          {
+            "signal_date": "2020-06-30",
+            "pool_count": 179,
+            "pool_codes_sha256": "138ba3218b584a556f62151634cf1aa20638ff28bb6e32401a66cf497836e4eb",
+            "execution_date": "2020-07-01"
+          },
+          {
+            "signal_date": "2020-07-31",
+            "pool_count": 167,
+            "pool_codes_sha256": "f38086bcc6f0bcee7364c7eeaa1856a4f25ea190d02c3fc707fffbcf53130ead",
+            "execution_date": "2020-08-03"
+          },
+          {
+            "signal_date": "2020-08-31",
+            "pool_count": 176,
+            "pool_codes_sha256": "d90ef42a1033075b578fd7575eee9e420e470f3192cbf632a42f6c09f82a9be7",
+            "execution_date": "2020-09-01"
+          },
+          {
+            "signal_date": "2020-09-30",
+            "pool_count": 176,
+            "pool_codes_sha256": "d90ef42a1033075b578fd7575eee9e420e470f3192cbf632a42f6c09f82a9be7",
+            "execution_date": "2020-10-09"
+          },
+          {
+            "signal_date": "2020-10-30",
+            "pool_count": 176,
+            "pool_codes_sha256": "d90ef42a1033075b578fd7575eee9e420e470f3192cbf632a42f6c09f82a9be7",
+            "execution_date": "2020-11-02"
+          },
+          {
+            "signal_date": "2020-11-30",
+            "pool_count": 176,
+            "pool_codes_sha256": "d90ef42a1033075b578fd7575eee9e420e470f3192cbf632a42f6c09f82a9be7",
+            "execution_date": "2020-12-01"
+          },
+          {
+            "signal_date": "2020-12-31",
+            "pool_count": 176,
+            "pool_codes_sha256": "d90ef42a1033075b578fd7575eee9e420e470f3192cbf632a42f6c09f82a9be7",
+            "execution_date": "2021-01-04"
+          },
+          {
+            "signal_date": "2021-01-29",
+            "pool_count": 176,
+            "pool_codes_sha256": "d90ef42a1033075b578fd7575eee9e420e470f3192cbf632a42f6c09f82a9be7",
+            "execution_date": "2021-02-01"
+          },
+          {
+            "signal_date": "2021-02-26",
+            "pool_count": 175,
+            "pool_codes_sha256": "28177a0a336b4a8d85bfda8c8ed932b238f0e289c550156fd2745c1ca2bd33b2",
+            "execution_date": "2021-03-01"
+          },
+          {
+            "signal_date": "2021-03-31",
+            "pool_count": 173,
+            "pool_codes_sha256": "06b3e6aaf230a4b6706bcdf3b741387312082d96d983c666eefaa694d90369a3",
+            "execution_date": "2021-04-01"
+          },
+          {
+            "signal_date": "2021-04-30",
+            "pool_count": 173,
+            "pool_codes_sha256": "06b3e6aaf230a4b6706bcdf3b741387312082d96d983c666eefaa694d90369a3",
+            "execution_date": "2021-05-06"
+          },
+          {
+            "signal_date": "2021-05-31",
+            "pool_count": 173,
+            "pool_codes_sha256": "06b3e6aaf230a4b6706bcdf3b741387312082d96d983c666eefaa694d90369a3",
+            "execution_date": "2021-06-01"
+          },
+          {
+            "signal_date": "2021-06-30",
+            "pool_count": 173,
+            "pool_codes_sha256": "06b3e6aaf230a4b6706bcdf3b741387312082d96d983c666eefaa694d90369a3",
+            "execution_date": "2021-07-01"
+          },
+          {
+            "signal_date": "2021-07-30",
+            "pool_count": 150,
+            "pool_codes_sha256": "60637ba2e123bf73398b39e9a63f279322c65dca87620d67306ef16a8cc44497",
+            "execution_date": "2021-08-02"
+          },
+          {
+            "signal_date": "2021-08-31",
+            "pool_count": 158,
+            "pool_codes_sha256": "d1360331c0101175b12028ebc5db649b64733ace689a64564f098eac6536879c",
+            "execution_date": "2021-09-01"
+          },
+          {
+            "signal_date": "2021-09-30",
+            "pool_count": 157,
+            "pool_codes_sha256": "262e3c777e314e710e65d0f0a97e3911b4a418469d7824488242e9c850efe040",
+            "execution_date": "2021-10-08"
+          },
+          {
+            "signal_date": "2021-10-29",
+            "pool_count": 156,
+            "pool_codes_sha256": "83f3ef1f81691b0b660ca9fc6573a29b76e8f452a7c6d11907df97039df6f93a",
+            "execution_date": "2021-11-01"
+          },
+          {
+            "signal_date": "2021-11-30",
+            "pool_count": 156,
+            "pool_codes_sha256": "83f3ef1f81691b0b660ca9fc6573a29b76e8f452a7c6d11907df97039df6f93a",
+            "execution_date": "2021-12-01"
+          },
+          {
+            "signal_date": "2021-12-31",
+            "pool_count": 156,
+            "pool_codes_sha256": "83f3ef1f81691b0b660ca9fc6573a29b76e8f452a7c6d11907df97039df6f93a",
+            "execution_date": "2022-01-04"
+          },
+          {
+            "signal_date": "2022-01-28",
+            "pool_count": 156,
+            "pool_codes_sha256": "83f3ef1f81691b0b660ca9fc6573a29b76e8f452a7c6d11907df97039df6f93a",
+            "execution_date": "2022-02-07"
+          },
+          {
+            "signal_date": "2022-02-28",
+            "pool_count": 156,
+            "pool_codes_sha256": "83f3ef1f81691b0b660ca9fc6573a29b76e8f452a7c6d11907df97039df6f93a",
+            "execution_date": "2022-03-01"
+          },
+          {
+            "signal_date": "2022-03-31",
+            "pool_count": 156,
+            "pool_codes_sha256": "83f3ef1f81691b0b660ca9fc6573a29b76e8f452a7c6d11907df97039df6f93a",
+            "execution_date": "2022-04-01"
+          },
+          {
+            "signal_date": "2022-04-29",
+            "pool_count": 156,
+            "pool_codes_sha256": "83f3ef1f81691b0b660ca9fc6573a29b76e8f452a7c6d11907df97039df6f93a",
+            "execution_date": "2022-05-05"
+          },
+          {
+            "signal_date": "2022-05-31",
+            "pool_count": 156,
+            "pool_codes_sha256": "83f3ef1f81691b0b660ca9fc6573a29b76e8f452a7c6d11907df97039df6f93a",
+            "execution_date": "2022-06-01"
+          },
+          {
+            "signal_date": "2022-06-30",
+            "pool_count": 155,
+            "pool_codes_sha256": "1d37a9e14f12a8250ca015567f6ae65c50ef14819ea1547df59073d833746197",
+            "execution_date": "2022-07-01"
+          },
+          {
+            "signal_date": "2022-07-29",
+            "pool_count": 151,
+            "pool_codes_sha256": "9566c6630d207f50c984e9963c8dab2ba9800bf192891aaecfcb00f24b7b19ab",
+            "execution_date": "2022-08-01"
+          },
+          {
+            "signal_date": "2022-08-31",
+            "pool_count": 156,
+            "pool_codes_sha256": "3685301e772aedf57df92d05b2f918ccdcdf56d916ef6de69786d793eef42e7f",
+            "execution_date": "2022-09-01"
+          },
+          {
+            "signal_date": "2022-09-30",
+            "pool_count": 156,
+            "pool_codes_sha256": "3685301e772aedf57df92d05b2f918ccdcdf56d916ef6de69786d793eef42e7f",
+            "execution_date": "2022-10-10"
+          },
+          {
+            "signal_date": "2022-10-31",
+            "pool_count": 156,
+            "pool_codes_sha256": "3685301e772aedf57df92d05b2f918ccdcdf56d916ef6de69786d793eef42e7f",
+            "execution_date": "2022-11-01"
+          },
+          {
+            "signal_date": "2022-11-30",
+            "pool_count": 156,
+            "pool_codes_sha256": "3685301e772aedf57df92d05b2f918ccdcdf56d916ef6de69786d793eef42e7f",
+            "execution_date": "2022-12-01"
+          },
+          {
+            "signal_date": "2022-12-30",
+            "pool_count": 156,
+            "pool_codes_sha256": "3685301e772aedf57df92d05b2f918ccdcdf56d916ef6de69786d793eef42e7f",
+            "execution_date": "2023-01-03"
+          },
+          {
+            "signal_date": "2023-01-31",
+            "pool_count": 156,
+            "pool_codes_sha256": "3685301e772aedf57df92d05b2f918ccdcdf56d916ef6de69786d793eef42e7f",
+            "execution_date": "2023-02-01"
+          },
+          {
+            "signal_date": "2023-02-28",
+            "pool_count": 156,
+            "pool_codes_sha256": "3685301e772aedf57df92d05b2f918ccdcdf56d916ef6de69786d793eef42e7f",
+            "execution_date": "2023-03-01"
+          },
+          {
+            "signal_date": "2023-03-31",
+            "pool_count": 155,
+            "pool_codes_sha256": "4c31d266fc00dabb5d538168a000a1e3c3b7cfb01ff684616558dc8884fc8b07",
+            "execution_date": "2023-04-03"
+          },
+          {
+            "signal_date": "2023-04-28",
+            "pool_count": 155,
+            "pool_codes_sha256": "4c31d266fc00dabb5d538168a000a1e3c3b7cfb01ff684616558dc8884fc8b07",
+            "execution_date": "2023-05-04"
+          },
+          {
+            "signal_date": "2023-05-31",
+            "pool_count": 155,
+            "pool_codes_sha256": "4c31d266fc00dabb5d538168a000a1e3c3b7cfb01ff684616558dc8884fc8b07",
+            "execution_date": "2023-06-01"
+          },
+          {
+            "signal_date": "2023-06-30",
+            "pool_count": 155,
+            "pool_codes_sha256": "4c31d266fc00dabb5d538168a000a1e3c3b7cfb01ff684616558dc8884fc8b07",
+            "execution_date": "2023-07-03"
+          },
+          {
+            "signal_date": "2023-07-31",
+            "pool_count": 156,
+            "pool_codes_sha256": "2a094edd7b61b95d3e998a0b7581bae551d08c8ab71410334c882da6a29326cb",
+            "execution_date": "2023-08-01"
+          },
+          {
+            "signal_date": "2023-08-31",
+            "pool_count": 160,
+            "pool_codes_sha256": "5b24633fa398ad23902442c48d2c8441146661739d82600353b9743c91d19e85",
+            "execution_date": "2023-09-01"
+          },
+          {
+            "signal_date": "2023-09-28",
+            "pool_count": 160,
+            "pool_codes_sha256": "5b24633fa398ad23902442c48d2c8441146661739d82600353b9743c91d19e85",
+            "execution_date": "2023-10-09"
+          },
+          {
+            "signal_date": "2023-10-31",
+            "pool_count": 159,
+            "pool_codes_sha256": "acf48ae563790471d8ba380f6e0e08001ad866e95bc5db72d5b8c805d15a9324",
+            "execution_date": "2023-11-01"
+          },
+          {
+            "signal_date": "2023-11-30",
+            "pool_count": 159,
+            "pool_codes_sha256": "acf48ae563790471d8ba380f6e0e08001ad866e95bc5db72d5b8c805d15a9324",
+            "execution_date": "2023-12-01"
+          },
+          {
+            "signal_date": "2023-12-29",
+            "pool_count": 159,
+            "pool_codes_sha256": "acf48ae563790471d8ba380f6e0e08001ad866e95bc5db72d5b8c805d15a9324",
+            "execution_date": "2024-01-02"
+          },
+          {
+            "signal_date": "2024-01-31",
+            "pool_count": 159,
+            "pool_codes_sha256": "acf48ae563790471d8ba380f6e0e08001ad866e95bc5db72d5b8c805d15a9324",
+            "execution_date": "2024-02-01"
+          },
+          {
+            "signal_date": "2024-02-29",
+            "pool_count": 159,
+            "pool_codes_sha256": "acf48ae563790471d8ba380f6e0e08001ad866e95bc5db72d5b8c805d15a9324",
+            "execution_date": "2024-03-01"
+          },
+          {
+            "signal_date": "2024-03-29",
+            "pool_count": 159,
+            "pool_codes_sha256": "acf48ae563790471d8ba380f6e0e08001ad866e95bc5db72d5b8c805d15a9324",
+            "execution_date": "2024-04-01"
+          },
+          {
+            "signal_date": "2024-04-30",
+            "pool_count": 159,
+            "pool_codes_sha256": "acf48ae563790471d8ba380f6e0e08001ad866e95bc5db72d5b8c805d15a9324",
+            "execution_date": "2024-05-06"
+          },
+          {
+            "signal_date": "2024-05-31",
+            "pool_count": 159,
+            "pool_codes_sha256": "acf48ae563790471d8ba380f6e0e08001ad866e95bc5db72d5b8c805d15a9324",
+            "execution_date": "2024-06-03"
+          },
+          {
+            "signal_date": "2024-06-28",
+            "pool_count": 158,
+            "pool_codes_sha256": "0f488400c53b63541284736ba89340b838ac9a8ac29b8d5dbee02cdf0008bdfc",
+            "execution_date": "2024-07-01"
+          },
+          {
+            "signal_date": "2024-07-31",
+            "pool_count": 160,
+            "pool_codes_sha256": "5d41abf62fdc3a780f8eb9b2391541fec4b819b6877703c6231ec0e8596b137e",
+            "execution_date": "2024-08-01"
+          },
+          {
+            "signal_date": "2024-08-30",
+            "pool_count": 167,
+            "pool_codes_sha256": "4dcb80ab2e51bed3ddcd8a569e7a17bebc9117818afd0080dba738d1a362c385",
+            "execution_date": "2024-09-02"
+          },
+          {
+            "signal_date": "2024-09-30",
+            "pool_count": 167,
+            "pool_codes_sha256": "4dcb80ab2e51bed3ddcd8a569e7a17bebc9117818afd0080dba738d1a362c385",
+            "execution_date": "2024-10-08"
+          },
+          {
+            "signal_date": "2024-10-31",
+            "pool_count": 167,
+            "pool_codes_sha256": "4dcb80ab2e51bed3ddcd8a569e7a17bebc9117818afd0080dba738d1a362c385",
+            "execution_date": "2024-11-01"
+          },
+          {
+            "signal_date": "2024-11-29",
+            "pool_count": 167,
+            "pool_codes_sha256": "4dcb80ab2e51bed3ddcd8a569e7a17bebc9117818afd0080dba738d1a362c385",
+            "execution_date": "2024-12-02"
+          },
+          {
+            "signal_date": "2024-12-31",
+            "pool_count": 167,
+            "pool_codes_sha256": "4dcb80ab2e51bed3ddcd8a569e7a17bebc9117818afd0080dba738d1a362c385",
+            "execution_date": "2025-01-02"
+          },
+          {
+            "signal_date": "2025-01-27",
+            "pool_count": 167,
+            "pool_codes_sha256": "4dcb80ab2e51bed3ddcd8a569e7a17bebc9117818afd0080dba738d1a362c385",
+            "execution_date": "2025-02-05"
+          },
+          {
+            "signal_date": "2025-02-28",
+            "pool_count": 166,
+            "pool_codes_sha256": "c095534966de47d95dc1ca8ce938ae0bb6450e3378a35aa2897ae019f15a7dd4",
+            "execution_date": "2025-03-03"
+          },
+          {
+            "signal_date": "2025-03-31",
+            "pool_count": 165,
+            "pool_codes_sha256": "69279f309fb1dbfd56ffede12b64c772a4100aaae578fc39555d6b7e32575276",
+            "execution_date": "2025-04-01"
+          },
+          {
+            "signal_date": "2025-04-30",
+            "pool_count": 165,
+            "pool_codes_sha256": "69279f309fb1dbfd56ffede12b64c772a4100aaae578fc39555d6b7e32575276",
+            "execution_date": "2025-05-06"
+          },
+          {
+            "signal_date": "2025-05-30",
+            "pool_count": 163,
+            "pool_codes_sha256": "c721a9383dc4c72a9077131940a682904a423d525191a39419d95f5ecd409005",
+            "execution_date": "2025-06-03"
+          },
+          {
+            "signal_date": "2025-06-30",
+            "pool_count": 163,
+            "pool_codes_sha256": "c721a9383dc4c72a9077131940a682904a423d525191a39419d95f5ecd409005",
+            "execution_date": "2025-07-01"
+          },
+          {
+            "signal_date": "2025-07-31",
+            "pool_count": 166,
+            "pool_codes_sha256": "010eae3b26def0b9c89b529953a277b73e74340e985fdf9a79c46717997e9108",
+            "execution_date": "2025-08-01"
+          },
+          {
+            "signal_date": "2025-08-29",
+            "pool_count": 168,
+            "pool_codes_sha256": "809868b0adf94ae0d36fd132907e6adb65bb99c82f1da71bf4b89da80d723e9a",
+            "execution_date": "2025-09-01"
+          },
+          {
+            "signal_date": "2025-09-30",
+            "pool_count": 168,
+            "pool_codes_sha256": "809868b0adf94ae0d36fd132907e6adb65bb99c82f1da71bf4b89da80d723e9a",
+            "execution_date": "2025-10-09"
+          },
+          {
+            "signal_date": "2025-10-31",
+            "pool_count": 168,
+            "pool_codes_sha256": "809868b0adf94ae0d36fd132907e6adb65bb99c82f1da71bf4b89da80d723e9a",
+            "execution_date": "2025-11-03"
+          },
+          {
+            "signal_date": "2025-11-28",
+            "pool_count": 168,
+            "pool_codes_sha256": "809868b0adf94ae0d36fd132907e6adb65bb99c82f1da71bf4b89da80d723e9a",
+            "execution_date": "2025-12-01"
+          },
+          {
+            "signal_date": "2025-12-31",
+            "pool_count": 168,
+            "pool_codes_sha256": "809868b0adf94ae0d36fd132907e6adb65bb99c82f1da71bf4b89da80d723e9a",
+            "execution_date": "2026-01-05"
+          },
+          {
+            "signal_date": "2026-01-30",
+            "pool_count": 168,
+            "pool_codes_sha256": "809868b0adf94ae0d36fd132907e6adb65bb99c82f1da71bf4b89da80d723e9a",
+            "execution_date": "2026-02-02"
+          },
+          {
+            "signal_date": "2026-02-27",
+            "pool_count": 168,
+            "pool_codes_sha256": "809868b0adf94ae0d36fd132907e6adb65bb99c82f1da71bf4b89da80d723e9a",
+            "execution_date": "2026-03-02"
+          },
+          {
+            "signal_date": "2026-03-31",
+            "pool_count": 168,
+            "pool_codes_sha256": "809868b0adf94ae0d36fd132907e6adb65bb99c82f1da71bf4b89da80d723e9a",
+            "execution_date": "2026-04-01"
+          },
+          {
+            "signal_date": "2026-04-30",
+            "pool_count": 168,
+            "pool_codes_sha256": "809868b0adf94ae0d36fd132907e6adb65bb99c82f1da71bf4b89da80d723e9a",
+            "execution_date": "2026-05-06"
+          },
+          {
+            "signal_date": "2026-05-29",
+            "pool_count": 168,
+            "pool_codes_sha256": "809868b0adf94ae0d36fd132907e6adb65bb99c82f1da71bf4b89da80d723e9a",
+            "execution_date": "2026-06-01"
+          },
+          {
+            "signal_date": "2026-06-30",
+            "pool_count": 167,
+            "pool_codes_sha256": "b0779530550620db62b2ca2f9832a53f23e7f5d1d8ceec1df553c77d847e86c6",
+            "execution_date": "2026-07-01"
+          },
+          {
+            "signal_date": "2026-07-31",
+            "pool_count": 166,
+            "pool_codes_sha256": "643601620dde646e083d94346c9e877f695de9fef39ba88e143be080abfa6e08",
+            "execution_date": "2026-08-03"
+          },
+          {
+            "signal_date": "2026-08-25",
+            "pool_count": 169,
+            "pool_codes_sha256": "18fd598ec4842fb283963c23cf4288414cdc7550b70ab448a4e172f2e45072fe",
+            "execution_date": null
+          }
+        ],
+        "data_cutoff": "2026-08-25",
+        "rebalance_dates": {
+          "count": 128,
+          "first": "2016-01-29",
+          "last": "2026-08-25",
+          "path": "data/rebalance_dates_monthly.json",
+          "sha256": "f62fc22c2f2f972e3b29dea42e2a41202bfa620e702acc3c750e26f8c959ec3e"
+        },
+        "reinvest": true,
+        "reinvest_cli_flag": false,
+        "metrics": {
+          "cagr": 8.45,
+          "max_drawdown": 84.12,
+          "volatility": 38.74,
+          "sharpe": 0.366,
+          "ending_nav": 235531.86,
+          "total_return": 135.53,
+          "observations": 128,
+          "trade_count": 68,
+          "buy_count": 54,
+          "sell_count": 14,
+          "dividend_event_count": 15,
+          "split_event_count": 0,
+          "ending_cash": 1095.86
+        },
+        "nav_series": [
+          {
+            "date": "2016-02-01",
+            "nav": 99969.13,
+            "cash": 393.13
+          },
+          {
+            "date": "2016-03-01",
+            "nav": 104181.13,
+            "cash": 393.13
+          },
+          {
+            "date": "2016-04-01",
+            "nav": 99969.13,
+            "cash": 393.13
+          },
+          {
+            "date": "2016-05-03",
+            "nav": 99969.13,
+            "cash": 393.13
+          },
+          {
+            "date": "2016-06-01",
+            "nav": 99969.13,
+            "cash": 393.13
+          },
+          {
+            "date": "2016-07-01",
+            "nav": 99969.13,
+            "cash": 393.13
+          },
+          {
+            "date": "2016-08-01",
+            "nav": 107259.13,
+            "cash": 7683.13
+          },
+          {
+            "date": "2016-09-01",
+            "nav": 107259.13,
+            "cash": 7683.13
+          },
+          {
+            "date": "2016-10-10",
+            "nav": 127072.06,
+            "cash": 1045.06
+          },
+          {
+            "date": "2016-11-01",
+            "nav": 128725.06,
+            "cash": 1045.06
+          },
+          {
+            "date": "2016-12-01",
+            "nav": 175266.83,
+            "cash": 175266.83
+          },
+          {
+            "date": "2017-01-03",
+            "nav": 175251.74,
+            "cash": 126576.74
+          },
+          {
+            "date": "2017-02-03",
+            "nav": 177037.92,
+            "cash": 1297.92
+          },
+          {
+            "date": "2017-03-01",
+            "nav": 180169.92,
+            "cash": 1297.92
+          },
+          {
+            "date": "2017-04-05",
+            "nav": 190000.92,
+            "cash": 1297.92
+          },
+          {
+            "date": "2017-05-02",
+            "nav": 174775.92,
+            "cash": 1297.92
+          },
+          {
+            "date": "2017-06-01",
+            "nav": 181039.92,
+            "cash": 1297.92
+          },
+          {
+            "date": "2017-07-03",
+            "nav": 200965.96,
+            "cash": 151195.96
+          },
+          {
+            "date": "2017-08-01",
+            "nav": 196215.39,
+            "cash": 929.39
+          },
+          {
+            "date": "2017-09-01",
+            "nav": 205679.39,
+            "cash": 929.39
+          },
+          {
+            "date": "2017-10-09",
+            "nav": 224516.39,
+            "cash": 929.39
+          },
+          {
+            "date": "2017-11-01",
+            "nav": 239895.39,
+            "cash": 929.39
+          },
+          {
+            "date": "2017-12-01",
+            "nav": 227246.39,
+            "cash": 929.39
+          },
+          {
+            "date": "2018-01-02",
+            "nav": 250542.39,
+            "cash": 929.39
+          },
+          {
+            "date": "2018-02-01",
+            "nav": 254364.39,
+            "cash": 929.39
+          },
+          {
+            "date": "2018-03-01",
+            "nav": 250906.39,
+            "cash": 929.39
+          },
+          {
+            "date": "2018-04-02",
+            "nav": 226609.39,
+            "cash": 929.39
+          },
+          {
+            "date": "2018-05-02",
+            "nav": 235071.88,
+            "cash": 235071.88
+          },
+          {
+            "date": "2018-06-01",
+            "nav": 235071.88,
+            "cash": 235071.88
+          },
+          {
+            "date": "2018-07-02",
+            "nav": 235056.43,
+            "cash": 185207.43
+          },
+          {
+            "date": "2018-08-01",
+            "nav": 237685.12,
+            "cash": 280.12
+          },
+          {
+            "date": "2018-09-03",
+            "nav": 243397.12,
+            "cash": 280.12
+          },
+          {
+            "date": "2018-10-08",
+            "nav": 241749.87,
+            "cash": 119.87
+          },
+          {
+            "date": "2018-11-01",
+            "nav": 228609.87,
+            "cash": 119.87
+          },
+          {
+            "date": "2018-12-03",
+            "nav": 221309.87,
+            "cash": 119.87
+          },
+          {
+            "date": "2019-01-02",
+            "nav": 182984.87,
+            "cash": 119.87
+          },
+          {
+            "date": "2019-02-01",
+            "nav": 209395.46,
+            "cash": 679.46
+          },
+          {
+            "date": "2019-03-01",
+            "nav": 239319.46,
+            "cash": 679.46
+          },
+          {
+            "date": "2019-04-01",
+            "nav": 255843.46,
+            "cash": 679.46
+          },
+          {
+            "date": "2019-05-06",
+            "nav": 235969.46,
+            "cash": 679.46
+          },
+          {
+            "date": "2019-06-03",
+            "nav": 240301.4,
+            "cash": 1691.4
+          },
+          {
+            "date": "2019-07-01",
+            "nav": 241062.4,
+            "cash": 1194.4
+          },
+          {
+            "date": "2019-08-01",
+            "nav": 231193.4,
+            "cash": 709.4
+          },
+          {
+            "date": "2019-09-02",
+            "nav": 229868.84,
+            "cash": 1296.84
+          },
+          {
+            "date": "2019-10-08",
+            "nav": 239193.84,
+            "cash": 857.84
+          },
+          {
+            "date": "2019-11-01",
+            "nav": 228869.84,
+            "cash": 857.84
+          },
+          {
+            "date": "2019-12-02",
+            "nav": 237509.84,
+            "cash": 857.84
+          },
+          {
+            "date": "2020-01-02",
+            "nav": 275777.84,
+            "cash": 857.84
+          },
+          {
+            "date": "2020-02-03",
+            "nav": 252489.41,
+            "cash": 165.41
+          },
+          {
+            "date": "2020-03-02",
+            "nav": 294869.41,
+            "cash": 165.41
+          },
+          {
+            "date": "2020-04-01",
+            "nav": 280525.41,
+            "cash": 165.41
+          },
+          {
+            "date": "2020-05-06",
+            "nav": 298781.41,
+            "cash": 165.41
+          },
+          {
+            "date": "2020-06-01",
+            "nav": 294869.41,
+            "cash": 165.41
+          },
+          {
+            "date": "2020-07-01",
+            "nav": 315728.16,
+            "cash": 166.16
+          },
+          {
+            "date": "2020-08-03",
+            "nav": 449579.64,
+            "cash": 936.64
+          },
+          {
+            "date": "2020-09-01",
+            "nav": 460060.64,
+            "cash": 617.64
+          },
+          {
+            "date": "2020-10-09",
+            "nav": 447074.64,
+            "cash": 322.64
+          },
+          {
+            "date": "2020-11-02",
+            "nav": 423620.64,
+            "cash": 322.64
+          },
+          {
+            "date": "2020-12-01",
+            "nav": 498970.64,
+            "cash": 322.64
+          },
+          {
+            "date": "2021-01-04",
+            "nav": 448886.64,
+            "cash": 322.64
+          },
+          {
+            "date": "2021-02-01",
+            "nav": 387985.53,
+            "cash": 360.53
+          },
+          {
+            "date": "2021-03-01",
+            "nav": 463295.53,
+            "cash": 360.53
+          },
+          {
+            "date": "2021-04-01",
+            "nav": 598853.53,
+            "cash": 360.53
+          },
+          {
+            "date": "2021-05-06",
+            "nav": 614801.53,
+            "cash": 360.53
+          },
+          {
+            "date": "2021-06-01",
+            "nav": 624985.53,
+            "cash": 1.53
+          },
+          {
+            "date": "2021-07-01",
+            "nav": 658155.53,
+            "cash": 1.53
+          },
+          {
+            "date": "2021-08-02",
+            "nav": 773760.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2021-09-01",
+            "nav": 662320.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2021-10-08",
+            "nav": 659136.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2021-11-01",
+            "nav": 554064.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2021-12-01",
+            "nav": 538144.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2022-01-04",
+            "nav": 665504.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2022-02-07",
+            "nav": 601824.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2022-03-01",
+            "nav": 592272.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2022-04-01",
+            "nav": 710080.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2022-05-05",
+            "nav": 579536.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2022-06-01",
+            "nav": 538144.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2022-07-01",
+            "nav": 499936.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2022-08-01",
+            "nav": 461728.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2022-09-01",
+            "nav": 455360.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2022-10-10",
+            "nav": 401232.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2022-11-01",
+            "nav": 369392.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2022-12-01",
+            "nav": 439440.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2023-01-03",
+            "nav": 375760.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2023-02-01",
+            "nav": 372576.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2023-03-01",
+            "nav": 356656.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2023-04-03",
+            "nav": 331184.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2023-05-04",
+            "nav": 146512.9,
+            "cash": 48.9
+          },
+          {
+            "date": "2023-06-01",
+            "nav": 127403.9,
+            "cash": 3.9
+          },
+          {
+            "date": "2023-07-03",
+            "nav": 127363.85,
+            "cash": 3471.85
+          },
+          {
+            "date": "2023-08-01",
+            "nav": 125278.82,
+            "cash": 4702.82
+          },
+          {
+            "date": "2023-09-01",
+            "nav": 122869.82,
+            "cash": 4702.82
+          },
+          {
+            "date": "2023-10-09",
+            "nav": 128245.82,
+            "cash": 4702.82
+          },
+          {
+            "date": "2023-11-01",
+            "nav": 128911.82,
+            "cash": 4702.82
+          },
+          {
+            "date": "2023-12-01",
+            "nav": 134725.82,
+            "cash": 4702.82
+          },
+          {
+            "date": "2024-01-02",
+            "nav": 135316.82,
+            "cash": 4702.82
+          },
+          {
+            "date": "2024-02-01",
+            "nav": 140188.82,
+            "cash": 4702.82
+          },
+          {
+            "date": "2024-03-01",
+            "nav": 150568.82,
+            "cash": 4702.82
+          },
+          {
+            "date": "2024-04-01",
+            "nav": 155536.82,
+            "cash": 4702.82
+          },
+          {
+            "date": "2024-05-06",
+            "nav": 159661.82,
+            "cash": 4702.82
+          },
+          {
+            "date": "2024-06-03",
+            "nav": 161959.37,
+            "cash": 19.37
+          },
+          {
+            "date": "2024-07-01",
+            "nav": 169004.37,
+            "cash": 19.37
+          },
+          {
+            "date": "2024-08-01",
+            "nav": 155457.29,
+            "cash": 494.29
+          },
+          {
+            "date": "2024-09-02",
+            "nav": 162006.29,
+            "cash": 494.29
+          },
+          {
+            "date": "2024-10-08",
+            "nav": 167426.1,
+            "cash": 922.1
+          },
+          {
+            "date": "2024-11-01",
+            "nav": 152549.09,
+            "cash": 1349.09
+          },
+          {
+            "date": "2024-12-02",
+            "nav": 165464.09,
+            "cash": 1349.09
+          },
+          {
+            "date": "2025-01-02",
+            "nav": 150029.09,
+            "cash": 1349.09
+          },
+          {
+            "date": "2025-02-05",
+            "nav": 151646.06,
+            "cash": 2758.06
+          },
+          {
+            "date": "2025-03-03",
+            "nav": 149669.05,
+            "cash": 1829.05
+          },
+          {
+            "date": "2025-04-01",
+            "nav": 163418.05,
+            "cash": 1829.05
+          },
+          {
+            "date": "2025-05-06",
+            "nav": 169877.05,
+            "cash": 1829.05
+          },
+          {
+            "date": "2025-06-03",
+            "nav": 162998.05,
+            "cash": 1829.05
+          },
+          {
+            "date": "2025-07-01",
+            "nav": 176257.44,
+            "cash": 662.44
+          },
+          {
+            "date": "2025-08-01",
+            "nav": 203459.44,
+            "cash": 662.44
+          },
+          {
+            "date": "2025-09-01",
+            "nav": 206504.44,
+            "cash": 662.44
+          },
+          {
+            "date": "2025-10-09",
+            "nav": 213609.44,
+            "cash": 662.44
+          },
+          {
+            "date": "2025-11-03",
+            "nav": 231620.62,
+            "cash": 854.62
+          },
+          {
+            "date": "2025-12-01",
+            "nav": 240242.62,
+            "cash": 854.62
+          },
+          {
+            "date": "2026-01-05",
+            "nav": 235810.62,
+            "cash": 854.62
+          },
+          {
+            "date": "2026-02-02",
+            "nav": 225988.19,
+            "cash": 796.19
+          },
+          {
+            "date": "2026-03-02",
+            "nav": 245436.19,
+            "cash": 796.19
+          },
+          {
+            "date": "2026-04-01",
+            "nav": 234436.19,
+            "cash": 796.19
+          },
+          {
+            "date": "2026-05-06",
+            "nav": 245964.19,
+            "cash": 796.19
+          },
+          {
+            "date": "2026-06-01",
+            "nav": 244820.19,
+            "cash": 796.19
+          },
+          {
+            "date": "2026-07-01",
+            "nav": 212219.86,
+            "cash": 1095.86
+          },
+          {
+            "date": "2026-08-03",
+            "nav": 253485.86,
+            "cash": 1095.86
+          },
+          {
+            "date": "2026-08-25",
+            "nav": 235531.86,
+            "cash": 1095.86
+          }
+        ],
+        "final_holdings": [
+          {
+            "code": "600566",
+            "shares": 9400,
+            "entry_price": 25.07
+          }
+        ],
+        "listing_windows": {
+          "count": 340,
+          "sha256": "c6b53e885db7afd09dfc2274a3b72be86c795b882e8c1b36280590d2371d8fae",
+          "delisting_recovery_rate": 1.0
+        }
+      }
+    }
+  },
+  "limitations": [
+    "只补入 255 只 2015 年后退市股中的 139 只连续三年正分红股票。",
+    "尚未为 5,212 只在市股票重建全历史分红，可能遗漏历史曾高息但不在冻结 210 只缓存中的股票。",
+    "BaoStock 查询完成不等于独立核验，不能声称已消除幸存者偏差。",
+    "缺少真实退市清算、换股或终止上市处置数据；归零与末收盘价全额回收仅给出压力测试边界。"
+  ]
+}
