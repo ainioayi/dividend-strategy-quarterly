@@ -7,7 +7,12 @@ from pathlib import Path
 SCRIPTS = Path(__file__).resolve().parents[1] / "scripts"
 sys.path.insert(0, str(SCRIPTS))
 
-from tradeable_benchmark import parse_dividends, parse_prices, simulate_total_return
+from tradeable_benchmark import _market_symbol, parse_dividends, parse_prices, simulate_total_return
+
+
+def test沪市ETF代码不会误路由到深市() -> None:
+    assert _market_symbol("510300") == "sh510300"
+    assert _market_symbol("sh510880") == "sh510880"
 
 
 def test解析ETF未复权行情和分红() -> None:

@@ -1,0 +1,52 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-08-27",
+  "retrieved_at": "2026-08-28T00:14:18+08:00",
+  "price_format": "unadjusted_close",
+  "benchmark": {
+    "code": "510300",
+    "name": "沪深300ETF华泰柏瑞",
+    "prices": [
+      {
+        "date": "2026-08-25",
+        "close": 4.616,
+        "volume_shares": 745256800
+      },
+      {
+        "date": "2026-08-26",
+        "close": 4.652,
+        "volume_shares": 846320851
+      },
+      {
+        "date": "2026-08-27",
+        "close": 4.691,
+        "volume_shares": 641929734
+      }
+    ],
+    "dividends": [],
+    "sources": {
+      "prices": {
+        "selected_provider": "sina_cn_marketdata",
+        "validated_providers": [
+          "sina_cn_marketdata",
+          "tencent_fqkline_raw_day"
+        ],
+        "sina_url": "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData",
+        "tencent_url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get"
+      },
+      "dividends": {
+        "provider": "天天基金基金档案（东方财富 Choice 数据）",
+        "url": "https://fundf10.eastmoney.com/fhsp_510300.html"
+      }
+    },
+    "hashes": {
+      "prices_sha256": "f1a608686dbfaf275e12fd108a27681f17478b05ecad6e626990861be8bb2a6b",
+      "dividends_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    }
+  },
+  "securities": {},
+  "active_codes": [],
+  "hashes": {
+    "content_sha256": "ea21432c24d7c81a023b80938fd387dddd21acf4564a5e49da01d356daffedf9"
+  }
+}

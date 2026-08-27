@@ -56,6 +56,12 @@ def _pending_signal(rows: list[dict]) -> dict | None:
 
 def decide_action(today: date, rows: list[dict], trading_days) -> dict:
     """返回 signal/execute/noop；任何错过的事件都失败关闭。"""
+    nearby_days = trading_days(today - timedelta(days=7), today + timedelta(days=7))
+    is_trading_day = today in set(nearby_days)
+
+    def plan(action: dict) -> dict:
+        return {**action, "is_trading_day": is_trading_day}
+
     pending = _pending_signal(rows)
     if pending:
         signal_day = date.fromisoformat(pending["signal_date"])
@@ -64,10 +70,10 @@ def decide_action(today: date, rows: list[dict], trading_days) -> dict:
         if next_day is None:
             raise RuntimeError("无法确认信号后的下一真实交易日")
         if today < next_day:
-            return {"action": "noop", "reason": "等待下一真实交易日", "target_date": next_day.isoformat()}
+            return plan({"action": "noop", "reason": "等待下一真实交易日", "target_date": next_day.isoformat()})
         if today > next_day:
             raise RuntimeError("已错过信号后的下一真实交易日，禁止回写执行")
-        return {"action": "execute", "period": pending["period"], "target_date": today.isoformat()}
+        return plan({"action": "execute", "period": pending["period"], "target_date": today.isoformat()})
 
     first_signal = date.fromisoformat(V1_FIRST_SIGNAL_DATE)
     previous_end = today.replace(day=1) - timedelta(days=1)
@@ -92,13 +98,13 @@ def decide_action(today: date, rows: list[dict], trading_days) -> dict:
     period = today.strftime("%Y-%m")
     has_signal = any(row.get("event_type") == "signal" and row.get("period") == period for row in rows)
     if has_signal:
-        return {"action": "noop", "reason": "本月信号已经存在", "target_date": today.isoformat()}
+        return plan({"action": "noop", "reason": "本月信号已经存在", "target_date": today.isoformat()})
     if today < last_trading_day:
-        return {"action": "noop", "reason": "尚未到当月最后真实交易日",
-                "target_date": last_trading_day.isoformat()}
+        return plan({"action": "noop", "reason": "尚未到当月最后真实交易日",
+                     "target_date": last_trading_day.isoformat()})
     if today > last_trading_day:
         raise RuntimeError("已错过当月最后真实交易日，禁止补写信号")
-    return {"action": "signal", "target_date": today.isoformat(), "period": period}
+    return plan({"action": "signal", "target_date": today.isoformat(), "period": period})
 
 
 def _file_sha256(path: Path) -> str:

@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "generated_at": "2026-08-28T00:14:18+08:00",
+  "as_of": "2026-08-27",
+  "forward_start_date": "2026-08-25",
+  "strategy": {
+    "name": "月度高息动量 V1",
+    "status": "等待首期信号",
+    "initial_capital": 100000.0,
+    "total_assets": 100000.0,
+    "cash": 100000.0,
+    "total_pnl": 0.0,
+    "cumulative_return_pct": 0.0,
+    "max_drawdown_pct": 0.0,
+    "fees": 0,
+    "dividends": 0,
+    "trade_count": 0,
+    "event_count": 0,
+    "holdings_count": 0,
+    "max_holdings": 2
+  },
+  "benchmark": {
+    "code": "510300",
+    "name": "沪深300ETF华泰柏瑞",
+    "method": "10 万元起始，首日收盘整手买入，现金分红到账后整手复投，计最低佣金",
+    "total_assets": 101590.09,
+    "cumulative_return_pct": 1.59009,
+    "max_drawdown_pct": 0.0,
+    "fees": 29.91,
+    "dividends": 0.0
+  },
+  "excess_return_pct": -1.59009,
+  "series": [
+    {
+      "date": "2026-08-25",
+      "strategy_nav": 100000.0,
+      "strategy_return_pct": 0.0,
+      "benchmark_nav": 99970.09,
+      "benchmark_return_pct": -0.02991
+    },
+    {
+      "date": "2026-08-26",
+      "strategy_nav": 100000.0,
+      "strategy_return_pct": 0.0,
+      "benchmark_nav": 100747.69,
+      "benchmark_return_pct": 0.74769
+    },
+    {
+      "date": "2026-08-27",
+      "strategy_nav": 100000.0,
+      "strategy_return_pct": 0.0,
+      "benchmark_nav": 101590.09,
+      "benchmark_return_pct": 1.59009
+    }
+  ],
+  "holdings": [],
+  "transactions": [],
+  "audit": {
+    "v1_commit": "c7d128ff0bc1b4b21c60bc7c6e2894dabf513fae",
+    "rules_sha256": "d3265a0af79c1915244edb7d54322ea038183dd90b9b01ef00c216238597bd23",
+    "journal_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+    "market_content_sha256": "ea21432c24d7c81a023b80938fd387dddd21acf4564a5e49da01d356daffedf9",
+    "price_format": "unadjusted_close",
+    "benchmark_sources": {
+      "prices": {
+        "selected_provider": "sina_cn_marketdata",
+        "validated_providers": [
+          "sina_cn_marketdata",
+          "tencent_fqkline_raw_day"
+        ],
+        "sina_url": "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData",
+        "tencent_url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get"
+      },
+      "dividends": {
+        "provider": "天天基金基金档案（东方财富 Choice 数据）",
+        "url": "https://fundf10.eastmoney.com/fhsp_510300.html"
+      }
+    },
+    "monthly_journal": "data/forward/monthly_v1.jsonl",
+    "performance_sha256": "e43b3c9f27bbbeb075d72437a7d55bea52bda63ee52509f1849ae2d698764fcc"
+  },
+  "limitations": [
+    "这是模型模拟盘，不连接券商、不读取真实账户，也不会自动下单。",
+    "V1 仅在月末形成信号并在下一真实交易日收盘模拟执行；其他交易日只做收盘盯市。",
+    "持仓分红在两次月度执行之间按真实除权日计入日频估值，下一次执行时以只追加账本检查点重置。",
+    "510300 使用场内未复权收盘价和现金分红复投，不使用沪深300指数或基金净值替代。",
+    "历史回测和前向模拟都不代表未来收益，也不是买卖建议。"
+  ]
+}

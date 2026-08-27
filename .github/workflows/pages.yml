@@ -32,7 +32,8 @@ jobs:
       - name: 检查站点产物
         run: |
           test -s site/index.html
-          test -s site/audit.json
+          test -s site/performance.json
+          python -m json.tool site/performance.json >/dev/null
 
       - name: 配置 Pages
         uses: actions/configure-pages@v5

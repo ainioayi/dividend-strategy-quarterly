@@ -1,8 +1,9 @@
-name: 月度 V1 前向观察
+name: V1 前向观察与公开业绩
 
 on:
   schedule:
-    - cron: "30 8 * * *"
+    # UTC 10:30 = 北京时间 18:30；仅工作日唤醒，脚本再核验真实交易日和当日收盘价。
+    - cron: "30 10 * * 1-5"
   workflow_dispatch:
     inputs:
       date:
@@ -67,6 +68,7 @@ jobs:
           $plan = Get-Content -Raw -Encoding UTF8 $planPath | ConvertFrom-Json
           "action=$($plan.action)" >> $env:GITHUB_OUTPUT
           "reason=$($plan.reason)" >> $env:GITHUB_OUTPUT
+          "is_trading_day=$($plan.is_trading_day.ToString().ToLowerInvariant())" >> $env:GITHUB_OUTPUT
 
       - name: 刷新不复权行情与完整已实施分红
         if: steps.plan.outputs.action == 'signal' || steps.plan.outputs.action == 'execute'
@@ -104,29 +106,36 @@ jobs:
             --date "${{ steps.date.outputs.as_of }}" `
             --mode "${{ steps.plan.outputs.action }}"
 
-      - name: 验证前向模块
-        if: steps.plan.outputs.action == 'signal' || steps.plan.outputs.action == 'execute'
+      - name: 刷新每日公开业绩
+        if: steps.plan.outputs.is_trading_day == 'true'
         shell: pwsh
         run: |
-          pytest -q tests/test_monthly_forward.py tests/test_forward_daily.py tests/test_refresh_backtest_cache.py
+          python scripts/forward_performance.py `
+            --as-of "${{ steps.date.outputs.as_of }}"
+
+      - name: 验证前向模块
+        if: steps.plan.outputs.is_trading_day == 'true'
+        shell: pwsh
+        run: |
+          pytest -q tests/test_monthly_forward.py tests/test_forward_daily.py tests/test_forward_performance.py tests/test_refresh_backtest_cache.py tests/test_tradeable_benchmark.py
           python -m compileall -q scripts tests
           git diff --check
 
-      - name: 提交输入、账本、快照与报告
-        if: steps.plan.outputs.action == 'signal' || steps.plan.outputs.action == 'execute'
+      - name: 提交输入、账本与公开业绩
+        if: steps.plan.outputs.is_trading_day == 'true'
         shell: pwsh
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/forward
+          git add data/forward site/performance.json
           git diff --cached --quiet
           if ($LASTEXITCODE -eq 0) {
-            Write-Host "没有需要提交的前向变化"
+            Write-Host "没有需要提交的前向业绩变化"
             exit 0
           }
-          git commit -m "更新月度 V1 前向观察 ${{ steps.date.outputs.as_of }}"
+          git commit -m "更新 V1 前向业绩 ${{ steps.date.outputs.as_of }}"
           git push
 
-      - name: 记录无动作原因
+      - name: 记录月度门禁无动作原因
         if: steps.plan.outputs.action == 'noop'
-        run: echo "本日不刷新、不写账本：${{ steps.plan.outputs.reason }}"
+        run: echo "月度账本不写入：${{ steps.plan.outputs.reason }}；真实交易日=${{ steps.plan.outputs.is_trading_day }}"

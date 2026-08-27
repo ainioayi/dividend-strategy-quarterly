@@ -6,8 +6,9 @@
 
 公开站点：<https://ainioayi.github.io/dividend-strategy-quarterly/>
 
-当前权威状态见 [docs/STRATEGY_STATUS.md](docs/STRATEGY_STATUS.md)。站点
-页面仍是季度快照展示，不能把页面上的旧基线当成当前研究回测结果。
+当前权威状态见 [docs/STRATEGY_STATUS.md](docs/STRATEGY_STATUS.md)。公开站点展示
+V1 从 `2026-08-25` 起的只追加前向模拟业绩、510300 沪深300 ETF 基准、当前
+持仓和交易明细；历史回测曲线不会混入前向模拟盘。
 每轮参数、候选池和稳健性证据集中记录在
 [docs/EXPLORATION_LOG.md](docs/EXPLORATION_LOG.md)。
 
@@ -43,6 +44,17 @@
 - 模拟盘采用只追加账本：2026-08-31 收盘后生成第一期信号，若下一真实
   交易日为 2026-09-01，则在当日收盘后记录首笔模拟执行。此前账本保持空白
   是正确门禁。计划持续观察 6–12 个月，期间不进入第 31 轮参数搜索。
+
+## 公开业绩自动更新
+
+- GitHub Actions 在每个工作日北京时间 18:30 唤醒，先用交易日历确认是否为
+  真实交易日，再要求 510300 已有当日收盘价；任一门禁不满足都不会发布旧数据
+  冒充新数据。
+- 真实交易日会刷新 V1 每日盯市净值、累计盈亏、持仓、交易明细和 510300
+  含分红总回报，写入 `data/forward/performance.json` 和
+  `site/performance.json`，随后自动部署 GitHub Pages。
+- 月末信号和下一交易日模拟执行仍由独立的失败关闭门禁控制。季度模型任务只
+  更新季度账本，不再重写公开首页。
 
 ## 规则
 
@@ -261,7 +273,7 @@ git diff --check
 - `data/v1_freeze.json`：V1 提交、规则、输入和基线结果的固定指纹。
 - `data/forward/`：与冻结回测隔离的前向缓存、版本化输入和只追加模拟账本。
 - `docs/UNIVERSE_MANIFEST.md`：候选池 manifest 的生成和校验规则。
-- `site/`：公开季度快照页面及其审计 JSON。
+- `site/`：V1 前向公开业绩页面和发布数据；旧季度页面保存在 `site/archive/`。
 
 当前 210 只代码是截至截止日冻结的现存缓存集合，缺少退市股票和历史成分
 变化，仍有幸存者偏差；月度 NAV 不包含月内路径，税费也不是逐笔 FIFO

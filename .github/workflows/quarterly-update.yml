@@ -21,7 +21,7 @@ concurrency:
 
 jobs:
   update:
-    name: 刷新季度模型账本与报告
+    name: 刷新季度模型账本
     runs-on: ubuntu-latest
     timeout-minutes: 90
     steps:
@@ -100,18 +100,11 @@ jobs:
           --as-of "${{ steps.gate.outputs.data_date }}"
           ${{ inputs.force && '--force' || '' }}
 
-      - name: 生成站点报告
-        if: steps.gate.outputs.due == 'true'
-        run: python scripts/generate_report.py
-
       - name: 核验生成产物
         if: steps.gate.outputs.due == 'true'
         shell: bash
         run: |
           set -euo pipefail
-          test -s site/index.html
-          test -s site/audit.json
-          python -m json.tool site/audit.json >/dev/null
           python -m json.tool data/snapshot_current.json >/dev/null
           python -m json.tool "data/snapshots/${{ steps.gate.outputs.period }}.json" >/dev/null
 
@@ -122,7 +115,7 @@ jobs:
           set -euo pipefail
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add -- site data/snapshot_current.json data/snapshots data/ledgers
+          git add -- data/snapshot_current.json data/snapshots data/ledgers
           if git diff --cached --quiet; then
             echo "季度产物无变化，不提交"
             exit 0

@@ -35,7 +35,12 @@ def test_pending_signal_only_executes_on_next_real_trading_day():
     rows = [{"event_type": "signal", "period": "2026-08", "signal_date": "2026-08-31"}]
     trading = _calendar("2026-09-01", "2026-09-02")
     action = decide_action(date(2026, 9, 1), rows, trading)
-    assert action == {"action": "execute", "period": "2026-08", "target_date": "2026-09-01"}
+    assert action == {
+        "action": "execute",
+        "period": "2026-08",
+        "target_date": "2026-09-01",
+        "is_trading_day": True,
+    }
     with pytest.raises(RuntimeError, match="错过信号后"):
         decide_action(date(2026, 9, 2), rows, trading)
 
@@ -47,6 +52,15 @@ def test_multiple_pending_signals_fail_closed():
     ]
     with pytest.raises(RuntimeError, match="多条待执行信号"):
         decide_action(date(2026, 10, 8), rows, _calendar("2026-10-08"))
+
+
+def test_non_trading_day_is_exposed_for_daily_performance_gate():
+    action = decide_action(
+        date(2026, 8, 29), [],
+        _calendar("2026-08-28", "2026-08-31"),
+    )
+    assert action["action"] == "noop"
+    assert action["is_trading_day"] is False
 
 
 def test_snapshot_and_chinese_report_are_machine_readable(tmp_path):

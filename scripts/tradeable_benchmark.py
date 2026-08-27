@@ -25,7 +25,7 @@ PRICE_URL = (
     "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/"
     "CN_MarketData.getKLineData"
 )
-DIVIDEND_URL = "https://fundf10.eastmoney.com/fhsp_510880.html"
+DIVIDEND_URL_TEMPLATE = "https://fundf10.eastmoney.com/fhsp_{symbol}.html"
 UA = "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"
 DATE_RE = re.compile(r"^\d{4}-\d{2}-\d{2}$")
 
@@ -131,14 +131,31 @@ def parse_prices(payload: Any, as_of: str) -> list[dict[str, Any]]:
     return prices
 
 
-def fetch_benchmark(as_of: str, timeout: int = 30) -> dict[str, Any]:
+def _market_symbol(symbol: str) -> str:
+    code = str(symbol).strip().lower().removeprefix("sh").removeprefix("sz")
+    if not re.fullmatch(r"\d{6}", code):
+        raise ValueError("ETF 代码必须为 6 位数字")
+    prefix = "sh" if code.startswith(("5", "6", "9")) else "sz"
+    return prefix + code
+
+
+def fetch_benchmark(
+    as_of: str,
+    timeout: int = 30,
+    *,
+    symbol: str = "510880",
+    name: str = "红利ETF华泰柏瑞",
+) -> dict[str, Any]:
     if not DATE_RE.fullmatch(as_of):
         raise ValueError("as_of 必须为 YYYY-MM-DD")
+    market_symbol = _market_symbol(symbol)
+    code = market_symbol[2:]
+    dividend_url = DIVIDEND_URL_TEMPLATE.format(symbol=code)
     session = _session()
     response = session.get(
         PRICE_URL,
         params={
-            "symbol": "sh510880",
+            "symbol": market_symbol,
             "scale": "240",
             "ma": "no",
             "datalen": "5000",
@@ -151,7 +168,7 @@ def fetch_benchmark(as_of: str, timeout: int = 30) -> dict[str, Any]:
 
     time.sleep(1.2)
     response = session.get(
-        DIVIDEND_URL,
+        dividend_url,
         headers={"Referer": "https://fundf10.eastmoney.com/"},
         timeout=timeout,
     )
@@ -160,8 +177,8 @@ def fetch_benchmark(as_of: str, timeout: int = 30) -> dict[str, Any]:
     payload = {
         "schema_version": 1,
         "kind": "tradeable_total_return_benchmark",
-        "symbol": "510880",
-        "name": "红利ETF华泰柏瑞",
+        "symbol": code,
+        "name": name,
         "as_of": as_of,
         "retrieved_at": datetime.now(ZoneInfo("Asia/Shanghai")).isoformat(timespec="seconds"),
         "sources": {
@@ -173,7 +190,7 @@ def fetch_benchmark(as_of: str, timeout: int = 30) -> dict[str, Any]:
             },
             "dividends": {
                 "provider": "天天基金基金档案（数据来源标注为东方财富 Choice）",
-                "url": DIVIDEND_URL,
+                "url": dividend_url,
                 "basis": "权益登记日、除息日、每份现金、发放日",
             },
         },
@@ -331,8 +348,10 @@ def main() -> None:
     parser = argparse.ArgumentParser()
     parser.add_argument("--as-of", required=True, help="数据截止日 YYYY-MM-DD")
     parser.add_argument("--output", default=str(DEFAULT_OUTPUT))
+    parser.add_argument("--symbol", default="510880", help="ETF 六位代码")
+    parser.add_argument("--name", default="红利ETF华泰柏瑞", help="ETF 展示名称")
     args = parser.parse_args()
-    payload = fetch_benchmark(args.as_of)
+    payload = fetch_benchmark(args.as_of, symbol=args.symbol, name=args.name)
     output = Path(args.output)
     output.parent.mkdir(parents=True, exist_ok=True)
     output.write_text(json.dumps(payload, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
