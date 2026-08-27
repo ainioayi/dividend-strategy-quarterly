@@ -124,11 +124,11 @@ def test_provider_complete_is_not_independent_verification():
     price_rows = [{"date": "2015-01-05", "close": "10.0"}]
     prices = build_price_artifact({"600001": {
         "code": "600001", "provider_complete": True, "rows": price_rows,
-        "row_count": 1, "rows_sha256": canonical_sha256(price_rows),
-        "start_date": "2015-01-05", "end_date": "2015-01-05",
-        "delist_date": "2015-01-06", "adjustflag": "3",
-        "stored_fields": ["date", "close"],
-    }}, "2026-08-27", 1)
+            "row_count": 1, "rows_sha256": canonical_sha256(price_rows),
+            "start_date": "2015-01-05", "end_date": "2015-01-05",
+            "delist_date": "2015-01-06", "adjustflag": "3",
+            "stored_fields": ["date", "close"], "trade_status_filtered": True,
+        }}, "2026-08-27", 1)
     assert dividends["provider_complete"] is True
     assert prices["provider_complete"] is True
     assert prices["row_count"] == 1
@@ -175,8 +175,31 @@ def test_price_resume_requires_rows_hash_and_listing_boundary():
         "provider_complete": True, "row_count": 1, "rows": rows,
         "rows_sha256": canonical_sha256(rows), "start_date": "2015-01-05",
         "end_date": "2015-01-05", "delist_date": "2015-01-06", "adjustflag": "3",
-        "stored_fields": ["date", "close"],
+        "stored_fields": ["date", "close"], "trade_status_filtered": True,
     }
     assert price_record_is_valid(item)
+    item["trade_status_filtered"] = False
+    assert not price_record_is_valid(item)
+    item["trade_status_filtered"] = True
     item["rows_sha256"] = "0" * 64
+    assert not price_record_is_valid(item)
+
+
+def test_price_resume_accepts_explicit_empty_tradable_range():
+    item = {
+        "provider_complete": True,
+        "row_count": 0,
+        "rows": [],
+        "rows_sha256": canonical_sha256([]),
+        "start_date": "",
+        "end_date": "",
+        "delist_date": "2015-01-26",
+        "adjustflag": "3",
+        "stored_fields": ["date", "close"],
+        "trade_status_filtered": True,
+        "empty_tradable_range": True,
+        "source_row_count": 16,
+    }
+    assert price_record_is_valid(item)
+    item["trade_status_filtered"] = False
     assert not price_record_is_valid(item)

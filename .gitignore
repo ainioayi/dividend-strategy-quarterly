@@ -29,3 +29,7 @@ Thumbs.db
 
 # 可由 scripts/build_historical_v1_replay.py 重建的临时回放缓存
 data/historical_v1_cache/
+data/historical_filtered_cache/
+
+# 历史分红长任务的逐股断点；最终审计产物单独提交
+data/historical/checkpoints/

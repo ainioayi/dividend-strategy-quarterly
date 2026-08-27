@@ -1,0 +1,65 @@
+{
+  "schema_version": 1,
+  "source_snapshot_date": "2026-08-27",
+  "records": [
+    {
+      "code": "000022",
+      "category": "security_code_migration",
+      "description": "招商港口证券代码由 000022 迁移至 001872，法人和上市主体未变。",
+      "independently_verified": true,
+      "evidence_url": "https://static.cninfo.com.cn/finalpage/2018-12-26/1205690369.PDF",
+      "evidence_sha256": "bf406b1759dd7fda45cc46927e36316840b0b1152bb40677a7b52e11568d4350"
+    },
+    {
+      "code": "000043",
+      "category": "security_code_migration",
+      "description": "招商积余证券代码由 000043 迁移至 001914，法人和上市主体未变。",
+      "independently_verified": true,
+      "evidence_url": "https://static.cninfo.com.cn/finalpage/2019-12-16/1207164397.PDF",
+      "evidence_sha256": "46160431c51df23c30b3be802eb140492255128fb166d103ed735a62f303ab05"
+    },
+    {
+      "code": "300114",
+      "category": "security_code_migration",
+      "description": "中航成飞证券代码由 300114 迁移至 302132，法人和上市主体未变。",
+      "independently_verified": true,
+      "evidence_url": "https://static.cninfo.com.cn/finalpage/2025-02-15/1222544408.PDF",
+      "evidence_sha256": "dd68049c48df826848f361fd9e7b23dd20b6805144a2e5bc36e54db638611488"
+    },
+    {
+      "code": "600018",
+      "category": "merger_listing_date_semantics",
+      "description": "上交所 2000-07-19 是证券代码历史链路口径；BaoStock 2006-10-26 是吸收合并后存续发行人的本次上市口径。两者不能互相覆盖。",
+      "independently_verified": true,
+      "evidence_url": "https://query.sse.com.cn/sseQuery/commonQuery.do?sqlId=COMMON_SSE_CP_GPJCTPZ_GPLB_GP_L&type=inParams&isPagination=false&STOCK_CODE=600018&STOCK_TYPE=1&COMPANY_STATUS=2%2C4%2C5%2C7%2C8&REG_PROVINCE=&CSRC_CODE=",
+      "evidence_sha256": "8fe29bed2bbae282da02c65ac0886f73a9c7b0f652245e54c5ecb597e7b64e3f",
+      "additional_evidence": [
+        {
+          "description": "旧主体上港集箱终止上市公告",
+          "url": "https://static.cninfo.com.cn/finalpage/2006-10-19/18470807.PDF",
+          "sha256": "d9ddd8727440b4f1a2ec3251b289b905d191647aac1a80fc4f8ec419b4f34685"
+        },
+        {
+          "description": "吸收合并后存续主体上港集团上市公告书",
+          "url": "https://static.cninfo.com.cn/finalpage/2006-10-24/18530159.PDF",
+          "sha256": "2ca5b476b0987289cc2c2029de56c8aeb3fc5f454e6c787b8f7731545d992bad"
+        }
+      ]
+    },
+    {
+      "code": "600849",
+      "category": "merger_code_migration",
+      "description": "重大资产重组和吸收合并完成后，证券代码由 600849 变更为 601607。",
+      "independently_verified": true,
+      "evidence_url": "https://static.cninfo.com.cn/finalpage/2010-03-03/57644871.PDF",
+      "evidence_sha256": "02c3aa51877e94c0ce25f16a3dc553fd3fc6d47c5b4124f1211a245186a084fe",
+      "additional_evidence": [
+        {
+          "description": "换股吸收合并完成暨新增股份上市公告",
+          "url": "https://static.cninfo.com.cn/finalpage/2010-02-25/57623766.PDF",
+          "sha256": "6c792713c2326b319f20e5e90428f92f6f4d9fbbc33938f07f2569a3fe8d11c9"
+        }
+      ]
+    }
+  ]
+}

@@ -35,10 +35,11 @@
 - 第 30 轮脆弱性审计显示，剔除最大盈利股票后 CAGR（年化收益率）从
   41.38% 降至 26.55%，最大回撤从 28.06% 升至 47.45%；V1 明显依赖少数
   个股和周期行业，主策略暂不修改，但研究信心需要由新数据重新建立。
-- 补入 139 只历史退市高息股票的临时压力回放中，退市归零边界的 CAGR 为
-  -61.75%、最大回撤 100%；按退市前最后收盘价全额回收的边界也只有
-  8.45% CAGR、84.12% 最大回撤。该回放仍缺 5,212 只在市股票的完整历史
-  分红，不能替换正式 V1，也不能声称已经消除幸存者偏差。
+- 人工数据质量门禁历史回放覆盖 190 只在市股票和 47 只退市股票，共 237 只。
+  同一缓存控制组精确复现 V1；过滤历史池的 CAGR 为 11.29%、最大回撤
+  55.46%、Sharpe 为 0.416。15 只在市股票和 91 只退市候选因分红证据无法
+  一一闭合而排除，过滤规则不读取回测盈亏。该结果反映人工可交易边界，仍有
+  数据可得性偏差，不能称为全市场无偏回测，也不替换冻结 V1。
 - 模拟盘采用只追加账本：2026-08-31 收盘后生成第一期信号，若下一真实
   交易日为 2026-09-01，则在当日收盘后记录首笔模拟执行。此前账本保持空白
   是正确门禁。计划持续观察 6–12 个月，期间不进入第 31 轮参数搜索。
@@ -208,6 +209,11 @@ python scripts/build_rebalance_dates.py `
 最大回撤升至 47.45%；材料化工和汽车产业链代理簇被剔除后，滚动 48 月最差
 CAGR 分别为 -4.66% 和 -5.31%。因此冻结 V1 做前向观察，不继续密集搜索。
 
+历史股票池随后完成了人工数据质量门禁回放：只纳入分红和价格证据均能闭合的
+237 只股票，结果为 CAGR 11.29%、最大回撤 55.46%。这进一步降低了对冻结
+V1 历史高收益的信心，当前不进入第 31 轮调参，直接用固定规则做模拟盘前向
+观察。
+
 历史回测和实时季度模型是两层规则：回测把三项 PR 设为 999，以隔离纯股息率
 策略；实时路径先用 `optimized_strategy.py` 的 `pr_ceiling=1.2`、连续分红 8 年
 等硬门槛，再应用季度账本规则。不能把回测的 `entry_pr=999` 解释为实时模型取消
@@ -249,7 +255,9 @@ git diff --check
 - `data/round28_yield_vol_rank.json`：波动率调整排序对照（收益率/波动率 vs 纯收益率）。
 - `data/round29_attribution.json`：收益归因分析（个股/分红vs资本利得/年度/集中度）。
 - `data/round30_fragility_audit.json`：冻结 V1 的个股、行业和三倍费用脆弱性审计，以及 510880 含分红可交易基准。
-- `data/historical_universe_status.json`、`data/historical_v1_provisional.json`：历史股票主数据覆盖状态和退市股票临时压力回放；状态仍为 `incomplete` / `provisional`。
+- `data/historical_universe_status.json`、`data/historical_filtered_manifest.json`、`data/historical_v1_filtered.json`：人工数据质量门禁状态、237 只过滤清单和正式回放结果；状态为 `complete_with_exclusions`，不是全市场无偏回测。
+- `data/historical/eligible_listed_prices.json.gz`、`data/historical/eligible_listed_prices_manifest.json`、`data/historical/listed_dividends.json`：在市股票价格归档、价格核验清单和分红门禁证据。
+- `data/historical_v1_provisional.json`：早期仅补入退市股票的临时压力回放，已由人工门禁正式回放取代，但保留作历史审计。
 - `data/v1_freeze.json`：V1 提交、规则、输入和基线结果的固定指纹。
 - `data/forward/`：与冻结回测隔离的前向缓存、版本化输入和只追加模拟账本。
 - `docs/UNIVERSE_MANIFEST.md`：候选池 manifest 的生成和校验规则。

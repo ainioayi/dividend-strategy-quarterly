@@ -77,16 +77,23 @@ python scripts/build_rebalance_dates.py `
 截至 2026-08-27：
 
 - 股票主数据 5,549 只，其中在市 5,212 只、退市 337 只；
-- 2015 年后退市目标 255 只，分红查询 255/255 完成；
-- 139 只曾连续三年正现金分红，价格查询 139/139 完成；
-- 数据源流水线完成，但 `independently_verified=false`，因此总体状态仍是
-  `incomplete`，`manifest_generation_allowed=false`。
+- 在市决策相关股票 205 只，分红门禁放行 190 只、排除 15 只；放行股票的
+  499,639 行价格全部通过独立来源核验，价格门禁排除 0 只；
+- 2015 年后退市目标 255 只，47 只候选通过分红门禁，91 只因证据无法闭合
+  排除，117 只按固定规则不属于候选；
+- 人工门禁过滤池共 237 只，状态为 `complete_with_exclusions`；允许生成过滤
+  manifest 和人工门禁回放，但 `full_market_manifest_generation_allowed=false`。
 
-`scripts/build_historical_v1_replay.py` 会把这些原始数据和冻结 V1 缓存复制到
-临时的 `data/historical_v1_cache/` 后回放。该目录可重建，已由 Git 忽略；
-可审计结果保存在 `data/historical_v1_provisional.json`。临时回放只补了
-退市高息股票，没有重建 5,212 只在市股票的完整历史分红，因此不能生成正式
-历史 manifest，也不能替换本页顶部的冻结 manifest。
+`data/historical_filtered_manifest.json` 固定 237 只放行股票，记录哈希为
+`7f21213df5331225705a2fc6ea97379a9403cf17af7e79801eae6cee9ec278b9`；
+`data/historical_v1_filtered.json` 保存控制组和过滤池结果。控制组精确复现
+41.38% CAGR、28.06% 最大回撤和 75 次交易；过滤池为 11.29% CAGR、
+55.46% 最大回撤、28 次交易。
+
+这里的过滤 manifest 不是全市场 manifest。门禁只按事先固定的数据质量和候选
+规则排除，不读取回测盈亏，但证据无法闭合的股票仍被排除，因此存在数据可得性
+偏差。`manifest_generation_allowed=false` 继续禁止生成或宣称全市场无偏清单。
+早期 `data/historical_v1_provisional.json` 仍保留作审计历史，不再作为当前结论。
 
 ## 前向输入隔离
 

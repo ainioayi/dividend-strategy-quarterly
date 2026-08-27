@@ -1,41 +1,58 @@
 {
-  "schema_version": 2,
-  "source_snapshot_date": "2026-08-27",
-  "status": "incomplete",
+  "schema_version": 3,
+  "source_snapshot_date": "2026-08-25",
+  "status": "complete_with_exclusions",
   "manifest_generation_allowed": false,
-  "provider_pipeline_complete": true,
+  "full_market_manifest_generation_allowed": false,
+  "manual_filtered_replay_allowed": true,
+  "manual_filtered_manifest_generation_allowed": true,
   "independently_verified": false,
+  "manual_data_gate_complete": true,
+  "manual_data_gate_status": "complete_with_exclusions",
+  "filtered_replay_path": "data/historical_v1_filtered.json",
+  "filtered_replay_sha256": "e74c8b42f74c9aa7c3d6683ebccdffc27a571f900e9f9c273f6a691aadff9dcb",
+  "scope": {
+    "listed_eligible_count": 190,
+    "listed_dividend_eligible_count": 190,
+    "listed_price_eligible_count": 190,
+    "listed_filtered_by_price_gate_count": 0,
+    "delisted_eligible_count": 47,
+    "combined_code_count": 237,
+    "combined_codes_sha256": "a86c065c61de3cddfbe9eea7d51bbd1a46444357e8f0fbd745704e4baf5cf592",
+    "listed_filtered_unverifiable_count": 15,
+    "listed_price_filtered_unverifiable_count": 0,
+    "delisted_filtered_unverifiable_count": 91,
+    "delisted_filtered_non_candidate_count": 117
+  },
   "artifacts": {
     "security_master": {
-      "path": "data/historical/security_master.json",
-      "exists": true,
-      "file_sha256": "6bc96817e1a62f4d4dba0fd32b21e19093610730d372401da8341590ba8b46d7",
-      "provider_complete": true,
-      "independently_verified": false,
-      "record_count": 5549,
-      "target_count": 5549,
-      "failed_stock_count": 0
+      "path": "data/historical/security_master_verification.json",
+      "sha256": "e05f6921d95a7e794837c7d37e51be607afc43e3f11ab093c2f7e53771c11efc"
     },
     "delisted_dividends": {
-      "path": "data/historical/delisted_dividends.json",
-      "exists": true,
-      "file_sha256": "199c90f1b8303c5830762da613989e8ec7f5e05f940ce2ca3278421c69290926",
-      "provider_complete": true,
-      "independently_verified": false,
-      "record_count": 1121,
-      "target_count": 255,
-      "failed_stock_count": 0
+      "path": "data/historical/delisted_dividends_verified.json",
+      "sha256": "8856da17cf84c04f6ce18782f9104645a6d6e3e01df29f610588cbe0f82e0279"
     },
-    "eligible_delisted_prices": {
-      "path": "data/historical/eligible_delisted_prices.json",
-      "exists": true,
-      "file_sha256": "c0a17b90de5deb041bcd4c42e99ae68683791471ce20988c6ca4b6b2378b793f",
-      "provider_complete": true,
-      "independently_verified": false,
-      "record_count": 265566,
-      "target_count": 139,
-      "failed_stock_count": 0
+    "delisted_prices": {
+      "path": "data/historical/eligible_delisted_prices_verified.json",
+      "sha256": "f535cafa33a1012c7b83ef6cf1866a036dad821a424b725afb4d41d1c20c5886"
+    },
+    "listed_dividends": {
+      "path": "data/historical/listed_dividends.json",
+      "sha256": "edd003c128930ff3bc8b3489338d3a42d3ac49704662f21887f203735c267809"
+    },
+    "listed_price_manifest": {
+      "path": "data/historical/eligible_listed_prices_manifest.json",
+      "sha256": "a2ce52b629247aa7348d566a8360e39eab9691261edc3f99d87e855f599cb772"
+    },
+    "listed_price_archive": {
+      "path": "data/historical/eligible_listed_prices.json.gz",
+      "sha256": "e2ee8d760915fcd5d5fcc5953513ed46bc52c38087afe437d831f3ad4901584e"
+    },
+    "historical_filtered_manifest": {
+      "path": "data/historical_filtered_manifest.json",
+      "sha256": "4b5af560a66496bd4e81faaafd66c95968c8c28a189c51238209c386d21eb014"
     }
   },
-  "limitation": "数据源查询完整与独立验证是两层状态；未独立验证前拒绝生成正式 manifest。"
+  "limitation": "人工数据门禁已处理完整，但排除了证据无法闭合的股票；因此允许生成过滤回放，不允许声称得到全市场无偏 manifest。"
 }

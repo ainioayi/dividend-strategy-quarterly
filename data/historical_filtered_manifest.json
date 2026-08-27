@@ -1,0 +1,2397 @@
+{
+  "schema_version": 1,
+  "as_of": "2026-08-25",
+  "rules": {
+    "top": 0,
+    "min_years": 0,
+    "sort": "code",
+    "pool_mode": "dynamic",
+    "pool_min_consecutive_years": 3
+  },
+  "source": {
+    "name": "manual_data_quality_filtered_cache",
+    "path": "data/historical_filtered_cache",
+    "point_in_time_cutoff": "2026-08-25",
+    "price_format": "unadjusted_close",
+    "filter_status": "complete_with_exclusions"
+  },
+  "records": [
+    {
+      "code": "000002",
+      "years": 31,
+      "total_dps": 10.9978,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2023-08-25",
+      "kline_sha256": "c0a4d2201312073ab42a692a46df5dbf0d0952f6d5b1287721c7d6dc606236b4",
+      "dividend_detail_sha256": "8edb78a76ec471067c59e597c5ab685eaee716447e70270a5cd47045df6e9ecf"
+    },
+    {
+      "code": "000023",
+      "years": 9,
+      "total_dps": 0.35,
+      "data_max_date": "2024-07-24",
+      "latest_event_date": "2020-07-24",
+      "kline_sha256": "d7a7b0b76c2370e7ea8d0aefc92f119e3877f1f8fb2df2b8906dc321cff3a575",
+      "dividend_detail_sha256": "38ed83eee8b88948e69948cd444c083de03e565b029f83b18996c32bbcca0f3a"
+    },
+    {
+      "code": "000024",
+      "years": 4,
+      "total_dps": 1.3,
+      "data_max_date": "2015-12-07",
+      "latest_event_date": "2015-05-22",
+      "kline_sha256": "45558e73cfbc51af614a57d63be5928431987494c3824af493a425880fb97ca1",
+      "dividend_detail_sha256": "b9acf93ffd516554805fb8dcd163d1f47ef22fb63358c5c7ff8f1b7b95ae09e9"
+    },
+    {
+      "code": "000036",
+      "years": 11,
+      "total_dps": 2.313,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2023-06-08",
+      "kline_sha256": "ef148951668c8cd560c43a2347186f4993a58a4681e10d159aad987c176d4f11",
+      "dividend_detail_sha256": "796cc7b6eb9840441987840cb8e0801a965b619420d42f7b632a8e764612394b"
+    },
+    {
+      "code": "000048",
+      "years": 9,
+      "total_dps": 6.0625,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2025-09-17",
+      "kline_sha256": "d0b68c0fa873da6df5631d106fa6ac427824495c815dba81080ad384a6c84980",
+      "dividend_detail_sha256": "c8e4211848931414aec5dbf5a428820a3a3c941e281bc5815d8fc4a211822751"
+    },
+    {
+      "code": "000090",
+      "years": 26,
+      "total_dps": 4.429,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-07-21",
+      "kline_sha256": "f52a61522c2572d5c24056a69d0c6efcc09875118a0d181b8d2fe45433dda113",
+      "dividend_detail_sha256": "b9b8e77c1f0ba79ccc320e9bcb23a882453c47af90b4409c0f89a830360a8116"
+    },
+    {
+      "code": "000096",
+      "years": 24,
+      "total_dps": 2.435,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-08-12",
+      "kline_sha256": "0aae2a8a20a10397b1a42aba9ceb2426c455fd9d08c2b1f7cb4a3155965b8bfb",
+      "dividend_detail_sha256": "054a848eddba645f76eda3ff1a0eed42d36b20bda0fe2a15e7acad9273a880e9"
+    },
+    {
+      "code": "000156",
+      "years": 12,
+      "total_dps": 2.345,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2025-08-29",
+      "kline_sha256": "021d6d633a69584c28f7e572165a53f1f00692ec04dd85dd8f9896b2f048c538",
+      "dividend_detail_sha256": "0f7372a5bcc1c70735d68e569dc5f40d7620c88dd04c5c120f5f838e20a4c56d"
+    },
+    {
+      "code": "000401",
+      "years": 21,
+      "total_dps": 4.21,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-05-29",
+      "kline_sha256": "cf0471ddc5ea9f253ad429a50a6ea770badaa28906e2b0830ec64cf1b39e4f31",
+      "dividend_detail_sha256": "e97d06784062751530d28ace47294a971a7a5e09ea0a8ebd4172ba7f007ccffa"
+    },
+    {
+      "code": "000416",
+      "years": 9,
+      "total_dps": 0.37,
+      "data_max_date": "2024-04-24",
+      "latest_event_date": "2022-07-12",
+      "kline_sha256": "6db421f849f892ea1637ad48e6c64c5549bbea2eb054795578efb8327d146633",
+      "dividend_detail_sha256": "f6515afe9ef8ec7573b5306b94764622b2aa5bad4880068220d3d249a4dc8013"
+    },
+    {
+      "code": "000429",
+      "years": 29,
+      "total_dps": 6.989,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-08-10",
+      "kline_sha256": "6a5e220b6ecdb34323607888babd0ab85aacf3bf3d95edcc8fe4550e53a5cfa1",
+      "dividend_detail_sha256": "80c7963e529e5cdffe71ee2d27ecd4a13852488ceddf7f1d3757e7e665e55c12"
+    },
+    {
+      "code": "000517",
+      "years": 13,
+      "total_dps": 1.5166,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2024-08-27",
+      "kline_sha256": "7bc527d9db5c8a19f8cc1e13ab67c7bd9824a90d055fc4d81178ad4ba99c9f17",
+      "dividend_detail_sha256": "5d123440f4644eea34a1fd5e154daaef84664000eec4a396f5e82c7641d402ac"
+    },
+    {
+      "code": "000550",
+      "years": 26,
+      "total_dps": 14.8039,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-07-14",
+      "kline_sha256": "a30bb422c3d04f13a1fff9c1833c1c9da7ade413b48b4b8525f8a2754fdf3552",
+      "dividend_detail_sha256": "43d631997aa25f9ae285ba299f079ddc16c3ab009d2cc9d860a3d949aa239b08"
+    },
+    {
+      "code": "000581",
+      "years": 27,
+      "total_dps": 14.38,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-07-15",
+      "kline_sha256": "79e9a745c7fca79e317aacd942c9e37b53361e8dabe02b94d23ea87bf547a529",
+      "dividend_detail_sha256": "faa7198297effc83b4512caf04426ee85d960f2db88a2e603fb4d54420e58035"
+    },
+    {
+      "code": "000616",
+      "years": 5,
+      "total_dps": 0.112,
+      "data_max_date": "2023-06-13",
+      "latest_event_date": "2016-06-22",
+      "kline_sha256": "7bc1d1b244f6b099c5d47e00adb8d84f216cc246b608dd2a59768ace57f5164e",
+      "dividend_detail_sha256": "9c17cd4636cf8854ec5b320358362ebc7344fcbe814e1a0e20d0ddaa7e05f1d6"
+    },
+    {
+      "code": "000631",
+      "years": 13,
+      "total_dps": 1.819,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-05-27",
+      "kline_sha256": "75e1ddda78439414d42710660c2e21adaff71b96bcb44285377d6d528a912265",
+      "dividend_detail_sha256": "ddec5db849f1aff740e825b30c87ed0a4989709c26ea0c7635943934a69cfd4c"
+    },
+    {
+      "code": "000651",
+      "years": 27,
+      "total_dps": 33.31,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-01-23",
+      "kline_sha256": "9f6fd3545ef0fce1c777d2f441a49f3f49e7acf45f22888a4041ed219ba3a0ff",
+      "dividend_detail_sha256": "54191d6cf11f774b6ddd80ed7d921b1d67afc16341eb85ce9fecf25aa020b14e"
+    },
+    {
+      "code": "000656",
+      "years": 11,
+      "total_dps": 2.38,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2021-07-09",
+      "kline_sha256": "f0b8c8199205b812332fbf6fc25a5c302326df5ed3aa7b993d891132d75e58ae",
+      "dividend_detail_sha256": "312466f340a54428b676c92c0e3fb43940d3f20f9f9e7b26faefbf4927f2a394"
+    },
+    {
+      "code": "000667",
+      "years": 4,
+      "total_dps": 0.1,
+      "data_max_date": "2023-05-25",
+      "latest_event_date": "2018-07-09",
+      "kline_sha256": "3fd9f93f0a08a44b313f9c620b5e3e81abef3c7028435a18aa96f61565a5f5e0",
+      "dividend_detail_sha256": "8baab5cd981031a1a82e3f973c2ed86c8f27f53d9554dcada2841216cd30aefe"
+    },
+    {
+      "code": "000672",
+      "years": 14,
+      "total_dps": 5.1767,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-05-29",
+      "kline_sha256": "80db508373b526e2358a1089b3d27471da7cf474ad4b3c984e83f3d83ee0f914",
+      "dividend_detail_sha256": "b66da794f86587cb4c4a28f04684936ae0d0256175258e258caa8250649b6fef"
+    },
+    {
+      "code": "000718",
+      "years": 17,
+      "total_dps": 2.11,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2025-12-11",
+      "kline_sha256": "30521c3f782eac25c3d37ffa16e1c1607e3f3124215af807a9b17a8d5e840881",
+      "dividend_detail_sha256": "f7d31cfbf3af2b55a8c49d921fdfab9ba45e73dc2a1d0a19a58a2dbfb1a0d19d"
+    },
+    {
+      "code": "000748",
+      "years": 5,
+      "total_dps": 0.29,
+      "data_max_date": "2016-10-31",
+      "latest_event_date": "2016-06-29",
+      "kline_sha256": "14705160f1c05468a14ce9177243df2ca73776b1df1909248e1b69aca4b2e338",
+      "dividend_detail_sha256": "f59da4ce1aa366189093049e09e122303eb44b7e16f5efe82af1060eaf53bd24"
+    },
+    {
+      "code": "000780",
+      "years": 6,
+      "total_dps": 0.575,
+      "data_max_date": "2021-12-16",
+      "latest_event_date": "2019-07-12",
+      "kline_sha256": "807aad947c2bbb73aafc31b086bd480248a9cf3c32e63dafe4939b4d1e11657b",
+      "dividend_detail_sha256": "09185e08703a36a50d31778096fd92fbe76c4adc6eba322c7c9907b08e575ec3"
+    },
+    {
+      "code": "000789",
+      "years": 21,
+      "total_dps": 5.72,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-12",
+      "kline_sha256": "ff1eafe80cf1034f6b3b7ca8e43a3fc7714504859138558b0464c4c038d5ca76",
+      "dividend_detail_sha256": "cdc3cf388893650837b85582d7f23e2fe8183989f9935e5b7cf341c041ade7de"
+    },
+    {
+      "code": "000825",
+      "years": 23,
+      "total_dps": 3.2636,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-09",
+      "kline_sha256": "f9ce6f7931e50f62f9cef092859f5aaf30f7992c36d87aea3ce679c21f3de9de",
+      "dividend_detail_sha256": "608984f8ddc31fe4043d6f44d4bd2b4a9821271a5573238088b993edb5466ca3"
+    },
+    {
+      "code": "000830",
+      "years": 17,
+      "total_dps": 6.23,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-26",
+      "kline_sha256": "ef858269cad522ecca960ec0dbcc3de8f0f8c51998de5c74a41d4289495bfa17",
+      "dividend_detail_sha256": "bd0185c3b316266b51aa2f47384064fc7f5c33c1c5305e08e7a88f5f6bb7d13b"
+    },
+    {
+      "code": "000895",
+      "years": 26,
+      "total_dps": 27.826,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-04-29",
+      "kline_sha256": "77787bb8043db28dda8aca7f1f80b1dec978a00b2e5160211cd75f2dcf827e53",
+      "dividend_detail_sha256": "057a5199329c4672c8c7487b8a7432eb8f14cb99192693c80ca28bff208885d2"
+    },
+    {
+      "code": "000898",
+      "years": 22,
+      "total_dps": 3.7018,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2023-06-27",
+      "kline_sha256": "eb0294863cbaab15d6deca499fac941f7bb0a6277536e809f31bdb0494f97f4d",
+      "dividend_detail_sha256": "c46cd111c7e1d949ee8664d3aa03091b171a00390fa2424484ea3b77de7449fb"
+    },
+    {
+      "code": "000913",
+      "years": 14,
+      "total_dps": 4.22,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-05-27",
+      "kline_sha256": "ecfa0675de137f45b7b020dad438ffe53defbb1cb8ff946cd0863f2e434c4e7b",
+      "dividend_detail_sha256": "f760a170bd5a13ed90185b319662b589a09b835d923cc7c07f4eb44ca487ad18"
+    },
+    {
+      "code": "000915",
+      "years": 16,
+      "total_dps": 10.405,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-07-01",
+      "kline_sha256": "277ec3f2bedd8859edbed61459a0f380305c25c1473249a7826cfec040a6ae3b",
+      "dividend_detail_sha256": "9fc2f65bec23e30f333638f178bbb832fe1b54e9a85f3308df00baaace2393fd"
+    },
+    {
+      "code": "000916",
+      "years": 6,
+      "total_dps": 0.56,
+      "data_max_date": "2017-12-04",
+      "latest_event_date": "2017-05-24",
+      "kline_sha256": "3444e4a2a2ca92b54376a0d5cc0569202c5aa6ab4002417556ed96ddd5acebe1",
+      "dividend_detail_sha256": "b46bb2573219d68fa5da6b0270205441c8e6c12b3487372992a2dfc44e7348bb"
+    },
+    {
+      "code": "000930",
+      "years": 15,
+      "total_dps": 1.681,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-07-16",
+      "kline_sha256": "78365d69f84a7d8c582a94750b724d0b499f17dc8af092fefae87a2ca01d7f5b",
+      "dividend_detail_sha256": "62554a5e744272b3bab12fe29b11c44ecf22961fbf32c4cacf24ea1ac40867ff"
+    },
+    {
+      "code": "000937",
+      "years": 26,
+      "total_dps": 8.405,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-17",
+      "kline_sha256": "7d55b9927b430505fa6a932bd650857afdeaf79f5fb5b6f3f5daeaf7ab1e4f8c",
+      "dividend_detail_sha256": "3b261e3039f8bd98e7724689505199b018047241080fe20f171ddc0556adcb37"
+    },
+    {
+      "code": "000983",
+      "years": 25,
+      "total_dps": 7.178,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-07-15",
+      "kline_sha256": "115a0392464094c5bcb5cfd9ce1247ccf31ed163de8c44697771baecfd1747eb",
+      "dividend_detail_sha256": "682b7c5b24434ea7cdec113e967b82b1fbf6d7d3bf2c47571a8ba5f3ddc18d6e"
+    },
+    {
+      "code": "001872",
+      "years": 33,
+      "total_dps": 13.587,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-07-15",
+      "kline_sha256": "e04789f22dd50563b34880efe093ce1deec17e5eeb6306dfc05178df8f50261e",
+      "dividend_detail_sha256": "6dbb224e426478a74b4b224d26fd2c2410f6496661eb4f41bb657d88085f4f46"
+    },
+    {
+      "code": "001979",
+      "years": 11,
+      "total_dps": 4.975,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-07-21",
+      "kline_sha256": "1fbfd97edc61a172d591bc1ad5b93c78495b7d57fc402dc6c2c88fb689ea25f8",
+      "dividend_detail_sha256": "5ad29ca6853070e3b36f1e512925c1e17cb3bd85362bb19fed5f9d5d47fd8077"
+    },
+    {
+      "code": "002007",
+      "years": 21,
+      "total_dps": 7.32,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-15",
+      "kline_sha256": "e4dfd8db23352a0c28a5144c10a5aec9cb50ece7be1c015e027c264fa852eb91",
+      "dividend_detail_sha256": "d3e30f1e13e3f3365a3e80d0570a4684a6a04e575809259e477e3a21f328f7c8"
+    },
+    {
+      "code": "002013",
+      "years": 11,
+      "total_dps": 0.57,
+      "data_max_date": "2023-02-07",
+      "latest_event_date": "2022-06-09",
+      "kline_sha256": "c32a3952c0e5512c458e87be81997a609d003f28e77fb6a82cf9a7a09fd48047",
+      "dividend_detail_sha256": "53d49a7dbd2db6198d39e66352b62bbda8cc16c48e9d542a5fa9ccd55506ac40"
+    },
+    {
+      "code": "002016",
+      "years": 14,
+      "total_dps": 2.758,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-25",
+      "kline_sha256": "550cfeaff67091e3a52fd98f8b797c8fa8cc4cbb39bd1b3c7b8930c22462f3f0",
+      "dividend_detail_sha256": "ac8742ab4ae922b549968d374492c7f7ddcd4b603358ae17b6ea6719d9266a34"
+    },
+    {
+      "code": "002022",
+      "years": 19,
+      "total_dps": 4.705,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2023-05-10",
+      "kline_sha256": "91eeb8b0d3822966d6c33970a0f4a2a9d37603f89ddbb259535c5ec636441a7e",
+      "dividend_detail_sha256": "dacd3ad1d828ef14a90db4faf646220c4ac1d38d2849f96a8f45838ee60f4579"
+    },
+    {
+      "code": "002030",
+      "years": 20,
+      "total_dps": 4.408,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2024-06-14",
+      "kline_sha256": "80e5252e65b7eca09c70dc1529f2ad31b85ed73bd196987b9520448fc9f99342",
+      "dividend_detail_sha256": "f70644a131a45322c70763ae4ccb44a77040481ae24827a3b16b184b5e9764d5"
+    },
+    {
+      "code": "002032",
+      "years": 21,
+      "total_dps": 23.498,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-05-28",
+      "kline_sha256": "2f1ede2becdc5820bc2a92e51e0757b3f3cd492cc377641f8c43e5ea573654f0",
+      "dividend_detail_sha256": "9dcccccf7829c038705c90b7e16b92b0d4216e478f2ac2f08d35cc9abc4332e1"
+    },
+    {
+      "code": "002048",
+      "years": 21,
+      "total_dps": 7.1457,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-05-29",
+      "kline_sha256": "47a87a5decc811068d3931504cd19895cb807e0c6e96dacb32f7bb7f47b715c6",
+      "dividend_detail_sha256": "69724239fd56fe0f1e201e39dc91647f59ee096aeec56003da5db2ee8fc663db"
+    },
+    {
+      "code": "002068",
+      "years": 12,
+      "total_dps": 1.3443,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2021-11-01",
+      "kline_sha256": "28cd4d4f1da35bb56ed8081ba320c628f19158d71e69a98730cd6299d9409e73",
+      "dividend_detail_sha256": "0f4c8d8386a836a9d9a88e581263950bd43f83d72119bbe18e507276caf586f9"
+    },
+    {
+      "code": "002083",
+      "years": 15,
+      "total_dps": 2.64,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-18",
+      "kline_sha256": "6c92ebf8ccad2db225b569cecb737402e2619452da7072f80ccf251fda96e375",
+      "dividend_detail_sha256": "0fb8405c8e234f23348c8fd72424481fea6d83f207506b6d1dd7b4ff7fea5987"
+    },
+    {
+      "code": "002088",
+      "years": 19,
+      "total_dps": 7.117,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-07-01",
+      "kline_sha256": "2b40616d7dc3fea500231a4287bd81d5dcf8699c0c386abcd47e0c9091114908",
+      "dividend_detail_sha256": "688e429c126726970665fce62857cbe07fe4a443f54f2b6e47c585f49675021c"
+    },
+    {
+      "code": "002110",
+      "years": 16,
+      "total_dps": 6.031,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-07-16",
+      "kline_sha256": "ce922904f3ff57a00e4e8b3ca5f5f36737a12fe9a6b553723b1fe7a3d0c118cf",
+      "dividend_detail_sha256": "8193b076b05e324a10da1319a25c635bfbe6d560272ec83b59e5a9634d891f28"
+    },
+    {
+      "code": "002143",
+      "years": 4,
+      "total_dps": 0.31,
+      "data_max_date": "2019-11-28",
+      "latest_event_date": "2017-07-19",
+      "kline_sha256": "cca8766e761264a94ad7ef2bd7ec43efbb853ec42cc38c3e3b5fa40aac16bc87",
+      "dividend_detail_sha256": "f07fe283f8f1710a325175e6a906240ef707aaa67eae8f0e3c383d869a1e9e82"
+    },
+    {
+      "code": "002146",
+      "years": 14,
+      "total_dps": 3.42,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2021-07-23",
+      "kline_sha256": "5de303648a456115ef8ab5f6cd0b6cc0d7e2f4e9c183ef136c3ad3df904c47c6",
+      "dividend_detail_sha256": "76118cf239541676b1dc15486f6a00c8cf73323a43c988eeea5c4c3566c94cb0"
+    },
+    {
+      "code": "002157",
+      "years": 11,
+      "total_dps": 1.28,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2021-06-09",
+      "kline_sha256": "0bd233e34d9f992869673040338226b6673209f469683d8514d1690c8b92b891",
+      "dividend_detail_sha256": "dfa04a89440f7fefb284653e1b2e5cfafdd79700ab6b73a6cc00540eb7e1a380"
+    },
+    {
+      "code": "002191",
+      "years": 17,
+      "total_dps": 4.2517,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2024-08-13",
+      "kline_sha256": "4f53f9ae897c4cb8de48568716bdd247631539a83127a065ff01299f980837b9",
+      "dividend_detail_sha256": "520d9629135539fee6cb88f19f0eee4f68d76a78264a92750b68d13d27553fe5"
+    },
+    {
+      "code": "002233",
+      "years": 18,
+      "total_dps": 6.32,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-04-30",
+      "kline_sha256": "1a847b29530ce11a3a5937a8d1904bc1617d9cfc106424b72361371c4ebc0ff4",
+      "dividend_detail_sha256": "dd6fc729a36137b9c01cdc24b91722467b1cbcd5684ba2935d96b17928b83ba4"
+    },
+    {
+      "code": "002238",
+      "years": 17,
+      "total_dps": 3.5,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2025-07-10",
+      "kline_sha256": "5d1c71274e07f4e8922ac421acd69b0a4419560d7a80974b9a37d2f6acae4b3e",
+      "dividend_detail_sha256": "c884c91b00f5c3b259d67c9597945be778f4acdf8c8c378fd41ea50500cd6e53"
+    },
+    {
+      "code": "002267",
+      "years": 18,
+      "total_dps": 4.64,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-25",
+      "kline_sha256": "e55bb44b8a04d1d1dd7f62254f60f5671a8d2369319737290e475e43454c642a",
+      "dividend_detail_sha256": "e086858baf5cf9d12fb04d56e1da1796cc2417b5cdc9b8d00f76479bfc5ab3f1"
+    },
+    {
+      "code": "002280",
+      "years": 6,
+      "total_dps": 1.035,
+      "data_max_date": "2024-06-26",
+      "latest_event_date": "2017-07-13",
+      "kline_sha256": "0ae0abc85bc64ce87436872f6c54bbdd6fe9a16491c38072955beeaba9ffb21f",
+      "dividend_detail_sha256": "faf32eb94ff38bd28ed159d2dbb28d244135bfb252d1eb631a8b7ac3ae8c3b2f"
+    },
+    {
+      "code": "002293",
+      "years": 17,
+      "total_dps": 10.84,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-05-22",
+      "kline_sha256": "6bc6042f2a1038f75e980dea5be176fecbc085eda99fc0e5d7391b5c45e4d0a5",
+      "dividend_detail_sha256": "f393dc1234dad9ee9ed9433530b86309c550ee98cad0eb20e42beb6604634c48"
+    },
+    {
+      "code": "002303",
+      "years": 15,
+      "total_dps": 2.317,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-24",
+      "kline_sha256": "6116089202681d5ba2d4c7cfccc608a89bc06c4e786b791bbfd4d4ee36315241",
+      "dividend_detail_sha256": "8d3dc34aaf9fea552de1f4c99494843159b3192f09454ce2e2b62a33ec51aa51"
+    },
+    {
+      "code": "002325",
+      "years": 9,
+      "total_dps": 0.418,
+      "data_max_date": "2024-06-28",
+      "latest_event_date": "2020-07-21",
+      "kline_sha256": "046ef651b58b2a189b721e696a3989e57d793aaebf8799dbb7d6ea944781f678",
+      "dividend_detail_sha256": "0b356baa6ce3e35fdb97393e4837475c05e62de02e84a7987ee2e0914133eafd"
+    },
+    {
+      "code": "002363",
+      "years": 16,
+      "total_dps": 1.785,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-05",
+      "kline_sha256": "c224e32e619aadba4755da0d529a86ac549bafed776b88f8cd5c8ac650c7287c",
+      "dividend_detail_sha256": "b76646357ea29ac2d11ec5bb23899262471a2690d1972a9967dc70ffb65674a1"
+    },
+    {
+      "code": "002367",
+      "years": 16,
+      "total_dps": 5.4373,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-05-25",
+      "kline_sha256": "c09e72939f56bae411728cecb55b2ab32116154aa18f0068b4786116d224fbdd",
+      "dividend_detail_sha256": "acf6131f04478142d0395bbcaad784fa7ff267881cab82cae36db5133e316385"
+    },
+    {
+      "code": "002394",
+      "years": 14,
+      "total_dps": 7.05,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-05-25",
+      "kline_sha256": "2d4ed83d79c07e81fe86d05fea328adef99cfa01f95d5d9fec246c379e35e747",
+      "dividend_detail_sha256": "73eb7435a8d7acaafdc013c7366b0085fa58178e7a76ce997e9f80c483c11da3"
+    },
+    {
+      "code": "002411",
+      "years": 7,
+      "total_dps": 0.42,
+      "data_max_date": "2023-07-11",
+      "latest_event_date": "2018-07-11",
+      "kline_sha256": "83a20125c8faaa6a32a1999190fb15ce93a1ed9cf1770e57b408312c3288da2d",
+      "dividend_detail_sha256": "be4114fe00b8f0793cbd5127aa6d5f7b2727440ba8fca7ff93c34b757900c4b0"
+    },
+    {
+      "code": "002435",
+      "years": 9,
+      "total_dps": 1.3,
+      "data_max_date": "2024-07-01",
+      "latest_event_date": "2021-06-18",
+      "kline_sha256": "568e9eab0a6d6e9423d800690dd68fe2e5a585eb997023393053e63f2eaa1f85",
+      "dividend_detail_sha256": "56ea3f85536f2c5b912db21aa1056d7d524af1be03045791c2df83c77cbc402c"
+    },
+    {
+      "code": "002464",
+      "years": 3,
+      "total_dps": 0.55,
+      "data_max_date": "2022-06-27",
+      "latest_event_date": "2019-06-13",
+      "kline_sha256": "df25222da55604235331e6bdcf2a89136a705f7c3fb6d4d384c7a3effeef8542",
+      "dividend_detail_sha256": "c600b99849b1fe44adb68aabb6572c5d769bfc20809ed46e057689ea8656c78d"
+    },
+    {
+      "code": "002478",
+      "years": 16,
+      "total_dps": 3.415,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-26",
+      "kline_sha256": "8051a1ebaad0878d1b74062f9ffb458b05f6731fef92dc31db0c2d9e3031c206",
+      "dividend_detail_sha256": "455f138a0d30ca85dfeefaf3c9e8624844914beb37532a08ff6bedb2a50c3987"
+    },
+    {
+      "code": "002499",
+      "years": 7,
+      "total_dps": 0.318,
+      "data_max_date": "2023-04-17",
+      "latest_event_date": "2018-07-19",
+      "kline_sha256": "ba04f264aad78183d8a45f8763b76f5e8807fe82d582055b00ec97471123421e",
+      "dividend_detail_sha256": "6dbf93acbfb6c44f2d50a87d7800e2e81f3ae63d82f29e2dde570bde88dec643"
+    },
+    {
+      "code": "002516",
+      "years": 16,
+      "total_dps": 2.15,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-05-15",
+      "kline_sha256": "f00f2e1c135ebe7aad2dc27686571dbbe9caf6e670e0f259bc657a97331d832b",
+      "dividend_detail_sha256": "32e663af6f38959888d38abad4881bfbbc4cadd125c725340efe0d691a418d5a"
+    },
+    {
+      "code": "002540",
+      "years": 15,
+      "total_dps": 3.1759,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-07-06",
+      "kline_sha256": "421b87e7386b99775197a3ec6994b5f34826af9023fb6cc8292cdf6110278fc7",
+      "dividend_detail_sha256": "530249e6427e8ff8f5a39e2167de13f76e6ff77333ea89edf35d996c7786ae40"
+    },
+    {
+      "code": "002563",
+      "years": 15,
+      "total_dps": 7.825,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-05-11",
+      "kline_sha256": "b2c066585ce4072c8144655c96d285773a7c48da1e887752f1a51f1da9da0341",
+      "dividend_detail_sha256": "1bab7e6a93d482bbbb0899aa6a6718a1e2c946876ca877f0c8ddeb59bb82f066"
+    },
+    {
+      "code": "002572",
+      "years": 15,
+      "total_dps": 9.65,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-05-21",
+      "kline_sha256": "47ccf7eff83a955b4e6d6986dc1992e891644152cd38dc036acd09956adeca77",
+      "dividend_detail_sha256": "e8febac761ffbdf82df67bb4d9eb9fab94dfebd4c1ee0085ad3354a522bfcb6e"
+    },
+    {
+      "code": "002582",
+      "years": 14,
+      "total_dps": 4.705,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-01",
+      "kline_sha256": "5512ea2aba4dbd84b5164f0f37ba7341d1b38bd6452333bf8f361750ecda1556",
+      "dividend_detail_sha256": "5bc80c0afb62200426c2041fa6b1ddbe7fd55aa19f2265b04277c468af568d42"
+    },
+    {
+      "code": "002601",
+      "years": 15,
+      "total_dps": 10.2151,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2025-12-17",
+      "kline_sha256": "9a28cb41c363dcaf1cce2da2bcc48febdff223abb83e65ba0e4c3d41b4e4c6b1",
+      "dividend_detail_sha256": "51fcef6807db9c5f01f228c0597140005e883f477e3963cff20b672c47165aaf"
+    },
+    {
+      "code": "002604",
+      "years": 4,
+      "total_dps": 0.23,
+      "data_max_date": "2020-07-14",
+      "latest_event_date": "2015-06-05",
+      "kline_sha256": "80287d821315aa17e108edad98762cc2d6783aca71f8af9fa4a183b148aca60b",
+      "dividend_detail_sha256": "4ce81b24e0c5a1301bc88c96740270cf90e98079e3296ecb517a4ef9376fa53f"
+    },
+    {
+      "code": "002612",
+      "years": 14,
+      "total_dps": 5.89,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-05-26",
+      "kline_sha256": "4d87664ae8a029361481cd864f4d65b865e04e9bf0266975b86d980228484f81",
+      "dividend_detail_sha256": "d8b9862d1be4c560caf97a70c78ef7b23104bf4488d5a91cb1807ee13d8b6a41"
+    },
+    {
+      "code": "002618",
+      "years": 9,
+      "total_dps": 0.206,
+      "data_max_date": "2022-06-21",
+      "latest_event_date": "2020-10-09",
+      "kline_sha256": "034cd77a4c3691a0ee546ad71b6c9abd8dd89065afe33fe8c6c63d605d3124a4",
+      "dividend_detail_sha256": "c83169569430a1abec5a535755e6fbd910c545e12e7df5562b0a85059e74eec8"
+    },
+    {
+      "code": "002619",
+      "years": 4,
+      "total_dps": 0.94,
+      "data_max_date": "2022-03-31",
+      "latest_event_date": "2018-07-25",
+      "kline_sha256": "c48325d8d490d629437e23524a5675e653ad430c624c53d74f27a6b816e2a823",
+      "dividend_detail_sha256": "384b2364801059dc8ce29b4d66057c1f47d39adf188d004540307acc4e819e2c"
+    },
+    {
+      "code": "002624",
+      "years": 14,
+      "total_dps": 3.7754,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-04",
+      "kline_sha256": "ccbb1d5c74be55271976832700ce588193b9091aff8fd605c56b6cee9ac8b25e",
+      "dividend_detail_sha256": "88798616aea60a6c57a7fbe2d8e3341e6172c2ffc53204e4dfedd0dca845d544"
+    },
+    {
+      "code": "002677",
+      "years": 14,
+      "total_dps": 6.078,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-22",
+      "kline_sha256": "41f888e5d41e3576e37ec0eed0e767d24092a31c21b042d01bcab4a7c453ff9b",
+      "dividend_detail_sha256": "95218315198caf7a32cdbdb8323371cd43be39ede49a08ebe909e5ea90b15e1c"
+    },
+    {
+      "code": "002680",
+      "years": 6,
+      "total_dps": 1.37,
+      "data_max_date": "2019-11-26",
+      "latest_event_date": "2018-05-04",
+      "kline_sha256": "3e7d1ec4f99b49b0498735c81a0d36cd71d27bbc76b15bb31f55ef14baaafa62",
+      "dividend_detail_sha256": "2232066318bd1b1cce4913bc0cc9b046da6f11eba613b3da557a102f9a60f2e8"
+    },
+    {
+      "code": "002697",
+      "years": 14,
+      "total_dps": 1.622,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-05-29",
+      "kline_sha256": "38928b736bc92892607788fbaa654a3cb4e6a8d4cccf0b798e07e3377d71d658",
+      "dividend_detail_sha256": "32d59829fd41cc81fb6eb5186871a8c9714b1e69fb59e780c13e4df19d7452fa"
+    },
+    {
+      "code": "002737",
+      "years": 12,
+      "total_dps": 8.2,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-07-17",
+      "kline_sha256": "8f7842d9dfdd1d1591b7c75b276dc4d924818f5b1950a4b29dfe66414e15026b",
+      "dividend_detail_sha256": "9722fbeccc4c86582eda776d3983656bc5f50ea20994e933a6679ca38d7186b9"
+    },
+    {
+      "code": "002740",
+      "years": 5,
+      "total_dps": 0.32,
+      "data_max_date": "2024-01-19",
+      "latest_event_date": "2019-07-17",
+      "kline_sha256": "a9d3913f6e1d1b8262c3fe6452ab8b147237259a8c26aca09adb777068e3260b",
+      "dividend_detail_sha256": "40bc02f5c36b964888f295ab8cfda00e0c0e4eb891a382c424843fd944603843"
+    },
+    {
+      "code": "002756",
+      "years": 11,
+      "total_dps": 13.296,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-05-29",
+      "kline_sha256": "1a615937b15534f33a832544a1fd21208270708296fe47d3b92f6afc597763ae",
+      "dividend_detail_sha256": "09f2b126d69b488c5a7797a57bad454db40595ba495418a9d29aaa0c18106d19"
+    },
+    {
+      "code": "002763",
+      "years": 10,
+      "total_dps": 5.0,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-05-15",
+      "kline_sha256": "04c5dac8d91ba9ccc651df675375a9130a270d6360352f9e5d694b4edc6e0435",
+      "dividend_detail_sha256": "37f8fb1a4d256d65b543c0467c0c7155e166dad0a434319a2419ff724f4aef5b"
+    },
+    {
+      "code": "002770",
+      "years": 4,
+      "total_dps": 0.115,
+      "data_max_date": "2022-06-22",
+      "latest_event_date": "2019-07-19",
+      "kline_sha256": "813cf30771da8b63fafa9987239d924427d1582bb61f74d35586b99c7ada3022",
+      "dividend_detail_sha256": "242c5062d0b5774144ff307073f9f078d89d4ac35b1e81abb2d6562f1dbc6521"
+    },
+    {
+      "code": "002774",
+      "years": 9,
+      "total_dps": 2.214,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-05-22",
+      "kline_sha256": "6873b811dc6a9867359f57211fec0d26fd174f1fea080fa341f001d3fd8d600e",
+      "dividend_detail_sha256": "7e7faab6475d5ac4917d185e6a389f6f44f6621fa748a98499ad114e28a0aad8"
+    },
+    {
+      "code": "002775",
+      "years": 6,
+      "total_dps": 2.0,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2021-05-17",
+      "kline_sha256": "e27d605876e217a84f3c71424cdb72c2a558002dc028177ba4f51d2016967acb",
+      "dividend_detail_sha256": "8e66e4ad627411306d1bd67da908eac36ff8c1e38ed6b1266a88c0d60d9613c0"
+    },
+    {
+      "code": "002781",
+      "years": 5,
+      "total_dps": 0.288,
+      "data_max_date": "2023-07-04",
+      "latest_event_date": "2020-07-15",
+      "kline_sha256": "01fae974e283066e7bd1d9c91bc432fdf1d1864bdd0b437303aa617550d784ca",
+      "dividend_detail_sha256": "19eb6f0063a7b03bdf4bb9361757e2f90783b696d5f11562bb84c8b6328800e0"
+    },
+    {
+      "code": "002808",
+      "years": 6,
+      "total_dps": 0.26,
+      "data_max_date": "2026-07-13",
+      "latest_event_date": "2024-06-14",
+      "kline_sha256": "6145f87d5bb9bf89fdbd4fdb36d48e7b296acaa402dcb8af3083746ecae947ce",
+      "dividend_detail_sha256": "b853691017a81a5f9bf38dd61ace8ef4f6c2e84e3edc80bc7324fd0ce7c80200"
+    },
+    {
+      "code": "002818",
+      "years": 10,
+      "total_dps": 7.76,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-05-15",
+      "kline_sha256": "206bcdfdd05e870004cecf028d6e49a3605f93ffe844adc8dd6c2464e605e9a6",
+      "dividend_detail_sha256": "4bc5483c2860f2c5cae261e2889dae387ca04a57c2d20c0c6ca05a55df381937"
+    },
+    {
+      "code": "002843",
+      "years": 8,
+      "total_dps": 2.15,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2025-06-27",
+      "kline_sha256": "7e6d53c3828a15a3886dc29e46f0eafceddaa00baf0cf4d51e2866e7c2c1363a",
+      "dividend_detail_sha256": "f841371f1a26d38e9ce648efc328e37cad5ddd18b4f72c27edb1f89727764100"
+    },
+    {
+      "code": "002867",
+      "years": 10,
+      "total_dps": 7.1,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-07-17",
+      "kline_sha256": "3d3bd982bf21a2b315dfb344c6ffc3396979fb4be470f0dcdaab01654093e52d",
+      "dividend_detail_sha256": "c259cb45a57d195f5596cca3462678edc08f50a2d24a679c057ab17a196942aa"
+    },
+    {
+      "code": "002869",
+      "years": 7,
+      "total_dps": 4.16,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2025-06-26",
+      "kline_sha256": "e2b864a6f29404d38c183a4dfa611a9bd42e0caac5b33c44c5955f33f658523f",
+      "dividend_detail_sha256": "304e58cff05959d2aa081c4931f0e98eabe5d8b51db4c814387b5a136e967113"
+    },
+    {
+      "code": "002932",
+      "years": 7,
+      "total_dps": 13.85,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2025-06-12",
+      "kline_sha256": "d75b4e88d270e237f1087c0050e01f52777a248feb2f00f962302adda834018d",
+      "dividend_detail_sha256": "5935d3f2779b9afad1911d7a95c87c4939b895a121bb4de029dec361a765607e"
+    },
+    {
+      "code": "002949",
+      "years": 8,
+      "total_dps": 2.8,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-05-27",
+      "kline_sha256": "94a7c67a53e244d54cbe5a91a4771149cb600944c008b291850f35987c4f71eb",
+      "dividend_detail_sha256": "3fda0bffe820fac7314281fc55d6c12488f1a6ff6eee7cd92c290ff72226cfe9"
+    },
+    {
+      "code": "300064",
+      "years": 8,
+      "total_dps": 0.237,
+      "data_max_date": "2022-06-24",
+      "latest_event_date": "2019-07-05",
+      "kline_sha256": "be66b98356ddc5fd91ee9cbb8e2d3d6379b015c7a909a38db90cd0fadb88a11b",
+      "dividend_detail_sha256": "972cda48dc85a8cce47aec42aa32dae7b84537b76f70b768cddeaba75709a8b8"
+    },
+    {
+      "code": "300089",
+      "years": 4,
+      "total_dps": 0.185,
+      "data_max_date": "2023-07-12",
+      "latest_event_date": "2017-06-05",
+      "kline_sha256": "165376584fec05782ece6846bfd8eb1e0bb043f3129a86fd07aec95283695653",
+      "dividend_detail_sha256": "106c5635237ecc603898f765384f19ad23a443ff1c6b32a37b48aeb327ab8a8b"
+    },
+    {
+      "code": "300104",
+      "years": 6,
+      "total_dps": 0.259475,
+      "data_max_date": "2020-07-20",
+      "latest_event_date": "2017-08-25",
+      "kline_sha256": "f43c6665a96063e263efb6d068ae24e8817c8b3c49dda7bab2c3b34217626986",
+      "dividend_detail_sha256": "d6ab6e2026fa6923713a4d6f7a7cd674fcd938d71f444ae7f1083fdfd7b41044"
+    },
+    {
+      "code": "300108",
+      "years": 6,
+      "total_dps": 0.5,
+      "data_max_date": "2025-04-23",
+      "latest_event_date": "2018-07-16",
+      "kline_sha256": "9e2c9db7795760fb35b5ba84b39c338407d56746b941dec3b73fe9e9365e6017",
+      "dividend_detail_sha256": "a2bc874b1352d7bdc57a35b242562eaa0abbc0df86ca7f50b29f43fa5cf2907c"
+    },
+    {
+      "code": "300121",
+      "years": 14,
+      "total_dps": 2.6316,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-05-18",
+      "kline_sha256": "8c273789d4c09d2805a6c040eddde40fefa058816b03907aacacb97edd0d3a8f",
+      "dividend_detail_sha256": "02986d30e6158384449d7402a4ae6da105a0eb6304985b56e5adfcea6356cc5e"
+    },
+    {
+      "code": "300146",
+      "years": 16,
+      "total_dps": 9.44,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-04-21",
+      "kline_sha256": "73ddf844ead125a727dc0498aae43e040cecc720723798b7e295029f4bef2fbd",
+      "dividend_detail_sha256": "abf8a493b6ba626a1511d4161a5b35bcfdc5eb265cc883ee0fd094fef768d82f"
+    },
+    {
+      "code": "300158",
+      "years": 11,
+      "total_dps": 4.4219,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2022-05-09",
+      "kline_sha256": "ab77f9dcee8adc3393dce76c9825e59101c6324586a11cb70142f01b969e5107",
+      "dividend_detail_sha256": "baaba62ab37ebff8a07426379acc03678cb97cd0944faf1b048c7db53db5a42a"
+    },
+    {
+      "code": "300280",
+      "years": 10,
+      "total_dps": 0.29,
+      "data_max_date": "2025-10-13",
+      "latest_event_date": "2023-07-14",
+      "kline_sha256": "5beeb93db083e12d02a9b6915953a7fed8967a60c3d80006263ac188fb052901",
+      "dividend_detail_sha256": "39635047ff356726223ffa661e1c90d6b4fec661828bcf6bfb8428a856a35038"
+    },
+    {
+      "code": "300336",
+      "years": 7,
+      "total_dps": 1.353,
+      "data_max_date": "2023-07-04",
+      "latest_event_date": "2019-06-11",
+      "kline_sha256": "91c82205c83b689068803e1bad23ebdd29b8c5273bb35bf93461ea2bf50debd7",
+      "dividend_detail_sha256": "200e6563374f25d4174f75fe51c4229b6e4cc948f61ef3df630c037bb860c925"
+    },
+    {
+      "code": "300391",
+      "years": 5,
+      "total_dps": 0.23,
+      "data_max_date": "2026-04-10",
+      "latest_event_date": "2019-05-10",
+      "kline_sha256": "aac75f47eb314712f5fc5bb6c221633a53e7ec6a40a554fd33e441220f3a38dd",
+      "dividend_detail_sha256": "96d85f54d140ba60257e1d2025880eb0935cccd555a14e1df5bd7f7c9a19e7db"
+    },
+    {
+      "code": "300403",
+      "years": 12,
+      "total_dps": 3.275,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-05-19",
+      "kline_sha256": "0cd942750f3d0e4424f4c1e54f5891c93ade2e481c634dfee88b35ab7f40c95b",
+      "dividend_detail_sha256": "631e06733d51a73ea5a3083f56cbbbd62abfa03578d98995115c632d55358e1d"
+    },
+    {
+      "code": "300406",
+      "years": 12,
+      "total_dps": 3.6499,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-05-29",
+      "kline_sha256": "17a97298355fce8e65a88eeab05422a2b2bad15fd609afd79468c8a665928658",
+      "dividend_detail_sha256": "4d72b44934a850ea068bf253005d0f78ebd52dd21be1f0afc9d14603203433a5"
+    },
+    {
+      "code": "300495",
+      "years": 5,
+      "total_dps": 0.933012,
+      "data_max_date": "2024-05-08",
+      "latest_event_date": "2020-07-17",
+      "kline_sha256": "38f00072d6f5a1446df23a4c2ae44ed4bdf012bdef240cb4b2314493a2e0b356",
+      "dividend_detail_sha256": "8ae56f4e3468739a5c107b0569b1f9552a16600922e3676dfcedd896d752fa53"
+    },
+    {
+      "code": "300526",
+      "years": 4,
+      "total_dps": 0.263246,
+      "data_max_date": "2023-07-11",
+      "latest_event_date": "2020-07-16",
+      "kline_sha256": "5d6387f8d77af146bd63feaf3d49d8d82ef9b2f923a14ca5d6eebf1c022a9f9b",
+      "dividend_detail_sha256": "e9055c7e0a2d6f92f665df16c4f4c4d16644aaa2bd7f831543ffd9190baaef6b"
+    },
+    {
+      "code": "301047",
+      "years": 5,
+      "total_dps": 20.2,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-05-15",
+      "kline_sha256": "6478d9f41f1f02898a0c2348d904e3782d0250b5747f3aef88f3f9e18eb2990b",
+      "dividend_detail_sha256": "9a47a3a05f38e35b8c7dd85c2629243899e2b340eac95d2a716e336ae426985e"
+    },
+    {
+      "code": "301207",
+      "years": 5,
+      "total_dps": 2.7,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-15",
+      "kline_sha256": "66586c83b3d28ad5f58faea348b593c0c5dd2f23da03ab3eaecb628c54166995",
+      "dividend_detail_sha256": "fc950e741e9521b33f1c08bba946c780b1dd9f59038c3cd930f97664108b80f3"
+    },
+    {
+      "code": "600012",
+      "years": 24,
+      "total_dps": 6.785,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-07-31",
+      "kline_sha256": "cd6386120495fda066d818630aa0c4c9b858433c322f4bf44eb888c8e39c2649",
+      "dividend_detail_sha256": "df45e3b74bee7259806702ac953d1689c729dd417e77c790abe2715c7ae99bc2"
+    },
+    {
+      "code": "600016",
+      "years": 25,
+      "total_dps": 4.57,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-07-02",
+      "kline_sha256": "ae92d65eea2386f125d1fe0af43a8e4484330bbdede77f057bc6e8c9e59b3058",
+      "dividend_detail_sha256": "d64733721be45ac4548daa7afa4e11f8b38d01319c7d84d6275be85b6cd33bd5"
+    },
+    {
+      "code": "600019",
+      "years": 26,
+      "total_dps": 6.7633,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-25",
+      "kline_sha256": "2ec6e4c48af710f7b4d28311c6c8a842d48622c158124e6c230ef99e7234adfa",
+      "dividend_detail_sha256": "3094e078d35071ac1f5922692340a953edbf16a157c6dd35382e91dfc8af68ed"
+    },
+    {
+      "code": "600027",
+      "years": 19,
+      "total_dps": 2.775,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-26",
+      "kline_sha256": "5648ecb4dc9360b5fc8fbc8a00f3e3f95098588f6f7b1337c84f61c8bb1cc10f",
+      "dividend_detail_sha256": "b118c2b6a5625800ff971a6223cf2be30383b80120beb44524ac7845edd93a70"
+    },
+    {
+      "code": "600028",
+      "years": 25,
+      "total_dps": 5.85,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-17",
+      "kline_sha256": "48d14d1dc1e173eaf561d79a7af828babf8afce352d8bc965507b3899c829c9f",
+      "dividend_detail_sha256": "4828e2d994c236e9aa3e3aeefbf00850395e8f41fff35da226f42d723ab94898"
+    },
+    {
+      "code": "600039",
+      "years": 16,
+      "total_dps": 3.723,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-07-24",
+      "kline_sha256": "aced3f0eebc3544ad52d0f1253e8e558f3f25337c2762f433673357e080216b6",
+      "dividend_detail_sha256": "79edabf2dc218e2365aad77833efdb0aa1e5e2bf8de2d8ff37a9e9f957a4e1ca"
+    },
+    {
+      "code": "600057",
+      "years": 13,
+      "total_dps": 3.704,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-17",
+      "kline_sha256": "98e02231d3ed89875792593c2493e6a5b2297d3577315a5fe7702b437348570d",
+      "dividend_detail_sha256": "39b9264a6365fa171932d55a5f7233374b971e284d5ee573481ea84b5899ca5a"
+    },
+    {
+      "code": "600066",
+      "years": 27,
+      "total_dps": 21.8,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-05-15",
+      "kline_sha256": "a769e92480008ed9f80966b69f29446cafe58c59345e891a26be87f1605e87a5",
+      "dividend_detail_sha256": "f36b70f8ce35540c4c64942e9fa655ced5a4fab298c43aef0e2cf978c1783f66"
+    },
+    {
+      "code": "600093",
+      "years": 3,
+      "total_dps": 0.673,
+      "data_max_date": "2022-06-16",
+      "latest_event_date": "2018-07-31",
+      "kline_sha256": "32e3314b0db44f6a6959e33f3dc42700e2d892595dd9d307965b828c597bd433",
+      "dividend_detail_sha256": "ac9399bc1ee5053e16e7e74045a6466294c864d68f56d2de7c783379210b9b01"
+    },
+    {
+      "code": "600104",
+      "years": 26,
+      "total_dps": 14.9695,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-08-07",
+      "kline_sha256": "3bc230e218c434493ccc6b523d6ef6bd45f1a7cf3cb6e0672c654186664b7c9f",
+      "dividend_detail_sha256": "94e64e304c7893493b637d4cff27ea025a2d2f655cbe11d4d0105998b7b9d0c1"
+    },
+    {
+      "code": "600114",
+      "years": 22,
+      "total_dps": 3.94,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-05-25",
+      "kline_sha256": "219f17a1d3efc24ad32e4ff6192eefe24ae334606001e0ae04d33cdc3246976e",
+      "dividend_detail_sha256": "40fa2122110d2503965adbb4a88ca639e9c5f318c358569092976bfad3a9706a"
+    },
+    {
+      "code": "600123",
+      "years": 23,
+      "total_dps": 8.069,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2025-07-14",
+      "kline_sha256": "3a9349912b324b14dc5c0b9c9408030150dbc1543706df5250b718a8acd4d0b8",
+      "dividend_detail_sha256": "5a948c1022154bc26716884926a722442846ab7407d9ecc41937df7f84a41a8f"
+    },
+    {
+      "code": "600153",
+      "years": 27,
+      "total_dps": 10.07,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-24",
+      "kline_sha256": "c27eefb5432b3b3a4052bbf57b6970ec992f40aa6021d75e84e747700f766606",
+      "dividend_detail_sha256": "b5848e33bb09caca0414e03cf375a36dca534dfe0b736e19b206ebaff3a92f7e"
+    },
+    {
+      "code": "600162",
+      "years": 20,
+      "total_dps": 1.338,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-07-28",
+      "kline_sha256": "110169d3832ba9fa3639ed7172628453359d08e7e2b518c96f4ff09e0dd13808",
+      "dividend_detail_sha256": "4a0417dccabda0e55a63e291c81a87b96a1a59916f816407b1a9f5d322ae8fde"
+    },
+    {
+      "code": "600177",
+      "years": 28,
+      "total_dps": 11.54,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-05",
+      "kline_sha256": "1d07ccfe6696a7889b50845fd7d6cc9c926f7dd98656b87c930d4a833e04c03a",
+      "dividend_detail_sha256": "ddbb3e1183af1d67e8449b66b790a9c105d871e5b318703acf0ba5b98c183f5c"
+    },
+    {
+      "code": "600220",
+      "years": 5,
+      "total_dps": 0.105,
+      "data_max_date": "2024-06-13",
+      "latest_event_date": "2023-07-17",
+      "kline_sha256": "db2e09203c6e1143aab837d4be865d92f481fd03159256da7fa485b50863e74b",
+      "dividend_detail_sha256": "ab3533c83721b29b2b84154519b8274aa0ca71efb363c68597cf437873b96e47"
+    },
+    {
+      "code": "600240",
+      "years": 4,
+      "total_dps": 0.4,
+      "data_max_date": "2020-01-23",
+      "latest_event_date": "2018-07-13",
+      "kline_sha256": "6d2e7d678cf3ab34a5b050059b522b474c2ddfad4837281f62302fede065a441",
+      "dividend_detail_sha256": "4c6a9dafb54f79a9a33f88bee66532e4e750fe68e675305f81340710427284a6"
+    },
+    {
+      "code": "600256",
+      "years": 17,
+      "total_dps": 3.415,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-07-17",
+      "kline_sha256": "22e52dd6add0f463b072b3dfd85c710187287f73526e248d4449f7e067b03295",
+      "dividend_detail_sha256": "82da9ba0b637f40817de33f48b5fda95b2ccbdef5cfb87ffba74aa96437a193a"
+    },
+    {
+      "code": "600261",
+      "years": 25,
+      "total_dps": 4.455,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-10",
+      "kline_sha256": "2915ebbbe23ceccf19f66adf67faaf853abf7c20e453d1af26876bb56fd42f29",
+      "dividend_detail_sha256": "bf123631292abb4ce9de87f3e70e9d0b34fd2f6555915f855465e13f37d21b0c"
+    },
+    {
+      "code": "600273",
+      "years": 19,
+      "total_dps": 4.489,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-05-25",
+      "kline_sha256": "c19e07800f849a8fedae3e29ed74ac9cd322af8d45b06af7cec6f89235735afb",
+      "dividend_detail_sha256": "3849175a9ccd8b015c2f37689d88d0029f2a34add48f7a09b0c3c9618fd9ce45"
+    },
+    {
+      "code": "600282",
+      "years": 20,
+      "total_dps": 4.0908,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-05-11",
+      "kline_sha256": "69cbd4b834437f306aff3d184d9faf1e59995f2c0e27ab3ac1440fbbe53adb31",
+      "dividend_detail_sha256": "5be9fc47d18cb393b012bfc64db528f26b4fb36a1ada9b2ab75cfb5cc0acdd6b"
+    },
+    {
+      "code": "600291",
+      "years": 6,
+      "total_dps": 0.148,
+      "data_max_date": "2022-06-07",
+      "latest_event_date": "2019-07-10",
+      "kline_sha256": "9e4cfa9698b7e280483cd4d52144c5f655d54e758c9cbdddff0287e555c9edd7",
+      "dividend_detail_sha256": "9db42bb05732081abbf42ba39532d1121f1e401502301030b5301ba63da938a8"
+    },
+    {
+      "code": "600295",
+      "years": 26,
+      "total_dps": 8.91,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-17",
+      "kline_sha256": "e23a503901a2aeb12746baa5f3e2580802e89901727971d38d22579760df4bfe",
+      "dividend_detail_sha256": "9d2a23072f928708916e69cf76835be27bfed9d203a275b9badcafc2e95e0a6b"
+    },
+    {
+      "code": "600321",
+      "years": 4,
+      "total_dps": 0.06,
+      "data_max_date": "2024-05-30",
+      "latest_event_date": "2020-07-06",
+      "kline_sha256": "f59780d561e841e97af8f8df7e298aa50c1f3bf6f47850e8783886c08158b7c3",
+      "dividend_detail_sha256": "c96bb582b1275e93e1fae44917df715bdabef61632fd4a455726c6274f7c5cde"
+    },
+    {
+      "code": "600325",
+      "years": 21,
+      "total_dps": 4.884,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2025-09-11",
+      "kline_sha256": "cffe938f6c592d3bbeed5c94a557bc176addcc979a9ebe3909d23deb4a8c818f",
+      "dividend_detail_sha256": "32cbc1fc1d633239dee18b6b462af9f9496ee1fc6dd40356c79d4254ce770030"
+    },
+    {
+      "code": "600327",
+      "years": 22,
+      "total_dps": 3.96,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2025-06-27",
+      "kline_sha256": "45e63f9d27ba382a0e851b5d8ed74f1977a1bce27fde001f6ac43d5b69226ffc",
+      "dividend_detail_sha256": "254eb6f25b238ab4eebaf85f824bb3fadaeba20d46f0b515b24d62cdd4d677cb"
+    },
+    {
+      "code": "600329",
+      "years": 20,
+      "total_dps": 11.86,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-07-10",
+      "kline_sha256": "afa5b7c97fe5c7abdd8720c2b971d030d37cf51f7dd45b9cf15ad795a3d29592",
+      "dividend_detail_sha256": "c8b01490457a1dcd7c658e8861425a1766d654b0a4cb72f77c2f7702b0fccbb0"
+    },
+    {
+      "code": "600340",
+      "years": 11,
+      "total_dps": 6.73,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2020-07-10",
+      "kline_sha256": "6f4445d6820a21cf9049b9279c0e14f89ffb8a048c194a2ad195a81ef146d397",
+      "dividend_detail_sha256": "f0f4142b0cb28d1a8e58427a6f41b2d72cd99353ecd2967d29822d8d5696a0fd"
+    },
+    {
+      "code": "600348",
+      "years": 20,
+      "total_dps": 7.234,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-07-15",
+      "kline_sha256": "05ac38b653486e70a14719ac7f3c1d414867e70ed7ea901cafd33ed99c7ff7cd",
+      "dividend_detail_sha256": "e67c0c6cd56a2fecaf64c9f8a282419b17aa6d6a3a2be2111f5c30abfa9a7e2a"
+    },
+    {
+      "code": "600350",
+      "years": 24,
+      "total_dps": 5.239,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-18",
+      "kline_sha256": "0c00f1df5bd6f8fd8b80fa9dd4f43964c1869cf3a2b4c2661ab4be400fe25fb4",
+      "dividend_detail_sha256": "f06e86b63bda3d2167c2b918e4a316d62dbd1a0002083b8d1f51a42e38ee5ddf"
+    },
+    {
+      "code": "600373",
+      "years": 21,
+      "total_dps": 6.309,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-12",
+      "kline_sha256": "e88130c06c106021b92dce2ffb961291eff0bcfa0304b2986edb227c6dbde381",
+      "dividend_detail_sha256": "cb119cfa6b28355729369103f8563d14dacf44a2258eaf3b5243710a3d446a85"
+    },
+    {
+      "code": "600376",
+      "years": 19,
+      "total_dps": 4.7,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2023-06-19",
+      "kline_sha256": "45b352a1c98e265f5653915e3d38a48df533e2c63399b81d42d428448adf591b",
+      "dividend_detail_sha256": "e634806a0405dbb6096523825a3559858289bc9adeb2f031dc133d87c12a037f"
+    },
+    {
+      "code": "600382",
+      "years": 26,
+      "total_dps": 3.2238,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-05-25",
+      "kline_sha256": "392c3433139cbc18af41ac6ac89d81148044ea2992ece2ba2361b3a65931831b",
+      "dividend_detail_sha256": "93c3f91467c36a596fd9e322382d03f43dbabac3b0718a54753c74ed4f03d0c5"
+    },
+    {
+      "code": "600389",
+      "years": 22,
+      "total_dps": 9.373,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-05",
+      "kline_sha256": "56d1cd8199cd03e902cce8deef337cd6795fb578007d043dd72e942164feaf85",
+      "dividend_detail_sha256": "b58877e9a54f0869ece5a93964e45daa3ab3603ee43073ed4d64172048553826"
+    },
+    {
+      "code": "600395",
+      "years": 25,
+      "total_dps": 7.39,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-08-12",
+      "kline_sha256": "f5e9166729a83084c734d2e04dd7b410813e45518ff33034bc1d2fb68dfd4506",
+      "dividend_detail_sha256": "c5798815c87559d7a45961e628d113e9d0d6e289c6efe4b6b6805acb8bb6db8c"
+    },
+    {
+      "code": "600398",
+      "years": 23,
+      "total_dps": 5.881,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-05-11",
+      "kline_sha256": "0a9ebec39e1346a36156076e319c982c64b40a1bbc042aa0ee2d16baf4866029",
+      "dividend_detail_sha256": "d4724d9dea2ffd70db2288536da7df08aaa138d276b14dbbeb08eb462103e0d2"
+    },
+    {
+      "code": "600433",
+      "years": 18,
+      "total_dps": 1.15,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2025-05-26",
+      "kline_sha256": "c1dcaf3d1a174a1d1a5a2f7d7b28219697898590a6fdedea8ed7d53434fa1e4a",
+      "dividend_detail_sha256": "5a7b9f02f098d76f1b1ec4711e4b910b496fc8b45d310d5e26036d9c5ed45424"
+    },
+    {
+      "code": "600438",
+      "years": 16,
+      "total_dps": 6.728,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2024-06-14",
+      "kline_sha256": "90080cedd85f5562b298c0119c72f1353e9523803117f3413a2f756e60ae79e2",
+      "dividend_detail_sha256": "a312e72a245ec1fa8a8e4b4ad8409c85a1b4a1470a5b5630a6b33b614935b51f"
+    },
+    {
+      "code": "600466",
+      "years": 6,
+      "total_dps": 0.877,
+      "data_max_date": "2023-05-09",
+      "latest_event_date": "2020-07-06",
+      "kline_sha256": "d44eb2a9069efe8c9e82d385d08ab59afbef2a5984d3a47d347412af5a4ec0f0",
+      "dividend_detail_sha256": "e97be003706fcbd33514924c73c32bc146c3445d7ac2496f2f4a57aa47fe22ce"
+    },
+    {
+      "code": "600479",
+      "years": 22,
+      "total_dps": 7.88,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-30",
+      "kline_sha256": "7e43447541db1075db7d8383129b1885dc63b03606c9b31f03d504d540656b7c",
+      "dividend_detail_sha256": "ddcc95cf1bfa0b8c973683fa2966342d67d30295c3295534ec47a496f7757f6a"
+    },
+    {
+      "code": "600485",
+      "years": 3,
+      "total_dps": 0.0225,
+      "data_max_date": "2020-04-20",
+      "latest_event_date": "2017-06-26",
+      "kline_sha256": "ee4e2c99e2589ea2c360f72fcb52b942350718a0532aaf08e76a0337a1c3bc66",
+      "dividend_detail_sha256": "fb370418f8ddf58905548d307eab74f744e702efa9715f6c3b225156c2db5515"
+    },
+    {
+      "code": "600507",
+      "years": 17,
+      "total_dps": 8.659,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-05-29",
+      "kline_sha256": "9f2314444e160c937fb64595ef349141ac05c5690f19c070822c2ea064ca43f7",
+      "dividend_detail_sha256": "0025cdb7eaae06aa94cd041a8d0940d1cea12bef91edd93fd57c376232985e04"
+    },
+    {
+      "code": "600546",
+      "years": 15,
+      "total_dps": 7.038,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-07-16",
+      "kline_sha256": "ec0b7244b7e017bd455505c517fe9d396dd86da23dac8374031c44aa4a2d61b1",
+      "dividend_detail_sha256": "65f68913b259ab1d74951793e78ff2d8ec5d892be4f43b46c43990e3724f267c"
+    },
+    {
+      "code": "600548",
+      "years": 25,
+      "total_dps": 6.87,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-07-14",
+      "kline_sha256": "3d9394bab1d6a5068cf6ea08d49472865049b141538553dd3cee6de3b87fb097",
+      "dividend_detail_sha256": "ca364ec6bbd0ce53729274f3ea0afd5375045533dd3689ff48fc9e94139e261d"
+    },
+    {
+      "code": "600565",
+      "years": 10,
+      "total_dps": 0.76,
+      "data_max_date": "2024-06-21",
+      "latest_event_date": "2021-06-04",
+      "kline_sha256": "72ef896471ba658fc184c90d6829680739f4af8752442318c8680143fd76b8d1",
+      "dividend_detail_sha256": "45b25dd1db21956da625a128d2b96a8c3a3e97136d33554dff9edec3a5fbcaf8"
+    },
+    {
+      "code": "600566",
+      "years": 22,
+      "total_dps": 12.68,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-30",
+      "kline_sha256": "ae0f7fe7cab8b6a46de2a5a68d0080de3bb43922187982a5ef1bb7950920154a",
+      "dividend_detail_sha256": "156abbcf5634e49cb7a9fb179224f48fede737af8dd50dbccf172336a952a00c"
+    },
+    {
+      "code": "600585",
+      "years": 23,
+      "total_dps": 17.42,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-07-02",
+      "kline_sha256": "a8999a00ac2299639478b70c563d9698e186de1b6570d660b0e0658c6d604064",
+      "dividend_detail_sha256": "3372922174eb8ba8942ad38bd54cf6bb60f9f444c10495cfd2d01063d2fc9fd5"
+    },
+    {
+      "code": "600596",
+      "years": 25,
+      "total_dps": 7.04,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-11",
+      "kline_sha256": "156f8a35e0eeb76197ed044c54f97fb2bde72cb4214b3018add3e6314ffe0ef6",
+      "dividend_detail_sha256": "191be131c7820926a121b64baab2a9cb8303ea91dc986f9172c8af45ec92e85b"
+    },
+    {
+      "code": "600603",
+      "years": 4,
+      "total_dps": 1.2,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2021-06-11",
+      "kline_sha256": "b9d270944326b75c5c658cfa55d441d61371689283448eaa6fd09957f3e03553",
+      "dividend_detail_sha256": "f5d38b233fc2c56d675a5c27d66f1b654629b5489e04a93708eacea7b13c7532"
+    },
+    {
+      "code": "600664",
+      "years": 17,
+      "total_dps": 5.066,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2018-05-04",
+      "kline_sha256": "93daebe784f954f5089c2e16926d9221ff25c87ddee67ebbc80139896d6bd965",
+      "dividend_detail_sha256": "9e83b47e04ffc24709493e8095c6990433eba1cbc4b80f1282f44f25451fdf8a"
+    },
+    {
+      "code": "600681",
+      "years": 14,
+      "total_dps": 3.285,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-04",
+      "kline_sha256": "172b54a8bc6b5afba9cab5bc0986ad6049bb24a186518e7283f57035e0f83176",
+      "dividend_detail_sha256": "c0c9be2d99a90fdfde2d87296df425d986d2a2a1ac72555fa7e101c8ddeb1dd6"
+    },
+    {
+      "code": "600694",
+      "years": 25,
+      "total_dps": 15.1729,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-05-29",
+      "kline_sha256": "5048ec94866af8f10c00ff81504abb6f74f5a4417b6f5988bfc623704ea83220",
+      "dividend_detail_sha256": "f58b52e113df4a2e5b2c4a1f9f12a320c1f1664a3534e4f3508cd525fee0d29e"
+    },
+    {
+      "code": "600723",
+      "years": 8,
+      "total_dps": 1.42,
+      "data_max_date": "2021-09-15",
+      "latest_event_date": "2020-07-17",
+      "kline_sha256": "c9a7b90655d16da13939e8d70763a8aa5ca570d2944e35f89b9d8a517b5b351b",
+      "dividend_detail_sha256": "92bf5a21d1c1d7da7f3dbf845ac3a54b24a589096a7b86caed0dc341bd03284b"
+    },
+    {
+      "code": "600729",
+      "years": 29,
+      "total_dps": 19.447,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-08-13",
+      "kline_sha256": "3ed38e9274605cdb67755c98612d1d7307e52d6df9f25b8b67463cafa425f556",
+      "dividend_detail_sha256": "f9b8a2166b5389ee3879016ddea99ed1f32f7b3b6c4fb0e16a6fff3e0166b5c6"
+    },
+    {
+      "code": "600737",
+      "years": 18,
+      "total_dps": 3.121,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-08-03",
+      "kline_sha256": "50a34ac200f6aac4e39bf9dafac7c03d5dd91890f61d71bcdecf921bb502fcd2",
+      "dividend_detail_sha256": "fb8b05e9ede48988541eb1e0fc202cb812a13930bc577c61afca736e7ea80700"
+    },
+    {
+      "code": "600738",
+      "years": 11,
+      "total_dps": 3.0173,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-12",
+      "kline_sha256": "b914842d06260d770fb3e074336029e24a1b2dae3aa62025e7cc26c8b123de70",
+      "dividend_detail_sha256": "13bb8f64e839029c1189bfeab85e50395e76588ba02d791f9eed16af7bb95287"
+    },
+    {
+      "code": "600755",
+      "years": 24,
+      "total_dps": 5.17,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-18",
+      "kline_sha256": "8ddcd145653b7eccd870e2d183c83835bde371f2cd511a1ab43f06e4900c9f2b",
+      "dividend_detail_sha256": "31c364e02bbc3ea1f0532053b4e4756e124139359aa32f94207f4f4603cae4a4"
+    },
+    {
+      "code": "600782",
+      "years": 27,
+      "total_dps": 3.374,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-05",
+      "kline_sha256": "891b24844bd55be773e334046f6fac3c42fe725530eb09e424339a8ea9688bc0",
+      "dividend_detail_sha256": "53db20ec40e22e0295688fd8d4ddf1a98768c234eaf64e0a9ee9501b6ac376c8"
+    },
+    {
+      "code": "600804",
+      "years": 6,
+      "total_dps": 0.76,
+      "data_max_date": "2025-06-30",
+      "latest_event_date": "2018-07-18",
+      "kline_sha256": "ff05a81c2a489ef224e7891404a14a6dafe2e622bac4a6a9009c27309f9f8203",
+      "dividend_detail_sha256": "ab58cc53b39f0e6d03b0d51ec6f0f93630e00989f3d4604847ac69b83cac6174"
+    },
+    {
+      "code": "600808",
+      "years": 20,
+      "total_dps": 2.228,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2023-07-14",
+      "kline_sha256": "219ac62e464bd19efebf1c1365f8426da2c762aa5372e8a58d0b42450917c24c",
+      "dividend_detail_sha256": "1893f2db71a020133417e66e6602e696dc019c2d21260d4cfa3c199e00d31789"
+    },
+    {
+      "code": "600810",
+      "years": 22,
+      "total_dps": 3.912,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2025-07-17",
+      "kline_sha256": "6326d9d9ee521210d5d2b41afa2880dd9e5b1a00e49331c6d6b030ecbe01bebd",
+      "dividend_detail_sha256": "9912a6a086c236cb110f9cf8ac7730dde184305b36bf36abd77d3fb5276fd97d"
+    },
+    {
+      "code": "600816",
+      "years": 7,
+      "total_dps": 2.525,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2018-05-04",
+      "kline_sha256": "4284b325b48adf22a098ebfbeb5aa93402121419ce549c8b3ac89e1517bcbdb9",
+      "dividend_detail_sha256": "ebe275d8538598b88c3100ce7f571978a1033f7f14e2ee799c8d656d28111ad9"
+    },
+    {
+      "code": "600828",
+      "years": 21,
+      "total_dps": 3.167,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2024-04-25",
+      "kline_sha256": "929c5919b14b675beb05aedd5438fead8f4efc05284b10563c86165e3cdf1666",
+      "dividend_detail_sha256": "190660174e36957c95832bb28f3e06e79d3acd8d70152c32344b5528b0055f94"
+    },
+    {
+      "code": "600873",
+      "years": 18,
+      "total_dps": 5.1305,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-07-22",
+      "kline_sha256": "3fc14fd82ab08bb2f8b6478fb3b5989a93e9435749db3748ca49d1ceb3535eaa",
+      "dividend_detail_sha256": "3b79ed9670ec419eb4a38d3a5ea5e7db9d3f0961cee1e8cb502932a68977ebac"
+    },
+    {
+      "code": "600891",
+      "years": 6,
+      "total_dps": 0.315,
+      "data_max_date": "2021-04-30",
+      "latest_event_date": "2017-08-24",
+      "kline_sha256": "b6129e181e34013d3712bae503671325e2adb4df6f6942718a3a37938b0212ee",
+      "dividend_detail_sha256": "d920e71580981a6b0a72af56ff3c1fd60027928ff5a30ef6e8e4e0238ae6f671"
+    },
+    {
+      "code": "600894",
+      "years": 21,
+      "total_dps": 5.93,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-26",
+      "kline_sha256": "d58a22a1cd87205c18a59c2226858a6a2ad0ce38a4bdd237d4d9d18780c1d69e",
+      "dividend_detail_sha256": "46ed9f0a2e27abd50f4001eea103cd8c71e35da7270f8e4ec3991f2de497e466"
+    },
+    {
+      "code": "600978",
+      "years": 8,
+      "total_dps": 0.587,
+      "data_max_date": "2021-02-22",
+      "latest_event_date": "2019-07-30",
+      "kline_sha256": "11df4c364f59077c4f10a90763539ca2006b5eda3e96cdf8cc3d3a66894b590d",
+      "dividend_detail_sha256": "31246d56ea3e906ad3d4c0d33dd7a69ef1c9fa1602491a9e2961b6cc322220ff"
+    },
+    {
+      "code": "600985",
+      "years": 22,
+      "total_dps": 6.972,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-10",
+      "kline_sha256": "6ef586ca538d9a272d3ce1ec917b68d6890e49f22922968491179f33f6ad5df1",
+      "dividend_detail_sha256": "4cdefa98e3a9941535222826e9e8a5c170f708841f960593555cb3fd7c32454f"
+    },
+    {
+      "code": "600997",
+      "years": 21,
+      "total_dps": 4.8004,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-05-21",
+      "kline_sha256": "09e47c4c0ffbda6faca2e3e53fd7229cd743f16232b6349287d96a12ea466866",
+      "dividend_detail_sha256": "f0e6b9e2b49b3e921d2ff4799507a05e76814dcd9ed365c692ddd8f9a5419308"
+    },
+    {
+      "code": "601000",
+      "years": 15,
+      "total_dps": 2.24,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-05-27",
+      "kline_sha256": "9908a81d30ecae41f8c13984cc72f36fba02801820ac1f558e5452311efd6c8d",
+      "dividend_detail_sha256": "1ee8e1a2b4d294b13b2132dfdcf8db4df8bba6a9359964f5cf4f32f1f12fc324"
+    },
+    {
+      "code": "601003",
+      "years": 13,
+      "total_dps": 2.866,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-05",
+      "kline_sha256": "2954f578501207b25907205a3ad9034de2da8bc6af78e601f84bb0f8f5e71cee",
+      "dividend_detail_sha256": "168411d2913ee12d5243de9e86f657ae4f56657402dd5b7773c361460adf8d74"
+    },
+    {
+      "code": "601006",
+      "years": 20,
+      "total_dps": 7.6828,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-07-10",
+      "kline_sha256": "3f5ebe3a99fb7a9b60e9dfa14414feafb732dabcaa6fc8843186776f7c0556c4",
+      "dividend_detail_sha256": "7ac7465d606c0237cb9127ef11b6584846bafdd7031e4e2dc830e69747302588"
+    },
+    {
+      "code": "601077",
+      "years": 7,
+      "total_dps": 1.89,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-16",
+      "kline_sha256": "facc27d4bd3312fda0970a9c98d5f809a3e6f9ce4de7ce1c138c45d0ac29bdd2",
+      "dividend_detail_sha256": "edaed423b23f1a15659eb0f4f75c4b36beffe88eaeecff914e989393028de5f8"
+    },
+    {
+      "code": "601086",
+      "years": 9,
+      "total_dps": 1.58,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-10",
+      "kline_sha256": "96aec783373a0ab9f1248aba5aec2b86218ab07b0bf10d49e23d7a1e53025695",
+      "dividend_detail_sha256": "ce515845add3eddb882a411964c723c54f516197ecdd217121305db6c727fe6a"
+    },
+    {
+      "code": "601098",
+      "years": 16,
+      "total_dps": 6.98,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-07-10",
+      "kline_sha256": "935de381bc1937041528976833eb842df278ce481d7af233f1221d15dbb2ec44",
+      "dividend_detail_sha256": "eb7f510b557ce812324529c23c90eb05e6353b3accbc2c0a763356faa302016a"
+    },
+    {
+      "code": "601101",
+      "years": 16,
+      "total_dps": 4.575,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-11",
+      "kline_sha256": "c360b112747b2fee6b2f79438db70726656d841278317a8f6bb7fd82198ca99b",
+      "dividend_detail_sha256": "e4caa30dc170018ad64ecfe287fdefbb7244f047c827ae2e85f189dd374c7f17"
+    },
+    {
+      "code": "601126",
+      "years": 16,
+      "total_dps": 6.232,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-05-27",
+      "kline_sha256": "01b215ec9adaff5da8821ac78ad0597c4859033179b5f05e15db938bb857aa83",
+      "dividend_detail_sha256": "7f0d1eb0725ccc98f6b5ee187a63d02592ae9b735126c50ead0161a9d68d51ec"
+    },
+    {
+      "code": "601166",
+      "years": 20,
+      "total_dps": 13.473,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-12",
+      "kline_sha256": "8a3caba29b53835c827085929363cdf21839d08e22285fb77daaa6f599f5196c",
+      "dividend_detail_sha256": "965c1b9b24ef2e7439c71fc3a2ca17fe4e3c0417b8b60b15111e59bdd68a878c"
+    },
+    {
+      "code": "601168",
+      "years": 18,
+      "total_dps": 4.6,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-10",
+      "kline_sha256": "32fb0d94bf6d7332b5b88c7e922f8af0eb9244794d5780488f1ea032433e0632",
+      "dividend_detail_sha256": "5e9574714ace319deb95afc01302d79cc1366f9398a12df54c0337a498b2389c"
+    },
+    {
+      "code": "601169",
+      "years": 19,
+      "total_dps": 4.917,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-07-10",
+      "kline_sha256": "4378a6078a72fa9609bb702cb41cb6cf41332e7b67ae70708eff007dd2f94075",
+      "dividend_detail_sha256": "8d72cf39dfcfe93ba03b2bcdcab27bd0625c1a72556da57d732f1e45277c6892"
+    },
+    {
+      "code": "601216",
+      "years": 15,
+      "total_dps": 2.322,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-07-08",
+      "kline_sha256": "8e31680ea63c546349d6d1e7cbc9cec1adf4c1b43f14fc12c4dd0f3fae3540b2",
+      "dividend_detail_sha256": "c1ef57314aba50d5a2833c5d59161ce5bb877d44fea3b6d1bc52b32934a5773d"
+    },
+    {
+      "code": "601225",
+      "years": 12,
+      "total_dps": 9.309,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-26",
+      "kline_sha256": "44f9e43ea32de83e4c81d6a44a8ed42193aa371350816133f0f2d20abb28c254",
+      "dividend_detail_sha256": "439c6065813e5b8da294cefa56694100faa35d01091be3e7647df7224969b3b5"
+    },
+    {
+      "code": "601328",
+      "years": 19,
+      "total_dps": 5.1058,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-07-10",
+      "kline_sha256": "c2365e3eab96c3af588c2169cb733f43593bbcad0bc0b05f23e205bd6657ac6b",
+      "dividend_detail_sha256": "4706edfcfae1961df6d9ebe0403e3fcdfb2b2754b82346583f1afefb8a24f19e"
+    },
+    {
+      "code": "601339",
+      "years": 14,
+      "total_dps": 3.326,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-18",
+      "kline_sha256": "7c20375e4bb8d09b4dc142efc3a7234e4fa45d911985b573b52ef2978ac017f1",
+      "dividend_detail_sha256": "86ab2fc3012c2a8e6cfdc6c93e41e9036828ebab8363842f9535271c9d505eca"
+    },
+    {
+      "code": "601515",
+      "years": 12,
+      "total_dps": 4.135,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2024-07-26",
+      "kline_sha256": "746bad4576cde97db588ef6ea5d9404cb33d23483f382e75da51cc7d3acb2126",
+      "dividend_detail_sha256": "5eeb56c205dccb5aea3eb99fbed301c22a1ad0e8f37675330a9d9e6de4c85879"
+    },
+    {
+      "code": "601566",
+      "years": 15,
+      "total_dps": 9.35,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-04",
+      "kline_sha256": "c118efa0377b3490800aa1172d3b7dfdab7d10e00fdb1c8465de81af7814ce17",
+      "dividend_detail_sha256": "ce9826875b8fb29aef8abc477d35ebaa47cf95aa08fa9c22f74bf91c95dfc2e9"
+    },
+    {
+      "code": "601568",
+      "years": 6,
+      "total_dps": 1.41,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-22",
+      "kline_sha256": "2a44ac7fa8f9878edef849d3b3856d8289171ef1fb3a9a75869048dd792e7ef4",
+      "dividend_detail_sha256": "27a5bf684366c6e912dad127743f4240bdd38395a11c5546d967476822db21b5"
+    },
+    {
+      "code": "601636",
+      "years": 14,
+      "total_dps": 3.465,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-10",
+      "kline_sha256": "e531f7691b80b17358c76fa9d6493fe878bfb5f842517050c77c34c0577150db",
+      "dividend_detail_sha256": "e8bd935cb1d0a9870be3f1c151573207ff2027cda9333842a9b1dbb6e22054a5"
+    },
+    {
+      "code": "601666",
+      "years": 16,
+      "total_dps": 6.593,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-30",
+      "kline_sha256": "7c68c07a30a95ede685433d42e69b54db822d29d761dbd821b0a18da59bae109",
+      "dividend_detail_sha256": "77b98d01024b1fe9f3bb4a995812a0fa4947bc6141d8dfdc99ef491c7532a473"
+    },
+    {
+      "code": "601699",
+      "years": 18,
+      "total_dps": 11.678,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-30",
+      "kline_sha256": "ba29766b72cbd1157b62a335222fc0517d14fecf97d3b21b44a70e1c9b474948",
+      "dividend_detail_sha256": "e4fd2c09e59209705a509b4f27c3c60cd120ad71893f312f50d667d9f0254c2e"
+    },
+    {
+      "code": "601866",
+      "years": 9,
+      "total_dps": 0.594,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-07-31",
+      "kline_sha256": "0edef9a9bbe3ddcb95f8d1c137ccdfc3f7eb38b4a245ead1ce50dd9ad77f3916",
+      "dividend_detail_sha256": "2720d3bd87622715d58cb3084fb5ec13613b24531bc0bd3da60aaec221e5e44b"
+    },
+    {
+      "code": "601886",
+      "years": 15,
+      "total_dps": 3.49,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-04-30",
+      "kline_sha256": "2a218fbb935edb0a26dfdbf15c04f89a13843dfca82608c139dfedfc0aa5e454",
+      "dividend_detail_sha256": "2fe24a019360d1536d6d8ce0edc265545fac6749fc9dcfd0f92077bc717269b9"
+    },
+    {
+      "code": "601919",
+      "years": 8,
+      "total_dps": 8.12,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-26",
+      "kline_sha256": "148c6516a3a16c8529ffb9933b61de214b7619963af1264d52e9a1728d9e6495",
+      "dividend_detail_sha256": "9875d949d301554754474562f489f4349c02efb9d58b95d136ef704337d57b9f"
+    },
+    {
+      "code": "601928",
+      "years": 15,
+      "total_dps": 4.7,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-08-21",
+      "kline_sha256": "8ddb749f52b5767d7ba2e007553ee02b2a6dc1cf82a3b6dbc65c6c391227dbcf",
+      "dividend_detail_sha256": "27402c47a3a5666fe458a2152c713d04d8e040f8fa34fb5abe502d63bab91d91"
+    },
+    {
+      "code": "603001",
+      "years": 12,
+      "total_dps": 5.27,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2025-05-26",
+      "kline_sha256": "3de934c29f93809cd04ca3f3c2930af82d7c504a1c3e4a9a9e9b393349619891",
+      "dividend_detail_sha256": "0a5e1bde54fd42b7993d9dabfd60e6cd985ed46e3c81d947d33b7163b0a2846d"
+    },
+    {
+      "code": "603116",
+      "years": 11,
+      "total_dps": 2.63,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-11",
+      "kline_sha256": "6f6ca88dfb9bc4ea18faf2a6d223063e1d64860e7345e90a95c6a0a47a2aad51",
+      "dividend_detail_sha256": "7b5b75b2f02ff5bdc71ee653536522bb18b1c88939c74ed02db4ed3516e7c0ae"
+    },
+    {
+      "code": "603133",
+      "years": 3,
+      "total_dps": 0.231,
+      "data_max_date": "2024-06-26",
+      "latest_event_date": "2019-06-13",
+      "kline_sha256": "582e3e9a3a47c04b9371c02123682f47da8433c18811f7092a4274905a388399",
+      "dividend_detail_sha256": "55bbcdaaf7df9dec9e4cd7e5ff4865eed0c332e363b0a7b3de5417ece09bfcc6"
+    },
+    {
+      "code": "603156",
+      "years": 9,
+      "total_dps": 17.06,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-03",
+      "kline_sha256": "a34fe8d5e96f038f06238155e280bfac4ebe942e532f6f17690f85e9364f94a8",
+      "dividend_detail_sha256": "37b51314aedda04ffdf0018a2cbcd536388eb519bc604b340a69b554b6b7eb0f"
+    },
+    {
+      "code": "603165",
+      "years": 10,
+      "total_dps": 6.28,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-09",
+      "kline_sha256": "9d677c41821d0ee857774497f4523bc90775bd66843085b964c649eda13c11fe",
+      "dividend_detail_sha256": "3670a05685808d51e5343c51bea8b347a59005fd9a24caafc68670d878bf3a9b"
+    },
+    {
+      "code": "603166",
+      "years": 12,
+      "total_dps": 2.2,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-05-13",
+      "kline_sha256": "7600d2ecabc522c47b92dec94f1a81cffaff0d2c025890da03c35115f40e50e3",
+      "dividend_detail_sha256": "69aa5b6e009565976959cd9147d89a8335d33cca2032a02dcbcce1318f71b858"
+    },
+    {
+      "code": "603208",
+      "years": 8,
+      "total_dps": 8.54,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2025-06-13",
+      "kline_sha256": "2687d347b7397f133393598ae98ff85f7aa1b074d4a6f261644df9f0cc8ea71e",
+      "dividend_detail_sha256": "c6fe9fed3e139b9b055559b8032bfdda40cfe73f34f51b8842c6f0c2d9ef02f7"
+    },
+    {
+      "code": "603328",
+      "years": 12,
+      "total_dps": 5.585,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-26",
+      "kline_sha256": "240f974fe0d19b52e0b2cea3146201f55e8058b316140e9b0973eeb32ea7d10e",
+      "dividend_detail_sha256": "b48ef17cc954f4303335222ed66e96a70604eac040bb5aa23063a05c18f95575"
+    },
+    {
+      "code": "603355",
+      "years": 10,
+      "total_dps": 8.8,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2024-11-08",
+      "kline_sha256": "da5f78d170a6a60c5d69e0390e2c9e519081202b4156c4ffae425d1af2efa6df",
+      "dividend_detail_sha256": "691ed8b223112c61ac13d3ad51abc580b4e4a572b09f4635f9486e4c20341ae4"
+    },
+    {
+      "code": "603365",
+      "years": 9,
+      "total_dps": 6.4,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-18",
+      "kline_sha256": "4967778f2c80ae8cf2decc2371bf01823b84b60fc40c6050a3b79f39815fc1e0",
+      "dividend_detail_sha256": "c4b2aaf0a605cd45b8eacca70b0b1909586181423969c86b13fd57240eeab963"
+    },
+    {
+      "code": "603519",
+      "years": 12,
+      "total_dps": 7.49,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-07-09",
+      "kline_sha256": "278f24a5b923862823fec283570e1d2b3e1db71453fed09c965c6db4838f37fa",
+      "dividend_detail_sha256": "317d22d00c1c2ac8f09afc68b3f1bf9450abd12ba24e740b4d40cd333f43dfaa"
+    },
+    {
+      "code": "603551",
+      "years": 7,
+      "total_dps": 4.58,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-09",
+      "kline_sha256": "a11858ac01360740a0679f194bd231d51d147a390b69c6c87cb4f4a9e2b563b8",
+      "dividend_detail_sha256": "e14f716abe463ae4fd5dbfe6647091a192146ae95007c7114d56249d1ad0b917"
+    },
+    {
+      "code": "603565",
+      "years": 6,
+      "total_dps": 6.0,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-05-28",
+      "kline_sha256": "6d7286a6903dd5c67b3eec7b7d41127550a97380d1a71345913e71fe7865aa44",
+      "dividend_detail_sha256": "5a3f979a5b6679c7393f0b2b53553a939ef633bf191fccc795a1ca4d331a5df8"
+    },
+    {
+      "code": "603569",
+      "years": 9,
+      "total_dps": 2.077,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-15",
+      "kline_sha256": "b6022d8207452891fb7504c40216ca814c6ce6d29afd5a68de7ecdd5982ad55b",
+      "dividend_detail_sha256": "984bb3c53119465e4a2f3c26b337de2ef46666912104926ab44680da825bf7e9"
+    },
+    {
+      "code": "603682",
+      "years": 5,
+      "total_dps": 1.81,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-04-08",
+      "kline_sha256": "e95c03bf647077f1c7bae3842776f6da6375ddf124b1e8fc29f905b1d98dd332",
+      "dividend_detail_sha256": "7cb281e37d7801337bb7a435ff82f9ef70e2f4c91aacdeb3743bfc8ff4bab694"
+    },
+    {
+      "code": "603688",
+      "years": 12,
+      "total_dps": 9.64,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-16",
+      "kline_sha256": "701fc08169b01f13412a26cc5dcabf9aaa28374b64fb00502336744a88172081",
+      "dividend_detail_sha256": "bb22d0c9a7afd7483d12b2e2100c1146101fc93be19e42daf4451f7501caa653"
+    },
+    {
+      "code": "603696",
+      "years": 11,
+      "total_dps": 2.545,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-05",
+      "kline_sha256": "22eba970b911d6bee3e87429886a31e7989fbd5fbafbd5d1f647e2081d0080af",
+      "dividend_detail_sha256": "dbd2d719661907d121960deb9e6abdf67cfa5c575144750c2e56ef13b694d8c0"
+    },
+    {
+      "code": "603839",
+      "years": 9,
+      "total_dps": 3.515,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2025-07-02",
+      "kline_sha256": "967fa24fb540495b8548192bca8ea1e3e5117fc6f277b5ef0c9c6f007324180b",
+      "dividend_detail_sha256": "0d8dd87a175b0432ce3814131e8a0550abc32384e6c3282df70325b3e719b6cd"
+    },
+    {
+      "code": "603878",
+      "years": 10,
+      "total_dps": 3.388,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-11",
+      "kline_sha256": "8e44e9bfab1213abe9358e91d956bcd83466c41f87cde001ca5e48930c67dfb8",
+      "dividend_detail_sha256": "fc134709b01626db73a1133d50a70d4bfbf442e91a92565d850887bcad3b0cd7"
+    },
+    {
+      "code": "603886",
+      "years": 10,
+      "total_dps": 8.15,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-05-22",
+      "kline_sha256": "a114f46a169d050fee0ca1ab1a819ec2b9d50b1fceb10335d4933bd6eb632ab3",
+      "dividend_detail_sha256": "c5182bfb5057706d31f89dbce49a9d632d3db73077ae89c99be096afbe386dee"
+    },
+    {
+      "code": "603897",
+      "years": 8,
+      "total_dps": 8.43,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-03",
+      "kline_sha256": "e1b699c57f75a3a1541ae41df5f750691edfbb905ec7e7a9577c2340aef49e70",
+      "dividend_detail_sha256": "202541683699f603f6c5944dab3b5b49df08fe80179727fd16ba4d86b7e6ef7a"
+    },
+    {
+      "code": "603898",
+      "years": 12,
+      "total_dps": 2.99,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-07-21",
+      "kline_sha256": "28185ec33bb7977f3a4a589e7de7be129855e9b5503869a994d26abb75cbba09",
+      "dividend_detail_sha256": "d6e64f832f89205f61366fec89dfa1d62579911c37b81d981e87612ae4a5ae9c"
+    },
+    {
+      "code": "603928",
+      "years": 9,
+      "total_dps": 2.415,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-18",
+      "kline_sha256": "7627f2da399942183aa4ad841e434ae98c2909c6a946d5a0bd69492bee51111e",
+      "dividend_detail_sha256": "e728f1cf7ecf041ac918cbcfcf55bbb190e13cfa1759976d272e5d1e37ac34eb"
+    },
+    {
+      "code": "603948",
+      "years": 6,
+      "total_dps": 5.92,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-04",
+      "kline_sha256": "6ec875ce76e7a76116af03158870fa62c49e07773140c6b9e6dcdc202ec0d58a",
+      "dividend_detail_sha256": "8e929bcc1e9b0b7de029bdecbf5185c44a3a5c24f7384bf1c888bc41bde6b3bc"
+    },
+    {
+      "code": "603968",
+      "years": 9,
+      "total_dps": 4.02,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2024-07-12",
+      "kline_sha256": "bba21e419188d69661ebd57cca7876442c6c9285b8a6f6cd42725734a6038050",
+      "dividend_detail_sha256": "55e9a9fc54c8d0d2597ac42fb3200a5eb5e3f8bdadfa4e93f2c1d8d40be31ca3"
+    },
+    {
+      "code": "603980",
+      "years": 9,
+      "total_dps": 1.832,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-11",
+      "kline_sha256": "acff4d138e2e1187fa40282d7ee46693808d7989e9e563713fe6245eb9163484",
+      "dividend_detail_sha256": "ed3129a27fefdcf5c9382fc85a471420a7013f7a4a1813c0300e32657599290f"
+    },
+    {
+      "code": "603988",
+      "years": 12,
+      "total_dps": 2.8473,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-05-29",
+      "kline_sha256": "fd104c30ec7cb10fc037df3a816fea291adf8ccba065c5775102ba8d144bb264",
+      "dividend_detail_sha256": "6e47269d222cbc4a582cab5a9d3c24be617187b4968fcce4657cb4b7f708012e"
+    },
+    {
+      "code": "603996",
+      "years": 3,
+      "total_dps": 0.6,
+      "data_max_date": "2022-05-17",
+      "latest_event_date": "2018-06-15",
+      "kline_sha256": "37f15ab783d0ad5e2a233352830c502c8884aa64c61b6c60db26c404c56c6c4a",
+      "dividend_detail_sha256": "6acbae1cdae2aade46c780a60dc68e640a6b9d659bd88cb87eca9501671ff67a"
+    },
+    {
+      "code": "605266",
+      "years": 6,
+      "total_dps": 8.99,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-12",
+      "kline_sha256": "e76e613fbdc78f7f8072dfaedb7df228cdf418601ad90683351435b9af37116f",
+      "dividend_detail_sha256": "42cceb7041b809c86a300f2147586b9b3545b351b8e0b4ad65f0a358efeae1a8"
+    },
+    {
+      "code": "688289",
+      "years": 6,
+      "total_dps": 5.0582,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-22",
+      "kline_sha256": "4900a1bb4b7f29c79c147aec151502dbc024cb293b901873c57baff48b091132",
+      "dividend_detail_sha256": "ce252ff21a17a16e80d08aa68405ac065d359e6f4c02d7c9de9352038637758b"
+    },
+    {
+      "code": "688399",
+      "years": 4,
+      "total_dps": 21.9,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-07-10",
+      "kline_sha256": "187bb649b5d47ed888868bf189b02d5ce0c9910b23ff08a964b112b9f9c92cf3",
+      "dividend_detail_sha256": "74e277b7adf06c79d7fd1f2bb6a1eb316020abae52485d1557542f79aad3292a"
+    },
+    {
+      "code": "688606",
+      "years": 6,
+      "total_dps": 22.5,
+      "data_max_date": "2026-08-25",
+      "latest_event_date": "2026-06-01",
+      "kline_sha256": "8b851fb0989284c51f42b69903e00e63635f04d93d7c0517594e4add50bc982d",
+      "dividend_detail_sha256": "4029effa063ccf8b92e89f9ae184789e02ed7828ff9dfb265018df93343c3845"
+    }
+  ],
+  "codes": [
+    "000002",
+    "000023",
+    "000024",
+    "000036",
+    "000048",
+    "000090",
+    "000096",
+    "000156",
+    "000401",
+    "000416",
+    "000429",
+    "000517",
+    "000550",
+    "000581",
+    "000616",
+    "000631",
+    "000651",
+    "000656",
+    "000667",
+    "000672",
+    "000718",
+    "000748",
+    "000780",
+    "000789",
+    "000825",
+    "000830",
+    "000895",
+    "000898",
+    "000913",
+    "000915",
+    "000916",
+    "000930",
+    "000937",
+    "000983",
+    "001872",
+    "001979",
+    "002007",
+    "002013",
+    "002016",
+    "002022",
+    "002030",
+    "002032",
+    "002048",
+    "002068",
+    "002083",
+    "002088",
+    "002110",
+    "002143",
+    "002146",
+    "002157",
+    "002191",
+    "002233",
+    "002238",
+    "002267",
+    "002280",
+    "002293",
+    "002303",
+    "002325",
+    "002363",
+    "002367",
+    "002394",
+    "002411",
+    "002435",
+    "002464",
+    "002478",
+    "002499",
+    "002516",
+    "002540",
+    "002563",
+    "002572",
+    "002582",
+    "002601",
+    "002604",
+    "002612",
+    "002618",
+    "002619",
+    "002624",
+    "002677",
+    "002680",
+    "002697",
+    "002737",
+    "002740",
+    "002756",
+    "002763",
+    "002770",
+    "002774",
+    "002775",
+    "002781",
+    "002808",
+    "002818",
+    "002843",
+    "002867",
+    "002869",
+    "002932",
+    "002949",
+    "300064",
+    "300089",
+    "300104",
+    "300108",
+    "300121",
+    "300146",
+    "300158",
+    "300280",
+    "300336",
+    "300391",
+    "300403",
+    "300406",
+    "300495",
+    "300526",
+    "301047",
+    "301207",
+    "600012",
+    "600016",
+    "600019",
+    "600027",
+    "600028",
+    "600039",
+    "600057",
+    "600066",
+    "600093",
+    "600104",
+    "600114",
+    "600123",
+    "600153",
+    "600162",
+    "600177",
+    "600220",
+    "600240",
+    "600256",
+    "600261",
+    "600273",
+    "600282",
+    "600291",
+    "600295",
+    "600321",
+    "600325",
+    "600327",
+    "600329",
+    "600340",
+    "600348",
+    "600350",
+    "600373",
+    "600376",
+    "600382",
+    "600389",
+    "600395",
+    "600398",
+    "600433",
+    "600438",
+    "600466",
+    "600479",
+    "600485",
+    "600507",
+    "600546",
+    "600548",
+    "600565",
+    "600566",
+    "600585",
+    "600596",
+    "600603",
+    "600664",
+    "600681",
+    "600694",
+    "600723",
+    "600729",
+    "600737",
+    "600738",
+    "600755",
+    "600782",
+    "600804",
+    "600808",
+    "600810",
+    "600816",
+    "600828",
+    "600873",
+    "600891",
+    "600894",
+    "600978",
+    "600985",
+    "600997",
+    "601000",
+    "601003",
+    "601006",
+    "601077",
+    "601086",
+    "601098",
+    "601101",
+    "601126",
+    "601166",
+    "601168",
+    "601169",
+    "601216",
+    "601225",
+    "601328",
+    "601339",
+    "601515",
+    "601566",
+    "601568",
+    "601636",
+    "601666",
+    "601699",
+    "601866",
+    "601886",
+    "601919",
+    "601928",
+    "603001",
+    "603116",
+    "603133",
+    "603156",
+    "603165",
+    "603166",
+    "603208",
+    "603328",
+    "603355",
+    "603365",
+    "603519",
+    "603551",
+    "603565",
+    "603569",
+    "603682",
+    "603688",
+    "603696",
+    "603839",
+    "603878",
+    "603886",
+    "603897",
+    "603898",
+    "603928",
+    "603948",
+    "603968",
+    "603980",
+    "603988",
+    "603996",
+    "605266",
+    "688289",
+    "688399",
+    "688606"
+  ],
+  "records_sha256": "7f21213df5331225705a2fc6ea97379a9403cf17af7e79801eae6cee9ec278b9",
+  "limitations": [
+    "仅包含通过人工数据质量门禁且曾进入冻结 V1 信号前候选路径的股票。",
+    "不使用回测盈亏过滤，但仍存在数据可得性偏差，不能称为全市场无偏 manifest。"
+  ]
+}

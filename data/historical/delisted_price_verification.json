@@ -1,0 +1,2805 @@
+{
+  "schema_version": 1,
+  "source_snapshot_date": "2026-08-27",
+  "scope": "eligible_delisted_prices.json 中 139 只退市高息候选的逐日独立价格核验",
+  "price_format": "unadjusted_close",
+  "primary_source": "baostock/query_history_k_data_plus adjustflag=3 tradestatus=1",
+  "verification_source": "sina/CN_MarketData.getKLineData",
+  "arbitration_source": "tencent/appstock/app/kline/kline day（无复权参数）",
+  "source_file_sha256": "41c8b1d408e025ecdfa79fcc6608510fa9450a327e160fe6ec06b605eb1ca454",
+  "target_count": 139,
+  "provider_complete": true,
+  "independently_verified": true,
+  "verified_stock_count": 139,
+  "mismatched_stock_count": 0,
+  "failed_stock_count": 0,
+  "stocks": [
+    {
+      "code": "000022",
+      "name": "深赤湾A",
+      "primary_row_count": 691,
+      "verification_row_count": 691,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "000023",
+      "name": "*ST深天",
+      "primary_row_count": 2134,
+      "verification_row_count": 2134,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "000024",
+      "name": "招商地产",
+      "primary_row_count": 100,
+      "verification_row_count": 100,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "000040",
+      "name": "*ST旭蓝",
+      "primary_row_count": 2282,
+      "verification_row_count": 2282,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "000043",
+      "name": "中航善达",
+      "primary_row_count": 1127,
+      "verification_row_count": 1127,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "000046",
+      "name": "*ST泛海",
+      "primary_row_count": 2112,
+      "verification_row_count": 2112,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "000413",
+      "name": "ST旭电",
+      "primary_row_count": 2203,
+      "verification_row_count": 2203,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "000416",
+      "name": "*ST民控",
+      "primary_row_count": 2146,
+      "verification_row_count": 2146,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "000418",
+      "name": "小天鹅A",
+      "primary_row_count": 1026,
+      "verification_row_count": 1026,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "000540",
+      "name": "*ST中天",
+      "primary_row_count": 1631,
+      "verification_row_count": 1631,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "000562",
+      "name": "宏源证券",
+      "primary_row_count": 0,
+      "verification_row_count": 0,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": true,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "000584",
+      "name": "工智退",
+      "primary_row_count": 2229,
+      "verification_row_count": 2229,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "000616",
+      "name": "*ST海投",
+      "primary_row_count": 1864,
+      "verification_row_count": 1864,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "000627",
+      "name": "*ST天茂",
+      "primary_row_count": 2496,
+      "verification_row_count": 2496,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "000666",
+      "name": "经纬纺机",
+      "primary_row_count": 1928,
+      "verification_row_count": 1928,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "000667",
+      "name": "ST美置",
+      "primary_row_count": 2027,
+      "verification_row_count": 2027,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "000671",
+      "name": "ST阳光城",
+      "primary_row_count": 2008,
+      "verification_row_count": 2008,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "000732",
+      "name": "ST泰禾",
+      "primary_row_count": 2006,
+      "verification_row_count": 2006,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "000748",
+      "name": "长城信息",
+      "primary_row_count": 263,
+      "verification_row_count": 263,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "000780",
+      "name": "ST平能",
+      "primary_row_count": 1676,
+      "verification_row_count": 1676,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "000861",
+      "name": "海印股份",
+      "primary_row_count": 2291,
+      "verification_row_count": 2291,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "000916",
+      "name": "华北高速",
+      "primary_row_count": 461,
+      "verification_row_count": 461,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "000961",
+      "name": "ST中南",
+      "primary_row_count": 2242,
+      "verification_row_count": 2242,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "000979",
+      "name": "中弘退",
+      "primary_row_count": 671,
+      "verification_row_count": 671,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "002002",
+      "name": "ST鸿达",
+      "primary_row_count": 2046,
+      "verification_row_count": 2046,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "002013",
+      "name": "中航机电",
+      "primary_row_count": 1895,
+      "verification_row_count": 1895,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "002018",
+      "name": "华信退",
+      "primary_row_count": 890,
+      "verification_row_count": 890,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "002087",
+      "name": "新纺退",
+      "primary_row_count": 2267,
+      "verification_row_count": 2268,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [
+        "2024-06-13"
+      ],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [
+        {
+          "date": "2024-06-13",
+          "baostock_close": null,
+          "sina_close": 0.16,
+          "tencent_close": 0.16,
+          "resolved": true,
+          "accepted_value": 0.16,
+          "majority_sources": [
+            "sina",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        }
+      ],
+      "independently_verified": true
+    },
+    {
+      "code": "002089",
+      "name": "新海退",
+      "primary_row_count": 1994,
+      "verification_row_count": 1994,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "002143",
+      "name": "印纪退",
+      "primary_row_count": 919,
+      "verification_row_count": 919,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "002220",
+      "name": "天宝退",
+      "primary_row_count": 1315,
+      "verification_row_count": 1315,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "002260",
+      "name": "德奥退",
+      "primary_row_count": 708,
+      "verification_row_count": 708,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "002280",
+      "name": "ST联络",
+      "primary_row_count": 2107,
+      "verification_row_count": 2107,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "002288",
+      "name": "*ST超华",
+      "primary_row_count": 2149,
+      "verification_row_count": 2149,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "002308",
+      "name": "*ST威创",
+      "primary_row_count": 2199,
+      "verification_row_count": 2199,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "002325",
+      "name": "*ST洪涛",
+      "primary_row_count": 2216,
+      "verification_row_count": 2216,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "002341",
+      "name": "ST新纶",
+      "primary_row_count": 2196,
+      "verification_row_count": 2196,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "002411",
+      "name": "必康退",
+      "primary_row_count": 1777,
+      "verification_row_count": 1777,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "002433",
+      "name": "太安退",
+      "primary_row_count": 2235,
+      "verification_row_count": 2236,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [
+        "2022-09-27"
+      ],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [
+        {
+          "date": "2022-09-27",
+          "baostock_close": null,
+          "sina_close": 3.38,
+          "tencent_close": null,
+          "resolved": true,
+          "accepted_value": null,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认无交易"
+        }
+      ],
+      "independently_verified": true
+    },
+    {
+      "code": "002435",
+      "name": "ST长康",
+      "primary_row_count": 2149,
+      "verification_row_count": 2149,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "002447",
+      "name": "晨鑫退",
+      "primary_row_count": 1500,
+      "verification_row_count": 1500,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "002450",
+      "name": "康得退",
+      "primary_row_count": 899,
+      "verification_row_count": 899,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "002464",
+      "name": "众应退",
+      "primary_row_count": 1289,
+      "verification_row_count": 1289,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "002473",
+      "name": "圣莱退",
+      "primary_row_count": 1444,
+      "verification_row_count": 1445,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [
+        "2019-03-18"
+      ],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [
+        {
+          "date": "2019-03-18",
+          "baostock_close": null,
+          "sina_close": 9.03,
+          "tencent_close": null,
+          "resolved": true,
+          "accepted_value": null,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认无交易"
+        }
+      ],
+      "independently_verified": true
+    },
+    {
+      "code": "002477",
+      "name": "雏鹰退",
+      "primary_row_count": 1020,
+      "verification_row_count": 1020,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "002499",
+      "name": "科林退",
+      "primary_row_count": 1819,
+      "verification_row_count": 1819,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "002502",
+      "name": "ST鼎龙",
+      "primary_row_count": 2017,
+      "verification_row_count": 2017,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "002503",
+      "name": "*ST搜特",
+      "primary_row_count": 1997,
+      "verification_row_count": 1997,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "002509",
+      "name": "天茂退",
+      "primary_row_count": 1008,
+      "verification_row_count": 1008,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "002604",
+      "name": "龙力退",
+      "primary_row_count": 889,
+      "verification_row_count": 889,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "002618",
+      "name": "丹邦退",
+      "primary_row_count": 1792,
+      "verification_row_count": 1792,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "002619",
+      "name": "*ST艾格",
+      "primary_row_count": 1412,
+      "verification_row_count": 1412,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "002621",
+      "name": "*ST美吉",
+      "primary_row_count": 2062,
+      "verification_row_count": 2062,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "002665",
+      "name": "ST航高",
+      "primary_row_count": 2139,
+      "verification_row_count": 2139,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "002680",
+      "name": "长生退",
+      "primary_row_count": 882,
+      "verification_row_count": 882,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "002699",
+      "name": "*ST美盛",
+      "primary_row_count": 2053,
+      "verification_row_count": 2053,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "002711",
+      "name": "欧浦退",
+      "primary_row_count": 1218,
+      "verification_row_count": 1218,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "002740",
+      "name": "*ST爱迪",
+      "primary_row_count": 2017,
+      "verification_row_count": 2017,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "002750",
+      "name": "龙津退",
+      "primary_row_count": 2464,
+      "verification_row_count": 2464,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "002751",
+      "name": "易尚退",
+      "primary_row_count": 1923,
+      "verification_row_count": 1923,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "002770",
+      "name": "科迪退",
+      "primary_row_count": 1557,
+      "verification_row_count": 1557,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "002776",
+      "name": "*ST柏龙",
+      "primary_row_count": 2015,
+      "verification_row_count": 2015,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "002781",
+      "name": "奇信退",
+      "primary_row_count": 1687,
+      "verification_row_count": 1687,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "002808",
+      "name": "恒久退",
+      "primary_row_count": 2370,
+      "verification_row_count": 2370,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "002898",
+      "name": "赛隆退",
+      "primary_row_count": 2107,
+      "verification_row_count": 2107,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "300038",
+      "name": "数知退",
+      "primary_row_count": 1445,
+      "verification_row_count": 1445,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "300064",
+      "name": "金刚退",
+      "primary_row_count": 1692,
+      "verification_row_count": 1692,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "300089",
+      "name": "文化退",
+      "primary_row_count": 1704,
+      "verification_row_count": 1704,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "300104",
+      "name": "乐视退",
+      "primary_row_count": 722,
+      "verification_row_count": 722,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "300108",
+      "name": "*ST吉药",
+      "primary_row_count": 2223,
+      "verification_row_count": 2223,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "300114",
+      "name": "中航电测",
+      "primary_row_count": 2447,
+      "verification_row_count": 2447,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "300117",
+      "name": "*ST嘉寓",
+      "primary_row_count": 2437,
+      "verification_row_count": 2437,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "300178",
+      "name": "腾邦退",
+      "primary_row_count": 1688,
+      "verification_row_count": 1688,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "300186",
+      "name": "大华农",
+      "primary_row_count": 108,
+      "verification_row_count": 108,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "300202",
+      "name": "聚龙退",
+      "primary_row_count": 1785,
+      "verification_row_count": 1785,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "300216",
+      "name": "千山退",
+      "primary_row_count": 994,
+      "verification_row_count": 994,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "300262",
+      "name": "*ST巴安",
+      "primary_row_count": 2197,
+      "verification_row_count": 2197,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "300273",
+      "name": "和佳退",
+      "primary_row_count": 1936,
+      "verification_row_count": 1936,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "300280",
+      "name": "紫天退",
+      "primary_row_count": 2208,
+      "verification_row_count": 2208,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "300297",
+      "name": "蓝盾退",
+      "primary_row_count": 1965,
+      "verification_row_count": 1965,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "300309",
+      "name": "吉艾退",
+      "primary_row_count": 1867,
+      "verification_row_count": 1867,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "300325",
+      "name": "德威退",
+      "primary_row_count": 1681,
+      "verification_row_count": 1681,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "300330",
+      "name": "计通退",
+      "primary_row_count": 1909,
+      "verification_row_count": 1909,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "300336",
+      "name": "新文退",
+      "primary_row_count": 1965,
+      "verification_row_count": 1965,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "300356",
+      "name": "光一退",
+      "primary_row_count": 1916,
+      "verification_row_count": 1917,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [
+        "2023-06-20"
+      ],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [
+        {
+          "date": "2023-06-20",
+          "baostock_close": null,
+          "sina_close": 0.88,
+          "tencent_close": 0.88,
+          "resolved": true,
+          "accepted_value": 0.88,
+          "majority_sources": [
+            "sina",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        }
+      ],
+      "independently_verified": true
+    },
+    {
+      "code": "300362",
+      "name": "天翔退",
+      "primary_row_count": 968,
+      "verification_row_count": 968,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [
+        "2021-08-05"
+      ],
+      "arbitration_provider_complete": true,
+      "arbitration": [
+        {
+          "date": "2021-08-05",
+          "baostock_close": 0.82,
+          "sina_close": 0.75,
+          "tencent_close": 0.82,
+          "resolved": true,
+          "accepted_value": 0.82,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        }
+      ],
+      "independently_verified": true
+    },
+    {
+      "code": "300367",
+      "name": "网力退",
+      "primary_row_count": 1610,
+      "verification_row_count": 1610,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "300379",
+      "name": "东通退",
+      "primary_row_count": 2596,
+      "verification_row_count": 2596,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "300391",
+      "name": "长药退",
+      "primary_row_count": 2600,
+      "verification_row_count": 2600,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "300495",
+      "name": "*ST美尚",
+      "primary_row_count": 1964,
+      "verification_row_count": 1964,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "300526",
+      "name": "中潜退",
+      "primary_row_count": 1505,
+      "verification_row_count": 1505,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "300630",
+      "name": "普利退",
+      "primary_row_count": 1909,
+      "verification_row_count": 1909,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "300799",
+      "name": "左江退",
+      "primary_row_count": 1101,
+      "verification_row_count": 1101,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "600005",
+      "name": "武钢股份",
+      "primary_row_count": 430,
+      "verification_row_count": 430,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [
+        "2015-12-03"
+      ],
+      "arbitration_provider_complete": true,
+      "arbitration": [
+        {
+          "date": "2015-12-03",
+          "baostock_close": 3.61,
+          "sina_close": 3.62,
+          "tencent_close": 3.61,
+          "resolved": true,
+          "accepted_value": 3.61,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        }
+      ],
+      "independently_verified": true
+    },
+    {
+      "code": "600068",
+      "name": "葛洲坝",
+      "primary_row_count": 1614,
+      "verification_row_count": 1614,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [
+        "2016-09-09"
+      ],
+      "arbitration_provider_complete": true,
+      "arbitration": [
+        {
+          "date": "2016-09-09",
+          "baostock_close": 8.69,
+          "sina_close": 8.7,
+          "tencent_close": 8.69,
+          "resolved": true,
+          "accepted_value": 8.69,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        }
+      ],
+      "independently_verified": true
+    },
+    {
+      "code": "600070",
+      "name": "*ST富润",
+      "primary_row_count": 2394,
+      "verification_row_count": 2394,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [
+        "2018-08-16",
+        "2018-08-17"
+      ],
+      "arbitration_provider_complete": true,
+      "arbitration": [
+        {
+          "date": "2018-08-16",
+          "baostock_close": 6.42,
+          "sina_close": 6.45,
+          "tencent_close": 6.42,
+          "resolved": true,
+          "accepted_value": 6.42,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        },
+        {
+          "date": "2018-08-17",
+          "baostock_close": 6.43,
+          "sina_close": 6.44,
+          "tencent_close": 6.43,
+          "resolved": true,
+          "accepted_value": 6.43,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        }
+      ],
+      "independently_verified": true
+    },
+    {
+      "code": "600077",
+      "name": "*ST宋都",
+      "primary_row_count": 2050,
+      "verification_row_count": 2050,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "600093",
+      "name": "退市易见",
+      "primary_row_count": 1725,
+      "verification_row_count": 1725,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [
+        "2015-12-03",
+        "2016-07-22",
+        "2017-06-16",
+        "2018-01-23",
+        "2018-04-25",
+        "2018-06-25"
+      ],
+      "arbitration_provider_complete": true,
+      "arbitration": [
+        {
+          "date": "2015-12-03",
+          "baostock_close": 17.09,
+          "sina_close": 17.08,
+          "tencent_close": 17.09,
+          "resolved": true,
+          "accepted_value": 17.09,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        },
+        {
+          "date": "2016-07-22",
+          "baostock_close": 14.05,
+          "sina_close": 14.04,
+          "tencent_close": 14.05,
+          "resolved": true,
+          "accepted_value": 14.05,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        },
+        {
+          "date": "2017-06-16",
+          "baostock_close": 13.28,
+          "sina_close": 13.26,
+          "tencent_close": 13.28,
+          "resolved": true,
+          "accepted_value": 13.28,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        },
+        {
+          "date": "2018-01-23",
+          "baostock_close": 15.44,
+          "sina_close": 15.46,
+          "tencent_close": 15.44,
+          "resolved": true,
+          "accepted_value": 15.44,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        },
+        {
+          "date": "2018-04-25",
+          "baostock_close": 14.42,
+          "sina_close": 14.43,
+          "tencent_close": 14.42,
+          "resolved": true,
+          "accepted_value": 14.42,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        },
+        {
+          "date": "2018-06-25",
+          "baostock_close": 10.02,
+          "sina_close": 10.03,
+          "tencent_close": 10.02,
+          "resolved": true,
+          "accepted_value": 10.02,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        }
+      ],
+      "independently_verified": true
+    },
+    {
+      "code": "600112",
+      "name": "*ST天成",
+      "primary_row_count": 2213,
+      "verification_row_count": 2213,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "600122",
+      "name": "*ST宏图",
+      "primary_row_count": 1772,
+      "verification_row_count": 1772,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [
+        "2017-04-28",
+        "2018-05-09",
+        "2018-05-15"
+      ],
+      "arbitration_provider_complete": true,
+      "arbitration": [
+        {
+          "date": "2017-04-28",
+          "baostock_close": 11.06,
+          "sina_close": 11.05,
+          "tencent_close": 11.06,
+          "resolved": true,
+          "accepted_value": 11.06,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        },
+        {
+          "date": "2018-05-09",
+          "baostock_close": 8.12,
+          "sina_close": 8.11,
+          "tencent_close": 8.12,
+          "resolved": true,
+          "accepted_value": 8.12,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        },
+        {
+          "date": "2018-05-15",
+          "baostock_close": 8.12,
+          "sina_close": 8.13,
+          "tencent_close": 8.12,
+          "resolved": true,
+          "accepted_value": 8.12,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        }
+      ],
+      "independently_verified": true
+    },
+    {
+      "code": "600175",
+      "name": "退市美都",
+      "primary_row_count": 1226,
+      "verification_row_count": 1226,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [
+        "2015-12-03"
+      ],
+      "arbitration_provider_complete": true,
+      "arbitration": [
+        {
+          "date": "2015-12-03",
+          "baostock_close": 6.56,
+          "sina_close": 6.58,
+          "tencent_close": 6.56,
+          "resolved": true,
+          "accepted_value": 6.56,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        }
+      ],
+      "independently_verified": true
+    },
+    {
+      "code": "600190",
+      "name": "退市锦港",
+      "primary_row_count": 2497,
+      "verification_row_count": 2497,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [
+        "2018-06-08"
+      ],
+      "arbitration_provider_complete": true,
+      "arbitration": [
+        {
+          "date": "2018-06-08",
+          "baostock_close": 3.46,
+          "sina_close": 3.45,
+          "tencent_close": 3.46,
+          "resolved": true,
+          "accepted_value": 3.46,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        }
+      ],
+      "independently_verified": true
+    },
+    {
+      "code": "600200",
+      "name": "退市苏吴",
+      "primary_row_count": 2569,
+      "verification_row_count": 2569,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [
+        "2016-07-22",
+        "2017-02-27",
+        "2018-06-22"
+      ],
+      "arbitration_provider_complete": true,
+      "arbitration": [
+        {
+          "date": "2016-07-22",
+          "baostock_close": 22.18,
+          "sina_close": 22.19,
+          "tencent_close": 22.18,
+          "resolved": true,
+          "accepted_value": 22.18,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        },
+        {
+          "date": "2017-02-27",
+          "baostock_close": 17.35,
+          "sina_close": 17.36,
+          "tencent_close": 17.35,
+          "resolved": true,
+          "accepted_value": 17.35,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        },
+        {
+          "date": "2018-06-22",
+          "baostock_close": 7.05,
+          "sina_close": 7.06,
+          "tencent_close": 7.05,
+          "resolved": true,
+          "accepted_value": 7.05,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        }
+      ],
+      "independently_verified": true
+    },
+    {
+      "code": "600220",
+      "name": "ST阳光",
+      "primary_row_count": 2288,
+      "verification_row_count": 2288,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "600240",
+      "name": "退市华业",
+      "primary_row_count": 1194,
+      "verification_row_count": 1194,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "600270",
+      "name": "外运发展",
+      "primary_row_count": 906,
+      "verification_row_count": 906,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "600277",
+      "name": "ST亿利",
+      "primary_row_count": 2063,
+      "verification_row_count": 2063,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "600290",
+      "name": "*ST华仪",
+      "primary_row_count": 2111,
+      "verification_row_count": 2111,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [
+        "2015-12-03",
+        "2017-08-04"
+      ],
+      "arbitration_provider_complete": true,
+      "arbitration": [
+        {
+          "date": "2015-12-03",
+          "baostock_close": 14.64,
+          "sina_close": 14.65,
+          "tencent_close": 14.64,
+          "resolved": true,
+          "accepted_value": 14.64,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        },
+        {
+          "date": "2017-08-04",
+          "baostock_close": 11.76,
+          "sina_close": 11.75,
+          "tencent_close": 11.76,
+          "resolved": true,
+          "accepted_value": 11.76,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        }
+      ],
+      "independently_verified": true
+    },
+    {
+      "code": "600291",
+      "name": "退市西水",
+      "primary_row_count": 1660,
+      "verification_row_count": 1660,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "600297",
+      "name": "广汇汽车",
+      "primary_row_count": 2237,
+      "verification_row_count": 2237,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [
+        "2016-07-19",
+        "2018-04-25",
+        "2018-06-22"
+      ],
+      "arbitration_provider_complete": true,
+      "arbitration": [
+        {
+          "date": "2016-07-19",
+          "baostock_close": 8.87,
+          "sina_close": 8.86,
+          "tencent_close": 8.87,
+          "resolved": true,
+          "accepted_value": 8.87,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        },
+        {
+          "date": "2018-04-25",
+          "baostock_close": 6.86,
+          "sina_close": 6.85,
+          "tencent_close": 6.86,
+          "resolved": true,
+          "accepted_value": 6.86,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        },
+        {
+          "date": "2018-06-22",
+          "baostock_close": 5.9,
+          "sina_close": 5.89,
+          "tencent_close": 5.9,
+          "resolved": true,
+          "accepted_value": 5.9,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        }
+      ],
+      "independently_verified": true
+    },
+    {
+      "code": "600317",
+      "name": "营口港",
+      "primary_row_count": 1459,
+      "verification_row_count": 1459,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [
+        "2015-12-03",
+        "2018-08-13"
+      ],
+      "arbitration_provider_complete": true,
+      "arbitration": [
+        {
+          "date": "2015-12-03",
+          "baostock_close": 4.88,
+          "sina_close": 4.87,
+          "tencent_close": 4.88,
+          "resolved": true,
+          "accepted_value": 4.88,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        },
+        {
+          "date": "2018-08-13",
+          "baostock_close": 2.39,
+          "sina_close": 2.4,
+          "tencent_close": 2.39,
+          "resolved": true,
+          "accepted_value": 2.39,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        }
+      ],
+      "independently_verified": true
+    },
+    {
+      "code": "600321",
+      "name": "正源股份",
+      "primary_row_count": 2168,
+      "verification_row_count": 2168,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "600387",
+      "name": "退市海越",
+      "primary_row_count": 2402,
+      "verification_row_count": 2402,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [
+        "2018-01-09"
+      ],
+      "arbitration_provider_complete": true,
+      "arbitration": [
+        {
+          "date": "2018-01-09",
+          "baostock_close": 10.79,
+          "sina_close": 10.8,
+          "tencent_close": 10.79,
+          "resolved": true,
+          "accepted_value": 10.79,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        }
+      ],
+      "independently_verified": true
+    },
+    {
+      "code": "600393",
+      "name": "ST粤泰",
+      "primary_row_count": 1905,
+      "verification_row_count": 1905,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "600466",
+      "name": "*ST蓝光",
+      "primary_row_count": 1961,
+      "verification_row_count": 1961,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [
+        "2017-07-11",
+        "2018-04-25"
+      ],
+      "arbitration_provider_complete": true,
+      "arbitration": [
+        {
+          "date": "2017-07-11",
+          "baostock_close": 8.44,
+          "sina_close": 8.42,
+          "tencent_close": 8.44,
+          "resolved": true,
+          "accepted_value": 8.44,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        },
+        {
+          "date": "2018-04-25",
+          "baostock_close": 9.67,
+          "sina_close": 9.66,
+          "tencent_close": 9.67,
+          "resolved": true,
+          "accepted_value": 9.67,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        }
+      ],
+      "independently_verified": true
+    },
+    {
+      "code": "600485",
+      "name": "*ST信威",
+      "primary_row_count": 586,
+      "verification_row_count": 586,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [
+        "2015-12-03"
+      ],
+      "arbitration_provider_complete": true,
+      "arbitration": [
+        {
+          "date": "2015-12-03",
+          "baostock_close": 24.04,
+          "sina_close": 24.06,
+          "tencent_close": 24.04,
+          "resolved": true,
+          "accepted_value": 24.04,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        }
+      ],
+      "independently_verified": true
+    },
+    {
+      "code": "600565",
+      "name": "ST迪马",
+      "primary_row_count": 2201,
+      "verification_row_count": 2201,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [
+        "2015-12-03"
+      ],
+      "arbitration_provider_complete": true,
+      "arbitration": [
+        {
+          "date": "2015-12-03",
+          "baostock_close": 9.81,
+          "sina_close": 9.84,
+          "tencent_close": 9.81,
+          "resolved": true,
+          "accepted_value": 9.81,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        }
+      ],
+      "independently_verified": true
+    },
+    {
+      "code": "600599",
+      "name": "退市熊猫",
+      "primary_row_count": 2672,
+      "verification_row_count": 2672,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "600614",
+      "name": "退市鹏起",
+      "primary_row_count": 1074,
+      "verification_row_count": 1074,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "600636",
+      "name": "退市国化",
+      "primary_row_count": 2459,
+      "verification_row_count": 2459,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [
+        "2015-12-07",
+        "2018-01-29"
+      ],
+      "arbitration_provider_complete": true,
+      "arbitration": [
+        {
+          "date": "2015-12-07",
+          "baostock_close": 16.01,
+          "sina_close": 16.02,
+          "tencent_close": 16.01,
+          "resolved": true,
+          "accepted_value": 16.01,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        },
+        {
+          "date": "2018-01-29",
+          "baostock_close": 13.86,
+          "sina_close": 13.85,
+          "tencent_close": 13.86,
+          "resolved": true,
+          "accepted_value": 13.86,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        }
+      ],
+      "independently_verified": true
+    },
+    {
+      "code": "600677",
+      "name": "*ST航通",
+      "primary_row_count": 1194,
+      "verification_row_count": 1194,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [
+        "2015-12-03",
+        "2018-08-17"
+      ],
+      "arbitration_provider_complete": true,
+      "arbitration": [
+        {
+          "date": "2015-12-03",
+          "baostock_close": 23.25,
+          "sina_close": 23.3,
+          "tencent_close": 23.25,
+          "resolved": true,
+          "accepted_value": 23.25,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        },
+        {
+          "date": "2018-08-17",
+          "baostock_close": 7.48,
+          "sina_close": 7.47,
+          "tencent_close": 7.48,
+          "resolved": true,
+          "accepted_value": 7.48,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        }
+      ],
+      "independently_verified": true
+    },
+    {
+      "code": "600687",
+      "name": "退市刚泰",
+      "primary_row_count": 1265,
+      "verification_row_count": 1265,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [
+        "2015-12-03",
+        "2018-04-10"
+      ],
+      "arbitration_provider_complete": true,
+      "arbitration": [
+        {
+          "date": "2015-12-03",
+          "baostock_close": 20.29,
+          "sina_close": 20.26,
+          "tencent_close": 20.29,
+          "resolved": true,
+          "accepted_value": 20.29,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        },
+        {
+          "date": "2018-04-10",
+          "baostock_close": 10.7,
+          "sina_close": 10.69,
+          "tencent_close": 10.7,
+          "resolved": true,
+          "accepted_value": 10.7,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        }
+      ],
+      "independently_verified": true
+    },
+    {
+      "code": "600705",
+      "name": "中航产融",
+      "primary_row_count": 2475,
+      "verification_row_count": 2475,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "600723",
+      "name": "首商股份",
+      "primary_row_count": 1624,
+      "verification_row_count": 1624,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "600804",
+      "name": "退市鹏博",
+      "primary_row_count": 2463,
+      "verification_row_count": 2463,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "600823",
+      "name": "*ST世茂",
+      "primary_row_count": 2271,
+      "verification_row_count": 2271,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [
+        "2015-12-03",
+        "2018-01-05"
+      ],
+      "arbitration_provider_complete": true,
+      "arbitration": [
+        {
+          "date": "2015-12-03",
+          "baostock_close": 12.95,
+          "sina_close": 12.94,
+          "tencent_close": 12.95,
+          "resolved": true,
+          "accepted_value": 12.95,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        },
+        {
+          "date": "2018-01-05",
+          "baostock_close": 5.59,
+          "sina_close": 5.58,
+          "tencent_close": 5.59,
+          "resolved": true,
+          "accepted_value": 5.59,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        }
+      ],
+      "independently_verified": true
+    },
+    {
+      "code": "600832",
+      "name": "东方明珠",
+      "primary_row_count": 70,
+      "verification_row_count": 70,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "600836",
+      "name": "*ST易连",
+      "primary_row_count": 2290,
+      "verification_row_count": 2290,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [
+        "2015-12-03"
+      ],
+      "arbitration_provider_complete": true,
+      "arbitration": [
+        {
+          "date": "2015-12-03",
+          "baostock_close": 29.65,
+          "sina_close": 29.67,
+          "tencent_close": 29.65,
+          "resolved": true,
+          "accepted_value": 29.65,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        }
+      ],
+      "independently_verified": true
+    },
+    {
+      "code": "600837",
+      "name": "海通证券",
+      "primary_row_count": 2432,
+      "verification_row_count": 2432,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [
+        "2015-12-03"
+      ],
+      "arbitration_provider_complete": true,
+      "arbitration": [
+        {
+          "date": "2015-12-03",
+          "baostock_close": 15.85,
+          "sina_close": 15.86,
+          "tencent_close": 15.85,
+          "resolved": true,
+          "accepted_value": 15.85,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        }
+      ],
+      "independently_verified": true
+    },
+    {
+      "code": "600891",
+      "name": "退市秋林",
+      "primary_row_count": 1266,
+      "verification_row_count": 1266,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [
+        "2015-12-03",
+        "2018-08-06"
+      ],
+      "arbitration_provider_complete": true,
+      "arbitration": [
+        {
+          "date": "2015-12-03",
+          "baostock_close": 10.39,
+          "sina_close": 10.4,
+          "tencent_close": 10.39,
+          "resolved": true,
+          "accepted_value": 10.39,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        },
+        {
+          "date": "2018-08-06",
+          "baostock_close": 5.06,
+          "sina_close": 5.05,
+          "tencent_close": 5.06,
+          "resolved": true,
+          "accepted_value": 5.06,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        }
+      ],
+      "independently_verified": true
+    },
+    {
+      "code": "600978",
+      "name": "*ST宜生",
+      "primary_row_count": 1328,
+      "verification_row_count": 1328,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "601028",
+      "name": "玉龙股份",
+      "primary_row_count": 2413,
+      "verification_row_count": 2413,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [
+        "2015-12-03"
+      ],
+      "arbitration_provider_complete": true,
+      "arbitration": [
+        {
+          "date": "2015-12-03",
+          "baostock_close": 8.9,
+          "sina_close": 8.91,
+          "tencent_close": 8.9,
+          "resolved": true,
+          "accepted_value": 8.9,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        }
+      ],
+      "independently_verified": true
+    },
+    {
+      "code": "601299",
+      "name": "中国北车",
+      "primary_row_count": 75,
+      "verification_row_count": 75,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "601989",
+      "name": "中国重工",
+      "primary_row_count": 2433,
+      "verification_row_count": 2433,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [
+        "2015-12-01",
+        "2017-03-13"
+      ],
+      "arbitration_provider_complete": true,
+      "arbitration": [
+        {
+          "date": "2015-12-01",
+          "baostock_close": 10.16,
+          "sina_close": 10.15,
+          "tencent_close": 10.16,
+          "resolved": true,
+          "accepted_value": 10.16,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        },
+        {
+          "date": "2017-03-13",
+          "baostock_close": 7.34,
+          "sina_close": 7.35,
+          "tencent_close": 7.34,
+          "resolved": true,
+          "accepted_value": 7.34,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        }
+      ],
+      "independently_verified": true
+    },
+    {
+      "code": "603056",
+      "name": "德邦股份",
+      "primary_row_count": 1931,
+      "verification_row_count": 1931,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [],
+      "independently_verified": true
+    },
+    {
+      "code": "603133",
+      "name": "退市碳元",
+      "primary_row_count": 1735,
+      "verification_row_count": 1736,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [
+        "2024-06-13"
+      ],
+      "different_close_dates": [],
+      "arbitration_provider_complete": true,
+      "arbitration": [
+        {
+          "date": "2024-06-13",
+          "baostock_close": null,
+          "sina_close": 0.3,
+          "tencent_close": 0.3,
+          "resolved": true,
+          "accepted_value": 0.3,
+          "majority_sources": [
+            "sina",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        }
+      ],
+      "independently_verified": true
+    },
+    {
+      "code": "603555",
+      "name": "ST贵人",
+      "primary_row_count": 2121,
+      "verification_row_count": 2121,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [
+        "2015-12-03"
+      ],
+      "arbitration_provider_complete": true,
+      "arbitration": [
+        {
+          "date": "2015-12-03",
+          "baostock_close": 33.66,
+          "sina_close": 33.62,
+          "tencent_close": 33.66,
+          "resolved": true,
+          "accepted_value": 33.66,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        }
+      ],
+      "independently_verified": true
+    },
+    {
+      "code": "603603",
+      "name": "退市博天",
+      "primary_row_count": 1598,
+      "verification_row_count": 1598,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [
+        "2017-09-27"
+      ],
+      "arbitration_provider_complete": true,
+      "arbitration": [
+        {
+          "date": "2017-09-27",
+          "baostock_close": 48.13,
+          "sina_close": 48.1,
+          "tencent_close": 48.13,
+          "resolved": true,
+          "accepted_value": 48.13,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        }
+      ],
+      "independently_verified": true
+    },
+    {
+      "code": "603996",
+      "name": "退市中新",
+      "primary_row_count": 1538,
+      "verification_row_count": 1538,
+      "verification_provider_complete": true,
+      "empty_range_confirmed": false,
+      "missing_dates": [],
+      "extra_dates": [],
+      "different_close_dates": [
+        "2018-01-02",
+        "2018-05-24"
+      ],
+      "arbitration_provider_complete": true,
+      "arbitration": [
+        {
+          "date": "2018-01-02",
+          "baostock_close": 18.29,
+          "sina_close": 18.3,
+          "tencent_close": 18.29,
+          "resolved": true,
+          "accepted_value": 18.29,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        },
+        {
+          "date": "2018-05-24",
+          "baostock_close": 19.44,
+          "sina_close": 19.47,
+          "tencent_close": 19.44,
+          "resolved": true,
+          "accepted_value": 19.44,
+          "majority_sources": [
+            "baostock",
+            "tencent"
+          ],
+          "basis": "两源一致确认不复权收盘价"
+        }
+      ],
+      "independently_verified": true
+    }
+  ],
+  "decision_rule": "新浪与 BaoStock 全量一致，或每个差异日均由腾讯原始日线形成明确两源多数，才把该股票核验通过；全部股票通过时全局才为 true。",
+  "source_semantics_evidence": {
+    "unadjusted_probe": "600466 在 2017-07-11：腾讯原始日线收盘 8.44、腾讯前复权 5.339，原始入口可与复权入口明确区分。",
+    "suspension_probe": "2015-12-09 市场有交易且 600565 有日线；600466 前后交易但当日腾讯返回空数组，证明停牌日不生成交易行。"
+  }
+}

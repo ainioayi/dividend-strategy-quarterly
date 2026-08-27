@@ -8,7 +8,7 @@
   "inputs": {
     "security_master_sha256": "6bc96817e1a62f4d4dba0fd32b21e19093610730d372401da8341590ba8b46d7",
     "delisted_dividends_sha256": "199c90f1b8303c5830762da613989e8ec7f5e05f940ce2ca3278421c69290926",
-    "eligible_delisted_prices_sha256": "c0a17b90de5deb041bcd4c42e99ae68683791471ce20988c6ca4b6b2378b793f"
+    "eligible_delisted_prices_sha256": "46eb709c5f0415fcdb096622c26eb259264789e5f425ae852cd2bd5958abc623"
   },
   "cache": {
     "path": "data/historical_v1_cache",
@@ -69,19 +69,19 @@
     "zero_recovery": {
       "recovery_rate": 0.0,
       "metrics": {
-        "cagr": -61.75,
+        "cagr": -51.41,
         "max_drawdown": 100.0,
-        "volatility": 48.06,
-        "sharpe": -0.04,
-        "ending_nav": 3.9,
-        "total_return": -100.0,
+        "volatility": 211.41,
+        "sharpe": 0.297,
+        "ending_nav": 48.9,
+        "total_return": -99.95,
         "observations": 128,
-        "trade_count": 40,
-        "buy_count": 32,
+        "trade_count": 39,
+        "buy_count": 31,
         "sell_count": 8,
         "dividend_event_count": 8,
         "split_event_count": 0,
-        "ending_cash": 3.9
+        "ending_cash": 48.9
       },
       "traded_delisted_codes": [
         "600466",
@@ -93,8 +93,9 @@
           "code": "600466",
           "date": "2023-06-30",
           "delist_date": "2023-06-06",
-          "shares": 318500.0,
+          "shares": 318400.0,
           "last_price": 0.4,
+          "last_price_date": "2023-05-09",
           "recovery_rate": 0.0,
           "proceeds": 0.0
         }
@@ -924,19 +925,19 @@
         "reinvest": true,
         "reinvest_cli_flag": false,
         "metrics": {
-          "cagr": -61.75,
+          "cagr": -51.41,
           "max_drawdown": 100.0,
-          "volatility": 48.06,
-          "sharpe": -0.04,
-          "ending_nav": 3.9,
-          "total_return": -100.0,
+          "volatility": 211.41,
+          "sharpe": 0.297,
+          "ending_nav": 48.9,
+          "total_return": -99.95,
           "observations": 128,
-          "trade_count": 40,
-          "buy_count": 32,
+          "trade_count": 39,
+          "buy_count": 31,
           "sell_count": 8,
           "dividend_event_count": 8,
           "split_event_count": 0,
-          "ending_cash": 3.9
+          "ending_cash": 48.9
         },
         "nav_series": [
           {
@@ -1381,203 +1382,203 @@
           },
           {
             "date": "2023-06-01",
-            "nav": 127403.9,
-            "cash": 3.9
+            "nav": 1127184.9,
+            "cash": 48.9
           },
           {
             "date": "2023-07-03",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           },
           {
             "date": "2023-08-01",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           },
           {
             "date": "2023-09-01",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           },
           {
             "date": "2023-10-09",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           },
           {
             "date": "2023-11-01",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           },
           {
             "date": "2023-12-01",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           },
           {
             "date": "2024-01-02",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           },
           {
             "date": "2024-02-01",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           },
           {
             "date": "2024-03-01",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           },
           {
             "date": "2024-04-01",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           },
           {
             "date": "2024-05-06",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           },
           {
             "date": "2024-06-03",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           },
           {
             "date": "2024-07-01",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           },
           {
             "date": "2024-08-01",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           },
           {
             "date": "2024-09-02",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           },
           {
             "date": "2024-10-08",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           },
           {
             "date": "2024-11-01",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           },
           {
             "date": "2024-12-02",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           },
           {
             "date": "2025-01-02",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           },
           {
             "date": "2025-02-05",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           },
           {
             "date": "2025-03-03",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           },
           {
             "date": "2025-04-01",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           },
           {
             "date": "2025-05-06",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           },
           {
             "date": "2025-06-03",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           },
           {
             "date": "2025-07-01",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           },
           {
             "date": "2025-08-01",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           },
           {
             "date": "2025-09-01",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           },
           {
             "date": "2025-10-09",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           },
           {
             "date": "2025-11-03",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           },
           {
             "date": "2025-12-01",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           },
           {
             "date": "2026-01-05",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           },
           {
             "date": "2026-02-02",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           },
           {
             "date": "2026-03-02",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           },
           {
             "date": "2026-04-01",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           },
           {
             "date": "2026-05-06",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           },
           {
             "date": "2026-06-01",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           },
           {
             "date": "2026-07-01",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           },
           {
             "date": "2026-08-03",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           },
           {
             "date": "2026-08-25",
-            "nav": 3.9,
-            "cash": 3.9
+            "nav": 48.9,
+            "cash": 48.9
           }
         ],
         "final_holdings": [],
@@ -1592,18 +1593,18 @@
       "recovery_rate": 1.0,
       "metrics": {
         "cagr": 8.45,
-        "max_drawdown": 84.12,
-        "volatility": 38.74,
-        "sharpe": 0.366,
-        "ending_nav": 235531.86,
-        "total_return": 135.53,
+        "max_drawdown": 89.1,
+        "volatility": 211.12,
+        "sharpe": 0.333,
+        "ending_nav": 235536.86,
+        "total_return": 135.54,
         "observations": 128,
-        "trade_count": 68,
-        "buy_count": 54,
+        "trade_count": 67,
+        "buy_count": 53,
         "sell_count": 14,
         "dividend_event_count": 15,
         "split_event_count": 0,
-        "ending_cash": 1095.86
+        "ending_cash": 1100.86
       },
       "traded_delisted_codes": [
         "600466",
@@ -1615,10 +1616,11 @@
           "code": "600466",
           "date": "2023-06-30",
           "delist_date": "2023-06-06",
-          "shares": 318500.0,
+          "shares": 318400.0,
           "last_price": 0.4,
+          "last_price_date": "2023-05-09",
           "recovery_rate": 1.0,
-          "proceeds": 127400.0
+          "proceeds": 127360.0
         }
       ],
       "unresolved_delisted_final_holdings": [],
@@ -2447,18 +2449,18 @@
         "reinvest_cli_flag": false,
         "metrics": {
           "cagr": 8.45,
-          "max_drawdown": 84.12,
-          "volatility": 38.74,
-          "sharpe": 0.366,
-          "ending_nav": 235531.86,
-          "total_return": 135.53,
+          "max_drawdown": 89.1,
+          "volatility": 211.12,
+          "sharpe": 0.333,
+          "ending_nav": 235536.86,
+          "total_return": 135.54,
           "observations": 128,
-          "trade_count": 68,
-          "buy_count": 54,
+          "trade_count": 67,
+          "buy_count": 53,
           "sell_count": 14,
           "dividend_event_count": 15,
           "split_event_count": 0,
-          "ending_cash": 1095.86
+          "ending_cash": 1100.86
         },
         "nav_series": [
           {
@@ -2903,203 +2905,203 @@
           },
           {
             "date": "2023-06-01",
-            "nav": 127403.9,
-            "cash": 3.9
+            "nav": 1127184.9,
+            "cash": 48.9
           },
           {
             "date": "2023-07-03",
-            "nav": 127363.85,
-            "cash": 3471.85
+            "nav": 127368.85,
+            "cash": 3476.85
           },
           {
             "date": "2023-08-01",
-            "nav": 125278.82,
-            "cash": 4702.82
+            "nav": 125283.82,
+            "cash": 4707.82
           },
           {
             "date": "2023-09-01",
-            "nav": 122869.82,
-            "cash": 4702.82
+            "nav": 122874.82,
+            "cash": 4707.82
           },
           {
             "date": "2023-10-09",
-            "nav": 128245.82,
-            "cash": 4702.82
+            "nav": 128250.82,
+            "cash": 4707.82
           },
           {
             "date": "2023-11-01",
-            "nav": 128911.82,
-            "cash": 4702.82
+            "nav": 128916.82,
+            "cash": 4707.82
           },
           {
             "date": "2023-12-01",
-            "nav": 134725.82,
-            "cash": 4702.82
+            "nav": 134730.82,
+            "cash": 4707.82
           },
           {
             "date": "2024-01-02",
-            "nav": 135316.82,
-            "cash": 4702.82
+            "nav": 135321.82,
+            "cash": 4707.82
           },
           {
             "date": "2024-02-01",
-            "nav": 140188.82,
-            "cash": 4702.82
+            "nav": 140193.82,
+            "cash": 4707.82
           },
           {
             "date": "2024-03-01",
-            "nav": 150568.82,
-            "cash": 4702.82
+            "nav": 150573.82,
+            "cash": 4707.82
           },
           {
             "date": "2024-04-01",
-            "nav": 155536.82,
-            "cash": 4702.82
+            "nav": 155541.82,
+            "cash": 4707.82
           },
           {
             "date": "2024-05-06",
-            "nav": 159661.82,
-            "cash": 4702.82
+            "nav": 159666.82,
+            "cash": 4707.82
           },
           {
             "date": "2024-06-03",
-            "nav": 161959.37,
-            "cash": 19.37
+            "nav": 161964.37,
+            "cash": 24.37
           },
           {
             "date": "2024-07-01",
-            "nav": 169004.37,
-            "cash": 19.37
+            "nav": 169009.37,
+            "cash": 24.37
           },
           {
             "date": "2024-08-01",
-            "nav": 155457.29,
-            "cash": 494.29
+            "nav": 155462.29,
+            "cash": 499.29
           },
           {
             "date": "2024-09-02",
-            "nav": 162006.29,
-            "cash": 494.29
+            "nav": 162011.29,
+            "cash": 499.29
           },
           {
             "date": "2024-10-08",
-            "nav": 167426.1,
-            "cash": 922.1
+            "nav": 167431.1,
+            "cash": 927.1
           },
           {
             "date": "2024-11-01",
-            "nav": 152549.09,
-            "cash": 1349.09
+            "nav": 152554.09,
+            "cash": 1354.09
           },
           {
             "date": "2024-12-02",
-            "nav": 165464.09,
-            "cash": 1349.09
+            "nav": 165469.09,
+            "cash": 1354.09
           },
           {
             "date": "2025-01-02",
-            "nav": 150029.09,
-            "cash": 1349.09
+            "nav": 150034.09,
+            "cash": 1354.09
           },
           {
             "date": "2025-02-05",
-            "nav": 151646.06,
-            "cash": 2758.06
+            "nav": 151651.06,
+            "cash": 2763.06
           },
           {
             "date": "2025-03-03",
-            "nav": 149669.05,
-            "cash": 1829.05
+            "nav": 149674.05,
+            "cash": 1834.05
           },
           {
             "date": "2025-04-01",
-            "nav": 163418.05,
-            "cash": 1829.05
+            "nav": 163423.05,
+            "cash": 1834.05
           },
           {
             "date": "2025-05-06",
-            "nav": 169877.05,
-            "cash": 1829.05
+            "nav": 169882.05,
+            "cash": 1834.05
           },
           {
             "date": "2025-06-03",
-            "nav": 162998.05,
-            "cash": 1829.05
+            "nav": 163003.05,
+            "cash": 1834.05
           },
           {
             "date": "2025-07-01",
-            "nav": 176257.44,
-            "cash": 662.44
+            "nav": 176262.44,
+            "cash": 667.44
           },
           {
             "date": "2025-08-01",
-            "nav": 203459.44,
-            "cash": 662.44
+            "nav": 203464.44,
+            "cash": 667.44
           },
           {
             "date": "2025-09-01",
-            "nav": 206504.44,
-            "cash": 662.44
+            "nav": 206509.44,
+            "cash": 667.44
           },
           {
             "date": "2025-10-09",
-            "nav": 213609.44,
-            "cash": 662.44
+            "nav": 213614.44,
+            "cash": 667.44
           },
           {
             "date": "2025-11-03",
-            "nav": 231620.62,
-            "cash": 854.62
+            "nav": 231625.62,
+            "cash": 859.62
           },
           {
             "date": "2025-12-01",
-            "nav": 240242.62,
-            "cash": 854.62
+            "nav": 240247.62,
+            "cash": 859.62
           },
           {
             "date": "2026-01-05",
-            "nav": 235810.62,
-            "cash": 854.62
+            "nav": 235815.62,
+            "cash": 859.62
           },
           {
             "date": "2026-02-02",
-            "nav": 225988.19,
-            "cash": 796.19
+            "nav": 225993.19,
+            "cash": 801.19
           },
           {
             "date": "2026-03-02",
-            "nav": 245436.19,
-            "cash": 796.19
+            "nav": 245441.19,
+            "cash": 801.19
           },
           {
             "date": "2026-04-01",
-            "nav": 234436.19,
-            "cash": 796.19
+            "nav": 234441.19,
+            "cash": 801.19
           },
           {
             "date": "2026-05-06",
-            "nav": 245964.19,
-            "cash": 796.19
+            "nav": 245969.19,
+            "cash": 801.19
           },
           {
             "date": "2026-06-01",
-            "nav": 244820.19,
-            "cash": 796.19
+            "nav": 244825.19,
+            "cash": 801.19
           },
           {
             "date": "2026-07-01",
-            "nav": 212219.86,
-            "cash": 1095.86
+            "nav": 212224.86,
+            "cash": 1100.86
           },
           {
             "date": "2026-08-03",
-            "nav": 253485.86,
-            "cash": 1095.86
+            "nav": 253490.86,
+            "cash": 1100.86
           },
           {
             "date": "2026-08-25",
-            "nav": 235531.86,
-            "cash": 1095.86
+            "nav": 235536.86,
+            "cash": 1100.86
           }
         ],
         "final_holdings": [

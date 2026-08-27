@@ -667,6 +667,26 @@ def _find_price(kd, target):
     return _find_price_with_date(kd, target)[0]
 
 
+def _find_last_tradable_price(kd, target):
+    """退市处置专用：返回目标日及之前最后一个真实可交易收盘价。"""
+    if not kd:
+        return None, None
+    candidates = []
+    for day, raw_value in kd.items():
+        if day > target:
+            continue
+        try:
+            value = float(raw_value)
+        except (TypeError, ValueError):
+            continue
+        if value > 0:
+            candidates.append((day, value))
+    if not candidates:
+        return None, None
+    day, value = max(candidates, key=lambda item: item[0])
+    return value, day
+
+
 def build_snapshot(code, price, div_hist, as_of, dvd_detail_list=None):
     """构建纯股息率快照 row（PR 设为不限制值）。"""
     if dvd_detail_list is not None:
@@ -1042,7 +1062,10 @@ def run_backtest(rules=None, codes=None, rebalance_dates=None,
                 delist_date = str(window.get("delist_date") or "")[:10]
                 if not delist_date or rb <= delist_date:
                     continue
-                last_price = _find_price(klines.get(code, {}), delist_date) or 0.0
+                last_price, last_price_date = _find_last_tradable_price(
+                    klines.get(code, {}), delist_date
+                )
+                last_price = last_price or 0.0
                 shares = float(holding.get("shares") or 0)
                 proceeds = round(shares * last_price * float(delisting_recovery_rate), 2)
                 state["cash"] = round(float(state.get("cash") or 0) + proceeds, 2)
@@ -1050,7 +1073,7 @@ def run_backtest(rules=None, codes=None, rebalance_dates=None,
                 state.setdefault("events", []).append({
                     "side": "delisting", "code": code, "date": rb,
                     "delist_date": delist_date, "shares": shares,
-                    "last_price": last_price,
+                    "last_price": last_price, "last_price_date": last_price_date,
                     "recovery_rate": float(delisting_recovery_rate),
                     "proceeds": proceeds,
                 })

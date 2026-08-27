@@ -14,7 +14,7 @@ def test_convert_price_rows_keeps_replayable_unadjusted_close_and_bounds_date():
         "row_count": 2, "rows_sha256": canonical_sha256(rows),
         "start_date": "2015-01-05", "end_date": "2015-01-06",
         "delist_date": "2015-01-06", "adjustflag": "3",
-        "stored_fields": ["date", "close"],
+        "stored_fields": ["date", "close"], "trade_status_filtered": True,
     }
     assert convert_price_rows(stock, "2015-01-05") == {"2015-01-05": 10.5}
     stock["rows_sha256"] = "bad"

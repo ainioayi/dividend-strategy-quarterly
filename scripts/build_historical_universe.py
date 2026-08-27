@@ -417,7 +417,7 @@ def collect_eligible_delisted_prices(
     login = bs.login()
     if login.error_code != "0":
         raise RuntimeError(f"BaoStock 登录失败: {login.error_code} {login.error_msg}")
-    fields = "date,code,open,high,low,close,volume,amount,adjustflag"
+    fields = "date,code,open,high,low,close,volume,amount,adjustflag,tradestatus"
     try:
         for index, stock in enumerate(targets, 1):
             old = by_code.get(stock["code"])
@@ -438,19 +438,26 @@ def collect_eligible_delisted_prices(
                 source_rows = []
                 while result.next():
                     source_rows.append(dict(zip(result.fields, result.get_row_data())))
-                rows = [{"date": row["date"], "close": row["close"]}
-                        for row in source_rows if row.get("date") and row.get("close")]
+                rows = [
+                    {"date": row["date"], "close": row["close"]}
+                    for row in source_rows
+                    if row.get("date") and row.get("close") and row.get("tradestatus") == "1"
+                ]
                 by_code[stock["code"]] = {
                     "code": stock["code"], "name": stock["name"],
                     "delist_date": stock["delist_date"], "price_format": "unadjusted_close",
                     "source_fields": result.fields, "stored_fields": ["date", "close"],
-                    "adjustflag": "3", "start_date": rows[0]["date"] if rows else "",
+                    "adjustflag": "3", "trade_status_filtered": True,
+                    "source_row_count": len(source_rows),
+                    "source_rows_sha256": canonical_sha256(source_rows),
+                    "empty_tradable_range": not rows,
+                    "start_date": rows[0]["date"] if rows else "",
                     "end_date": rows[-1]["date"] if rows else "", "row_count": len(rows),
-                    "rows_sha256": canonical_sha256(rows), "provider_complete": bool(rows),
+                    "rows_sha256": canonical_sha256(rows), "provider_complete": True,
                     "independently_verified": False, "rows": rows,
                 }
                 if not rows:
-                    by_code[stock["code"]]["error_message"] = "查询成功但未返回日线"
+                    by_code[stock["code"]]["note"] = "查询成功但范围内没有可交易日"
             write_json_atomic(
                 output, build_price_artifact(by_code, snapshot_date, len(targets))
             )
@@ -470,8 +477,16 @@ def price_record_is_valid(item: dict[str, Any]) -> bool:
         return False
     if item.get("row_count") != len(rows) or item.get("rows_sha256") != canonical_sha256(rows):
         return False
+    if item.get("trade_status_filtered") is not True:
+        return False
     if not rows:
-        return item.get("start_date") == "" and item.get("end_date") == ""
+        return (
+            item.get("start_date") == ""
+            and item.get("end_date") == ""
+            and item.get("empty_tradable_range") is True
+            and isinstance(item.get("source_row_count"), int)
+            and item.get("source_row_count") >= 0
+        )
     dates = [row.get("date", "") for row in rows]
     return (
         dates == sorted(dates)

@@ -101,3 +101,11 @@ def test_delisting_recovery_rate_is_bounded():
     with pytest.raises(ValueError, match='0 到 1'):
         run_backtest(codes=['000333'], rebalance_dates=['2020-01-31'], verbose=False,
                      delisting_recovery_rate=1.1)
+
+
+def test_delisting_uses_last_tradable_price_without_reusing_it_as_trade_price():
+    from backtest import _find_last_tradable_price, _find_price
+
+    prices = {"2023-05-09": 0.4}
+    assert _find_price(prices, "2023-06-06") is None
+    assert _find_last_tradable_price(prices, "2023-06-06") == (0.4, "2023-05-09")

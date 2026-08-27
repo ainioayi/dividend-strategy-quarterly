@@ -1,0 +1,148 @@
+{
+  "schema_version": 1,
+  "kind": "delisted_dividend_report_year_verification",
+  "source": {
+    "stock_directory_url": "https://www.cninfo.com.cn/new/data/szse_stock.json",
+    "announcement_query_url": "https://www.cninfo.com.cn/new/hisAnnouncement/query",
+    "official_pdf_root": "https://static.cninfo.com.cn/",
+    "keywords": [
+      "权益分派",
+      "分红派息",
+      "利润分配"
+    ],
+    "minimum_request_interval_seconds": 0.6
+  },
+  "input": {
+    "path": "data/historical/delisted_dividends.json",
+    "sha256": "199c90f1b8303c5830762da613989e8ec7f5e05f940ce2ca3278421c69290926"
+  },
+  "scope": {
+    "requested_event_count": 4,
+    "verified_event_count": 4,
+    "full_stock_history_verified": false
+  },
+  "records": [
+    {
+      "code": "600466",
+      "name": "*ST蓝光",
+      "ex_date": "2019-05-08",
+      "baostock_report_year": 2019,
+      "verified_report_year": 2018,
+      "report_year_changed": true,
+      "baostock_fields": {
+        "cash_per_share_before_tax": 0.26,
+        "stock_dividend_per_share": 0.0,
+        "reserve_to_stock_per_share": 0.0
+      },
+      "evidence": {
+        "report_year": 2018,
+        "title": "2018年年度权益分派实施公告",
+        "announcement_time": "2019-04-29",
+        "pdf_url": "https://static.cninfo.com.cn/finalpage/2019-04-29/1206134324.PDF",
+        "pdf_sha256": "650807259ef46724d72c06d171d66ea81cc9d558a242bfdcffc7cca31ecd7174",
+        "official_fields": {
+          "ex_date": "2019-05-08",
+          "cash_per_share_before_tax": 0.26,
+          "stock_dividend_per_share": 0.0,
+          "reserve_to_stock_per_share": 0.0,
+          "page_count": 3,
+          "text_sha256": "1bbc18c7de233f120859ad87321b6fe98e9ad704de87f3a7c3907d7945b58ec9"
+        }
+      },
+      "status": "verified_unique_match"
+    },
+    {
+      "code": "600565",
+      "name": "ST迪马",
+      "ex_date": "2019-06-13",
+      "baostock_report_year": 2019,
+      "verified_report_year": 2018,
+      "report_year_changed": true,
+      "baostock_fields": {
+        "cash_per_share_before_tax": 0.28,
+        "stock_dividend_per_share": 0.0,
+        "reserve_to_stock_per_share": 0.0
+      },
+      "evidence": {
+        "report_year": 2018,
+        "title": "2018年年度权益分派实施公告",
+        "announcement_time": "2019-06-05",
+        "pdf_url": "https://static.cninfo.com.cn/finalpage/2019-06-05/1206333296.PDF",
+        "pdf_sha256": "8d506ca17fe39af8f398e71f544b795cd23792481eb65b5d0136740d30d1fe78",
+        "official_fields": {
+          "ex_date": "2019-06-13",
+          "cash_per_share_before_tax": 0.28,
+          "stock_dividend_per_share": 0.0,
+          "reserve_to_stock_per_share": 0.0,
+          "page_count": 3,
+          "text_sha256": "dc5215378c2669f7535cf05040e2de22af95d9dc1fe04cdcca3dede7f5d97814"
+        }
+      },
+      "status": "verified_unique_match"
+    },
+    {
+      "code": "600401",
+      "name": "退市海润",
+      "ex_date": "2012-06-08",
+      "baostock_report_year": 2012,
+      "verified_report_year": 2011,
+      "report_year_changed": true,
+      "baostock_fields": {
+        "cash_per_share_before_tax": 0.14,
+        "stock_dividend_per_share": 0.0,
+        "reserve_to_stock_per_share": 0.0
+      },
+      "evidence": {
+        "report_year": 2011,
+        "title": "2011年度利润分配实施公告",
+        "announcement_time": "2012-06-04",
+        "pdf_url": "https://static.cninfo.com.cn/finalpage/2012-06-04/61084563.PDF",
+        "pdf_sha256": "a999831e16c28b546628a43ce8051ec0a35b629c0e6bbea4ac668e023c297fdf",
+        "official_fields": {
+          "ex_date": "2012-06-08",
+          "cash_per_share_before_tax": 0.14,
+          "stock_dividend_per_share": 0.0,
+          "reserve_to_stock_per_share": 0.0,
+          "page_count": 3,
+          "text_sha256": "b11ef88193f127f9ae74cb83714feb54480596deb4061b73e89eadc99bfb41fa"
+        }
+      },
+      "status": "verified_unique_match"
+    },
+    {
+      "code": "300104",
+      "name": "乐视退",
+      "ex_date": "2017-08-25",
+      "baostock_report_year": 2017,
+      "verified_report_year": 2016,
+      "report_year_changed": true,
+      "baostock_fields": {
+        "cash_per_share_before_tax": 0.028,
+        "stock_dividend_per_share": 0.0,
+        "reserve_to_stock_per_share": 1.0
+      },
+      "evidence": {
+        "report_year": 2016,
+        "title": "2016年度权益分派实施公告",
+        "announcement_time": "2017-08-21",
+        "pdf_url": "https://static.cninfo.com.cn/finalpage/2017-08-21/1203835623.PDF",
+        "pdf_sha256": "b321ccd851ccc138c833dc763277575f96446c2f7fc4f89327c35501d1dafc39",
+        "official_fields": {
+          "ex_date": "2017-08-25",
+          "cash_per_share_before_tax": 0.028000000000000004,
+          "stock_dividend_per_share": 0.0,
+          "reserve_to_stock_per_share": 1.0,
+          "page_count": 3,
+          "text_sha256": "6ffae4cfbfc5c2ea0fa77e6529641819b0c2a1a2f7ed34db32c145e344b8519c"
+        }
+      },
+      "status": "verified_unique_match"
+    }
+  ],
+  "status": "verified",
+  "limitations": [
+    "本产物只核验显式请求的事件，不证明整只股票分红历史完整。",
+    "标题提供报告年度，PDF 的除权日和分配字段用于与 BaoStock 事件唯一匹配。",
+    "任何空结果、字段不一致或多匹配均直接失败，不自动执行年份减一。"
+  ]
+}
