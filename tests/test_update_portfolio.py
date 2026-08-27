@@ -72,7 +72,7 @@ def test_update_one_writes_ledger_history_and_summary(tmp_path, monkeypatch):
     ledger.write_text(json.dumps(_state(), ensure_ascii=False), encoding="utf-8")
     history_dir = tmp_path / "history"
     monkeypatch.setattr(update_portfolio, "HISTORY_DIR", history_dir)
-    row = {"code": "600000", "name": "测试", "price": 11.0, "yield": 5.5,
+    row = {"code": "600000", "name": "测试", "price": 11.0, "yield": 6.5,
            "pr": 0.8, "sustainability": "可持续", "industry": "银行",
            "bank": True, "dps": 1.0}
 

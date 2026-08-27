@@ -1,0 +1,365 @@
+{
+  "round": 29,
+  "description": "收益归因：个股、分红与资本利得、年度区间和集中度",
+  "data_cutoff": "2026-08-25",
+  "manifest_records_sha256": "24de009d9bb60c857fc89e8f7510b93583b17f9abde50350ea63a6a5830a7409",
+  "baseline_metrics": {
+    "cagr": 41.38,
+    "max_drawdown": 28.06,
+    "sharpe": 1.217,
+    "ending_nav": 3876245.51,
+    "trade_count": 75,
+    "dividend_event_count": 19
+  },
+  "decomposition": {
+    "initial_capital": 100000.0,
+    "ending_nav": 3876245.51,
+    "total_profit": 3776245.51,
+    "total_buy_cost": 21486004.29,
+    "total_sell_proceeds": 20646922.44,
+    "total_dividend_income_after_tax": 739651.36,
+    "total_unrealized_value": 3895878.0,
+    "total_capital_pl": 3056796.15,
+    "total_pl_incl_dividends": 3796447.51,
+    "dividend_income_pct_of_total_pl": 19.5,
+    "capital_pl_pct_of_total_pl": 80.5
+  },
+  "concentration": {
+    "top_1": {
+      "pct_of_total": 34.0,
+      "abs_pl": 1290070.29
+    },
+    "top_3": {
+      "pct_of_total": 69.0,
+      "abs_pl": 2619616.73
+    },
+    "top_5": {
+      "pct_of_total": 90.1,
+      "abs_pl": 3419330.71
+    },
+    "top_10": {
+      "pct_of_total": 111.3,
+      "abs_pl": 4226817.63
+    }
+  },
+  "win_rate": {
+    "winning_positions": 14,
+    "losing_positions": 4,
+    "total_positions": 18,
+    "win_rate_pct": 77.8,
+    "avg_holding_days": 353.0
+  },
+  "yearly_returns": [
+    {
+      "year": "2016",
+      "start_nav": 99969.13,
+      "end_nav": 175266.83,
+      "return_pct": 75.32
+    },
+    {
+      "year": "2017",
+      "start_nav": 175266.83,
+      "end_nav": 227246.39,
+      "return_pct": 29.66
+    },
+    {
+      "year": "2018",
+      "start_nav": 227246.39,
+      "end_nav": 221309.87,
+      "return_pct": -2.61
+    },
+    {
+      "year": "2019",
+      "start_nav": 221309.87,
+      "end_nav": 237509.84,
+      "return_pct": 7.32
+    },
+    {
+      "year": "2020",
+      "start_nav": 237509.84,
+      "end_nav": 560246.71,
+      "return_pct": 135.88
+    },
+    {
+      "year": "2021",
+      "start_nav": 560246.71,
+      "end_nav": 804561.55,
+      "return_pct": 43.61
+    },
+    {
+      "year": "2022",
+      "start_nav": 804561.55,
+      "end_nav": 1753381.85,
+      "return_pct": 117.93
+    },
+    {
+      "year": "2023",
+      "start_nav": 1753381.85,
+      "end_nav": 2201024.96,
+      "return_pct": 25.53
+    },
+    {
+      "year": "2024",
+      "start_nav": 2201024.96,
+      "end_nav": 2709835.81,
+      "return_pct": 23.12
+    },
+    {
+      "year": "2025",
+      "start_nav": 2709835.81,
+      "end_nav": 3953361.56,
+      "return_pct": 45.89
+    },
+    {
+      "year": "2026",
+      "start_nav": 3953361.56,
+      "end_nav": 3876245.51,
+      "return_pct": -1.95
+    }
+  ],
+  "dividend_income_by_year": {
+    "2016": 7290.0,
+    "2017": 7830.0,
+    "2018": 14149.8,
+    "2019": 14359.5,
+    "2020": 16952.0,
+    "2021": 36363.6,
+    "2022": 9911.16,
+    "2023": 105969.6,
+    "2024": 220253.3,
+    "2025": 79189.2,
+    "2026": 227383.2
+  },
+  "per_stock_pl": [
+    {
+      "code": "601088",
+      "name": "601088",
+      "buy_cost": 3029313.8,
+      "sell_proceeds": 4089908.49,
+      "dividend_income": 229475.6,
+      "unrealized_value": 0.0,
+      "capital_pl": 1060594.69,
+      "total_pl": 1290070.29,
+      "buy_shares": 104600,
+      "sell_shares": 104600
+    },
+    {
+      "code": "600295",
+      "name": "600295",
+      "buy_cost": 2999223.47,
+      "sell_proceeds": 3811421.25,
+      "dividend_income": 71118.0,
+      "unrealized_value": 0.0,
+      "capital_pl": 812197.77,
+      "total_pl": 883315.77,
+      "buy_shares": 334900,
+      "sell_shares": 334900
+    },
+    {
+      "code": "603688",
+      "name": "603688",
+      "buy_cost": 1239856.24,
+      "sell_proceeds": 1678015.71,
+      "dividend_income": 8071.2,
+      "unrealized_value": 0.0,
+      "capital_pl": 438159.47,
+      "total_pl": 446230.67,
+      "buy_shares": 47200,
+      "sell_shares": 47200
+    },
+    {
+      "code": "600729",
+      "name": "600729",
+      "buy_cost": 934696.67,
+      "sell_proceeds": 1318690.99,
+      "dividend_income": 25887.6,
+      "unrealized_value": 0.0,
+      "capital_pl": 383994.33,
+      "total_pl": 409881.93,
+      "buy_shares": 42300,
+      "sell_shares": 42300
+    },
+    {
+      "code": "002869",
+      "name": "002869",
+      "buy_cost": 674597.06,
+      "sell_proceeds": 1064429.11,
+      "dividend_income": 0.0,
+      "unrealized_value": 0.0,
+      "capital_pl": 389832.05,
+      "total_pl": 389832.05,
+      "buy_shares": 52400,
+      "sell_shares": 52400
+    },
+    {
+      "code": "600566",
+      "name": "600566",
+      "buy_cost": 3906450.62,
+      "sell_proceeds": 0.0,
+      "dividend_income": 227383.2,
+      "unrealized_value": 3895878.0,
+      "capital_pl": -10572.62,
+      "total_pl": 216810.58,
+      "buy_shares": 155400,
+      "sell_shares": 0
+    },
+    {
+      "code": "600188",
+      "name": "600188",
+      "buy_cost": 224012.42,
+      "sell_proceeds": 404538.06,
+      "dividend_income": 12906.0,
+      "unrealized_value": 0.0,
+      "capital_pl": 180525.64,
+      "total_pl": 193431.64,
+      "buy_shares": 23900,
+      "sell_shares": 23900
+    },
+    {
+      "code": "600873",
+      "name": "600873",
+      "buy_cost": 287665.65,
+      "sell_proceeds": 449552.57,
+      "dividend_income": 23931.5,
+      "unrealized_value": 0.0,
+      "capital_pl": 161886.92,
+      "total_pl": 185818.42,
+      "buy_shares": 68900,
+      "sell_shares": 68900
+    },
+    {
+      "code": "000550",
+      "name": "000550",
+      "buy_cost": 675443.32,
+      "sell_proceeds": 795063.48,
+      "dividend_income": 9911.16,
+      "unrealized_value": 0.0,
+      "capital_pl": 119620.15,
+      "total_pl": 129531.31,
+      "buy_shares": 41400,
+      "sell_shares": 41400
+    },
+    {
+      "code": "002032",
+      "name": "002032",
+      "buy_cost": 1072291.31,
+      "sell_proceeds": 1102834.98,
+      "dividend_income": 51351.3,
+      "unrealized_value": 0.0,
+      "capital_pl": 30543.67,
+      "total_pl": 81894.97,
+      "buy_shares": 20900,
+      "sell_shares": 20900
+    },
+    {
+      "code": "000651",
+      "name": "000651",
+      "buy_cost": 106244.93,
+      "sell_proceeds": 174221.77,
+      "dividend_income": 7290.0,
+      "unrealized_value": 0.0,
+      "capital_pl": 67976.83,
+      "total_pl": 75266.83,
+      "buy_shares": 5700,
+      "sell_shares": 5700
+    },
+    {
+      "code": "002756",
+      "name": "002756",
+      "buy_cost": 110192.39,
+      "sell_proceeds": 157252.52,
+      "dividend_income": 7380.0,
+      "unrealized_value": 0.0,
+      "capital_pl": 47060.13,
+      "total_pl": 54440.13,
+      "buy_shares": 8600,
+      "sell_shares": 8600
+    },
+    {
+      "code": "000895",
+      "name": "000895",
+      "buy_cost": 200052.0,
+      "sell_proceeds": 225133.49,
+      "dividend_income": 9009.0,
+      "unrealized_value": 0.0,
+      "capital_pl": 25081.5,
+      "total_pl": 34090.5,
+      "buy_shares": 9100,
+      "sell_shares": 9100
+    },
+    {
+      "code": "600066",
+      "name": "600066",
+      "buy_cost": 173968.91,
+      "sell_proceeds": 191853.47,
+      "dividend_income": 7830.0,
+      "unrealized_value": 0.0,
+      "capital_pl": 17884.56,
+      "total_pl": 25714.56,
+      "buy_shares": 8700,
+      "sell_shares": 8700
+    },
+    {
+      "code": "600028",
+      "name": "600028",
+      "buy_cost": 240092.82,
+      "sell_proceeds": 209340.3,
+      "dividend_income": 5140.8,
+      "unrealized_value": 0.0,
+      "capital_pl": -30752.52,
+      "total_pl": -25611.72,
+      "buy_shares": 36500,
+      "sell_shares": 36500
+    },
+    {
+      "code": "601919",
+      "name": "601919",
+      "buy_cost": 1905416.5,
+      "sell_proceeds": 1772972.73,
+      "dividend_income": 0.0,
+      "unrealized_value": 0.0,
+      "capital_pl": -132443.77,
+      "total_pl": -132443.77,
+      "buy_shares": 125400,
+      "sell_shares": 125400
+    },
+    {
+      "code": "002048",
+      "name": "002048",
+      "buy_cost": 934489.6,
+      "sell_proceeds": 720316.07,
+      "dividend_income": 12150.0,
+      "unrealized_value": 0.0,
+      "capital_pl": -214173.53,
+      "total_pl": -202023.53,
+      "buy_shares": 54000,
+      "sell_shares": 54000
+    },
+    {
+      "code": "600389",
+      "name": "600389",
+      "buy_cost": 2771996.58,
+      "sell_proceeds": 2481377.45,
+      "dividend_income": 30816.0,
+      "unrealized_value": 0.0,
+      "capital_pl": -290619.12,
+      "total_pl": -259803.12,
+      "buy_shares": 173300,
+      "sell_shares": 173300
+    }
+  ],
+  "event_counts": {
+    "buys": 57,
+    "sells": 18,
+    "dividends": 19,
+    "splits": 0
+  },
+  "limitations": [
+    "期末持仓按入场价或最后一条净值快照价格估值",
+    "买入成本包含费用，卖出收入已扣费用，分红为税后金额",
+    "未逐批采用先进先出匹配，而是按股票代码汇总",
+    "分红再投资买入计入普通买入事件",
+    "结果依赖冻结缓存和当前策略参数",
+    "不构成未来收益保证或投资建议"
+  ]
+}

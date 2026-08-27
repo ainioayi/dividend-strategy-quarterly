@@ -1,0 +1,11 @@
+# 统一使用 LF，避免 Windows 自动换行造成整文件差异。
+* text=auto
+.gitattributes text eol=lf
+.gitignore text eol=lf
+*.py text eol=lf
+*.md text eol=lf
+*.json text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.html text eol=lf
+*.txt text eol=lf

@@ -1,0 +1,2631 @@
+{
+  "round": 16,
+  "method": "按每只股票截至signal_date最新已知正DPS年度滚动取连续3年；保守变体延迟一年；逐笔ex_date截断、完整账本、rolling36/48、连续OOS及3倍成本；无未来函数",
+  "base_rules": {
+    "entry_yield": 7.5,
+    "hold_yield": 5.5,
+    "max_holdings": 2,
+    "rebalance_threshold": 2.0,
+    "execution_lag_days": 1,
+    "pool_min_consecutive_years": 3,
+    "momentum_months": 4,
+    "momentum_threshold": 0.85,
+    "reinvest_cash_reserve": 0,
+    "rank_by": "yield",
+    "momentum_periods": "",
+    "max_yield": 999.0
+  },
+  "manifest_records_sha256": "24de009d9bb60c857fc89e8f7510b93583b17f9abde50350ea63a6a5830a7409",
+  "dates_sha256": "f62fc22c2f2f972e3b29dea42e2a41202bfa620e702acc3c750e26f8c959ec3e",
+  "data_cutoff": "2026-08-25",
+  "dates": {
+    "count": 128,
+    "first": "2016-01-29",
+    "last": "2026-08-25"
+  },
+  "experiments": [
+    {
+      "name": "latest_known",
+      "delay_years": 0,
+      "fee_multiple": 1,
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1,
+        "pool_min_consecutive_years": 3,
+        "momentum_months": 4,
+        "momentum_threshold": 0.85,
+        "reinvest_cash_reserve": 0,
+        "rank_by": "yield",
+        "momentum_periods": "",
+        "max_yield": 999.0
+      },
+      "full": {
+        "cagr": 27.12,
+        "max_drawdown": 50.37,
+        "volatility": 43.88,
+        "sharpe": 0.703,
+        "ending_nav": 1261125.35,
+        "total_return": 1161.13,
+        "observations": 128,
+        "trade_count": 42,
+        "buy_count": 33,
+        "sell_count": 9,
+        "dividend_event_count": 10,
+        "split_event_count": 0,
+        "ending_cash": 0.35
+      },
+      "rolling36": {
+        "count": 93,
+        "min_cagr": -12.24,
+        "median_cagr": 26.99,
+        "max_drawdown_worst": 50.37,
+        "worst_window": {
+          "start": "2022-06-01",
+          "end": "2025-05-06",
+          "cagr": -12.24,
+          "max_drawdown": 50.37,
+          "volatility": 41.93,
+          "sharpe": -0.144,
+          "ending_nav": 921500.35,
+          "total_return": -31.77
+        }
+      },
+      "rolling48": {
+        "count": 81,
+        "min_cagr": -5.5,
+        "median_cagr": 34.62,
+        "max_drawdown_worst": 50.37,
+        "worst_window": {
+          "start": "2022-08-01",
+          "end": "2026-07-01",
+          "cagr": -5.5,
+          "max_drawdown": 50.37,
+          "volatility": 58.12,
+          "sharpe": 0.12,
+          "ending_nav": 1149500.35,
+          "total_return": -19.86
+        }
+      },
+      "oos": {
+        "2021": {
+          "observations": 69,
+          "cagr": 17.68,
+          "max_drawdown": 50.37,
+          "volatility": 50.76,
+          "sharpe": 0.509,
+          "ending_nav": 1261125.35,
+          "total_return": 150.35
+        },
+        "2023": {
+          "observations": 45,
+          "cagr": -9.63,
+          "max_drawdown": 50.37,
+          "volatility": 57.68,
+          "sharpe": 0.038,
+          "ending_nav": 1261125.35,
+          "total_return": -30.85
+        },
+        "2025": {
+          "observations": 21,
+          "cagr": 14.36,
+          "max_drawdown": 47.45,
+          "volatility": 71.79,
+          "sharpe": 0.43,
+          "ending_nav": 1261125.35,
+          "total_return": 24.65
+        }
+      },
+      "pool_provenance": [
+        {
+          "signal_date": "2016-01-29",
+          "pool_count": 82,
+          "pool_codes_sha256": "220c81e92a34840fab901a1fd9fb4ef10c36d0da30b5ccdf2fd7efffd3214b23",
+          "execution_date": "2016-02-01"
+        },
+        {
+          "signal_date": "2016-02-29",
+          "pool_count": 82,
+          "pool_codes_sha256": "220c81e92a34840fab901a1fd9fb4ef10c36d0da30b5ccdf2fd7efffd3214b23",
+          "execution_date": "2016-03-01"
+        },
+        {
+          "signal_date": "2016-03-31",
+          "pool_count": 82,
+          "pool_codes_sha256": "220c81e92a34840fab901a1fd9fb4ef10c36d0da30b5ccdf2fd7efffd3214b23",
+          "execution_date": "2016-04-01"
+        },
+        {
+          "signal_date": "2016-04-29",
+          "pool_count": 82,
+          "pool_codes_sha256": "220c81e92a34840fab901a1fd9fb4ef10c36d0da30b5ccdf2fd7efffd3214b23",
+          "execution_date": "2016-05-03"
+        },
+        {
+          "signal_date": "2016-05-31",
+          "pool_count": 82,
+          "pool_codes_sha256": "b1599003555b804cb120c9424feb5088cc5aaca5692a63e944e7b076f05316dc",
+          "execution_date": "2016-06-01"
+        },
+        {
+          "signal_date": "2016-06-30",
+          "pool_count": 82,
+          "pool_codes_sha256": "e1d6e8515c05912c3e7504f882b9a4197288855f049db1472c613c3fc5f7d5cc",
+          "execution_date": "2016-07-01"
+        },
+        {
+          "signal_date": "2016-07-29",
+          "pool_count": 82,
+          "pool_codes_sha256": "e6681a5f5336cb223385c1339b73a47b3b2c4cd0830b476df0bb9d34ec96ec6d",
+          "execution_date": "2016-08-01"
+        },
+        {
+          "signal_date": "2016-08-31",
+          "pool_count": 83,
+          "pool_codes_sha256": "b444aa1e34322edb0b5b7d538ebe9abc61269f7046bb1e00e5573d87494be23b",
+          "execution_date": "2016-09-01"
+        },
+        {
+          "signal_date": "2016-09-30",
+          "pool_count": 81,
+          "pool_codes_sha256": "8e245fb7238fc2ded3560fe6dabc26c711daa0e8ef6559e257c27451de79a5fc",
+          "execution_date": "2016-10-10"
+        },
+        {
+          "signal_date": "2016-10-31",
+          "pool_count": 81,
+          "pool_codes_sha256": "8e245fb7238fc2ded3560fe6dabc26c711daa0e8ef6559e257c27451de79a5fc",
+          "execution_date": "2016-11-01"
+        },
+        {
+          "signal_date": "2016-11-30",
+          "pool_count": 81,
+          "pool_codes_sha256": "8e245fb7238fc2ded3560fe6dabc26c711daa0e8ef6559e257c27451de79a5fc",
+          "execution_date": "2016-12-01"
+        },
+        {
+          "signal_date": "2016-12-30",
+          "pool_count": 81,
+          "pool_codes_sha256": "8e245fb7238fc2ded3560fe6dabc26c711daa0e8ef6559e257c27451de79a5fc",
+          "execution_date": "2017-01-03"
+        },
+        {
+          "signal_date": "2017-01-26",
+          "pool_count": 81,
+          "pool_codes_sha256": "8e245fb7238fc2ded3560fe6dabc26c711daa0e8ef6559e257c27451de79a5fc",
+          "execution_date": "2017-02-03"
+        },
+        {
+          "signal_date": "2017-02-28",
+          "pool_count": 81,
+          "pool_codes_sha256": "8e245fb7238fc2ded3560fe6dabc26c711daa0e8ef6559e257c27451de79a5fc",
+          "execution_date": "2017-03-01"
+        },
+        {
+          "signal_date": "2017-03-31",
+          "pool_count": 81,
+          "pool_codes_sha256": "8e245fb7238fc2ded3560fe6dabc26c711daa0e8ef6559e257c27451de79a5fc",
+          "execution_date": "2017-04-05"
+        },
+        {
+          "signal_date": "2017-04-28",
+          "pool_count": 82,
+          "pool_codes_sha256": "93fe2ede7a0608a03cc19e66cca933ab36012f479bc8764a73c4990c2ff18588",
+          "execution_date": "2017-05-02"
+        },
+        {
+          "signal_date": "2017-05-31",
+          "pool_count": 84,
+          "pool_codes_sha256": "b5494e3fc7c9494330a77a0b78dcee04380d7f254e6b14b5752ddb3c60189c4a",
+          "execution_date": "2017-06-01"
+        },
+        {
+          "signal_date": "2017-06-30",
+          "pool_count": 85,
+          "pool_codes_sha256": "ceaf01a9fd9eeab572057f20ce4316fb8d79245680a925ea9246f1ad7d065fdc",
+          "execution_date": "2017-07-03"
+        },
+        {
+          "signal_date": "2017-07-31",
+          "pool_count": 85,
+          "pool_codes_sha256": "ceaf01a9fd9eeab572057f20ce4316fb8d79245680a925ea9246f1ad7d065fdc",
+          "execution_date": "2017-08-01"
+        },
+        {
+          "signal_date": "2017-08-31",
+          "pool_count": 86,
+          "pool_codes_sha256": "d78e3da1b1a6561f14c41688606df4f1c6251825b7e0424aa3c5af193d58dbf8",
+          "execution_date": "2017-09-01"
+        },
+        {
+          "signal_date": "2017-09-29",
+          "pool_count": 86,
+          "pool_codes_sha256": "d78e3da1b1a6561f14c41688606df4f1c6251825b7e0424aa3c5af193d58dbf8",
+          "execution_date": "2017-10-09"
+        },
+        {
+          "signal_date": "2017-10-31",
+          "pool_count": 86,
+          "pool_codes_sha256": "d78e3da1b1a6561f14c41688606df4f1c6251825b7e0424aa3c5af193d58dbf8",
+          "execution_date": "2017-11-01"
+        },
+        {
+          "signal_date": "2017-11-30",
+          "pool_count": 86,
+          "pool_codes_sha256": "d78e3da1b1a6561f14c41688606df4f1c6251825b7e0424aa3c5af193d58dbf8",
+          "execution_date": "2017-12-01"
+        },
+        {
+          "signal_date": "2017-12-29",
+          "pool_count": 86,
+          "pool_codes_sha256": "d78e3da1b1a6561f14c41688606df4f1c6251825b7e0424aa3c5af193d58dbf8",
+          "execution_date": "2018-01-02"
+        },
+        {
+          "signal_date": "2018-01-31",
+          "pool_count": 86,
+          "pool_codes_sha256": "d78e3da1b1a6561f14c41688606df4f1c6251825b7e0424aa3c5af193d58dbf8",
+          "execution_date": "2018-02-01"
+        },
+        {
+          "signal_date": "2018-02-28",
+          "pool_count": 86,
+          "pool_codes_sha256": "d78e3da1b1a6561f14c41688606df4f1c6251825b7e0424aa3c5af193d58dbf8",
+          "execution_date": "2018-03-01"
+        },
+        {
+          "signal_date": "2018-03-30",
+          "pool_count": 86,
+          "pool_codes_sha256": "d78e3da1b1a6561f14c41688606df4f1c6251825b7e0424aa3c5af193d58dbf8",
+          "execution_date": "2018-04-02"
+        },
+        {
+          "signal_date": "2018-04-27",
+          "pool_count": 86,
+          "pool_codes_sha256": "d78e3da1b1a6561f14c41688606df4f1c6251825b7e0424aa3c5af193d58dbf8",
+          "execution_date": "2018-05-02"
+        },
+        {
+          "signal_date": "2018-05-31",
+          "pool_count": 89,
+          "pool_codes_sha256": "86a9619302f43fcd4de9f2d44b16a2c8d508708cd1c6a9430b01fff704411f0c",
+          "execution_date": "2018-06-01"
+        },
+        {
+          "signal_date": "2018-06-29",
+          "pool_count": 89,
+          "pool_codes_sha256": "af808f67ce3c967c8e85f5fbac1f339bef11bd430065962631cf1c81f2ffc5c7",
+          "execution_date": "2018-07-02"
+        },
+        {
+          "signal_date": "2018-07-31",
+          "pool_count": 90,
+          "pool_codes_sha256": "50548e8fbdf75c7bcbeec061607c6cfbca9e8684ca79af4d2bb9fefe94312c1e",
+          "execution_date": "2018-08-01"
+        },
+        {
+          "signal_date": "2018-08-31",
+          "pool_count": 92,
+          "pool_codes_sha256": "ad47d0669e880e12fcb748aedfbcbd054396ee8e0a176ace69f37d23c0b768f3",
+          "execution_date": "2018-09-03"
+        },
+        {
+          "signal_date": "2018-09-28",
+          "pool_count": 92,
+          "pool_codes_sha256": "ad47d0669e880e12fcb748aedfbcbd054396ee8e0a176ace69f37d23c0b768f3",
+          "execution_date": "2018-10-08"
+        },
+        {
+          "signal_date": "2018-10-31",
+          "pool_count": 92,
+          "pool_codes_sha256": "ad47d0669e880e12fcb748aedfbcbd054396ee8e0a176ace69f37d23c0b768f3",
+          "execution_date": "2018-11-01"
+        },
+        {
+          "signal_date": "2018-11-30",
+          "pool_count": 92,
+          "pool_codes_sha256": "ad47d0669e880e12fcb748aedfbcbd054396ee8e0a176ace69f37d23c0b768f3",
+          "execution_date": "2018-12-03"
+        },
+        {
+          "signal_date": "2018-12-28",
+          "pool_count": 92,
+          "pool_codes_sha256": "ad47d0669e880e12fcb748aedfbcbd054396ee8e0a176ace69f37d23c0b768f3",
+          "execution_date": "2019-01-02"
+        },
+        {
+          "signal_date": "2019-01-31",
+          "pool_count": 92,
+          "pool_codes_sha256": "ad47d0669e880e12fcb748aedfbcbd054396ee8e0a176ace69f37d23c0b768f3",
+          "execution_date": "2019-02-01"
+        },
+        {
+          "signal_date": "2019-02-28",
+          "pool_count": 91,
+          "pool_codes_sha256": "e911eb286f18fc7746420f98929ee7ed93b9655f9b8094411257f231022844a5",
+          "execution_date": "2019-03-01"
+        },
+        {
+          "signal_date": "2019-03-29",
+          "pool_count": 91,
+          "pool_codes_sha256": "e911eb286f18fc7746420f98929ee7ed93b9655f9b8094411257f231022844a5",
+          "execution_date": "2019-04-01"
+        },
+        {
+          "signal_date": "2019-04-30",
+          "pool_count": 92,
+          "pool_codes_sha256": "6c9f87c38f229d1d847f56252880a245776318b2ddeb330dc99ec19a6f5d4ad5",
+          "execution_date": "2019-05-06"
+        },
+        {
+          "signal_date": "2019-05-31",
+          "pool_count": 100,
+          "pool_codes_sha256": "38af1f2b73c0263ea85945f88a722186b2426366f848faefe077a3be428f6444",
+          "execution_date": "2019-06-03"
+        },
+        {
+          "signal_date": "2019-06-28",
+          "pool_count": 109,
+          "pool_codes_sha256": "fe70fca570d188f74c63cd50911a3044921e8e3a421254498512aafd56005731",
+          "execution_date": "2019-07-01"
+        },
+        {
+          "signal_date": "2019-07-31",
+          "pool_count": 113,
+          "pool_codes_sha256": "26fe5b20b25ed20062eede0c562d775bd37054c3d3606d7f8261a329298f776e",
+          "execution_date": "2019-08-01"
+        },
+        {
+          "signal_date": "2019-08-30",
+          "pool_count": 114,
+          "pool_codes_sha256": "e39062fb437e74acefa89c8c763ec4bd21f4944e5b8b3de5c72742ae8e624465",
+          "execution_date": "2019-09-02"
+        },
+        {
+          "signal_date": "2019-09-30",
+          "pool_count": 114,
+          "pool_codes_sha256": "e39062fb437e74acefa89c8c763ec4bd21f4944e5b8b3de5c72742ae8e624465",
+          "execution_date": "2019-10-08"
+        },
+        {
+          "signal_date": "2019-10-31",
+          "pool_count": 114,
+          "pool_codes_sha256": "e39062fb437e74acefa89c8c763ec4bd21f4944e5b8b3de5c72742ae8e624465",
+          "execution_date": "2019-11-01"
+        },
+        {
+          "signal_date": "2019-11-29",
+          "pool_count": 115,
+          "pool_codes_sha256": "40757a265ca1874dfc70211590237b3adea43f4e3379f42780a52ce73b2d10f8",
+          "execution_date": "2019-12-02"
+        },
+        {
+          "signal_date": "2019-12-31",
+          "pool_count": 115,
+          "pool_codes_sha256": "40757a265ca1874dfc70211590237b3adea43f4e3379f42780a52ce73b2d10f8",
+          "execution_date": "2020-01-02"
+        },
+        {
+          "signal_date": "2020-01-23",
+          "pool_count": 115,
+          "pool_codes_sha256": "40757a265ca1874dfc70211590237b3adea43f4e3379f42780a52ce73b2d10f8",
+          "execution_date": "2020-02-03"
+        },
+        {
+          "signal_date": "2020-02-28",
+          "pool_count": 115,
+          "pool_codes_sha256": "40757a265ca1874dfc70211590237b3adea43f4e3379f42780a52ce73b2d10f8",
+          "execution_date": "2020-03-02"
+        },
+        {
+          "signal_date": "2020-03-31",
+          "pool_count": 115,
+          "pool_codes_sha256": "40757a265ca1874dfc70211590237b3adea43f4e3379f42780a52ce73b2d10f8",
+          "execution_date": "2020-04-01"
+        },
+        {
+          "signal_date": "2020-04-30",
+          "pool_count": 116,
+          "pool_codes_sha256": "e9f8df2814cf9a2179068274d7bf97900c00029b4eca2673e74b7ea6fdad67ba",
+          "execution_date": "2020-05-06"
+        },
+        {
+          "signal_date": "2020-05-29",
+          "pool_count": 120,
+          "pool_codes_sha256": "4e9ddaace9cd86e04016a32b2ce0dbd6baf4725be1f2a1aa7affb5678a8b6df5",
+          "execution_date": "2020-06-01"
+        },
+        {
+          "signal_date": "2020-06-30",
+          "pool_count": 122,
+          "pool_codes_sha256": "8f34dc16033abbc4ed9806463c06325fe72c4f877f4026123b85f4ac05270d64",
+          "execution_date": "2020-07-01"
+        },
+        {
+          "signal_date": "2020-07-31",
+          "pool_count": 126,
+          "pool_codes_sha256": "8000581fca7e9af3751a5af8895f1416f62d78269046d68f099ac13578c50fa1",
+          "execution_date": "2020-08-03"
+        },
+        {
+          "signal_date": "2020-08-31",
+          "pool_count": 127,
+          "pool_codes_sha256": "23772a32a47f29ff4ff6795592193b3b53fc5f8ad99ca3fb5343835f028a5a11",
+          "execution_date": "2020-09-01"
+        },
+        {
+          "signal_date": "2020-09-30",
+          "pool_count": 127,
+          "pool_codes_sha256": "23772a32a47f29ff4ff6795592193b3b53fc5f8ad99ca3fb5343835f028a5a11",
+          "execution_date": "2020-10-09"
+        },
+        {
+          "signal_date": "2020-10-30",
+          "pool_count": 128,
+          "pool_codes_sha256": "240b87ebebc1e17813e349e71915c16e8313eb915d693a2b6f597a29fa6e17cf",
+          "execution_date": "2020-11-02"
+        },
+        {
+          "signal_date": "2020-11-30",
+          "pool_count": 128,
+          "pool_codes_sha256": "0e9797852c6f758720c381bc75c40a3799420cdde2762f46be5056c366737fae",
+          "execution_date": "2020-12-01"
+        },
+        {
+          "signal_date": "2020-12-31",
+          "pool_count": 128,
+          "pool_codes_sha256": "0e9797852c6f758720c381bc75c40a3799420cdde2762f46be5056c366737fae",
+          "execution_date": "2021-01-04"
+        },
+        {
+          "signal_date": "2021-01-29",
+          "pool_count": 128,
+          "pool_codes_sha256": "0e9797852c6f758720c381bc75c40a3799420cdde2762f46be5056c366737fae",
+          "execution_date": "2021-02-01"
+        },
+        {
+          "signal_date": "2021-02-26",
+          "pool_count": 128,
+          "pool_codes_sha256": "0e9797852c6f758720c381bc75c40a3799420cdde2762f46be5056c366737fae",
+          "execution_date": "2021-03-01"
+        },
+        {
+          "signal_date": "2021-03-31",
+          "pool_count": 128,
+          "pool_codes_sha256": "0e9797852c6f758720c381bc75c40a3799420cdde2762f46be5056c366737fae",
+          "execution_date": "2021-04-01"
+        },
+        {
+          "signal_date": "2021-04-30",
+          "pool_count": 128,
+          "pool_codes_sha256": "0e9797852c6f758720c381bc75c40a3799420cdde2762f46be5056c366737fae",
+          "execution_date": "2021-05-06"
+        },
+        {
+          "signal_date": "2021-05-31",
+          "pool_count": 129,
+          "pool_codes_sha256": "3640aa66f5e89feb9aa3aa524d06b4ca37287fd1627e74e66cf187a241bb5093",
+          "execution_date": "2021-06-01"
+        },
+        {
+          "signal_date": "2021-06-30",
+          "pool_count": 130,
+          "pool_codes_sha256": "b5c15a7d0ec6b7a563e72095d7a9643d12c32130e8827230000ee960fd1494e9",
+          "execution_date": "2021-07-01"
+        },
+        {
+          "signal_date": "2021-07-30",
+          "pool_count": 134,
+          "pool_codes_sha256": "a88e25870a0865e611ab80a94308c5af84c3b7446b882cccbca78f381d9d6122",
+          "execution_date": "2021-08-02"
+        },
+        {
+          "signal_date": "2021-08-31",
+          "pool_count": 134,
+          "pool_codes_sha256": "a88e25870a0865e611ab80a94308c5af84c3b7446b882cccbca78f381d9d6122",
+          "execution_date": "2021-09-01"
+        },
+        {
+          "signal_date": "2021-09-30",
+          "pool_count": 134,
+          "pool_codes_sha256": "fb5e575d0b853f2542e2cde5901e42f31e8b8f2949de8759f6a6d75562a621c6",
+          "execution_date": "2021-10-08"
+        },
+        {
+          "signal_date": "2021-10-29",
+          "pool_count": 134,
+          "pool_codes_sha256": "fb5e575d0b853f2542e2cde5901e42f31e8b8f2949de8759f6a6d75562a621c6",
+          "execution_date": "2021-11-01"
+        },
+        {
+          "signal_date": "2021-11-30",
+          "pool_count": 134,
+          "pool_codes_sha256": "fb5e575d0b853f2542e2cde5901e42f31e8b8f2949de8759f6a6d75562a621c6",
+          "execution_date": "2021-12-01"
+        },
+        {
+          "signal_date": "2021-12-31",
+          "pool_count": 134,
+          "pool_codes_sha256": "fb5e575d0b853f2542e2cde5901e42f31e8b8f2949de8759f6a6d75562a621c6",
+          "execution_date": "2022-01-04"
+        },
+        {
+          "signal_date": "2022-01-28",
+          "pool_count": 134,
+          "pool_codes_sha256": "fb5e575d0b853f2542e2cde5901e42f31e8b8f2949de8759f6a6d75562a621c6",
+          "execution_date": "2022-02-07"
+        },
+        {
+          "signal_date": "2022-02-28",
+          "pool_count": 134,
+          "pool_codes_sha256": "fb5e575d0b853f2542e2cde5901e42f31e8b8f2949de8759f6a6d75562a621c6",
+          "execution_date": "2022-03-01"
+        },
+        {
+          "signal_date": "2022-03-31",
+          "pool_count": 134,
+          "pool_codes_sha256": "fb5e575d0b853f2542e2cde5901e42f31e8b8f2949de8759f6a6d75562a621c6",
+          "execution_date": "2022-04-01"
+        },
+        {
+          "signal_date": "2022-04-29",
+          "pool_count": 135,
+          "pool_codes_sha256": "7720c7c3d78cad974f86d2fce52d162c10e2951a1b53c7ed2dda681239ac6d74",
+          "execution_date": "2022-05-05"
+        },
+        {
+          "signal_date": "2022-05-31",
+          "pool_count": 139,
+          "pool_codes_sha256": "99957a51c6e1bf9d4b9649ae0fc1cd7d1d5cc1a2a4b5099c603d45fca7d137a1",
+          "execution_date": "2022-06-01"
+        },
+        {
+          "signal_date": "2022-06-30",
+          "pool_count": 143,
+          "pool_codes_sha256": "cf29d62913898fdcfb84b0d1e5211ed6c0789b0fd085131b1c223f23645593d2",
+          "execution_date": "2022-07-01"
+        },
+        {
+          "signal_date": "2022-07-29",
+          "pool_count": 145,
+          "pool_codes_sha256": "dd3d06768c1f581e96d42557296b621145c1eb2046c5a784613297a812b1b13f",
+          "execution_date": "2022-08-01"
+        },
+        {
+          "signal_date": "2022-08-31",
+          "pool_count": 145,
+          "pool_codes_sha256": "dd3d06768c1f581e96d42557296b621145c1eb2046c5a784613297a812b1b13f",
+          "execution_date": "2022-09-01"
+        },
+        {
+          "signal_date": "2022-09-30",
+          "pool_count": 143,
+          "pool_codes_sha256": "e32420948ee75b97ab69e79dc487f6aa9d28cc9c3bf4d9808a8946e84a8cf5a2",
+          "execution_date": "2022-10-10"
+        },
+        {
+          "signal_date": "2022-10-31",
+          "pool_count": 143,
+          "pool_codes_sha256": "e32420948ee75b97ab69e79dc487f6aa9d28cc9c3bf4d9808a8946e84a8cf5a2",
+          "execution_date": "2022-11-01"
+        },
+        {
+          "signal_date": "2022-11-30",
+          "pool_count": 143,
+          "pool_codes_sha256": "e32420948ee75b97ab69e79dc487f6aa9d28cc9c3bf4d9808a8946e84a8cf5a2",
+          "execution_date": "2022-12-01"
+        },
+        {
+          "signal_date": "2022-12-30",
+          "pool_count": 143,
+          "pool_codes_sha256": "e32420948ee75b97ab69e79dc487f6aa9d28cc9c3bf4d9808a8946e84a8cf5a2",
+          "execution_date": "2023-01-03"
+        },
+        {
+          "signal_date": "2023-01-31",
+          "pool_count": 143,
+          "pool_codes_sha256": "e32420948ee75b97ab69e79dc487f6aa9d28cc9c3bf4d9808a8946e84a8cf5a2",
+          "execution_date": "2023-02-01"
+        },
+        {
+          "signal_date": "2023-02-28",
+          "pool_count": 143,
+          "pool_codes_sha256": "e32420948ee75b97ab69e79dc487f6aa9d28cc9c3bf4d9808a8946e84a8cf5a2",
+          "execution_date": "2023-03-01"
+        },
+        {
+          "signal_date": "2023-03-31",
+          "pool_count": 143,
+          "pool_codes_sha256": "e32420948ee75b97ab69e79dc487f6aa9d28cc9c3bf4d9808a8946e84a8cf5a2",
+          "execution_date": "2023-04-03"
+        },
+        {
+          "signal_date": "2023-04-28",
+          "pool_count": 144,
+          "pool_codes_sha256": "4b628de4e7e3236e3dc0b2767c596a055b6e00fae9e7b15a652ac0de666bfa2b",
+          "execution_date": "2023-05-04"
+        },
+        {
+          "signal_date": "2023-05-31",
+          "pool_count": 150,
+          "pool_codes_sha256": "27dbdea73543aab505ea02ec5e21ad9b12af5c7beeb16905a0320735a83e1814",
+          "execution_date": "2023-06-01"
+        },
+        {
+          "signal_date": "2023-06-30",
+          "pool_count": 155,
+          "pool_codes_sha256": "d8f0bc68f79856c025d633bb8f5858d15507fe889c23de0ff5f5734688321cd9",
+          "execution_date": "2023-07-03"
+        },
+        {
+          "signal_date": "2023-07-31",
+          "pool_count": 157,
+          "pool_codes_sha256": "760f2796adeeff3835b54cddfc9890307e6db32292242b60a2e3c3ac30a7b9c5",
+          "execution_date": "2023-08-01"
+        },
+        {
+          "signal_date": "2023-08-31",
+          "pool_count": 157,
+          "pool_codes_sha256": "760f2796adeeff3835b54cddfc9890307e6db32292242b60a2e3c3ac30a7b9c5",
+          "execution_date": "2023-09-01"
+        },
+        {
+          "signal_date": "2023-09-28",
+          "pool_count": 159,
+          "pool_codes_sha256": "86472d226ddda3fb36f2b61f153ca8f5847455590e897c7e1b25609f826e57c6",
+          "execution_date": "2023-10-09"
+        },
+        {
+          "signal_date": "2023-10-31",
+          "pool_count": 160,
+          "pool_codes_sha256": "a7ec43235d29de8b5e9395d39d6493da01d13fdec2f02a0b8ebf2ad8558fb805",
+          "execution_date": "2023-11-01"
+        },
+        {
+          "signal_date": "2023-11-30",
+          "pool_count": 161,
+          "pool_codes_sha256": "f5238caf47cf3bf255c00667469b1c81e7c493731403953d4172f4245de1155a",
+          "execution_date": "2023-12-01"
+        },
+        {
+          "signal_date": "2023-12-29",
+          "pool_count": 162,
+          "pool_codes_sha256": "5c3fb61c41a1d3db2781edd511f1276b91fb7b07ace40f9559d9171be1d5f691",
+          "execution_date": "2024-01-02"
+        },
+        {
+          "signal_date": "2024-01-31",
+          "pool_count": 162,
+          "pool_codes_sha256": "5c3fb61c41a1d3db2781edd511f1276b91fb7b07ace40f9559d9171be1d5f691",
+          "execution_date": "2024-02-01"
+        },
+        {
+          "signal_date": "2024-02-29",
+          "pool_count": 162,
+          "pool_codes_sha256": "5c3fb61c41a1d3db2781edd511f1276b91fb7b07ace40f9559d9171be1d5f691",
+          "execution_date": "2024-03-01"
+        },
+        {
+          "signal_date": "2024-03-29",
+          "pool_count": 162,
+          "pool_codes_sha256": "5c3fb61c41a1d3db2781edd511f1276b91fb7b07ace40f9559d9171be1d5f691",
+          "execution_date": "2024-04-01"
+        },
+        {
+          "signal_date": "2024-04-30",
+          "pool_count": 163,
+          "pool_codes_sha256": "328113a36e0a0cc35fd7e8fe7edb49d4a814b76b4b46dc2abce5884f972de9a0",
+          "execution_date": "2024-05-06"
+        },
+        {
+          "signal_date": "2024-05-31",
+          "pool_count": 169,
+          "pool_codes_sha256": "2dbcf417dfe2fd68f623ca3660a794182736ffdb3ac8676a231014a51bad2c2b",
+          "execution_date": "2024-06-03"
+        },
+        {
+          "signal_date": "2024-06-28",
+          "pool_count": 176,
+          "pool_codes_sha256": "d389b0fc35b17b05483a42e3580997443fa618dbfbf0bbaa12984b99d36620cf",
+          "execution_date": "2024-07-01"
+        },
+        {
+          "signal_date": "2024-07-31",
+          "pool_count": 175,
+          "pool_codes_sha256": "7773cfe5199ae46472c8f679867cbedb08a9d5971728d8fb620f3202a9a2704c",
+          "execution_date": "2024-08-01"
+        },
+        {
+          "signal_date": "2024-08-30",
+          "pool_count": 174,
+          "pool_codes_sha256": "e77a192584cd4b5f20ddfe3b2b56e2dd365dd353e5f24fd32650cfe12dbba2d9",
+          "execution_date": "2024-09-02"
+        },
+        {
+          "signal_date": "2024-09-30",
+          "pool_count": 176,
+          "pool_codes_sha256": "2be5f47a69972b1a0d863a0b383ee588127cdeb389f67a48d05e578e86ea9e0f",
+          "execution_date": "2024-10-08"
+        },
+        {
+          "signal_date": "2024-10-31",
+          "pool_count": 176,
+          "pool_codes_sha256": "ffa8c4ed4b92a4ba767c3afd94165676ec246e89ac45e66fdc52c62e9a1cf369",
+          "execution_date": "2024-11-01"
+        },
+        {
+          "signal_date": "2024-11-29",
+          "pool_count": 175,
+          "pool_codes_sha256": "20bda4ab1bddd52a3f8317a717f821391b3cb4a5cc79e51401f57d64f7cbb684",
+          "execution_date": "2024-12-02"
+        },
+        {
+          "signal_date": "2024-12-31",
+          "pool_count": 174,
+          "pool_codes_sha256": "c2e2928d0f55d2597a74ac30759d2dc933826cdd2c1f5dfd65ed6adc8cb8d5b1",
+          "execution_date": "2025-01-02"
+        },
+        {
+          "signal_date": "2025-01-27",
+          "pool_count": 174,
+          "pool_codes_sha256": "c2e2928d0f55d2597a74ac30759d2dc933826cdd2c1f5dfd65ed6adc8cb8d5b1",
+          "execution_date": "2025-02-05"
+        },
+        {
+          "signal_date": "2025-02-28",
+          "pool_count": 174,
+          "pool_codes_sha256": "c2e2928d0f55d2597a74ac30759d2dc933826cdd2c1f5dfd65ed6adc8cb8d5b1",
+          "execution_date": "2025-03-03"
+        },
+        {
+          "signal_date": "2025-03-31",
+          "pool_count": 174,
+          "pool_codes_sha256": "c2e2928d0f55d2597a74ac30759d2dc933826cdd2c1f5dfd65ed6adc8cb8d5b1",
+          "execution_date": "2025-04-01"
+        },
+        {
+          "signal_date": "2025-04-30",
+          "pool_count": 174,
+          "pool_codes_sha256": "f7affea945a7b4db3a5217876c2dc3977b03244e23e67ecb98a80de65e68c44d",
+          "execution_date": "2025-05-06"
+        },
+        {
+          "signal_date": "2025-05-30",
+          "pool_count": 177,
+          "pool_codes_sha256": "bd498568c4f51637b174aff759449f0db021e84aefc4d64f7ec7e815f599ea8e",
+          "execution_date": "2025-06-03"
+        },
+        {
+          "signal_date": "2025-06-30",
+          "pool_count": 182,
+          "pool_codes_sha256": "c05120698d5353c1fbc214e62ee3a56730836036a6c27d4b902354d2a039a81a",
+          "execution_date": "2025-07-01"
+        },
+        {
+          "signal_date": "2025-07-31",
+          "pool_count": 181,
+          "pool_codes_sha256": "65958f4f023f2ae87c8b79af366228421e4e0561a3bb447fe36549c8e10d8b18",
+          "execution_date": "2025-08-01"
+        },
+        {
+          "signal_date": "2025-08-29",
+          "pool_count": 181,
+          "pool_codes_sha256": "65958f4f023f2ae87c8b79af366228421e4e0561a3bb447fe36549c8e10d8b18",
+          "execution_date": "2025-09-01"
+        },
+        {
+          "signal_date": "2025-09-30",
+          "pool_count": 182,
+          "pool_codes_sha256": "6a0938d2e42ea4948f853ca64b85b8db00047f40514bf4994a7eab76265179cf",
+          "execution_date": "2025-10-09"
+        },
+        {
+          "signal_date": "2025-10-31",
+          "pool_count": 184,
+          "pool_codes_sha256": "600e9565a981cd78c5c3b4849a39ca4ff92ccded3dd99b3b044692e6b4b1af09",
+          "execution_date": "2025-11-03"
+        },
+        {
+          "signal_date": "2025-11-28",
+          "pool_count": 184,
+          "pool_codes_sha256": "600e9565a981cd78c5c3b4849a39ca4ff92ccded3dd99b3b044692e6b4b1af09",
+          "execution_date": "2025-12-01"
+        },
+        {
+          "signal_date": "2025-12-31",
+          "pool_count": 184,
+          "pool_codes_sha256": "600e9565a981cd78c5c3b4849a39ca4ff92ccded3dd99b3b044692e6b4b1af09",
+          "execution_date": "2026-01-05"
+        },
+        {
+          "signal_date": "2026-01-30",
+          "pool_count": 184,
+          "pool_codes_sha256": "600e9565a981cd78c5c3b4849a39ca4ff92ccded3dd99b3b044692e6b4b1af09",
+          "execution_date": "2026-02-02"
+        },
+        {
+          "signal_date": "2026-02-27",
+          "pool_count": 184,
+          "pool_codes_sha256": "600e9565a981cd78c5c3b4849a39ca4ff92ccded3dd99b3b044692e6b4b1af09",
+          "execution_date": "2026-03-02"
+        },
+        {
+          "signal_date": "2026-03-31",
+          "pool_count": 184,
+          "pool_codes_sha256": "600e9565a981cd78c5c3b4849a39ca4ff92ccded3dd99b3b044692e6b4b1af09",
+          "execution_date": "2026-04-01"
+        },
+        {
+          "signal_date": "2026-04-30",
+          "pool_count": 184,
+          "pool_codes_sha256": "600e9565a981cd78c5c3b4849a39ca4ff92ccded3dd99b3b044692e6b4b1af09",
+          "execution_date": "2026-05-06"
+        },
+        {
+          "signal_date": "2026-05-29",
+          "pool_count": 184,
+          "pool_codes_sha256": "3ee8a1582aa1608024629849ab729defbd9a071c83d81b15d9f9339d105e1dd2",
+          "execution_date": "2026-06-01"
+        },
+        {
+          "signal_date": "2026-06-30",
+          "pool_count": 183,
+          "pool_codes_sha256": "468ae041a43ab9f9c799a17cea25860016b94a9303867539d6349f48b6719ca0",
+          "execution_date": "2026-07-01"
+        },
+        {
+          "signal_date": "2026-07-31",
+          "pool_count": 184,
+          "pool_codes_sha256": "0c4e6977de1c2095a79e597f37a519314eb02a5af72435453547f88ec7bf45ce",
+          "execution_date": "2026-08-03"
+        },
+        {
+          "signal_date": "2026-08-25",
+          "pool_count": 184,
+          "pool_codes_sha256": "0c4e6977de1c2095a79e597f37a519314eb02a5af72435453547f88ec7bf45ce",
+          "execution_date": null
+        }
+      ]
+    },
+    {
+      "name": "latest_known_buffer1y",
+      "delay_years": 1,
+      "fee_multiple": 1,
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1,
+        "pool_min_consecutive_years": 3,
+        "momentum_months": 4,
+        "momentum_threshold": 0.85,
+        "reinvest_cash_reserve": 0,
+        "rank_by": "yield",
+        "momentum_periods": "",
+        "max_yield": 999.0
+      },
+      "full": {
+        "cagr": 28.99,
+        "max_drawdown": 38.51,
+        "volatility": 32.63,
+        "sharpe": 0.88,
+        "ending_nav": 1470990.36,
+        "total_return": 1370.99,
+        "observations": 128,
+        "trade_count": 50,
+        "buy_count": 37,
+        "sell_count": 13,
+        "dividend_event_count": 14,
+        "split_event_count": 0,
+        "ending_cash": 26.36
+      },
+      "rolling36": {
+        "count": 93,
+        "min_cagr": -1.72,
+        "median_cagr": 27.01,
+        "max_drawdown_worst": 38.51,
+        "worst_window": {
+          "start": "2023-08-01",
+          "end": "2026-07-01",
+          "cagr": -1.72,
+          "max_drawdown": 38.51,
+          "volatility": 30.16,
+          "sharpe": 0.028,
+          "ending_nav": 1374338.36,
+          "total_return": -4.92
+        }
+      },
+      "rolling48": {
+        "count": 81,
+        "min_cagr": 0.97,
+        "median_cagr": 38.1,
+        "max_drawdown_worst": 38.51,
+        "worst_window": {
+          "start": "2022-08-01",
+          "end": "2026-07-01",
+          "cagr": 0.97,
+          "max_drawdown": 38.51,
+          "volatility": 28.61,
+          "sharpe": 0.109,
+          "ending_nav": 1374338.36,
+          "total_return": 3.86
+        }
+      },
+      "oos": {
+        "2021": {
+          "observations": 69,
+          "cagr": 28.62,
+          "max_drawdown": 38.51,
+          "volatility": 30.89,
+          "sharpe": 0.91,
+          "ending_nav": 1470990.36,
+          "total_return": 313.23
+        },
+        "2023": {
+          "observations": 45,
+          "cagr": 5.12,
+          "max_drawdown": 38.51,
+          "volatility": 28.09,
+          "sharpe": 0.249,
+          "ending_nav": 1470990.36,
+          "total_return": 19.94
+        },
+        "2025": {
+          "observations": 21,
+          "cagr": -3.85,
+          "max_drawdown": 38.51,
+          "volatility": 36.89,
+          "sharpe": 0.02,
+          "ending_nav": 1470990.36,
+          "total_return": -6.24
+        }
+      },
+      "pool_provenance": [
+        {
+          "signal_date": "2016-01-29",
+          "pool_count": 76,
+          "pool_codes_sha256": "5a74f2d6a3b0a0d42db58de5663ba8ad49cd1caa8d8ee39f7dc16cc2af14f145",
+          "execution_date": "2016-02-01"
+        },
+        {
+          "signal_date": "2016-02-29",
+          "pool_count": 76,
+          "pool_codes_sha256": "5a74f2d6a3b0a0d42db58de5663ba8ad49cd1caa8d8ee39f7dc16cc2af14f145",
+          "execution_date": "2016-03-01"
+        },
+        {
+          "signal_date": "2016-03-31",
+          "pool_count": 76,
+          "pool_codes_sha256": "5a74f2d6a3b0a0d42db58de5663ba8ad49cd1caa8d8ee39f7dc16cc2af14f145",
+          "execution_date": "2016-04-01"
+        },
+        {
+          "signal_date": "2016-04-29",
+          "pool_count": 77,
+          "pool_codes_sha256": "132ac801bbaed1eecf74052e16f33443547fb72cb8bd1fce797b38fd5b93743c",
+          "execution_date": "2016-05-03"
+        },
+        {
+          "signal_date": "2016-05-31",
+          "pool_count": 77,
+          "pool_codes_sha256": "132ac801bbaed1eecf74052e16f33443547fb72cb8bd1fce797b38fd5b93743c",
+          "execution_date": "2016-06-01"
+        },
+        {
+          "signal_date": "2016-06-30",
+          "pool_count": 78,
+          "pool_codes_sha256": "599ea47586d85775b5035cde3bd82631127be6ac56edd8259977d97cfc4251a6",
+          "execution_date": "2016-07-01"
+        },
+        {
+          "signal_date": "2016-07-29",
+          "pool_count": 79,
+          "pool_codes_sha256": "89fedf5f66cd0d1a5f522cbcb3d70c833bcd06fff12ecafadba3c058f2e084e6",
+          "execution_date": "2016-08-01"
+        },
+        {
+          "signal_date": "2016-08-31",
+          "pool_count": 79,
+          "pool_codes_sha256": "89fedf5f66cd0d1a5f522cbcb3d70c833bcd06fff12ecafadba3c058f2e084e6",
+          "execution_date": "2016-09-01"
+        },
+        {
+          "signal_date": "2016-09-30",
+          "pool_count": 77,
+          "pool_codes_sha256": "2661baea6caf8b8cea76d4c0d2337ee39b11a915e8db8d8a0221d3552f4510eb",
+          "execution_date": "2016-10-10"
+        },
+        {
+          "signal_date": "2016-10-31",
+          "pool_count": 77,
+          "pool_codes_sha256": "2661baea6caf8b8cea76d4c0d2337ee39b11a915e8db8d8a0221d3552f4510eb",
+          "execution_date": "2016-11-01"
+        },
+        {
+          "signal_date": "2016-11-30",
+          "pool_count": 77,
+          "pool_codes_sha256": "2661baea6caf8b8cea76d4c0d2337ee39b11a915e8db8d8a0221d3552f4510eb",
+          "execution_date": "2016-12-01"
+        },
+        {
+          "signal_date": "2016-12-30",
+          "pool_count": 77,
+          "pool_codes_sha256": "2661baea6caf8b8cea76d4c0d2337ee39b11a915e8db8d8a0221d3552f4510eb",
+          "execution_date": "2017-01-03"
+        },
+        {
+          "signal_date": "2017-01-26",
+          "pool_count": 77,
+          "pool_codes_sha256": "2661baea6caf8b8cea76d4c0d2337ee39b11a915e8db8d8a0221d3552f4510eb",
+          "execution_date": "2017-02-03"
+        },
+        {
+          "signal_date": "2017-02-28",
+          "pool_count": 77,
+          "pool_codes_sha256": "2661baea6caf8b8cea76d4c0d2337ee39b11a915e8db8d8a0221d3552f4510eb",
+          "execution_date": "2017-03-01"
+        },
+        {
+          "signal_date": "2017-03-31",
+          "pool_count": 77,
+          "pool_codes_sha256": "2661baea6caf8b8cea76d4c0d2337ee39b11a915e8db8d8a0221d3552f4510eb",
+          "execution_date": "2017-04-05"
+        },
+        {
+          "signal_date": "2017-04-28",
+          "pool_count": 77,
+          "pool_codes_sha256": "2661baea6caf8b8cea76d4c0d2337ee39b11a915e8db8d8a0221d3552f4510eb",
+          "execution_date": "2017-05-02"
+        },
+        {
+          "signal_date": "2017-05-31",
+          "pool_count": 79,
+          "pool_codes_sha256": "14d5d37b18aa0740e630938b407fd782f643cd99049041299ca6ed42595019da",
+          "execution_date": "2017-06-01"
+        },
+        {
+          "signal_date": "2017-06-30",
+          "pool_count": 79,
+          "pool_codes_sha256": "14d5d37b18aa0740e630938b407fd782f643cd99049041299ca6ed42595019da",
+          "execution_date": "2017-07-03"
+        },
+        {
+          "signal_date": "2017-07-31",
+          "pool_count": 80,
+          "pool_codes_sha256": "52e1f655b297916d31151ba69f32df550592bb28d511bd2701056df5fb64398f",
+          "execution_date": "2017-08-01"
+        },
+        {
+          "signal_date": "2017-08-31",
+          "pool_count": 81,
+          "pool_codes_sha256": "8e245fb7238fc2ded3560fe6dabc26c711daa0e8ef6559e257c27451de79a5fc",
+          "execution_date": "2017-09-01"
+        },
+        {
+          "signal_date": "2017-09-29",
+          "pool_count": 81,
+          "pool_codes_sha256": "8e245fb7238fc2ded3560fe6dabc26c711daa0e8ef6559e257c27451de79a5fc",
+          "execution_date": "2017-10-09"
+        },
+        {
+          "signal_date": "2017-10-31",
+          "pool_count": 81,
+          "pool_codes_sha256": "8e245fb7238fc2ded3560fe6dabc26c711daa0e8ef6559e257c27451de79a5fc",
+          "execution_date": "2017-11-01"
+        },
+        {
+          "signal_date": "2017-11-30",
+          "pool_count": 81,
+          "pool_codes_sha256": "8e245fb7238fc2ded3560fe6dabc26c711daa0e8ef6559e257c27451de79a5fc",
+          "execution_date": "2017-12-01"
+        },
+        {
+          "signal_date": "2017-12-29",
+          "pool_count": 81,
+          "pool_codes_sha256": "8e245fb7238fc2ded3560fe6dabc26c711daa0e8ef6559e257c27451de79a5fc",
+          "execution_date": "2018-01-02"
+        },
+        {
+          "signal_date": "2018-01-31",
+          "pool_count": 81,
+          "pool_codes_sha256": "8e245fb7238fc2ded3560fe6dabc26c711daa0e8ef6559e257c27451de79a5fc",
+          "execution_date": "2018-02-01"
+        },
+        {
+          "signal_date": "2018-02-28",
+          "pool_count": 81,
+          "pool_codes_sha256": "8e245fb7238fc2ded3560fe6dabc26c711daa0e8ef6559e257c27451de79a5fc",
+          "execution_date": "2018-03-01"
+        },
+        {
+          "signal_date": "2018-03-30",
+          "pool_count": 81,
+          "pool_codes_sha256": "8e245fb7238fc2ded3560fe6dabc26c711daa0e8ef6559e257c27451de79a5fc",
+          "execution_date": "2018-04-02"
+        },
+        {
+          "signal_date": "2018-04-27",
+          "pool_count": 81,
+          "pool_codes_sha256": "8e245fb7238fc2ded3560fe6dabc26c711daa0e8ef6559e257c27451de79a5fc",
+          "execution_date": "2018-05-02"
+        },
+        {
+          "signal_date": "2018-05-31",
+          "pool_count": 83,
+          "pool_codes_sha256": "1dc872d6a353774850207c09df536cb5a3e826742dfd125e76d149b2c0432d44",
+          "execution_date": "2018-06-01"
+        },
+        {
+          "signal_date": "2018-06-29",
+          "pool_count": 84,
+          "pool_codes_sha256": "e8d751dd9d389a4f382fce1c2db2ea8edfca0a93301bdf7674e45c4b617c9acd",
+          "execution_date": "2018-07-02"
+        },
+        {
+          "signal_date": "2018-07-31",
+          "pool_count": 84,
+          "pool_codes_sha256": "e8d751dd9d389a4f382fce1c2db2ea8edfca0a93301bdf7674e45c4b617c9acd",
+          "execution_date": "2018-08-01"
+        },
+        {
+          "signal_date": "2018-08-31",
+          "pool_count": 85,
+          "pool_codes_sha256": "79dde3a1f57ec1e11db8698bbdc15dd6cd3e1928c67c9fea0ec928776018fba1",
+          "execution_date": "2018-09-03"
+        },
+        {
+          "signal_date": "2018-09-28",
+          "pool_count": 85,
+          "pool_codes_sha256": "79dde3a1f57ec1e11db8698bbdc15dd6cd3e1928c67c9fea0ec928776018fba1",
+          "execution_date": "2018-10-08"
+        },
+        {
+          "signal_date": "2018-10-31",
+          "pool_count": 85,
+          "pool_codes_sha256": "79dde3a1f57ec1e11db8698bbdc15dd6cd3e1928c67c9fea0ec928776018fba1",
+          "execution_date": "2018-11-01"
+        },
+        {
+          "signal_date": "2018-11-30",
+          "pool_count": 85,
+          "pool_codes_sha256": "79dde3a1f57ec1e11db8698bbdc15dd6cd3e1928c67c9fea0ec928776018fba1",
+          "execution_date": "2018-12-03"
+        },
+        {
+          "signal_date": "2018-12-28",
+          "pool_count": 85,
+          "pool_codes_sha256": "79dde3a1f57ec1e11db8698bbdc15dd6cd3e1928c67c9fea0ec928776018fba1",
+          "execution_date": "2019-01-02"
+        },
+        {
+          "signal_date": "2019-01-31",
+          "pool_count": 85,
+          "pool_codes_sha256": "79dde3a1f57ec1e11db8698bbdc15dd6cd3e1928c67c9fea0ec928776018fba1",
+          "execution_date": "2019-02-01"
+        },
+        {
+          "signal_date": "2019-02-28",
+          "pool_count": 84,
+          "pool_codes_sha256": "9b2539970eca128ed473d3440e5fb22bf0fa9ae0f84fc8762c922b2e74303287",
+          "execution_date": "2019-03-01"
+        },
+        {
+          "signal_date": "2019-03-29",
+          "pool_count": 84,
+          "pool_codes_sha256": "9b2539970eca128ed473d3440e5fb22bf0fa9ae0f84fc8762c922b2e74303287",
+          "execution_date": "2019-04-01"
+        },
+        {
+          "signal_date": "2019-04-30",
+          "pool_count": 84,
+          "pool_codes_sha256": "9b2539970eca128ed473d3440e5fb22bf0fa9ae0f84fc8762c922b2e74303287",
+          "execution_date": "2019-05-06"
+        },
+        {
+          "signal_date": "2019-05-31",
+          "pool_count": 86,
+          "pool_codes_sha256": "c22899d6ce225abe7ff11cb7d8af8cbfa8eca1e813287c6e54c7f6898eaffb02",
+          "execution_date": "2019-06-03"
+        },
+        {
+          "signal_date": "2019-06-28",
+          "pool_count": 87,
+          "pool_codes_sha256": "bbed3b81eca3e6cc13710b9bf62aac98b1a19f23d523ea0ed3d5e50eba1ec085",
+          "execution_date": "2019-07-01"
+        },
+        {
+          "signal_date": "2019-07-31",
+          "pool_count": 90,
+          "pool_codes_sha256": "5e975f318beb311be9af9985b15eb36c94142d7e7b9c971367f45107d4a4b5b7",
+          "execution_date": "2019-08-01"
+        },
+        {
+          "signal_date": "2019-08-30",
+          "pool_count": 91,
+          "pool_codes_sha256": "e911eb286f18fc7746420f98929ee7ed93b9655f9b8094411257f231022844a5",
+          "execution_date": "2019-09-02"
+        },
+        {
+          "signal_date": "2019-09-30",
+          "pool_count": 91,
+          "pool_codes_sha256": "e911eb286f18fc7746420f98929ee7ed93b9655f9b8094411257f231022844a5",
+          "execution_date": "2019-10-08"
+        },
+        {
+          "signal_date": "2019-10-31",
+          "pool_count": 91,
+          "pool_codes_sha256": "e911eb286f18fc7746420f98929ee7ed93b9655f9b8094411257f231022844a5",
+          "execution_date": "2019-11-01"
+        },
+        {
+          "signal_date": "2019-11-29",
+          "pool_count": 91,
+          "pool_codes_sha256": "e911eb286f18fc7746420f98929ee7ed93b9655f9b8094411257f231022844a5",
+          "execution_date": "2019-12-02"
+        },
+        {
+          "signal_date": "2019-12-31",
+          "pool_count": 91,
+          "pool_codes_sha256": "e911eb286f18fc7746420f98929ee7ed93b9655f9b8094411257f231022844a5",
+          "execution_date": "2020-01-02"
+        },
+        {
+          "signal_date": "2020-01-23",
+          "pool_count": 91,
+          "pool_codes_sha256": "e911eb286f18fc7746420f98929ee7ed93b9655f9b8094411257f231022844a5",
+          "execution_date": "2020-02-03"
+        },
+        {
+          "signal_date": "2020-02-28",
+          "pool_count": 91,
+          "pool_codes_sha256": "e911eb286f18fc7746420f98929ee7ed93b9655f9b8094411257f231022844a5",
+          "execution_date": "2020-03-02"
+        },
+        {
+          "signal_date": "2020-03-31",
+          "pool_count": 91,
+          "pool_codes_sha256": "e911eb286f18fc7746420f98929ee7ed93b9655f9b8094411257f231022844a5",
+          "execution_date": "2020-04-01"
+        },
+        {
+          "signal_date": "2020-04-30",
+          "pool_count": 92,
+          "pool_codes_sha256": "1b1eb515359b8630984d1e3ad86db116ec1926d9fbb7905af7fd95e8e3b11305",
+          "execution_date": "2020-05-06"
+        },
+        {
+          "signal_date": "2020-05-29",
+          "pool_count": 97,
+          "pool_codes_sha256": "6b898e3d8cb74e1071b24959689151f32d955d8fc884a79895dfd7b99c449904",
+          "execution_date": "2020-06-01"
+        },
+        {
+          "signal_date": "2020-06-30",
+          "pool_count": 110,
+          "pool_codes_sha256": "a7ab89fca13550a8fd5e113d9c5e69bc3cb3bf2356194aa916654d2783a29f35",
+          "execution_date": "2020-07-01"
+        },
+        {
+          "signal_date": "2020-07-31",
+          "pool_count": 110,
+          "pool_codes_sha256": "31879ab1d7a490ee6db460ade8be5bff0f02bcc0a2e31c9d55b5ffcf4fad28a1",
+          "execution_date": "2020-08-03"
+        },
+        {
+          "signal_date": "2020-08-31",
+          "pool_count": 111,
+          "pool_codes_sha256": "f0af6bc8b1a1491d6ab2a97a06402dce8e06570ebaccb1b2a08461ff37d53810",
+          "execution_date": "2020-09-01"
+        },
+        {
+          "signal_date": "2020-09-30",
+          "pool_count": 112,
+          "pool_codes_sha256": "b5c7f0a8e74aecfd0c4115c0e3b6c5f5cb3ab25ec5d5ac90b3da691370f07137",
+          "execution_date": "2020-10-09"
+        },
+        {
+          "signal_date": "2020-10-30",
+          "pool_count": 113,
+          "pool_codes_sha256": "76be1161645a6eb1ca782f96bd05a7276d430ee027f3043694f09c9c116e3d96",
+          "execution_date": "2020-11-02"
+        },
+        {
+          "signal_date": "2020-11-30",
+          "pool_count": 112,
+          "pool_codes_sha256": "ad9c209847a814035500e042904aaf5936d2cc79b30180d0b775f48739ce84d9",
+          "execution_date": "2020-12-01"
+        },
+        {
+          "signal_date": "2020-12-31",
+          "pool_count": 112,
+          "pool_codes_sha256": "ad9c209847a814035500e042904aaf5936d2cc79b30180d0b775f48739ce84d9",
+          "execution_date": "2021-01-04"
+        },
+        {
+          "signal_date": "2021-01-29",
+          "pool_count": 112,
+          "pool_codes_sha256": "ad9c209847a814035500e042904aaf5936d2cc79b30180d0b775f48739ce84d9",
+          "execution_date": "2021-02-01"
+        },
+        {
+          "signal_date": "2021-02-26",
+          "pool_count": 112,
+          "pool_codes_sha256": "ad9c209847a814035500e042904aaf5936d2cc79b30180d0b775f48739ce84d9",
+          "execution_date": "2021-03-01"
+        },
+        {
+          "signal_date": "2021-03-31",
+          "pool_count": 112,
+          "pool_codes_sha256": "ad9c209847a814035500e042904aaf5936d2cc79b30180d0b775f48739ce84d9",
+          "execution_date": "2021-04-01"
+        },
+        {
+          "signal_date": "2021-04-30",
+          "pool_count": 114,
+          "pool_codes_sha256": "3644b9e1261219d4280b37d1ebafc11c6f562e2ea339c6556acf5f3079405fe0",
+          "execution_date": "2021-05-06"
+        },
+        {
+          "signal_date": "2021-05-31",
+          "pool_count": 117,
+          "pool_codes_sha256": "83e115b4b93a9dbeaa04324d4a739189e2c33ba09f84c7d13f3494b9de852d49",
+          "execution_date": "2021-06-01"
+        },
+        {
+          "signal_date": "2021-06-30",
+          "pool_count": 123,
+          "pool_codes_sha256": "d4949acc33db3f35249400b3790ff74f4e67429587e1466f65fa3f9a48220af2",
+          "execution_date": "2021-07-01"
+        },
+        {
+          "signal_date": "2021-07-30",
+          "pool_count": 124,
+          "pool_codes_sha256": "36675cc90297fc8f6c1a73fdd2774cb7e9a516b0b7c15acbe04d22b16daf99b3",
+          "execution_date": "2021-08-02"
+        },
+        {
+          "signal_date": "2021-08-31",
+          "pool_count": 124,
+          "pool_codes_sha256": "36675cc90297fc8f6c1a73fdd2774cb7e9a516b0b7c15acbe04d22b16daf99b3",
+          "execution_date": "2021-09-01"
+        },
+        {
+          "signal_date": "2021-09-30",
+          "pool_count": 125,
+          "pool_codes_sha256": "ee0048600a715eb903afe5e5f322b6c43df943224c0b316e4156753870e93c8a",
+          "execution_date": "2021-10-08"
+        },
+        {
+          "signal_date": "2021-10-29",
+          "pool_count": 125,
+          "pool_codes_sha256": "ee0048600a715eb903afe5e5f322b6c43df943224c0b316e4156753870e93c8a",
+          "execution_date": "2021-11-01"
+        },
+        {
+          "signal_date": "2021-11-30",
+          "pool_count": 125,
+          "pool_codes_sha256": "ee0048600a715eb903afe5e5f322b6c43df943224c0b316e4156753870e93c8a",
+          "execution_date": "2021-12-01"
+        },
+        {
+          "signal_date": "2021-12-31",
+          "pool_count": 125,
+          "pool_codes_sha256": "ee0048600a715eb903afe5e5f322b6c43df943224c0b316e4156753870e93c8a",
+          "execution_date": "2022-01-04"
+        },
+        {
+          "signal_date": "2022-01-28",
+          "pool_count": 125,
+          "pool_codes_sha256": "ee0048600a715eb903afe5e5f322b6c43df943224c0b316e4156753870e93c8a",
+          "execution_date": "2022-02-07"
+        },
+        {
+          "signal_date": "2022-02-28",
+          "pool_count": 125,
+          "pool_codes_sha256": "ee0048600a715eb903afe5e5f322b6c43df943224c0b316e4156753870e93c8a",
+          "execution_date": "2022-03-01"
+        },
+        {
+          "signal_date": "2022-03-31",
+          "pool_count": 125,
+          "pool_codes_sha256": "ee0048600a715eb903afe5e5f322b6c43df943224c0b316e4156753870e93c8a",
+          "execution_date": "2022-04-01"
+        },
+        {
+          "signal_date": "2022-04-29",
+          "pool_count": 126,
+          "pool_codes_sha256": "d2720710cb7fdd7d98f4dfdb6124a96aa184cb7a2485f86593fd3a512b8c20c7",
+          "execution_date": "2022-05-05"
+        },
+        {
+          "signal_date": "2022-05-31",
+          "pool_count": 126,
+          "pool_codes_sha256": "79665829ee4cee1d29e183aa2d288df4ef57b4a764248385ae1648134e608ba2",
+          "execution_date": "2022-06-01"
+        },
+        {
+          "signal_date": "2022-06-30",
+          "pool_count": 127,
+          "pool_codes_sha256": "ee563d9037f061747eba1781252aaa66c7209b4041c1e5f2dae64f220eab0df4",
+          "execution_date": "2022-07-01"
+        },
+        {
+          "signal_date": "2022-07-29",
+          "pool_count": 128,
+          "pool_codes_sha256": "2b13fd1e9ef0df32709f74be6c7b5b0ce06afd9125b50f08688f2b00bddc26fa",
+          "execution_date": "2022-08-01"
+        },
+        {
+          "signal_date": "2022-08-31",
+          "pool_count": 128,
+          "pool_codes_sha256": "2b13fd1e9ef0df32709f74be6c7b5b0ce06afd9125b50f08688f2b00bddc26fa",
+          "execution_date": "2022-09-01"
+        },
+        {
+          "signal_date": "2022-09-30",
+          "pool_count": 128,
+          "pool_codes_sha256": "044bf3c3bbad6cfcee5f866b6473ed41899da952d5093def67dbb003a6468a13",
+          "execution_date": "2022-10-10"
+        },
+        {
+          "signal_date": "2022-10-31",
+          "pool_count": 128,
+          "pool_codes_sha256": "044bf3c3bbad6cfcee5f866b6473ed41899da952d5093def67dbb003a6468a13",
+          "execution_date": "2022-11-01"
+        },
+        {
+          "signal_date": "2022-11-30",
+          "pool_count": 128,
+          "pool_codes_sha256": "044bf3c3bbad6cfcee5f866b6473ed41899da952d5093def67dbb003a6468a13",
+          "execution_date": "2022-12-01"
+        },
+        {
+          "signal_date": "2022-12-30",
+          "pool_count": 128,
+          "pool_codes_sha256": "044bf3c3bbad6cfcee5f866b6473ed41899da952d5093def67dbb003a6468a13",
+          "execution_date": "2023-01-03"
+        },
+        {
+          "signal_date": "2023-01-31",
+          "pool_count": 128,
+          "pool_codes_sha256": "044bf3c3bbad6cfcee5f866b6473ed41899da952d5093def67dbb003a6468a13",
+          "execution_date": "2023-02-01"
+        },
+        {
+          "signal_date": "2023-02-28",
+          "pool_count": 128,
+          "pool_codes_sha256": "044bf3c3bbad6cfcee5f866b6473ed41899da952d5093def67dbb003a6468a13",
+          "execution_date": "2023-03-01"
+        },
+        {
+          "signal_date": "2023-03-31",
+          "pool_count": 128,
+          "pool_codes_sha256": "044bf3c3bbad6cfcee5f866b6473ed41899da952d5093def67dbb003a6468a13",
+          "execution_date": "2023-04-03"
+        },
+        {
+          "signal_date": "2023-04-28",
+          "pool_count": 128,
+          "pool_codes_sha256": "044bf3c3bbad6cfcee5f866b6473ed41899da952d5093def67dbb003a6468a13",
+          "execution_date": "2023-05-04"
+        },
+        {
+          "signal_date": "2023-05-31",
+          "pool_count": 129,
+          "pool_codes_sha256": "b075964c562810ae7dfe4b6fd83c47797addc3d7635dc1f1d4af1fe49cfb82aa",
+          "execution_date": "2023-06-01"
+        },
+        {
+          "signal_date": "2023-06-30",
+          "pool_count": 134,
+          "pool_codes_sha256": "004e840cf10d01cef427aff4acab2d7209ddd2473b480149e05ce58110171dae",
+          "execution_date": "2023-07-03"
+        },
+        {
+          "signal_date": "2023-07-31",
+          "pool_count": 134,
+          "pool_codes_sha256": "2f16652d1c1a4cca313b1a5f300f01d13232879acdb76fa3fb1d2b8bcb09c038",
+          "execution_date": "2023-08-01"
+        },
+        {
+          "signal_date": "2023-08-31",
+          "pool_count": 134,
+          "pool_codes_sha256": "2f16652d1c1a4cca313b1a5f300f01d13232879acdb76fa3fb1d2b8bcb09c038",
+          "execution_date": "2023-09-01"
+        },
+        {
+          "signal_date": "2023-09-28",
+          "pool_count": 134,
+          "pool_codes_sha256": "2f16652d1c1a4cca313b1a5f300f01d13232879acdb76fa3fb1d2b8bcb09c038",
+          "execution_date": "2023-10-09"
+        },
+        {
+          "signal_date": "2023-10-31",
+          "pool_count": 136,
+          "pool_codes_sha256": "9c2b68ad72b262afb4e096530a8f9feca3f358044f97a407c927e7c9a1c2110b",
+          "execution_date": "2023-11-01"
+        },
+        {
+          "signal_date": "2023-11-30",
+          "pool_count": 136,
+          "pool_codes_sha256": "9c2b68ad72b262afb4e096530a8f9feca3f358044f97a407c927e7c9a1c2110b",
+          "execution_date": "2023-12-01"
+        },
+        {
+          "signal_date": "2023-12-29",
+          "pool_count": 136,
+          "pool_codes_sha256": "9c2b68ad72b262afb4e096530a8f9feca3f358044f97a407c927e7c9a1c2110b",
+          "execution_date": "2024-01-02"
+        },
+        {
+          "signal_date": "2024-01-31",
+          "pool_count": 136,
+          "pool_codes_sha256": "9c2b68ad72b262afb4e096530a8f9feca3f358044f97a407c927e7c9a1c2110b",
+          "execution_date": "2024-02-01"
+        },
+        {
+          "signal_date": "2024-02-29",
+          "pool_count": 136,
+          "pool_codes_sha256": "9c2b68ad72b262afb4e096530a8f9feca3f358044f97a407c927e7c9a1c2110b",
+          "execution_date": "2024-03-01"
+        },
+        {
+          "signal_date": "2024-03-29",
+          "pool_count": 136,
+          "pool_codes_sha256": "9c2b68ad72b262afb4e096530a8f9feca3f358044f97a407c927e7c9a1c2110b",
+          "execution_date": "2024-04-01"
+        },
+        {
+          "signal_date": "2024-04-30",
+          "pool_count": 137,
+          "pool_codes_sha256": "c5fefb0cf235c73ce1fb114c6e53cfc45a94c8a2115d7724271e5b0ac6f87cc4",
+          "execution_date": "2024-05-06"
+        },
+        {
+          "signal_date": "2024-05-31",
+          "pool_count": 143,
+          "pool_codes_sha256": "8d0ba0dd14726e6094df4a28b0feddb5c6976f53ec73c3729a8f49ff7a29623b",
+          "execution_date": "2024-06-03"
+        },
+        {
+          "signal_date": "2024-06-28",
+          "pool_count": 150,
+          "pool_codes_sha256": "02e725e2f86ecfeaed0b7c4e06741894c693bc5dc190beccab2779e22384cd6c",
+          "execution_date": "2024-07-01"
+        },
+        {
+          "signal_date": "2024-07-31",
+          "pool_count": 151,
+          "pool_codes_sha256": "f698a52f94f69d21e9fe0d5e9bf9d30bd4e860614ee718d1311be5bec1837d32",
+          "execution_date": "2024-08-01"
+        },
+        {
+          "signal_date": "2024-08-30",
+          "pool_count": 151,
+          "pool_codes_sha256": "d5669a1fbdeee829a66b2cded6894416b589152ac8d24b9e0146925cdf99db54",
+          "execution_date": "2024-09-02"
+        },
+        {
+          "signal_date": "2024-09-30",
+          "pool_count": 152,
+          "pool_codes_sha256": "35a6defeb012e553ce149ee9129dad1afc0540f5d62d3a57738929bed77fbb25",
+          "execution_date": "2024-10-08"
+        },
+        {
+          "signal_date": "2024-10-31",
+          "pool_count": 154,
+          "pool_codes_sha256": "eee171f7061bbea792bf57ab510fc4eddc000dd71965dbf3eeff26fb52a7e7b2",
+          "execution_date": "2024-11-01"
+        },
+        {
+          "signal_date": "2024-11-29",
+          "pool_count": 154,
+          "pool_codes_sha256": "692a8a375835eebf5a8562aaf4467b80d7b5593733f5ebef1d81d2cdb4b1bf89",
+          "execution_date": "2024-12-02"
+        },
+        {
+          "signal_date": "2024-12-31",
+          "pool_count": 154,
+          "pool_codes_sha256": "3272f4d4ea9974a971944e2f99b3e0903be5a1e4f754d73c5681750ace26426c",
+          "execution_date": "2025-01-02"
+        },
+        {
+          "signal_date": "2025-01-27",
+          "pool_count": 155,
+          "pool_codes_sha256": "1d9bf8d38ee69869d88bd4f4a20bfd169f202971c39929f747b02ba8fee973bc",
+          "execution_date": "2025-02-05"
+        },
+        {
+          "signal_date": "2025-02-28",
+          "pool_count": 155,
+          "pool_codes_sha256": "1d9bf8d38ee69869d88bd4f4a20bfd169f202971c39929f747b02ba8fee973bc",
+          "execution_date": "2025-03-03"
+        },
+        {
+          "signal_date": "2025-03-31",
+          "pool_count": 155,
+          "pool_codes_sha256": "1d9bf8d38ee69869d88bd4f4a20bfd169f202971c39929f747b02ba8fee973bc",
+          "execution_date": "2025-04-01"
+        },
+        {
+          "signal_date": "2025-04-30",
+          "pool_count": 155,
+          "pool_codes_sha256": "1d9bf8d38ee69869d88bd4f4a20bfd169f202971c39929f747b02ba8fee973bc",
+          "execution_date": "2025-05-06"
+        },
+        {
+          "signal_date": "2025-05-30",
+          "pool_count": 160,
+          "pool_codes_sha256": "dfb7e3ffa55fe4675f0cb98574f5ba19123b3a7892f79c9f07073617bb6f50b0",
+          "execution_date": "2025-06-03"
+        },
+        {
+          "signal_date": "2025-06-30",
+          "pool_count": 164,
+          "pool_codes_sha256": "d7db4c65ca936acebc29f41f230ce7ddc9fa42f38b10044905d8a0dd4c8f5e79",
+          "execution_date": "2025-07-01"
+        },
+        {
+          "signal_date": "2025-07-31",
+          "pool_count": 163,
+          "pool_codes_sha256": "381018bc2fdc6b6883aaff92e47a08417e3edf9be42b0fbfac9c9a084c2b7d42",
+          "execution_date": "2025-08-01"
+        },
+        {
+          "signal_date": "2025-08-29",
+          "pool_count": 164,
+          "pool_codes_sha256": "ce9cf601bdcd3812c2cf2de51590d0469bcfadceaa6daa8cda8b84c2b5cdaf66",
+          "execution_date": "2025-09-01"
+        },
+        {
+          "signal_date": "2025-09-30",
+          "pool_count": 165,
+          "pool_codes_sha256": "56f4571ce4f0c8e2a3da918cfdfbc544883137e6535284a79a09b46999864fef",
+          "execution_date": "2025-10-09"
+        },
+        {
+          "signal_date": "2025-10-31",
+          "pool_count": 167,
+          "pool_codes_sha256": "ee0345a42644387e6b446cb6c7fd9c25bd5eebf92946cc404231d922faf4fce4",
+          "execution_date": "2025-11-03"
+        },
+        {
+          "signal_date": "2025-11-28",
+          "pool_count": 167,
+          "pool_codes_sha256": "ee0345a42644387e6b446cb6c7fd9c25bd5eebf92946cc404231d922faf4fce4",
+          "execution_date": "2025-12-01"
+        },
+        {
+          "signal_date": "2025-12-31",
+          "pool_count": 167,
+          "pool_codes_sha256": "ee0345a42644387e6b446cb6c7fd9c25bd5eebf92946cc404231d922faf4fce4",
+          "execution_date": "2026-01-05"
+        },
+        {
+          "signal_date": "2026-01-30",
+          "pool_count": 167,
+          "pool_codes_sha256": "ee0345a42644387e6b446cb6c7fd9c25bd5eebf92946cc404231d922faf4fce4",
+          "execution_date": "2026-02-02"
+        },
+        {
+          "signal_date": "2026-02-27",
+          "pool_count": 167,
+          "pool_codes_sha256": "ee0345a42644387e6b446cb6c7fd9c25bd5eebf92946cc404231d922faf4fce4",
+          "execution_date": "2026-03-02"
+        },
+        {
+          "signal_date": "2026-03-31",
+          "pool_count": 167,
+          "pool_codes_sha256": "ee0345a42644387e6b446cb6c7fd9c25bd5eebf92946cc404231d922faf4fce4",
+          "execution_date": "2026-04-01"
+        },
+        {
+          "signal_date": "2026-04-30",
+          "pool_count": 167,
+          "pool_codes_sha256": "ee0345a42644387e6b446cb6c7fd9c25bd5eebf92946cc404231d922faf4fce4",
+          "execution_date": "2026-05-06"
+        },
+        {
+          "signal_date": "2026-05-29",
+          "pool_count": 169,
+          "pool_codes_sha256": "a638cb5cf01299e8ed1e46990b47bfb22665de87e0dc29fe320d2c9e3ecd5f6e",
+          "execution_date": "2026-06-01"
+        },
+        {
+          "signal_date": "2026-06-30",
+          "pool_count": 172,
+          "pool_codes_sha256": "6e54a8a4e8c71957635c43680b805ff663a7553c4b28ad2c416a49dd4113b7c8",
+          "execution_date": "2026-07-01"
+        },
+        {
+          "signal_date": "2026-07-31",
+          "pool_count": 171,
+          "pool_codes_sha256": "bff32bf0b79d68b2bcec671c07464b0ed89e824049b8261d5e1be422ca405744",
+          "execution_date": "2026-08-03"
+        },
+        {
+          "signal_date": "2026-08-25",
+          "pool_count": 171,
+          "pool_codes_sha256": "bff32bf0b79d68b2bcec671c07464b0ed89e824049b8261d5e1be422ca405744",
+          "execution_date": null
+        }
+      ]
+    },
+    {
+      "name": "latest_known_fee3x",
+      "delay_years": 0,
+      "fee_multiple": 3,
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1,
+        "pool_min_consecutive_years": 3,
+        "momentum_months": 4,
+        "momentum_threshold": 0.85,
+        "reinvest_cash_reserve": 0,
+        "rank_by": "yield",
+        "momentum_periods": "",
+        "max_yield": 999.0,
+        "buy_commission_rate": 0.0009,
+        "sell_commission_rate": 0.0009,
+        "stamp_duty_rate": 0.0015,
+        "transfer_fee_rate": 3.0000000000000004e-05
+      },
+      "full": {
+        "cagr": 26.9,
+        "max_drawdown": 50.38,
+        "volatility": 43.83,
+        "sharpe": 0.7,
+        "ending_nav": 1237797.89,
+        "total_return": 1137.8,
+        "observations": 128,
+        "trade_count": 44,
+        "buy_count": 35,
+        "sell_count": 9,
+        "dividend_event_count": 10,
+        "split_event_count": 0,
+        "ending_cash": 36.89
+      },
+      "rolling36": {
+        "count": 93,
+        "min_cagr": -12.28,
+        "median_cagr": 26.66,
+        "max_drawdown_worst": 50.38,
+        "worst_window": {
+          "start": "2022-06-01",
+          "end": "2025-05-06",
+          "cagr": -12.28,
+          "max_drawdown": 50.38,
+          "volatility": 41.93,
+          "sharpe": -0.145,
+          "ending_nav": 904464.89,
+          "total_return": -31.88
+        }
+      },
+      "rolling48": {
+        "count": 81,
+        "min_cagr": -5.5,
+        "median_cagr": 34.29,
+        "max_drawdown_worst": 50.38,
+        "worst_window": {
+          "start": "2022-08-01",
+          "end": "2026-07-01",
+          "cagr": -5.5,
+          "max_drawdown": 50.38,
+          "volatility": 58.12,
+          "sharpe": 0.12,
+          "ending_nav": 1128240.89,
+          "total_return": -19.86
+        }
+      },
+      "oos": {
+        "2021": {
+          "observations": 69,
+          "cagr": 17.57,
+          "max_drawdown": 50.38,
+          "volatility": 50.76,
+          "sharpe": 0.507,
+          "ending_nav": 1237797.89,
+          "total_return": 149.01
+        },
+        "2023": {
+          "observations": 45,
+          "cagr": -9.64,
+          "max_drawdown": 50.38,
+          "volatility": 57.68,
+          "sharpe": 0.038,
+          "ending_nav": 1237797.89,
+          "total_return": -30.86
+        },
+        "2025": {
+          "observations": 21,
+          "cagr": 14.35,
+          "max_drawdown": 47.45,
+          "volatility": 71.79,
+          "sharpe": 0.43,
+          "ending_nav": 1237797.89,
+          "total_return": 24.65
+        }
+      },
+      "pool_provenance": [
+        {
+          "signal_date": "2016-01-29",
+          "pool_count": 82,
+          "pool_codes_sha256": "220c81e92a34840fab901a1fd9fb4ef10c36d0da30b5ccdf2fd7efffd3214b23",
+          "execution_date": "2016-02-01"
+        },
+        {
+          "signal_date": "2016-02-29",
+          "pool_count": 82,
+          "pool_codes_sha256": "220c81e92a34840fab901a1fd9fb4ef10c36d0da30b5ccdf2fd7efffd3214b23",
+          "execution_date": "2016-03-01"
+        },
+        {
+          "signal_date": "2016-03-31",
+          "pool_count": 82,
+          "pool_codes_sha256": "220c81e92a34840fab901a1fd9fb4ef10c36d0da30b5ccdf2fd7efffd3214b23",
+          "execution_date": "2016-04-01"
+        },
+        {
+          "signal_date": "2016-04-29",
+          "pool_count": 82,
+          "pool_codes_sha256": "220c81e92a34840fab901a1fd9fb4ef10c36d0da30b5ccdf2fd7efffd3214b23",
+          "execution_date": "2016-05-03"
+        },
+        {
+          "signal_date": "2016-05-31",
+          "pool_count": 82,
+          "pool_codes_sha256": "b1599003555b804cb120c9424feb5088cc5aaca5692a63e944e7b076f05316dc",
+          "execution_date": "2016-06-01"
+        },
+        {
+          "signal_date": "2016-06-30",
+          "pool_count": 82,
+          "pool_codes_sha256": "e1d6e8515c05912c3e7504f882b9a4197288855f049db1472c613c3fc5f7d5cc",
+          "execution_date": "2016-07-01"
+        },
+        {
+          "signal_date": "2016-07-29",
+          "pool_count": 82,
+          "pool_codes_sha256": "e6681a5f5336cb223385c1339b73a47b3b2c4cd0830b476df0bb9d34ec96ec6d",
+          "execution_date": "2016-08-01"
+        },
+        {
+          "signal_date": "2016-08-31",
+          "pool_count": 83,
+          "pool_codes_sha256": "b444aa1e34322edb0b5b7d538ebe9abc61269f7046bb1e00e5573d87494be23b",
+          "execution_date": "2016-09-01"
+        },
+        {
+          "signal_date": "2016-09-30",
+          "pool_count": 81,
+          "pool_codes_sha256": "8e245fb7238fc2ded3560fe6dabc26c711daa0e8ef6559e257c27451de79a5fc",
+          "execution_date": "2016-10-10"
+        },
+        {
+          "signal_date": "2016-10-31",
+          "pool_count": 81,
+          "pool_codes_sha256": "8e245fb7238fc2ded3560fe6dabc26c711daa0e8ef6559e257c27451de79a5fc",
+          "execution_date": "2016-11-01"
+        },
+        {
+          "signal_date": "2016-11-30",
+          "pool_count": 81,
+          "pool_codes_sha256": "8e245fb7238fc2ded3560fe6dabc26c711daa0e8ef6559e257c27451de79a5fc",
+          "execution_date": "2016-12-01"
+        },
+        {
+          "signal_date": "2016-12-30",
+          "pool_count": 81,
+          "pool_codes_sha256": "8e245fb7238fc2ded3560fe6dabc26c711daa0e8ef6559e257c27451de79a5fc",
+          "execution_date": "2017-01-03"
+        },
+        {
+          "signal_date": "2017-01-26",
+          "pool_count": 81,
+          "pool_codes_sha256": "8e245fb7238fc2ded3560fe6dabc26c711daa0e8ef6559e257c27451de79a5fc",
+          "execution_date": "2017-02-03"
+        },
+        {
+          "signal_date": "2017-02-28",
+          "pool_count": 81,
+          "pool_codes_sha256": "8e245fb7238fc2ded3560fe6dabc26c711daa0e8ef6559e257c27451de79a5fc",
+          "execution_date": "2017-03-01"
+        },
+        {
+          "signal_date": "2017-03-31",
+          "pool_count": 81,
+          "pool_codes_sha256": "8e245fb7238fc2ded3560fe6dabc26c711daa0e8ef6559e257c27451de79a5fc",
+          "execution_date": "2017-04-05"
+        },
+        {
+          "signal_date": "2017-04-28",
+          "pool_count": 82,
+          "pool_codes_sha256": "93fe2ede7a0608a03cc19e66cca933ab36012f479bc8764a73c4990c2ff18588",
+          "execution_date": "2017-05-02"
+        },
+        {
+          "signal_date": "2017-05-31",
+          "pool_count": 84,
+          "pool_codes_sha256": "b5494e3fc7c9494330a77a0b78dcee04380d7f254e6b14b5752ddb3c60189c4a",
+          "execution_date": "2017-06-01"
+        },
+        {
+          "signal_date": "2017-06-30",
+          "pool_count": 85,
+          "pool_codes_sha256": "ceaf01a9fd9eeab572057f20ce4316fb8d79245680a925ea9246f1ad7d065fdc",
+          "execution_date": "2017-07-03"
+        },
+        {
+          "signal_date": "2017-07-31",
+          "pool_count": 85,
+          "pool_codes_sha256": "ceaf01a9fd9eeab572057f20ce4316fb8d79245680a925ea9246f1ad7d065fdc",
+          "execution_date": "2017-08-01"
+        },
+        {
+          "signal_date": "2017-08-31",
+          "pool_count": 86,
+          "pool_codes_sha256": "d78e3da1b1a6561f14c41688606df4f1c6251825b7e0424aa3c5af193d58dbf8",
+          "execution_date": "2017-09-01"
+        },
+        {
+          "signal_date": "2017-09-29",
+          "pool_count": 86,
+          "pool_codes_sha256": "d78e3da1b1a6561f14c41688606df4f1c6251825b7e0424aa3c5af193d58dbf8",
+          "execution_date": "2017-10-09"
+        },
+        {
+          "signal_date": "2017-10-31",
+          "pool_count": 86,
+          "pool_codes_sha256": "d78e3da1b1a6561f14c41688606df4f1c6251825b7e0424aa3c5af193d58dbf8",
+          "execution_date": "2017-11-01"
+        },
+        {
+          "signal_date": "2017-11-30",
+          "pool_count": 86,
+          "pool_codes_sha256": "d78e3da1b1a6561f14c41688606df4f1c6251825b7e0424aa3c5af193d58dbf8",
+          "execution_date": "2017-12-01"
+        },
+        {
+          "signal_date": "2017-12-29",
+          "pool_count": 86,
+          "pool_codes_sha256": "d78e3da1b1a6561f14c41688606df4f1c6251825b7e0424aa3c5af193d58dbf8",
+          "execution_date": "2018-01-02"
+        },
+        {
+          "signal_date": "2018-01-31",
+          "pool_count": 86,
+          "pool_codes_sha256": "d78e3da1b1a6561f14c41688606df4f1c6251825b7e0424aa3c5af193d58dbf8",
+          "execution_date": "2018-02-01"
+        },
+        {
+          "signal_date": "2018-02-28",
+          "pool_count": 86,
+          "pool_codes_sha256": "d78e3da1b1a6561f14c41688606df4f1c6251825b7e0424aa3c5af193d58dbf8",
+          "execution_date": "2018-03-01"
+        },
+        {
+          "signal_date": "2018-03-30",
+          "pool_count": 86,
+          "pool_codes_sha256": "d78e3da1b1a6561f14c41688606df4f1c6251825b7e0424aa3c5af193d58dbf8",
+          "execution_date": "2018-04-02"
+        },
+        {
+          "signal_date": "2018-04-27",
+          "pool_count": 86,
+          "pool_codes_sha256": "d78e3da1b1a6561f14c41688606df4f1c6251825b7e0424aa3c5af193d58dbf8",
+          "execution_date": "2018-05-02"
+        },
+        {
+          "signal_date": "2018-05-31",
+          "pool_count": 89,
+          "pool_codes_sha256": "86a9619302f43fcd4de9f2d44b16a2c8d508708cd1c6a9430b01fff704411f0c",
+          "execution_date": "2018-06-01"
+        },
+        {
+          "signal_date": "2018-06-29",
+          "pool_count": 89,
+          "pool_codes_sha256": "af808f67ce3c967c8e85f5fbac1f339bef11bd430065962631cf1c81f2ffc5c7",
+          "execution_date": "2018-07-02"
+        },
+        {
+          "signal_date": "2018-07-31",
+          "pool_count": 90,
+          "pool_codes_sha256": "50548e8fbdf75c7bcbeec061607c6cfbca9e8684ca79af4d2bb9fefe94312c1e",
+          "execution_date": "2018-08-01"
+        },
+        {
+          "signal_date": "2018-08-31",
+          "pool_count": 92,
+          "pool_codes_sha256": "ad47d0669e880e12fcb748aedfbcbd054396ee8e0a176ace69f37d23c0b768f3",
+          "execution_date": "2018-09-03"
+        },
+        {
+          "signal_date": "2018-09-28",
+          "pool_count": 92,
+          "pool_codes_sha256": "ad47d0669e880e12fcb748aedfbcbd054396ee8e0a176ace69f37d23c0b768f3",
+          "execution_date": "2018-10-08"
+        },
+        {
+          "signal_date": "2018-10-31",
+          "pool_count": 92,
+          "pool_codes_sha256": "ad47d0669e880e12fcb748aedfbcbd054396ee8e0a176ace69f37d23c0b768f3",
+          "execution_date": "2018-11-01"
+        },
+        {
+          "signal_date": "2018-11-30",
+          "pool_count": 92,
+          "pool_codes_sha256": "ad47d0669e880e12fcb748aedfbcbd054396ee8e0a176ace69f37d23c0b768f3",
+          "execution_date": "2018-12-03"
+        },
+        {
+          "signal_date": "2018-12-28",
+          "pool_count": 92,
+          "pool_codes_sha256": "ad47d0669e880e12fcb748aedfbcbd054396ee8e0a176ace69f37d23c0b768f3",
+          "execution_date": "2019-01-02"
+        },
+        {
+          "signal_date": "2019-01-31",
+          "pool_count": 92,
+          "pool_codes_sha256": "ad47d0669e880e12fcb748aedfbcbd054396ee8e0a176ace69f37d23c0b768f3",
+          "execution_date": "2019-02-01"
+        },
+        {
+          "signal_date": "2019-02-28",
+          "pool_count": 91,
+          "pool_codes_sha256": "e911eb286f18fc7746420f98929ee7ed93b9655f9b8094411257f231022844a5",
+          "execution_date": "2019-03-01"
+        },
+        {
+          "signal_date": "2019-03-29",
+          "pool_count": 91,
+          "pool_codes_sha256": "e911eb286f18fc7746420f98929ee7ed93b9655f9b8094411257f231022844a5",
+          "execution_date": "2019-04-01"
+        },
+        {
+          "signal_date": "2019-04-30",
+          "pool_count": 92,
+          "pool_codes_sha256": "6c9f87c38f229d1d847f56252880a245776318b2ddeb330dc99ec19a6f5d4ad5",
+          "execution_date": "2019-05-06"
+        },
+        {
+          "signal_date": "2019-05-31",
+          "pool_count": 100,
+          "pool_codes_sha256": "38af1f2b73c0263ea85945f88a722186b2426366f848faefe077a3be428f6444",
+          "execution_date": "2019-06-03"
+        },
+        {
+          "signal_date": "2019-06-28",
+          "pool_count": 109,
+          "pool_codes_sha256": "fe70fca570d188f74c63cd50911a3044921e8e3a421254498512aafd56005731",
+          "execution_date": "2019-07-01"
+        },
+        {
+          "signal_date": "2019-07-31",
+          "pool_count": 113,
+          "pool_codes_sha256": "26fe5b20b25ed20062eede0c562d775bd37054c3d3606d7f8261a329298f776e",
+          "execution_date": "2019-08-01"
+        },
+        {
+          "signal_date": "2019-08-30",
+          "pool_count": 114,
+          "pool_codes_sha256": "e39062fb437e74acefa89c8c763ec4bd21f4944e5b8b3de5c72742ae8e624465",
+          "execution_date": "2019-09-02"
+        },
+        {
+          "signal_date": "2019-09-30",
+          "pool_count": 114,
+          "pool_codes_sha256": "e39062fb437e74acefa89c8c763ec4bd21f4944e5b8b3de5c72742ae8e624465",
+          "execution_date": "2019-10-08"
+        },
+        {
+          "signal_date": "2019-10-31",
+          "pool_count": 114,
+          "pool_codes_sha256": "e39062fb437e74acefa89c8c763ec4bd21f4944e5b8b3de5c72742ae8e624465",
+          "execution_date": "2019-11-01"
+        },
+        {
+          "signal_date": "2019-11-29",
+          "pool_count": 115,
+          "pool_codes_sha256": "40757a265ca1874dfc70211590237b3adea43f4e3379f42780a52ce73b2d10f8",
+          "execution_date": "2019-12-02"
+        },
+        {
+          "signal_date": "2019-12-31",
+          "pool_count": 115,
+          "pool_codes_sha256": "40757a265ca1874dfc70211590237b3adea43f4e3379f42780a52ce73b2d10f8",
+          "execution_date": "2020-01-02"
+        },
+        {
+          "signal_date": "2020-01-23",
+          "pool_count": 115,
+          "pool_codes_sha256": "40757a265ca1874dfc70211590237b3adea43f4e3379f42780a52ce73b2d10f8",
+          "execution_date": "2020-02-03"
+        },
+        {
+          "signal_date": "2020-02-28",
+          "pool_count": 115,
+          "pool_codes_sha256": "40757a265ca1874dfc70211590237b3adea43f4e3379f42780a52ce73b2d10f8",
+          "execution_date": "2020-03-02"
+        },
+        {
+          "signal_date": "2020-03-31",
+          "pool_count": 115,
+          "pool_codes_sha256": "40757a265ca1874dfc70211590237b3adea43f4e3379f42780a52ce73b2d10f8",
+          "execution_date": "2020-04-01"
+        },
+        {
+          "signal_date": "2020-04-30",
+          "pool_count": 116,
+          "pool_codes_sha256": "e9f8df2814cf9a2179068274d7bf97900c00029b4eca2673e74b7ea6fdad67ba",
+          "execution_date": "2020-05-06"
+        },
+        {
+          "signal_date": "2020-05-29",
+          "pool_count": 120,
+          "pool_codes_sha256": "4e9ddaace9cd86e04016a32b2ce0dbd6baf4725be1f2a1aa7affb5678a8b6df5",
+          "execution_date": "2020-06-01"
+        },
+        {
+          "signal_date": "2020-06-30",
+          "pool_count": 122,
+          "pool_codes_sha256": "8f34dc16033abbc4ed9806463c06325fe72c4f877f4026123b85f4ac05270d64",
+          "execution_date": "2020-07-01"
+        },
+        {
+          "signal_date": "2020-07-31",
+          "pool_count": 126,
+          "pool_codes_sha256": "8000581fca7e9af3751a5af8895f1416f62d78269046d68f099ac13578c50fa1",
+          "execution_date": "2020-08-03"
+        },
+        {
+          "signal_date": "2020-08-31",
+          "pool_count": 127,
+          "pool_codes_sha256": "23772a32a47f29ff4ff6795592193b3b53fc5f8ad99ca3fb5343835f028a5a11",
+          "execution_date": "2020-09-01"
+        },
+        {
+          "signal_date": "2020-09-30",
+          "pool_count": 127,
+          "pool_codes_sha256": "23772a32a47f29ff4ff6795592193b3b53fc5f8ad99ca3fb5343835f028a5a11",
+          "execution_date": "2020-10-09"
+        },
+        {
+          "signal_date": "2020-10-30",
+          "pool_count": 128,
+          "pool_codes_sha256": "240b87ebebc1e17813e349e71915c16e8313eb915d693a2b6f597a29fa6e17cf",
+          "execution_date": "2020-11-02"
+        },
+        {
+          "signal_date": "2020-11-30",
+          "pool_count": 128,
+          "pool_codes_sha256": "0e9797852c6f758720c381bc75c40a3799420cdde2762f46be5056c366737fae",
+          "execution_date": "2020-12-01"
+        },
+        {
+          "signal_date": "2020-12-31",
+          "pool_count": 128,
+          "pool_codes_sha256": "0e9797852c6f758720c381bc75c40a3799420cdde2762f46be5056c366737fae",
+          "execution_date": "2021-01-04"
+        },
+        {
+          "signal_date": "2021-01-29",
+          "pool_count": 128,
+          "pool_codes_sha256": "0e9797852c6f758720c381bc75c40a3799420cdde2762f46be5056c366737fae",
+          "execution_date": "2021-02-01"
+        },
+        {
+          "signal_date": "2021-02-26",
+          "pool_count": 128,
+          "pool_codes_sha256": "0e9797852c6f758720c381bc75c40a3799420cdde2762f46be5056c366737fae",
+          "execution_date": "2021-03-01"
+        },
+        {
+          "signal_date": "2021-03-31",
+          "pool_count": 128,
+          "pool_codes_sha256": "0e9797852c6f758720c381bc75c40a3799420cdde2762f46be5056c366737fae",
+          "execution_date": "2021-04-01"
+        },
+        {
+          "signal_date": "2021-04-30",
+          "pool_count": 128,
+          "pool_codes_sha256": "0e9797852c6f758720c381bc75c40a3799420cdde2762f46be5056c366737fae",
+          "execution_date": "2021-05-06"
+        },
+        {
+          "signal_date": "2021-05-31",
+          "pool_count": 129,
+          "pool_codes_sha256": "3640aa66f5e89feb9aa3aa524d06b4ca37287fd1627e74e66cf187a241bb5093",
+          "execution_date": "2021-06-01"
+        },
+        {
+          "signal_date": "2021-06-30",
+          "pool_count": 130,
+          "pool_codes_sha256": "b5c15a7d0ec6b7a563e72095d7a9643d12c32130e8827230000ee960fd1494e9",
+          "execution_date": "2021-07-01"
+        },
+        {
+          "signal_date": "2021-07-30",
+          "pool_count": 134,
+          "pool_codes_sha256": "a88e25870a0865e611ab80a94308c5af84c3b7446b882cccbca78f381d9d6122",
+          "execution_date": "2021-08-02"
+        },
+        {
+          "signal_date": "2021-08-31",
+          "pool_count": 134,
+          "pool_codes_sha256": "a88e25870a0865e611ab80a94308c5af84c3b7446b882cccbca78f381d9d6122",
+          "execution_date": "2021-09-01"
+        },
+        {
+          "signal_date": "2021-09-30",
+          "pool_count": 134,
+          "pool_codes_sha256": "fb5e575d0b853f2542e2cde5901e42f31e8b8f2949de8759f6a6d75562a621c6",
+          "execution_date": "2021-10-08"
+        },
+        {
+          "signal_date": "2021-10-29",
+          "pool_count": 134,
+          "pool_codes_sha256": "fb5e575d0b853f2542e2cde5901e42f31e8b8f2949de8759f6a6d75562a621c6",
+          "execution_date": "2021-11-01"
+        },
+        {
+          "signal_date": "2021-11-30",
+          "pool_count": 134,
+          "pool_codes_sha256": "fb5e575d0b853f2542e2cde5901e42f31e8b8f2949de8759f6a6d75562a621c6",
+          "execution_date": "2021-12-01"
+        },
+        {
+          "signal_date": "2021-12-31",
+          "pool_count": 134,
+          "pool_codes_sha256": "fb5e575d0b853f2542e2cde5901e42f31e8b8f2949de8759f6a6d75562a621c6",
+          "execution_date": "2022-01-04"
+        },
+        {
+          "signal_date": "2022-01-28",
+          "pool_count": 134,
+          "pool_codes_sha256": "fb5e575d0b853f2542e2cde5901e42f31e8b8f2949de8759f6a6d75562a621c6",
+          "execution_date": "2022-02-07"
+        },
+        {
+          "signal_date": "2022-02-28",
+          "pool_count": 134,
+          "pool_codes_sha256": "fb5e575d0b853f2542e2cde5901e42f31e8b8f2949de8759f6a6d75562a621c6",
+          "execution_date": "2022-03-01"
+        },
+        {
+          "signal_date": "2022-03-31",
+          "pool_count": 134,
+          "pool_codes_sha256": "fb5e575d0b853f2542e2cde5901e42f31e8b8f2949de8759f6a6d75562a621c6",
+          "execution_date": "2022-04-01"
+        },
+        {
+          "signal_date": "2022-04-29",
+          "pool_count": 135,
+          "pool_codes_sha256": "7720c7c3d78cad974f86d2fce52d162c10e2951a1b53c7ed2dda681239ac6d74",
+          "execution_date": "2022-05-05"
+        },
+        {
+          "signal_date": "2022-05-31",
+          "pool_count": 139,
+          "pool_codes_sha256": "99957a51c6e1bf9d4b9649ae0fc1cd7d1d5cc1a2a4b5099c603d45fca7d137a1",
+          "execution_date": "2022-06-01"
+        },
+        {
+          "signal_date": "2022-06-30",
+          "pool_count": 143,
+          "pool_codes_sha256": "cf29d62913898fdcfb84b0d1e5211ed6c0789b0fd085131b1c223f23645593d2",
+          "execution_date": "2022-07-01"
+        },
+        {
+          "signal_date": "2022-07-29",
+          "pool_count": 145,
+          "pool_codes_sha256": "dd3d06768c1f581e96d42557296b621145c1eb2046c5a784613297a812b1b13f",
+          "execution_date": "2022-08-01"
+        },
+        {
+          "signal_date": "2022-08-31",
+          "pool_count": 145,
+          "pool_codes_sha256": "dd3d06768c1f581e96d42557296b621145c1eb2046c5a784613297a812b1b13f",
+          "execution_date": "2022-09-01"
+        },
+        {
+          "signal_date": "2022-09-30",
+          "pool_count": 143,
+          "pool_codes_sha256": "e32420948ee75b97ab69e79dc487f6aa9d28cc9c3bf4d9808a8946e84a8cf5a2",
+          "execution_date": "2022-10-10"
+        },
+        {
+          "signal_date": "2022-10-31",
+          "pool_count": 143,
+          "pool_codes_sha256": "e32420948ee75b97ab69e79dc487f6aa9d28cc9c3bf4d9808a8946e84a8cf5a2",
+          "execution_date": "2022-11-01"
+        },
+        {
+          "signal_date": "2022-11-30",
+          "pool_count": 143,
+          "pool_codes_sha256": "e32420948ee75b97ab69e79dc487f6aa9d28cc9c3bf4d9808a8946e84a8cf5a2",
+          "execution_date": "2022-12-01"
+        },
+        {
+          "signal_date": "2022-12-30",
+          "pool_count": 143,
+          "pool_codes_sha256": "e32420948ee75b97ab69e79dc487f6aa9d28cc9c3bf4d9808a8946e84a8cf5a2",
+          "execution_date": "2023-01-03"
+        },
+        {
+          "signal_date": "2023-01-31",
+          "pool_count": 143,
+          "pool_codes_sha256": "e32420948ee75b97ab69e79dc487f6aa9d28cc9c3bf4d9808a8946e84a8cf5a2",
+          "execution_date": "2023-02-01"
+        },
+        {
+          "signal_date": "2023-02-28",
+          "pool_count": 143,
+          "pool_codes_sha256": "e32420948ee75b97ab69e79dc487f6aa9d28cc9c3bf4d9808a8946e84a8cf5a2",
+          "execution_date": "2023-03-01"
+        },
+        {
+          "signal_date": "2023-03-31",
+          "pool_count": 143,
+          "pool_codes_sha256": "e32420948ee75b97ab69e79dc487f6aa9d28cc9c3bf4d9808a8946e84a8cf5a2",
+          "execution_date": "2023-04-03"
+        },
+        {
+          "signal_date": "2023-04-28",
+          "pool_count": 144,
+          "pool_codes_sha256": "4b628de4e7e3236e3dc0b2767c596a055b6e00fae9e7b15a652ac0de666bfa2b",
+          "execution_date": "2023-05-04"
+        },
+        {
+          "signal_date": "2023-05-31",
+          "pool_count": 150,
+          "pool_codes_sha256": "27dbdea73543aab505ea02ec5e21ad9b12af5c7beeb16905a0320735a83e1814",
+          "execution_date": "2023-06-01"
+        },
+        {
+          "signal_date": "2023-06-30",
+          "pool_count": 155,
+          "pool_codes_sha256": "d8f0bc68f79856c025d633bb8f5858d15507fe889c23de0ff5f5734688321cd9",
+          "execution_date": "2023-07-03"
+        },
+        {
+          "signal_date": "2023-07-31",
+          "pool_count": 157,
+          "pool_codes_sha256": "760f2796adeeff3835b54cddfc9890307e6db32292242b60a2e3c3ac30a7b9c5",
+          "execution_date": "2023-08-01"
+        },
+        {
+          "signal_date": "2023-08-31",
+          "pool_count": 157,
+          "pool_codes_sha256": "760f2796adeeff3835b54cddfc9890307e6db32292242b60a2e3c3ac30a7b9c5",
+          "execution_date": "2023-09-01"
+        },
+        {
+          "signal_date": "2023-09-28",
+          "pool_count": 159,
+          "pool_codes_sha256": "86472d226ddda3fb36f2b61f153ca8f5847455590e897c7e1b25609f826e57c6",
+          "execution_date": "2023-10-09"
+        },
+        {
+          "signal_date": "2023-10-31",
+          "pool_count": 160,
+          "pool_codes_sha256": "a7ec43235d29de8b5e9395d39d6493da01d13fdec2f02a0b8ebf2ad8558fb805",
+          "execution_date": "2023-11-01"
+        },
+        {
+          "signal_date": "2023-11-30",
+          "pool_count": 161,
+          "pool_codes_sha256": "f5238caf47cf3bf255c00667469b1c81e7c493731403953d4172f4245de1155a",
+          "execution_date": "2023-12-01"
+        },
+        {
+          "signal_date": "2023-12-29",
+          "pool_count": 162,
+          "pool_codes_sha256": "5c3fb61c41a1d3db2781edd511f1276b91fb7b07ace40f9559d9171be1d5f691",
+          "execution_date": "2024-01-02"
+        },
+        {
+          "signal_date": "2024-01-31",
+          "pool_count": 162,
+          "pool_codes_sha256": "5c3fb61c41a1d3db2781edd511f1276b91fb7b07ace40f9559d9171be1d5f691",
+          "execution_date": "2024-02-01"
+        },
+        {
+          "signal_date": "2024-02-29",
+          "pool_count": 162,
+          "pool_codes_sha256": "5c3fb61c41a1d3db2781edd511f1276b91fb7b07ace40f9559d9171be1d5f691",
+          "execution_date": "2024-03-01"
+        },
+        {
+          "signal_date": "2024-03-29",
+          "pool_count": 162,
+          "pool_codes_sha256": "5c3fb61c41a1d3db2781edd511f1276b91fb7b07ace40f9559d9171be1d5f691",
+          "execution_date": "2024-04-01"
+        },
+        {
+          "signal_date": "2024-04-30",
+          "pool_count": 163,
+          "pool_codes_sha256": "328113a36e0a0cc35fd7e8fe7edb49d4a814b76b4b46dc2abce5884f972de9a0",
+          "execution_date": "2024-05-06"
+        },
+        {
+          "signal_date": "2024-05-31",
+          "pool_count": 169,
+          "pool_codes_sha256": "2dbcf417dfe2fd68f623ca3660a794182736ffdb3ac8676a231014a51bad2c2b",
+          "execution_date": "2024-06-03"
+        },
+        {
+          "signal_date": "2024-06-28",
+          "pool_count": 176,
+          "pool_codes_sha256": "d389b0fc35b17b05483a42e3580997443fa618dbfbf0bbaa12984b99d36620cf",
+          "execution_date": "2024-07-01"
+        },
+        {
+          "signal_date": "2024-07-31",
+          "pool_count": 175,
+          "pool_codes_sha256": "7773cfe5199ae46472c8f679867cbedb08a9d5971728d8fb620f3202a9a2704c",
+          "execution_date": "2024-08-01"
+        },
+        {
+          "signal_date": "2024-08-30",
+          "pool_count": 174,
+          "pool_codes_sha256": "e77a192584cd4b5f20ddfe3b2b56e2dd365dd353e5f24fd32650cfe12dbba2d9",
+          "execution_date": "2024-09-02"
+        },
+        {
+          "signal_date": "2024-09-30",
+          "pool_count": 176,
+          "pool_codes_sha256": "2be5f47a69972b1a0d863a0b383ee588127cdeb389f67a48d05e578e86ea9e0f",
+          "execution_date": "2024-10-08"
+        },
+        {
+          "signal_date": "2024-10-31",
+          "pool_count": 176,
+          "pool_codes_sha256": "ffa8c4ed4b92a4ba767c3afd94165676ec246e89ac45e66fdc52c62e9a1cf369",
+          "execution_date": "2024-11-01"
+        },
+        {
+          "signal_date": "2024-11-29",
+          "pool_count": 175,
+          "pool_codes_sha256": "20bda4ab1bddd52a3f8317a717f821391b3cb4a5cc79e51401f57d64f7cbb684",
+          "execution_date": "2024-12-02"
+        },
+        {
+          "signal_date": "2024-12-31",
+          "pool_count": 174,
+          "pool_codes_sha256": "c2e2928d0f55d2597a74ac30759d2dc933826cdd2c1f5dfd65ed6adc8cb8d5b1",
+          "execution_date": "2025-01-02"
+        },
+        {
+          "signal_date": "2025-01-27",
+          "pool_count": 174,
+          "pool_codes_sha256": "c2e2928d0f55d2597a74ac30759d2dc933826cdd2c1f5dfd65ed6adc8cb8d5b1",
+          "execution_date": "2025-02-05"
+        },
+        {
+          "signal_date": "2025-02-28",
+          "pool_count": 174,
+          "pool_codes_sha256": "c2e2928d0f55d2597a74ac30759d2dc933826cdd2c1f5dfd65ed6adc8cb8d5b1",
+          "execution_date": "2025-03-03"
+        },
+        {
+          "signal_date": "2025-03-31",
+          "pool_count": 174,
+          "pool_codes_sha256": "c2e2928d0f55d2597a74ac30759d2dc933826cdd2c1f5dfd65ed6adc8cb8d5b1",
+          "execution_date": "2025-04-01"
+        },
+        {
+          "signal_date": "2025-04-30",
+          "pool_count": 174,
+          "pool_codes_sha256": "f7affea945a7b4db3a5217876c2dc3977b03244e23e67ecb98a80de65e68c44d",
+          "execution_date": "2025-05-06"
+        },
+        {
+          "signal_date": "2025-05-30",
+          "pool_count": 177,
+          "pool_codes_sha256": "bd498568c4f51637b174aff759449f0db021e84aefc4d64f7ec7e815f599ea8e",
+          "execution_date": "2025-06-03"
+        },
+        {
+          "signal_date": "2025-06-30",
+          "pool_count": 182,
+          "pool_codes_sha256": "c05120698d5353c1fbc214e62ee3a56730836036a6c27d4b902354d2a039a81a",
+          "execution_date": "2025-07-01"
+        },
+        {
+          "signal_date": "2025-07-31",
+          "pool_count": 181,
+          "pool_codes_sha256": "65958f4f023f2ae87c8b79af366228421e4e0561a3bb447fe36549c8e10d8b18",
+          "execution_date": "2025-08-01"
+        },
+        {
+          "signal_date": "2025-08-29",
+          "pool_count": 181,
+          "pool_codes_sha256": "65958f4f023f2ae87c8b79af366228421e4e0561a3bb447fe36549c8e10d8b18",
+          "execution_date": "2025-09-01"
+        },
+        {
+          "signal_date": "2025-09-30",
+          "pool_count": 182,
+          "pool_codes_sha256": "6a0938d2e42ea4948f853ca64b85b8db00047f40514bf4994a7eab76265179cf",
+          "execution_date": "2025-10-09"
+        },
+        {
+          "signal_date": "2025-10-31",
+          "pool_count": 184,
+          "pool_codes_sha256": "600e9565a981cd78c5c3b4849a39ca4ff92ccded3dd99b3b044692e6b4b1af09",
+          "execution_date": "2025-11-03"
+        },
+        {
+          "signal_date": "2025-11-28",
+          "pool_count": 184,
+          "pool_codes_sha256": "600e9565a981cd78c5c3b4849a39ca4ff92ccded3dd99b3b044692e6b4b1af09",
+          "execution_date": "2025-12-01"
+        },
+        {
+          "signal_date": "2025-12-31",
+          "pool_count": 184,
+          "pool_codes_sha256": "600e9565a981cd78c5c3b4849a39ca4ff92ccded3dd99b3b044692e6b4b1af09",
+          "execution_date": "2026-01-05"
+        },
+        {
+          "signal_date": "2026-01-30",
+          "pool_count": 184,
+          "pool_codes_sha256": "600e9565a981cd78c5c3b4849a39ca4ff92ccded3dd99b3b044692e6b4b1af09",
+          "execution_date": "2026-02-02"
+        },
+        {
+          "signal_date": "2026-02-27",
+          "pool_count": 184,
+          "pool_codes_sha256": "600e9565a981cd78c5c3b4849a39ca4ff92ccded3dd99b3b044692e6b4b1af09",
+          "execution_date": "2026-03-02"
+        },
+        {
+          "signal_date": "2026-03-31",
+          "pool_count": 184,
+          "pool_codes_sha256": "600e9565a981cd78c5c3b4849a39ca4ff92ccded3dd99b3b044692e6b4b1af09",
+          "execution_date": "2026-04-01"
+        },
+        {
+          "signal_date": "2026-04-30",
+          "pool_count": 184,
+          "pool_codes_sha256": "600e9565a981cd78c5c3b4849a39ca4ff92ccded3dd99b3b044692e6b4b1af09",
+          "execution_date": "2026-05-06"
+        },
+        {
+          "signal_date": "2026-05-29",
+          "pool_count": 184,
+          "pool_codes_sha256": "3ee8a1582aa1608024629849ab729defbd9a071c83d81b15d9f9339d105e1dd2",
+          "execution_date": "2026-06-01"
+        },
+        {
+          "signal_date": "2026-06-30",
+          "pool_count": 183,
+          "pool_codes_sha256": "468ae041a43ab9f9c799a17cea25860016b94a9303867539d6349f48b6719ca0",
+          "execution_date": "2026-07-01"
+        },
+        {
+          "signal_date": "2026-07-31",
+          "pool_count": 184,
+          "pool_codes_sha256": "0c4e6977de1c2095a79e597f37a519314eb02a5af72435453547f88ec7bf45ce",
+          "execution_date": "2026-08-03"
+        },
+        {
+          "signal_date": "2026-08-25",
+          "pool_count": 184,
+          "pool_codes_sha256": "0c4e6977de1c2095a79e597f37a519314eb02a5af72435453547f88ec7bf45ce",
+          "execution_date": null
+        }
+      ]
+    }
+  ],
+  "audit": {
+    "future_function_check": "通过：每只股票最新年度由 ex_date<=signal_date 的记录决定。",
+    "missing_years": "缺失任何连续年度即不入池；未使用年度汇总补齐。"
+  }
+}

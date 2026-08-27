@@ -1,0 +1,25 @@
+{
+  "round": 9,
+  "scope": "run_backtest 配置一致性窄审计",
+  "as_of": "2026-08-26",
+  "finding": {
+    "severity": "medium",
+    "issue": "run_backtest 的 dynamic_pool 默认值为 False，而 BACKTEST_RULES.pool_mode 为 dynamic；直接调用 run_backtest() 会使用固定 CANDIDATE_CODES，和当前最优策略不一致。",
+    "cli_behavior": "命令行只有显式传 --dynamic-pool 才启用动态候选池。",
+    "quarterly_defaults": "quarterly_strategy.DEFAULT_QUARTERLY_RULES 是季度账本兼容默认值，不应被解释为月度研究策略；update_portfolio 仍以 config/strategy.json 为权威。"
+  },
+  "recommended_minimal_change": {
+    "status": "建议下一轮实施",
+    "approach": "将 dynamic_pool 参数改为 None（三态）；调用方未显式指定时由 active.pool_mode == 'dynamic' 推断，显式 True/False 继续覆盖。",
+    "compatibility": "保留 CLI --dynamic-pool 的显式行为；补充测试覆盖 run_backtest(..., dynamic_pool=None/False/True) 的宇宙来源。",
+    "reason_not_applied": "本轮按只读审查要求，不修改核心逻辑；需先确认所有外部调用者不会依赖无参调用的固定池语义。"
+  },
+  "future_function_review": {
+    "status": "通过",
+    "notes": [
+      "dynamic_pool 仅影响候选池来源，不改变按信号日筛选与执行日成交时点",
+      "季度默认值与月度回测规则已在文档和配置层分离"
+    ]
+  },
+  "result": "发现一个默认参数与当前配置不一致的中风险项，建议最小三态参数修复；本轮未改代码"
+}

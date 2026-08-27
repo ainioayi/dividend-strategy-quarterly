@@ -102,7 +102,9 @@ def _apply_dividends(state: dict[str, Any], verified: dict[str, Any], as_of: str
 
 def _rules(config: dict[str, Any], cap20: bool) -> dict[str, Any]:
     rules = dict(config["rules"])
-    rules["max_position_pct"] = 0.20 if cap20 else 1.0
+    if cap20:
+        rules["max_position_pct"] = 0.20
+    # 非 cap20 时保留配置中的 max_position_pct（默认 0.35）
     return rules
 
 

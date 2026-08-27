@@ -1,0 +1,283 @@
+{
+  "round": 9,
+  "method": "缓存分红逐笔与未复权价格跳变审计；仅使用信号日前可见缓存和已生成NAV",
+  "data_cutoff": "2026-08-25",
+  "manifest_records_sha256": "24de009d9bb60c857fc89e8f7510b93583b17f9abde50350ea63a6a5830a7409",
+  "cache_counts": {
+    "dividend_files": 210,
+    "dividend_records": 2775,
+    "price_files": 210,
+    "price_observations": 450025
+  },
+  "dividend_quality": {
+    "duplicate_records": 0,
+    "negative_fields": 0,
+    "dps_ge_5_count": 52,
+    "high_dps_sample": [
+      {
+        "file": "dv_000568.json",
+        "year": 2023,
+        "dps": 5.4001
+      },
+      {
+        "file": "dv_000568.json",
+        "year": 2024,
+        "dps": 5.95
+      },
+      {
+        "file": "dv_000568.json",
+        "year": 2025,
+        "dps": 5.7751
+      },
+      {
+        "file": "dv_000596.json",
+        "year": 2024,
+        "dps": 6.0
+      },
+      {
+        "file": "dv_000858.json",
+        "year": 2024,
+        "dps": 5.745
+      },
+      {
+        "file": "dv_000858.json",
+        "year": 2025,
+        "dps": 5.1577
+      },
+      {
+        "file": "dv_002756.json",
+        "year": 2022,
+        "dps": 5.0
+      },
+      {
+        "file": "dv_002932.json",
+        "year": 2022,
+        "dps": 5.2
+      },
+      {
+        "file": "dv_300033.json",
+        "year": 2025,
+        "dps": 5.2
+      },
+      {
+        "file": "dv_300750.json",
+        "year": 2025,
+        "dps": 7.964
+      },
+      {
+        "file": "dv_300760.json",
+        "year": 2023,
+        "dps": 5.8
+      },
+      {
+        "file": "dv_300760.json",
+        "year": 2024,
+        "dps": 6.27
+      },
+      {
+        "file": "dv_301047.json",
+        "year": 2021,
+        "dps": 10.0
+      },
+      {
+        "file": "dv_301047.json",
+        "year": 2025,
+        "dps": 5.2
+      },
+      {
+        "file": "dv_301589.json",
+        "year": 2023,
+        "dps": 9.7
+      },
+      {
+        "file": "dv_600519.json",
+        "year": 2012,
+        "dps": 6.419
+      },
+      {
+        "file": "dv_600519.json",
+        "year": 2015,
+        "dps": 6.171
+      },
+      {
+        "file": "dv_600519.json",
+        "year": 2016,
+        "dps": 6.787
+      },
+      {
+        "file": "dv_600519.json",
+        "year": 2017,
+        "dps": 10.999
+      },
+      {
+        "file": "dv_600519.json",
+        "year": 2018,
+        "dps": 14.539
+      }
+    ]
+  },
+  "price_quality": {
+    "daily_return_count": 449815,
+    "daily_return_min_pct": -75.88,
+    "daily_return_max_pct": 95.99,
+    "jumps_abs_ge_30pct_count": 155,
+    "jumps_sample": [
+      {
+        "file": "kl_000333.json",
+        "from": "2016-05-05",
+        "to": "2016-05-06",
+        "return_pct": -38.31
+      },
+      {
+        "file": "kl_000338.json",
+        "from": "2015-08-19",
+        "to": "2015-08-20",
+        "return_pct": -51.37
+      },
+      {
+        "file": "kl_000338.json",
+        "from": "2017-07-20",
+        "to": "2017-07-21",
+        "return_pct": -51.24
+      },
+      {
+        "file": "kl_000513.json",
+        "from": "2015-08-10",
+        "to": "2015-11-03",
+        "return_pct": -30.86
+      },
+      {
+        "file": "kl_000651.json",
+        "from": "2015-07-02",
+        "to": "2015-07-03",
+        "return_pct": -57.29
+      },
+      {
+        "file": "kl_000661.json",
+        "from": "2020-06-08",
+        "to": "2020-06-09",
+        "return_pct": -49.76
+      },
+      {
+        "file": "kl_000876.json",
+        "from": "2016-06-27",
+        "to": "2016-06-28",
+        "return_pct": -52.49
+      },
+      {
+        "file": "kl_000895.json",
+        "from": "2015-05-19",
+        "to": "2015-05-20",
+        "return_pct": -36.32
+      },
+      {
+        "file": "kl_002110.json",
+        "from": "2019-05-21",
+        "to": "2019-05-22",
+        "return_pct": -43.98
+      },
+      {
+        "file": "kl_002304.json",
+        "from": "2015-06-17",
+        "to": "2015-06-18",
+        "return_pct": -34.78
+      },
+      {
+        "file": "kl_002318.json",
+        "from": "2015-10-20",
+        "to": "2015-10-21",
+        "return_pct": -64.01
+      },
+      {
+        "file": "kl_002399.json",
+        "from": "2016-06-08",
+        "to": "2016-06-13",
+        "return_pct": -42.29
+      },
+      {
+        "file": "kl_002466.json",
+        "from": "2016-05-26",
+        "to": "2016-05-27",
+        "return_pct": -75.88
+      },
+      {
+        "file": "kl_002555.json",
+        "from": "2015-05-14",
+        "to": "2015-05-15",
+        "return_pct": -59.29
+      },
+      {
+        "file": "kl_002555.json",
+        "from": "2016-03-09",
+        "to": "2016-08-16",
+        "return_pct": -45.14
+      },
+      {
+        "file": "kl_002594.json",
+        "from": "2025-07-28",
+        "to": "2025-07-29",
+        "return_pct": -66.94
+      },
+      {
+        "file": "kl_002714.json",
+        "from": "2015-06-09",
+        "to": "2015-06-10",
+        "return_pct": -49.15
+      },
+      {
+        "file": "kl_002714.json",
+        "from": "2016-07-07",
+        "to": "2016-07-08",
+        "return_pct": -51.61
+      },
+      {
+        "file": "kl_002714.json",
+        "from": "2018-07-02",
+        "to": "2018-07-03",
+        "return_pct": -47.16
+      },
+      {
+        "file": "kl_002714.json",
+        "from": "2020-06-03",
+        "to": "2020-06-04",
+        "return_pct": -40.43
+      }
+    ]
+  },
+  "nav_extremes": {
+    "monthly_observations": 128,
+    "abs_change_ge_20pct_count": 5,
+    "sample": [
+      {
+        "from": "2016-11-01",
+        "to": "2016-12-01",
+        "return_pct": 36.16
+      },
+      {
+        "from": "2020-07-01",
+        "to": "2020-08-03",
+        "return_pct": 42.39
+      },
+      {
+        "from": "2020-11-02",
+        "to": "2020-12-01",
+        "return_pct": 22.22
+      },
+      {
+        "from": "2021-03-01",
+        "to": "2021-04-01",
+        "return_pct": 20.26
+      },
+      {
+        "from": "2022-07-01",
+        "to": "2022-08-01",
+        "return_pct": 29.22
+      }
+    ]
+  },
+  "assessment": {
+    "future_function_evidence": false,
+    "anomalous_data_requires_review": true,
+    "conclusion": "未发现分红重复/负值或明显未来函数证据；价格存在除权/停牌等大跳变，回测需依赖既有除权日现金入账与执行价边界。"
+  }
+}

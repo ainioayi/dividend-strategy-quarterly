@@ -1,0 +1,35 @@
+{
+  "round": 19,
+  "scope": "本地缓存字段与转换器静态审计",
+  "cache_files_checked": 210,
+  "cache_records_checked": 3159,
+  "cache_keys": [
+    "bonus_ratio",
+    "dps",
+    "ex_date",
+    "transfer_ratio",
+    "year"
+  ],
+  "fields": {
+    "NOTICE_DATE": {
+      "present_in_backtest_cache": false
+    },
+    "EQUITY_RECORD_DATE": {
+      "present_in_backtest_cache": false
+    },
+    "PLAN_NOTICE_DATE": {
+      "present_in_backtest_cache": false,
+      "mapped_in_refresh_snapshot": true
+    },
+    "ex_date": {
+      "present_in_backtest_cache": true
+    }
+  },
+  "cross_validation": {
+    "api_requests": 0,
+    "reason": "本轮只读冻结缓存和转换器，避免批量请求触发东财限流；后续仅允许少量串行样本核对。"
+  },
+  "future_function_risk": "公告日、登记日或计划公告日若用于信号，必须先按字段日期 <= signal_date 截断；不能把抓取时点当成历史可得时点。",
+  "current_boundary": "回测当前只使用已实施逐笔 ex_date；缺少公告日/登记日时，不宣称已测量真实信息延迟。",
+  "recommendation": "暂不把缺失字段纳入策略；先在增量缓存中保留原始时点字段，再用少量样本交叉验证字段语义和发布日期边界。"
+}

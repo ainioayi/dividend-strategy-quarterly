@@ -1,0 +1,17 @@
+{
+  "round": 7,
+  "status": "pass",
+  "tests": {"command": "pytest -q tests/test_backtest_temporal.py tests/test_update_portfolio.py tests/test_quarterly_strategy.py", "passed": 32},
+  "checks": {
+    "execution_lag_1": "pass: execution_date uses next available cached trading day",
+    "suspension_missing_price": "pass: missing execution quote skips trade; prior mark is valuation-only",
+    "signal_information": "pass: signal rows use signal_date and historical dividend cutoff",
+    "dividend_entry_boundary": "pass: ex_date <= entry_date is excluded",
+    "reinvestment": "pass: uses execution price and available cash, respects position cap",
+    "nav_mark": "pass: mark_price is not used as execution price"
+  },
+  "risks": [
+    "旧版 _apply_quarterly_dividends 仍为近似兼容函数，但主回测路径不调用"
+  ],
+  "generated_at": "2026-08-26"
+}

@@ -1,0 +1,128 @@
+[
+  {
+    "name": "dyn1",
+    "metrics": {
+      "cagr": 21.58,
+      "max_drawdown": 55.82,
+      "volatility": 35.21,
+      "sharpe": 0.668,
+      "ending_nav": 787717.4,
+      "total_return": 687.72,
+      "observations": 128,
+      "trade_count": 43,
+      "buy_count": 31,
+      "sell_count": 12,
+      "dividend_event_count": 13,
+      "split_event_count": 1,
+      "ending_cash": 2107.4
+    }
+  },
+  {
+    "name": "dyn2",
+    "metrics": {
+      "cagr": 21.58,
+      "max_drawdown": 55.82,
+      "volatility": 35.21,
+      "sharpe": 0.668,
+      "ending_nav": 787717.4,
+      "total_return": 687.72,
+      "observations": 128,
+      "trade_count": 43,
+      "buy_count": 31,
+      "sell_count": 12,
+      "dividend_event_count": 13,
+      "split_event_count": 1,
+      "ending_cash": 2107.4
+    }
+  },
+  {
+    "name": "dyn3",
+    "metrics": {
+      "cagr": 33.05,
+      "max_drawdown": 27.86,
+      "volatility": 32.19,
+      "sharpe": 0.983,
+      "ending_nav": 2040570.11,
+      "total_return": 1940.57,
+      "observations": 128,
+      "trade_count": 61,
+      "buy_count": 46,
+      "sell_count": 15,
+      "dividend_event_count": 17,
+      "split_event_count": 0,
+      "ending_cash": 478.11
+    }
+  },
+  {
+    "name": "dyn4",
+    "metrics": {
+      "cagr": 33.05,
+      "max_drawdown": 27.86,
+      "volatility": 32.19,
+      "sharpe": 0.983,
+      "ending_nav": 2040570.11,
+      "total_return": 1940.57,
+      "observations": 128,
+      "trade_count": 61,
+      "buy_count": 46,
+      "sell_count": 15,
+      "dividend_event_count": 17,
+      "split_event_count": 0,
+      "ending_cash": 478.11
+    }
+  },
+  {
+    "name": "dyn5",
+    "metrics": {
+      "cagr": 32.68,
+      "max_drawdown": 27.86,
+      "volatility": 32.19,
+      "sharpe": 0.974,
+      "ending_nav": 1981652.91,
+      "total_return": 1881.65,
+      "observations": 128,
+      "trade_count": 57,
+      "buy_count": 43,
+      "sell_count": 14,
+      "dividend_event_count": 17,
+      "split_event_count": 0,
+      "ending_cash": 1416.91
+    }
+  },
+  {
+    "name": "dyn8",
+    "metrics": {
+      "cagr": 21.7,
+      "max_drawdown": 27.86,
+      "volatility": 26.82,
+      "sharpe": 0.791,
+      "ending_nav": 796264.14,
+      "total_return": 696.26,
+      "observations": 128,
+      "trade_count": 52,
+      "buy_count": 38,
+      "sell_count": 14,
+      "dividend_event_count": 14,
+      "split_event_count": 0,
+      "ending_cash": 678.14
+    }
+  },
+  {
+    "name": "curated",
+    "metrics": {
+      "cagr": 42.32,
+      "max_drawdown": 22.76,
+      "volatility": 45.31,
+      "sharpe": 0.912,
+      "ending_nav": 4156690.63,
+      "total_return": 4056.69,
+      "observations": 128,
+      "trade_count": 46,
+      "buy_count": 34,
+      "sell_count": 12,
+      "dividend_event_count": 12,
+      "split_event_count": 0,
+      "ending_cash": 231.63
+    }
+  }
+]

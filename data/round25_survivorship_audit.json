@@ -1,0 +1,2464 @@
+{
+  "round": 25,
+  "description": "survivorship_bias_audit_delisted_stocks",
+  "as_of": "2026-08-25",
+  "manifest_records_sha256": "24de009d9bb60c857fc89e8f7510b93583b17f9abde50350ea63a6a5830a7409",
+  "current_manifest_count": 210,
+  "delisted_total": 361,
+  "delisted_after_2015": 271,
+  "delisted_with_3yr_consecutive_dividend": 0,
+  "summary": {
+    "processed": 271,
+    "failed_to_fetch": 0,
+    "zero_dividend_records": 271,
+    "has_dividend_records": 0,
+    "max_consecutive_0yr": 271,
+    "max_consecutive_1yr": 0,
+    "max_consecutive_2yr": 0,
+    "max_consecutive_3yr_plus": 0
+  },
+  "qualified": [],
+  "failed": [],
+  "all_delisted_detail": [
+    {
+      "code": "600005",
+      "name": "武钢股份",
+      "market": "SH",
+      "delist_date": "2017-02-14",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600068",
+      "name": "葛洲坝",
+      "market": "SH",
+      "delist_date": "2021-09-13",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600069",
+      "name": "退市银鸽",
+      "market": "SH",
+      "delist_date": "2020-08-28",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600070",
+      "name": "*ST富润",
+      "market": "SH",
+      "delist_date": "2025-04-30",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600074",
+      "name": "退市保千",
+      "market": "SH",
+      "delist_date": "2020-06-03",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600077",
+      "name": "*ST宋都",
+      "market": "SH",
+      "delist_date": "2023-07-25",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600083",
+      "name": "*ST博信",
+      "market": "SH",
+      "delist_date": "2025-03-05",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600086",
+      "name": "退市金钰",
+      "market": "SH",
+      "delist_date": "2021-03-18",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600090",
+      "name": "退市济堂",
+      "market": "SH",
+      "delist_date": "2022-07-07",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600091",
+      "name": "退市明科",
+      "market": "SH",
+      "delist_date": "2022-06-21",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600093",
+      "name": "退市易见",
+      "market": "SH",
+      "delist_date": "2022-06-23",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600112",
+      "name": "*ST天成",
+      "market": "SH",
+      "delist_date": "2024-08-15",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600122",
+      "name": "*ST宏图",
+      "market": "SH",
+      "delist_date": "2023-06-26",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600139",
+      "name": "*ST西源",
+      "market": "SH",
+      "delist_date": "2023-03-27",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600145",
+      "name": "退市新亿",
+      "market": "SH",
+      "delist_date": "2022-04-28",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600146",
+      "name": "退市环球",
+      "market": "SH",
+      "delist_date": "2022-06-30",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600175",
+      "name": "退市美都",
+      "market": "SH",
+      "delist_date": "2020-08-17",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600190",
+      "name": "退市锦港",
+      "market": "SH",
+      "delist_date": "2025-07-28",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600193",
+      "name": "退市创兴",
+      "market": "SH",
+      "delist_date": "2026-07-06",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600200",
+      "name": "退市苏吴",
+      "market": "SH",
+      "delist_date": "2025-12-31",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600209",
+      "name": "退市罗顿",
+      "market": "SH",
+      "delist_date": "2022-06-22",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600213",
+      "name": "*ST亚星",
+      "market": "SH",
+      "delist_date": "2024-10-17",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600220",
+      "name": "ST阳光",
+      "market": "SH",
+      "delist_date": "2024-07-10",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600225",
+      "name": "退市卓朗",
+      "market": "SH",
+      "delist_date": "2025-03-06",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600240",
+      "name": "退市华业",
+      "market": "SH",
+      "delist_date": "2020-02-06",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600242",
+      "name": "退市中昌",
+      "market": "SH",
+      "delist_date": "2023-06-29",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600247",
+      "name": "*ST成城",
+      "market": "SH",
+      "delist_date": "2021-03-22",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600260",
+      "name": "*ST凯乐",
+      "market": "SH",
+      "delist_date": "2023-02-15",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600270",
+      "name": "外运发展",
+      "market": "SH",
+      "delist_date": "2018-12-28",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600275",
+      "name": "退市昌鱼",
+      "market": "SH",
+      "delist_date": "2022-06-22",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600277",
+      "name": "ST亿利",
+      "market": "SH",
+      "delist_date": "2024-07-18",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600290",
+      "name": "*ST华仪",
+      "market": "SH",
+      "delist_date": "2024-01-16",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600291",
+      "name": "退市西水",
+      "market": "SH",
+      "delist_date": "2022-06-14",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600297",
+      "name": "广汇汽车",
+      "market": "SH",
+      "delist_date": "2024-08-28",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600306",
+      "name": "退市商城",
+      "market": "SH",
+      "delist_date": "2024-06-26",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600311",
+      "name": "*ST荣华",
+      "market": "SH",
+      "delist_date": "2023-03-27",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600317",
+      "name": "营口港",
+      "market": "SH",
+      "delist_date": "2021-01-29",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600321",
+      "name": "正源股份",
+      "market": "SH",
+      "delist_date": "2024-06-27",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600355",
+      "name": "*ST精伦",
+      "market": "SH",
+      "delist_date": "2026-04-27",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600385",
+      "name": "退市金泰",
+      "market": "SH",
+      "delist_date": "2022-07-07",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600387",
+      "name": "退市海越",
+      "market": "SH",
+      "delist_date": "2025-07-11",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600393",
+      "name": "ST粤泰",
+      "market": "SH",
+      "delist_date": "2023-07-18",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600401",
+      "name": "退市海润",
+      "market": "SH",
+      "delist_date": "2019-07-15",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600421",
+      "name": "退市华嵘",
+      "market": "SH",
+      "delist_date": "2026-06-26",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600432",
+      "name": "退市吉恩",
+      "market": "SH",
+      "delist_date": "2018-07-13",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600462",
+      "name": "退市九有",
+      "market": "SH",
+      "delist_date": "2025-07-21",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600466",
+      "name": "*ST蓝光",
+      "market": "SH",
+      "delist_date": "2023-06-06",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600485",
+      "name": "*ST信威",
+      "market": "SH",
+      "delist_date": "2021-06-01",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600532",
+      "name": "退市未来",
+      "market": "SH",
+      "delist_date": "2023-06-28",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600555",
+      "name": "退市海创",
+      "market": "SH",
+      "delist_date": "2022-07-14",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600565",
+      "name": "ST迪马",
+      "market": "SH",
+      "delist_date": "2024-08-07",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600599",
+      "name": "退市熊猫",
+      "market": "SH",
+      "delist_date": "2026-06-26",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600608",
+      "name": "退市沪科",
+      "market": "SH",
+      "delist_date": "2026-07-03",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600614",
+      "name": "退市鹏起",
+      "market": "SH",
+      "delist_date": "2021-07-22",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600634",
+      "name": "退市富控",
+      "market": "SH",
+      "delist_date": "2021-07-22",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600636",
+      "name": "退市国化",
+      "market": "SH",
+      "delist_date": "2026-06-29",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600647",
+      "name": "退市同达",
+      "market": "SH",
+      "delist_date": "2024-07-03",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600652",
+      "name": "退市游久",
+      "market": "SH",
+      "delist_date": "2022-06-21",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600656",
+      "name": "退市博元",
+      "market": "SH",
+      "delist_date": "2016-05-13",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600677",
+      "name": "*ST航通",
+      "market": "SH",
+      "delist_date": "2021-03-18",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600680",
+      "name": "*ST上普",
+      "market": "SH",
+      "delist_date": "2019-05-24",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600687",
+      "name": "退市刚泰",
+      "market": "SH",
+      "delist_date": "2021-03-04",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600695",
+      "name": "退市绿庭",
+      "market": "SH",
+      "delist_date": "2022-06-15",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600696",
+      "name": "退市岩石",
+      "market": "SH",
+      "delist_date": "2026-06-29",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600701",
+      "name": "退市工新",
+      "market": "SH",
+      "delist_date": "2021-05-06",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600705",
+      "name": "中航产融",
+      "market": "SH",
+      "delist_date": "2025-05-27",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600723",
+      "name": "首商股份",
+      "market": "SH",
+      "delist_date": "2021-10-22",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600747",
+      "name": "退市大控",
+      "market": "SH",
+      "delist_date": "2019-12-13",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600766",
+      "name": "退市园城",
+      "market": "SH",
+      "delist_date": "2024-07-03",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600767",
+      "name": "退市运盛",
+      "market": "SH",
+      "delist_date": "2023-06-29",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600781",
+      "name": "退市辅仁",
+      "market": "SH",
+      "delist_date": "2023-06-28",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600804",
+      "name": "退市鹏博",
+      "market": "SH",
+      "delist_date": "2025-07-03",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600806",
+      "name": "退市昆机",
+      "market": "SH",
+      "delist_date": "2018-07-13",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600811",
+      "name": "*ST东方",
+      "market": "SH",
+      "delist_date": "2025-04-30",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600823",
+      "name": "*ST世茂",
+      "market": "SH",
+      "delist_date": "2024-06-14",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600832",
+      "name": "东方明珠",
+      "market": "SH",
+      "delist_date": "2015-05-20",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600836",
+      "name": "*ST易连",
+      "market": "SH",
+      "delist_date": "2024-07-11",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600837",
+      "name": "海通证券",
+      "market": "SH",
+      "delist_date": "2025-03-04",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600856",
+      "name": "退市中天",
+      "market": "SH",
+      "delist_date": "2022-06-22",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600870",
+      "name": "退市厦华",
+      "market": "SH",
+      "delist_date": "2022-06-30",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600890",
+      "name": "退市中房",
+      "market": "SH",
+      "delist_date": "2022-06-21",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600891",
+      "name": "退市秋林",
+      "market": "SH",
+      "delist_date": "2021-05-12",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600896",
+      "name": "退市海医",
+      "market": "SH",
+      "delist_date": "2022-07-25",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600898",
+      "name": "*ST美讯",
+      "market": "SH",
+      "delist_date": "2025-02-10",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "600978",
+      "name": "*ST宜生",
+      "market": "SH",
+      "delist_date": "2021-03-22",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "601028",
+      "name": "玉龙股份",
+      "market": "SH",
+      "delist_date": "2025-05-27",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "601258",
+      "name": "*ST庞大",
+      "market": "SH",
+      "delist_date": "2023-06-30",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "601268",
+      "name": "*ST二重",
+      "market": "SH",
+      "delist_date": "2015-05-21",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "601299",
+      "name": "中国北车",
+      "market": "SH",
+      "delist_date": "2015-05-20",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "601558",
+      "name": "退市锐电",
+      "market": "SH",
+      "delist_date": "2020-07-03",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "601989",
+      "name": "中国重工",
+      "market": "SH",
+      "delist_date": "2025-09-05",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "603003",
+      "name": "退市龙宇",
+      "market": "SH",
+      "delist_date": "2025-07-03",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "603056",
+      "name": "德邦股份",
+      "market": "SH",
+      "delist_date": "2026-03-31",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "603133",
+      "name": "退市碳元",
+      "market": "SH",
+      "delist_date": "2024-07-03",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "603157",
+      "name": "退市拉夏",
+      "market": "SH",
+      "delist_date": "2022-05-24",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "603388",
+      "name": "*ST元成",
+      "market": "SH",
+      "delist_date": "2025-12-05",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "603555",
+      "name": "ST贵人",
+      "market": "SH",
+      "delist_date": "2024-03-29",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "603603",
+      "name": "退市博天",
+      "market": "SH",
+      "delist_date": "2024-04-25",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "603963",
+      "name": "*ST大药",
+      "market": "SH",
+      "delist_date": "2025-03-21",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "603996",
+      "name": "退市中新",
+      "market": "SH",
+      "delist_date": "2022-05-24",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "605081",
+      "name": "退市太和",
+      "market": "SH",
+      "delist_date": "2026-07-03",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "688086",
+      "name": "退市紫晶",
+      "market": "SH",
+      "delist_date": "2023-07-07",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "688287",
+      "name": "退市观典",
+      "market": "SH",
+      "delist_date": "2026-06-10",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "688555",
+      "name": "退市泽达",
+      "market": "SH",
+      "delist_date": "2023-07-07",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "900935",
+      "name": "阳晨Ｂ股",
+      "market": "SH",
+      "delist_date": "2016-12-16",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "900950",
+      "name": "新城Ｂ股",
+      "market": "SH",
+      "delist_date": "2015-11-23",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "900951",
+      "name": "退市大化",
+      "market": "SH",
+      "delist_date": "2020-08-28",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "900953",
+      "name": "凯马Ｂ",
+      "market": "SH",
+      "delist_date": "2024-07-05",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "900956",
+      "name": "东贝Ｂ股",
+      "market": "SH",
+      "delist_date": "2020-11-23",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "900957",
+      "name": "*ST凌云B",
+      "market": "SH",
+      "delist_date": "2025-07-04",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000004",
+      "name": "国华退",
+      "market": "SZ",
+      "delist_date": "2026-07-14",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000005",
+      "name": "ST星源",
+      "market": "SZ",
+      "delist_date": "2024-04-26",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000018",
+      "name": "神城A退",
+      "market": "SZ",
+      "delist_date": "2020-01-07",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000023",
+      "name": "*ST深天",
+      "market": "SZ",
+      "delist_date": "2024-09-02",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000024",
+      "name": "招商地产",
+      "market": "SZ",
+      "delist_date": "2015-12-30",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000033",
+      "name": "新都退",
+      "market": "SZ",
+      "delist_date": "2017-07-07",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000038",
+      "name": "大通退",
+      "market": "SZ",
+      "delist_date": "2023-07-12",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000040",
+      "name": "*ST旭蓝",
+      "market": "SZ",
+      "delist_date": "2025-04-30",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000046",
+      "name": "*ST泛海",
+      "market": "SZ",
+      "delist_date": "2024-02-07",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000150",
+      "name": "*ST宜康",
+      "market": "SZ",
+      "delist_date": "2023-06-09",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000413",
+      "name": "ST旭电",
+      "market": "SZ",
+      "delist_date": "2024-10-11",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000416",
+      "name": "*ST民控",
+      "market": "SZ",
+      "delist_date": "2024-06-05",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000418",
+      "name": "小天鹅Ａ",
+      "market": "SZ",
+      "delist_date": "2019-06-21",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000502",
+      "name": "绿景退",
+      "market": "SZ",
+      "delist_date": "2022-06-27",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000511",
+      "name": "烯碳退",
+      "market": "SZ",
+      "delist_date": "2018-07-18",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000540",
+      "name": "*ST中天",
+      "market": "SZ",
+      "delist_date": "2023-06-30",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000562",
+      "name": "宏源证券",
+      "market": "SZ",
+      "delist_date": "2015-01-26",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000584",
+      "name": "工智退",
+      "market": "SZ",
+      "delist_date": "2025-07-11",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000585",
+      "name": "东电退",
+      "market": "SZ",
+      "delist_date": "2022-05-24",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000587",
+      "name": "*ST金洲",
+      "market": "SZ",
+      "delist_date": "2023-04-03",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000594",
+      "name": "国恒退",
+      "market": "SZ",
+      "delist_date": "2015-07-13",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000606",
+      "name": "顺利退",
+      "market": "SZ",
+      "delist_date": "2023-07-06",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000611",
+      "name": "天首退",
+      "market": "SZ",
+      "delist_date": "2022-06-28",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000613",
+      "name": "东海A退",
+      "market": "SZ",
+      "delist_date": "2022-06-29",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000616",
+      "name": "*ST海投",
+      "market": "SZ",
+      "delist_date": "2023-08-23",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000622",
+      "name": "恒立退",
+      "market": "SZ",
+      "delist_date": "2025-07-16",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000627",
+      "name": "*ST天茂",
+      "market": "SZ",
+      "delist_date": "2025-09-30",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000638",
+      "name": "*ST万方",
+      "market": "SZ",
+      "delist_date": "2026-06-03",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000662",
+      "name": "天夏退",
+      "market": "SZ",
+      "delist_date": "2021-04-12",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000666",
+      "name": "经纬纺机",
+      "market": "SZ",
+      "delist_date": "2023-10-26",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000667",
+      "name": "ST美置",
+      "market": "SZ",
+      "delist_date": "2023-07-14",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000671",
+      "name": "ST阳光城",
+      "market": "SZ",
+      "delist_date": "2023-08-16",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000673",
+      "name": "当代退",
+      "market": "SZ",
+      "delist_date": "2022-07-04",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000687",
+      "name": "华讯退",
+      "market": "SZ",
+      "delist_date": "2022-06-17",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000693",
+      "name": "华泽退",
+      "market": "SZ",
+      "delist_date": "2019-07-09",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000732",
+      "name": "ST泰禾",
+      "market": "SZ",
+      "delist_date": "2023-08-04",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000748",
+      "name": "长城信息",
+      "market": "SZ",
+      "delist_date": "2017-01-18",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000760",
+      "name": "斯太退",
+      "market": "SZ",
+      "delist_date": "2021-07-23",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000780",
+      "name": "ST平能",
+      "market": "SZ",
+      "delist_date": "2022-01-24",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000806",
+      "name": "银河退",
+      "market": "SZ",
+      "delist_date": "2023-07-06",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000835",
+      "name": "长动退",
+      "market": "SZ",
+      "delist_date": "2022-05-23",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000836",
+      "name": "ST富通",
+      "market": "SZ",
+      "delist_date": "2024-08-12",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000851",
+      "name": "*ST高鸿",
+      "market": "SZ",
+      "delist_date": "2025-11-11",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000861",
+      "name": "海印股份",
+      "market": "SZ",
+      "delist_date": "2024-09-18",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000916",
+      "name": "华北高速",
+      "market": "SZ",
+      "delist_date": "2017-12-25",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000918",
+      "name": "*ST嘉凯",
+      "market": "SZ",
+      "delist_date": "2023-07-28",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000939",
+      "name": "凯迪退",
+      "market": "SZ",
+      "delist_date": "2020-12-17",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000961",
+      "name": "ST中南",
+      "market": "SZ",
+      "delist_date": "2024-07-11",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000971",
+      "name": "*ST高升",
+      "market": "SZ",
+      "delist_date": "2024-07-24",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000976",
+      "name": "*ST华铁",
+      "market": "SZ",
+      "delist_date": "2024-08-27",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000979",
+      "name": "中弘退",
+      "market": "SZ",
+      "delist_date": "2018-12-28",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000982",
+      "name": "中银绒业",
+      "market": "SZ",
+      "delist_date": "2024-08-12",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "000996",
+      "name": "中期退",
+      "market": "SZ",
+      "delist_date": "2024-06-28",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002002",
+      "name": "ST鸿达",
+      "market": "SZ",
+      "delist_date": "2024-03-18",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002013",
+      "name": "中航机电",
+      "market": "SZ",
+      "delist_date": "2023-03-17",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002018",
+      "name": "华信退",
+      "market": "SZ",
+      "delist_date": "2019-11-01",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002070",
+      "name": "众和退",
+      "market": "SZ",
+      "delist_date": "2019-07-09",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002071",
+      "name": "长城退",
+      "market": "SZ",
+      "delist_date": "2021-05-07",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002087",
+      "name": "新纺退",
+      "market": "SZ",
+      "delist_date": "2024-06-28",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002089",
+      "name": "新海退",
+      "market": "SZ",
+      "delist_date": "2024-04-18",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002113",
+      "name": "*ST天润",
+      "market": "SZ",
+      "delist_date": "2023-08-11",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002118",
+      "name": "*ST紫鑫",
+      "market": "SZ",
+      "delist_date": "2023-08-04",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002143",
+      "name": "印纪退",
+      "market": "SZ",
+      "delist_date": "2019-11-29",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002147",
+      "name": "新光退",
+      "market": "SZ",
+      "delist_date": "2022-06-23",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002220",
+      "name": "天宝退",
+      "market": "SZ",
+      "delist_date": "2020-08-11",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002231",
+      "name": "*ST奥维",
+      "market": "SZ",
+      "delist_date": "2026-03-27",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002260",
+      "name": "德奥退",
+      "market": "SZ",
+      "delist_date": "2022-06-17",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002280",
+      "name": "ST联络",
+      "market": "SZ",
+      "delist_date": "2024-08-16",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002288",
+      "name": "*ST超华",
+      "market": "SZ",
+      "delist_date": "2024-08-19",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002308",
+      "name": "*ST威创",
+      "market": "SZ",
+      "delist_date": "2024-09-27",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002325",
+      "name": "*ST洪涛",
+      "market": "SZ",
+      "delist_date": "2024-08-15",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002336",
+      "name": "人乐退",
+      "market": "SZ",
+      "delist_date": "2025-07-04",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002341",
+      "name": "ST新纶",
+      "market": "SZ",
+      "delist_date": "2024-08-23",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002359",
+      "name": "北讯退",
+      "market": "SZ",
+      "delist_date": "2021-07-23",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002411",
+      "name": "必康退",
+      "market": "SZ",
+      "delist_date": "2023-07-12",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002417",
+      "name": "深南退",
+      "market": "SZ",
+      "delist_date": "2023-07-10",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002433",
+      "name": "太安退",
+      "market": "SZ",
+      "delist_date": "2024-07-05",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002435",
+      "name": "ST长康",
+      "market": "SZ",
+      "delist_date": "2024-08-15",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002447",
+      "name": "晨鑫退",
+      "market": "SZ",
+      "delist_date": "2022-06-27",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002450",
+      "name": "康得退",
+      "market": "SZ",
+      "delist_date": "2021-05-31",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002464",
+      "name": "众应退",
+      "market": "SZ",
+      "delist_date": "2022-06-28",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002473",
+      "name": "圣莱退",
+      "market": "SZ",
+      "delist_date": "2022-06-22",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002477",
+      "name": "雏鹰退",
+      "market": "SZ",
+      "delist_date": "2019-10-16",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002499",
+      "name": "科林退",
+      "market": "SZ",
+      "delist_date": "2023-04-18",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002502",
+      "name": "ST鼎龙",
+      "market": "SZ",
+      "delist_date": "2024-09-05",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002503",
+      "name": "*ST搜特",
+      "market": "SZ",
+      "delist_date": "2023-08-11",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002504",
+      "name": "*ST弘高",
+      "market": "SZ",
+      "delist_date": "2023-08-21",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002505",
+      "name": "鹏都农牧",
+      "market": "SZ",
+      "delist_date": "2024-08-30",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002509",
+      "name": "天茂退",
+      "market": "SZ",
+      "delist_date": "2020-07-20",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002604",
+      "name": "龙力退",
+      "market": "SZ",
+      "delist_date": "2020-07-15",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002610",
+      "name": "ST爱康",
+      "market": "SZ",
+      "delist_date": "2024-08-12",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002618",
+      "name": "丹邦退",
+      "market": "SZ",
+      "delist_date": "2022-06-22",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002619",
+      "name": "*ST艾格",
+      "market": "SZ",
+      "delist_date": "2022-04-28",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002621",
+      "name": "*ST美吉",
+      "market": "SZ",
+      "delist_date": "2024-08-05",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002665",
+      "name": "ST航高",
+      "market": "SZ",
+      "delist_date": "2024-08-26",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002680",
+      "name": "长生退",
+      "market": "SZ",
+      "delist_date": "2019-11-27",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002684",
+      "name": "猛狮退",
+      "market": "SZ",
+      "delist_date": "2022-06-27",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002699",
+      "name": "*ST美盛",
+      "market": "SZ",
+      "delist_date": "2024-06-05",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002711",
+      "name": "欧浦退",
+      "market": "SZ",
+      "delist_date": "2021-07-15",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002740",
+      "name": "*ST爱迪",
+      "market": "SZ",
+      "delist_date": "2024-03-04",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002750",
+      "name": "龙津退",
+      "market": "SZ",
+      "delist_date": "2025-06-27",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002751",
+      "name": "易尚退",
+      "market": "SZ",
+      "delist_date": "2023-07-13",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002770",
+      "name": "科迪退",
+      "market": "SZ",
+      "delist_date": "2022-06-23",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002776",
+      "name": "*ST柏龙",
+      "market": "SZ",
+      "delist_date": "2024-01-25",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002781",
+      "name": "奇信退",
+      "market": "SZ",
+      "delist_date": "2023-07-05",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002808",
+      "name": "恒久退",
+      "market": "SZ",
+      "delist_date": "2026-07-14",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "002898",
+      "name": "赛隆退",
+      "market": "SZ",
+      "delist_date": "2026-07-17",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "200018",
+      "name": "神城B退",
+      "market": "SZ",
+      "delist_date": "2020-01-07",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "200024",
+      "name": "招商局Ｂ",
+      "market": "SZ",
+      "delist_date": "2015-12-11",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "200053",
+      "name": "深基地Ｂ",
+      "market": "SZ",
+      "delist_date": "2018-06-15",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "200054",
+      "name": "建车B",
+      "market": "SZ",
+      "delist_date": "2024-08-22",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "200152",
+      "name": "山航B退",
+      "market": "SZ",
+      "delist_date": "2023-07-10",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "200160",
+      "name": "东沣B退",
+      "market": "SZ",
+      "delist_date": "2020-07-21",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "200168",
+      "name": "*ST舜喆B",
+      "market": "SZ",
+      "delist_date": "2021-05-26",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "200413",
+      "name": "ST东旭B",
+      "market": "SZ",
+      "delist_date": "2024-10-11",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "200418",
+      "name": "小天鹅Ｂ",
+      "market": "SZ",
+      "delist_date": "2019-05-27",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "200613",
+      "name": "东海B退",
+      "market": "SZ",
+      "delist_date": "2022-06-29",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "200770",
+      "name": "武锅B退",
+      "market": "SZ",
+      "delist_date": "2015-07-13",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "200771",
+      "name": "杭汽轮Ｂ",
+      "market": "SZ",
+      "delist_date": "2025-12-22",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "200986",
+      "name": "粤华包Ｂ",
+      "market": "SZ",
+      "delist_date": "2021-07-21",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300023",
+      "name": "宝德退",
+      "market": "SZ",
+      "delist_date": "2022-06-29",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300028",
+      "name": "金亚退",
+      "market": "SZ",
+      "delist_date": "2020-08-03",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300029",
+      "name": "天龙退",
+      "market": "SZ",
+      "delist_date": "2026-07-10",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300038",
+      "name": "数知退",
+      "market": "SZ",
+      "delist_date": "2022-06-30",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300064",
+      "name": "金刚退",
+      "market": "SZ",
+      "delist_date": "2022-06-27",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300089",
+      "name": "文化退",
+      "market": "SZ",
+      "delist_date": "2023-07-13",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300090",
+      "name": "盛运退",
+      "market": "SZ",
+      "delist_date": "2020-08-25",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300104",
+      "name": "乐视退",
+      "market": "SZ",
+      "delist_date": "2020-07-21",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300108",
+      "name": "*ST吉药",
+      "market": "SZ",
+      "delist_date": "2025-05-29",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300116",
+      "name": "*ST保力",
+      "market": "SZ",
+      "delist_date": "2024-07-25",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300117",
+      "name": "*ST嘉寓",
+      "market": "SZ",
+      "delist_date": "2025-04-30",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300156",
+      "name": "神雾退",
+      "market": "SZ",
+      "delist_date": "2020-08-25",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300178",
+      "name": "腾邦退",
+      "market": "SZ",
+      "delist_date": "2022-06-22",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300186",
+      "name": "大华农",
+      "market": "SZ",
+      "delist_date": "2015-11-02",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300202",
+      "name": "聚龙退",
+      "market": "SZ",
+      "delist_date": "2022-07-04",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300208",
+      "name": "中程退",
+      "market": "SZ",
+      "delist_date": "2025-07-21",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300216",
+      "name": "千山退",
+      "market": "SZ",
+      "delist_date": "2020-09-16",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300262",
+      "name": "*ST巴安",
+      "market": "SZ",
+      "delist_date": "2024-08-19",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300273",
+      "name": "和佳退",
+      "market": "SZ",
+      "delist_date": "2023-07-06",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300280",
+      "name": "紫天退",
+      "market": "SZ",
+      "delist_date": "2025-10-14",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300282",
+      "name": "三盛退",
+      "market": "SZ",
+      "delist_date": "2024-07-18",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300297",
+      "name": "蓝盾退",
+      "market": "SZ",
+      "delist_date": "2023-07-31",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300309",
+      "name": "吉艾退",
+      "market": "SZ",
+      "delist_date": "2023-05-30",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300312",
+      "name": "邦讯退",
+      "market": "SZ",
+      "delist_date": "2022-07-04",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300325",
+      "name": "德威退",
+      "market": "SZ",
+      "delist_date": "2022-06-28",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300330",
+      "name": "计通退",
+      "market": "SZ",
+      "delist_date": "2023-05-24",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300336",
+      "name": "新文退",
+      "market": "SZ",
+      "delist_date": "2023-07-05",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300344",
+      "name": "立方退",
+      "market": "SZ",
+      "delist_date": "2026-04-22",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300356",
+      "name": "光一退",
+      "market": "SZ",
+      "delist_date": "2023-07-13",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300362",
+      "name": "天翔退",
+      "market": "SZ",
+      "delist_date": "2021-08-30",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300367",
+      "name": "网力退",
+      "market": "SZ",
+      "delist_date": "2022-06-30",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300372",
+      "name": "欣泰退",
+      "market": "SZ",
+      "delist_date": "2017-08-28",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300379",
+      "name": "东通退",
+      "market": "SZ",
+      "delist_date": "2026-01-22",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300391",
+      "name": "长药退",
+      "market": "SZ",
+      "delist_date": "2026-04-13",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300392",
+      "name": "腾信退",
+      "market": "SZ",
+      "delist_date": "2023-07-10",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300431",
+      "name": "暴风退",
+      "market": "SZ",
+      "delist_date": "2020-11-10",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300495",
+      "name": "*ST美尚",
+      "market": "SZ",
+      "delist_date": "2024-09-20",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300526",
+      "name": "中潜退",
+      "market": "SZ",
+      "delist_date": "2023-07-12",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300630",
+      "name": "普利退",
+      "market": "SZ",
+      "delist_date": "2025-05-22",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300742",
+      "name": "越博退",
+      "market": "SZ",
+      "delist_date": "2024-07-22",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    },
+    {
+      "code": "300799",
+      "name": "左江退",
+      "market": "SZ",
+      "delist_date": "2024-07-29",
+      "dividend_records": 0,
+      "max_consecutive_years": 0,
+      "max_dps": 0.0
+    }
+  ],
+  "limitation": "退市列表来自 akshare 的当前快照，可能遗漏部分历史退市股票。分红数据来自东财 API 的当前返回，部分退市股票的历史分红记录可能不完整。审计只检查连续分红 3 年的第一道门槛，未做完整回测验证。"
+}

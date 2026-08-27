@@ -1,0 +1,466 @@
+[
+  {
+    "set": "default",
+    "freq": "quarter",
+    "years": 2,
+    "n_codes": 37,
+    "metrics": {
+      "cagr": 34.07,
+      "max_drawdown": 4.47,
+      "volatility": 38.62,
+      "sharpe": 0.867,
+      "ending_nav": 1744312.41,
+      "total_return": 1644.31
+    }
+  },
+  {
+    "set": "default",
+    "freq": "quarter",
+    "years": 3,
+    "n_codes": 37,
+    "metrics": {
+      "cagr": 34.07,
+      "max_drawdown": 4.47,
+      "volatility": 38.62,
+      "sharpe": 0.867,
+      "ending_nav": 1744312.41,
+      "total_return": 1644.31
+    }
+  },
+  {
+    "set": "default",
+    "freq": "quarter",
+    "years": 4,
+    "n_codes": 37,
+    "metrics": {
+      "cagr": 34.07,
+      "max_drawdown": 4.47,
+      "volatility": 38.62,
+      "sharpe": 0.867,
+      "ending_nav": 1744312.41,
+      "total_return": 1644.31
+    }
+  },
+  {
+    "set": "default",
+    "freq": "quarter",
+    "years": 5,
+    "n_codes": 37,
+    "metrics": {
+      "cagr": 34.07,
+      "max_drawdown": 4.47,
+      "volatility": 38.62,
+      "sharpe": 0.867,
+      "ending_nav": 1744312.41,
+      "total_return": 1644.31
+    }
+  },
+  {
+    "set": "default",
+    "freq": "month",
+    "years": 2,
+    "n_codes": 37,
+    "metrics": {
+      "cagr": 34.6,
+      "max_drawdown": 15.75,
+      "volatility": 31.19,
+      "sharpe": 1.037,
+      "ending_nav": 2312170.36,
+      "total_return": 2212.17
+    }
+  },
+  {
+    "set": "default",
+    "freq": "month",
+    "years": 3,
+    "n_codes": 37,
+    "metrics": {
+      "cagr": 34.6,
+      "max_drawdown": 15.75,
+      "volatility": 31.19,
+      "sharpe": 1.037,
+      "ending_nav": 2312170.36,
+      "total_return": 2212.17
+    }
+  },
+  {
+    "set": "default",
+    "freq": "month",
+    "years": 4,
+    "n_codes": 37,
+    "metrics": {
+      "cagr": 34.6,
+      "max_drawdown": 15.75,
+      "volatility": 31.19,
+      "sharpe": 1.037,
+      "ending_nav": 2312170.36,
+      "total_return": 2212.17
+    }
+  },
+  {
+    "set": "default",
+    "freq": "month",
+    "years": 5,
+    "n_codes": 37,
+    "metrics": {
+      "cagr": 34.6,
+      "max_drawdown": 15.75,
+      "volatility": 31.19,
+      "sharpe": 1.037,
+      "ending_nav": 2312170.36,
+      "total_return": 2212.17
+    }
+  },
+  {
+    "set": "cached210",
+    "freq": "quarter",
+    "years": 2,
+    "n_codes": 210,
+    "metrics": {
+      "cagr": 34.1,
+      "max_drawdown": 5.53,
+      "volatility": 37.91,
+      "sharpe": 0.879,
+      "ending_nav": 1748706.79,
+      "total_return": 1648.71
+    }
+  },
+  {
+    "set": "cached210",
+    "freq": "quarter",
+    "years": 3,
+    "n_codes": 210,
+    "metrics": {
+      "cagr": 34.1,
+      "max_drawdown": 5.53,
+      "volatility": 37.91,
+      "sharpe": 0.879,
+      "ending_nav": 1748706.79,
+      "total_return": 1648.71
+    }
+  },
+  {
+    "set": "cached210",
+    "freq": "quarter",
+    "years": 4,
+    "n_codes": 210,
+    "metrics": {
+      "cagr": 34.1,
+      "max_drawdown": 5.53,
+      "volatility": 37.91,
+      "sharpe": 0.879,
+      "ending_nav": 1748706.79,
+      "total_return": 1648.71
+    }
+  },
+  {
+    "set": "cached210",
+    "freq": "quarter",
+    "years": 5,
+    "n_codes": 210,
+    "metrics": {
+      "cagr": 34.1,
+      "max_drawdown": 5.53,
+      "volatility": 37.91,
+      "sharpe": 0.879,
+      "ending_nav": 1748706.79,
+      "total_return": 1648.71
+    }
+  },
+  {
+    "set": "cached210",
+    "freq": "month",
+    "years": 2,
+    "n_codes": 210,
+    "metrics": {
+      "cagr": 28.85,
+      "max_drawdown": 35.41,
+      "volatility": 39.28,
+      "sharpe": 0.751,
+      "ending_nav": 1458263.72,
+      "total_return": 1358.26
+    }
+  },
+  {
+    "set": "cached210",
+    "freq": "month",
+    "years": 3,
+    "n_codes": 210,
+    "metrics": {
+      "cagr": 28.85,
+      "max_drawdown": 35.41,
+      "volatility": 39.28,
+      "sharpe": 0.751,
+      "ending_nav": 1458263.72,
+      "total_return": 1358.26
+    }
+  },
+  {
+    "set": "cached210",
+    "freq": "month",
+    "years": 4,
+    "n_codes": 210,
+    "metrics": {
+      "cagr": 28.85,
+      "max_drawdown": 35.41,
+      "volatility": 39.28,
+      "sharpe": 0.751,
+      "ending_nav": 1458263.72,
+      "total_return": 1358.26
+    }
+  },
+  {
+    "set": "cached210",
+    "freq": "month",
+    "years": 5,
+    "n_codes": 210,
+    "metrics": {
+      "cagr": 28.85,
+      "max_drawdown": 35.41,
+      "volatility": 39.28,
+      "sharpe": 0.751,
+      "ending_nav": 1458263.72,
+      "total_return": 1358.26
+    }
+  },
+  {
+    "set": "default",
+    "freq": "month",
+    "years": 3,
+    "entry_yield": 6.0,
+    "mom": 0.9,
+    "n_codes": 37,
+    "metrics": {
+      "cagr": 40.43,
+      "max_drawdown": 18.69,
+      "volatility": 38.93,
+      "sharpe": 0.981,
+      "ending_nav": 3619804.4,
+      "total_return": 3519.8
+    }
+  },
+  {
+    "set": "default",
+    "freq": "month",
+    "years": 3,
+    "entry_yield": 6.0,
+    "mom": 0.95,
+    "n_codes": 37,
+    "metrics": {
+      "cagr": 27.81,
+      "max_drawdown": 23.4,
+      "volatility": 38.34,
+      "sharpe": 0.739,
+      "ending_nav": 1337595.94,
+      "total_return": 1237.6
+    }
+  },
+  {
+    "set": "default",
+    "freq": "month",
+    "years": 3,
+    "entry_yield": 6.0,
+    "mom": 1.0,
+    "n_codes": 37,
+    "metrics": {
+      "cagr": 33.56,
+      "max_drawdown": 31.48,
+      "volatility": 39.81,
+      "sharpe": 0.839,
+      "ending_nav": 2130885.55,
+      "total_return": 2030.89
+    }
+  },
+  {
+    "set": "default",
+    "freq": "month",
+    "years": 3,
+    "entry_yield": 7.0,
+    "mom": 0.9,
+    "n_codes": 37,
+    "metrics": {
+      "cagr": 40.83,
+      "max_drawdown": 18.77,
+      "volatility": 40.27,
+      "sharpe": 0.969,
+      "ending_nav": 3731247.2,
+      "total_return": 3631.25
+    }
+  },
+  {
+    "set": "default",
+    "freq": "month",
+    "years": 3,
+    "entry_yield": 7.0,
+    "mom": 0.95,
+    "n_codes": 37,
+    "metrics": {
+      "cagr": 24.87,
+      "max_drawdown": 25.12,
+      "volatility": 28.77,
+      "sharpe": 0.835,
+      "ending_nav": 1046051.17,
+      "total_return": 946.05
+    }
+  },
+  {
+    "set": "default",
+    "freq": "month",
+    "years": 3,
+    "entry_yield": 7.0,
+    "mom": 1.0,
+    "n_codes": 37,
+    "metrics": {
+      "cagr": 33.64,
+      "max_drawdown": 17.91,
+      "volatility": 32.27,
+      "sharpe": 0.989,
+      "ending_nav": 2144403.77,
+      "total_return": 2044.4
+    }
+  },
+  {
+    "set": "default",
+    "freq": "month",
+    "years": 3,
+    "entry_yield": 7.5,
+    "mom": 0.9,
+    "n_codes": 37,
+    "metrics": {
+      "cagr": 39.19,
+      "max_drawdown": 18.69,
+      "volatility": 40.37,
+      "sharpe": 0.937,
+      "ending_nav": 3297356.51,
+      "total_return": 3197.36
+    }
+  },
+  {
+    "set": "default",
+    "freq": "month",
+    "years": 3,
+    "entry_yield": 7.5,
+    "mom": 0.95,
+    "n_codes": 37,
+    "metrics": {
+      "cagr": 34.6,
+      "max_drawdown": 15.75,
+      "volatility": 31.19,
+      "sharpe": 1.037,
+      "ending_nav": 2312170.36,
+      "total_return": 2212.17
+    }
+  },
+  {
+    "set": "default",
+    "freq": "month",
+    "years": 3,
+    "entry_yield": 7.5,
+    "mom": 1.0,
+    "n_codes": 37,
+    "metrics": {
+      "cagr": 36.62,
+      "max_drawdown": 23.49,
+      "volatility": 32.47,
+      "sharpe": 1.054,
+      "ending_nav": 2707628.23,
+      "total_return": 2607.63
+    }
+  },
+  {
+    "set": "default",
+    "freq": "month",
+    "years": 3,
+    "entry_yield": 8.0,
+    "mom": 0.9,
+    "n_codes": 37,
+    "metrics": {
+      "cagr": 37.46,
+      "max_drawdown": 18.69,
+      "volatility": 40.21,
+      "sharpe": 0.907,
+      "ending_nav": 2887603.41,
+      "total_return": 2787.6
+    }
+  },
+  {
+    "set": "default",
+    "freq": "month",
+    "years": 3,
+    "entry_yield": 8.0,
+    "mom": 0.95,
+    "n_codes": 37,
+    "metrics": {
+      "cagr": 45.17,
+      "max_drawdown": 23.49,
+      "volatility": 43.95,
+      "sharpe": 0.989,
+      "ending_nav": 5142254.93,
+      "total_return": 5042.25
+    }
+  },
+  {
+    "set": "default",
+    "freq": "month",
+    "years": 3,
+    "entry_yield": 8.0,
+    "mom": 1.0,
+    "n_codes": 37,
+    "metrics": {
+      "cagr": 43.2,
+      "max_drawdown": 23.49,
+      "volatility": 40.49,
+      "sharpe": 1.009,
+      "ending_nav": 4451932.28,
+      "total_return": 4351.93
+    }
+  },
+  {
+    "set": "default",
+    "freq": "month",
+    "years": 3,
+    "entry_yield": 9.0,
+    "mom": 0.9,
+    "n_codes": 37,
+    "metrics": {
+      "cagr": 34.46,
+      "max_drawdown": 23.43,
+      "volatility": 41.02,
+      "sharpe": 0.839,
+      "ending_nav": 2286499.76,
+      "total_return": 2186.5
+    }
+  },
+  {
+    "set": "default",
+    "freq": "month",
+    "years": 3,
+    "entry_yield": 9.0,
+    "mom": 0.95,
+    "n_codes": 37,
+    "metrics": {
+      "cagr": 34.82,
+      "max_drawdown": 23.36,
+      "volatility": 41.1,
+      "sharpe": 0.845,
+      "ending_nav": 2352075.32,
+      "total_return": 2252.08
+    }
+  },
+  {
+    "set": "default",
+    "freq": "month",
+    "years": 3,
+    "entry_yield": 9.0,
+    "mom": 1.0,
+    "n_codes": 37,
+    "metrics": {
+      "cagr": 26.54,
+      "max_drawdown": 38.65,
+      "volatility": 42.32,
+      "sharpe": 0.679,
+      "ending_nav": 1204056.15,
+      "total_return": 1104.06
+    }
+  }
+]

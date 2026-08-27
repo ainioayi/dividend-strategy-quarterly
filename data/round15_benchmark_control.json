@@ -1,0 +1,57 @@
+{
+  "round": 15,
+  "method": "固定候选池、关闭动量、股息门槛为0、最多持有全部固定池、禁止分红再投资；执行滞后1日",
+  "control_definition": "price-plus-cash control: 回测仍按价格估值，分红现金计入现金但不再买入；用于隔离动态池和动量选择贡献",
+  "rules": {
+    "initial_capital": 100000,
+    "entry_yield": 0.0,
+    "hold_yield": 0.0,
+    "max_holdings": 999,
+    "rebalance_threshold": 999.0,
+    "momentum_months": 0,
+    "momentum_threshold": 0.0,
+    "pool_mode": "curated",
+    "execution_lag_days": 1,
+    "reinvest_dividends": false,
+    "reinvest_cash_reserve": 0,
+    "rank_by": "yield",
+    "max_yield": 999.0,
+    "through_date": "2026-08-25"
+  },
+  "metrics": {
+    "cagr": 8.65,
+    "max_drawdown": 33.94,
+    "volatility": 18.75,
+    "sharpe": 0.429,
+    "ending_nav": 240150.64,
+    "total_return": 140.15,
+    "observations": 128,
+    "trade_count": 4,
+    "buy_count": 3,
+    "sell_count": 1,
+    "dividend_event_count": 29,
+    "split_event_count": 2,
+    "ending_cash": 123543.19
+  },
+  "observations": 128,
+  "universe": {
+    "kind": "curated_constant",
+    "count": 37
+  },
+  "inputs": {
+    "manifest_records_sha256": "24de009d9bb60c857fc89e8f7510b93583b17f9abde50350ea63a6a5830a7409",
+    "dates_sha256": "f62fc22c2f2f972e3b29dea42e2a41202bfa620e702acc3c750e26f8c959ec3e",
+    "data_cutoff": "2026-08-25",
+    "dates": {
+      "count": 128,
+      "first": "2016-01-29",
+      "last": "2026-08-25"
+    }
+  },
+  "audit": {
+    "future_function_check": "通过：复用回测引擎，成交使用信号后第1个交易日精确价格",
+    "dividend_scope": "分红现金按引擎既有年度入账规则计入现金，但未使用 ex_date 逐事件再投资；故不是严格总回报指数",
+    "coverage_gap": "固定池为 backtest 内置兼容候选池，非 manifest 全体210只；停牌日不回填价格",
+    "survivorship_bias": "存在：固定池及其历史数据均为事后冻结集合"
+  }
+}

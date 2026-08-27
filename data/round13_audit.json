@@ -1,0 +1,49 @@
+{
+  "round": 13,
+  "title": "回测时点、季度兼容层与候选池 provenance 审计",
+  "date": "2026-08-26",
+  "scope": [
+    "scripts/backtest.py",
+    "scripts/quarterly_strategy.py",
+    "config/strategy.json",
+    "tests/"
+  ],
+  "checks": {
+    "future_function": {
+      "status": "通过",
+      "evidence": [
+        "_find_price 只向目标日及之前回填价格",
+        "execution_lag_days=1 时成交日严格晚于信号日",
+        "动态池按 as_of 截断逐笔 ex_date",
+        "分红仅在 ex_date <= 检查日且严格晚于 entry_date 时入账",
+        "动量回看使用 rebalance_dates 的历史索引"
+      ]
+    },
+    "dynamic_pool_provenance": {
+      "status": "通过",
+      "evidence": [
+        "每个信号日记录 pool_count、排序后代码 SHA-256 和 execution_date",
+        "无可用执行价格的信号日仍保留 provenance 记录",
+        "held_codes 会并入核验池，避免停牌或暂时离池时冻结旧估值"
+      ]
+    },
+    "quarterly_compatibility": {
+      "status": "通过但需保持分层",
+      "evidence": [
+        "config/strategy.json 使用生产季度规则入口",
+        "scripts/backtest.py 在研究回测入口覆盖月度基线参数",
+        "quarterly_strategy.DEFAULT_QUARTERLY_RULES 保留季度兼容默认值，未强行合并"
+      ],
+      "residual_risk": "hold_pr、exit_pr、loss_hold_yield 等季度专用字段未与月度研究参数做独立绩效一致性验证；后续改动需避免误将两层默认值混用"
+    },
+    "json_and_tests": {
+      "status": "通过",
+      "pytest": "64 passed",
+      "compileall": "通过",
+      "git_diff_check": "通过（仅换行格式提示）"
+    }
+  },
+  "findings": [],
+  "decision": "本轮不修改策略参数，不切换主策略；当前主策略仍为动态候选池、连续正分红3年、entry_yield=7.5、hold_yield=5.5、4个月动量阈值0.85、最多2只、执行滞后1个交易日。",
+  "next_focus": "若继续实验，优先修正严格 walk-forward 的 warm-up 口径并重跑；季度兼容字段需单独建立一致性回归测试。"
+}

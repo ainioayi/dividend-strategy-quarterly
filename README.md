@@ -1,49 +1,239 @@
-# 放宽稳定性季度高股息策略
+# 月度高息动量策略（动态池）
 
-这是本次讨论形成的独立研究站点，不是 `flyshub/dividend-calculator` 的镜像。
-首页完整保留 2016-2025 十年候选池回测、滚动窗口、仓位敏感性、10 万元模型账本和风险披露，并在每季度生成新的模型调仓信号。
+这是一个面向研究和审计的 A 股高股息策略项目。回测只使用已经落盘的
+不复权收盘价、逐笔分红明细、版本化候选池和版本化月末日期；模型账本不
+连接券商、不读取账户，也不会自动下单。
 
-公开页面：<https://ainioayi.github.io/dividend-strategy-quarterly/>
+公开站点：<https://ainioayi.github.io/dividend-strategy-quarterly/>
 
-## 自动更新规则
+当前权威状态见 [docs/STRATEGY_STATUS.md](docs/STRATEGY_STATUS.md)。站点
+页面仍是季度快照展示，不能把页面上的旧基线当成当前研究回测结果。
+每轮参数、候选池和稳健性证据集中记录在
+[docs/EXPLORATION_LOG.md](docs/EXPLORATION_LOG.md)。
 
-- 运行时间：北京时间每年 1、4、7、10 月首个可用交易日收盘后。
-- 选股顺序：先通过可持续性、分红连续性、支付率、现金覆盖和 PR 门槛，再按真实股息率从高到低排序。
-- 采用策略：放宽短期稳定性计数（`min_persistence=0`），最多 10 只，同一一级行业最多 2 只，银行最多 2 只。
-- 低买：真实股息率不低于 5%，PR 不高于 0.85。
-- 高卖：股息率低于 4.5% 或 PR 高于 1.05 连续确认；明确的可持续性风险立即退出。
-- 交易约束：100 股整数手，并计入佣金、印花税和过户费。
-- 数据不完整时：任务失败并保留上一版网页，不会把缺失数据当成卖出信号。
+## 当前候选
 
-## 页面与审计文件
+数据截止 `2026-08-25`，回测信号点为 128 个（`2016-01-29` 至
+`2026-08-25`），信号在月末形成，默认在下一可用交易日收盘执行。
 
-- `site/index.html`：公开首页。
-- `site/audit.json`：页面对应的完整审计数据。
-- `site/archive/`：初始报告和后续季度归档。
-- `data/ledgers/relaxed.json`：放宽稳定性模型账本。
-- `data/ledgers/relaxed_cap20.json`：单票 20% 上限对照账本。
-- `data/backtest_baseline.json`：2016-2025 固定候选池回测基线。
+| 指标 | 当前值 |
+| --- | ---: |
+| CAGR | **41.38%** |
+| 最大回撤 | 28.06% |
+| Sharpe | 1.217 |
+| 期末 NAV（10 万元起） | ¥3,876,245.51 |
+| 交易次数 | 75 |
+| 滚动 36 月最差 CAGR | 9.58% |
+| 滚动 48 月最差 CAGR | 17.29% |
 
-## 本地生成
+这些是固定历史样本上的模型结果，不是未来收益承诺。
+
+## 规则
+
+- 候选覆盖 manifest 中的 210 只股票；每个信号日重新检查截至当日已经除权的分红记录，连续正分红至少 3 年才进入动态池。
+- 候选池年度确认边界默认为 `pool_switch_month=7`；1–6 月使用更保守的前两年确认年度，7 月起才纳入上一年度。
+- 用截至信号日可见的后置 DPS 和不复权收盘价计算真实股息率。真实股息率达到 `7.5%` 才允许新入场，低于 `5.5%` 才退出。
+- 软退出默认只需 1 个已发生的月度信号确认；`exit_yield` 暂为理论触发价审计字段，不参与当前卖出路径。
+- 新入场股票须满足当前价格 / 四个月前价格不低于 `0.85`；已有持仓不因短期动量过滤被强制卖出。
+- 最多持有 2 只，按真实股息率排序；等权目标偏离超过 `2.0` 倍才再平衡。
+- 送转股和分红按实际除权日入账，分红现金按持仓比例再投资整数手；手续费、印花税和过户费计入现金。
+- `stop_loss_pct=0`，不使用额外止损；缺少执行价时不成交，旧价格只用于估值。
+- `dividend_information_lag_days=0` 明确记录当前点时口径；第 17 轮的 30/60/90 天保守延迟仅作压力测试。
+
+## 复现
+
+先确认 `data/backtest_cache/price_format.json` 的格式为
+`unadjusted_close`，再运行：
 
 ```powershell
-python -m pip install -r requirements.txt
-python scripts/bootstrap_state.py
-python scripts/generate_report.py
-python -m http.server 8000 --directory site
+python scripts/backtest.py `
+  --dynamic-pool `
+  --manifest data/universe_manifest.json `
+  --rebalance-dates data/rebalance_dates_monthly.json `
+  --param entry_yield 7.5 `
+  --param hold_yield 5.5 `
+  --param momentum_months 4 `
+  --param momentum_threshold 0.85 `
+  --param pool_min_consecutive_years 3 `
+  --param pool_switch_month 7 `
+  --param max_holdings 2 `
+  --param rebalance_threshold 2.0 `
+  --param execution_lag_days 1 `
+  --param dividend_information_lag_days 0 `
+  --param reinvest_cash_reserve 0 `
+  --json data/current_best.json
 ```
 
-实时季度刷新还需要检出上游数据模块：
+固定输入的哈希必须同时匹配：
+
+- manifest records：`24de009d9bb60c857fc89e8f7510b93583b17f9abde50350ea63a6a5830a7409`
+- 月末日期：`f62fc22c2f2f972e3b29dea42e2a41202bfa620e702acc3c750e26f8c959ec3e`
+
+重建输入时显式指定截止日，不要让脚本使用系统当前日期：
 
 ```powershell
-git clone https://github.com/flyshub/dividend-calculator.git _upstream
-python scripts/refresh_snapshot.py --upstream-root _upstream/dividend-calculator --as-of 2026-10-08 --out data/snapshot_current.json
-python scripts/update_portfolio.py --period 2026Q3 --as-of 2026-10-08
-python scripts/generate_report.py
+python scripts/build_universe_manifest.py `
+  --from-cache data/backtest_cache `
+  --as-of 2026-08-25 `
+  --top 0 `
+  --min-years 0 `
+  --pool-min-years 3 `
+  --output data/universe_manifest.json
+
+python scripts/build_rebalance_dates.py `
+  --manifest data/universe_manifest.json `
+  --cache-dir data/backtest_cache `
+  --as-of 2026-08-25 `
+  --output data/rebalance_dates_monthly.json
 ```
 
-## 数据边界
+## 本轮结果
 
-历史结果是固定的当前候选池回放，存在幸存者偏差和样本选择偏差，不是历史逐季全市场样本外回测。季度模型会读取选股器当期最新候选名单，使用固定版本的上游计算代码重新核验，并将当期输入完整归档。自动页面维护的是研究用模型账本，不登录券商、不读取账户、不自动下单，也不承诺未来收益。
+第 7 轮（2026-08-26）只搜索当前参数的局部邻域，产物为
+`data/round7_local.json`。实验共 21 组，均使用完整账本后再切连续 OOS，
+不重新初始化账户。
 
-本项目复用了 `flyshub/dividend-calculator` 的 GPL-3.0 代码与数据口径，继续以 GPL-3.0 发布。
+动量阈值的稳健邻域为 `0.84–0.87`：
+
+| 动量（月数 / 阈值） | CAGR | 最大回撤 | 滚动 36 月最差 | OOS 2021 起 |
+| --- | ---: | ---: | ---: | ---: |
+| 4 / 0.84 | 38.07% | 28.06% | 9.13% | 37.39% |
+| **4 / 0.85** | **41.38%** | 28.06% | **9.58%** | **43.62%** |
+| 4 / 0.86 | 38.92% | 28.06% | 9.07% | 38.98% |
+| 4 / 0.87 | 37.14% | 28.06% | 9.03% | 35.65% |
+
+入场线的对照也从同一个 `4/0.85` 基线开始；`entry_yield=7.5%`
+仍为局部最优。此前基于旧实验默认 `momentum_threshold=0.95` 的数字已从
+当前结论中移除。
+
+## 数据审计
+
+第 7 轮候选池审计写入 `data/round7_pool_audit.json`：210 只股票的 K 线和
+分红缓存均存在，异常价格为 0；价格覆盖 `2015-01-05` 至 `2026-08-25`。
+动态池月度数量最少 78、最多 169、中位数 122。
+
+时间与执行审计写入 `data/round7_temporal_audit.json`，相关测试 32 项
+全部通过，覆盖以下边界：
+
+- `execution_lag_days=1` 只取信号日之后的下一缓存交易日；
+- 信号只读信号日及之前的价格和分红；
+- `ex_date <= entry_date` 的分红不入账，税期按实际除权日计算；
+- 停牌时不以陈旧价格成交，陈旧价格仅作估值；
+- 复投使用执行价并遵守现金保留额和仓位上限。
+
+## 第 8–29 轮探索与当前决策
+
+第 8 轮确认连续分红 3 年、入场线 7.5%、最多 2 只优于相邻候选；第 9
+轮的动量排序、多周期动量、再平衡和高息上限对照均未改善综合结果。第 10–11
+轮发现 `hold_yield=5.575%–5.675%` 的历史平台（5.6% 代表值 CAGR
+42.90%），但第 12 轮真实重置窗口显示该提升只在 2018 起点明显，2020/2021
+起点略逊，2022/2023 起点相同；约 3 倍交易成本时优势反转。因此当前主配置
+仍保留 `hold_yield=5.5%`，5.6% 只作为挑战者，不把单一全样本峰值当成未来收益
+承诺。
+
+第 12 轮还为 `data/current_best.json` 增加了逐信号日 `pool_provenance`：记录
+动态池数量、候选代码哈希和执行日期（末个信号点无下一交易日时为 `null`），
+便于机器复核候选池和执行缺口。
+
+第 13 轮测试高息上限 `12%–100%`，没有优于不设上限；严格 warm-up 窗口中
+`hold_yield=5.6%` 只在多数起点略优、在 2022 年反转，因此仍不切换主规则。
+第 14 轮的持仓动量退出和候选池连续性替代规则均未改善；冻结全体 manifest
+的等权价格基准为 CAGR 3.53%，但不含分红、成本且有生存偏差，不能当作严格
+总回报指数。第 15 轮的 DPS 不下降过滤降低 CAGR，固定池/无动量/无复投控制
+仅为 8.65%，均不采纳。
+
+第 16 轮验证了个股最新已知年度池、分红再投资贡献和稀疏调仓：替代池的 CAGR
+仅 27.12%–28.99%，双月/三月调仓也没有同时改善收益与稳定性；复投版本在
+当前账本为 41.38%，关闭复投降至 24.33%。第 17 轮将 `ex_date` 信息延迟真实
+接入回测，30/60/90 天延迟的 CAGR 分别为 34.72%/27.51%/26.78%，滚动窗口
+明显变差。收益率口径替代（近 12 个月已支付 DPS、已知上一年度 DPS）分别为
+6.60% 和 35.25%，均低于当前 point-in-time 口径；18 组联合网格的 5.6% 全样本
+峰值在重置窗口和三倍成本下不稳。因此主策略继续 `hold_yield=5.5%`，完整表格
+和限制见 [EXPLORATION_LOG.md](docs/EXPLORATION_LOG.md)。
+
+第 18 轮将候选池确认月份参数化：5/6 月切换使 CAGR 降至 26.56%/27.94%，
+7 月与 8 月全样本相同，且 7 月规则更简单；信息延迟下的局部邻域和严格训练/测试
+选参均未在滚动、重置和三倍费用口径同时超过基线。第 19 轮的多周期动量几何均值
+和关闭动量均显著低于单 4 月动量；分红公告/登记字段审计发现当前缓存不完整，
+暂不把未经时点核验的字段接入信号。集中度对照显示 `max_sector=1` 会显著降级，
+而 `max_banks=1` 与取消行业上限在当前样本等价，生产仍保留 `2/2` 的简单约束。
+
+第 20 轮的仓位上限和现金准备金只降低部分回撤，均牺牲 CAGR、滚动窗口或独立
+起点表现；实际软退出参数比较显示 `hold_yield=5.5%`、单次月度确认的综合结果
+最好。`hold_yield=5.3%` 在近期 OOS 和三倍费用下较强，但没有跨越独立区块；
+配置中的 `exit_yield` 当前仅用于理论触发价审计，并未参与卖出判断。第 20 轮还
+审计了 210 个分红缓存文件（3,159 条记录），未发现重复事件或负值异常。
+
+第 21 轮将亏损持仓线设为 4.5%/5.0%/5.5%/6.0% 做窄实验：前三者逐笔交易
+完全相同，6.0% 反而降级。2016–2019、2020–2022、2023–2026 非重叠区块对照
+也未支持切换到 5.3% 挑战者。动态池年度字段同时增加了整数/数字字符串规范化，
+不改变当前冻结缓存结果。完整表格和限制见 [docs/EXPLORATION_LOG.md](docs/EXPLORATION_LOG.md)。
+
+第 22 轮复核连续分红 3/4/5 年与再平衡阈值 1.5/2.0/2.5：3 年门槛仍在
+全样本、滚动窗口和连续 OOS 上综合最好；阈值 2.0 与 2.5 逐笔等价，1.5 只增加
+交易并降低 CAGR，因此保持 3 年和 2.0。第 23 轮比较最多 1/2/3 只持仓，正常
+成本 CAGR 分别为 23.67%/41.38%/40.68%；3 只只在三倍费用压力下局部占优，
+不足以替换 2 只。第 24 轮的动量排序 CAGR 28.88%、最大回撤 47.45%，明显低于
+按真实股息率排序的 41.38%/28.06%，继续使用 `rank_by=yield`。
+第 25 轮尝试量化退市股票的幸存者偏差：东财 API 对 271 只 2015 年后退市股
+均不返回分红历史，确认了免费数据源的覆盖缺口。幸存者偏差风险无法用现有
+数据源量化或排除，后续需换用包含退市股完整历史的付费数据源。
+第 26 轮日频 NAV 审计确认：月度最大回撤 28.06% 低估了真实日内回撤约
+4.38pp（日频为 32.44%）。策略参数不变，但报告月度回撤时应标注此参考值。
+第 27 轮将动量回看周期从 3 测试到 6 个月，4 个月在 CAGR、最大回撤、Sharpe、
+滚动窗口、连续 OOS、三倍费用和所有重置窗口全面领先，是核心参数的强力确认。
+第 28 轮测试波动率调整排序（收益率/波动率），CAGR 下降 8.5pp 且未改善回撤，
+确认纯收益率排序仍为最优。
+第 29 轮做收益归因分析：资本利得占总盈亏 80.5%、分红收入占 19.5%；
+前 3 只持仓贡献 69%；18 只持仓中 14 只盈利（胜率 77.8%），平均持仓
+约 353 天。主策略不变。
+
+历史回测和实时季度模型是两层规则：回测把三项 PR 设为 999，以隔离纯股息率
+策略；实时路径先用 `optimized_strategy.py` 的 `pr_ceiling=1.2`、连续分红 8 年
+等硬门槛，再应用季度账本规则。不能把回测的 `entry_pr=999` 解释为实时模型取消
+PR 门槛，也不能把实时的 8 年门槛倒灌到历史回测。
+
+## 运行检查
+
+```powershell
+pytest -q
+python -m compileall -q scripts tests
+git diff --check
+```
+
+## 存档与限制
+
+- `data/current_best.json`：当前主策略完整 NAV、交易和输入元数据。
+- `data/current_lowdd.json`：低回撤对照，不作为主配置。
+- `data/round5_walkforward.json`、`data/round6_robustness.json`、`data/round7_local.json`：参数与连续 OOS 实验。
+- `data/round8_pool.json`、`data/round8_strategy.json`、`data/round8_temporal.json`：候选池、参数和时点审计。
+- `data/round9_controls_agent.json`、`data/round9_config_audit.json`、`data/round9_data_quality.json`：控制变量、配置和缓存质量审计。
+- `data/round10_micro.json`、`data/round11_hold_stability.json`、`data/round11_pool_stability.json`、`data/round11_simple_controls.json`：局部平台与简单规则复核。
+- `data/round12_walkforward_hold.json`、`data/round12_cost_stress.json`：真实重置窗口和费用压力测试。
+- `data/round13_simple_rule.json`、`data/round13_walkforward_strict.json`、`data/round13_audit.json`：高息上限、严格 warm-up 和时间审计。
+- `data/round14_momentum_exit.json`、`data/round14_pool_continuity.json`、`data/round14_benchmark_audit.json`：退出、候选池和价格基准审计。
+- `data/round15_dividend_quality.json`、`data/round15_benchmark_control.json`：分红质量过滤和控制对照。
+- `data/round16_latest_known_pool.json`、`data/round16_reinvestment_control.json`、`data/round16_sparse_schedule.json`：候选池时点、复投贡献和稀疏频率。
+- `data/round17_information_lag.json`、`data/round17_yield_definition.json`、`data/round17_joint_robustness.json`：信息延迟、收益率口径和联合稳健性。
+- `data/round18_pool_switch.json`、`data/round18_lag_robustness.json`、`data/round18_train_test_selection.json`：候选池确认月份、延迟下邻域稳健性和严格训练/测试选参。
+- `data/round19_momentum_periods.json`、`data/round19_dividend_timing_audit.json`、`data/round19_concentration.json`：多周期动量、分红时点字段审计和集中度约束对照，均包含窗口/成本边界或明确的数据缺口说明。
+- `data/round20_position_reserve.json`、`data/round20_exit_confirmation.json`、`data/round20_dividend_quality_audit.json`：仓位/准备金、实际退出确认和分红缓存交叉审计。
+- `data/round21_loss_hold.json`、`data/round21_hold_challenger.json`：亏损持仓线敏感性和 5.3% 挑战者非重叠区块复核。
+- `data/round22_pool_continuity.json`、`data/round22_simple_controls.json`：连续分红年限和再平衡阈值复核。
+- `data/round23_holdings.json`：持仓数量的完整账本、三倍费用和重置窗口复核。
+- `data/round24_rank_by.json`：收益率排序与动量排序对照。
+- `data/round25_survivorship_audit.json`：退市股票幸存者偏差审计（东财 API 覆盖缺口）。
+- `data/round26_daily_nav_audit.json`：日频 NAV 审计（月度回撤 vs 日频回撤对照）。
+- `data/round27_momentum_periods.json`：动量回看周期 3/4/5/6 个月对照。
+- `data/round28_yield_vol_rank.json`：波动率调整排序对照（收益率/波动率 vs 纯收益率）。
+- `data/round29_attribution.json`：收益归因分析（个股/分红vs资本利得/年度/集中度）。
+- `docs/UNIVERSE_MANIFEST.md`：候选池 manifest 的生成和校验规则。
+- `site/`：公开季度快照页面及其审计 JSON。
+
+当前 210 只代码是截至截止日冻结的现存缓存集合，缺少退市股票和历史成分
+变化，仍有幸存者偏差；月度 NAV 不包含月内路径，税费也不是逐笔 FIFO
+税务模拟。刷新缓存、数据源、manifest 或日期文件后，必须重新计算哈希并
+重跑全部实验。历史 CAGR 不代表未来收益，也不构成投资建议。
+
+项目复用了 `flyshub/dividend-calculator` 的 GPL-3.0 代码和数据口径，继
+续以 GPL-3.0 发布。

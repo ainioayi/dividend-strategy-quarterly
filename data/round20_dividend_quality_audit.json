@@ -1,0 +1,3332 @@
+{
+  "round": 20,
+  "method": "冻结 dvd 缓存只读交叉审计；不发起网络请求",
+  "manifest_records_sha256": "24de009d9bb60c857fc89e8f7510b93583b17f9abde50350ea63a6a5830a7409",
+  "manifest_code_count": 210,
+  "cache_file_count": 210,
+  "audited_records": 3159,
+  "files": [
+    {
+      "file": "dvd_000333.json",
+      "code": "000333",
+      "records": 14,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-06-29",
+          "2025-11-18"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_000338.json",
+      "code": "000338",
+      "records": 36,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-08-13",
+          "2025-10-24"
+        ],
+        "2024": [
+          "2025-07-25",
+          "2024-10-18"
+        ],
+        "2023": [
+          "2024-06-28",
+          "2023-10-27"
+        ],
+        "2022": [
+          "2023-08-25",
+          "2022-10-21"
+        ],
+        "2021": [
+          "2022-08-26",
+          "2021-10-22"
+        ],
+        "2020": [
+          "2021-08-27",
+          "2020-10-16"
+        ],
+        "2019": [
+          "2020-08-18",
+          "2019-10-25"
+        ],
+        "2018": [
+          "2019-07-31",
+          "2018-10-23"
+        ],
+        "2017": [
+          "2018-07-31",
+          "2017-10-20"
+        ],
+        "2016": [
+          "2017-07-21",
+          "2016-10-20"
+        ],
+        "2015": [
+          "2016-07-29",
+          "2015-10-20"
+        ],
+        "2014": [
+          "2015-08-20",
+          "2014-10-24"
+        ],
+        "2013": [
+          "2014-08-27",
+          "2013-10-18"
+        ],
+        "2012": [
+          "2013-08-20",
+          "2012-10-18"
+        ],
+        "2010": [
+          "2011-07-08",
+          "2010-12-06"
+        ],
+        "2008": [
+          "2009-08-07",
+          "2008-12-16"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_000408.json",
+      "code": "000408",
+      "records": 14,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-04-17",
+          "2025-09-05"
+        ],
+        "2023": [
+          "2024-04-19",
+          "2023-08-24"
+        ],
+        "2022": [
+          "2023-04-13",
+          "2022-08-19"
+        ],
+        "1997": [
+          "1997-12-11",
+          "1997-09-09"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_000423.json",
+      "code": "000423",
+      "records": 32,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-05-25",
+          "2025-09-03"
+        ],
+        "2024": [
+          "2025-06-05",
+          "2024-09-10"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_000429.json",
+      "code": "000429",
+      "records": 29,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_000513.json",
+      "code": "000513",
+      "records": 28,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_000538.json",
+      "code": "000538",
+      "records": 33,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "1999": [
+          "2000-06-06",
+          "1999-09-27"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_000550.json",
+      "code": "000550",
+      "records": 27,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2005": [
+          "2006-07-21",
+          "2006-01-12"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_000568.json",
+      "code": "000568",
+      "records": 35,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-08-28",
+          "2026-01-30"
+        ],
+        "2024": [
+          "2025-08-08",
+          "2025-01-24"
+        ],
+        "2002": [
+          "2003-07-10",
+          "2002-10-28"
+        ],
+        "1996": [
+          "1997-05-09",
+          "1997-02-25"
+        ],
+        "1995": [
+          "1996-07-10",
+          "1995-12-04"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_000596.json",
+      "code": "000596",
+      "records": 26,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-07-17",
+          "2026-02-10"
+        ],
+        "2024": [
+          "2025-06-26",
+          "2025-01-24"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_000651.json",
+      "code": "000651",
+      "records": 35,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-08-27",
+          "2026-01-23"
+        ],
+        "2024": [
+          "2025-08-29",
+          "2025-05-15"
+        ],
+        "2022": [
+          "2023-08-09",
+          "2023-02-27"
+        ],
+        "2021": [
+          "2022-08-05",
+          "2022-04-08"
+        ],
+        "2020": [
+          "2021-08-23",
+          "2020-11-12"
+        ],
+        "2018": [
+          "2019-08-06",
+          "2019-02-25"
+        ],
+        "1998": [
+          "1999-06-21",
+          "1998-09-11"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_000661.json",
+      "code": "000661",
+      "records": 18,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_000719.json",
+      "code": "000719",
+      "records": 16,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_000830.json",
+      "code": "000830",
+      "records": 19,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_000858.json",
+      "code": "000858",
+      "records": 28,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-07-16",
+          "2025-12-18"
+        ],
+        "2024": [
+          "2025-07-18",
+          "2025-01-23"
+        ],
+        "2001": [
+          "2002-04-18",
+          "2001-09-04"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_000876.json",
+      "code": "000876",
+      "records": 18,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2001": [
+          "2002-07-05",
+          "2001-11-20"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_000895.json",
+      "code": "000895",
+      "records": 35,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-04-29",
+          "2025-08-22"
+        ],
+        "2024": [
+          "2025-04-30",
+          "2024-09-11"
+        ],
+        "2023": [
+          "2024-04-26",
+          "2023-09-11"
+        ],
+        "2022": [
+          "2023-04-27",
+          "2022-09-15"
+        ],
+        "2020": [
+          "2021-05-21",
+          "2020-11-25"
+        ],
+        "2018": [
+          "2019-04-22",
+          "2018-12-07"
+        ],
+        "2016": [
+          "2017-05-11",
+          "2016-09-26"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_000915.json",
+      "code": "000915",
+      "records": 18,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-07-01",
+          "2025-10-17"
+        ],
+        "2024": [
+          "2025-06-11",
+          "2024-09-27"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_001233.json",
+      "code": "001233",
+      "records": 1,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_001332.json",
+      "code": "001332",
+      "records": 7,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-05-29",
+          "2025-10-27"
+        ],
+        "2024": [
+          "2025-05-20",
+          "2024-10-16"
+        ],
+        "2022": [
+          "2023-05-19",
+          "2022-11-29"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_002032.json",
+      "code": "002032",
+      "records": 25,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2022": [
+          "2023-05-26",
+          "2022-12-06"
+        ],
+        "2019": [
+          "2020-06-23",
+          "2019-10-25"
+        ],
+        "2018": [
+          "2019-05-24",
+          "2018-10-26"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_002048.json",
+      "code": "002048",
+      "records": 23,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2021": [
+          "2022-06-15",
+          "2021-11-23"
+        ],
+        "2006": [
+          "2007-05-28",
+          "2006-09-13"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_002110.json",
+      "code": "002110",
+      "records": 16,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_002304.json",
+      "code": "002304",
+      "records": 18,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2024": [
+          "2025-06-27",
+          "2025-01-27"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_002318.json",
+      "code": "002318",
+      "records": 18,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2015": [
+          "2016-05-20",
+          "2015-10-21"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_002399.json",
+      "code": "002399",
+      "records": 15,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_002432.json",
+      "code": "002432",
+      "records": 10,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_002466.json",
+      "code": "002466",
+      "records": 9,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_002555.json",
+      "code": "002555",
+      "records": 29,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-05-22",
+          "2025-11-06",
+          "2025-09-04",
+          "2025-05-27"
+        ],
+        "2024": [
+          "2025-05-21",
+          "2024-11-08",
+          "2024-09-04",
+          "2024-05-24"
+        ],
+        "2023": [
+          "2024-05-21",
+          "2023-09-28"
+        ],
+        "2022": [
+          "2023-06-02",
+          "2022-09-26"
+        ],
+        "2021": [
+          "2022-05-27",
+          "2021-11-09"
+        ],
+        "2020": [
+          "2021-08-18",
+          "2020-09-25"
+        ],
+        "2019": [
+          "2020-05-11",
+          "2019-09-26"
+        ],
+        "2018": [
+          "2019-07-16",
+          "2018-09-27"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_002594.json",
+      "code": "002594",
+      "records": 12,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2016": [
+          "2017-08-04",
+          "2016-12-13"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_002714.json",
+      "code": "002714",
+      "records": 14,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-05-27",
+          "2025-10-16"
+        ],
+        "2024": [
+          "2025-06-26",
+          "2024-12-30"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_002749.json",
+      "code": "002749",
+      "records": 19,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-05-22",
+          "2025-11-25",
+          "2025-08-19"
+        ],
+        "2024": [
+          "2025-04-28",
+          "2025-01-21",
+          "2024-08-28"
+        ],
+        "2023": [
+          "2024-05-29",
+          "2024-01-31"
+        ],
+        "2018": [
+          "2019-05-28",
+          "2018-10-09"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_002756.json",
+      "code": "002756",
+      "records": 14,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-05-29",
+          "2025-10-22"
+        ],
+        "2024": [
+          "2025-05-09",
+          "2024-10-10"
+        ],
+        "2023": [
+          "2024-05-30",
+          "2023-09-27"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_002807.json",
+      "code": "002807",
+      "records": 11,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-05-29",
+          "2025-12-03"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_002821.json",
+      "code": "002821",
+      "records": 10,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_002839.json",
+      "code": "002839",
+      "records": 11,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-05-21",
+          "2025-10-15"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_002850.json",
+      "code": "002850",
+      "records": 10,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_002869.json",
+      "code": "002869",
+      "records": 8,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2017": [
+          "2018-07-13",
+          "2017-10-27"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_002884.json",
+      "code": "002884",
+      "records": 9,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_002916.json",
+      "code": "002916",
+      "records": 9,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_002932.json",
+      "code": "002932",
+      "records": 11,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2024": [
+          "2025-06-12",
+          "2024-10-17"
+        ],
+        "2022": [
+          "2023-06-06",
+          "2022-09-21"
+        ],
+        "2021": [
+          "2022-06-21",
+          "2021-09-07"
+        ],
+        "2018": [
+          "2019-05-24",
+          "2018-09-21"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_002991.json",
+      "code": "002991",
+      "records": 9,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-06-04",
+          "2025-09-12"
+        ],
+        "2024": [
+          "2025-06-12",
+          "2024-09-13"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_300033.json",
+      "code": "300033",
+      "records": 18,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-04-10",
+          "2025-09-23"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_300158.json",
+      "code": "300158",
+      "records": 12,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2021": [
+          "2022-05-09",
+          "2021-09-13"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_300390.json",
+      "code": "300390",
+      "records": 10,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_300476.json",
+      "code": "300476",
+      "records": 11,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2017": [
+          "2018-03-16",
+          "2017-09-29"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_300530.json",
+      "code": "300530",
+      "records": 4,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_300533.json",
+      "code": "300533",
+      "records": 10,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-05-26",
+          "2025-10-28"
+        ],
+        "2023": [
+          "2024-05-28",
+          "2023-10-13"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_300573.json",
+      "code": "300573",
+      "records": 15,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-05-22",
+          "2025-09-24"
+        ],
+        "2024": [
+          "2025-05-22",
+          "2024-10-16"
+        ],
+        "2023": [
+          "2024-05-22",
+          "2023-09-22"
+        ],
+        "2022": [
+          "2023-05-22",
+          "2022-09-23"
+        ],
+        "2021": [
+          "2022-05-20",
+          "2021-09-29"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_300628.json",
+      "code": "300628",
+      "records": 14,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-05-29",
+          "2025-09-29"
+        ],
+        "2024": [
+          "2025-05-30",
+          "2024-09-26"
+        ],
+        "2023": [
+          "2024-06-04",
+          "2023-09-27"
+        ],
+        "2017": [
+          "2018-05-28",
+          "2017-09-29"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_300677.json",
+      "code": "300677",
+      "records": 13,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-06-11",
+          "2025-09-30"
+        ],
+        "2024": [
+          "2025-06-13",
+          "2024-10-31"
+        ],
+        "2021": [
+          "2022-06-13",
+          "2021-09-30"
+        ],
+        "2020": [
+          "2021-04-20",
+          "2020-10-12"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_300695.json",
+      "code": "300695",
+      "records": 7,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2024": [
+          "2025-06-06",
+          "2024-10-11"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_300741.json",
+      "code": "300741",
+      "records": 13,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-04-28",
+          "2025-11-13",
+          "2025-05-14"
+        ],
+        "2023": [
+          "2024-04-26",
+          "2023-11-13"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_300750.json",
+      "code": "300750",
+      "records": 10,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-04-22",
+          "2025-08-20"
+        ],
+        "2022": [
+          "2023-04-26",
+          "2022-09-28"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_300760.json",
+      "code": "300760",
+      "records": 14,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-05-28",
+          "2025-11-12",
+          "2025-05-29"
+        ],
+        "2024": [
+          "2025-05-29",
+          "2024-11-07",
+          "2024-09-09"
+        ],
+        "2023": [
+          "2024-05-28",
+          "2023-11-22"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_300773.json",
+      "code": "300773",
+      "records": 8,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-06-22",
+          "2025-10-24"
+        ],
+        "2024": [
+          "2025-06-06",
+          "2024-09-06"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_300833.json",
+      "code": "300833",
+      "records": 6,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_300834.json",
+      "code": "300834",
+      "records": 6,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-06-24",
+          "2025-10-17"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_300841.json",
+      "code": "300841",
+      "records": 6,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_300866.json",
+      "code": "300866",
+      "records": 8,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-05-26",
+          "2025-09-10"
+        ],
+        "2024": [
+          "2025-06-04",
+          "2024-09-11"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_300888.json",
+      "code": "300888",
+      "records": 9,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-05-25",
+          "2025-09-03"
+        ],
+        "2024": [
+          "2025-05-30",
+          "2024-09-30"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_300896.json",
+      "code": "300896",
+      "records": 9,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-04-29",
+          "2025-09-26"
+        ],
+        "2023": [
+          "2024-04-29",
+          "2023-10-23"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_300910.json",
+      "code": "300910",
+      "records": 6,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_300979.json",
+      "code": "300979",
+      "records": 7,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-05-22",
+          "2025-09-17"
+        ],
+        "2021": [
+          "2022-05-17",
+          "2021-09-16"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_300981.json",
+      "code": "300981",
+      "records": 6,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2021": [
+          "2022-05-30",
+          "2021-09-30"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_301004.json",
+      "code": "301004",
+      "records": 6,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2021": [
+          "2022-06-01",
+          "2021-10-19"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_301047.json",
+      "code": "301047",
+      "records": 6,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-05-15",
+          "2025-09-22"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_301077.json",
+      "code": "301077",
+      "records": 7,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-05-18",
+          "2025-09-23"
+        ],
+        "2024": [
+          "2025-05-19",
+          "2024-10-17"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_301150.json",
+      "code": "301150",
+      "records": 5,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_301177.json",
+      "code": "301177",
+      "records": 5,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_301200.json",
+      "code": "301200",
+      "records": 5,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_301219.json",
+      "code": "301219",
+      "records": 6,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-06-04",
+          "2025-10-16"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_301327.json",
+      "code": "301327",
+      "records": 3,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2024": [
+          "2025-05-30",
+          "2024-10-11"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_301362.json",
+      "code": "301362",
+      "records": 4,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2023": [
+          "2024-06-04",
+          "2023-09-28"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_301367.json",
+      "code": "301367",
+      "records": 4,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_301369.json",
+      "code": "301369",
+      "records": 5,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-05-25",
+          "2025-10-22"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_301589.json",
+      "code": "301589",
+      "records": 5,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-05-29",
+          "2025-09-01"
+        ],
+        "2024": [
+          "2025-05-23",
+          "2024-12-24"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_301600.json",
+      "code": "301600",
+      "records": 3,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-06-04",
+          "2025-11-07"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_301630.json",
+      "code": "301630",
+      "records": 1,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600000.json",
+      "code": "600000",
+      "records": 26,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600004.json",
+      "code": "600004",
+      "records": 21,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600009.json",
+      "code": "600009",
+      "records": 28,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-07-01",
+          "2025-10-16"
+        ],
+        "2024": [
+          "2025-08-08",
+          "2024-09-09"
+        ],
+        "2006": [
+          "2007-08-22",
+          "2006-12-07"
+        ],
+        "2003": [
+          "2004-07-22",
+          "2003-12-26"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600015.json",
+      "code": "600015",
+      "records": 27,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-07-30",
+          "2026-01-23"
+        ],
+        "2024": [
+          "2025-06-26",
+          "2025-01-22"
+        ],
+        "2003": [
+          "2004-05-21",
+          "2003-11-04"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600016.json",
+      "code": "600016",
+      "records": 34,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-07-02",
+          "2025-09-16"
+        ],
+        "2024": [
+          "2025-07-14",
+          "2024-11-13"
+        ],
+        "2017": [
+          "2018-07-05",
+          "2017-09-26"
+        ],
+        "2016": [
+          "2017-07-06",
+          "2016-09-26"
+        ],
+        "2015": [
+          "2016-06-24",
+          "2016-02-26"
+        ],
+        "2014": [
+          "2015-07-07",
+          "2015-01-09"
+        ],
+        "2013": [
+          "2014-06-25",
+          "2013-09-10"
+        ],
+        "2012": [
+          "2013-06-27",
+          "2012-09-03"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600028.json",
+      "code": "600028",
+      "records": 49,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-06-17",
+          "2025-09-12"
+        ],
+        "2024": [
+          "2025-06-18",
+          "2024-09-13"
+        ],
+        "2023": [
+          "2024-07-16",
+          "2023-09-15"
+        ],
+        "2022": [
+          "2023-06-21",
+          "2022-09-19"
+        ],
+        "2021": [
+          "2022-06-10",
+          "2021-09-17"
+        ],
+        "2020": [
+          "2021-06-17",
+          "2020-10-23"
+        ],
+        "2019": [
+          "2020-06-10",
+          "2019-09-17"
+        ],
+        "2018": [
+          "2019-06-11",
+          "2018-09-12"
+        ],
+        "2017": [
+          "2018-06-05",
+          "2017-09-20"
+        ],
+        "2016": [
+          "2017-07-19",
+          "2016-09-21"
+        ],
+        "2015": [
+          "2016-06-24",
+          "2015-09-23"
+        ],
+        "2014": [
+          "2015-06-19",
+          "2014-09-24"
+        ],
+        "2013": [
+          "2014-06-03",
+          "2013-09-12"
+        ],
+        "2012": [
+          "2013-06-19",
+          "2012-09-17"
+        ],
+        "2011": [
+          "2012-05-28",
+          "2011-09-19"
+        ],
+        "2010": [
+          "2011-06-20",
+          "2010-09-13"
+        ],
+        "2009": [
+          "2010-06-17",
+          "2009-09-22"
+        ],
+        "2008": [
+          "2009-06-15",
+          "2008-09-22"
+        ],
+        "2007": [
+          "2008-06-16",
+          "2007-09-19"
+        ],
+        "2006": [
+          "2007-06-18",
+          "2006-09-14"
+        ],
+        "2005": [
+          "2006-06-19",
+          "2005-09-21"
+        ],
+        "2004": [
+          "2005-06-06",
+          "2004-09-21"
+        ],
+        "2003": [
+          "2004-06-07",
+          "2003-09-22"
+        ],
+        "2002": [
+          "2003-06-23",
+          "2002-09-23"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600029.json",
+      "code": "600029",
+      "records": 9,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600036.json",
+      "code": "600036",
+      "records": 25,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-07-10",
+          "2026-01-16"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600039.json",
+      "code": "600039",
+      "records": 19,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-07-24",
+          "2025-10-23"
+        ],
+        "2024": [
+          "2025-07-11",
+          "2024-10-18"
+        ],
+        "2014": [
+          "2015-07-10",
+          "2014-10-09"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600066.json",
+      "code": "600066",
+      "records": 30,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-05-15",
+          "2025-09-11"
+        ],
+        "2024": [
+          "2025-05-14",
+          "2024-12-05"
+        ],
+        "1998": [
+          "1999-07-06",
+          "1998-10-12"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600104.json",
+      "code": "600104",
+      "records": 28,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600132.json",
+      "code": "600132",
+      "records": 30,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-06-18",
+          "2025-12-18"
+        ],
+        "2024": [
+          "2025-06-20",
+          "2024-12-20"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600188.json",
+      "code": "600188",
+      "records": 32,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-07-24",
+          "2025-09-16"
+        ],
+        "2024": [
+          "2025-06-18",
+          "2024-11-11"
+        ],
+        "2019": [
+          "2020-07-07",
+          "2019-11-19"
+        ],
+        "1998": [
+          "1999-06-16",
+          "1998-10-26"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600276.json",
+      "code": "600276",
+      "records": 27,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2006": [
+          "2007-04-02",
+          "2006-08-29"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600295.json",
+      "code": "600295",
+      "records": 26,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600309.json",
+      "code": "600309",
+      "records": 27,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2024": [
+          "2025-05-30",
+          "2024-09-05"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600329.json",
+      "code": "600329",
+      "records": 24,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-07-10",
+          "2026-02-12"
+        ],
+        "2016": [
+          "2017-07-14",
+          "2016-12-23"
+        ],
+        "2013": [
+          "2014-07-15",
+          "2013-12-19"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600389.json",
+      "code": "600389",
+      "records": 26,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-06-05",
+          "2025-10-17"
+        ],
+        "2024": [
+          "2025-06-06",
+          "2024-10-30"
+        ],
+        "2022": [
+          "2023-06-09",
+          "2022-09-30"
+        ],
+        "2020": [
+          "2021-05-27",
+          "2020-09-24"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600403.json",
+      "code": "600403",
+      "records": 12,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600415.json",
+      "code": "600415",
+      "records": 22,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2008": [
+          "2009-05-27",
+          "2008-09-08"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600436.json",
+      "code": "600436",
+      "records": 25,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-07-31",
+          "2025-09-30"
+        ],
+        "2024": [
+          "2025-07-31",
+          "2024-10-22"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600438.json",
+      "code": "600438",
+      "records": 16,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600461.json",
+      "code": "600461",
+      "records": 21,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2016": [
+          "2017-07-07",
+          "2016-09-27"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600497.json",
+      "code": "600497",
+      "records": 22,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-05-26",
+          "2025-11-11"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600516.json",
+      "code": "600516",
+      "records": 12,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2024": [
+          "2025-07-16",
+          "2024-07-24"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600519.json",
+      "code": "600519",
+      "records": 27,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-06-26",
+          "2025-12-19"
+        ],
+        "2024": [
+          "2025-06-26",
+          "2024-12-20"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600546.json",
+      "code": "600546",
+      "records": 17,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2022": [
+          "2023-05-05",
+          "2022-09-27"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600548.json",
+      "code": "600548",
+      "records": 25,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600563.json",
+      "code": "600563",
+      "records": 23,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600566.json",
+      "code": "600566",
+      "records": 22,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600585.json",
+      "code": "600585",
+      "records": 24,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-07-02",
+          "2025-09-30"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600600.json",
+      "code": "600600",
+      "records": 30,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600602.json",
+      "code": "600602",
+      "records": 25,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600612.json",
+      "code": "600612",
+      "records": 28,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-07-15",
+          "2025-09-26"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600660.json",
+      "code": "600660",
+      "records": 31,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-05-13",
+          "2025-10-13"
+        ],
+        "2018": [
+          "2019-05-29",
+          "2018-10-24"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600674.json",
+      "code": "600674",
+      "records": 27,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "1998": [
+          "1999-05-25",
+          "1998-11-04"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600694.json",
+      "code": "600694",
+      "records": 26,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600702.json",
+      "code": "600702",
+      "records": 24,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2020": [
+          "2021-07-30",
+          "2020-11-27"
+        ],
+        "1996": [
+          "1997-06-19",
+          "1996-11-22"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600729.json",
+      "code": "600729",
+      "records": 31,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-08-13",
+          "2026-01-16"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600741.json",
+      "code": "600741",
+      "records": 29,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600803.json",
+      "code": "600803",
+      "records": 19,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-07-09",
+          "2025-10-16"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600809.json",
+      "code": "600809",
+      "records": 29,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2024": [
+          "2025-07-07",
+          "2025-01-24"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600873.json",
+      "code": "600873",
+      "records": 22,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2024": [
+          "2025-05-23",
+          "2024-11-22"
+        ],
+        "2012": [
+          "2013-07-05",
+          "2012-11-09"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600886.json",
+      "code": "600886",
+      "records": 27,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2005": [
+          "2006-04-21",
+          "2005-11-04"
+        ],
+        "2004": [
+          "2005-04-19",
+          "2004-09-30"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600887.json",
+      "code": "600887",
+      "records": 30,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-06-05",
+          "2025-12-17"
+        ],
+        "1996": [
+          "1997-06-09",
+          "1997-01-15"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600900.json",
+      "code": "600900",
+      "records": 25,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-07-17",
+          "2026-02-12"
+        ],
+        "2024": [
+          "2025-07-18",
+          "2025-01-24"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600941.json",
+      "code": "600941",
+      "records": 9,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-06-05",
+          "2025-09-01"
+        ],
+        "2024": [
+          "2025-06-06",
+          "2024-09-02"
+        ],
+        "2023": [
+          "2024-06-06",
+          "2023-09-01"
+        ],
+        "2022": [
+          "2023-06-07",
+          "2022-09-06"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_600987.json",
+      "code": "600987",
+      "records": 23,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-05-22",
+          "2025-09-25"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_601009.json",
+      "code": "601009",
+      "records": 21,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-06-15",
+          "2025-11-20"
+        ],
+        "2024": [
+          "2025-06-23",
+          "2024-11-01"
+        ],
+        "2015": [
+          "2016-06-07",
+          "2015-09-23"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_601088.json",
+      "code": "601088",
+      "records": 20,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-07-13",
+          "2025-11-10"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_601111.json",
+      "code": "601111",
+      "records": 12,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_601155.json",
+      "code": "601155",
+      "records": 6,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_601166.json",
+      "code": "601166",
+      "records": 21,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-06-12",
+          "2026-02-06"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_601169.json",
+      "code": "601169",
+      "records": 20,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2024": [
+          "2025-07-10",
+          "2025-01-20"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_601225.json",
+      "code": "601225",
+      "records": 15,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-06-26",
+          "2025-09-26"
+        ],
+        "2024": [
+          "2025-06-25",
+          "2025-01-17",
+          "2024-10-23"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_601229.json",
+      "code": "601229",
+      "records": 12,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-06-08",
+          "2025-10-16"
+        ],
+        "2024": [
+          "2025-06-12",
+          "2024-11-28"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_601288.json",
+      "code": "601288",
+      "records": 18,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-05-13",
+          "2025-12-15"
+        ],
+        "2024": [
+          "2025-07-17",
+          "2025-01-08"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_601318.json",
+      "code": "601318",
+      "records": 38,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-06-10",
+          "2025-10-24"
+        ],
+        "2024": [
+          "2025-06-30",
+          "2024-10-18"
+        ],
+        "2023": [
+          "2024-07-26",
+          "2023-10-25"
+        ],
+        "2022": [
+          "2023-06-14",
+          "2022-10-20"
+        ],
+        "2021": [
+          "2022-06-20",
+          "2021-10-25"
+        ],
+        "2020": [
+          "2021-04-22",
+          "2020-09-16"
+        ],
+        "2019": [
+          "2020-05-08",
+          "2019-09-04"
+        ],
+        "2018": [
+          "2019-05-23",
+          "2018-09-06"
+        ],
+        "2017": [
+          "2018-06-07",
+          "2017-09-04"
+        ],
+        "2016": [
+          "2017-07-11",
+          "2016-09-05"
+        ],
+        "2015": [
+          "2016-07-05",
+          "2015-09-09"
+        ],
+        "2014": [
+          "2015-07-27",
+          "2014-09-12"
+        ],
+        "2013": [
+          "2014-06-27",
+          "2013-09-10"
+        ],
+        "2012": [
+          "2013-05-20",
+          "2012-09-26"
+        ],
+        "2011": [
+          "2012-07-16",
+          "2011-09-02"
+        ],
+        "2010": [
+          "2011-07-21",
+          "2010-09-09"
+        ],
+        "2009": [
+          "2010-07-13",
+          "2009-09-01"
+        ],
+        "2007": [
+          "2008-05-23",
+          "2007-09-03"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_601328.json",
+      "code": "601328",
+      "records": 24,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-07-10",
+          "2025-12-25"
+        ],
+        "2024": [
+          "2025-04-18",
+          "2025-01-24"
+        ],
+        "2010": [
+          "2011-07-19",
+          "2010-09-13"
+        ],
+        "2009": [
+          "2010-05-06",
+          "2009-09-21"
+        ],
+        "2008": [
+          "2009-05-27",
+          "2008-09-25"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_601336.json",
+      "code": "601336",
+      "records": 16,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-08-07",
+          "2025-12-12"
+        ],
+        "2024": [
+          "2025-08-08",
+          "2024-11-29"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_601398.json",
+      "code": "601398",
+      "records": 22,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-05-13",
+          "2025-12-15"
+        ],
+        "2024": [
+          "2025-07-14",
+          "2025-01-07"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_601628.json",
+      "code": "601628",
+      "records": 22,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-07-09",
+          "2025-10-17"
+        ],
+        "2024": [
+          "2025-07-10",
+          "2024-11-13"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_601633.json",
+      "code": "601633",
+      "records": 17,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2021": [
+          "2022-05-20",
+          "2021-10-21"
+        ],
+        "2015": [
+          "2016-05-31",
+          "2015-10-13"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_601699.json",
+      "code": "601699",
+      "records": 18,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_601799.json",
+      "code": "601799",
+      "records": 18,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-05-18",
+          "2025-11-14"
+        ],
+        "2024": [
+          "2025-05-28",
+          "2024-10-30"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_601811.json",
+      "code": "601811",
+      "records": 14,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-06-12",
+          "2025-11-07"
+        ],
+        "2024": [
+          "2025-06-06",
+          "2024-11-04"
+        ],
+        "2023": [
+          "2024-06-06",
+          "2024-01-08"
+        ],
+        "2016": [
+          "2017-06-13",
+          "2016-12-29"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_601818.json",
+      "code": "601818",
+      "records": 18,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-07-30",
+          "2026-02-05"
+        ],
+        "2024": [
+          "2025-07-24",
+          "2025-01-22"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_601857.json",
+      "code": "601857",
+      "records": 37,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-06-26",
+          "2025-09-17"
+        ],
+        "2024": [
+          "2025-06-25",
+          "2024-09-19"
+        ],
+        "2023": [
+          "2024-06-26",
+          "2023-09-20"
+        ],
+        "2022": [
+          "2023-06-28",
+          "2022-09-20"
+        ],
+        "2021": [
+          "2022-06-28",
+          "2021-09-17"
+        ],
+        "2020": [
+          "2021-06-29",
+          "2020-09-22"
+        ],
+        "2019": [
+          "2020-06-30",
+          "2019-09-24"
+        ],
+        "2018": [
+          "2019-06-28",
+          "2018-09-21"
+        ],
+        "2017": [
+          "2018-06-21",
+          "2017-09-15"
+        ],
+        "2016": [
+          "2017-06-22",
+          "2016-09-21"
+        ],
+        "2015": [
+          "2016-06-08",
+          "2015-09-18"
+        ],
+        "2014": [
+          "2015-07-09",
+          "2014-09-19"
+        ],
+        "2013": [
+          "2014-06-05",
+          "2013-09-12"
+        ],
+        "2012": [
+          "2013-06-06",
+          "2012-09-18"
+        ],
+        "2011": [
+          "2012-06-07",
+          "2011-09-15"
+        ],
+        "2010": [
+          "2011-06-01",
+          "2010-09-16"
+        ],
+        "2009": [
+          "2010-06-03",
+          "2009-09-17"
+        ],
+        "2008": [
+          "2009-06-01",
+          "2008-09-19"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_601919.json",
+      "code": "601919",
+      "records": 13,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-06-26",
+          "2025-10-24"
+        ],
+        "2024": [
+          "2025-06-25",
+          "2024-10-10"
+        ],
+        "2023": [
+          "2024-06-20",
+          "2023-12-20"
+        ],
+        "2022": [
+          "2023-06-28",
+          "2022-12-14"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_601939.json",
+      "code": "601939",
+      "records": 22,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-07-13",
+          "2025-12-11"
+        ],
+        "2024": [
+          "2025-05-09",
+          "2025-01-10"
+        ],
+        "2008": [
+          "2009-06-24",
+          "2008-11-17"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_601988.json",
+      "code": "601988",
+      "records": 22,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-07-10",
+          "2025-12-11"
+        ],
+        "2024": [
+          "2025-04-25",
+          "2025-01-23"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_601997.json",
+      "code": "601997",
+      "records": 10,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_603129.json",
+      "code": "603129",
+      "records": 9,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_603156.json",
+      "code": "603156",
+      "records": 10,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-06-03",
+          "2025-09-15"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_603185.json",
+      "code": "603185",
+      "records": 8,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2023": [
+          "2024-07-15",
+          "2023-10-12"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_603195.json",
+      "code": "603195",
+      "records": 7,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_603202.json",
+      "code": "603202",
+      "records": 3,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-06-17",
+          "2025-10-16"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_603208.json",
+      "code": "603208",
+      "records": 9,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2021": [
+          "2022-07-06",
+          "2021-09-17"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_603301.json",
+      "code": "603301",
+      "records": 9,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2023": [
+          "2024-07-03",
+          "2023-10-31"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_603355.json",
+      "code": "603355",
+      "records": 11,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2018": [
+          "2019-06-05",
+          "2018-11-14"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_603365.json",
+      "code": "603365",
+      "records": 11,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-06-18",
+          "2026-01-12"
+        ],
+        "2019": [
+          "2020-06-11",
+          "2019-11-07"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_603402.json",
+      "code": "603402",
+      "records": 1,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_603444.json",
+      "code": "603444",
+      "records": 15,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-05-21",
+          "2025-11-28",
+          "2025-09-19"
+        ],
+        "2024": [
+          "2025-05-26",
+          "2024-11-25",
+          "2024-09-13"
+        ],
+        "2022": [
+          "2023-05-12",
+          "2022-12-29"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_603489.json",
+      "code": "603489",
+      "records": 7,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_603508.json",
+      "code": "603508",
+      "records": 13,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-05-21",
+          "2025-09-09"
+        ],
+        "2024": [
+          "2025-06-12",
+          "2024-12-05"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_603688.json",
+      "code": "603688",
+      "records": 13,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2023": [
+          "2024-05-22",
+          "2023-10-27"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_603816.json",
+      "code": "603816",
+      "records": 10,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_603833.json",
+      "code": "603833",
+      "records": 10,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-06-25",
+          "2026-01-09"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_603868.json",
+      "code": "603868",
+      "records": 11,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2016": [
+          "2017-05-08",
+          "2016-09-19"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_603882.json",
+      "code": "603882",
+      "records": 9,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_603948.json",
+      "code": "603948",
+      "records": 7,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2020": [
+          "2021-06-18",
+          "2020-09-29"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_605098.json",
+      "code": "605098",
+      "records": 11,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-06-04",
+          "2025-11-07",
+          "2025-08-25"
+        ],
+        "2024": [
+          "2025-05-21",
+          "2024-11-06",
+          "2024-08-22"
+        ],
+        "2023": [
+          "2024-05-28",
+          "2023-09-21"
+        ],
+        "2021": [
+          "2022-05-12",
+          "2021-09-22"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_605117.json",
+      "code": "605117",
+      "records": 8,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-05-22",
+          "2025-11-05"
+        ],
+        "2024": [
+          "2025-06-13",
+          "2024-12-18"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_605168.json",
+      "code": "605168",
+      "records": 7,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_605266.json",
+      "code": "605266",
+      "records": 6,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_605369.json",
+      "code": "605369",
+      "records": 8,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2024": [
+          "2025-06-26",
+          "2024-10-22"
+        ],
+        "2023": [
+          "2024-07-09",
+          "2023-10-13"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_605499.json",
+      "code": "605499",
+      "records": 8,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-05-18",
+          "2025-08-25"
+        ],
+        "2024": [
+          "2025-04-18",
+          "2024-10-09"
+        ],
+        "2021": [
+          "2022-04-06",
+          "2021-08-26"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_688016.json",
+      "code": "688016",
+      "records": 9,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-06-05",
+          "2025-10-17"
+        ],
+        "2024": [
+          "2025-06-06",
+          "2024-11-08"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_688032.json",
+      "code": "688032",
+      "records": 5,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2023": [
+          "2024-06-19",
+          "2023-10-31"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_688036.json",
+      "code": "688036",
+      "records": 11,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-05-22",
+          "2025-09-11"
+        ],
+        "2024": [
+          "2025-06-05",
+          "2024-11-21"
+        ],
+        "2023": [
+          "2024-06-07",
+          "2023-11-29"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_688063.json",
+      "code": "688063",
+      "records": 6,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_688068.json",
+      "code": "688068",
+      "records": 4,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_688075.json",
+      "code": "688075",
+      "records": 6,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2024": [
+          "2025-07-18",
+          "2024-11-11"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_688169.json",
+      "code": "688169",
+      "records": 8,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2023": [
+          "2024-08-08",
+          "2023-11-20"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_688188.json",
+      "code": "688188",
+      "records": 9,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-06-29",
+          "2025-10-28"
+        ],
+        "2024": [
+          "2025-06-09",
+          "2024-10-16"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_688200.json",
+      "code": "688200",
+      "records": 9,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2024": [
+          "2025-04-30",
+          "2024-10-11"
+        ],
+        "2022": [
+          "2023-05-31",
+          "2022-09-27"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_688275.json",
+      "code": "688275",
+      "records": 1,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_688298.json",
+      "code": "688298",
+      "records": 4,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_688301.json",
+      "code": "688301",
+      "records": 6,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_688303.json",
+      "code": "688303",
+      "records": 3,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_688332.json",
+      "code": "688332",
+      "records": 5,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2022": [
+          "2023-05-25",
+          "2022-10-26"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_688348.json",
+      "code": "688348",
+      "records": 3,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_688368.json",
+      "code": "688368",
+      "records": 6,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_688370.json",
+      "code": "688370",
+      "records": 4,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_688399.json",
+      "code": "688399",
+      "records": 7,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-07-10",
+          "2025-09-11"
+        ],
+        "2020": [
+          "2021-06-23",
+          "2020-09-25"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_688516.json",
+      "code": "688516",
+      "records": 11,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-06-15",
+          "2025-09-26"
+        ],
+        "2024": [
+          "2025-06-10",
+          "2024-10-15"
+        ],
+        "2023": [
+          "2024-05-20",
+          "2023-11-17"
+        ],
+        "2022": [
+          "2023-07-04",
+          "2022-11-22"
+        ],
+        "2020": [
+          "2021-06-02",
+          "2020-09-01"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_688606.json",
+      "code": "688606",
+      "records": 8,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-06-01",
+          "2025-10-16"
+        ],
+        "2024": [
+          "2025-06-11",
+          "2024-10-25"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_688615.json",
+      "code": "688615",
+      "records": 2,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_688617.json",
+      "code": "688617",
+      "records": 6,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_688696.json",
+      "code": "688696",
+      "records": 5,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_688699.json",
+      "code": "688699",
+      "records": 4,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2022": [
+          "2023-05-17",
+          "2022-09-30"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_688767.json",
+      "code": "688767",
+      "records": 6,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2024": [
+          "2025-06-06",
+          "2025-01-10"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_920227.json",
+      "code": "920227",
+      "records": 11,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2016": [
+          "2017-05-02",
+          "2016-11-04"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_920274.json",
+      "code": "920274",
+      "records": 9,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_920299.json",
+      "code": "920299",
+      "records": 12,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2024": [
+          "2025-05-30",
+          "2024-09-26"
+        ],
+        "2022": [
+          "2023-05-31",
+          "2022-09-29"
+        ],
+        "2020": [
+          "2021-06-11",
+          "2020-09-28"
+        ],
+        "2017": [
+          "2018-05-16",
+          "2017-09-15"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_920339.json",
+      "code": "920339",
+      "records": 7,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2020": [
+          "2021-07-21",
+          "2021-03-23"
+        ]
+      },
+      "bad_values": []
+    },
+    {
+      "file": "dvd_920547.json",
+      "code": "920547",
+      "records": 10,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_920699.json",
+      "code": "920699",
+      "records": 5,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_920957.json",
+      "code": "920957",
+      "records": 8,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_920981.json",
+      "code": "920981",
+      "records": 5,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {},
+      "bad_values": []
+    },
+    {
+      "file": "dvd_920982.json",
+      "code": "920982",
+      "records": 10,
+      "duplicate_events": 0,
+      "same_year_multiple_ex_dates": {
+        "2025": [
+          "2026-06-25",
+          "2025-09-25"
+        ],
+        "2024": [
+          "2025-06-18",
+          "2024-09-24"
+        ],
+        "2023": [
+          "2024-04-29",
+          "2023-10-11"
+        ]
+      },
+      "bad_values": []
+    }
+  ],
+  "issues": [],
+  "conclusion": {
+    "strategy_impact": "存在同一报告年度多次除权事件属正常（中期/年度分红），未发现重复事件、非法日期或负 DPS/送转导致策略失真的系统性异常。",
+    "minimal_followup": "继续按 ex_date 去重并以事件唯一键入账；保留同年度多事件，不按年度覆盖。"
+  }
+}

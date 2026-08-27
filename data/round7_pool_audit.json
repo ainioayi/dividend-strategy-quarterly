@@ -1,0 +1,13 @@
+{
+  "manifest_records": 210,
+  "kl_missing": 0,
+  "dv_missing": 0,
+  "bad_prices": 0,
+  "price_start_min": "2015-01-05",
+  "price_end_max": "2026-08-25",
+  "manifest_sha256": "24de009d9bb60c857fc89e8f7510b93583b17f9abde50350ea63a6a5830a7409",
+  "monthly_count_min": 78,
+  "monthly_count_max": 169,
+  "monthly_count_median": 122.0,
+  "monthly_observations": 128
+}

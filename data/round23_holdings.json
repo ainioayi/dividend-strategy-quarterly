@@ -1,0 +1,1028 @@
+{
+  "round": 23,
+  "method": "max_holdings 1/2/3；冻结动态池及主规则；完整账本/OOS/rolling、3x成本、2018/2020/2022重置；动量warm-up4；无未来函数",
+  "base_rules": {
+    "entry_yield": 7.5,
+    "hold_yield": 5.5,
+    "max_holdings": 2,
+    "rebalance_threshold": 2.0,
+    "execution_lag_days": 1,
+    "pool_min_consecutive_years": 3,
+    "momentum_months": 4,
+    "momentum_threshold": 0.85,
+    "reinvest_cash_reserve": 0,
+    "rank_by": "yield",
+    "momentum_periods": "",
+    "max_yield": 999.0
+  },
+  "manifest_records_sha256": "24de009d9bb60c857fc89e8f7510b93583b17f9abde50350ea63a6a5830a7409",
+  "dates_sha256": "f62fc22c2f2f972e3b29dea42e2a41202bfa620e702acc3c750e26f8c959ec3e",
+  "data_cutoff": "2026-08-25",
+  "dates": {
+    "count": 128,
+    "first": "2016-01-29",
+    "last": "2026-08-25"
+  },
+  "experiments": [
+    {
+      "max_holdings": 1,
+      "fee_multiple": 1,
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "max_holdings": 1,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1,
+        "pool_min_consecutive_years": 3,
+        "momentum_months": 4,
+        "momentum_threshold": 0.85,
+        "reinvest_cash_reserve": 0,
+        "rank_by": "yield",
+        "momentum_periods": "",
+        "max_yield": 999.0
+      },
+      "metrics": {
+        "cagr": 23.67,
+        "max_drawdown": 27.2,
+        "volatility": 31.64,
+        "sharpe": 0.763,
+        "ending_nav": 943257.69,
+        "total_return": 843.26,
+        "observations": 128,
+        "trade_count": 46,
+        "buy_count": 34,
+        "sell_count": 12,
+        "dividend_event_count": 15,
+        "split_event_count": 0,
+        "ending_cash": 525.69
+      },
+      "rolling36": {
+        "count": 93,
+        "min_cagr": -1.47,
+        "median_cagr": 24.43,
+        "max_drawdown_worst": 27.2,
+        "worst_window": {
+          "start": "2018-03-01",
+          "end": "2021-02-01",
+          "cagr": -1.47,
+          "max_drawdown": 26.2,
+          "volatility": 33.3,
+          "sharpe": 0.052,
+          "ending_nav": 237267.67,
+          "total_return": -4.24
+        }
+      },
+      "rolling48": {
+        "count": 81,
+        "min_cagr": 6.98,
+        "median_cagr": 22.32,
+        "max_drawdown_worst": 27.2,
+        "worst_window": {
+          "start": "2017-03-01",
+          "end": "2021-02-01",
+          "cagr": 6.98,
+          "max_drawdown": 27.2,
+          "volatility": 30.84,
+          "sharpe": 0.302,
+          "ending_nav": 237267.67,
+          "total_return": 30.29
+        }
+      },
+      "oos": {
+        "2021": {
+          "observations": 69,
+          "cagr": 24.34,
+          "max_drawdown": 20.49,
+          "volatility": 31.53,
+          "sharpe": 0.783,
+          "ending_nav": 943257.69,
+          "total_return": 241.4
+        },
+        "2023": {
+          "observations": 45,
+          "cagr": 18.93,
+          "max_drawdown": 20.49,
+          "volatility": 30.03,
+          "sharpe": 0.657,
+          "ending_nav": 943257.69,
+          "total_return": 87.98
+        },
+        "2025": {
+          "observations": 21,
+          "cagr": 15.33,
+          "max_drawdown": 18.85,
+          "volatility": 31.42,
+          "sharpe": 0.536,
+          "ending_nav": 943257.69,
+          "total_return": 26.4
+        }
+      }
+    },
+    {
+      "max_holdings": 2,
+      "fee_multiple": 1,
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1,
+        "pool_min_consecutive_years": 3,
+        "momentum_months": 4,
+        "momentum_threshold": 0.85,
+        "reinvest_cash_reserve": 0,
+        "rank_by": "yield",
+        "momentum_periods": "",
+        "max_yield": 999.0
+      },
+      "metrics": {
+        "cagr": 41.38,
+        "max_drawdown": 28.06,
+        "volatility": 30.81,
+        "sharpe": 1.217,
+        "ending_nav": 3876245.51,
+        "total_return": 3776.25,
+        "observations": 128,
+        "trade_count": 75,
+        "buy_count": 57,
+        "sell_count": 18,
+        "dividend_event_count": 19,
+        "split_event_count": 0,
+        "ending_cash": 569.51
+      },
+      "rolling36": {
+        "count": 93,
+        "min_cagr": 9.58,
+        "median_cagr": 38.11,
+        "max_drawdown_worst": 28.06,
+        "worst_window": {
+          "start": "2016-12-01",
+          "end": "2019-11-01",
+          "cagr": 9.58,
+          "max_drawdown": 28.06,
+          "volatility": 23.21,
+          "sharpe": 0.424,
+          "ending_nav": 228869.84,
+          "total_return": 30.58
+        }
+      },
+      "rolling48": {
+        "count": 81,
+        "min_cagr": 17.29,
+        "median_cagr": 45.43,
+        "max_drawdown_worst": 28.06,
+        "worst_window": {
+          "start": "2022-08-01",
+          "end": "2026-07-01",
+          "cagr": 17.29,
+          "max_drawdown": 19.43,
+          "volatility": 21.69,
+          "sharpe": 0.756,
+          "ending_nav": 3490853.51,
+          "total_return": 86.69
+        }
+      },
+      "oos": {
+        "2021": {
+          "observations": 69,
+          "cagr": 43.62,
+          "max_drawdown": 19.43,
+          "volatility": 27.21,
+          "sharpe": 1.406,
+          "ending_nav": 3876245.51,
+          "total_return": 669.5
+        },
+        "2023": {
+          "observations": 45,
+          "cagr": 24.74,
+          "max_drawdown": 13.76,
+          "volatility": 22.48,
+          "sharpe": 1.012,
+          "ending_nav": 3876245.51,
+          "total_return": 123.68
+        },
+        "2025": {
+          "observations": 21,
+          "cagr": 32.05,
+          "max_drawdown": 13.76,
+          "volatility": 27.18,
+          "sharpe": 1.087,
+          "ending_nav": 3876245.51,
+          "total_return": 57.89
+        }
+      }
+    },
+    {
+      "max_holdings": 3,
+      "fee_multiple": 1,
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "max_holdings": 3,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1,
+        "pool_min_consecutive_years": 3,
+        "momentum_months": 4,
+        "momentum_threshold": 0.85,
+        "reinvest_cash_reserve": 0,
+        "rank_by": "yield",
+        "momentum_periods": "",
+        "max_yield": 999.0
+      },
+      "metrics": {
+        "cagr": 40.68,
+        "max_drawdown": 28.31,
+        "volatility": 30.83,
+        "sharpe": 1.2,
+        "ending_nav": 3679830.14,
+        "total_return": 3579.83,
+        "observations": 128,
+        "trade_count": 93,
+        "buy_count": 74,
+        "sell_count": 19,
+        "dividend_event_count": 19,
+        "split_event_count": 0,
+        "ending_cash": 1180.14
+      },
+      "rolling36": {
+        "count": 93,
+        "min_cagr": 7.97,
+        "median_cagr": 36.09,
+        "max_drawdown_worst": 28.31,
+        "worst_window": {
+          "start": "2016-12-01",
+          "end": "2019-11-01",
+          "cagr": 7.97,
+          "max_drawdown": 28.31,
+          "volatility": 22.33,
+          "sharpe": 0.366,
+          "ending_nav": 219180.56,
+          "total_return": 25.06
+        }
+      },
+      "rolling48": {
+        "count": 81,
+        "min_cagr": 17.86,
+        "median_cagr": 45.52,
+        "max_drawdown_worst": 28.31,
+        "worst_window": {
+          "start": "2022-08-01",
+          "end": "2026-07-01",
+          "cagr": 17.86,
+          "max_drawdown": 17.46,
+          "volatility": 22.39,
+          "sharpe": 0.761,
+          "ending_nav": 3314030.14,
+          "total_return": 90.28
+        }
+      },
+      "oos": {
+        "2021": {
+          "observations": 69,
+          "cagr": 43.57,
+          "max_drawdown": 17.46,
+          "volatility": 27.54,
+          "sharpe": 1.391,
+          "ending_nav": 3679830.14,
+          "total_return": 668.13
+        },
+        "2023": {
+          "observations": 45,
+          "cagr": 24.57,
+          "max_drawdown": 13.76,
+          "volatility": 23.4,
+          "sharpe": 0.975,
+          "ending_nav": 3679830.14,
+          "total_return": 122.53
+        },
+        "2025": {
+          "observations": 21,
+          "cagr": 31.42,
+          "max_drawdown": 13.76,
+          "volatility": 27.13,
+          "sharpe": 1.071,
+          "ending_nav": 3679830.14,
+          "total_return": 56.65
+        }
+      }
+    }
+  ],
+  "cost_stress": [
+    {
+      "max_holdings": 1,
+      "fee_multiple": 3,
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "max_holdings": 1,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1,
+        "pool_min_consecutive_years": 3,
+        "momentum_months": 4,
+        "momentum_threshold": 0.85,
+        "reinvest_cash_reserve": 0,
+        "rank_by": "yield",
+        "momentum_periods": "",
+        "max_yield": 999.0,
+        "buy_commission_rate": 0.0009,
+        "sell_commission_rate": 0.0009,
+        "stamp_duty_rate": 0.0015,
+        "transfer_fee_rate": 3.0000000000000004e-05
+      },
+      "metrics": {
+        "cagr": 23.34,
+        "max_drawdown": 27.35,
+        "volatility": 31.58,
+        "sharpe": 0.755,
+        "ending_nav": 916660.05,
+        "total_return": 816.66,
+        "observations": 128,
+        "trade_count": 45,
+        "buy_count": 33,
+        "sell_count": 12,
+        "dividend_event_count": 15,
+        "split_event_count": 0,
+        "ending_cash": 1362.05
+      },
+      "rolling36": {
+        "count": 93,
+        "min_cagr": -1.71,
+        "median_cagr": 24.12,
+        "max_drawdown_worst": 27.35,
+        "worst_window": {
+          "start": "2018-03-01",
+          "end": "2021-02-01",
+          "cagr": -1.71,
+          "max_drawdown": 26.35,
+          "volatility": 33.24,
+          "sharpe": 0.044,
+          "ending_nav": 234156.94,
+          "total_return": -4.92
+        }
+      },
+      "rolling48": {
+        "count": 81,
+        "min_cagr": 6.69,
+        "median_cagr": 22.0,
+        "max_drawdown_worst": 27.35,
+        "worst_window": {
+          "start": "2017-03-01",
+          "end": "2021-02-01",
+          "cagr": 6.69,
+          "max_drawdown": 27.35,
+          "volatility": 30.78,
+          "sharpe": 0.293,
+          "ending_nav": 234156.94,
+          "total_return": 28.91
+        }
+      },
+      "oos": {
+        "2021": {
+          "observations": 69,
+          "cagr": 24.0,
+          "max_drawdown": 20.68,
+          "volatility": 31.48,
+          "sharpe": 0.775,
+          "ending_nav": 916660.05,
+          "total_return": 236.26
+        },
+        "2023": {
+          "observations": 45,
+          "cagr": 18.53,
+          "max_drawdown": 20.68,
+          "volatility": 30.0,
+          "sharpe": 0.646,
+          "ending_nav": 916660.05,
+          "total_return": 85.73
+        },
+        "2025": {
+          "observations": 21,
+          "cagr": 14.86,
+          "max_drawdown": 19.01,
+          "volatility": 31.38,
+          "sharpe": 0.524,
+          "ending_nav": 916660.05,
+          "total_return": 25.56
+        }
+      }
+    },
+    {
+      "max_holdings": 2,
+      "fee_multiple": 3,
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1,
+        "pool_min_consecutive_years": 3,
+        "momentum_months": 4,
+        "momentum_threshold": 0.85,
+        "reinvest_cash_reserve": 0,
+        "rank_by": "yield",
+        "momentum_periods": "",
+        "max_yield": 999.0,
+        "buy_commission_rate": 0.0009,
+        "sell_commission_rate": 0.0009,
+        "stamp_duty_rate": 0.0015,
+        "transfer_fee_rate": 3.0000000000000004e-05
+      },
+      "metrics": {
+        "cagr": 36.91,
+        "max_drawdown": 30.34,
+        "volatility": 30.77,
+        "sharpe": 1.111,
+        "ending_nav": 2761162.98,
+        "total_return": 2661.16,
+        "observations": 128,
+        "trade_count": 74,
+        "buy_count": 57,
+        "sell_count": 17,
+        "dividend_event_count": 18,
+        "split_event_count": 0,
+        "ending_cash": 304.98
+      },
+      "rolling36": {
+        "count": 93,
+        "min_cagr": 4.26,
+        "median_cagr": 37.73,
+        "max_drawdown_worst": 30.34,
+        "worst_window": {
+          "start": "2022-08-01",
+          "end": "2025-07-01",
+          "cagr": 4.26,
+          "max_drawdown": 30.34,
+          "volatility": 19.52,
+          "sharpe": 0.209,
+          "ending_nav": 2071048.17,
+          "total_return": 12.92
+        }
+      },
+      "rolling48": {
+        "count": 81,
+        "min_cagr": 8.09,
+        "median_cagr": 38.41,
+        "max_drawdown_worst": 30.34,
+        "worst_window": {
+          "start": "2022-08-01",
+          "end": "2026-07-01",
+          "cagr": 8.09,
+          "max_drawdown": 30.34,
+          "volatility": 21.13,
+          "sharpe": 0.38,
+          "ending_nav": 2486626.98,
+          "total_return": 35.58
+        }
+      },
+      "oos": {
+        "2021": {
+          "observations": 69,
+          "cagr": 35.55,
+          "max_drawdown": 30.34,
+          "volatility": 27.25,
+          "sharpe": 1.186,
+          "ending_nav": 2761162.98,
+          "total_return": 455.47
+        },
+        "2023": {
+          "observations": 45,
+          "cagr": 14.25,
+          "max_drawdown": 30.34,
+          "volatility": 22.1,
+          "sharpe": 0.623,
+          "ending_nav": 2761162.98,
+          "total_return": 62.45
+        },
+        "2025": {
+          "observations": 21,
+          "cagr": 8.0,
+          "max_drawdown": 22.47,
+          "volatility": 28.93,
+          "sharpe": 0.332,
+          "ending_nav": 2761162.98,
+          "total_return": 13.47
+        }
+      }
+    },
+    {
+      "max_holdings": 3,
+      "fee_multiple": 3,
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "max_holdings": 3,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1,
+        "pool_min_consecutive_years": 3,
+        "momentum_months": 4,
+        "momentum_threshold": 0.85,
+        "reinvest_cash_reserve": 0,
+        "rank_by": "yield",
+        "momentum_periods": "",
+        "max_yield": 999.0,
+        "buy_commission_rate": 0.0009,
+        "sell_commission_rate": 0.0009,
+        "stamp_duty_rate": 0.0015,
+        "transfer_fee_rate": 3.0000000000000004e-05
+      },
+      "metrics": {
+        "cagr": 40.29,
+        "max_drawdown": 28.49,
+        "volatility": 30.74,
+        "sharpe": 1.193,
+        "ending_nav": 3571757.62,
+        "total_return": 3471.76,
+        "observations": 128,
+        "trade_count": 93,
+        "buy_count": 74,
+        "sell_count": 19,
+        "dividend_event_count": 19,
+        "split_event_count": 0,
+        "ending_cash": 349.62
+      },
+      "rolling36": {
+        "count": 93,
+        "min_cagr": 7.77,
+        "median_cagr": 35.75,
+        "max_drawdown_worst": 28.49,
+        "worst_window": {
+          "start": "2016-12-01",
+          "end": "2019-11-01",
+          "cagr": 7.77,
+          "max_drawdown": 28.49,
+          "volatility": 22.3,
+          "sharpe": 0.357,
+          "ending_nav": 217563.13,
+          "total_return": 24.38
+        }
+      },
+      "rolling48": {
+        "count": 81,
+        "min_cagr": 17.47,
+        "median_cagr": 44.93,
+        "max_drawdown_worst": 28.49,
+        "worst_window": {
+          "start": "2022-08-01",
+          "end": "2026-07-01",
+          "cagr": 17.47,
+          "max_drawdown": 17.48,
+          "volatility": 22.34,
+          "sharpe": 0.747,
+          "ending_nav": 3216621.62,
+          "total_return": 87.85
+        }
+      },
+      "oos": {
+        "2021": {
+          "observations": 69,
+          "cagr": 43.06,
+          "max_drawdown": 17.48,
+          "volatility": 27.46,
+          "sharpe": 1.381,
+          "ending_nav": 3571757.62,
+          "total_return": 652.74
+        },
+        "2023": {
+          "observations": 45,
+          "cagr": 24.14,
+          "max_drawdown": 13.76,
+          "volatility": 23.36,
+          "sharpe": 0.961,
+          "ending_nav": 3571757.62,
+          "total_return": 119.76
+        },
+        "2025": {
+          "observations": 21,
+          "cagr": 30.88,
+          "max_drawdown": 13.76,
+          "volatility": 27.11,
+          "sharpe": 1.056,
+          "ending_nav": 3571757.62,
+          "total_return": 55.59
+        }
+      }
+    }
+  ],
+  "reset_windows": [
+    {
+      "max_holdings": 1,
+      "start": "2018-01-01",
+      "end": "2026-08-25",
+      "warmup_count": 4,
+      "metrics": {
+        "cagr": 19.3,
+        "max_drawdown": 25.04,
+        "volatility": 32.26,
+        "sharpe": 0.642,
+        "ending_nav": 459716.95,
+        "total_return": 359.72
+      },
+      "rolling36": {
+        "count": 70,
+        "min_cagr": 5.52,
+        "median_cagr": 27.49,
+        "max_drawdown_worst": 25.04,
+        "worst_window": {
+          "start": "2018-03-01",
+          "end": "2021-02-01",
+          "cagr": 5.52,
+          "max_drawdown": 24.71,
+          "volatility": 35.62,
+          "sharpe": 0.261,
+          "ending_nav": 117170.45,
+          "total_return": 17.0
+        }
+      },
+      "rolling48": {
+        "count": 58,
+        "min_cagr": 14.95,
+        "median_cagr": 26.37,
+        "max_drawdown_worst": 25.04,
+        "worst_window": {
+          "start": "2022-05-05",
+          "end": "2026-04-01",
+          "cagr": 14.95,
+          "max_drawdown": 21.2,
+          "volatility": 28.14,
+          "sharpe": 0.561,
+          "ending_nav": 457589.53,
+          "total_return": 72.35
+        }
+      }
+    },
+    {
+      "max_holdings": 1,
+      "start": "2020-01-01",
+      "end": "2026-08-25",
+      "warmup_count": 4,
+      "metrics": {
+        "cagr": 17.61,
+        "max_drawdown": 26.8,
+        "volatility": 33.17,
+        "sharpe": 0.59,
+        "ending_nav": 293804.49,
+        "total_return": 193.8
+      },
+      "rolling36": {
+        "count": 46,
+        "min_cagr": 6.73,
+        "median_cagr": 25.67,
+        "max_drawdown_worst": 26.8,
+        "worst_window": {
+          "start": "2023-08-01",
+          "end": "2026-07-01",
+          "cagr": 6.73,
+          "max_drawdown": 21.97,
+          "volatility": 29.28,
+          "sharpe": 0.293,
+          "ending_nav": 264659.11,
+          "total_return": 20.91
+        }
+      },
+      "rolling48": {
+        "count": 34,
+        "min_cagr": 14.83,
+        "median_cagr": 23.2,
+        "max_drawdown_worst": 26.8,
+        "worst_window": {
+          "start": "2022-05-05",
+          "end": "2026-04-01",
+          "cagr": 14.83,
+          "max_drawdown": 21.97,
+          "volatility": 28.15,
+          "sharpe": 0.557,
+          "ending_nav": 292378.33,
+          "total_return": 71.66
+        }
+      }
+    },
+    {
+      "max_holdings": 1,
+      "start": "2022-01-01",
+      "end": "2026-08-25",
+      "warmup_count": 4,
+      "metrics": {
+        "cagr": 5.38,
+        "max_drawdown": 29.28,
+        "volatility": 37.79,
+        "sharpe": 0.261,
+        "ending_nav": 127511.87,
+        "total_return": 27.51
+      },
+      "rolling36": {
+        "count": 22,
+        "min_cagr": -1.71,
+        "median_cagr": 7.63,
+        "max_drawdown_worst": 29.28,
+        "worst_window": {
+          "start": "2022-02-07",
+          "end": "2025-01-02",
+          "cagr": -1.71,
+          "max_drawdown": 29.28,
+          "volatility": 41.91,
+          "sharpe": 0.101,
+          "ending_nav": 95394.59,
+          "total_return": -4.89
+        }
+      },
+      "rolling48": {
+        "count": 10,
+        "min_cagr": -0.92,
+        "median_cagr": 7.84,
+        "max_drawdown_worst": 29.28,
+        "worst_window": {
+          "start": "2022-08-01",
+          "end": "2026-07-01",
+          "cagr": -0.92,
+          "max_drawdown": 29.28,
+          "volatility": 32.33,
+          "sharpe": 0.064,
+          "ending_nav": 114913.8,
+          "total_return": -3.54
+        }
+      }
+    },
+    {
+      "max_holdings": 2,
+      "start": "2018-01-01",
+      "end": "2026-08-25",
+      "warmup_count": 4,
+      "metrics": {
+        "cagr": 32.77,
+        "max_drawdown": 26.86,
+        "volatility": 30.76,
+        "sharpe": 1.01,
+        "ending_nav": 1158680.77,
+        "total_return": 1058.68
+      },
+      "rolling36": {
+        "count": 70,
+        "min_cagr": 11.15,
+        "median_cagr": 47.32,
+        "max_drawdown_worst": 26.86,
+        "worst_window": {
+          "start": "2018-03-01",
+          "end": "2021-02-01",
+          "cagr": 11.15,
+          "max_drawdown": 25.87,
+          "volatility": 37.75,
+          "sharpe": 0.395,
+          "ending_nav": 136405.4,
+          "total_return": 36.21
+        }
+      },
+      "rolling48": {
+        "count": 58,
+        "min_cagr": 17.28,
+        "median_cagr": 49.57,
+        "max_drawdown_worst": 26.86,
+        "worst_window": {
+          "start": "2022-08-01",
+          "end": "2026-07-01",
+          "cagr": 17.28,
+          "max_drawdown": 19.44,
+          "volatility": 21.68,
+          "sharpe": 0.756,
+          "ending_nav": 1043595.46,
+          "total_return": 86.65
+        }
+      }
+    },
+    {
+      "max_holdings": 2,
+      "start": "2020-01-01",
+      "end": "2026-08-25",
+      "warmup_count": 4,
+      "metrics": {
+        "cagr": 37.29,
+        "max_drawdown": 19.41,
+        "volatility": 28.28,
+        "sharpe": 1.2,
+        "ending_nav": 821457.43,
+        "total_return": 721.46
+      },
+      "rolling36": {
+        "count": 46,
+        "min_cagr": 16.07,
+        "median_cagr": 47.43,
+        "max_drawdown_worst": 19.41,
+        "worst_window": {
+          "start": "2022-08-01",
+          "end": "2025-07-01",
+          "cagr": 16.07,
+          "max_drawdown": 19.41,
+          "volatility": 20.4,
+          "sharpe": 0.739,
+          "ending_nav": 614294.65,
+          "total_return": 54.42
+        }
+      },
+      "rolling48": {
+        "count": 34,
+        "min_cagr": 17.18,
+        "median_cagr": 46.29,
+        "max_drawdown_worst": 19.41,
+        "worst_window": {
+          "start": "2022-08-01",
+          "end": "2026-07-01",
+          "cagr": 17.18,
+          "max_drawdown": 19.41,
+          "volatility": 21.66,
+          "sharpe": 0.752,
+          "ending_nav": 739905.93,
+          "total_return": 86.0
+        }
+      }
+    },
+    {
+      "max_holdings": 2,
+      "start": "2022-01-01",
+      "end": "2026-08-25",
+      "warmup_count": 4,
+      "metrics": {
+        "cagr": 18.66,
+        "max_drawdown": 23.33,
+        "volatility": 22.47,
+        "sharpe": 0.787,
+        "ending_nav": 221147.27,
+        "total_return": 121.15
+      },
+      "rolling36": {
+        "count": 22,
+        "min_cagr": 10.06,
+        "median_cagr": 22.23,
+        "max_drawdown_worst": 23.33,
+        "worst_window": {
+          "start": "2023-08-01",
+          "end": "2026-07-01",
+          "cagr": 10.06,
+          "max_drawdown": 23.33,
+          "volatility": 18.94,
+          "sharpe": 0.495,
+          "ending_nav": 199200.95,
+          "total_return": 32.25
+        }
+      },
+      "rolling48": {
+        "count": 10,
+        "min_cagr": 17.4,
+        "median_cagr": 23.15,
+        "max_drawdown_worst": 23.33,
+        "worst_window": {
+          "start": "2022-08-01",
+          "end": "2026-07-01",
+          "cagr": 17.4,
+          "max_drawdown": 23.33,
+          "volatility": 20.98,
+          "sharpe": 0.777,
+          "ending_nav": 199200.95,
+          "total_return": 87.39
+        }
+      }
+    },
+    {
+      "max_holdings": 3,
+      "start": "2018-01-01",
+      "end": "2026-08-25",
+      "warmup_count": 4,
+      "metrics": {
+        "cagr": 36.64,
+        "max_drawdown": 27.57,
+        "volatility": 30.77,
+        "sharpe": 1.105,
+        "ending_nav": 1485434.76,
+        "total_return": 1385.43
+      },
+      "rolling36": {
+        "count": 70,
+        "min_cagr": 17.5,
+        "median_cagr": 52.06,
+        "max_drawdown_worst": 27.57,
+        "worst_window": {
+          "start": "2022-08-01",
+          "end": "2025-07-01",
+          "cagr": 17.5,
+          "max_drawdown": 17.41,
+          "volatility": 21.43,
+          "sharpe": 0.77,
+          "ending_nav": 1123937.65,
+          "total_return": 60.02
+        }
+      },
+      "rolling48": {
+        "count": 58,
+        "min_cagr": 17.89,
+        "median_cagr": 53.96,
+        "max_drawdown_worst": 27.57,
+        "worst_window": {
+          "start": "2022-08-01",
+          "end": "2026-07-01",
+          "cagr": 17.89,
+          "max_drawdown": 17.41,
+          "volatility": 22.36,
+          "sharpe": 0.762,
+          "ending_nav": 1337849.54,
+          "total_return": 90.48
+        }
+      }
+    },
+    {
+      "max_holdings": 3,
+      "start": "2020-01-01",
+      "end": "2026-08-25",
+      "warmup_count": 4,
+      "metrics": {
+        "cagr": 36.77,
+        "max_drawdown": 18.78,
+        "volatility": 28.5,
+        "sharpe": 1.179,
+        "ending_nav": 801162.08,
+        "total_return": 701.16
+      },
+      "rolling36": {
+        "count": 46,
+        "min_cagr": 17.29,
+        "median_cagr": 45.97,
+        "max_drawdown_worst": 18.78,
+        "worst_window": {
+          "start": "2022-08-01",
+          "end": "2025-07-01",
+          "cagr": 17.29,
+          "max_drawdown": 17.37,
+          "volatility": 21.38,
+          "sharpe": 0.763,
+          "ending_nav": 606219.02,
+          "total_return": 59.22
+        }
+      },
+      "rolling48": {
+        "count": 34,
+        "min_cagr": 17.74,
+        "median_cagr": 46.66,
+        "max_drawdown_worst": 18.78,
+        "worst_window": {
+          "start": "2022-08-01",
+          "end": "2026-07-01",
+          "cagr": 17.74,
+          "max_drawdown": 17.37,
+          "volatility": 22.32,
+          "sharpe": 0.757,
+          "ending_nav": 721567.82,
+          "total_return": 89.52
+        }
+      }
+    },
+    {
+      "max_holdings": 3,
+      "start": "2022-01-01",
+      "end": "2026-08-25",
+      "warmup_count": 4,
+      "metrics": {
+        "cagr": 18.98,
+        "max_drawdown": 21.41,
+        "volatility": 22.26,
+        "sharpe": 0.804,
+        "ending_nav": 223915.45,
+        "total_return": 123.92
+      },
+      "rolling36": {
+        "count": 22,
+        "min_cagr": 10.32,
+        "median_cagr": 22.75,
+        "max_drawdown_worst": 21.41,
+        "worst_window": {
+          "start": "2023-08-01",
+          "end": "2026-07-01",
+          "cagr": 10.32,
+          "max_drawdown": 21.41,
+          "volatility": 18.59,
+          "sharpe": 0.514,
+          "ending_nav": 201735.67,
+          "total_return": 33.17
+        }
+      },
+      "rolling48": {
+        "count": 10,
+        "min_cagr": 17.78,
+        "median_cagr": 23.54,
+        "max_drawdown_worst": 21.41,
+        "worst_window": {
+          "start": "2022-08-01",
+          "end": "2026-07-01",
+          "cagr": 17.78,
+          "max_drawdown": 21.41,
+          "volatility": 20.72,
+          "sharpe": 0.8,
+          "ending_nav": 201735.67,
+          "total_return": 89.77
+        }
+      }
+    }
+  ],
+  "audit": {
+    "future_function_check": "通过：信号日前数据，执行滞后1日。",
+    "oos_definition": "完整账本连续切片；重置窗口保留4个动量warm-up信号点并从正式起点归一化。",
+    "survivorship_bias": "冻结现存代码集合可能缺少退市股票和历史成分变化。",
+    "reproducibility": "输入 manifest、日期序列及截止日均写入结果；重复运行应得到相同指标。"
+  }
+}

@@ -1,0 +1,338 @@
+{
+  "round": 11,
+  "method": "冻结 manifest/cache；仅改变连续分红年限；动态池；完整账本、滚动窗口与连续 OOS",
+  "base_rules": {
+    "entry_yield": 7.5,
+    "hold_yield": 5.5,
+    "max_holdings": 2,
+    "rebalance_threshold": 2.0,
+    "execution_lag_days": 1,
+    "pool_min_consecutive_years": 3,
+    "momentum_months": 4,
+    "momentum_threshold": 0.85,
+    "reinvest_cash_reserve": 0,
+    "rank_by": "yield",
+    "momentum_periods": "",
+    "max_yield": 999.0
+  },
+  "manifest_records_sha256": "24de009d9bb60c857fc89e8f7510b93583b17f9abde50350ea63a6a5830a7409",
+  "dates_sha256": "f62fc22c2f2f972e3b29dea42e2a41202bfa620e702acc3c750e26f8c959ec3e",
+  "data_cutoff": "2026-08-25",
+  "dates": {
+    "count": 128,
+    "first": "2016-01-29",
+    "last": "2026-08-25"
+  },
+  "survivorship_bias": "候选池由每个信号日可获得的历史连续分红年限动态计算；未使用未来分红记录。固定 manifest 仅定义可观测股票集合，不能消除样本覆盖偏差。",
+  "experiments": [
+    {
+      "pool_min_consecutive_years": 2,
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1,
+        "pool_min_consecutive_years": 2,
+        "momentum_months": 4,
+        "momentum_threshold": 0.85,
+        "reinvest_cash_reserve": 0,
+        "rank_by": "yield",
+        "momentum_periods": "",
+        "max_yield": 999.0
+      },
+      "full": {
+        "cagr": 27.12,
+        "max_drawdown": 50.37,
+        "volatility": 43.87,
+        "sharpe": 0.703,
+        "ending_nav": 1261257.92,
+        "total_return": 1161.26,
+        "observations": 128,
+        "trade_count": 44,
+        "buy_count": 34,
+        "sell_count": 10,
+        "dividend_event_count": 10,
+        "split_event_count": 0,
+        "ending_cash": 132.92
+      },
+      "universe_count": 210,
+      "universe_provenance": {
+        "kind": "manifest",
+        "path": "D:\\Project\\dividend-strategy-quarterly\\data\\universe_manifest.json",
+        "as_of": "2026-08-25",
+        "records_sha256": "24de009d9bb60c857fc89e8f7510b93583b17f9abde50350ea63a6a5830a7409",
+        "price_format": "unadjusted_close",
+        "price_source": "sina_stock_zh_a_daily",
+        "count": 210
+      },
+      "rolling36": {
+        "count": 93,
+        "min_cagr": -12.24,
+        "median_cagr": 26.99,
+        "max_drawdown_worst": 50.37,
+        "worst_window": {
+          "start": "2022-06-01",
+          "end": "2025-05-06",
+          "cagr": -12.24,
+          "max_drawdown": 50.37,
+          "volatility": 41.93,
+          "sharpe": -0.144,
+          "ending_nav": 921483.35,
+          "total_return": -31.77
+        }
+      },
+      "rolling48": {
+        "count": 81,
+        "min_cagr": -5.49,
+        "median_cagr": 34.62,
+        "max_drawdown_worst": 50.37,
+        "worst_window": {
+          "start": "2022-08-01",
+          "end": "2026-07-01",
+          "cagr": -5.49,
+          "max_drawdown": 50.37,
+          "volatility": 58.11,
+          "sharpe": 0.12,
+          "ending_nav": 1149632.92,
+          "total_return": -19.85
+        }
+      },
+      "oos": {
+        "2021": {
+          "observations": 69,
+          "cagr": 17.68,
+          "max_drawdown": 50.37,
+          "volatility": 50.76,
+          "sharpe": 0.509,
+          "ending_nav": 1261257.92,
+          "total_return": 150.38
+        },
+        "2023": {
+          "observations": 45,
+          "cagr": -9.63,
+          "max_drawdown": 50.37,
+          "volatility": 57.67,
+          "sharpe": 0.038,
+          "ending_nav": 1261257.92,
+          "total_return": -30.84
+        },
+        "2025": {
+          "observations": 21,
+          "cagr": 14.37,
+          "max_drawdown": 47.43,
+          "volatility": 71.77,
+          "sharpe": 0.43,
+          "ending_nav": 1261257.92,
+          "total_return": 24.68
+        }
+      }
+    },
+    {
+      "pool_min_consecutive_years": 3,
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1,
+        "pool_min_consecutive_years": 3,
+        "momentum_months": 4,
+        "momentum_threshold": 0.85,
+        "reinvest_cash_reserve": 0,
+        "rank_by": "yield",
+        "momentum_periods": "",
+        "max_yield": 999.0
+      },
+      "full": {
+        "cagr": 41.38,
+        "max_drawdown": 28.06,
+        "volatility": 30.81,
+        "sharpe": 1.217,
+        "ending_nav": 3876245.51,
+        "total_return": 3776.25,
+        "observations": 128,
+        "trade_count": 75,
+        "buy_count": 57,
+        "sell_count": 18,
+        "dividend_event_count": 19,
+        "split_event_count": 0,
+        "ending_cash": 569.51
+      },
+      "universe_count": 210,
+      "universe_provenance": {
+        "kind": "manifest",
+        "path": "D:\\Project\\dividend-strategy-quarterly\\data\\universe_manifest.json",
+        "as_of": "2026-08-25",
+        "records_sha256": "24de009d9bb60c857fc89e8f7510b93583b17f9abde50350ea63a6a5830a7409",
+        "price_format": "unadjusted_close",
+        "price_source": "sina_stock_zh_a_daily",
+        "count": 210
+      },
+      "rolling36": {
+        "count": 93,
+        "min_cagr": 9.58,
+        "median_cagr": 38.11,
+        "max_drawdown_worst": 28.06,
+        "worst_window": {
+          "start": "2016-12-01",
+          "end": "2019-11-01",
+          "cagr": 9.58,
+          "max_drawdown": 28.06,
+          "volatility": 23.21,
+          "sharpe": 0.424,
+          "ending_nav": 228869.84,
+          "total_return": 30.58
+        }
+      },
+      "rolling48": {
+        "count": 81,
+        "min_cagr": 17.29,
+        "median_cagr": 45.43,
+        "max_drawdown_worst": 28.06,
+        "worst_window": {
+          "start": "2022-08-01",
+          "end": "2026-07-01",
+          "cagr": 17.29,
+          "max_drawdown": 19.43,
+          "volatility": 21.69,
+          "sharpe": 0.756,
+          "ending_nav": 3490853.51,
+          "total_return": 86.69
+        }
+      },
+      "oos": {
+        "2021": {
+          "observations": 69,
+          "cagr": 43.62,
+          "max_drawdown": 19.43,
+          "volatility": 27.21,
+          "sharpe": 1.406,
+          "ending_nav": 3876245.51,
+          "total_return": 669.5
+        },
+        "2023": {
+          "observations": 45,
+          "cagr": 24.74,
+          "max_drawdown": 13.76,
+          "volatility": 22.48,
+          "sharpe": 1.012,
+          "ending_nav": 3876245.51,
+          "total_return": 123.68
+        },
+        "2025": {
+          "observations": 21,
+          "cagr": 32.05,
+          "max_drawdown": 13.76,
+          "volatility": 27.18,
+          "sharpe": 1.087,
+          "ending_nav": 3876245.51,
+          "total_return": 57.89
+        }
+      }
+    },
+    {
+      "pool_min_consecutive_years": 4,
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1,
+        "pool_min_consecutive_years": 4,
+        "momentum_months": 4,
+        "momentum_threshold": 0.85,
+        "reinvest_cash_reserve": 0,
+        "rank_by": "yield",
+        "momentum_periods": "",
+        "max_yield": 999.0
+      },
+      "full": {
+        "cagr": 36.81,
+        "max_drawdown": 29.83,
+        "volatility": 30.87,
+        "sharpe": 1.106,
+        "ending_nav": 2740354.57,
+        "total_return": 2640.35,
+        "observations": 128,
+        "trade_count": 66,
+        "buy_count": 49,
+        "sell_count": 17,
+        "dividend_event_count": 18,
+        "split_event_count": 0,
+        "ending_cash": 1942.57
+      },
+      "universe_count": 210,
+      "universe_provenance": {
+        "kind": "manifest",
+        "path": "D:\\Project\\dividend-strategy-quarterly\\data\\universe_manifest.json",
+        "as_of": "2026-08-25",
+        "records_sha256": "24de009d9bb60c857fc89e8f7510b93583b17f9abde50350ea63a6a5830a7409",
+        "price_format": "unadjusted_close",
+        "price_source": "sina_stock_zh_a_daily",
+        "count": 210
+      },
+      "rolling36": {
+        "count": 93,
+        "min_cagr": -0.32,
+        "median_cagr": 30.84,
+        "max_drawdown_worst": 29.83,
+        "worst_window": {
+          "start": "2017-03-01",
+          "end": "2020-02-03",
+          "cagr": -0.32,
+          "max_drawdown": 29.83,
+          "volatility": 24.55,
+          "sharpe": 0.027,
+          "ending_nav": 178481.65,
+          "total_return": -0.94
+        }
+      },
+      "rolling48": {
+        "count": 81,
+        "min_cagr": 14.7,
+        "median_cagr": 43.64,
+        "max_drawdown_worst": 29.83,
+        "worst_window": {
+          "start": "2016-03-01",
+          "end": "2020-02-03",
+          "cagr": 14.7,
+          "max_drawdown": 29.83,
+          "volatility": 29.46,
+          "sharpe": 0.536,
+          "ending_nav": 178481.65,
+          "total_return": 71.32
+        }
+      },
+      "oos": {
+        "2021": {
+          "observations": 69,
+          "cagr": 43.63,
+          "max_drawdown": 19.42,
+          "volatility": 27.22,
+          "sharpe": 1.406,
+          "ending_nav": 2740354.57,
+          "total_return": 669.81
+        },
+        "2023": {
+          "observations": 45,
+          "cagr": 24.71,
+          "max_drawdown": 13.76,
+          "volatility": 22.48,
+          "sharpe": 1.011,
+          "ending_nav": 2740354.57,
+          "total_return": 123.44
+        },
+        "2025": {
+          "observations": 21,
+          "cagr": 32.06,
+          "max_drawdown": 13.76,
+          "volatility": 27.18,
+          "sharpe": 1.087,
+          "ending_nav": 2740354.57,
+          "total_return": 57.9
+        }
+      }
+    }
+  ]
+}

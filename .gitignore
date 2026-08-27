@@ -1,6 +1,28 @@
+# Python 运行产物
 __pycache__/
+*.py[cod]
+*$py.class
 .pytest_cache/
-.playwright-cli/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+coverage.xml
+htmlcov/
+
+# 本地环境与外部检出目录
 .venv/
+venv/
+env/
 _upstream/
-*.pyc
+.playwright-cli/
+
+# 编辑器、系统和一次性运行文件
+.idea/
+.vscode/
+.DS_Store
+Thumbs.db
+*.log
+*.tmp
+*.bak
+*~

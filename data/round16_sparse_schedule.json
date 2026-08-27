@@ -1,0 +1,198 @@
+{
+  "round": 16,
+  "experiment": "sparse_schedule",
+  "date_source": "data/rebalance_dates_monthly.json",
+  "selection": "dates[::step]",
+  "rolling_method": "按实际日历跨度寻找窗口起点，不把稀疏观测数误当月份",
+  "inputs": {
+    "manifest_records_sha256": "24de009d9bb60c857fc89e8f7510b93583b17f9abde50350ea63a6a5830a7409",
+    "dates_sha256": "f62fc22c2f2f972e3b29dea42e2a41202bfa620e702acc3c750e26f8c959ec3e",
+    "data_cutoff": "2026-08-25"
+  },
+  "variants": [
+    {
+      "name": "monthly_baseline",
+      "signal_count": 128,
+      "momentum_months": 4,
+      "cost_multiplier": 1,
+      "metrics": {
+        "cagr": 41.38,
+        "max_drawdown": 28.06,
+        "volatility": 30.81,
+        "sharpe": 1.217,
+        "ending_nav": 3876245.51,
+        "total_return": 3776.25,
+        "observations": 128,
+        "trade_count": 75,
+        "buy_count": 57,
+        "sell_count": 18,
+        "dividend_event_count": 19,
+        "split_event_count": 0,
+        "ending_cash": 569.51
+      },
+      "derived": {
+        "rolling_36m_min_cagr": 10.66,
+        "rolling_36m_count": 92,
+        "rolling_48m_min_cagr": 19.64,
+        "rolling_48m_count": 80,
+        "oos_2021_cagr": 43.61703084141002,
+        "oos_2023_cagr": 24.74276799609958,
+        "oos_2025_cagr": 32.05120936243346
+      }
+    },
+    {
+      "name": "monthly_baseline_3x_cost",
+      "signal_count": 128,
+      "momentum_months": 4,
+      "cost_multiplier": 3,
+      "metrics": {
+        "cagr": 37.56,
+        "max_drawdown": 28.25,
+        "volatility": 30.53,
+        "sharpe": 1.133,
+        "ending_nav": 2902747.72,
+        "total_return": 2802.75,
+        "observations": 128,
+        "trade_count": 74,
+        "buy_count": 57,
+        "sell_count": 17,
+        "dividend_event_count": 18,
+        "split_event_count": 0,
+        "ending_cash": 2225.72
+      },
+      "derived": {
+        "rolling_36m_min_cagr": 10.39,
+        "rolling_36m_count": 92,
+        "rolling_48m_min_cagr": 11.96,
+        "rolling_48m_count": 80,
+        "oos_2021_cagr": 36.76108608422381,
+        "oos_2023_cagr": 15.835063243308145,
+        "oos_2025_cagr": 11.98577941398904
+      }
+    },
+    {
+      "name": "every_2_months",
+      "signal_count": 64,
+      "momentum_months": 2,
+      "cost_multiplier": 1,
+      "metrics": {
+        "cagr": 36.62,
+        "max_drawdown": 22.55,
+        "volatility": 32.28,
+        "sharpe": 1.072,
+        "ending_nav": 2642563.7,
+        "total_return": 2542.56,
+        "observations": 65,
+        "trade_count": 55,
+        "buy_count": 40,
+        "sell_count": 15,
+        "dividend_event_count": 14,
+        "split_event_count": 0,
+        "ending_cash": 1507.7
+      },
+      "derived": {
+        "rolling_36m_min_cagr": 8.07,
+        "rolling_36m_count": 47,
+        "rolling_48m_min_cagr": 13.14,
+        "rolling_48m_count": 41,
+        "oos_2021_cagr": 41.54942014982059,
+        "oos_2023_cagr": 14.898679793029723,
+        "oos_2025_cagr": 9.994792056525936
+      }
+    },
+    {
+      "name": "every_2_months_3x_cost",
+      "signal_count": 64,
+      "momentum_months": 2,
+      "cost_multiplier": 3,
+      "metrics": {
+        "cagr": 39.82,
+        "max_drawdown": 22.56,
+        "volatility": 31.96,
+        "sharpe": 1.156,
+        "ending_nav": 3369482.45,
+        "total_return": 3269.48,
+        "observations": 65,
+        "trade_count": 59,
+        "buy_count": 43,
+        "sell_count": 16,
+        "dividend_event_count": 15,
+        "split_event_count": 0,
+        "ending_cash": 1062.45
+      },
+      "derived": {
+        "rolling_36m_min_cagr": 7.96,
+        "rolling_36m_count": 47,
+        "rolling_48m_min_cagr": 20.61,
+        "rolling_48m_count": 41,
+        "oos_2021_cagr": 48.154312834440645,
+        "oos_2023_cagr": 23.6316886406144,
+        "oos_2025_cagr": 26.977604473865235
+      }
+    },
+    {
+      "name": "every_3_months",
+      "signal_count": 43,
+      "momentum_months": 1,
+      "cost_multiplier": 1,
+      "metrics": {
+        "cagr": 33.02,
+        "max_drawdown": 18.96,
+        "volatility": 24.36,
+        "sharpe": 1.234,
+        "ending_nav": 1997100.71,
+        "total_return": 1897.1,
+        "observations": 44,
+        "trade_count": 32,
+        "buy_count": 24,
+        "sell_count": 8,
+        "dividend_event_count": 14,
+        "split_event_count": 0,
+        "ending_cash": 204.71
+      },
+      "derived": {
+        "rolling_36m_min_cagr": 8.9,
+        "rolling_36m_count": 32,
+        "rolling_48m_min_cagr": 18.28,
+        "rolling_48m_count": 28,
+        "oos_2021_cagr": 36.356411887119734,
+        "oos_2023_cagr": 22.398064846904695,
+        "oos_2025_cagr": 18.296195083665843
+      }
+    },
+    {
+      "name": "every_3_months_3x_cost",
+      "signal_count": 43,
+      "momentum_months": 1,
+      "cost_multiplier": 3,
+      "metrics": {
+        "cagr": 27.33,
+        "max_drawdown": 30.56,
+        "volatility": 26.74,
+        "sharpe": 0.974,
+        "ending_nav": 1261979.34,
+        "total_return": 1161.98,
+        "observations": 44,
+        "trade_count": 25,
+        "buy_count": 19,
+        "sell_count": 6,
+        "dividend_event_count": 11,
+        "split_event_count": 0,
+        "ending_cash": 392.34
+      },
+      "derived": {
+        "rolling_36m_min_cagr": 6.03,
+        "rolling_36m_count": 32,
+        "rolling_48m_min_cagr": 6.45,
+        "rolling_48m_count": 28,
+        "oos_2021_cagr": 25.675153944116147,
+        "oos_2023_cagr": 7.702068786130112,
+        "oos_2025_cagr": -12.501767502800254
+      }
+    }
+  ],
+  "audit": {
+    "future_function_check": "通过：冻结月末信号日期，执行滞后1日；仅使用信号日前数据",
+    "comparison_note": "稀疏频率的 rolling36/48 与月度版本均按日历跨度计算，窗口观测数因频率不同而不同。"
+  }
+}

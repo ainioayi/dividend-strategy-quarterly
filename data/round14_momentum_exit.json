@@ -1,0 +1,148 @@
+{
+  "round": 14,
+  "experiment": "momentum_exit",
+  "variants": [
+    {
+      "name": "disabled",
+      "rules": {
+        "momentum_months": 4,
+        "momentum_threshold": 0.85,
+        "momentum_exit_threshold": 0.0,
+        "momentum_exit_confirm_count": 1,
+        "execution_lag_days": 1
+      },
+      "metrics": {
+        "cagr": 41.38,
+        "max_drawdown": 28.06,
+        "volatility": 30.81,
+        "sharpe": 1.217,
+        "ending_nav": 3876245.51,
+        "total_return": 3776.25,
+        "observations": 128,
+        "trade_count": 75,
+        "buy_count": 57,
+        "sell_count": 18,
+        "dividend_event_count": 19,
+        "split_event_count": 0,
+        "ending_cash": 569.51
+      },
+      "trade_count": 75
+    },
+    {
+      "name": "threshold_0_80_once",
+      "rules": {
+        "momentum_months": 4,
+        "momentum_threshold": 0.85,
+        "momentum_exit_threshold": 0.8,
+        "momentum_exit_confirm_count": 1,
+        "execution_lag_days": 1
+      },
+      "metrics": {
+        "cagr": 37.4,
+        "max_drawdown": 28.14,
+        "volatility": 30.94,
+        "sharpe": 1.118,
+        "ending_nav": 2866439.48,
+        "total_return": 2766.44,
+        "observations": 128,
+        "trade_count": 72,
+        "buy_count": 53,
+        "sell_count": 19,
+        "dividend_event_count": 17,
+        "split_event_count": 0,
+        "ending_cash": 1164.48
+      },
+      "trade_count": 72
+    },
+    {
+      "name": "threshold_0_85_once",
+      "rules": {
+        "momentum_months": 4,
+        "momentum_threshold": 0.85,
+        "momentum_exit_threshold": 0.85,
+        "momentum_exit_confirm_count": 1,
+        "execution_lag_days": 1
+      },
+      "metrics": {
+        "cagr": 26.7,
+        "max_drawdown": 43.52,
+        "volatility": 40.85,
+        "sharpe": 0.713,
+        "ending_nav": 1218316.23,
+        "total_return": 1118.32,
+        "observations": 128,
+        "trade_count": 125,
+        "buy_count": 88,
+        "sell_count": 37,
+        "dividend_event_count": 13,
+        "split_event_count": 0,
+        "ending_cash": 191.23
+      },
+      "trade_count": 125
+    },
+    {
+      "name": "threshold_0_90_once",
+      "rules": {
+        "momentum_months": 4,
+        "momentum_threshold": 0.85,
+        "momentum_exit_threshold": 0.9,
+        "momentum_exit_confirm_count": 1,
+        "execution_lag_days": 1
+      },
+      "metrics": {
+        "cagr": 33.95,
+        "max_drawdown": 25.53,
+        "volatility": 31.93,
+        "sharpe": 1.004,
+        "ending_nav": 2192004.98,
+        "total_return": 2092.0,
+        "observations": 128,
+        "trade_count": 112,
+        "buy_count": 79,
+        "sell_count": 33,
+        "dividend_event_count": 21,
+        "split_event_count": 0,
+        "ending_cash": 2154.98
+      },
+      "trade_count": 112
+    },
+    {
+      "name": "threshold_0_85_confirm2",
+      "rules": {
+        "momentum_months": 4,
+        "momentum_threshold": 0.85,
+        "momentum_exit_threshold": 0.85,
+        "momentum_exit_confirm_count": 2,
+        "execution_lag_days": 1
+      },
+      "metrics": {
+        "cagr": 41.38,
+        "max_drawdown": 28.06,
+        "volatility": 30.81,
+        "sharpe": 1.217,
+        "ending_nav": 3876245.51,
+        "total_return": 3776.25,
+        "observations": 128,
+        "trade_count": 75,
+        "buy_count": 57,
+        "sell_count": 18,
+        "dividend_event_count": 19,
+        "split_event_count": 0,
+        "ending_cash": 569.51
+      },
+      "trade_count": 75
+    }
+  ],
+  "input": {
+    "manifest": "data/universe_manifest.json",
+    "rebalance_dates": "data/rebalance_dates_monthly.json",
+    "cutoff": "2026-08-25",
+    "manifest_records_sha256": "24de009d9bb60c857fc89e8f7510b93583b17f9abde50350ea63a6a5830a7409",
+    "dates_sha256": "f62fc22c2f2f972e3b29dea42e2a41202bfa620e702acc3c750e26f8c959ec3e",
+    "date_count": 128
+  },
+  "audit": {
+    "future_function_check": "通过：持仓动量只用信号日前价格，交易使用下一交易日精确收盘价",
+    "default_behavior": "momentum_exit_threshold=0 时关闭，不改变当前主策略"
+  }
+}

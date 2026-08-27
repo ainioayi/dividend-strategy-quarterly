@@ -1,0 +1,2971 @@
+{
+  "manifest_sha256": "83b30fccdb06e99b18ca77bfb9f1a5abcdab5a7392357b36267383c9b3a20d42",
+  "dates_sha256": "7976157acd8459ffd1240f7d490b624ea85740cb8fc8e8148128a09bbc5abcfa",
+  "dates": {
+    "count": 8,
+    "first": "as_of",
+    "last": "start_date"
+  },
+  "experiments": [
+    {
+      "name": "base",
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "momentum_months": 4,
+        "momentum_threshold": 0.95,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "ey6",
+      "rules": {
+        "entry_yield": 6,
+        "hold_yield": 5.5,
+        "momentum_months": 4,
+        "momentum_threshold": 0.95,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "ey6.5",
+      "rules": {
+        "entry_yield": 6.5,
+        "hold_yield": 5.5,
+        "momentum_months": 4,
+        "momentum_threshold": 0.95,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "ey7",
+      "rules": {
+        "entry_yield": 7,
+        "hold_yield": 5.5,
+        "momentum_months": 4,
+        "momentum_threshold": 0.95,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "ey7.2",
+      "rules": {
+        "entry_yield": 7.2,
+        "hold_yield": 5.5,
+        "momentum_months": 4,
+        "momentum_threshold": 0.95,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "ey7.4",
+      "rules": {
+        "entry_yield": 7.4,
+        "hold_yield": 5.5,
+        "momentum_months": 4,
+        "momentum_threshold": 0.95,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "ey7.6",
+      "rules": {
+        "entry_yield": 7.6,
+        "hold_yield": 5.5,
+        "momentum_months": 4,
+        "momentum_threshold": 0.95,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "ey8",
+      "rules": {
+        "entry_yield": 8,
+        "hold_yield": 5.5,
+        "momentum_months": 4,
+        "momentum_threshold": 0.95,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "ey8.5",
+      "rules": {
+        "entry_yield": 8.5,
+        "hold_yield": 5.5,
+        "momentum_months": 4,
+        "momentum_threshold": 0.95,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "hy4.5",
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 4.5,
+        "momentum_months": 4,
+        "momentum_threshold": 0.95,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "hy5",
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5,
+        "momentum_months": 4,
+        "momentum_threshold": 0.95,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "hy6",
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 6,
+        "momentum_months": 4,
+        "momentum_threshold": 0.95,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "hy6.5",
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 6.5,
+        "momentum_months": 4,
+        "momentum_threshold": 0.95,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "m0_0.9",
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "momentum_months": 0,
+        "momentum_threshold": 0.9,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "m0_0.93",
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "momentum_months": 0,
+        "momentum_threshold": 0.93,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "m0_0.95",
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "momentum_months": 0,
+        "momentum_threshold": 0.95,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "m0_0.98",
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "momentum_months": 0,
+        "momentum_threshold": 0.98,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "m0_1.0",
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "momentum_months": 0,
+        "momentum_threshold": 1.0,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "m3_0.9",
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "momentum_months": 3,
+        "momentum_threshold": 0.9,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "m3_0.93",
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "momentum_months": 3,
+        "momentum_threshold": 0.93,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "m3_0.95",
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "momentum_months": 3,
+        "momentum_threshold": 0.95,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "m3_0.98",
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "momentum_months": 3,
+        "momentum_threshold": 0.98,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "m3_1.0",
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "momentum_months": 3,
+        "momentum_threshold": 1.0,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "m4_0.9",
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "momentum_months": 4,
+        "momentum_threshold": 0.9,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "m4_0.93",
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "momentum_months": 4,
+        "momentum_threshold": 0.93,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "m4_0.95",
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "momentum_months": 4,
+        "momentum_threshold": 0.95,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "m4_0.98",
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "momentum_months": 4,
+        "momentum_threshold": 0.98,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "m4_1.0",
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "momentum_months": 4,
+        "momentum_threshold": 1.0,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "m5_0.9",
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "momentum_months": 5,
+        "momentum_threshold": 0.9,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "m5_0.93",
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "momentum_months": 5,
+        "momentum_threshold": 0.93,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "m5_0.95",
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "momentum_months": 5,
+        "momentum_threshold": 0.95,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "m5_0.98",
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "momentum_months": 5,
+        "momentum_threshold": 0.98,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "m5_1.0",
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "momentum_months": 5,
+        "momentum_threshold": 1.0,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "mh1",
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "momentum_months": 4,
+        "momentum_threshold": 0.95,
+        "max_holdings": 1,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "mh3",
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "momentum_months": 4,
+        "momentum_threshold": 0.95,
+        "max_holdings": 3,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "mh4",
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "momentum_months": 4,
+        "momentum_threshold": 0.95,
+        "max_holdings": 4,
+        "rebalance_threshold": 2.0,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "rt1",
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "momentum_months": 4,
+        "momentum_threshold": 0.95,
+        "max_holdings": 2,
+        "rebalance_threshold": 1,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "rt1.4",
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "momentum_months": 4,
+        "momentum_threshold": 0.95,
+        "max_holdings": 2,
+        "rebalance_threshold": 1.4,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "rt1.8",
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "momentum_months": 4,
+        "momentum_threshold": 0.95,
+        "max_holdings": 2,
+        "rebalance_threshold": 1.8,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    },
+    {
+      "name": "rt2.5",
+      "rules": {
+        "entry_yield": 7.5,
+        "hold_yield": 5.5,
+        "momentum_months": 4,
+        "momentum_threshold": 0.95,
+        "max_holdings": 2,
+        "rebalance_threshold": 2.5,
+        "execution_lag_days": 1
+      },
+      "full": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "rolling36": {
+        "count": 0
+      },
+      "rolling48": {
+        "count": 0
+      },
+      "oos2021": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2023": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      },
+      "oos2025": {
+        "cagr": 0,
+        "max_drawdown": 0,
+        "volatility": 0,
+        "sharpe": 0,
+        "ending_nav": 100000.0,
+        "observations": 0,
+        "trade_count": 0,
+        "buy_count": 0,
+        "sell_count": 0,
+        "dividend_event_count": 0,
+        "split_event_count": 0,
+        "ending_cash": 0.0
+      }
+    }
+  ]
+}

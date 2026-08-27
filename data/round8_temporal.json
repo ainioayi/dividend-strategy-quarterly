@@ -1,0 +1,31 @@
+{
+  "round": 8,
+  "scope": "时间、执行与配置边界审计",
+  "as_of": "2026-08-26",
+  "checks": {
+    "signal_uses_signal_date_only": true,
+    "execution_uses_next_trading_day": true,
+    "dividend_credit_cutoff_is_execution_date": true,
+    "held_positions_remain_marked_outside_dynamic_pool": true,
+    "final_signal_is_read_only_mark": true,
+    "update_portfolio_requires_snapshot_as_of_match": true,
+    "update_portfolio_uses_config_rules": true,
+    "no_future_function_found_in_reviewed_paths": true
+  },
+  "boundary": {
+    "backtest": "月末信号、execution_lag_days=1 的下一交易日执行，动态候选池按信号日历史分红筛选",
+    "quarterly_ledger": "update_portfolio.py 按当前季度核验快照调用 rebalance_quarter；不重建历史月度动态池",
+    "authoritative_config": "config/strategy.json 是生产季度账本入口的规则来源；backtest.py 的研究默认值与其关键字段同步测试"
+  },
+  "known_differences": [
+    "quarterly_strategy.DEFAULT_QUARTERLY_RULES 保留历史季度默认值，不能单独作为当前月度回测配置",
+    "季度账本没有历史月度动态池与动量信号回放；该限制已在配置 automatic_update.window 中披露"
+  ],
+  "data_boundary": {
+    "price_format": "unadjusted_close",
+    "data_cutoff": "2026-08-25",
+    "manifest_sha256": "24de009d9bb60c857fc89e8f7510b93583b17f9abde50350ea63a6a5830a7409",
+    "rebalance_dates_sha256": "f62fc22c2f2f972e3b29dea42e2a41202bfa620e702acc3c750e26f8c959ec3e"
+  },
+  "result": "通过；未发现需要修改的代码"
+}
