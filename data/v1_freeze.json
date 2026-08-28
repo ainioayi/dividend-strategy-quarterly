@@ -13,14 +13,18 @@
     "manifest": "data/universe_manifest.json",
     "manifest_records_sha256": "24de009d9bb60c857fc89e8f7510b93583b17f9abde50350ea63a6a5830a7409",
     "manifest_file_sha256": "929703d616bb986b81950b9769902c9c82031800c8704827038127750c9e45b5",
+    "manifest_file_lf_sha256": "dcc8ecdd22a97156cc28b97a098f6556dc2228bd401d389dc3daef1addd7e6f9",
     "rebalance_dates": "data/rebalance_dates_monthly.json",
     "dates_sha256": "f62fc22c2f2f972e3b29dea42e2a41202bfa620e702acc3c750e26f8c959ec3e",
     "dates_file_sha256": "8ad476b12333d305f65f544f5669fb3a74782967be1d3b9ea5bf1869df79150b",
+    "dates_file_lf_sha256": "9cd132cc0f6824e8d7fdfabbda56c9bf695046782fc895c1646783d3e1b91df7",
     "date_count": 128,
     "current_result": "data/current_best.json",
     "current_result_file_sha256": "b7f31678adb64effa2fca5d11cf3246c8b445a87ff63451e7f97b32b64de5633",
+    "current_result_file_lf_sha256": "d80251c9812dbfdafce28960e365696e9bbfbdd5fc8b90e6deceb211399bc2c6",
     "strategy_config": "config/strategy.json",
     "strategy_config_file_sha256": "20bd86c5b5593fc83faa74d09bbeda01fb90a39ce456d60de4a038bb86bd9414",
+    "strategy_config_file_lf_sha256": "18b2ad4a2b300753e392ca778bc06b6a3c3824680619faf0248cf33a39ff6bd1",
     "price_format": "unadjusted_close"
   },
   "rules": {
