@@ -510,6 +510,7 @@ def record_execution(
             rules=rules,
             codes=codes,
             rebalance_dates=[row["signal_date"] for row in applicable],
+            momentum_dates=dates,
             dynamic_pool=True,
             verbose=False,
             track_holdings=True,
@@ -531,6 +532,17 @@ def record_execution(
     if events[:len(previous_events)] != previous_events:
         raise ValueError("历史回放事件发生漂移，拒绝追加执行")
     operations = events[len(previous_events):]
+    allowed_buys = held_codes | set(
+        current.get("decision_snapshot", {}).get("eligible_entry_codes", [])
+    )
+    unexpected_buys = sorted({
+        str(row.get("code") or "").zfill(6)
+        for row in operations
+        if row.get("side") in ("买入", "buy")
+        and str(row.get("code") or "").zfill(6) not in allowed_buys
+    })
+    if unexpected_buys:
+        raise ValueError(f"执行回放买入了冻结信号未放行的股票: {unexpected_buys}")
     fees = round(sum(float((row.get("fees") or {}).get("total") or 0) for row in operations), 6)
     nav_row = next((row for row in reversed(result["nav_series"]) if row["date"] == execution_date), None)
     if nav_row is None:

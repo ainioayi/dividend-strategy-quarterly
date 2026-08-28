@@ -12,11 +12,11 @@ on:
         required: false
         type: string
       mode:
-        description: "门禁模式；显式动作仍必须通过真实交易日校验"
+        description: "门禁模式；rehearsal 只做隔离预演，不读取未来行情或写正式账本"
         required: true
         default: auto
         type: choice
-        options: [auto, signal, execute]
+        options: [auto, signal, execute, rehearsal]
 
 permissions:
   contents: write
@@ -48,7 +48,11 @@ jobs:
           python scripts/verify_v1_freeze.py
           python scripts/monthly_forward.py verify
 
+      - name: 隔离预演首期信号与执行链路
+        run: python scripts/rehearse_forward_cycle.py --verify-live-calendar --output "$RUNNER_TEMP/v1-forward-rehearsal.json"
+
       - name: 计算北京时间截止日
+        if: inputs.mode != 'rehearsal'
         id: date
         shell: pwsh
         env:
@@ -60,6 +64,7 @@ jobs:
           "as_of=$asOf" >> $env:GITHUB_OUTPUT
 
       - name: 先计算交易日门禁
+        if: inputs.mode != 'rehearsal'
         id: plan
         shell: pwsh
         env:
@@ -157,6 +162,7 @@ jobs:
       GH_TOKEN: ${{ github.token }}
       GH_REPO: ${{ github.repository }}
       UPDATE_RESULT: ${{ needs.update.result }}
+      RUN_MODE: ${{ inputs.mode }}
       RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
     steps:
       - name: 创建失败告警或关闭已恢复告警
@@ -181,6 +187,11 @@ jobs:
             echo
             echo "UTC 时间：$(date -u '+%Y-%m-%d %H:%M:%S')"
           } > "$note"
+
+          if [[ "$RUN_MODE" == "rehearsal" ]]; then
+            echo "仅演练运行不创建或关闭正式更新告警"
+            exit 0
+          fi
 
           if [[ "$UPDATE_RESULT" == "failure" ]]; then
             if [[ -n "$issue_number" ]]; then

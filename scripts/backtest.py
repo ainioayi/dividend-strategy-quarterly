@@ -832,7 +832,8 @@ def run_backtest(rules=None, codes=None, rebalance_dates=None,
                  track_holdings: bool = False,
                  return_events: bool = False,
                  listing_windows: dict[str, dict[str, str]] | None = None,
-                 delisting_recovery_rate: float | None = None):
+                 delisting_recovery_rate: float | None = None,
+                 momentum_dates: list[str] | None = None):
     active = dict(BACKTEST_RULES)
     if rules:
         active.update(rules)
@@ -923,6 +924,13 @@ def run_backtest(rules=None, codes=None, rebalance_dates=None,
             "source": "explicit" if rebalance_dates is not None else "generated_monthly_dates_v3",
             "sha256": _rebalance_dates_hash(rdates),
         }
+    momentum_rebalance_dates = (
+        _normalize_rebalance_dates(momentum_dates, cutoff)
+        if momentum_dates is not None
+        else rdates
+    )
+    if momentum_dates is not None and any(day not in momentum_rebalance_dates for day in rdates):
+        raise ValueError("动量回看日期必须覆盖所有实际信号日")
 
     klines = {}
     divs = {}
@@ -1109,11 +1117,15 @@ def run_backtest(rules=None, codes=None, rebalance_dates=None,
         mp = str(active.get("momentum_periods") or "").strip()
         if mm > 0 or mp:
             _pl = lambda code, date: _find_price(klines.get(code, {}), date)
-            signal_rows = momentum_filter(all_signal_rows, held_codes, _pl, rb, rdates, active)
+            signal_rows = momentum_filter(
+                all_signal_rows, held_codes, _pl, rb, momentum_rebalance_dates, active
+            )
             # 动量退出实验需要为已有持仓附带同一信号日计算的历史比率；
             # 默认未启用时不影响原有仅过滤新入场候选的行为。
             if float(active.get("momentum_exit_threshold") or 0.0) > 0 and held_codes:
-                held_momentum = momentum_filter(all_signal_rows, set(), _pl, rb, rdates, active)
+                held_momentum = momentum_filter(
+                    all_signal_rows, set(), _pl, rb, momentum_rebalance_dates, active
+                )
                 ratios = {str(r.get("code")): r.get("momentum_ratio") for r in held_momentum}
                 for row in signal_rows:
                     if str(row.get("code")) in held_codes and row.get("momentum_ratio") is None:

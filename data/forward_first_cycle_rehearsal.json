@@ -1,0 +1,50 @@
+{
+  "schema_version": 1,
+  "kind": "v1_first_cycle_isolated_rehearsal",
+  "generated_at": "2026-08-28T11:22:11+08:00",
+  "synthetic_data": true,
+  "synthetic_price_rule": "未来日期缺价时沿用该股票最近已知收盘价；仅验证控制流，不是预测或选股信号",
+  "source_cache": "data/forward/cache",
+  "code_count": 210,
+  "calendar": {
+    "source": "baostock_query_trade_dates",
+    "trading_days": [
+      "2026-08-31",
+      "2026-09-01"
+    ],
+    "status": "通过"
+  },
+  "signal": {
+    "date": "2026-08-31",
+    "plan": "signal",
+    "candidate_pool_count": 169,
+    "eligible_entry_count": 1,
+    "manifest_records_sha256": "afb76671936cb76d7f4d58f2b56b07f4522e1f71ce5f5e8af48b4a2699b14d0c"
+  },
+  "execution": {
+    "date": "2026-09-01",
+    "plan": "execute",
+    "operation_count": 1,
+    "holding_count": 1,
+    "cash": 2553.8,
+    "nav": 99969.8,
+    "invested_pct": 97.4454,
+    "minimum_next_lot_cost": 3613.04,
+    "residual_cash_below_one_lot": true,
+    "manifest_records_sha256": "5a0a7ca702c86bddbf9545e439e1057041832331dd3ae5a664779d43164ef451"
+  },
+  "public_performance": {
+    "strategy_total_assets": 99969.8,
+    "benchmark_total_assets": 99970.12,
+    "benchmark_inception_date": "2026-09-01",
+    "transaction_count": 1
+  },
+  "isolated_journal": {
+    "signal_count": 1,
+    "execution_count": 1
+  },
+  "production_journal_sha256_before": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "status": "通过",
+  "production_journal_sha256_after": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "production_journal_unchanged": true
+}

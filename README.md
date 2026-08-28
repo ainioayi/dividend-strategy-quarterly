@@ -61,6 +61,13 @@ V1 从 `2026-08-25` 起的只追加前向模拟业绩、与 V1 首笔模拟成�
   成交日同步建仓，此前双方均保持 10 万元现金和 0% 收益。
 - 月末信号和下一交易日模拟执行仍由独立的失败关闭门禁控制。季度模型任务只
   更新季度账本，不再重写公开首页。
+- 每次正式任务开始前，先用 210 只正式前向缓存的隔离副本预演 `2026-08-31`
+  信号、`2026-09-01` 执行和公开业绩生成。演练使用最近已知价平移出的模拟未来
+  数据，只验证程序链路；它不写正式账本，也不是预测或提前选股。
+- 可在真实日期到来前手动运行 GitHub 隔离演练：
+  `gh workflow run monthly-forward.yml -f mode=rehearsal`。该模式会联网核验两个
+  交易日并执行完整预演，但不会创建或关闭正式更新告警。最近一次本地审计结果
+  保存在 `data/forward_first_cycle_rehearsal.json`。
 
 ## 规则
 
@@ -241,6 +248,7 @@ PR 门槛，也不能把实时的 8 年门槛倒灌到历史回测。
 
 ```powershell
 python scripts/verify_v1_freeze.py
+python scripts/rehearse_forward_cycle.py --verify-live-calendar
 pytest -q
 python -m compileall -q scripts tests
 git diff --check
@@ -277,6 +285,8 @@ git diff --check
 - `data/historical/eligible_listed_prices.json.gz`、`data/historical/eligible_listed_prices_manifest.json`、`data/historical/listed_dividends.json`：在市股票价格归档、价格核验清单和分红门禁证据。
 - `data/historical_v1_provisional.json`：早期仅补入退市股票的临时压力回放，已由人工门禁正式回放取代，但保留作历史审计。
 - `data/v1_freeze.json`：V1 提交、规则、输入和基线结果的固定指纹。
+- `data/forward_first_cycle_rehearsal.json`：210 只缓存的首期信号、执行、资金尾差
+  和公开业绩隔离演练报告；使用模拟未来价格，只能证明程序链路。
 - `data/forward/`：与冻结回测隔离的前向缓存、版本化输入和只追加模拟账本。
 - `docs/UNIVERSE_MANIFEST.md`：候选池 manifest 的生成和校验规则。
 - `site/`：V1 前向公开业绩页面和发布数据；旧季度页面保存在 `site/archive/`。
