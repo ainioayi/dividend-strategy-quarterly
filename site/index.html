@@ -530,11 +530,14 @@
       }
 
       function chartBlock(data) {
+        const benchmarkLabel = data.benchmark.inception_date
+          ? '510300 沪深300 ETF'
+          : '510300 沪深300 ETF（等待同步建仓）';
         return `<div class="chart-shell">
           <div class="chart-topline">
             <div class="legend">
               <div class="legend-item"><span class="legend-mark"></span><span>V1 前向模拟</span><strong class="${tone(data.strategy.cumulative_return_pct)}">${pct(data.strategy.cumulative_return_pct)}</strong></div>
-              <div class="legend-item"><span class="legend-mark benchmark"></span><span>510300 沪深300 ETF</span><strong>${pct(data.benchmark.cumulative_return_pct)}</strong></div>
+              <div class="legend-item"><span class="legend-mark benchmark"></span><span>${escapeHtml(benchmarkLabel)}</span><strong>${pct(data.benchmark.cumulative_return_pct)}</strong></div>
             </div>
             <div class="chart-latest">数据截至 ${escapeHtml(data.as_of)}</div>
           </div>
@@ -549,9 +552,12 @@
       }
 
       function summaryStrip(data) {
+        const benchmarkLabel = data.benchmark.inception_date
+          ? '510300 累计收益'
+          : '510300 等待同步建仓';
         return `<div class="summary-strip">
           <div class="summary-item"><span>V1 累计收益</span><strong class="${tone(data.strategy.cumulative_return_pct)}">${pct(data.strategy.cumulative_return_pct)}</strong></div>
-          <div class="summary-item"><span>510300 累计收益</span><strong class="${tone(data.benchmark.cumulative_return_pct)}">${pct(data.benchmark.cumulative_return_pct)}</strong></div>
+          <div class="summary-item"><span>${escapeHtml(benchmarkLabel)}</span><strong class="${tone(data.benchmark.cumulative_return_pct)}">${pct(data.benchmark.cumulative_return_pct)}</strong></div>
           <div class="summary-item"><span>超额收益</span><strong class="${tone(data.excess_return_pct)}">${pct(data.excess_return_pct)}</strong></div>
           <div class="summary-item"><span>累计交易费用</span><strong>${money(data.strategy.fees)}</strong></div>
           <div class="summary-item"><span>日频最大回撤</span><strong class="${tone(-Math.abs(Number(data.strategy.max_drawdown_pct)))}">${pct(-Math.abs(Number(data.strategy.max_drawdown_pct)))}</strong></div>

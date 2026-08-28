@@ -7,8 +7,8 @@
 公开站点：<https://ainioayi.github.io/dividend-strategy-quarterly/>
 
 当前权威状态见 [docs/STRATEGY_STATUS.md](docs/STRATEGY_STATUS.md)。公开站点展示
-V1 从 `2026-08-25` 起的只追加前向模拟业绩、510300 沪深300 ETF 基准、当前
-持仓和交易明细；历史回测曲线不会混入前向模拟盘。
+V1 从 `2026-08-25` 起的只追加前向模拟业绩、与 V1 首笔模拟成交同日建仓的
+510300 沪深300 ETF 基准、当前持仓和交易明细；历史回测曲线不会混入前向模拟盘。
 每轮参数、候选池和稳健性证据集中记录在
 [docs/EXPLORATION_LOG.md](docs/EXPLORATION_LOG.md)。
 
@@ -57,7 +57,8 @@ V1 从 `2026-08-25` 起的只追加前向模拟业绩、510300 沪深300 ETF 基
   公开页面超过一个工作日没有新数据时会显示“数据可能滞后”提示。
 - 真实交易日会刷新 V1 每日盯市净值、累计盈亏、持仓、交易明细和 510300
   含分红总回报，写入 `data/forward/performance.json` 和
-  `site/performance.json`，随后自动部署 GitHub Pages。
+  `site/performance.json`，随后自动部署 GitHub Pages。510300 只在 V1 首笔模拟
+  成交日同步建仓，此前双方均保持 10 万元现金和 0% 收益。
 - 月末信号和下一交易日模拟执行仍由独立的失败关闭门禁控制。季度模型任务只
   更新季度账本，不再重写公开首页。
 

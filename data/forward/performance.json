@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-28T10:40:27+08:00",
+  "generated_at": "2026-08-28T11:03:11+08:00",
   "as_of": "2026-08-27",
   "forward_start_date": "2026-08-25",
   "strategy": {
@@ -24,35 +24,37 @@
   "benchmark": {
     "code": "510300",
     "name": "沪深300ETF华泰柏瑞",
-    "method": "10 万元起始，首日收盘整手买入，现金分红到账后整手复投，计最低佣金",
-    "total_assets": 101590.09,
-    "cumulative_return_pct": 1.59009,
+    "status": "等待 V1 首笔模拟成交",
+    "inception_date": null,
+    "method": "与 V1 首笔模拟成交同日用 10 万元收盘整手买入，现金分红到账后整手复投，计最低佣金",
+    "total_assets": 100000.0,
+    "cumulative_return_pct": 0.0,
     "max_drawdown_pct": 0.0,
-    "fees": 29.91,
+    "fees": 0.0,
     "dividends": 0.0
   },
-  "excess_return_pct": -1.59009,
+  "excess_return_pct": 0.0,
   "series": [
     {
       "date": "2026-08-25",
       "strategy_nav": 100000.0,
       "strategy_return_pct": 0.0,
-      "benchmark_nav": 99970.09,
-      "benchmark_return_pct": -0.02991
+      "benchmark_nav": 100000.0,
+      "benchmark_return_pct": 0.0
     },
     {
       "date": "2026-08-26",
       "strategy_nav": 100000.0,
       "strategy_return_pct": 0.0,
-      "benchmark_nav": 100747.69,
-      "benchmark_return_pct": 0.74769
+      "benchmark_nav": 100000.0,
+      "benchmark_return_pct": 0.0
     },
     {
       "date": "2026-08-27",
       "strategy_nav": 100000.0,
       "strategy_return_pct": 0.0,
-      "benchmark_nav": 101590.09,
-      "benchmark_return_pct": 1.59009
+      "benchmark_nav": 100000.0,
+      "benchmark_return_pct": 0.0
     }
   ],
   "holdings": [],
@@ -78,6 +80,7 @@
         "url": "https://fundf10.eastmoney.com/fhsp_510300.html"
       }
     },
+    "comparison_inception_rule": "510300 与 V1 首笔模拟成交同日建仓；此前双方均按现金 0% 计",
     "monthly_journal": "data/forward/monthly_v1.jsonl",
     "capital_policy": {
       "target_allocation_pct": 100,
@@ -92,14 +95,14 @@
       "v2_output_root": "data/forward/shadow",
       "v2_can_write_v1_journal": false
     },
-    "performance_sha256": "8f1806ce528520fab7dcd5ace965411ef84d0679ca4556904ba731a96d518844"
+    "performance_sha256": "7d4657db6985af8c2ab00b98f8fb4739ac85604166efaa8788033161ac63f94b"
   },
   "limitations": [
     "这是模型模拟盘，不连接券商、不读取真实账户，也不会自动下单。",
     "V1 对策略账户采用 100% 目标投入且不设置额外现金保留；整数手和交易费用导致的不可用尾差仍留在现金。",
     "V1 仅在月末形成信号并在下一真实交易日收盘模拟执行；其他交易日只做收盘盯市。",
     "持仓分红在两次月度执行之间按真实除权日计入日频估值，下一次执行时以只追加账本检查点重置。",
-    "510300 使用场内未复权收盘价和现金分红复投，不使用沪深300指数或基金净值替代。",
+    "510300 在 V1 首笔模拟成交日同步建仓；此前双方均为现金 0%，之后使用场内未复权收盘价和现金分红复投。",
     "历史回测和前向模拟都不代表未来收益，也不是买卖建议。"
   ]
 }

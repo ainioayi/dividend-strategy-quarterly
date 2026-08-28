@@ -59,7 +59,7 @@ def _market(start: str, rows: list[tuple[str, float]], securities=None) -> dict:
     }
 
 
-def test空账本保持十万元并展示510300基准() -> None:
+def test空账本时策略和510300都保持现金等待同步建仓() -> None:
     market = _market("2026-08-25", [("2026-08-25", 10), ("2026-08-26", 11)])
     result = build_performance(_metadata(), [], market)
     assert result["strategy"]["total_assets"] == 100000
@@ -69,7 +69,12 @@ def test空账本保持十万元并展示510300基准() -> None:
     assert result["strategy"]["cash_reserve"] == 0
     assert result["audit"]["capital_policy"]["target_allocation_pct"] == 100
     assert result["audit"]["observation_policy"]["v2_mode"] == "shadow_only"
-    assert result["benchmark"]["cumulative_return_pct"] == 10
+    assert result["benchmark"]["total_assets"] == 100000
+    assert result["benchmark"]["cumulative_return_pct"] == 0
+    assert result["benchmark"]["fees"] == 0
+    assert result["benchmark"]["inception_date"] is None
+    assert result["benchmark"]["status"] == "等待 V1 首笔模拟成交"
+    assert [row["benchmark_return_pct"] for row in result["series"]] == [0, 0]
     assert result["holdings"] == []
     assert result["transactions"] == []
 
@@ -116,6 +121,47 @@ def test执行后每日盯市并按除权日计入持仓分红() -> None:
     assert result["holdings"][0]["unrealized_pnl"] == 200
     assert result["holdings"][0]["price_date"] == "2026-08-27"
     assert result["transactions"][0]["side"] == "买入"
+    assert result["benchmark"]["inception_date"] == "2026-08-26"
+    assert result["benchmark"]["status"] == "与 V1 同日建仓"
+    assert [row["benchmark_return_pct"] for row in result["series"]] == [0, 0, 0]
+
+
+def test510300从V1首笔模拟成交日开始计算收益() -> None:
+    buy = {
+        "date": "2026-08-26", "side": "买入", "code": "600000",
+        "name": "浦发银行", "shares": 100, "price": 10, "gross": 1000,
+        "fees": {"total": 0}, "net_cash": 1000, "reason": "测试买入",
+    }
+    journal = [{
+        "event_type": "execution",
+        "period": "2026-08",
+        "execution_date": "2026-08-26",
+        "operations": [buy],
+        "cumulative_events": [buy],
+        "holdings": [{"code": "600000", "shares": 100, "entry_price": 10}],
+        "cash": 99000,
+        "nav": 100000,
+    }]
+    securities = {
+        "600000": {
+            "name": "浦发银行",
+            "prices": [
+                {"date": "2026-08-26", "close": 10},
+                {"date": "2026-08-27", "close": 10},
+            ],
+            "dividends": [],
+        }
+    }
+    market = _market(
+        "2026-08-25",
+        [("2026-08-25", 10), ("2026-08-26", 11), ("2026-08-27", 12)],
+        securities,
+    )
+
+    result = build_performance(_metadata(), journal, market)
+
+    assert [row["benchmark_return_pct"] for row in result["series"]] == [0, 0, 9]
+    assert result["benchmark"]["cumulative_return_pct"] == 9
 
 
 def test市场快照只抓取账本涉及证券并保留来源哈希() -> None:

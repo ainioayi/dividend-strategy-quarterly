@@ -1,8 +1,8 @@
 """生成 V1 前向模拟盘的每日公开业绩。
 
 数据层只读取只追加账本，并用未复权收盘价做每日盯市；它不生成信号、不改写
-交易事件，也不连接券商。510300 基准按场内整手买入、现金分红复投和相同佣金
-口径模拟，避免用沪深 300 指数冒充可交易 ETF。
+交易事件，也不连接券商。510300 基准在 V1 首笔模拟成交日同步建仓，之后按场内
+整手买入、现金分红复投和相同佣金口径模拟，避免用沪深 300 指数冒充可交易 ETF。
 """
 from __future__ import annotations
 
@@ -577,26 +577,41 @@ def _benchmark_series(
     calendar: list[str],
     initial_capital: float,
     rules: dict[str, Any],
+    inception_date: str | None,
 ) -> dict[str, Any]:
     benchmark = market["benchmark"]
     price_map = {row["date"]: float(row["close"]) for row in benchmark.get("prices") or []}
-    start_date = calendar[0]
     lot = int(rules.get("lot_size", 100))
     rate = float(rules.get("buy_commission_rate", 0.0003))
     minimum = float(rules.get("min_commission", 5.0))
-    shares, initial_fee = _buy_lots(initial_capital, price_map[start_date], lot, rate, minimum)
-    if not shares:
-        raise ValueError("初始资金不足以整手买入 510300")
-    cash = initial_capital - shares * price_map[start_date] - initial_fee
-    distributions = [dict(row, eligible_shares=None, credited=False) for row in benchmark.get("dividends") or []]
+    if inception_date is not None and inception_date not in calendar:
+        raise ValueError("510300 行情缺少 V1 首笔模拟成交日，不能同步建立基准")
+
+    shares = 0
+    cash = initial_capital
+    distributions = [
+        dict(row, eligible_shares=None, credited=False)
+        for row in benchmark.get("dividends") or []
+        if inception_date is not None and str(row.get("record_date") or "")[:10] >= inception_date
+    ]
     nav_by_date = {}
-    events = [{
-        "date": start_date, "side": "买入", "shares": shares,
-        "price": price_map[start_date], "fee": round(initial_fee, 2),
-    }]
+    events = []
     total_dividends = 0.0
-    total_fees = initial_fee
+    total_fees = 0.0
     for day in calendar:
+        if inception_date is None or day < inception_date:
+            nav_by_date[day] = round(initial_capital, 2)
+            continue
+        if day == inception_date:
+            shares, initial_fee = _buy_lots(initial_capital, price_map[day], lot, rate, minimum)
+            if not shares:
+                raise ValueError("初始资金不足以整手买入 510300")
+            cash -= shares * price_map[day] + initial_fee
+            total_fees += initial_fee
+            events.append({
+                "date": day, "side": "买入", "shares": shares,
+                "price": price_map[day], "fee": round(initial_fee, 2),
+            })
         for item in distributions:
             if item["eligible_shares"] is None and day >= item["record_date"]:
                 item["eligible_shares"] = shares
@@ -606,7 +621,7 @@ def _benchmark_series(
                 total_dividends += amount
                 item["credited"] = True
                 events.append({"date": day, "side": "分红", "net_cash": round(amount, 2)})
-        if day != start_date and any(item["credited"] and not item.get("reinvested") for item in distributions):
+        if day != inception_date and any(item["credited"] and not item.get("reinvested") for item in distributions):
             quantity, fee = _buy_lots(cash, price_map[day], lot, rate, minimum)
             if quantity:
                 cash -= quantity * price_map[day] + fee
@@ -627,6 +642,7 @@ def _benchmark_series(
         "total_dividends": round(total_dividends, 2),
         "total_fees": round(total_fees, 2),
         "events": events,
+        "inception_date": inception_date,
     }
 
 
@@ -654,7 +670,14 @@ def build_performance(
 
     executions = _execution_rows(journal)
     execution_dates = [str(row["execution_date"]) for row in executions]
-    benchmark_result = _benchmark_series(market, calendar, initial, metadata.get("rules") or {})
+    benchmark_inception_date = execution_dates[0] if execution_dates else None
+    benchmark_result = _benchmark_series(
+        market,
+        calendar,
+        initial,
+        metadata.get("rules") or {},
+        benchmark_inception_date,
+    )
     series = []
     latest_state = None
     for day in calendar:
@@ -729,7 +752,9 @@ def build_performance(
     benchmark = {
         "code": BENCHMARK_CODE,
         "name": BENCHMARK_NAME,
-        "method": "10 万元起始，首日收盘整手买入，现金分红到账后整手复投，计最低佣金",
+        "status": "与 V1 同日建仓" if benchmark_inception_date else "等待 V1 首笔模拟成交",
+        "inception_date": benchmark_inception_date,
+        "method": "与 V1 首笔模拟成交同日用 10 万元收盘整手买入，现金分红到账后整手复投，计最低佣金",
         "total_assets": latest["benchmark_nav"],
         "cumulative_return_pct": latest["benchmark_return_pct"],
         "max_drawdown_pct": _max_drawdown(benchmark_values),
@@ -756,6 +781,7 @@ def build_performance(
             "market_content_sha256": (market.get("hashes") or {}).get("content_sha256"),
             "price_format": market.get("price_format"),
             "benchmark_sources": (market.get("benchmark") or {}).get("sources"),
+            "comparison_inception_rule": "510300 与 V1 首笔模拟成交同日建仓；此前双方均按现金 0% 计",
             "monthly_journal": "data/forward/monthly_v1.jsonl",
             "capital_policy": capital_policy,
             "observation_policy": observation_policy,
@@ -765,7 +791,7 @@ def build_performance(
             "V1 对策略账户采用 100% 目标投入且不设置额外现金保留；整数手和交易费用导致的不可用尾差仍留在现金。",
             "V1 仅在月末形成信号并在下一真实交易日收盘模拟执行；其他交易日只做收盘盯市。",
             "持仓分红在两次月度执行之间按真实除权日计入日频估值，下一次执行时以只追加账本检查点重置。",
-            "510300 使用场内未复权收盘价和现金分红复投，不使用沪深300指数或基金净值替代。",
+            "510300 在 V1 首笔模拟成交日同步建仓；此前双方均为现金 0%，之后使用场内未复权收盘价和现金分红复投。",
             "历史回测和前向模拟都不代表未来收益，也不是买卖建议。",
         ],
     }
