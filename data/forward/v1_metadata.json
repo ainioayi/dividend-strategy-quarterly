@@ -49,5 +49,18 @@
     "dividend_information_lag_days": 0
   },
   "rules_sha256": "d3265a0af79c1915244edb7d54322ea038183dd90b9b01ef00c216238597bd23",
+  "capital_policy": {
+    "target_allocation_pct": 100,
+    "cash_reserve": 0,
+    "residual_cash_rule": "仅保留整数手和交易费用约束下无法继续买入的现金"
+  },
+  "observation_policy": {
+    "minimum_months": 6,
+    "target_months": 12,
+    "parameter_changes_allowed": false,
+    "v2_mode": "shadow_only",
+    "v2_output_root": "data/forward/shadow",
+    "v2_can_write_v1_journal": false
+  },
   "status": "等待 2026-08-31 收盘后的完整冻结输入，尚未生成信号"
 }

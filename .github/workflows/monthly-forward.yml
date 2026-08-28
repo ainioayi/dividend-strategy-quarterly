@@ -2,8 +2,9 @@ name: V1 前向观察与公开业绩
 
 on:
   schedule:
-    # UTC 10:30 = 北京时间 18:30；仅工作日唤醒，脚本再核验真实交易日和当日收盘价。
+    # 北京时间 18:30 首次运行，20:30 同日幂等重试；脚本仍核验真实交易日和当日收盘价。
     - cron: "30 10 * * 1-5"
+    - cron: "30 12 * * 1-5"
   workflow_dispatch:
     inputs:
       date:
@@ -19,6 +20,7 @@ on:
 
 permissions:
   contents: write
+  issues: write
 
 concurrency:
   group: monthly-forward-v1
@@ -40,6 +42,11 @@ jobs:
 
       - name: 安装依赖
         run: pip install -r requirements.txt
+
+      - name: 校验 V1 冻结与全量资金合同
+        run: |
+          python scripts/verify_v1_freeze.py
+          python scripts/monthly_forward.py verify
 
       - name: 计算北京时间截止日
         id: date
@@ -139,3 +146,49 @@ jobs:
       - name: 记录月度门禁无动作原因
         if: steps.plan.outputs.action == 'noop'
         run: echo "月度账本不写入：${{ steps.plan.outputs.reason }}；真实交易日=${{ steps.plan.outputs.is_trading_day }}"
+
+  report-health:
+    name: 报告前向任务健康状态
+    needs: update
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      UPDATE_RESULT: ${{ needs.update.result }}
+      RUN_URL: ${{ github.server_url }}/${{ github.repository }}/actions/runs/${{ github.run_id }}
+    steps:
+      - name: 创建失败告警或关闭已恢复告警
+        shell: bash
+        run: |
+          set -euo pipefail
+          title="[自动告警] V1 前向更新失败"
+          issue_number="$(
+            gh issue list \
+              --repo "$GH_REPO" \
+              --state open \
+              --limit 100 \
+              --json number,title \
+              --jq '.[] | select(.title == "[自动告警] V1 前向更新失败") | .number' \
+              | head -n 1
+          )"
+          note="$RUNNER_TEMP/v1-forward-health.md"
+          {
+            echo "运行结果：$UPDATE_RESULT"
+            echo
+            echo "工作流：$RUN_URL"
+            echo
+            echo "UTC 时间：$(date -u '+%Y-%m-%d %H:%M:%S')"
+          } > "$note"
+
+          if [[ "$UPDATE_RESULT" == "failure" ]]; then
+            if [[ -n "$issue_number" ]]; then
+              gh issue comment "$issue_number" --repo "$GH_REPO" --body-file "$note"
+            else
+              gh issue create --repo "$GH_REPO" --title "$title" --body-file "$note"
+            fi
+          elif [[ "$UPDATE_RESULT" == "success" && -n "$issue_number" ]]; then
+            gh issue comment "$issue_number" --repo "$GH_REPO" --body "V1 前向更新已恢复：$RUN_URL"
+            gh issue close "$issue_number" --repo "$GH_REPO" --reason completed
+          fi

@@ -34,6 +34,20 @@ V1_MANIFEST_SHA256 = "24de009d9bb60c857fc89e8f7510b93583b17f9abde50350ea63a6a583
 V1_DATES_SHA256 = "f62fc22c2f2f972e3b29dea42e2a41202bfa620e702acc3c750e26f8c959ec3e"
 V1_DATA_CUTOFF = "2026-08-25"
 
+V1_CAPITAL_POLICY: dict[str, Any] = {
+    "target_allocation_pct": 100,
+    "cash_reserve": 0,
+    "residual_cash_rule": "仅保留整数手和交易费用约束下无法继续买入的现金",
+}
+V1_OBSERVATION_POLICY: dict[str, Any] = {
+    "minimum_months": 6,
+    "target_months": 12,
+    "parameter_changes_allowed": False,
+    "v2_mode": "shadow_only",
+    "v2_output_root": "data/forward/shadow",
+    "v2_can_write_v1_journal": False,
+}
+
 # 这些值来自 c7d128f 的历史回测口径；PR 上限 999 表示前向观察沿用纯股息率层。
 V1_RULES: dict[str, Any] = {
     "initial_capital": 100000.0,
@@ -312,9 +326,58 @@ def build_metadata() -> dict[str, Any]:
             "data_cutoff": V1_DATA_CUTOFF,
             "price_format": "unadjusted_close",
         },
-        "rules": V1_RULES,
+        "rules": dict(V1_RULES),
         "rules_sha256": _hash(V1_RULES),
+        "capital_policy": dict(V1_CAPITAL_POLICY),
+        "observation_policy": dict(V1_OBSERVATION_POLICY),
         "status": "等待 2026-08-31 收盘后的完整冻结输入，尚未生成信号",
+    }
+
+
+def verify_forward_contract(
+    metadata_path: Path = METADATA_PATH,
+    freeze_path: Path = ROOT / "data" / "v1_freeze.json",
+) -> dict[str, Any]:
+    """校验 V1 前向参数、观察期和全量资金规则，任何漂移都失败关闭。"""
+    if not metadata_path.exists():
+        raise ValueError("V1 前向元数据不存在")
+    metadata = _read_json(metadata_path)
+    expected = build_metadata()
+    if metadata != expected:
+        raise ValueError("V1 前向元数据与冻结合同不一致")
+
+    frozen = _read_json(freeze_path)
+    if frozen.get("version") != "V1" or frozen.get("rules") != V1_RULES:
+        raise ValueError("V1 前向参数与历史冻结规则不一致")
+    if metadata.get("v1_commit") != frozen.get("git", {}).get("commit"):
+        raise ValueError("V1 前向提交与历史冻结提交不一致")
+
+    capital = metadata.get("capital_policy") or {}
+    if capital.get("target_allocation_pct") != 100 or capital.get("cash_reserve") != 0:
+        raise ValueError("V1 必须按 100% 目标投入且不设置额外现金保留")
+    rules = metadata.get("rules") or {}
+    if rules.get("reinvest_cash_reserve") != 0 or rules.get("max_position_pct") != 1.0:
+        raise ValueError("V1 资金参数不符合全量投入合同")
+
+    observation = metadata.get("observation_policy") or {}
+    if observation.get("minimum_months") != 6 or observation.get("target_months") != 12:
+        raise ValueError("V1 必须冻结观察至少 6 个月、目标 12 个月")
+    if observation.get("parameter_changes_allowed") is not False:
+        raise ValueError("V1 观察期禁止修改参数")
+    if (
+        observation.get("v2_mode") != "shadow_only"
+        or observation.get("v2_output_root") != "data/forward/shadow"
+        or observation.get("v2_can_write_v1_journal") is not False
+    ):
+        raise ValueError("V2 必须保持影子模式且不能写入 V1 账本")
+    return {
+        "version": "V1",
+        "rules_sha256": metadata["rules_sha256"],
+        "target_allocation_pct": capital["target_allocation_pct"],
+        "cash_reserve": capital["cash_reserve"],
+        "observation_months": [observation["minimum_months"], observation["target_months"]],
+        "v2_mode": observation["v2_mode"],
+        "status": "通过",
     }
 
 
@@ -339,6 +402,7 @@ def record_signal(
     cache_dir: Path,
     journal_path: Path = JOURNAL_PATH,
 ) -> tuple[dict[str, Any], bool]:
+    verify_forward_contract()
     datetime.strptime(signal_date, "%Y-%m-%d")
     if signal_date < V1_FIRST_SIGNAL_DATE:
         raise ValueError(f"前向信号不得早于 {V1_FIRST_SIGNAL_DATE}")
@@ -410,6 +474,7 @@ def record_execution(
     cache_dir: Path,
     journal_path: Path = JOURNAL_PATH,
 ) -> tuple[dict[str, Any], bool]:
+    verify_forward_contract()
     loaded, dates = _input_state(manifest_path, dates_path)
     signals = [row for row in _load_journal(journal_path) if row.get("event_type") == "signal"]
     signals.sort(key=lambda row: row["signal_date"])
@@ -501,6 +566,7 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="月度 V1 只追加前向观察账本")
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("init", help="初始化冻结元数据与空账本")
+    sub.add_parser("verify", help="校验 V1 冻结、观察期与全量资金合同")
     signal = sub.add_parser("signal", help="追加月末收盘信号")
     signal.add_argument("--date", required=True, help="版本化月末信号日 YYYY-MM-DD")
     execute = sub.add_parser("execute", help="追加下一交易日收盘模拟执行")
@@ -514,6 +580,9 @@ def main() -> int:
     if args.command == "init":
         initialize()
         print("V1 前向观察已初始化；当前没有伪造信号或成交。")
+        return 0
+    if args.command == "verify":
+        print(json.dumps(verify_forward_contract(), ensure_ascii=False, indent=2))
         return 0
     if args.command == "signal":
         event, appended = record_signal(

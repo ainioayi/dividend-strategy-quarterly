@@ -90,6 +90,27 @@ def test_forward_inputs_are_isolated_from_frozen_v1_files():
     ).read_bytes()
 
 
+def test_v1_forward_contract_locks_rules_capital_and_v2_boundary(tmp_path):
+    result = forward.verify_forward_contract()
+    assert result["target_allocation_pct"] == 100
+    assert result["cash_reserve"] == 0
+    assert result["observation_months"] == [6, 12]
+    assert result["v2_mode"] == "shadow_only"
+
+    metadata = forward.build_metadata()
+    metadata["capital_policy"]["cash_reserve"] = 5000
+    changed = tmp_path / "v1_metadata.json"
+    _write(changed, metadata)
+    with pytest.raises(ValueError, match="冻结合同"):
+        forward.verify_forward_contract(metadata_path=changed)
+
+    metadata = forward.build_metadata()
+    metadata["observation_policy"]["target_months"] = 5
+    _write(changed, metadata)
+    with pytest.raises(ValueError, match="冻结合同"):
+        forward.verify_forward_contract(metadata_path=changed)
+
+
 def test_current_workspace_stays_waiting_before_first_signal(tmp_path):
     journal = tmp_path / "journal.jsonl"
     with pytest.raises(ValueError, match="日期文件|早于信号日"):
@@ -125,6 +146,8 @@ def test_signal_and_execution_are_separate_append_only_events(tmp_path):
     assert executed["operations"][0]["date"] == "2026-09-01"
     assert executed["fees"] > 0
     assert executed["nav"] > 0
+    # 目标投入 100%，只允许留下不足一手加手续费的现金尾差。
+    assert 0 <= executed["cash"] < 1005
     assert executed["signal_input"]["data_cutoff"] == "2026-08-31"
     assert executed["execution_input"]["data_cutoff"] == "2026-09-01"
     assert len(journal.read_text(encoding="utf-8").splitlines()) == 2

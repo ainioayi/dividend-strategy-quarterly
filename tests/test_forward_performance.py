@@ -17,6 +17,18 @@ def _metadata(start: str = "2026-08-25") -> dict:
         "forward_start_date": start,
         "v1_commit": "frozen-v1",
         "rules_sha256": "rules",
+        "capital_policy": {
+            "target_allocation_pct": 100,
+            "cash_reserve": 0,
+            "residual_cash_rule": "整数手尾差",
+        },
+        "observation_policy": {
+            "minimum_months": 6,
+            "target_months": 12,
+            "parameter_changes_allowed": False,
+            "v2_mode": "shadow_only",
+            "v2_can_write_v1_journal": False,
+        },
         "rules": {
             "initial_capital": 100000,
             "lot_size": 100,
@@ -53,6 +65,10 @@ def test空账本保持十万元并展示510300基准() -> None:
     assert result["strategy"]["total_assets"] == 100000
     assert result["strategy"]["cumulative_return_pct"] == 0
     assert result["strategy"]["trade_count"] == 0
+    assert result["strategy"]["target_allocation_pct"] == 100
+    assert result["strategy"]["cash_reserve"] == 0
+    assert result["audit"]["capital_policy"]["target_allocation_pct"] == 100
+    assert result["audit"]["observation_policy"]["v2_mode"] == "shadow_only"
     assert result["benchmark"]["cumulative_return_pct"] == 10
     assert result["holdings"] == []
     assert result["transactions"] == []

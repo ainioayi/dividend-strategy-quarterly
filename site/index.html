@@ -166,6 +166,8 @@
     }
     .status-bar strong { padding-left: 10px; border-left: 3px solid var(--accent); font-weight: 760; }
     .status-copy { color: var(--muted); }
+    .status-bar.stale { border-color: var(--accent); background: var(--accent-soft); }
+    .status-bar.stale .status-copy { color: var(--ink); font-weight: 650; }
 
     .score {
       display: grid;
@@ -430,6 +432,43 @@
       const dateLabel = value => String(value || '').slice(5).replace('-', '/');
       const priceFormatLabel = value => value === 'unadjusted_close' ? '未复权收盘价' : String(value || '--');
 
+      function shanghaiToday() {
+        const parts = Object.fromEntries(
+          new Intl.DateTimeFormat('en-CA', {
+            timeZone: 'Asia/Shanghai', year: 'numeric', month: '2-digit', day: '2-digit'
+          }).formatToParts(new Date()).filter(part => part.type !== 'literal').map(part => [part.type, part.value])
+        );
+        return `${parts.year}-${parts.month}-${parts.day}`;
+      }
+
+      function businessDayLag(asOf, today = shanghaiToday()) {
+        const start = new Date(`${asOf}T00:00:00Z`);
+        const end = new Date(`${today}T00:00:00Z`);
+        if (Number.isNaN(start.getTime()) || Number.isNaN(end.getTime()) || start >= end) return 0;
+        let cursor = start;
+        let count = 0;
+        while (cursor < end && count <= 31) {
+          cursor = new Date(cursor.getTime() + 86400000);
+          const day = cursor.getUTCDay();
+          if (day !== 0 && day !== 6) count += 1;
+        }
+        return count;
+      }
+
+      function freshnessState(data) {
+        const lag = businessDayLag(data.as_of);
+        return lag > 1
+          ? { stale: true, message: `数据可能滞后：当前仍截至 ${data.as_of}，请检查自动更新告警。` }
+          : { stale: false, message: '每日 18:30 更新，20:30 自动重试。仅模型模拟，不连接券商。' };
+      }
+
+      function capitalPolicyLabel(data) {
+        const policy = data.audit?.capital_policy || {};
+        const target = policy.target_allocation_pct ?? data.strategy.target_allocation_pct ?? 100;
+        const reserve = policy.cash_reserve ?? data.strategy.cash_reserve ?? 0;
+        return `目标投入 ${number(target)}%，现金保留 ${money(reserve)}`;
+      }
+
       function filterRows(rows) {
         if (state.range === 'all' || rows.length < 2) return rows;
         const days = Number(state.range);
@@ -563,6 +602,7 @@
       }
 
       function render(data) {
+        const freshness = freshnessState(data);
         document.title = `V1 公开业绩 · ${data.as_of}`;
         app.className = '';
         app.innerHTML = `<div class="page">
@@ -572,7 +612,7 @@
             <div class="asof"><span>数据截至</span><strong>${escapeHtml(data.as_of)}</strong></div>
           </div></header>
           <div class="shell" id="top">
-            <div class="status-bar"><strong>${escapeHtml(data.strategy.status)}</strong><span class="status-copy">每日收盘后自动更新。仅模型模拟，不连接券商。</span></div>
+            <div class="status-bar ${freshness.stale ? 'stale' : ''}"><strong>${escapeHtml(data.strategy.status)}</strong><span class="status-copy">${escapeHtml(freshness.message)}</span></div>
             <section class="score" aria-labelledby="strategy-name">
               <div class="score-primary">
                 <div><div class="eyebrow">公开前向模拟</div><h1 id="strategy-name">月度高息动量</h1></div>
@@ -604,6 +644,7 @@
             <div class="method-grid">
               <div><span>V1 冻结提交</span><strong>${escapeHtml(data.audit.v1_commit || '--')}</strong></div>
               <div><span>前向观察起点</span><strong>${escapeHtml(data.forward_start_date)}</strong></div>
+              <div><span>资金使用</span><strong>${escapeHtml(capitalPolicyLabel(data))}</strong></div>
               <div><span>价格口径</span><strong>${escapeHtml(priceFormatLabel(data.audit.price_format))}</strong></div>
               <div><span>基准方法</span><strong>${escapeHtml(data.benchmark.method)}</strong></div>
               <div><span>账本指纹</span><strong>${escapeHtml(data.audit.journal_sha256 || '--')}</strong></div>

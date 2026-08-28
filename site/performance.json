@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-28T00:14:18+08:00",
+  "generated_at": "2026-08-28T10:40:27+08:00",
   "as_of": "2026-08-27",
   "forward_start_date": "2026-08-25",
   "strategy": {
@@ -17,7 +17,9 @@
     "trade_count": 0,
     "event_count": 0,
     "holdings_count": 0,
-    "max_holdings": 2
+    "max_holdings": 2,
+    "target_allocation_pct": 100,
+    "cash_reserve": 0
   },
   "benchmark": {
     "code": "510300",
@@ -77,10 +79,24 @@
       }
     },
     "monthly_journal": "data/forward/monthly_v1.jsonl",
-    "performance_sha256": "e43b3c9f27bbbeb075d72437a7d55bea52bda63ee52509f1849ae2d698764fcc"
+    "capital_policy": {
+      "target_allocation_pct": 100,
+      "cash_reserve": 0,
+      "residual_cash_rule": "仅保留整数手和交易费用约束下无法继续买入的现金"
+    },
+    "observation_policy": {
+      "minimum_months": 6,
+      "target_months": 12,
+      "parameter_changes_allowed": false,
+      "v2_mode": "shadow_only",
+      "v2_output_root": "data/forward/shadow",
+      "v2_can_write_v1_journal": false
+    },
+    "performance_sha256": "8f1806ce528520fab7dcd5ace965411ef84d0679ca4556904ba731a96d518844"
   },
   "limitations": [
     "这是模型模拟盘，不连接券商、不读取真实账户，也不会自动下单。",
+    "V1 对策略账户采用 100% 目标投入且不设置额外现金保留；整数手和交易费用导致的不可用尾差仍留在现金。",
     "V1 仅在月末形成信号并在下一真实交易日收盘模拟执行；其他交易日只做收盘盯市。",
     "持仓分红在两次月度执行之间按真实除权日计入日频估值，下一次执行时以只追加账本检查点重置。",
     "510300 使用场内未复权收盘价和现金分红复投，不使用沪深300指数或基金净值替代。",

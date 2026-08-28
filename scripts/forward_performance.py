@@ -636,6 +636,12 @@ def build_performance(
     market: dict[str, Any],
 ) -> dict[str, Any]:
     initial = float((metadata.get("rules") or {}).get("initial_capital") or 100000)
+    capital_policy = metadata.get("capital_policy") or {
+        "target_allocation_pct": 100,
+        "cash_reserve": float((metadata.get("rules") or {}).get("reinvest_cash_reserve") or 0),
+        "residual_cash_rule": "仅保留整数手和交易费用约束下无法继续买入的现金",
+    }
+    observation_policy = metadata.get("observation_policy") or {}
     start_date = str(metadata.get("forward_start_date") or "")[:10]
     as_of = str(market.get("as_of") or "")[:10]
     benchmark_prices = [
@@ -717,6 +723,8 @@ def build_performance(
         "event_count": len(transactions),
         "holdings_count": len(holdings),
         "max_holdings": int((metadata.get("rules") or {}).get("max_holdings") or 2),
+        "target_allocation_pct": capital_policy.get("target_allocation_pct", 100),
+        "cash_reserve": capital_policy.get("cash_reserve", 0),
     }
     benchmark = {
         "code": BENCHMARK_CODE,
@@ -749,9 +757,12 @@ def build_performance(
             "price_format": market.get("price_format"),
             "benchmark_sources": (market.get("benchmark") or {}).get("sources"),
             "monthly_journal": "data/forward/monthly_v1.jsonl",
+            "capital_policy": capital_policy,
+            "observation_policy": observation_policy,
         },
         "limitations": [
             "这是模型模拟盘，不连接券商、不读取真实账户，也不会自动下单。",
+            "V1 对策略账户采用 100% 目标投入且不设置额外现金保留；整数手和交易费用导致的不可用尾差仍留在现金。",
             "V1 仅在月末形成信号并在下一真实交易日收盘模拟执行；其他交易日只做收盘盯市。",
             "持仓分红在两次月度执行之间按真实除权日计入日频估值，下一次执行时以只追加账本检查点重置。",
             "510300 使用场内未复权收盘价和现金分红复投，不使用沪深300指数或基金净值替代。",
