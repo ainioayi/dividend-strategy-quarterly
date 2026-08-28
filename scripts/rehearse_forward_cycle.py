@@ -1,4 +1,4 @@
-"""在临时目录预演 V1 首期信号、执行和公开业绩链路。
+"""在临时目录预演 V1/V2/V3 首期信号、执行和公开业绩链路。
 
 演练只复制正式前向缓存，并用最后一个已知收盘价补出指定的未来交易日；不会
 修改正式缓存、正式账本或公开页面。模拟价格只用于验证程序控制流，不是预测。
@@ -22,15 +22,14 @@ sys.path.insert(0, str(ROOT / "scripts"))
 from build_rebalance_dates import build_dates
 from build_universe_manifest import records_from_cache
 from forward_daily import baostock_trading_days, decide_action
-from forward_performance import build_performance
+from forward_performance import build_strategy_suite
 from monthly_forward import (
     FORWARD_CACHE_DIR,
-    JOURNAL_PATH,
-    METADATA_PATH,
     V1_START_DATE,
     _load_journal,
     record_execution,
     record_signal,
+    strategy_profile,
     verify_forward_contract,
 )
 from quarterly_strategy import transaction_fees
@@ -127,13 +126,17 @@ def _trading_days(*days: str):
 
 def _performance_market(
     cache_dir: Path,
-    execution: dict[str, Any],
+    executions: dict[str, dict[str, Any]],
     signal_date: str,
     execution_date: str,
 ) -> dict[str, Any]:
     benchmark_days = sorted({V1_START_DATE, signal_date, execution_date})
     securities = {}
-    for row in execution.get("holdings") or []:
+    holdings = [
+        row for execution in executions.values()
+        for row in execution.get("holdings") or []
+    ]
+    for row in holdings:
         code = str(row.get("code") or "").zfill(6)
         prices = _read_json(cache_dir / f"kl_{code}.json")
         securities[code] = {
@@ -177,8 +180,13 @@ def run_rehearsal(
     execution_day = date.fromisoformat(execution_date)
     if execution_day <= signal_day:
         raise ValueError("执行日必须晚于信号日")
-    verify_forward_contract()
-    production_journal_before = _file_sha256(JOURNAL_PATH)
+    profiles = {key: strategy_profile(key) for key in ("v1", "v2", "v3")}
+    for key in profiles:
+        verify_forward_contract(strategy_id=key)
+    production_journal_before = {
+        key: _file_sha256(profile["journal_path"])
+        for key, profile in profiles.items()
+    }
     calendar_check = {
         "source": "fixed_rehearsal_dates",
         "trading_days": [signal_date, execution_date],
@@ -195,11 +203,13 @@ def run_rehearsal(
             "status": "通过",
         }
 
-    with tempfile.TemporaryDirectory(prefix="v1-forward-rehearsal-") as raw_temp:
+    with tempfile.TemporaryDirectory(prefix="v123-forward-rehearsal-") as raw_temp:
         root = Path(raw_temp)
         cache_dir = root / "cache"
         input_dir = root / "inputs"
-        journal_path = root / "monthly_v1.jsonl"
+        journal_paths = {
+            key: root / f"monthly_{key}.jsonl" for key in profiles
+        }
         shutil.copytree(source_cache, cache_dir)
         code_count = _inject_prices(cache_dir, signal_date, execution_date)
         if code_count != expected_code_count:
@@ -209,64 +219,110 @@ def run_rehearsal(
         signal_plan = decide_action(signal_day, [], _trading_days(signal_date, execution_date))
         if signal_plan.get("action") != "signal":
             raise RuntimeError(f"信号日门禁没有触发 signal: {signal_plan}")
-        signal, signal_appended = record_signal(
-            signal_date,
-            manifest_path=manifest_path,
-            dates_path=dates_path,
-            cache_dir=cache_dir,
-            journal_path=journal_path,
-        )
-        if not signal_appended:
-            raise RuntimeError("隔离演练未能追加首期信号")
+        signals = {}
+        for key, journal_path in journal_paths.items():
+            signal, signal_appended = record_signal(
+                signal_date,
+                manifest_path=manifest_path,
+                dates_path=dates_path,
+                cache_dir=cache_dir,
+                journal_path=journal_path,
+                strategy_id=key,
+                allow_isolated_journal=True,
+            )
+            if not signal_appended:
+                raise RuntimeError(f"{profiles[key]['version']} 隔离演练未能追加首期信号")
+            signals[key] = signal
 
         manifest_path, dates_path, execution_manifest = _build_inputs(cache_dir, input_dir, execution_date)
-        execution_plan = decide_action(
-            execution_day,
-            _load_journal(journal_path),
-            _trading_days(signal_date, execution_date),
-        )
-        if execution_plan.get("action") != "execute":
-            raise RuntimeError(f"执行日门禁没有触发 execute: {execution_plan}")
-        execution, execution_appended = record_execution(
-            signal_date[:7],
-            manifest_path=manifest_path,
-            dates_path=dates_path,
-            cache_dir=cache_dir,
-            journal_path=journal_path,
-        )
-        if not execution_appended:
-            raise RuntimeError("隔离演练未能追加首期执行")
-        if not execution.get("operations") or not execution.get("holdings"):
-            raise RuntimeError("演练执行没有产生模拟买入或持仓")
+        executions = {}
+        execution_plans = {}
+        journals = {}
+        strategy_reports = {}
+        metadatas = {key: _read_json(profile["metadata_path"]) for key, profile in profiles.items()}
+        for key, journal_path in journal_paths.items():
+            execution_plan = decide_action(
+                execution_day,
+                _load_journal(journal_path),
+                _trading_days(signal_date, execution_date),
+            )
+            if execution_plan.get("action") != "execute":
+                raise RuntimeError(f"{profiles[key]['version']} 执行日门禁没有触发 execute: {execution_plan}")
+            execution, execution_appended = record_execution(
+                signal_date[:7],
+                manifest_path=manifest_path,
+                dates_path=dates_path,
+                cache_dir=cache_dir,
+                journal_path=journal_path,
+                strategy_id=key,
+                allow_isolated_journal=True,
+            )
+            if not execution_appended:
+                raise RuntimeError(f"{profiles[key]['version']} 隔离演练未能追加首期执行")
+            if not execution.get("operations") or not execution.get("holdings"):
+                raise RuntimeError(f"{profiles[key]['version']} 演练执行没有产生模拟买入或持仓")
 
-        metadata = _read_json(METADATA_PATH)
-        lot = int((metadata.get("rules") or {}).get("lot_size") or 100)
-        next_lot_costs = []
-        for holding in execution["holdings"]:
-            code = str(holding.get("code") or "").zfill(6)
-            price = float(_read_json(cache_dir / f"kl_{code}.json")[execution_date])
-            gross = price * lot
-            fee = transaction_fees(gross, "buy", code, metadata.get("rules") or {})["total"]
-            next_lot_costs.append(gross + fee)
-        minimum_next_lot_cost = round(min(next_lot_costs), 2)
-        if float(execution["cash"]) + 1e-8 >= minimum_next_lot_cost:
-            raise RuntimeError("演练执行后仍有足够现金再买一手，不符合 100% 目标投入合同")
-        journal = _load_journal(journal_path)
-        performance = build_performance(
-            metadata,
-            journal,
-            _performance_market(cache_dir, execution, signal_date, execution_date),
+            metadata = metadatas[key]
+            lot = int((metadata.get("rules") or {}).get("lot_size") or 100)
+            next_lot_costs = []
+            for holding in execution["holdings"]:
+                code = str(holding.get("code") or "").zfill(6)
+                price = float(_read_json(cache_dir / f"kl_{code}.json")[execution_date])
+                gross = price * lot
+                fee = transaction_fees(gross, "buy", code, metadata.get("rules") or {})["total"]
+                next_lot_costs.append(gross + fee)
+            minimum_next_lot_cost = round(min(next_lot_costs), 2)
+            if float(execution["cash"]) + 1e-8 >= minimum_next_lot_cost:
+                raise RuntimeError(
+                    f"{profiles[key]['version']} 演练执行后仍可买一手，不符合全量投入合同"
+                )
+            journal = _load_journal(journal_path)
+            executions[key] = execution
+            execution_plans[key] = execution_plan
+            journals[key] = journal
+            strategy_reports[key] = {
+                "version": profiles[key]["version"],
+                "shadow": profiles[key]["shadow"],
+                "max_holdings": profiles[key]["max_holdings"],
+                "signal": {
+                    "candidate_pool_count": signals[key]["candidate_pool"]["count"],
+                    "eligible_entry_count": len(signals[key]["decision_snapshot"]["eligible_entry_codes"]),
+                },
+                "execution": {
+                    "operation_count": len(execution["operations"]),
+                    "holding_count": len(execution["holdings"]),
+                    "cash": execution["cash"],
+                    "nav": execution["nav"],
+                    "invested_pct": round((1 - float(execution["cash"]) / float(execution["nav"])) * 100, 4),
+                    "minimum_next_lot_cost": minimum_next_lot_cost,
+                    "residual_cash_below_one_lot": True,
+                },
+                "isolated_journal": {
+                    "path": journal_path.name,
+                    "sha256": _file_sha256(journal_path),
+                    "signal_count": sum(row.get("event_type") == "signal" for row in journal),
+                    "execution_count": sum(row.get("event_type") == "execution" for row in journal),
+                },
+            }
+
+        performance = build_strategy_suite(
+            metadatas,
+            journals,
+            _performance_market(cache_dir, executions, signal_date, execution_date),
         )
         pre_execution = [row for row in performance["series"] if row["date"] < execution_date]
-        if any(row["strategy_return_pct"] != 0 or row["benchmark_return_pct"] != 0 for row in pre_execution):
-            raise RuntimeError("首笔执行前 V1 或 510300 提前产生收益")
+        if any(
+            row["v1_return_pct"] != 0 or row["v2_return_pct"] != 0
+            or row["v3_return_pct"] != 0 or row["benchmark_return_pct"] != 0
+            for row in pre_execution
+        ):
+            raise RuntimeError("首笔执行前 V1/V2/V3 或 510300 提前产生收益")
         if performance["benchmark"].get("inception_date") != execution_date:
             raise RuntimeError("510300 没有在 V1 首笔执行日同步建仓")
 
-        invested_pct = round((1 - float(execution["cash"]) / float(execution["nav"])) * 100, 4)
         report = {
-            "schema_version": 1,
-            "kind": "v1_first_cycle_isolated_rehearsal",
+            "schema_version": 2,
+            "kind": "v123_first_cycle_isolated_rehearsal",
             "generated_at": datetime.now(ZoneInfo("Asia/Shanghai")).isoformat(timespec="seconds"),
             "synthetic_data": True,
             "synthetic_price_rule": "未来日期缺价时沿用该股票最近已知收盘价；仅验证控制流，不是预测或选股信号",
@@ -276,46 +332,53 @@ def run_rehearsal(
             "signal": {
                 "date": signal_date,
                 "plan": signal_plan["action"],
-                "candidate_pool_count": signal["candidate_pool"]["count"],
-                "eligible_entry_count": len(signal["decision_snapshot"]["eligible_entry_codes"]),
+                "candidate_pool_count": strategy_reports["v1"]["signal"]["candidate_pool_count"],
+                "eligible_entry_count": strategy_reports["v1"]["signal"]["eligible_entry_count"],
                 "manifest_records_sha256": signal_manifest["records_sha256"],
             },
             "execution": {
                 "date": execution_date,
-                "plan": execution_plan["action"],
-                "operation_count": len(execution["operations"]),
-                "holding_count": len(execution["holdings"]),
-                "cash": execution["cash"],
-                "nav": execution["nav"],
-                "invested_pct": invested_pct,
-                "minimum_next_lot_cost": minimum_next_lot_cost,
-                "residual_cash_below_one_lot": True,
+                "plan": "execute",
+                **strategy_reports["v1"]["execution"],
                 "manifest_records_sha256": execution_manifest["records_sha256"],
             },
+            "strategies": strategy_reports,
             "public_performance": {
                 "strategy_total_assets": performance["strategy"]["total_assets"],
+                "strategy_total_assets_by_version": {
+                    key: value["summary"]["total_assets"]
+                    for key, value in performance["strategies"].items()
+                },
                 "benchmark_total_assets": performance["benchmark"]["total_assets"],
                 "benchmark_inception_date": performance["benchmark"]["inception_date"],
                 "transaction_count": len(performance["transactions"]),
+                "transaction_count_by_version": {
+                    key: len(value["transactions"])
+                    for key, value in performance["strategies"].items()
+                },
             },
             "isolated_journal": {
-                "signal_count": sum(row.get("event_type") == "signal" for row in journal),
-                "execution_count": sum(row.get("event_type") == "execution" for row in journal),
+                "signal_count": strategy_reports["v1"]["isolated_journal"]["signal_count"],
+                "execution_count": strategy_reports["v1"]["isolated_journal"]["execution_count"],
             },
             "production_journal_sha256_before": production_journal_before,
             "status": "通过",
         }
 
-    production_journal_after = _file_sha256(JOURNAL_PATH)
+    production_journal_after = {
+        key: _file_sha256(profile["journal_path"])
+        for key, profile in profiles.items()
+    }
     if production_journal_after != production_journal_before:
-        raise RuntimeError("演练意外修改了正式 V1 账本")
+        raise RuntimeError("演练意外修改了正式 V1/V2/V3 账本")
     report["production_journal_sha256_after"] = production_journal_after
+    report["production_journals_unchanged"] = True
     report["production_journal_unchanged"] = True
     return report
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="隔离预演 V1 首期信号、执行和公开业绩链路")
+    parser = argparse.ArgumentParser(description="隔离预演 V1/V2/V3 首期信号、执行和公开业绩链路")
     parser.add_argument("--source-cache", type=Path, default=FORWARD_CACHE_DIR)
     parser.add_argument("--signal-date", default=DEFAULT_SIGNAL_DATE)
     parser.add_argument("--execution-date", default=DEFAULT_EXECUTION_DATE)

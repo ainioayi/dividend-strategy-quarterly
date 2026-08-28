@@ -1,4 +1,4 @@
-"""生成 V1 前向模拟盘的每日公开业绩。
+"""生成 V1/V2/V3 前向模拟盘的每日公开业绩。
 
 数据层只读取只追加账本，并用未复权收盘价做每日盯市；它不生成信号、不改写
 交易事件，也不连接券商。510300 基准在 V1 首笔模拟成交日同步建仓，之后按场内
@@ -32,6 +32,12 @@ JOURNAL_PATH = ROOT / "data" / "forward" / "monthly_v1.jsonl"
 MARKET_PATH = ROOT / "data" / "forward" / "performance_market.json"
 PERFORMANCE_PATH = ROOT / "data" / "forward" / "performance.json"
 SITE_PATH = ROOT / "site" / "performance.json"
+SHADOW_DIR = ROOT / "data" / "forward" / "shadow"
+V2_METADATA_PATH = SHADOW_DIR / "v2_metadata.json"
+V2_JOURNAL_PATH = SHADOW_DIR / "monthly_v2.jsonl"
+V3_METADATA_PATH = SHADOW_DIR / "v3_metadata.json"
+V3_JOURNAL_PATH = SHADOW_DIR / "monthly_v3.jsonl"
+SHADOW_HEALTH_PATH = SHADOW_DIR / "health.json"
 SECURITY_MASTER_PATH = ROOT / "data" / "historical" / "security_master.json"
 
 BENCHMARK_CODE = "510300"
@@ -651,6 +657,8 @@ def build_performance(
     journal: list[dict[str, Any]],
     market: dict[str, Any],
 ) -> dict[str, Any]:
+    version = str(metadata.get("version") or "V1").upper()
+    shadow = bool(metadata.get("shadow"))
     initial = float((metadata.get("rules") or {}).get("initial_capital") or 100000)
     capital_policy = metadata.get("capital_policy") or {
         "target_allocation_pct": 100,
@@ -732,8 +740,13 @@ def build_performance(
     strategy_values = [float(row["strategy_nav"]) for row in series]
     benchmark_values = [float(row["benchmark_nav"]) for row in series]
     strategy = {
-        "name": "月度高息动量 V1",
-        "status": "V1 前向模拟" if executions else "等待首期信号",
+        "name": f"月度高息动量 {version}",
+        "version": version,
+        "shadow": shadow,
+        "status": (
+            f"{version} {'影子' if shadow else '前向'}模拟"
+            if executions else "等待首期信号"
+        ),
         "initial_capital": initial,
         "total_assets": latest["strategy_nav"],
         "cash": latest_state["cash"],
@@ -782,7 +795,7 @@ def build_performance(
             "price_format": market.get("price_format"),
             "benchmark_sources": (market.get("benchmark") or {}).get("sources"),
             "comparison_inception_rule": "510300 与 V1 首笔模拟成交同日建仓；此前双方均按现金 0% 计",
-            "monthly_journal": "data/forward/monthly_v1.jsonl",
+            "monthly_journal": metadata.get("journal") or "data/forward/monthly_v1.jsonl",
             "capital_policy": capital_policy,
             "observation_policy": observation_policy,
         },
@@ -799,33 +812,143 @@ def build_performance(
     return payload
 
 
+def build_strategy_suite(
+    metadatas: dict[str, dict[str, Any]],
+    journals: dict[str, list[dict[str, Any]]],
+    market: dict[str, Any],
+    health: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    """用同一行情快照计算三套独立账户，并保留旧 V1 顶层字段兼容。"""
+    expected = {"v1", "v2", "v3"}
+    if set(metadatas) != expected or set(journals) != expected:
+        raise ValueError("公开业绩必须同时提供 V1、V2、V3 元数据和账本")
+    results = {
+        strategy_id: build_performance(metadatas[strategy_id], journals[strategy_id], market)
+        for strategy_id in ("v1", "v2", "v3")
+    }
+    payload = dict(results["v1"])
+    payload["schema_version"] = 2
+    payload["comparison"] = {
+        "benchmark": "510300",
+        "benchmark_inception_date": payload["benchmark"]["inception_date"],
+        "rule": "510300 与 V1 首笔模拟成交同日建仓；V2/V3 使用同一基准时间轴",
+    }
+    health = health or {}
+    payload["strategies"] = {}
+    for strategy_id in ("v1", "v2", "v3"):
+        result = results[strategy_id]
+        summary = dict(result["strategy"])
+        summary["excess_return_pct"] = round(
+            summary["cumulative_return_pct"] - payload["benchmark"]["cumulative_return_pct"], 6
+        )
+        status = (health.get("strategies") or {}).get(strategy_id) or {
+            "status": "正常",
+            "as_of": payload["as_of"],
+        }
+        payload["strategies"][strategy_id] = {
+            "summary": summary,
+            "series": [
+                {
+                    "date": row["date"],
+                    "nav": row["strategy_nav"],
+                    "return_pct": row["strategy_return_pct"],
+                }
+                for row in result["series"]
+            ],
+            "holdings": result["holdings"],
+            "transactions": result["transactions"],
+            "health": status,
+            "audit": {
+                "rules_sha256": result["audit"]["rules_sha256"],
+                "journal_sha256": result["audit"]["journal_sha256"],
+                "monthly_journal": result["audit"]["monthly_journal"],
+            },
+        }
+
+    combined_series = []
+    series_by_strategy = {
+        key: {row["date"]: row for row in value["series"]}
+        for key, value in payload["strategies"].items()
+    }
+    for row in results["v1"]["series"]:
+        day = row["date"]
+        combined = dict(row)
+        for strategy_id in ("v1", "v2", "v3"):
+            strategy_row = series_by_strategy[strategy_id][day]
+            combined[f"{strategy_id}_nav"] = strategy_row["nav"]
+            combined[f"{strategy_id}_return_pct"] = strategy_row["return_pct"]
+        combined_series.append(combined)
+    payload["series"] = combined_series
+    payload["audit"] = dict(payload["audit"])
+    payload["audit"]["strategy_journals"] = {
+        key: value["audit"]["journal_sha256"]
+        for key, value in payload["strategies"].items()
+    }
+    payload["limitations"] = [
+        "这是三套独立的模型模拟账户，不连接券商、不读取真实账户，也不会自动下单。",
+        "V1 是持仓上限 2 只的正式前向模拟；V2/V3 分别为上限 3/4 只的影子观察，不替代 V1。",
+        "三套策略除 max_holdings 外使用相同选股、择时、费用、分红和 10 万元全量投入规则。",
+        "三套策略均在月末形成信号，并在下一真实交易日收盘模拟执行；整数手和费用会留下现金尾差。",
+        "510300 在 V1 首笔模拟成交日同步建仓，此前四条曲线均按现金 0% 收益展示。",
+        "历史回测和前向模拟都不代表未来收益，也不是买卖建议。",
+    ]
+    payload["audit"]["performance_sha256"] = _sha256(
+        {key: value for key, value in payload.items() if key != "generated_at"}
+    )
+    return payload
+
+
 def main() -> int:
-    parser = argparse.ArgumentParser(description="刷新 V1 每日公开业绩")
+    parser = argparse.ArgumentParser(description="刷新 V1/V2/V3 每日公开业绩")
     parser.add_argument("--as-of", required=True, help="公开数据截止日 YYYY-MM-DD")
     parser.add_argument("--metadata", type=Path, default=METADATA_PATH)
     parser.add_argument("--journal", type=Path, default=JOURNAL_PATH)
+    parser.add_argument("--v2-metadata", type=Path, default=V2_METADATA_PATH)
+    parser.add_argument("--v2-journal", type=Path, default=V2_JOURNAL_PATH)
+    parser.add_argument("--v3-metadata", type=Path, default=V3_METADATA_PATH)
+    parser.add_argument("--v3-journal", type=Path, default=V3_JOURNAL_PATH)
+    parser.add_argument("--shadow-health", type=Path, default=SHADOW_HEALTH_PATH)
     parser.add_argument("--market-output", type=Path, default=MARKET_PATH)
     parser.add_argument("--performance-output", type=Path, default=PERFORMANCE_PATH)
     parser.add_argument("--site-output", type=Path, default=SITE_PATH)
     args = parser.parse_args()
 
-    metadata = _read_json(args.metadata)
-    if not isinstance(metadata, dict):
-        raise ValueError("V1 前向元数据不存在或格式错误")
-    journal = _read_journal(args.journal)
+    metadatas = {
+        "v1": _read_json(args.metadata),
+        "v2": _read_json(args.v2_metadata),
+        "v3": _read_json(args.v3_metadata),
+    }
+    if not all(isinstance(value, dict) for value in metadatas.values()):
+        raise ValueError("V1/V2/V3 前向元数据不存在或格式错误")
+    journals = {
+        "v1": _read_journal(args.journal),
+        "v2": _read_journal(args.v2_journal),
+        "v3": _read_journal(args.v3_journal),
+    }
+    combined_journal = [row for key in ("v1", "v2", "v3") for row in journals[key]]
     existing = _read_json(args.market_output, {})
-    market = update_market_snapshot(metadata, journal, args.as_of, existing)
-    performance = build_performance(metadata, journal, market)
+    market = update_market_snapshot(metadatas["v1"], combined_journal, args.as_of, existing)
+    health = _read_json(args.shadow_health, {})
+    performance = build_strategy_suite(metadatas, journals, market, health)
 
     _atomic_write_json(args.market_output, market)
     _atomic_write_json(args.performance_output, performance)
     _atomic_write_json(args.site_output, performance)
     print(json.dumps({
         "as_of": performance["as_of"],
-        "strategy_return_pct": performance["strategy"]["cumulative_return_pct"],
+        "strategy_returns_pct": {
+            key: value["summary"]["cumulative_return_pct"]
+            for key, value in performance["strategies"].items()
+        },
         "benchmark_return_pct": performance["benchmark"]["cumulative_return_pct"],
-        "holdings": performance["strategy"]["holdings_count"],
-        "transactions": performance["strategy"]["event_count"],
+        "holdings": {
+            key: value["summary"]["holdings_count"]
+            for key, value in performance["strategies"].items()
+        },
+        "transactions": {
+            key: value["summary"]["event_count"]
+            for key, value in performance["strategies"].items()
+        },
     }, ensure_ascii=False))
     return 0
 

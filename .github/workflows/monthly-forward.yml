@@ -1,4 +1,4 @@
-name: V1 前向观察与公开业绩
+name: V1/V2/V3 前向观察与公开业绩
 
 on:
   schedule:
@@ -23,7 +23,7 @@ permissions:
   issues: write
 
 concurrency:
-  group: monthly-forward-v1
+  group: monthly-forward-v123
   cancel-in-progress: false
 
 jobs:
@@ -43,13 +43,15 @@ jobs:
       - name: 安装依赖
         run: pip install -r requirements.txt
 
-      - name: 校验 V1 冻结与全量资金合同
+      - name: 校验 V1 冻结与三策略全量资金合同
         run: |
           python scripts/verify_v1_freeze.py
           python scripts/monthly_forward.py verify
+          python scripts/monthly_forward.py --strategy v2 verify
+          python scripts/monthly_forward.py --strategy v3 verify
 
       - name: 隔离预演首期信号与执行链路
-        run: python scripts/rehearse_forward_cycle.py --verify-live-calendar --output "$RUNNER_TEMP/v1-forward-rehearsal.json"
+        run: python scripts/rehearse_forward_cycle.py --verify-live-calendar --output "$RUNNER_TEMP/v123-forward-rehearsal.json"
 
       - name: 计算北京时间截止日
         if: inputs.mode != 'rehearsal'
@@ -110,13 +112,51 @@ jobs:
             --as-of "${{ steps.date.outputs.as_of }}" `
             --output data/forward/inputs/rebalance_dates_monthly.json
 
-      - name: 运行交易日门禁与前向账本
+      - name: 更新 V1 正式前向账本
+        id: v1
         if: steps.plan.outputs.action == 'signal' || steps.plan.outputs.action == 'execute'
         shell: pwsh
         run: |
           python scripts/forward_daily.py `
             --date "${{ steps.date.outputs.as_of }}" `
             --mode "${{ steps.plan.outputs.action }}"
+
+      - name: 更新 V2 影子账本
+        id: v2
+        continue-on-error: true
+        if: steps.plan.outputs.action == 'signal' || steps.plan.outputs.action == 'execute'
+        shell: pwsh
+        run: |
+          python scripts/forward_daily.py `
+            --strategy v2 `
+            --date "${{ steps.date.outputs.as_of }}" `
+            --mode "${{ steps.plan.outputs.action }}"
+
+      - name: 更新 V3 影子账本
+        id: v3
+        continue-on-error: true
+        if: steps.plan.outputs.action == 'signal' || steps.plan.outputs.action == 'execute'
+        shell: pwsh
+        run: |
+          python scripts/forward_daily.py `
+            --strategy v3 `
+            --date "${{ steps.date.outputs.as_of }}" `
+            --mode "${{ steps.plan.outputs.action }}"
+
+      - name: 记录三策略独立健康状态
+        if: steps.plan.outputs.action == 'signal' || steps.plan.outputs.action == 'execute'
+        shell: pwsh
+        env:
+          V1_OUTCOME: ${{ steps.v1.outcome }}
+          V2_OUTCOME: ${{ steps.v2.outcome }}
+          V3_OUTCOME: ${{ steps.v3.outcome }}
+        run: |
+          python scripts/update_forward_health.py `
+            --as-of "${{ steps.date.outputs.as_of }}" `
+            --action "${{ steps.plan.outputs.action }}" `
+            --v1 $env:V1_OUTCOME `
+            --v2 $env:V2_OUTCOME `
+            --v3 $env:V3_OUTCOME
 
       - name: 刷新每日公开业绩
         if: steps.plan.outputs.is_trading_day == 'true'
@@ -129,7 +169,7 @@ jobs:
         if: steps.plan.outputs.is_trading_day == 'true'
         shell: pwsh
         run: |
-          pytest -q tests/test_monthly_forward.py tests/test_forward_daily.py tests/test_forward_performance.py tests/test_refresh_backtest_cache.py tests/test_tradeable_benchmark.py
+          pytest -q tests/test_monthly_forward.py tests/test_forward_daily.py tests/test_forward_performance.py tests/test_rehearse_forward_cycle.py tests/test_refresh_backtest_cache.py tests/test_tradeable_benchmark.py
           python -m compileall -q scripts tests
           git diff --check
 
@@ -145,8 +185,14 @@ jobs:
             Write-Host "没有需要提交的前向业绩变化"
             exit 0
           }
-          git commit -m "更新 V1 前向业绩 ${{ steps.date.outputs.as_of }}"
+          git commit -m "更新 V1/V2/V3 前向业绩 ${{ steps.date.outputs.as_of }}"
           git push
+
+      - name: 影子账本失败时在发布后标记任务失败
+        if: always() && (steps.v2.outcome == 'failure' || steps.v3.outcome == 'failure')
+        run: |
+          echo "V1 已独立处理；V2/V3 至少一个失败，公开页健康状态已保留失败证据。"
+          exit 1
 
       - name: 记录月度门禁无动作原因
         if: steps.plan.outputs.action == 'noop'
@@ -200,6 +246,6 @@ jobs:
               gh issue create --repo "$GH_REPO" --title "$title" --body-file "$note"
             fi
           elif [[ "$UPDATE_RESULT" == "success" && -n "$issue_number" ]]; then
-            gh issue comment "$issue_number" --repo "$GH_REPO" --body "V1 前向更新已恢复：$RUN_URL"
+            gh issue comment "$issue_number" --repo "$GH_REPO" --body "V1/V2/V3 前向更新已恢复：$RUN_URL"
             gh issue close "$issue_number" --repo "$GH_REPO" --reason completed
           fi

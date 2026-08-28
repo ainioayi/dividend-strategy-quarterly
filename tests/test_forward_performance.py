@@ -9,7 +9,7 @@ import pytest
 SCRIPTS = Path(__file__).resolve().parents[1] / "scripts"
 sys.path.insert(0, str(SCRIPTS))
 
-from forward_performance import build_performance, update_market_snapshot
+from forward_performance import build_performance, build_strategy_suite, update_market_snapshot
 
 
 def _metadata(start: str = "2026-08-25") -> dict:
@@ -217,3 +217,29 @@ def test交易日没有510300当日收盘价时拒绝发布() -> None:
             sleep_seconds=0,
             names={},
         )
+
+
+def test组合业绩同时保留三套独立账户和共同基准() -> None:
+    metadatas = {"v1": _metadata(), "v2": _metadata(), "v3": _metadata()}
+    metadatas["v2"].update({"version": "V2", "shadow": True, "rules_sha256": "v2"})
+    metadatas["v2"]["rules"]["max_holdings"] = 3
+    metadatas["v3"].update({"version": "V3", "shadow": True, "rules_sha256": "v3"})
+    metadatas["v3"]["rules"]["max_holdings"] = 4
+    journals = {"v1": [], "v2": [], "v3": []}
+    market = _market("2026-08-25", [("2026-08-25", 10), ("2026-08-26", 11)])
+    health = {
+        "strategies": {
+            "v1": {"status": "正常", "outcome": "success"},
+            "v2": {"status": "失败，未冒充更新成功", "outcome": "failure"},
+            "v3": {"status": "正常", "outcome": "success"},
+        }
+    }
+
+    result = build_strategy_suite(metadatas, journals, market, health)
+
+    assert result["schema_version"] == 2
+    assert list(result["strategies"]) == ["v1", "v2", "v3"]
+    assert [result["strategies"][key]["summary"]["max_holdings"] for key in result["strategies"]] == [2, 3, 4]
+    assert result["strategies"]["v2"]["health"]["outcome"] == "failure"
+    assert result["strategies"]["v1"]["audit"]["journal_sha256"] == result["audit"]["strategy_journals"]["v1"]
+    assert all(row["v1_return_pct"] == row["v2_return_pct"] == row["v3_return_pct"] == 0 for row in result["series"])

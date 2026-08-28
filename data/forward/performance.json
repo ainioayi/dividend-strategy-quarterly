@@ -1,10 +1,12 @@
 {
-  "schema_version": 1,
-  "generated_at": "2026-08-28T11:03:11+08:00",
+  "schema_version": 2,
+  "generated_at": "2026-08-28T12:50:52+08:00",
   "as_of": "2026-08-27",
   "forward_start_date": "2026-08-25",
   "strategy": {
     "name": "月度高息动量 V1",
+    "version": "V1",
+    "shadow": false,
     "status": "等待首期信号",
     "initial_capital": 100000.0,
     "total_assets": 100000.0,
@@ -40,21 +42,39 @@
       "strategy_nav": 100000.0,
       "strategy_return_pct": 0.0,
       "benchmark_nav": 100000.0,
-      "benchmark_return_pct": 0.0
+      "benchmark_return_pct": 0.0,
+      "v1_nav": 100000.0,
+      "v1_return_pct": 0.0,
+      "v2_nav": 100000.0,
+      "v2_return_pct": 0.0,
+      "v3_nav": 100000.0,
+      "v3_return_pct": 0.0
     },
     {
       "date": "2026-08-26",
       "strategy_nav": 100000.0,
       "strategy_return_pct": 0.0,
       "benchmark_nav": 100000.0,
-      "benchmark_return_pct": 0.0
+      "benchmark_return_pct": 0.0,
+      "v1_nav": 100000.0,
+      "v1_return_pct": 0.0,
+      "v2_nav": 100000.0,
+      "v2_return_pct": 0.0,
+      "v3_nav": 100000.0,
+      "v3_return_pct": 0.0
     },
     {
       "date": "2026-08-27",
       "strategy_nav": 100000.0,
       "strategy_return_pct": 0.0,
       "benchmark_nav": 100000.0,
-      "benchmark_return_pct": 0.0
+      "benchmark_return_pct": 0.0,
+      "v1_nav": 100000.0,
+      "v1_return_pct": 0.0,
+      "v2_nav": 100000.0,
+      "v2_return_pct": 0.0,
+      "v3_nav": 100000.0,
+      "v3_return_pct": 0.0
     }
   ],
   "holdings": [],
@@ -93,16 +113,192 @@
       "parameter_changes_allowed": false,
       "v2_mode": "shadow_only",
       "v2_output_root": "data/forward/shadow",
-      "v2_can_write_v1_journal": false
+      "v2_can_write_v1_journal": false,
+      "shadow_versions": [
+        "V2",
+        "V3"
+      ],
+      "shadow_can_write_v1_journal": false
     },
-    "performance_sha256": "7d4657db6985af8c2ab00b98f8fb4739ac85604166efaa8788033161ac63f94b"
+    "performance_sha256": "23d821539fcb9264e8c1957b33b1ea9556e7d50571efae5f37d16547c61cba54",
+    "strategy_journals": {
+      "v1": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "v2": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "v3": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+    }
   },
   "limitations": [
-    "这是模型模拟盘，不连接券商、不读取真实账户，也不会自动下单。",
-    "V1 对策略账户采用 100% 目标投入且不设置额外现金保留；整数手和交易费用导致的不可用尾差仍留在现金。",
-    "V1 仅在月末形成信号并在下一真实交易日收盘模拟执行；其他交易日只做收盘盯市。",
-    "持仓分红在两次月度执行之间按真实除权日计入日频估值，下一次执行时以只追加账本检查点重置。",
-    "510300 在 V1 首笔模拟成交日同步建仓；此前双方均为现金 0%，之后使用场内未复权收盘价和现金分红复投。",
+    "这是三套独立的模型模拟账户，不连接券商、不读取真实账户，也不会自动下单。",
+    "V1 是持仓上限 2 只的正式前向模拟；V2/V3 分别为上限 3/4 只的影子观察，不替代 V1。",
+    "三套策略除 max_holdings 外使用相同选股、择时、费用、分红和 10 万元全量投入规则。",
+    "三套策略均在月末形成信号，并在下一真实交易日收盘模拟执行；整数手和费用会留下现金尾差。",
+    "510300 在 V1 首笔模拟成交日同步建仓，此前四条曲线均按现金 0% 收益展示。",
     "历史回测和前向模拟都不代表未来收益，也不是买卖建议。"
-  ]
+  ],
+  "comparison": {
+    "benchmark": "510300",
+    "benchmark_inception_date": null,
+    "rule": "510300 与 V1 首笔模拟成交同日建仓；V2/V3 使用同一基准时间轴"
+  },
+  "strategies": {
+    "v1": {
+      "summary": {
+        "name": "月度高息动量 V1",
+        "version": "V1",
+        "shadow": false,
+        "status": "等待首期信号",
+        "initial_capital": 100000.0,
+        "total_assets": 100000.0,
+        "cash": 100000.0,
+        "total_pnl": 0.0,
+        "cumulative_return_pct": 0.0,
+        "max_drawdown_pct": 0.0,
+        "fees": 0,
+        "dividends": 0,
+        "trade_count": 0,
+        "event_count": 0,
+        "holdings_count": 0,
+        "max_holdings": 2,
+        "target_allocation_pct": 100,
+        "cash_reserve": 0,
+        "excess_return_pct": 0.0
+      },
+      "series": [
+        {
+          "date": "2026-08-25",
+          "nav": 100000.0,
+          "return_pct": 0.0
+        },
+        {
+          "date": "2026-08-26",
+          "nav": 100000.0,
+          "return_pct": 0.0
+        },
+        {
+          "date": "2026-08-27",
+          "nav": 100000.0,
+          "return_pct": 0.0
+        }
+      ],
+      "holdings": [],
+      "transactions": [],
+      "health": {
+        "status": "等待首期信号",
+        "outcome": "waiting",
+        "as_of": "2026-08-28",
+        "action": "none"
+      },
+      "audit": {
+        "rules_sha256": "d3265a0af79c1915244edb7d54322ea038183dd90b9b01ef00c216238597bd23",
+        "journal_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "monthly_journal": "data/forward/monthly_v1.jsonl"
+      }
+    },
+    "v2": {
+      "summary": {
+        "name": "月度高息动量 V2",
+        "version": "V2",
+        "shadow": true,
+        "status": "等待首期信号",
+        "initial_capital": 100000.0,
+        "total_assets": 100000.0,
+        "cash": 100000.0,
+        "total_pnl": 0.0,
+        "cumulative_return_pct": 0.0,
+        "max_drawdown_pct": 0.0,
+        "fees": 0,
+        "dividends": 0,
+        "trade_count": 0,
+        "event_count": 0,
+        "holdings_count": 0,
+        "max_holdings": 3,
+        "target_allocation_pct": 100,
+        "cash_reserve": 0,
+        "excess_return_pct": 0.0
+      },
+      "series": [
+        {
+          "date": "2026-08-25",
+          "nav": 100000.0,
+          "return_pct": 0.0
+        },
+        {
+          "date": "2026-08-26",
+          "nav": 100000.0,
+          "return_pct": 0.0
+        },
+        {
+          "date": "2026-08-27",
+          "nav": 100000.0,
+          "return_pct": 0.0
+        }
+      ],
+      "holdings": [],
+      "transactions": [],
+      "health": {
+        "status": "等待首期信号",
+        "outcome": "waiting",
+        "as_of": "2026-08-28",
+        "action": "none"
+      },
+      "audit": {
+        "rules_sha256": "7bdb8c9302457ad7d9682caf837d5c26ff5fff3378fefd86f9e8d7707848d715",
+        "journal_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "monthly_journal": "data/forward/shadow/monthly_v2.jsonl"
+      }
+    },
+    "v3": {
+      "summary": {
+        "name": "月度高息动量 V3",
+        "version": "V3",
+        "shadow": true,
+        "status": "等待首期信号",
+        "initial_capital": 100000.0,
+        "total_assets": 100000.0,
+        "cash": 100000.0,
+        "total_pnl": 0.0,
+        "cumulative_return_pct": 0.0,
+        "max_drawdown_pct": 0.0,
+        "fees": 0,
+        "dividends": 0,
+        "trade_count": 0,
+        "event_count": 0,
+        "holdings_count": 0,
+        "max_holdings": 4,
+        "target_allocation_pct": 100,
+        "cash_reserve": 0,
+        "excess_return_pct": 0.0
+      },
+      "series": [
+        {
+          "date": "2026-08-25",
+          "nav": 100000.0,
+          "return_pct": 0.0
+        },
+        {
+          "date": "2026-08-26",
+          "nav": 100000.0,
+          "return_pct": 0.0
+        },
+        {
+          "date": "2026-08-27",
+          "nav": 100000.0,
+          "return_pct": 0.0
+        }
+      ],
+      "holdings": [],
+      "transactions": [],
+      "health": {
+        "status": "等待首期信号",
+        "outcome": "waiting",
+        "as_of": "2026-08-28",
+        "action": "none"
+      },
+      "audit": {
+        "rules_sha256": "6f5564ba9939d7098b511a8a563de81b558d5eddd2928307d2b9cb5353a65529",
+        "journal_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "monthly_journal": "data/forward/shadow/monthly_v3.jsonl"
+      }
+    }
+  }
 }

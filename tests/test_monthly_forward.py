@@ -256,3 +256,39 @@ def test_execution_rejects_historical_price_drift_after_signal(tmp_path):
             "2026-08", manifest_path=manifest, dates_path=dates,
             cache_dir=cache, journal_path=journal,
         )
+
+
+def test三策略只允许持仓上限不同且影子账本独立():
+    profiles = {key: forward.strategy_profile(key) for key in ("v1", "v2", "v3")}
+    assert [profiles[key]["max_holdings"] for key in profiles] == [2, 3, 4]
+    for key in ("v2", "v3"):
+        changed = {
+            field for field in forward.V1_RULES
+            if profiles[key]["rules"][field] != forward.V1_RULES[field]
+        }
+        assert changed == {"max_holdings"}
+        assert profiles[key]["shadow"] is True
+        assert profiles[key]["journal_path"].parent == forward.SHADOW_DIR
+        assert profiles[key]["journal_path"] != forward.JOURNAL_PATH
+    assert len({profile["journal_path"] for profile in profiles.values()}) == 3
+
+
+def test三策略冻结合同均为十万元全量投入():
+    contracts = {
+        key: forward.verify_forward_contract(strategy_id=key)
+        for key in ("v1", "v2", "v3")
+    }
+    assert [contracts[key]["version"] for key in contracts] == ["V1", "V2", "V3"]
+    assert all(value["target_allocation_pct"] == 100 for value in contracts.values())
+    assert all(value["cash_reserve"] == 0 for value in contracts.values())
+
+
+def test影子策略核心层禁止写入V1或影子目录之外(tmp_path):
+    profile = forward.strategy_profile("v2")
+    with pytest.raises(ValueError, match="禁止写入 V1"):
+        forward._require_journal_boundary(profile, forward.JOURNAL_PATH)
+    with pytest.raises(ValueError, match="只能写入"):
+        forward._require_journal_boundary(profile, tmp_path / "v2.jsonl")
+    forward._require_journal_boundary(
+        profile, tmp_path / "isolated_v2.jsonl", allow_isolated_journal=True
+    )

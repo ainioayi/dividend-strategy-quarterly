@@ -1,4 +1,4 @@
-"""月度 V1 每日调度门禁、输入快照与状态报告。"""
+"""月度 V1/V2/V3 每日调度门禁、输入快照与状态报告。"""
 from __future__ import annotations
 
 import argparse
@@ -15,8 +15,9 @@ ROOT = Path(__file__).resolve().parents[1]
 sys.path.insert(0, str(ROOT / "scripts"))
 
 from monthly_forward import (
-    FORWARD_CACHE_DIR, FORWARD_INPUT_DIR, JOURNAL_PATH, V1_FIRST_SIGNAL_DATE,
-    record_execution, record_signal, _load_journal,
+    FORWARD_CACHE_DIR, FORWARD_INPUT_DIR, FORWARD_STRATEGIES,
+    V1_FIRST_SIGNAL_DATE, record_execution, record_signal, strategy_profile,
+    _load_journal,
 )
 
 
@@ -124,8 +125,9 @@ def _portable_path(path: Path) -> str:
 
 def save_snapshot_and_report(
     as_of: str, action: dict, *, manifest_path: Path, dates_path: Path,
-    cache_dir: Path, journal_path: Path, output_dir: Path,
+    cache_dir: Path, journal_path: Path, output_dir: Path, strategy_id: str = "v1",
 ) -> None:
+    profile = strategy_profile(strategy_id)
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     dates = json.loads(dates_path.read_text(encoding="utf-8"))
     if manifest.get("as_of") != as_of or dates.get("as_of") != as_of:
@@ -154,7 +156,9 @@ def save_snapshot_and_report(
     )
     rows = _load_journal(journal_path)
     status = {
-        "schema_version": 1, "as_of": as_of, "latest_action": action,
+        "schema_version": 1, "strategy_id": strategy_id,
+        "strategy_version": profile["version"], "shadow": profile["shadow"],
+        "as_of": as_of, "latest_action": action,
         "signal_count": sum(row.get("event_type") == "signal" for row in rows),
         "execution_count": sum(row.get("event_type") == "execution" for row in rows),
         "pending_signal": _pending_signal(rows),
@@ -167,7 +171,8 @@ def save_snapshot_and_report(
     )
     latest = status["latest_event"] or {}
     lines = [
-        "# 月度 V1 前向观察状态", "", f"- 截止日：{as_of}",
+        f"# 月度 {profile['version']} {'影子' if profile['shadow'] else '前向'}观察状态",
+        "", f"- 截止日：{as_of}",
         f"- 本次门禁：{action.get('action')}", f"- 说明：{action.get('reason', '门禁动作已执行')}",
         f"- 信号记录：{status['signal_count']} 条", f"- 执行记录：{status['execution_count']} 条",
         f"- 最近事件：{latest.get('event_type', '无')} {latest.get('period', '')}", "",
@@ -177,7 +182,8 @@ def save_snapshot_and_report(
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="月度 V1 每日交易日门禁")
+    parser = argparse.ArgumentParser(description="月度 V1/V2/V3 每日交易日门禁")
+    parser.add_argument("--strategy", choices=tuple(FORWARD_STRATEGIES), default="v1")
     parser.add_argument("--date", help="必须等于 Asia/Shanghai 当前日期")
     parser.add_argument("--mode", choices=("auto", "signal", "execute"), default="auto")
     parser.add_argument("--plan-only", action="store_true", help="只计算门禁，不刷新账本或生成快照")
@@ -185,14 +191,20 @@ def main() -> int:
     parser.add_argument("--manifest", type=Path, default=FORWARD_INPUT_DIR / "universe_manifest.json")
     parser.add_argument("--dates", type=Path, default=FORWARD_INPUT_DIR / "rebalance_dates_monthly.json")
     parser.add_argument("--cache-dir", type=Path, default=FORWARD_CACHE_DIR)
-    parser.add_argument("--journal", type=Path, default=JOURNAL_PATH)
-    parser.add_argument("--output-dir", type=Path, default=ROOT / "data/forward")
+    parser.add_argument("--journal", type=Path)
+    parser.add_argument("--output-dir", type=Path)
     args = parser.parse_args()
+    profile = strategy_profile(args.strategy)
+    journal_path = args.journal or profile["journal_path"]
+    output_dir = args.output_dir or (
+        ROOT / "data/forward" if args.strategy == "v1"
+        else ROOT / "data/forward/shadow" / args.strategy
+    )
     actual_today = shanghai_today()
     today = date.fromisoformat(args.date) if args.date else actual_today
     if today != actual_today:
         raise RuntimeError("显式日期不等于 Asia/Shanghai 当前日，禁止历史回写")
-    rows = _load_journal(args.journal)
+    rows = _load_journal(journal_path)
     planned = decide_action(today, rows, baostock_trading_days)
     if args.mode != "auto" and args.mode != planned["action"]:
         raise RuntimeError(f"显式模式 {args.mode} 不符合交易日门禁 {planned['action']}")
@@ -207,13 +219,16 @@ def main() -> int:
     action = planned
     if action["action"] == "signal":
         record_signal(today.isoformat(), manifest_path=args.manifest, dates_path=args.dates,
-                      cache_dir=args.cache_dir, journal_path=args.journal)
+                      cache_dir=args.cache_dir, journal_path=journal_path,
+                      strategy_id=args.strategy)
     elif action["action"] == "execute":
         record_execution(action["period"], manifest_path=args.manifest, dates_path=args.dates,
-                         cache_dir=args.cache_dir, journal_path=args.journal)
+                         cache_dir=args.cache_dir, journal_path=journal_path,
+                         strategy_id=args.strategy)
     save_snapshot_and_report(today.isoformat(), action, manifest_path=args.manifest,
                              dates_path=args.dates, cache_dir=args.cache_dir,
-                             journal_path=args.journal, output_dir=args.output_dir)
+                             journal_path=journal_path, output_dir=output_dir,
+                             strategy_id=args.strategy)
     print(json.dumps(action, ensure_ascii=False))
     return 0
 

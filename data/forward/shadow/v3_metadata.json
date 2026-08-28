@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "strategy": "月度高息动量策略 V1 前向观察",
-  "mode": "只追加模型账本，不连接券商、不自动下单",
+  "strategy": "月度高息动量策略 V3 影子观察",
+  "mode": "只追加影子模型账本，不连接券商、不自动下单",
   "v1_commit": "c7d128ff0bc1b4b21c60bc7c6e2894dabf513fae",
   "forward_start_date": "2026-08-25",
   "first_signal_date": "2026-08-31",
@@ -23,7 +23,7 @@
     "exit_yield": 5.3,
     "exit_pr": 999.0,
     "exit_confirm_quarters": 1,
-    "max_holdings": 2,
+    "max_holdings": 4,
     "max_sector": 2,
     "max_banks": 2,
     "max_position_pct": 1.0,
@@ -48,7 +48,7 @@
     "execution_lag_days": 1,
     "dividend_information_lag_days": 0
   },
-  "rules_sha256": "d3265a0af79c1915244edb7d54322ea038183dd90b9b01ef00c216238597bd23",
+  "rules_sha256": "6f5564ba9939d7098b511a8a563de81b558d5eddd2928307d2b9cb5353a65529",
   "capital_policy": {
     "target_allocation_pct": 100,
     "cash_reserve": 0,
@@ -61,11 +61,14 @@
     "v2_mode": "shadow_only",
     "v2_output_root": "data/forward/shadow",
     "v2_can_write_v1_journal": false,
-    "shadow_versions": [
-      "V2",
-      "V3"
-    ],
+    "shadow_versions": ["V2", "V3"],
     "shadow_can_write_v1_journal": false
   },
-  "status": "等待 2026-08-31 收盘后的完整冻结输入，尚未生成信号"
+  "status": "等待 2026-08-31 收盘后的完整冻结输入，尚未生成信号",
+  "strategy_id": "v3",
+  "version": "V3",
+  "shadow": true,
+  "base_strategy": "V1",
+  "only_rule_change": {"field": "max_holdings", "from": 2, "to": 4},
+  "journal": "data/forward/shadow/monthly_v3.jsonl"
 }
