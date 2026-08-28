@@ -45,8 +45,9 @@ V1 从 `2026-08-25` 起的只追加前向模拟业绩、与 V1 首笔模拟成�
   交易日为 2026-09-01，则在当日收盘后记录首笔模拟执行。此前账本保持空白
   是正确门禁。V1 对策略账户按 100% 目标投入，不设置额外现金保留；实际成交
   仍遵守 A 股 100 股整数手和交易费用，因此允许留下无法继续买入的现金尾差。
-  计划持续观察 6–12 个月，期间 V1 参数冻结，不进入第 31 轮参数搜索；V2
-  如有新想法只能写入 `data/forward/shadow/` 影子观察，不能改写 V1 账本。
+  计划持续观察 6–12 个月，期间 V1 参数冻结。用户明确要求的第 31 轮一次性
+  持仓上限扫描已完成，但没有改变 V1；后续 V2 只能写入 `data/forward/shadow/`
+  影子观察，不能改写 V1 账本。
 
 ## 公开业绩自动更新
 
@@ -162,7 +163,7 @@ python scripts/build_rebalance_dates.py `
 - 停牌时不以陈旧价格成交，陈旧价格仅作估值；
 - 复投使用执行价并遵守现金保留额和仓位上限。
 
-## 第 8–30 轮探索与当前决策
+## 第 8–31 轮探索与当前决策
 
 第 8 轮确认连续分红 3 年、入场线 7.5%、最多 2 只优于相邻候选；第 9
 轮的动量排序、多周期动量、再平衡和高息上限对照均未改善综合结果。第 10–11
@@ -234,15 +235,28 @@ python scripts/build_rebalance_dates.py `
 最大回撤升至 47.45%；材料化工和汽车产业链代理簇被剔除后，滚动 48 月最差
 CAGR 分别为 -4.66% 和 -5.31%。因此冻结 V1 做前向观察，不继续密集搜索。
 
+第 31 轮按用户明确要求，将 `max_holdings` 从 2 扫描到 10，其余冻结规则不变。
+2 只在正常成本下继续取得最高 CAGR 41.38%、Sharpe 1.217 和 2023 起连续
+样本外 CAGR 24.74%；3 只的正常成本 CAGR 为 40.68%，但三倍费用 CAGR
+40.29% 为全组最高。8–10 只把月频最大回撤降到约 22.8%，同时把 CAGR 降到
+26.08%–26.78%，滚动 36 月最差 CAGR 仅 0.52%–1.11%。主策略继续保持 2 只；
+若后续建立 V2 影子策略，3 只是唯一值得前向比较的候选，本轮不直接上线 V2。
+
 历史股票池随后完成了人工数据质量门禁回放：只纳入分红和价格证据均能闭合的
 237 只股票，结果为 CAGR 11.29%、最大回撤 55.46%。这进一步降低了对冻结
-V1 历史高收益的信心，当前不进入第 31 轮调参，直接用固定规则做模拟盘前向
-观察。
+V1 历史高收益的信心。第 31 轮一次性持仓扫描没有消除该数据边界，主线仍是
+用固定 V1 做模拟盘前向观察。
 
 历史回测和实时季度模型是两层规则：回测把三项 PR 设为 999，以隔离纯股息率
 策略；实时路径先用 `optimized_strategy.py` 的 `pr_ceiling=1.2`、连续分红 8 年
 等硬门槛，再应用季度账本规则。不能把回测的 `entry_pr=999` 解释为实时模型取消
 PR 门槛，也不能把实时的 8 年门槛倒灌到历史回测。
+
+复现第 31 轮持仓上限扫描：
+
+```powershell
+python scripts/round31_holdings_sweep.py
+```
 
 ## 运行检查
 
@@ -281,6 +295,7 @@ git diff --check
 - `data/round28_yield_vol_rank.json`：波动率调整排序对照（收益率/波动率 vs 纯收益率）。
 - `data/round29_attribution.json`：收益归因分析（个股/分红vs资本利得/年度/集中度）。
 - `data/round30_fragility_audit.json`：冻结 V1 的个股、行业和三倍费用脆弱性审计，以及 510880 含分红可交易基准。
+- `data/round31_holdings_sweep.json`：`max_holdings=2..10` 的完整账本、连续样本外、滚动窗口、三倍费用和重置窗口比较。
 - `data/historical_universe_status.json`、`data/historical_filtered_manifest.json`、`data/historical_v1_filtered.json`：人工数据质量门禁状态、237 只过滤清单和正式回放结果；状态为 `complete_with_exclusions`，不是全市场无偏回测。
 - `data/historical/eligible_listed_prices.json.gz`、`data/historical/eligible_listed_prices_manifest.json`、`data/historical/listed_dividends.json`：在市股票价格归档、价格核验清单和分红门禁证据。
 - `data/historical_v1_provisional.json`：早期仅补入退市股票的临时压力回放，已由人工门禁正式回放取代，但保留作历史审计。
