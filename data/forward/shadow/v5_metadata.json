@@ -70,5 +70,5 @@
     "report_pdf": "fbc49e2500e7158f735a5968cac9361db5f0c141a1eefd5c557bf70b7cd79609",
     "appendix_xlsx": "a54496c7ab96f0d9b72f6c3272a0ad081940b67cd187b8e6afa251f4cdf845aa"
   },
-  "v5_input": "data/v5_inputs.json"
+  "v5_input": "data/forward/v5_inputs.json"
 }

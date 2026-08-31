@@ -242,7 +242,7 @@ def parse_args() -> argparse.Namespace:
                         help="用于合并已核验年度/逐笔 DPS")
     parser.add_argument("--start-date", default="2015-01-01")
     parser.add_argument("--as-of", required=True, help="显式截止日 YYYY-MM-DD")
-    parser.add_argument("--output", type=Path, default=Path("data/v5_inputs.json"))
+    parser.add_argument("--output", type=Path, default=Path("data/forward/v5_inputs.json"))
     parser.add_argument("--attachment", action="append", type=Path, default=[])
     parser.add_argument("--strategy-nav", action="append", type=Path, default=[],
                         help="round32 或 performance.json；可重复，后者按日期覆盖前者")

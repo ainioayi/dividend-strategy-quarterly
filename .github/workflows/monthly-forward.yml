@@ -32,7 +32,8 @@ permissions:
 
 concurrency:
   group: monthly-forward-five-strategies
-  cancel-in-progress: false
+  # 同日重试应接管长时间运行，避免旧运行占住唯一更新槽位。
+  cancel-in-progress: true
 
 jobs:
   update:
@@ -144,7 +145,7 @@ jobs:
             --strategy-nav data/round32_v5_rebuild.json `
             --strategy-nav data/forward/performance.json `
             --as-of "${{ steps.date.outputs.as_of }}" `
-            --output data/v5_inputs.json
+            --output data/forward/v5_inputs.json
 
       - name: 刷新多资产风险预算 V2.2 输入
         id: ma_v22_inputs
@@ -154,7 +155,7 @@ jobs:
         run: |
           python scripts/refresh_ma_v22_inputs.py `
             --as-of "${{ steps.date.outputs.as_of }}" `
-            --output data/ma_v22_inputs.json
+            --output data/forward/ma_v22_inputs.json
 
       - name: 更新 V1 正式前向账本
         id: v1
@@ -236,7 +237,7 @@ jobs:
             --as-of "${{ steps.date.outputs.as_of }}"
 
       - name: 验证前向模块
-        if: steps.plan.outputs.is_trading_day == 'true'
+        if: success() && steps.plan.outputs.is_trading_day == 'true'
         shell: pwsh
         run: |
           pytest -q tests/test_monthly_forward.py tests/test_forward_daily.py tests/test_forward_performance.py tests/test_rehearse_forward_cycle.py tests/test_update_forward_health.py tests/test_refresh_backtest_cache.py tests/test_refresh_v5_inputs.py tests/test_v5_strategy.py tests/test_refresh_ma_v22_inputs.py tests/test_ma_v22_strategy.py tests/test_tradeable_benchmark.py
@@ -244,7 +245,7 @@ jobs:
           git diff --check
 
       - name: 提交输入、账本与公开业绩
-        if: steps.plan.outputs.is_trading_day == 'true'
+        if: success() && steps.plan.outputs.is_trading_day == 'true'
         shell: pwsh
         run: |
           git config user.name "github-actions[bot]"
@@ -256,7 +257,23 @@ jobs:
             exit 0
           }
           git commit -m "更新五策略前向业绩 ${{ steps.date.outputs.as_of }}"
-          git push
+          $pushed = $false
+          for ($attempt = 1; $attempt -le 3; $attempt++) {
+            git push origin HEAD:main
+            if ($LASTEXITCODE -eq 0) {
+              $pushed = $true
+              break
+            }
+            if ($attempt -lt 3) {
+              Write-Host "远端已更新，第 $attempt 次推送失败，重新同步后重试"
+              git fetch origin main
+              if ($LASTEXITCODE -ne 0) { throw "获取远端 main 失败" }
+              git rebase origin/main
+              if ($LASTEXITCODE -ne 0) { throw "前向产物无法重放到最新 main" }
+              Start-Sleep -Seconds 2
+            }
+          }
+          if (-not $pushed) { throw "连续 3 次推送前向产物失败" }
 
       - name: 影子账本失败时在发布后标记任务失败
         if: always() && (steps.v2.outcome == 'failure' || steps.v3.outcome == 'failure' || steps.v5_nav.outcome == 'failure' || steps.v5_inputs.outcome == 'failure' || steps.v5.outcome == 'failure' || steps.ma_v22_inputs.outcome == 'failure' || steps.ma_v22.outcome == 'failure')

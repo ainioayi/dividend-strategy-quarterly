@@ -16,6 +16,7 @@ def test_forward_workflow_has_retry_freeze_gate_and_issue_alert() -> None:
         assert f'      - "{generated_path}"' in workflow
     assert 'cron: "30 10 * * 1-5"' in workflow
     assert 'cron: "30 12 * * 1-5"' in workflow
+    assert "cancel-in-progress: true" in workflow
     assert "python scripts/verify_v1_freeze.py" in workflow
     assert "python scripts/monthly_forward.py verify" in workflow
     assert "python scripts/rehearse_forward_cycle.py" in workflow
@@ -33,6 +34,11 @@ def test_forward_workflow_has_retry_freeze_gate_and_issue_alert() -> None:
     assert "gh issue close" in workflow
     assert "timeout 25m python scripts/refresh_backtest_cache.py" in workflow
     assert "timeout 15m python scripts/refresh_v5_inputs.py" in workflow
+    assert "--output data/forward/v5_inputs.json" in workflow
+    assert "--output data/forward/ma_v22_inputs.json" in workflow
+    assert "git fetch origin main" in workflow
+    assert "git rebase origin/main" in workflow
+    assert "if: success() && steps.plan.outputs.is_trading_day == 'true'" in workflow
 
 
 def test_v2_is_limited_to_shadow_output() -> None:

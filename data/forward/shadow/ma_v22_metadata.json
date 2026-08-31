@@ -69,5 +69,5 @@
     "requirements.txt": "809ecb105b8e60b9f697c628a9a72c3e587fb4747bf9f1836cc72117dbd45f8b",
     "reference_chart.png": "a329852eeab6975a9cfbdbcbd06757860cedd517d093c31adbb10e9c82f77945"
   },
-  "ma_v22_input": "data/ma_v22_inputs.json"
+  "ma_v22_input": "data/forward/ma_v22_inputs.json"
 }

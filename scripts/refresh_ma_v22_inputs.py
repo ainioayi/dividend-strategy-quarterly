@@ -217,7 +217,7 @@ def main() -> None:
     parser.add_argument("--as-of", required=True)
     parser.add_argument("--start", default="2005-01-01")
     parser.add_argument("--interval", type=float, default=0.4)
-    parser.add_argument("--output", type=Path, default=Path("data/ma_v22_inputs.json"))
+    parser.add_argument("--output", type=Path, default=Path("data/forward/ma_v22_inputs.json"))
     args = parser.parse_args()
     payload = refresh_inputs(args.as_of, args.start, args.interval)
     args.output.parent.mkdir(parents=True, exist_ok=True)

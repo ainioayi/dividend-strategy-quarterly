@@ -84,12 +84,32 @@ def _add_execution_day(manifest_path, cache):
 def test_forward_inputs_are_isolated_from_frozen_v1_files():
     assert forward.FORWARD_CACHE_DIR.resolve() != backtest.CACHE_DIR.resolve()
     assert forward.FORWARD_INPUT_DIR.resolve() != (forward.ROOT / "data").resolve()
-    assert (forward.FORWARD_INPUT_DIR / "universe_manifest.json").read_bytes() == (
-        forward.ROOT / "data" / "universe_manifest.json"
-    ).read_bytes()
-    assert (forward.FORWARD_INPUT_DIR / "rebalance_dates_monthly.json").read_bytes() == (
-        forward.ROOT / "data" / "rebalance_dates_monthly.json"
-    ).read_bytes()
+    frozen_manifest = json.loads(
+        (forward.ROOT / "data" / "universe_manifest.json").read_text(encoding="utf-8")
+    )
+    frozen_dates = json.loads(
+        (forward.ROOT / "data" / "rebalance_dates_monthly.json").read_text(encoding="utf-8")
+    )
+    forward_manifest = json.loads(
+        (forward.FORWARD_INPUT_DIR / "universe_manifest.json").read_text(encoding="utf-8")
+    )
+    forward_dates = json.loads(
+        (forward.FORWARD_INPUT_DIR / "rebalance_dates_monthly.json").read_text(encoding="utf-8")
+    )
+    assert frozen_manifest["records_sha256"] == forward.V1_MANIFEST_SHA256
+    assert frozen_dates["dates_sha256"] == forward.V1_DATES_SHA256
+    assert forward_manifest["as_of"] == forward_dates["as_of"]
+
+
+def test_shadow_input_paths_do_not_overwrite_historical_inputs():
+    assert forward.strategy_profile("v5")["input_path"] == (
+        forward.ROOT / "data" / "forward" / "v5_inputs.json"
+    )
+    assert forward.strategy_profile("ma_v22")["input_path"] == (
+        forward.ROOT / "data" / "forward" / "ma_v22_inputs.json"
+    )
+    assert forward.strategy_profile("v5")["input_path"] != forward.ROOT / "data" / "v5_inputs.json"
+    assert forward.strategy_profile("ma_v22")["input_path"] != forward.ROOT / "data" / "ma_v22_inputs.json"
 
 
 def test_v1_forward_contract_locks_rules_capital_and_v2_boundary(tmp_path):

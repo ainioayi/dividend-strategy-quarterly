@@ -128,7 +128,7 @@ FORWARD_STRATEGIES: dict[str, dict[str, Any]] = {
         "max_holdings": 6,
         "metadata_path": SHADOW_DIR / "v5_metadata.json",
         "journal_path": SHADOW_DIR / "monthly_v5.jsonl",
-        "input_path": ROOT / "data" / "v5_inputs.json",
+        "input_path": ROOT / "data" / "forward" / "v5_inputs.json",
     },
     "ma_v22": {
         "version": "V2.2",
@@ -140,7 +140,7 @@ FORWARD_STRATEGIES: dict[str, dict[str, Any]] = {
         "max_holdings": 4,
         "metadata_path": SHADOW_DIR / "ma_v22_metadata.json",
         "journal_path": SHADOW_DIR / "monthly_ma_v22.jsonl",
-        "input_path": ROOT / "data" / "ma_v22_inputs.json",
+        "input_path": ROOT / "data" / "forward" / "ma_v22_inputs.json",
     },
 }
 
