@@ -1,4 +1,4 @@
-"""在临时目录预演 V1/V2/V3 首期信号、执行和公开业绩链路。
+"""在临时目录预演五策略首期信号、执行和公开业绩链路。
 
 演练只复制正式前向缓存，并用最后一个已知收盘价补出指定的未来交易日；不会
 修改正式缓存、正式账本或公开页面。模拟价格只用于验证程序控制流，不是预测。
@@ -23,6 +23,7 @@ from build_rebalance_dates import build_dates
 from build_universe_manifest import records_from_cache
 from forward_daily import baostock_trading_days, decide_action
 from forward_performance import build_strategy_suite
+from ma_v22_strategy import MA_V22_ASSETS, transaction_fees as ma_v22_transaction_fees
 from monthly_forward import (
     FORWARD_CACHE_DIR,
     V1_START_DATE,
@@ -33,6 +34,9 @@ from monthly_forward import (
     verify_forward_contract,
 )
 from quarterly_strategy import transaction_fees
+from refresh_v5_inputs import build_v5_inputs
+from refresh_ma_v22_inputs import build_inputs as build_ma_v22_inputs
+from v5_strategy import transaction_fees as v5_transaction_fees
 from universe_manifest import build_manifest, write_manifest
 
 
@@ -48,6 +52,75 @@ def _read_json(path: Path) -> Any:
 def _write_json(path: Path, value: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(value, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+
+
+def _build_synthetic_v5_inputs(cache_dir: Path, signal_date: str, output: Path) -> Path:
+    """只为控制流演练生成 V5 可审计输入，不用于策略结论。"""
+    adjustment_factors = []
+    fundamentals = []
+    industries = []
+    calendar = set()
+    for index, path in enumerate(sorted(cache_dir.glob("kl_*.json"))):
+        code = path.stem.removeprefix("kl_")
+        rows = sorted(
+            (str(day)[:10], float(close))
+            for day, close in (_read_json(path) or {}).items()
+            if str(day)[:10] <= signal_date and close
+        )
+        if rows:
+            adjustment_factors.append({"code": code, "date": "1900-01-01", "factor": 1.0})
+            calendar.update(day for day, _close in rows)
+            dps = rows[-1][1] * 0.08
+            fundamentals.extend({
+                "code": code, "year": year, "published_date": f"{year + 1}-04-01",
+                "eps": dps * 2, "dps": dps,
+            } for year in (2022, 2023, 2024, 2025))
+            industries.append({
+                "code": code, "published_date": signal_date, "industry": f"演练行业{index}",
+            })
+    days = sorted(day for day in calendar if day <= signal_date)
+    if len(days) < 241:
+        raise ValueError("演练缓存不足 241 个交易日，不能构造 V5 风险窗口")
+    h00922 = [
+        {"date": day, "close": 100.0 + index / 100}
+        for index, day in enumerate(days[-241:])
+    ]
+    payload = build_v5_inputs({
+        "adjustment_factors": adjustment_factors,
+        "fundamentals": fundamentals,
+        "industries": industries,
+        "h00922": h00922,
+        "strategy_nav": [{"date": day, "nav": 100000.0 + index}
+                         for index, day in enumerate(days[-51:])],
+    }, signal_date)
+    _write_json(output, payload)
+    return output
+
+
+def _build_synthetic_ma_v22_inputs(cache_dir: Path, as_of: str, output: Path) -> Path:
+    """只为控制流演练生成 V2.2 四资产行情，不用于策略结论。"""
+    calendar = sorted({
+        str(day)[:10]
+        for path in cache_dir.glob("kl_*.json")
+        for day in (_read_json(path) or {})
+        if str(day)[:10] <= as_of
+    })
+    if len(calendar) < 127 or calendar[-1] != as_of:
+        raise ValueError("演练缓存不足 V2.2 的 126 日动量窗口")
+    asset_rows = {}
+    for offset, asset in enumerate(MA_V22_ASSETS):
+        asset_rows[asset] = [
+            {
+                "date": day,
+                "hfq_open": 10 + offset + index * (0.01 + offset * 0.002),
+                "hfq_close": 10 + offset + index * (0.01 + offset * 0.002),
+                "raw_open": 10 + offset + index * (0.01 + offset * 0.002),
+                "raw_close": 10 + offset + index * (0.01 + offset * 0.002),
+            }
+            for index, day in enumerate(calendar)
+        ]
+    _write_json(output, build_ma_v22_inputs(asset_rows, [], as_of))
+    return output
 
 
 def _file_sha256(path: Path) -> str:
@@ -136,9 +209,18 @@ def _performance_market(
         row for execution in executions.values()
         for row in execution.get("holdings") or []
     ]
+    closing_prices = {
+        str(code).zfill(6): price
+        for execution in executions.values()
+        for code, price in (execution.get("closing_prices") or {}).items()
+    }
     for row in holdings:
         code = str(row.get("code") or "").zfill(6)
-        prices = _read_json(cache_dir / f"kl_{code}.json")
+        price_path = cache_dir / f"kl_{code}.json"
+        prices = _read_json(price_path) if price_path.exists() else {
+            execution_date: closing_prices.get(code)
+        }
+        dividend_path = cache_dir / f"dvd_{code}.json"
         securities[code] = {
             "name": code,
             "prices": [
@@ -146,7 +228,7 @@ def _performance_market(
                 for day, price in sorted(prices.items())
                 if V1_START_DATE <= str(day)[:10] <= execution_date
             ],
-            "dividends": _read_json(cache_dir / f"dvd_{code}.json"),
+            "dividends": _read_json(dividend_path) if dividend_path.exists() else [],
         }
     return {
         "schema_version": 1,
@@ -180,7 +262,10 @@ def run_rehearsal(
     execution_day = date.fromisoformat(execution_date)
     if execution_day <= signal_day:
         raise ValueError("执行日必须晚于信号日")
-    profiles = {key: strategy_profile(key) for key in ("v1", "v2", "v3")}
+    profiles = {
+        key: strategy_profile(key)
+        for key in ("v1", "v2", "v3", "v5", "ma_v22")
+    }
     for key in profiles:
         verify_forward_contract(strategy_id=key)
     production_journal_before = {
@@ -203,7 +288,7 @@ def run_rehearsal(
             "status": "通过",
         }
 
-    with tempfile.TemporaryDirectory(prefix="v123-forward-rehearsal-") as raw_temp:
+    with tempfile.TemporaryDirectory(prefix="five-strategy-forward-rehearsal-") as raw_temp:
         root = Path(raw_temp)
         cache_dir = root / "cache"
         input_dir = root / "inputs"
@@ -216,6 +301,10 @@ def run_rehearsal(
             raise ValueError(f"演练缓存应有 {expected_code_count} 只股票，实际 {code_count} 只")
 
         manifest_path, dates_path, signal_manifest = _build_inputs(cache_dir, input_dir, signal_date)
+        v5_input_path = _build_synthetic_v5_inputs(cache_dir, signal_date, input_dir / "v5_inputs.json")
+        ma_v22_signal_path = _build_synthetic_ma_v22_inputs(
+            cache_dir, signal_date, input_dir / "ma_v22_signal_inputs.json"
+        )
         signal_plan = decide_action(signal_day, [], _trading_days(signal_date, execution_date))
         if signal_plan.get("action") != "signal":
             raise RuntimeError(f"信号日门禁没有触发 signal: {signal_plan}")
@@ -229,12 +318,17 @@ def run_rehearsal(
                 journal_path=journal_path,
                 strategy_id=key,
                 allow_isolated_journal=True,
+                v5_input_path=v5_input_path if key == "v5" else None,
+                strategy_input_path=ma_v22_signal_path if key == "ma_v22" else None,
             )
             if not signal_appended:
                 raise RuntimeError(f"{profiles[key]['version']} 隔离演练未能追加首期信号")
             signals[key] = signal
 
         manifest_path, dates_path, execution_manifest = _build_inputs(cache_dir, input_dir, execution_date)
+        ma_v22_execution_path = _build_synthetic_ma_v22_inputs(
+            cache_dir, execution_date, input_dir / "ma_v22_execution_inputs.json"
+        )
         executions = {}
         execution_plans = {}
         journals = {}
@@ -256,6 +350,8 @@ def run_rehearsal(
                 journal_path=journal_path,
                 strategy_id=key,
                 allow_isolated_journal=True,
+                v5_input_path=v5_input_path if key == "v5" else None,
+                strategy_input_path=ma_v22_execution_path if key == "ma_v22" else None,
             )
             if not execution_appended:
                 raise RuntimeError(f"{profiles[key]['version']} 隔离演练未能追加首期执行")
@@ -267,12 +363,22 @@ def run_rehearsal(
             next_lot_costs = []
             for holding in execution["holdings"]:
                 code = str(holding.get("code") or "").zfill(6)
-                price = float(_read_json(cache_dir / f"kl_{code}.json")[execution_date])
+                price = (
+                    float(execution["execution_prices"][code])
+                    if key == "ma_v22"
+                    else float(_read_json(cache_dir / f"kl_{code}.json")[execution_date])
+                )
                 gross = price * lot
-                fee = transaction_fees(gross, "buy", code, metadata.get("rules") or {})["total"]
+                fee = (
+                    v5_transaction_fees(gross, "buy", execution_date)["total"]
+                    if key == "v5"
+                    else ma_v22_transaction_fees(gross)["total"]
+                    if key == "ma_v22"
+                    else transaction_fees(gross, "buy", code, metadata.get("rules") or {})["total"]
+                )
                 next_lot_costs.append(gross + fee)
             minimum_next_lot_cost = round(min(next_lot_costs), 2)
-            if float(execution["cash"]) + 1e-8 >= minimum_next_lot_cost:
+            if key in ("v1", "v2", "v3") and float(execution["cash"]) + 1e-8 >= minimum_next_lot_cost:
                 raise RuntimeError(
                     f"{profiles[key]['version']} 演练执行后仍可买一手，不符合全量投入合同"
                 )
@@ -295,7 +401,9 @@ def run_rehearsal(
                     "nav": execution["nav"],
                     "invested_pct": round((1 - float(execution["cash"]) / float(execution["nav"])) * 100, 4),
                     "minimum_next_lot_cost": minimum_next_lot_cost,
-                    "residual_cash_below_one_lot": True,
+                    "residual_cash_below_one_lot": (
+                        float(execution["cash"]) + 1e-8 < minimum_next_lot_cost
+                    ),
                 },
                 "isolated_journal": {
                     "path": journal_path.name,
@@ -313,16 +421,18 @@ def run_rehearsal(
         pre_execution = [row for row in performance["series"] if row["date"] < execution_date]
         if any(
             row["v1_return_pct"] != 0 or row["v2_return_pct"] != 0
-            or row["v3_return_pct"] != 0 or row["benchmark_return_pct"] != 0
+            or row["v3_return_pct"] != 0 or row["v5_return_pct"] != 0
+            or row["ma_v22_return_pct"] != 0
+            or row["benchmark_return_pct"] != 0
             for row in pre_execution
         ):
-            raise RuntimeError("首笔执行前 V1/V2/V3 或 510300 提前产生收益")
+            raise RuntimeError("首笔执行前任一策略或 510300 提前产生收益")
         if performance["benchmark"].get("inception_date") != execution_date:
             raise RuntimeError("510300 没有在 V1 首笔执行日同步建仓")
 
         report = {
-            "schema_version": 2,
-            "kind": "v123_first_cycle_isolated_rehearsal",
+            "schema_version": 4,
+            "kind": "five_strategy_first_cycle_isolated_rehearsal",
             "generated_at": datetime.now(ZoneInfo("Asia/Shanghai")).isoformat(timespec="seconds"),
             "synthetic_data": True,
             "synthetic_price_rule": "未来日期缺价时沿用该股票最近已知收盘价；仅验证控制流，不是预测或选股信号",
@@ -370,7 +480,7 @@ def run_rehearsal(
         for key, profile in profiles.items()
     }
     if production_journal_after != production_journal_before:
-        raise RuntimeError("演练意外修改了正式 V1/V2/V3 账本")
+        raise RuntimeError("演练意外修改了正式五策略账本")
     report["production_journal_sha256_after"] = production_journal_after
     report["production_journals_unchanged"] = True
     report["production_journal_unchanged"] = True
@@ -378,7 +488,7 @@ def run_rehearsal(
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="隔离预演 V1/V2/V3 首期信号、执行和公开业绩链路")
+    parser = argparse.ArgumentParser(description="隔离预演五策略首期信号、执行和公开业绩链路")
     parser.add_argument("--source-cache", type=Path, default=FORWARD_CACHE_DIR)
     parser.add_argument("--signal-date", default=DEFAULT_SIGNAL_DATE)
     parser.add_argument("--execution-date", default=DEFAULT_EXECUTION_DATE)

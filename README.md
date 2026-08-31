@@ -7,8 +7,9 @@
 公开站点：<https://ainioayi.github.io/dividend-strategy-quarterly/>
 
 当前权威状态见 [docs/STRATEGY_STATUS.md](docs/STRATEGY_STATUS.md)。公开站点同时展示
-V1（最多 2 只，正式前向模拟）、V2（最多 3 只，影子）和 V3（最多 4 只，影子）
-三套独立 10 万元账户，以及与 V1 首笔模拟成交同日建仓的 510300 沪深300 ETF
+高息动量 V1（2只正式）、高息动量 V2（3只影子）、高息动量 V3（4只影子）、
+高息动量 V5（附件规则影子）和多资产风险预算 V2.2（全球版影子）五套 10 万元
+账户，以及与高息动量 V1 首笔模拟成交同日建仓的 510300 沪深300 ETF
 基准；每套策略可单独查看累计盈亏、持仓、交易和账本指纹。历史回测曲线不会
 混入前向模拟盘。
 每轮参数、候选池和稳健性证据集中记录在
@@ -31,6 +32,47 @@ V1（最多 2 只，正式前向模拟）、V2（最多 3 只，影子）和 V3�
 
 这些是固定历史样本上的模型结果，不是未来收益承诺。
 
+## V5 独立影子
+
+V5 不替换冻结 V1，也不是 V1 的参数变体。它在同一 210 只冻结覆盖集合上重建，
+使用六只等权、行业唯一、派息覆盖、分红削减退出、60 日波动率门、双下行风险
+阀门、现金计息和 H00922 240 日入场门。历史账户以 100 万元起步，前向影子账户
+独立使用 10 万元。
+
+| 指标 | V5 重建 | 三倍费用 |
+|---|---:|---:|
+| CAGR | 12.88% | 12.49% |
+| 最大回撤 | 21.03% | 21.30% |
+| Sharpe | 0.798 | 0.778 |
+| 交易次数 | 198 | 200 |
+| 滚动 36 月最差 CAGR | 1.63% | 1.25% |
+| 滚动 48 月最差 CAGR | 3.83% | 3.51% |
+
+附件报告的 16.40% 只作参考。本项目按当前冻结缓存、点时 EPS/行业证据和费用
+口径重建，不声明精确复现。V5 输入指纹为
+`2d19f3944d66b6e120357fabaac6508c595c3368ea2e858f8ea7839b26c3a6d2`；
+冻结集合仍可能缺少退市股票，存在幸存者偏差。
+
+## 多资产风险预算 V2.2（全球版影子）
+
+V2.2 使用 510300、518880、513100 三只风险资产和 511010 国债 ETF：126 日正
+动量门控，63 日逆波动率风险预算，组合波动目标 10%，剩余权重进入国债 ETF。
+月末收盘计算信号，下一真实交易日开盘模拟成交，单边换手成本 0.1%。
+
+| 指标 | 当前复算 | 三倍费用 |
+|---|---:|---:|
+| CAGR | 13.12% | 12.02% |
+| 最大回撤 | 13.58% | 13.65% |
+| Sharpe | 1.040 | 0.947 |
+| 交易次数 | 418 | 418 |
+| 滚动 36 月最差 CAGR | 4.32% | 2.94% |
+| 滚动 48 月最差 CAGR | 6.68% | 5.68% |
+
+冻结输入覆盖 3,182 个共同交易日和 24 条基金分红，指纹为
+`e1a9236ccf872b41ac4fb4a2eca22fd5adb64ef6857ab1c0aa3f78d3cc07c994`。参考包没有
+附带自检所需的 `weights_multi.csv` 和 `nav_multi.csv`，因此这里只声明规则和汇总
+指标可复算，不声明逐点完全复现。V2.2 不替换高息动量 V1。
+
 ## 当前决策：冻结 V1，进入模拟盘观察
 
 - V1 已冻结在提交 `c7d128ff0bc1b4b21c60bc7c6e2894dabf513fae`，参数、
@@ -44,27 +86,29 @@ V1（最多 2 只，正式前向模拟）、V2（最多 3 只，影子）和 V3�
   一一闭合而排除，过滤规则不读取回测盈亏。该结果反映人工可交易边界，仍有
   数据可得性偏差，不能称为全市场无偏回测，也不替换冻结 V1。
 - 模拟盘采用只追加账本：2026-08-31 收盘后生成第一期信号，若下一真实
-  交易日为 2026-09-01，则在当日收盘后记录首笔模拟执行。此前账本保持空白
+  交易日为 2026-09-01，高息动量策略在当日收盘模拟执行，V2.2 在当日开盘模拟
+  成交并按收盘估值。此前账本保持空白
   是正确门禁。V1 对策略账户按 100% 目标投入，不设置额外现金保留；实际成交
   仍遵守 A 股 100 股整数手和交易费用，因此允许留下无法继续买入的现金尾差。
   计划持续观察 6–12 个月，期间 V1 参数冻结。用户明确要求的第 31 轮一次性
-  持仓上限扫描已完成，但没有改变 V1。V2/V3 已按用户要求上线为影子观察，
+  持仓上限扫描已完成，但没有改变 V1。高息动量 V2/V3/V5 和多资产风险预算
+  V2.2 已上线为影子观察，
   只能写入 `data/forward/shadow/`，不能改写 V1 账本。
 
 ## 公开业绩自动更新
 
 - GitHub Actions 在每个工作日北京时间 18:30 首次运行，并在 20:30 做同日
-  幂等重试；每次先校验 V1/V2/V3 冻结参数、100% 资金合同和交易日历，再要求 510300
+  幂等重试；每次先校验五策略冻结合同和交易日历，再要求 510300
   已有当日收盘价。任一门禁不满足都不会发布旧数据冒充新数据。
 - 自动任务失败时会创建或更新固定 GitHub Issue；后续运行恢复后自动关闭。
   公开页面超过一个工作日没有新数据时会显示“数据可能滞后”提示。
-- 真实交易日会刷新三策略每日盯市净值、累计盈亏、持仓、交易明细和 510300
+- 真实交易日会刷新五策略每日盯市净值、累计盈亏、持仓、交易明细和 510300
   含分红总回报，写入 `data/forward/performance.json` 和
   `site/performance.json`，随后自动部署 GitHub Pages。510300 只在 V1 首笔模拟
   成交日同步建仓，此前双方均保持 10 万元现金和 0% 收益。
 - 月末信号和下一交易日模拟执行仍由独立的失败关闭门禁控制。季度模型任务只
   更新季度账本，不再重写公开首页。
-- 每次正式任务开始前，先用 210 只正式前向缓存的隔离副本同时预演三策略的
+- 每次正式任务开始前，先用 210 只正式前向缓存的隔离副本同时预演五策略的
   `2026-08-31` 信号、`2026-09-01` 执行和公开业绩生成。演练使用最近已知价
   平移出的模拟未来
   数据，只验证程序链路；它不写正式账本，也不是预测或提前选股。
@@ -73,7 +117,7 @@ V1（最多 2 只，正式前向模拟）、V2（最多 3 只，影子）和 V3�
   交易日并执行完整预演，但不会创建或关闭正式更新告警。最近一次本地审计结果
   保存在 `data/forward_first_cycle_rehearsal.json`。
 
-## 规则
+## V1 主策略规则
 
 - 候选覆盖 manifest 中的 210 只股票；每个信号日重新检查截至当日已经除权的分红记录，连续正分红至少 3 年才进入动态池。
 - 候选池年度确认边界默认为 `pool_switch_month=7`；1–6 月使用更保守的前两年确认年度，7 月起才纳入上一年度。
@@ -262,6 +306,30 @@ PR 门槛，也不能把实时的 8 年门槛倒灌到历史回测。
 python scripts/round31_holdings_sweep.py
 ```
 
+复现第 32 轮 V5 重建：
+
+```powershell
+python scripts/v5_strategy.py `
+  --input data/v5_inputs.json `
+  --dates data/rebalance_dates_monthly.json `
+  --cache-dir data/backtest_cache `
+  --output data/round32_v5_rebuild.json `
+  --initial-capital 1000000
+
+python scripts/monthly_forward.py --strategy v5 verify
+```
+
+复现第 33 轮多资产风险预算 V2.2：
+
+```powershell
+python scripts/ma_v22_strategy.py `
+  --input data/ma_v22_inputs.json `
+  --output data/round33_ma_v22_rebuild.json `
+  --initial-capital 1000000
+
+python scripts/monthly_forward.py --strategy ma_v22 verify
+```
+
 ## 运行检查
 
 ```powershell
@@ -300,15 +368,17 @@ git diff --check
 - `data/round29_attribution.json`：收益归因分析（个股/分红vs资本利得/年度/集中度）。
 - `data/round30_fragility_audit.json`：冻结 V1 的个股、行业和三倍费用脆弱性审计，以及 510880 含分红可交易基准。
 - `data/round31_holdings_sweep.json`：`max_holdings=2..10` 的完整账本、连续样本外、滚动窗口、三倍费用和重置窗口比较。
+- `data/round32_v5_rebuild.json`、`data/v5_inputs.json`、`data/v5_industries.json`：V5 重建结果、冻结辅助输入和历史行业分类证据。
+- `data/round33_ma_v22_rebuild.json`、`data/ma_v22_inputs.json`：多资产风险预算 V2.2 的规则复算结果、四 ETF 行情、基金分红和参考附件指纹。
 - `data/historical_universe_status.json`、`data/historical_filtered_manifest.json`、`data/historical_v1_filtered.json`：人工数据质量门禁状态、237 只过滤清单和正式回放结果；状态为 `complete_with_exclusions`，不是全市场无偏回测。
 - `data/historical/eligible_listed_prices.json.gz`、`data/historical/eligible_listed_prices_manifest.json`、`data/historical/listed_dividends.json`：在市股票价格归档、价格核验清单和分红门禁证据。
 - `data/historical_v1_provisional.json`：早期仅补入退市股票的临时压力回放，已由人工门禁正式回放取代，但保留作历史审计。
 - `data/v1_freeze.json`：V1 提交、规则、输入和基线结果的固定指纹。
-- `data/forward_first_cycle_rehearsal.json`：210 只缓存的 V1/V2/V3 首期信号、执行、
+- `data/forward_first_cycle_rehearsal.json`：210 只缓存的五策略首期信号、执行、
   资金尾差和公开业绩隔离演练报告；使用模拟未来价格，只能证明程序链路。
 - `data/forward/`：与冻结回测隔离的前向缓存、版本化输入和只追加模拟账本。
 - `docs/UNIVERSE_MANIFEST.md`：候选池 manifest 的生成和校验规则。
-- `site/`：V1/V2/V3 前向公开业绩页面和发布数据；旧季度页面保存在 `site/archive/`。
+- `site/`：五策略前向公开业绩页面和发布数据；旧季度页面保存在 `site/archive/`。
 
 当前 210 只代码是截至截止日冻结的现存缓存集合，缺少退市股票和历史成分
 变化，仍有幸存者偏差；月度 NAV 不包含月内路径，税费也不是逐笔 FIFO

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "strategy": "月度高息动量策略 V2 影子观察",
+  "strategy": "高息动量 V2（3只影子）",
   "mode": "只追加影子模型账本，不连接券商、不自动下单",
   "v1_commit": "c7d128ff0bc1b4b21c60bc7c6e2894dabf513fae",
   "forward_start_date": "2026-08-25",
@@ -35,7 +35,7 @@
     "buy_commission_rate": 0.0003,
     "sell_commission_rate": 0.0003,
     "stamp_duty_rate": 0.0005,
-    "transfer_fee_rate": 0.00001,
+    "transfer_fee_rate": 1e-05,
     "min_commission": 5.0,
     "pool_mode": "dynamic",
     "pool_min_consecutive_years": 3,
@@ -61,7 +61,12 @@
     "v2_mode": "shadow_only",
     "v2_output_root": "data/forward/shadow",
     "v2_can_write_v1_journal": false,
-    "shadow_versions": ["V2", "V3"],
+    "shadow_versions": [
+      "V2",
+      "V3",
+      "V5",
+      "V2.2"
+    ],
     "shadow_can_write_v1_journal": false
   },
   "status": "等待 2026-08-31 收盘后的完整冻结输入，尚未生成信号",
@@ -69,6 +74,10 @@
   "version": "V2",
   "shadow": true,
   "base_strategy": "V1",
-  "only_rule_change": {"field": "max_holdings", "from": 2, "to": 3},
-  "journal": "data/forward/shadow/monthly_v2.jsonl"
+  "journal": "data/forward/shadow/monthly_v2.jsonl",
+  "only_rule_change": {
+    "field": "max_holdings",
+    "from": 2,
+    "to": 3
+  }
 }

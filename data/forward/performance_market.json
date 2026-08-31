@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "as_of": "2026-08-27",
-  "retrieved_at": "2026-08-28T00:14:18+08:00",
+  "as_of": "2026-08-28",
+  "retrieved_at": "2026-08-30T23:24:12+08:00",
   "price_format": "unadjusted_close",
   "benchmark": {
     "code": "510300",
@@ -21,6 +21,11 @@
         "date": "2026-08-27",
         "close": 4.691,
         "volume_shares": 641929734
+      },
+      {
+        "date": "2026-08-28",
+        "close": 4.679,
+        "volume_shares": 604693322
       }
     ],
     "dividends": [],
@@ -40,13 +45,13 @@
       }
     },
     "hashes": {
-      "prices_sha256": "f1a608686dbfaf275e12fd108a27681f17478b05ecad6e626990861be8bb2a6b",
+      "prices_sha256": "41a199e3f47f0a5b77e0d18cea7d4b9d93a1b0f11e1f05042862f82cb7091538",
       "dividends_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
     }
   },
   "securities": {},
   "active_codes": [],
   "hashes": {
-    "content_sha256": "ea21432c24d7c81a023b80938fd387dddd21acf4564a5e49da01d356daffedf9"
+    "content_sha256": "1fcd7bc00a75733bdb287ecac6fd5673f4bd3b2b4588f7a5da751246e3240947"
   }
 }

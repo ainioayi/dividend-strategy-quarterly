@@ -1,0 +1,73 @@
+{
+  "schema_version": 1,
+  "strategy": "多资产风险预算 V2.2（全球版影子）",
+  "mode": "只追加影子模型账本，不连接券商、不自动下单",
+  "v1_commit": "c7d128ff0bc1b4b21c60bc7c6e2894dabf513fae",
+  "forward_start_date": "2026-08-25",
+  "first_signal_date": "2026-08-31",
+  "first_execution_rule": "首期信号日之后的下一真实交易日开盘模拟成交，并按当日收盘估值；预期 2026-09-01",
+  "frozen_backtest_input": {
+    "price_format": "tencent_hfq_signal_raw_execution",
+    "assets": [
+      "510300",
+      "518880",
+      "513100",
+      "511010"
+    ]
+  },
+  "rules": {
+    "initial_capital": 100000.0,
+    "frequency": "monthly",
+    "execution_timing": "next_trading_day_open",
+    "risk_assets": [
+      "csi",
+      "gold",
+      "nq"
+    ],
+    "momentum_lookback_days": 126,
+    "volatility_window_days": 63,
+    "target_volatility": 0.1,
+    "max_holdings": 4,
+    "lot_size": 100,
+    "transaction_cost_rate": 0.001,
+    "risk_free_rate": 0.02
+  },
+  "rules_sha256": "4d2534532492ced418d1df961504ec19decf9336b7548a12b5ad0a5d2276ab9f",
+  "capital_policy": {
+    "target_allocation_pct": 100,
+    "cash_reserve": 0,
+    "residual_cash_rule": "仅保留整数手和交易费用约束下无法继续买入的现金"
+  },
+  "observation_policy": {
+    "minimum_months": 6,
+    "target_months": 12,
+    "parameter_changes_allowed": false,
+    "v2_mode": "shadow_only",
+    "v2_output_root": "data/forward/shadow",
+    "v2_can_write_v1_journal": false,
+    "shadow_versions": [
+      "V2",
+      "V3",
+      "V5",
+      "V2.2"
+    ],
+    "shadow_can_write_v1_journal": false
+  },
+  "status": "等待 2026-08-31 收盘后的完整冻结输入，尚未生成信号",
+  "strategy_id": "ma_v22",
+  "version": "V2.2",
+  "shadow": true,
+  "base_strategy": null,
+  "journal": "data/forward/shadow/monthly_ma_v22.jsonl",
+  "attachment_sha256": {
+    "config.py": "afe2bb3d55ef1b2378849c974a5853b27976a423f2b9b3d8ec75e1c18620eb03",
+    "strategy.py": "1d5b2987466622f87ae9549a1d8d3d57c5a9b00b7382ec0244644721653ef733",
+    "fetcher.py": "d4b8c8e212553bb112bb398a05f3a37285f17c1d15c0187b3699286260f352c7",
+    "monitor.py": "f34d8f8ec379f8f29005669f598ba2b78c388026d4aca507d3b88e1ad1bd93ff",
+    "notify.py": "04cfd326fb72ef0830eb8267fb51676dd220b2309acfcb71e9eb974b345d3105",
+    "selfcheck.py": "6fa2dc851a69138f7ea93676cdfde6a1c53b3d8c52c56fd01c17743efc5f4c4d",
+    "requirements.txt": "809ecb105b8e60b9f697c628a9a72c3e587fb4747bf9f1836cc72117dbd45f8b",
+    "reference_chart.png": "a329852eeab6975a9cfbdbcbd06757860cedd517d093c31adbb10e9c82f77945"
+  },
+  "ma_v22_input": "data/ma_v22_inputs.json"
+}

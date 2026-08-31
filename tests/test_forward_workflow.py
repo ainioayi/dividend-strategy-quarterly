@@ -11,10 +11,17 @@ def test_forward_workflow_has_retry_freeze_gate_and_issue_alert() -> None:
     assert "python scripts/verify_v1_freeze.py" in workflow
     assert "python scripts/monthly_forward.py verify" in workflow
     assert "python scripts/rehearse_forward_cycle.py" in workflow
+    assert "python scripts/monthly_forward.py --strategy ma_v22 verify" in workflow
+    assert "python scripts/refresh_ma_v22_inputs.py" in workflow
+    assert "--strategy ma_v22" in workflow
+    assert "MA_V22_OUTCOME" in workflow
     assert "options: [auto, signal, execute, rehearsal]" in workflow
     assert "if: inputs.mode != 'rehearsal'" in workflow
     assert 'if [[ "$RUN_MODE" == "rehearsal" ]]' in workflow
-    assert "[自动告警] V1 前向更新失败" in workflow
+    assert "id: v5_nav\n        continue-on-error: true" in workflow
+    assert "id: v5_inputs\n        continue-on-error: true" in workflow
+    assert "steps.v5_nav.outcome == 'failure' || steps.v5_inputs.outcome == 'failure'" in workflow
+    assert "[自动告警] 五策略前向更新失败" in workflow
     assert "gh issue close" in workflow
 
 

@@ -1,6 +1,6 @@
 {
   "schema_version": 1,
-  "strategy": "月度高息动量策略 V1 前向观察",
+  "strategy": "高息动量 V1（2只正式）",
   "mode": "只追加模型账本，不连接券商、不自动下单",
   "v1_commit": "c7d128ff0bc1b4b21c60bc7c6e2894dabf513fae",
   "forward_start_date": "2026-08-25",
@@ -35,7 +35,7 @@
     "buy_commission_rate": 0.0003,
     "sell_commission_rate": 0.0003,
     "stamp_duty_rate": 0.0005,
-    "transfer_fee_rate": 0.00001,
+    "transfer_fee_rate": 1e-05,
     "min_commission": 5.0,
     "pool_mode": "dynamic",
     "pool_min_consecutive_years": 3,
@@ -63,7 +63,9 @@
     "v2_can_write_v1_journal": false,
     "shadow_versions": [
       "V2",
-      "V3"
+      "V3",
+      "V5",
+      "V2.2"
     ],
     "shadow_can_write_v1_journal": false
   },

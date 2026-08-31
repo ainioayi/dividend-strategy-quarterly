@@ -1,4 +1,4 @@
-name: V1/V2/V3 前向观察与公开业绩
+name: 五策略前向观察与公开业绩
 
 on:
   schedule:
@@ -23,7 +23,7 @@ permissions:
   issues: write
 
 concurrency:
-  group: monthly-forward-v123
+  group: monthly-forward-five-strategies
   cancel-in-progress: false
 
 jobs:
@@ -43,15 +43,17 @@ jobs:
       - name: 安装依赖
         run: pip install -r requirements.txt
 
-      - name: 校验 V1 冻结与三策略全量资金合同
+      - name: 校验 V1 冻结与五策略合同
         run: |
           python scripts/verify_v1_freeze.py
           python scripts/monthly_forward.py verify
           python scripts/monthly_forward.py --strategy v2 verify
           python scripts/monthly_forward.py --strategy v3 verify
+          python scripts/monthly_forward.py --strategy v5 verify
+          python scripts/monthly_forward.py --strategy ma_v22 verify
 
-      - name: 隔离预演首期信号与执行链路
-        run: python scripts/rehearse_forward_cycle.py --verify-live-calendar --output "$RUNNER_TEMP/v123-forward-rehearsal.json"
+      - name: 隔离预演五策略首期信号与执行链路
+        run: python scripts/rehearse_forward_cycle.py --verify-live-calendar --output "$RUNNER_TEMP/five-strategy-forward-rehearsal.json"
 
       - name: 计算北京时间截止日
         if: inputs.mode != 'rehearsal'
@@ -112,6 +114,40 @@ jobs:
             --as-of "${{ steps.date.outputs.as_of }}" `
             --output data/forward/inputs/rebalance_dates_monthly.json
 
+      - name: 刷新 V5 信号日策略净值
+        id: v5_nav
+        continue-on-error: true
+        if: steps.plan.outputs.action == 'signal'
+        shell: pwsh
+        run: |
+          python scripts/forward_performance.py `
+            --as-of "${{ steps.date.outputs.as_of }}"
+
+      - name: 冻结 V5 独立辅助输入
+        id: v5_inputs
+        continue-on-error: true
+        if: steps.plan.outputs.action == 'signal' && steps.v5_nav.outcome == 'success'
+        shell: pwsh
+        run: |
+          python scripts/refresh_v5_inputs.py `
+            --manifest data/forward/inputs/universe_manifest.json `
+            --industries data/v5_industries.json `
+            --cache-dir data/forward/cache `
+            --strategy-nav data/round32_v5_rebuild.json `
+            --strategy-nav data/forward/performance.json `
+            --as-of "${{ steps.date.outputs.as_of }}" `
+            --output data/v5_inputs.json
+
+      - name: 刷新多资产风险预算 V2.2 输入
+        id: ma_v22_inputs
+        continue-on-error: true
+        if: steps.plan.outputs.action == 'signal' || steps.plan.outputs.action == 'execute'
+        shell: pwsh
+        run: |
+          python scripts/refresh_ma_v22_inputs.py `
+            --as-of "${{ steps.date.outputs.as_of }}" `
+            --output data/ma_v22_inputs.json
+
       - name: 更新 V1 正式前向账本
         id: v1
         if: steps.plan.outputs.action == 'signal' || steps.plan.outputs.action == 'execute'
@@ -143,20 +179,46 @@ jobs:
             --date "${{ steps.date.outputs.as_of }}" `
             --mode "${{ steps.plan.outputs.action }}"
 
-      - name: 记录三策略独立健康状态
+      - name: 更新 V5 影子账本
+        id: v5
+        continue-on-error: true
+        if: steps.plan.outputs.action == 'signal' || steps.plan.outputs.action == 'execute'
+        shell: pwsh
+        run: |
+          python scripts/forward_daily.py `
+            --strategy v5 `
+            --date "${{ steps.date.outputs.as_of }}" `
+            --mode "${{ steps.plan.outputs.action }}"
+
+      - name: 更新多资产风险预算 V2.2 影子账本
+        id: ma_v22
+        continue-on-error: true
+        if: steps.plan.outputs.action == 'signal' || steps.plan.outputs.action == 'execute'
+        shell: pwsh
+        run: |
+          python scripts/forward_daily.py `
+            --strategy ma_v22 `
+            --date "${{ steps.date.outputs.as_of }}" `
+            --mode "${{ steps.plan.outputs.action }}"
+
+      - name: 记录五策略独立健康状态
         if: steps.plan.outputs.action == 'signal' || steps.plan.outputs.action == 'execute'
         shell: pwsh
         env:
           V1_OUTCOME: ${{ steps.v1.outcome }}
           V2_OUTCOME: ${{ steps.v2.outcome }}
           V3_OUTCOME: ${{ steps.v3.outcome }}
+          V5_OUTCOME: ${{ (steps.v5_nav.outcome == 'failure' || steps.v5_inputs.outcome == 'failure') && 'failure' || steps.v5.outcome }}
+          MA_V22_OUTCOME: ${{ (steps.ma_v22_inputs.outcome == 'failure') && 'failure' || steps.ma_v22.outcome }}
         run: |
           python scripts/update_forward_health.py `
             --as-of "${{ steps.date.outputs.as_of }}" `
             --action "${{ steps.plan.outputs.action }}" `
             --v1 $env:V1_OUTCOME `
             --v2 $env:V2_OUTCOME `
-            --v3 $env:V3_OUTCOME
+            --v3 $env:V3_OUTCOME `
+            --v5 $env:V5_OUTCOME `
+            --ma_v22 $env:MA_V22_OUTCOME
 
       - name: 刷新每日公开业绩
         if: steps.plan.outputs.is_trading_day == 'true'
@@ -169,7 +231,7 @@ jobs:
         if: steps.plan.outputs.is_trading_day == 'true'
         shell: pwsh
         run: |
-          pytest -q tests/test_monthly_forward.py tests/test_forward_daily.py tests/test_forward_performance.py tests/test_rehearse_forward_cycle.py tests/test_refresh_backtest_cache.py tests/test_tradeable_benchmark.py
+          pytest -q tests/test_monthly_forward.py tests/test_forward_daily.py tests/test_forward_performance.py tests/test_rehearse_forward_cycle.py tests/test_update_forward_health.py tests/test_refresh_backtest_cache.py tests/test_refresh_v5_inputs.py tests/test_v5_strategy.py tests/test_refresh_ma_v22_inputs.py tests/test_ma_v22_strategy.py tests/test_tradeable_benchmark.py
           python -m compileall -q scripts tests
           git diff --check
 
@@ -179,19 +241,19 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/forward site/performance.json
+          git add data/forward data/v5_inputs.json data/ma_v22_inputs.json site/performance.json
           git diff --cached --quiet
           if ($LASTEXITCODE -eq 0) {
             Write-Host "没有需要提交的前向业绩变化"
             exit 0
           }
-          git commit -m "更新 V1/V2/V3 前向业绩 ${{ steps.date.outputs.as_of }}"
+          git commit -m "更新五策略前向业绩 ${{ steps.date.outputs.as_of }}"
           git push
 
       - name: 影子账本失败时在发布后标记任务失败
-        if: always() && (steps.v2.outcome == 'failure' || steps.v3.outcome == 'failure')
+        if: always() && (steps.v2.outcome == 'failure' || steps.v3.outcome == 'failure' || steps.v5_nav.outcome == 'failure' || steps.v5_inputs.outcome == 'failure' || steps.v5.outcome == 'failure' || steps.ma_v22_inputs.outcome == 'failure' || steps.ma_v22.outcome == 'failure')
         run: |
-          echo "V1 已独立处理；V2/V3 至少一个失败，公开页健康状态已保留失败证据。"
+          echo "高息动量 V1 已独立处理；至少一个影子策略失败，公开页健康状态已保留失败证据。"
           exit 1
 
       - name: 记录月度门禁无动作原因
@@ -215,14 +277,14 @@ jobs:
         shell: bash
         run: |
           set -euo pipefail
-          title="[自动告警] V1 前向更新失败"
+          title="[自动告警] 五策略前向更新失败"
           issue_number="$(
             gh issue list \
               --repo "$GH_REPO" \
               --state open \
               --limit 100 \
               --json number,title \
-              --jq '.[] | select(.title == "[自动告警] V1 前向更新失败") | .number' \
+              --jq '.[] | select(.title == "[自动告警] 五策略前向更新失败") | .number' \
               | head -n 1
           )"
           note="$RUNNER_TEMP/v1-forward-health.md"
@@ -246,6 +308,6 @@ jobs:
               gh issue create --repo "$GH_REPO" --title "$title" --body-file "$note"
             fi
           elif [[ "$UPDATE_RESULT" == "success" && -n "$issue_number" ]]; then
-            gh issue comment "$issue_number" --repo "$GH_REPO" --body "V1/V2/V3 前向更新已恢复：$RUN_URL"
+            gh issue comment "$issue_number" --repo "$GH_REPO" --body "五策略前向更新已恢复：$RUN_URL"
             gh issue close "$issue_number" --repo "$GH_REPO" --reason completed
           fi

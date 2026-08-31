@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="月度高息动量 V1/V2/V3 前向模拟公开业绩：四线收益对比、独立持仓、交易和累计盈亏。">
+  <meta name="description" content="高息动量 V1/V2/V3/V5 与多资产风险预算 V2.2 前向模拟公开业绩。">
   <meta name="color-scheme" content="light dark">
   <link rel="icon" href="data:,">
   <title>策略公开业绩</title>
@@ -22,6 +22,8 @@
       --accent-soft: #faecee;
       --v2: #1d6fa5;
       --v3: #9a6a13;
+      --v5: #6d4aa2;
+      --ma-v22: #18785d;
       --negative: #16795a;
       --benchmark: #626a75;
       --chart-grid: #e3e6ea;
@@ -50,6 +52,8 @@
         --accent-soft: #321f23;
         --v2: #67b7e8;
         --v3: #e7b557;
+        --v5: #b997e8;
+        --ma-v22: #55c7a0;
         --negative: #55c59d;
         --benchmark: #b3b9c2;
         --chart-grid: #30343a;
@@ -175,7 +179,7 @@
 
     .strategy-tabs {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: repeat(5, minmax(0, 1fr));
       gap: 1px;
       overflow: hidden;
       margin: 12px 0;
@@ -200,6 +204,8 @@
     .strategy-tab.v1 { --strategy-color: var(--accent); }
     .strategy-tab.v2 { --strategy-color: var(--v2); }
     .strategy-tab.v3 { --strategy-color: var(--v3); }
+    .strategy-tab.v5 { --strategy-color: var(--v5); }
+    .strategy-tab.ma_v22 { --strategy-color: var(--ma-v22); }
 
     .score {
       display: grid;
@@ -281,6 +287,8 @@
     .legend-mark { width: 20px; height: 3px; border-radius: 2px; background: var(--accent); }
     .legend-mark.v2 { background: var(--v2); }
     .legend-mark.v3 { background: var(--v3); }
+    .legend-mark.v5 { background: var(--v5); }
+    .legend-mark.ma_v22 { background: var(--ma-v22); }
     .legend-mark.benchmark { height: 2px; background: var(--benchmark); }
     .chart-latest { color: var(--muted); font-family: var(--mono); font-size: 10px; }
     .chart-scroll { min-height: 360px; overflow-x: auto; overflow-y: hidden; scrollbar-color: var(--line-strong) transparent; }
@@ -306,12 +314,14 @@
     .tooltip-row .strategy { color: var(--accent); }
     .tooltip-row .v2 { color: var(--v2); }
     .tooltip-row .v3 { color: var(--v3); }
+    .tooltip-row .v5 { color: var(--v5); }
+    .tooltip-row .ma_v22 { color: var(--ma-v22); }
     .tooltip-row .benchmark { color: var(--benchmark); }
     .chart-foot { min-height: 42px; padding: 0 18px; display: flex; align-items: center; gap: 26px; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; }
 
     .summary-strip {
       display: grid;
-      grid-template-columns: repeat(5, 1fr);
+      grid-template-columns: repeat(6, 1fr);
       overflow: hidden;
       margin-top: 12px;
       border: 1px solid var(--line);
@@ -371,6 +381,7 @@
     @media (max-width: 900px) {
       .shell { width: min(100% - 32px, 1180px); }
       .nav-links { display: none; }
+      .strategy-tabs { grid-template-columns: repeat(5, minmax(160px, 1fr)); overflow-x: auto; }
       .score { grid-template-columns: 1fr; }
       .score-primary { min-height: 210px; border-right: 0; border-bottom: 1px solid var(--line); }
       .summary-strip { grid-template-columns: repeat(2, 1fr); }
@@ -431,7 +442,7 @@
 </head>
 <body>
   <main id="app" class="loading-screen" aria-live="polite">
-    <div class="loading-layout" aria-label="正在读取 V1、V2、V3 公开账本">
+    <div class="loading-layout" aria-label="正在读取五策略公开账本">
       <div class="loading-nav"><div class="skeleton-line"></div></div>
       <div class="loading-panel"><div class="skeleton-line"></div></div>
       <div class="loading-chart"><div class="skeleton-line"></div></div>
@@ -445,7 +456,7 @@
       const query = new URLSearchParams(location.search);
       const state = {
         range: ['30', '90', 'all'].includes(query.get('range')) ? query.get('range') : 'all',
-        strategy: ['v1', 'v2', 'v3'].includes(query.get('strategy')) ? query.get('strategy') : 'v1',
+        strategy: ['v1', 'v2', 'v3', 'v5', 'ma_v22'].includes(query.get('strategy')) ? query.get('strategy') : 'v1',
         data: null,
         chartRows: []
       };
@@ -469,17 +480,20 @@
       const dateLabel = value => String(value || '').slice(5).replace('-', '/');
       const priceFormatLabel = value => value === 'unadjusted_close' ? '未复权收盘价' : String(value || '--');
       const strategyLabels = {
-        v1: { name: 'V1 正式', detail: '最多 2 只', color: 'var(--accent)' },
-        v2: { name: 'V2 影子', detail: '最多 3 只', color: 'var(--v2)' },
-        v3: { name: 'V3 影子', detail: '最多 4 只', color: 'var(--v3)' }
+        v1: { name: '高息动量 V1（2只正式）', detail: '正式前向', color: 'var(--accent)' },
+        v2: { name: '高息动量 V2（3只影子）', detail: '影子观察', color: 'var(--v2)' },
+        v3: { name: '高息动量 V3（4只影子）', detail: '影子观察', color: 'var(--v3)' },
+        v5: { name: '高息动量 V5（附件规则影子）', detail: '独立附件规则', color: 'var(--v5)' },
+        ma_v22: { name: '多资产风险预算 V2.2（全球版影子）', detail: '四 ETF 风险预算', color: 'var(--ma-v22)' }
       };
+      const strategyIds = Object.keys(strategyLabels);
 
       function strategyEntry(data, strategyId = state.strategy) {
         return data.strategies?.[strategyId];
       }
 
       function strategyTabs(data) {
-        return `<div class="strategy-tabs" role="tablist" aria-label="查看策略独立账本">${['v1', 'v2', 'v3'].map(id => {
+        return `<div class="strategy-tabs" role="tablist" aria-label="查看策略独立账本">${strategyIds.map(id => {
           const entry = strategyEntry(data, id);
           const label = strategyLabels[id];
           const failed = entry.health?.outcome === 'failure' ? ' · 更新失败' : '';
@@ -548,9 +562,7 @@
         state.chartRows = rows;
         const { width: W, height: H, left: L, right: R, top: T, bottom: B } = CHART;
         const lines = [
-          { id: 'v1', key: 'v1_return_pct', color: 'var(--accent)', width: 3 },
-          { id: 'v2', key: 'v2_return_pct', color: 'var(--v2)', width: 2.5 },
-          { id: 'v3', key: 'v3_return_pct', color: 'var(--v3)', width: 2.5 },
+          ...strategyIds.map(id => ({ id, key: `${id}_return_pct`, color: strategyLabels[id].color, width: id === 'v1' ? 3 : 2.5 })),
           { id: 'benchmark', key: 'benchmark_return_pct', color: 'var(--benchmark)', width: 2.2, dash: '7 6' }
         ];
         const values = rows.flatMap(row => lines.map(line => Number(row[line.key])));
@@ -580,7 +592,7 @@
           return `<path d="${path}" fill="none" stroke="${line.color}" stroke-width="${line.width}" ${line.dash ? `stroke-dasharray="${line.dash}"` : ''} stroke-linecap="round" stroke-linejoin="round"/>`;
         }).join('');
         const points = lines.map(line => `<circle cx="${lastX}" cy="${y(Number(last[line.key]))}" r="4.5" fill="var(--surface)" stroke="${line.color}" stroke-width="2.5"/>`).join('');
-        return `<svg class="performance-chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="V1、V2、V3 与 510300 沪深300 ETF 累计收益率曲线">
+        return `<svg class="performance-chart" viewBox="0 0 ${W} ${H}" role="img" aria-label="五策略与 510300 沪深300 ETF 累计收益率曲线">
           ${grid.join('')}${labels}
           ${paths}${points}
           <rect class="chart-hit-area" x="${L}" y="${T}" width="${W - L - R}" height="${H - T - B}" fill="transparent" tabindex="0" aria-label="移动指针查看每日收益"/>
@@ -591,7 +603,7 @@
         const benchmarkLabel = data.benchmark.inception_date
           ? '510300 沪深300 ETF'
           : '510300 沪深300 ETF（等待同步建仓）';
-        const legend = ['v1', 'v2', 'v3'].map(id => {
+        const legend = strategyIds.map(id => {
           const entry = strategyEntry(data, id);
           return `<div class="legend-item"><span class="legend-mark ${id}"></span><span>${strategyLabels[id].name}</span><strong class="${tone(entry.summary.cumulative_return_pct)}">${pct(entry.summary.cumulative_return_pct)}</strong></div>`;
         }).join('');
@@ -606,8 +618,8 @@
           <div class="chart-scroll">${chartSvg(data)}</div>
           <div class="chart-tooltip" role="status"></div>
           <div class="chart-foot">
-            <span>四组均以 ${money(data.strategy.initial_capital)} 起始</span>
-            <span>三策略各自独立计费</span>
+            <span>六组均以 ${money(data.strategy.initial_capital)} 起始</span>
+            <span>五策略各自独立计费</span>
             <span>ETF 现金分红复投</span>
           </div>
         </div>`;
@@ -619,7 +631,7 @@
           : '510300 等待同步建仓';
         const selected = strategyEntry(data);
         return `<div class="summary-strip">
-          ${['v1', 'v2', 'v3'].map(id => {
+          ${strategyIds.map(id => {
             const value = strategyEntry(data, id).summary.cumulative_return_pct;
             return `<div class="summary-item"><span>${strategyLabels[id].name}累计收益</span><strong class="${tone(value)}">${pct(value)}</strong></div>`;
           }).join('')}
@@ -677,11 +689,11 @@
         const summary = selected.summary;
         const selectedLabel = strategyLabels[state.strategy];
         const failed = selected.health?.outcome === 'failure';
-        document.title = `V1/V2/V3 公开业绩 · ${data.as_of}`;
+        document.title = `五策略公开业绩 · ${data.as_of}`;
         app.className = '';
         app.innerHTML = `<div class="page">
           <header class="site-header"><div class="shell header-row">
-            <a class="brand" href="#top" aria-label="返回页面顶部"><span class="brand-mark">V</span><span class="brand-copy"><strong>公开业绩</strong><small>三策略独立模拟账本</small></span></a>
+            <a class="brand" href="#top" aria-label="返回页面顶部"><span class="brand-mark">V</span><span class="brand-copy"><strong>公开业绩</strong><small>五策略独立模拟账本</small></span></a>
             <nav class="nav-links" aria-label="页面导航"><a href="#curve">收益曲线</a><a href="#holdings">当前持仓</a><a href="#transactions">交易明细</a><a href="#method">数据口径</a></nav>
             <div class="asof"><span>数据截至</span><strong>${escapeHtml(data.as_of)}</strong></div>
           </div></header>
@@ -690,7 +702,7 @@
             ${strategyTabs(data)}
             <section class="score" aria-labelledby="strategy-name">
               <div class="score-primary">
-                <div><div class="eyebrow">${state.strategy === 'v1' ? '正式前向模拟' : '影子前向观察'}</div><h1 id="strategy-name">月度高息动量 ${escapeHtml(summary.version)}</h1></div>
+                <div><div class="eyebrow">${state.strategy === 'v1' ? '正式前向模拟' : '影子前向观察'}</div><h1 id="strategy-name">${escapeHtml(summary.name)}</h1></div>
                 <div><div class="hero-return ${tone(summary.cumulative_return_pct)}">${pct(summary.cumulative_return_pct)}</div><small>累计收益，独立起始资金 ${money(summary.initial_capital)}</small></div>
               </div>
               <div class="score-grid">
@@ -698,11 +710,13 @@
                 <div class="metric"><span>总资产</span><strong>${money(summary.total_assets)}</strong></div>
                 <div class="metric"><span>成交次数</span><strong class="num">${number(summary.trade_count)} 笔</strong></div>
                 <div class="metric"><span>当前持仓</span><strong class="num">${number(summary.holdings_count)} / ${number(summary.max_holdings)} 只</strong></div>
+                <div class="metric"><span>现金余额</span><strong>${money(summary.cash)}</strong></div>
+                <div class="metric"><span>累计费用</span><strong>${money(summary.fees)}</strong></div>
               </div>
             </section>
 
             <section class="section" id="curve"><div class="section-head">
-              <div class="section-title"><h2>收益曲线</h2><span class="hint">V1、V2、V3 与 510300 沪深300 ETF 使用同一起点对比</span></div>${rangeControl()}
+              <div class="section-title"><h2>收益曲线</h2><span class="hint">五策略与 510300 沪深300 ETF 使用同一起点对比</span></div>${rangeControl()}
             </div>${chartBlock(data)}${summaryStrip(data)}</section>
 
             <section class="section" id="holdings"><div class="section-head">
@@ -728,8 +742,11 @@
             </div>
           </div></section>
 
-          <footer class="site-footer"><div class="shell footer-row"><span>V1 正式 · V2/V3 影子公开业绩</span><span>生成时间 ${escapeHtml(data.generated_at)}</span></div></footer>
+          <footer class="site-footer"><div class="shell footer-row"><span>高息动量 V1 正式 · 其余四策略影子公开业绩</span><span>生成时间 ${escapeHtml(data.generated_at)}</span></div></footer>
         </div>`;
+        const tabs = document.querySelector('.strategy-tabs');
+        const activeTab = tabs?.querySelector('.strategy-tab.active');
+        if (tabs && activeTab) tabs.scrollLeft = Math.max(0, activeTab.offsetLeft + activeTab.offsetWidth - tabs.clientWidth);
         bindInteractions();
       }
 
@@ -763,9 +780,7 @@
           const left = Math.min(shellRect.width - 100, Math.max(100, clientX - shellRect.left));
           tooltip.style.left = `${left}px`;
           tooltip.innerHTML = `<strong>${escapeHtml(row.date)}</strong>
-            <div class="tooltip-row"><span>V1 正式</span><span class="strategy">${pct(row.v1_return_pct)}</span></div>
-            <div class="tooltip-row"><span>V2 影子</span><span class="v2">${pct(row.v2_return_pct)}</span></div>
-            <div class="tooltip-row"><span>V3 影子</span><span class="v3">${pct(row.v3_return_pct)}</span></div>
+            ${strategyIds.map(id => `<div class="tooltip-row"><span>${strategyLabels[id].name}</span><span class="${id === 'v1' ? 'strategy' : id}">${pct(row[`${id}_return_pct`])}</span></div>`).join('')}
             <div class="tooltip-row"><span>510300</span><span class="benchmark">${pct(row.benchmark_return_pct)}</span></div>
             <div class="tooltip-row"><span>${strategyLabels[state.strategy].name}资产</span><span>${money(row[`${state.strategy}_nav`])}</span></div>`;
           tooltip.classList.add('visible');
@@ -787,7 +802,7 @@
           const response = await fetch(`./performance.json?v=${Date.now()}`, { cache: 'no-store' });
           if (!response.ok) throw new Error(`performance.json 返回 HTTP ${response.status}`);
           const data = await response.json();
-          if (data.schema_version !== 2 || !data.strategies?.v1 || !data.strategies?.v2 || !data.strategies?.v3 || !Array.isArray(data.series) || !data.series.length) {
+          if (data.schema_version !== 4 || strategyIds.some(id => !data.strategies?.[id]) || !Array.isArray(data.series) || !data.series.length) {
             throw new Error('公开业绩数据格式不完整，已停止渲染');
           }
           state.data = data;

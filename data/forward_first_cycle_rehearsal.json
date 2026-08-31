@@ -1,18 +1,18 @@
 {
-  "schema_version": 2,
-  "kind": "v123_first_cycle_isolated_rehearsal",
-  "generated_at": "2026-08-28T13:03:09+08:00",
+  "schema_version": 4,
+  "kind": "five_strategy_first_cycle_isolated_rehearsal",
+  "generated_at": "2026-08-31T00:43:28+08:00",
   "synthetic_data": true,
   "synthetic_price_rule": "未来日期缺价时沿用该股票最近已知收盘价；仅验证控制流，不是预测或选股信号",
   "source_cache": "data/forward/cache",
   "code_count": 210,
   "calendar": {
-    "source": "baostock_query_trade_dates",
+    "source": "fixed_rehearsal_dates",
     "trading_days": [
       "2026-08-31",
       "2026-09-01"
     ],
-    "status": "通过"
+    "status": "未联网复核"
   },
   "signal": {
     "date": "2026-08-31",
@@ -53,7 +53,7 @@
       },
       "isolated_journal": {
         "path": "monthly_v1.jsonl",
-        "sha256": "7eee8a7353b22ba8ea9a7684415d890794c50ebf60587652bbeb92dc8764f0bb",
+        "sha256": "b1c3621d151a203197a0f9c7f2aa4611572b2289f1dcf4f81fc870fe54b50c31",
         "signal_count": 1,
         "execution_count": 1
       }
@@ -77,7 +77,7 @@
       },
       "isolated_journal": {
         "path": "monthly_v2.jsonl",
-        "sha256": "e2e453b6e57d3b9f6a80cb03363c06bd7e294c9915c2f04f2c6ecfc185d171b0",
+        "sha256": "01d4f03c780cd3b79dd1197eb7932cc1561a865523d28b043885b8d7c4385b6d",
         "signal_count": 1,
         "execution_count": 1
       }
@@ -101,7 +101,55 @@
       },
       "isolated_journal": {
         "path": "monthly_v3.jsonl",
-        "sha256": "92b621db07e32d566a25060c937f8cab9e751e7db675d17c1cbac15ac093b12f",
+        "sha256": "35aefcc9b0d330f52d983bffd2c157a7ba492cc8022a61f17ec76735a8adbe1f",
+        "signal_count": 1,
+        "execution_count": 1
+      }
+    },
+    "v5": {
+      "version": "V5",
+      "shadow": true,
+      "max_holdings": 6,
+      "signal": {
+        "candidate_pool_count": 210,
+        "eligible_entry_count": 6
+      },
+      "execution": {
+        "operation_count": 7,
+        "holding_count": 6,
+        "cash": 19862.754436,
+        "nav": 99974.754436,
+        "invested_pct": 80.1322,
+        "minimum_next_lot_cost": 667.01,
+        "residual_cash_below_one_lot": false
+      },
+      "isolated_journal": {
+        "path": "monthly_v5.jsonl",
+        "sha256": "fd6b298e714cd22d222a5f1d8151d298559b5588395e164f2e788ed661e68683",
+        "signal_count": 1,
+        "execution_count": 1
+      }
+    },
+    "ma_v22": {
+      "version": "V2.2",
+      "shadow": true,
+      "max_holdings": 4,
+      "signal": {
+        "candidate_pool_count": 4,
+        "eligible_entry_count": 3
+      },
+      "execution": {
+        "operation_count": 3,
+        "holding_count": 3,
+        "cash": 2963.2602,
+        "nav": 99903.0602,
+        "invested_pct": 97.0339,
+        "minimum_next_lot_cost": 3834.83,
+        "residual_cash_below_one_lot": true
+      },
+      "isolated_journal": {
+        "path": "monthly_ma_v22.jsonl",
+        "sha256": "d133390123dd06919ea125b12da7981a1649abf8d057b8c3d055d0dbb37e23ec",
         "signal_count": 1,
         "execution_count": 1
       }
@@ -112,7 +160,9 @@
     "strategy_total_assets_by_version": {
       "v1": 99969.8,
       "v2": 99969.8,
-      "v3": 99969.8
+      "v3": 99969.8,
+      "v5": 99974.75,
+      "ma_v22": 99903.06
     },
     "benchmark_total_assets": 99970.12,
     "benchmark_inception_date": "2026-09-01",
@@ -120,7 +170,9 @@
     "transaction_count_by_version": {
       "v1": 1,
       "v2": 1,
-      "v3": 1
+      "v3": 1,
+      "v5": 7,
+      "ma_v22": 3
     }
   },
   "isolated_journal": {
@@ -129,14 +181,18 @@
   },
   "production_journal_sha256_before": {
     "v1": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "v2": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
-    "v3": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    "v2": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "v3": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "v5": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ma_v22": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "status": "通过",
   "production_journal_sha256_after": {
     "v1": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-    "v2": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b",
-    "v3": "01ba4719c80b6fe911b091a7c05124b64eeece964e09c058ef8f9805daca546b"
+    "v2": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "v3": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "v5": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "ma_v22": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
   },
   "production_journals_unchanged": true,
   "production_journal_unchanged": true

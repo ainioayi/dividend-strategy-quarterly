@@ -1,8 +1,8 @@
-"""月度 V1/V2/V3 前向观察账本。
+"""高息动量 V1/V2/V3/V5 与多资产 V2.2 前向观察账本。
 
 账本使用只追加 JSONL 事件流。信号与执行分成两个命令；相同期已有不同内容时
-立即拒绝，绝不覆盖。V1 是正式前向模拟，V2/V3 是独立影子策略。脚本只读取
-冻结缓存，不连接券商，也不会自动下单。
+立即拒绝，绝不覆盖。高息动量 V1 是正式前向模拟，其余策略使用独立影子账本。
+脚本只读取冻结缓存，不连接券商，也不会自动下单。
 """
 from __future__ import annotations
 
@@ -48,7 +48,7 @@ V1_OBSERVATION_POLICY: dict[str, Any] = {
     "v2_mode": "shadow_only",
     "v2_output_root": "data/forward/shadow",
     "v2_can_write_v1_journal": False,
-    "shadow_versions": ["V2", "V3"],
+    "shadow_versions": ["V2", "V3", "V5", "V2.2"],
     "shadow_can_write_v1_journal": False,
 }
 
@@ -93,8 +93,8 @@ V1_RULES: dict[str, Any] = {
 FORWARD_STRATEGIES: dict[str, dict[str, Any]] = {
     "v1": {
         "version": "V1",
-        "name": "月度高息动量策略 V1 前向观察",
-        "short_name": "月度高息动量 V1",
+        "name": "高息动量 V1（2只正式）",
+        "short_name": "高息动量 V1（2只正式）",
         "shadow": False,
         "max_holdings": 2,
         "metadata_path": METADATA_PATH,
@@ -102,8 +102,8 @@ FORWARD_STRATEGIES: dict[str, dict[str, Any]] = {
     },
     "v2": {
         "version": "V2",
-        "name": "月度高息动量策略 V2 影子观察",
-        "short_name": "月度高息动量 V2",
+        "name": "高息动量 V2（3只影子）",
+        "short_name": "高息动量 V2（3只影子）",
         "shadow": True,
         "max_holdings": 3,
         "metadata_path": SHADOW_DIR / "v2_metadata.json",
@@ -111,24 +111,55 @@ FORWARD_STRATEGIES: dict[str, dict[str, Any]] = {
     },
     "v3": {
         "version": "V3",
-        "name": "月度高息动量策略 V3 影子观察",
-        "short_name": "月度高息动量 V3",
+        "name": "高息动量 V3（4只影子）",
+        "short_name": "高息动量 V3（4只影子）",
         "shadow": True,
         "max_holdings": 4,
         "metadata_path": SHADOW_DIR / "v3_metadata.json",
         "journal_path": SHADOW_DIR / "monthly_v3.jsonl",
     },
+    "v5": {
+        "version": "V5",
+        "name": "高息动量 V5（附件规则影子）",
+        "short_name": "高息动量 V5（附件规则影子）",
+        "shadow": True,
+        "independent_rules": True,
+        "engine": "v5",
+        "max_holdings": 6,
+        "metadata_path": SHADOW_DIR / "v5_metadata.json",
+        "journal_path": SHADOW_DIR / "monthly_v5.jsonl",
+        "input_path": ROOT / "data" / "v5_inputs.json",
+    },
+    "ma_v22": {
+        "version": "V2.2",
+        "name": "多资产风险预算 V2.2（全球版影子）",
+        "short_name": "多资产风险预算 V2.2（全球版影子）",
+        "shadow": True,
+        "independent_rules": True,
+        "engine": "ma_v22",
+        "max_holdings": 4,
+        "metadata_path": SHADOW_DIR / "ma_v22_metadata.json",
+        "journal_path": SHADOW_DIR / "monthly_ma_v22.jsonl",
+        "input_path": ROOT / "data" / "ma_v22_inputs.json",
+    },
 }
 
 
 def strategy_profile(strategy_id: str = "v1") -> dict[str, Any]:
-    """返回不可共享修改的策略档案；三者只允许持仓上限不同。"""
+    """返回不可共享修改的策略档案。V5 使用独立完整规则合同。"""
     key = str(strategy_id).lower()
     if key not in FORWARD_STRATEGIES:
         raise ValueError(f"未知前向策略: {strategy_id}")
     profile = dict(FORWARD_STRATEGIES[key])
     profile["strategy_id"] = key
-    profile["rules"] = {**V1_RULES, "max_holdings": profile["max_holdings"]}
+    if profile.get("engine") == "v5":
+        from v5_strategy import V5_RULES
+        profile["rules"] = dict(V5_RULES)
+    elif profile.get("engine") == "ma_v22":
+        from ma_v22_strategy import MA_V22_RULES
+        profile["rules"] = dict(MA_V22_RULES)
+    else:
+        profile["rules"] = {**V1_RULES, "max_holdings": profile["max_holdings"]}
     return profile
 
 
@@ -375,6 +406,7 @@ def _decision_snapshot(
 def build_metadata(strategy_id: str = "v1") -> dict[str, Any]:
     profile = strategy_profile(strategy_id)
     rules = profile["rules"]
+    engine = profile.get("engine")
     metadata = {
         "schema_version": 1,
         "strategy": profile["name"],
@@ -386,7 +418,11 @@ def build_metadata(strategy_id: str = "v1") -> dict[str, Any]:
         "v1_commit": V1_COMMIT,
         "forward_start_date": V1_START_DATE,
         "first_signal_date": V1_FIRST_SIGNAL_DATE,
-        "first_execution_rule": "首期信号日之后的下一可用缓存交易日收盘；预期 2026-09-01",
+        "first_execution_rule": (
+            "首期信号日之后的下一真实交易日开盘模拟成交，并按当日收盘估值；预期 2026-09-01"
+            if engine == "ma_v22"
+            else "首期信号日之后的下一可用缓存交易日收盘；预期 2026-09-01"
+        ),
         "frozen_backtest_input": {
             "manifest_records_sha256": V1_MANIFEST_SHA256,
             "dates_sha256": V1_DATES_SHA256,
@@ -395,7 +431,15 @@ def build_metadata(strategy_id: str = "v1") -> dict[str, Any]:
         },
         "rules": rules,
         "rules_sha256": _hash(rules),
-        "capital_policy": dict(V1_CAPITAL_POLICY),
+        "capital_policy": (
+            {
+                "initial_capital": 100000.0,
+                "target_exposure_range_pct": [40, 100],
+                "idle_cash_interest": True,
+                "cash_rule": "风险阀门未投入部分保留现金并按附件利率逐交易日计息",
+            }
+            if engine == "v5" else dict(V1_CAPITAL_POLICY)
+        ),
         "observation_policy": dict(V1_OBSERVATION_POLICY),
         "status": "等待 2026-08-31 收盘后的完整冻结输入，尚未生成信号",
     }
@@ -404,14 +448,36 @@ def build_metadata(strategy_id: str = "v1") -> dict[str, Any]:
             "strategy_id": profile["strategy_id"],
             "version": profile["version"],
             "shadow": True,
-            "base_strategy": "V1",
-            "only_rule_change": {
+            "base_strategy": None if profile.get("independent_rules") else "V1",
+            "journal": str(profile["journal_path"].relative_to(ROOT)).replace("\\", "/"),
+        })
+        if engine == "v5":
+            from v5_strategy import V5_ATTACHMENT_SHA256
+            metadata["frozen_backtest_input"]["price_format"] = "sina_qfq_factors_with_unadjusted_cache"
+            metadata["attachment_sha256"] = dict(V5_ATTACHMENT_SHA256)
+            try:
+                v5_input = profile["input_path"].relative_to(ROOT)
+            except ValueError:
+                v5_input = profile["input_path"]
+            metadata["v5_input"] = str(v5_input).replace("\\", "/")
+        elif engine == "ma_v22":
+            from ma_v22_strategy import MA_V22_ATTACHMENT_SHA256
+            metadata["frozen_backtest_input"] = {
+                "price_format": "tencent_hfq_signal_raw_execution",
+                "assets": ["510300", "518880", "513100", "511010"],
+            }
+            metadata["attachment_sha256"] = dict(MA_V22_ATTACHMENT_SHA256)
+            try:
+                input_path = profile["input_path"].relative_to(ROOT)
+            except ValueError:
+                input_path = profile["input_path"]
+            metadata["ma_v22_input"] = str(input_path).replace("\\", "/")
+        else:
+            metadata["only_rule_change"] = {
                 "field": "max_holdings",
                 "from": V1_RULES["max_holdings"],
                 "to": rules["max_holdings"],
-            },
-            "journal": str(profile["journal_path"].relative_to(ROOT)).replace("\\", "/"),
-        })
+            }
     return metadata
 
 
@@ -430,14 +496,46 @@ def verify_forward_contract(
     if metadata != expected:
         raise ValueError(f"{profile['version']} 前向元数据与冻结合同不一致")
 
-    frozen = _read_json(freeze_path)
-    if frozen.get("version") != "V1" or frozen.get("rules") != V1_RULES:
-        raise ValueError("V1 前向参数与历史冻结规则不一致")
-    if metadata.get("v1_commit") != frozen.get("git", {}).get("commit"):
-        raise ValueError("V1 前向提交与历史冻结提交不一致")
-
     rules = metadata.get("rules") or {}
-    if profile["shadow"]:
+    engine = profile.get("engine")
+    if engine == "v5":
+        from v5_strategy import V5_ATTACHMENT_SHA256, V5_RULES
+        if rules != V5_RULES or metadata.get("attachment_sha256") != V5_ATTACHMENT_SHA256:
+            raise ValueError("V5 完整规则或附件指纹与冻结合同不一致")
+        input_path = profile["input_path"]
+        if not input_path.exists():
+            raise ValueError("V5 冻结输入不存在")
+        v5_input = _read_json(input_path)
+        content = dict(v5_input)
+        expected_content_hash = content.pop("content_sha256", None)
+        if (
+            v5_input.get("strategy") != "v5"
+            or v5_input.get("price_format") != "sina_qfq_factors_with_unadjusted_cache"
+            or expected_content_hash != _hash(content)
+        ):
+            raise ValueError("V5 冻结输入文件哈希校验失败")
+        attachments = {row.get("name"): row.get("sha256")
+                       for row in v5_input.get("attachments") or []}
+        if attachments != V5_ATTACHMENT_SHA256:
+            raise ValueError("V5 冻结输入附件指纹校验失败")
+        for name in ("adjustment_factors", "fundamentals", "industries", "h00922", "strategy_nav"):
+            rows = (v5_input.get("inputs") or {}).get(name)
+            if not isinstance(rows, list) or (v5_input.get("hashes") or {}).get(name) != _hash(rows):
+                raise ValueError(f"V5 冻结输入 {name} 哈希校验失败")
+    elif engine == "ma_v22":
+        from ma_v22_strategy import MA_V22_ATTACHMENT_SHA256, MA_V22_RULES, load_inputs
+        if rules != MA_V22_RULES or metadata.get("attachment_sha256") != MA_V22_ATTACHMENT_SHA256:
+            raise ValueError("多资产风险预算 V2.2 完整规则或参考附件指纹与冻结合同不一致")
+        if not profile["input_path"].exists():
+            raise ValueError("多资产风险预算 V2.2 输入不存在")
+        load_inputs(profile["input_path"])
+    else:
+        frozen = _read_json(freeze_path)
+        if frozen.get("version") != "V1" or frozen.get("rules") != V1_RULES:
+            raise ValueError("V1 前向参数与历史冻结规则不一致")
+        if metadata.get("v1_commit") != frozen.get("git", {}).get("commit"):
+            raise ValueError("V1 前向提交与历史冻结提交不一致")
+    if profile["shadow"] and not profile.get("independent_rules"):
         changed = {
             key for key in set(V1_RULES) | set(rules)
             if V1_RULES.get(key) != rules.get(key)
@@ -448,10 +546,21 @@ def verify_forward_contract(
             raise ValueError(f"{profile['version']} 元数据必须位于影子目录")
 
     capital = metadata.get("capital_policy") or {}
-    if capital.get("target_allocation_pct") != 100 or capital.get("cash_reserve") != 0:
-        raise ValueError("V1 必须按 100% 目标投入且不设置额外现金保留")
-    if rules.get("reinvest_cash_reserve") != 0 or rules.get("max_position_pct") != 1.0:
-        raise ValueError(f"{profile['version']} 资金参数不符合全量投入合同")
+    if engine == "v5":
+        if (
+            capital.get("initial_capital") != 100000.0
+            or capital.get("target_exposure_range_pct") != [40, 100]
+            or capital.get("idle_cash_interest") is not True
+        ):
+            raise ValueError("高息动量 V5 必须使用十万元独立账本和 40%-100% 风险敞口")
+    elif engine == "ma_v22":
+        if capital.get("target_allocation_pct") != 100 or capital.get("cash_reserve") != 0:
+            raise ValueError("多资产风险预算 V2.2 必须使用十万元独立账户并按 100% 目标配置")
+    else:
+        if capital.get("target_allocation_pct") != 100 or capital.get("cash_reserve") != 0:
+            raise ValueError("V1 必须按 100% 目标投入且不设置额外现金保留")
+        if rules.get("reinvest_cash_reserve") != 0 or rules.get("max_position_pct") != 1.0:
+            raise ValueError(f"{profile['version']} 资金参数不符合全量投入合同")
 
     observation = metadata.get("observation_policy") or {}
     if observation.get("minimum_months") != 6 or observation.get("target_months") != 12:
@@ -462,16 +571,17 @@ def verify_forward_contract(
         observation.get("v2_mode") != "shadow_only"
         or observation.get("v2_output_root") != "data/forward/shadow"
         or observation.get("v2_can_write_v1_journal") is not False
-        or observation.get("shadow_versions") != ["V2", "V3"]
+        or observation.get("shadow_versions") != ["V2", "V3", "V5", "V2.2"]
         or observation.get("shadow_can_write_v1_journal") is not False
     ):
-        raise ValueError("V2/V3 必须保持影子模式且不能写入 V1 账本")
+        raise ValueError("影子策略必须保持隔离模式且不能写入 V1 账本")
     return {
         "version": profile["version"],
         "shadow": profile["shadow"],
         "rules_sha256": metadata["rules_sha256"],
-        "target_allocation_pct": capital["target_allocation_pct"],
-        "cash_reserve": capital["cash_reserve"],
+        "target_allocation_pct": capital.get("target_allocation_pct"),
+        "cash_reserve": capital.get("cash_reserve"),
+        "target_exposure_range_pct": capital.get("target_exposure_range_pct"),
         "observation_months": [observation["minimum_months"], observation["target_months"]],
         "v2_mode": observation["v2_mode"],
         "status": "通过",
@@ -508,6 +618,8 @@ def record_signal(
     metadata_path: Path | None = None,
     strategy_id: str = "v1",
     allow_isolated_journal: bool = False,
+    v5_input_path: Path | None = None,
+    strategy_input_path: Path | None = None,
 ) -> tuple[dict[str, Any], bool]:
     profile = strategy_profile(strategy_id)
     journal_path = journal_path or profile["journal_path"]
@@ -516,6 +628,28 @@ def record_signal(
     )
     rules = profile["rules"]
     verify_forward_contract(metadata_path=metadata_path, strategy_id=strategy_id)
+    engine = profile.get("engine")
+    input_path = strategy_input_path or v5_input_path or profile.get("input_path")
+    if engine == "v5":
+        from v5_strategy import build_forward_signal
+        event = build_forward_signal(
+            signal_date=signal_date,
+            manifest_path=manifest_path,
+            dates_path=dates_path,
+            cache_dir=cache_dir,
+            journal_rows=_load_journal(journal_path),
+            v5_input_path=input_path,
+        )
+        return _append_once(journal_path, event)
+    if engine == "ma_v22":
+        from ma_v22_strategy import build_forward_signal
+        event = build_forward_signal(
+            signal_date=signal_date,
+            dates_path=dates_path,
+            journal_rows=_load_journal(journal_path),
+            input_path=input_path,
+        )
+        return _append_once(journal_path, event)
     datetime.strptime(signal_date, "%Y-%m-%d")
     if signal_date < V1_FIRST_SIGNAL_DATE:
         raise ValueError(f"前向信号不得早于 {V1_FIRST_SIGNAL_DATE}")
@@ -592,6 +726,8 @@ def record_execution(
     metadata_path: Path | None = None,
     strategy_id: str = "v1",
     allow_isolated_journal: bool = False,
+    v5_input_path: Path | None = None,
+    strategy_input_path: Path | None = None,
 ) -> tuple[dict[str, Any], bool]:
     profile = strategy_profile(strategy_id)
     journal_path = journal_path or profile["journal_path"]
@@ -600,6 +736,40 @@ def record_execution(
     )
     profile_rules = profile["rules"]
     verify_forward_contract(metadata_path=metadata_path, strategy_id=strategy_id)
+    engine = profile.get("engine")
+    input_path = strategy_input_path or v5_input_path or profile.get("input_path")
+    if engine == "ma_v22":
+        from ma_v22_strategy import build_forward_execution
+        event = build_forward_execution(
+            period=period,
+            journal_rows=_load_journal(journal_path),
+            input_path=input_path,
+        )
+        return _append_once(journal_path, event)
+    if engine == "v5":
+        rows = _load_journal(journal_path)
+        current = next(
+            (row for row in rows if row.get("event_type") == "signal" and row.get("period") == period),
+            None,
+        )
+        if current is None:
+            raise ValueError(f"{period} 尚无不可回写信号，不能执行")
+        loaded, _ = _input_state(manifest_path, dates_path)
+        codes = list(loaded["manifest"]["codes"])
+        execution_date = backtest._next_trading_date(
+            _calendar(cache_dir, codes), current["signal_date"], 1
+        )
+        if execution_date is None:
+            raise ValueError("尚无信号日后的下一可用交易日收盘数据")
+        from v5_strategy import build_forward_execution
+        event = build_forward_execution(
+            period=period,
+            execution_date=execution_date,
+            cache_dir=cache_dir,
+            journal_rows=rows,
+            v5_input_path=input_path,
+        )
+        return _append_once(journal_path, event)
     loaded, dates = _input_state(manifest_path, dates_path)
     signals = [row for row in _load_journal(journal_path) if row.get("event_type") == "signal"]
     signals.sort(key=lambda row: row["signal_date"])
@@ -703,14 +873,14 @@ def record_execution(
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="月度 V1/V2/V3 只追加前向观察账本")
+    parser = argparse.ArgumentParser(description="五策略只追加前向观察账本")
     parser.add_argument("--strategy", choices=tuple(FORWARD_STRATEGIES), default="v1")
     sub = parser.add_subparsers(dest="command", required=True)
     sub.add_parser("init", help="初始化冻结元数据与空账本")
     sub.add_parser("verify", help="校验 V1 冻结、观察期与全量资金合同")
     signal = sub.add_parser("signal", help="追加月末收盘信号")
     signal.add_argument("--date", required=True, help="版本化月末信号日 YYYY-MM-DD")
-    execute = sub.add_parser("execute", help="追加下一交易日收盘模拟执行")
+    execute = sub.add_parser("execute", help="追加下一交易日模拟执行（V2.2 开盘，其余收盘）")
     execute.add_argument("--period", required=True, help="信号月份 YYYY-MM")
     for command in (signal, execute):
         command.add_argument("--manifest", type=Path, default=FORWARD_INPUT_DIR / "universe_manifest.json")

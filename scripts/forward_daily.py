@@ -1,4 +1,4 @@
-"""月度 V1/V2/V3 每日调度门禁、输入快照与状态报告。"""
+"""五策略每日调度门禁、输入快照与状态报告。"""
 from __future__ import annotations
 
 import argparse
@@ -151,6 +151,18 @@ def save_snapshot_and_report(
             json.dumps(hashes, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode("utf-8")
         ).hexdigest(),
     }
+    strategy_input = profile.get("input_path")
+    if strategy_input:
+        strategy_payload = json.loads(strategy_input.read_text(encoding="utf-8"))
+        if profile.get("engine") == "ma_v22" and strategy_payload.get("as_of") != as_of:
+            raise RuntimeError(f"{profile['short_name']} 输入截止日与前向事件日期不一致")
+        target = snapshot_dir / strategy_input.name
+        shutil.copy2(strategy_input, target)
+        input_snapshot["strategy_input"] = {
+            "path": _portable_path(target),
+            "sha256": _file_sha256(strategy_input),
+            "content_sha256": strategy_payload.get("content_sha256"),
+        }
     (snapshot_dir / "input_hashes.json").write_text(
         json.dumps(input_snapshot, ensure_ascii=False, indent=2) + "\n", encoding="utf-8"
     )
@@ -171,7 +183,7 @@ def save_snapshot_and_report(
     )
     latest = status["latest_event"] or {}
     lines = [
-        f"# 月度 {profile['version']} {'影子' if profile['shadow'] else '前向'}观察状态",
+        f"# {profile['short_name']}观察状态",
         "", f"- 截止日：{as_of}",
         f"- 本次门禁：{action.get('action')}", f"- 说明：{action.get('reason', '门禁动作已执行')}",
         f"- 信号记录：{status['signal_count']} 条", f"- 执行记录：{status['execution_count']} 条",
@@ -182,7 +194,7 @@ def save_snapshot_and_report(
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="月度 V1/V2/V3 每日交易日门禁")
+    parser = argparse.ArgumentParser(description="五策略每日交易日门禁")
     parser.add_argument("--strategy", choices=tuple(FORWARD_STRATEGIES), default="v1")
     parser.add_argument("--date", help="必须等于 Asia/Shanghai 当前日期")
     parser.add_argument("--mode", choices=("auto", "signal", "execute"), default="auto")

@@ -1,10 +1,11 @@
 {
-  "schema_version": 2,
-  "generated_at": "2026-08-28T12:50:52+08:00",
-  "as_of": "2026-08-27",
+  "schema_version": 4,
+  "generated_at": "2026-08-31T00:44:18+08:00",
+  "as_of": "2026-08-28",
   "forward_start_date": "2026-08-25",
   "strategy": {
-    "name": "月度高息动量 V1",
+    "name": "高息动量 V1（2只正式）",
+    "strategy_id": "v1",
     "version": "V1",
     "shadow": false,
     "status": "等待首期信号",
@@ -48,7 +49,11 @@
       "v2_nav": 100000.0,
       "v2_return_pct": 0.0,
       "v3_nav": 100000.0,
-      "v3_return_pct": 0.0
+      "v3_return_pct": 0.0,
+      "v5_nav": 100000.0,
+      "v5_return_pct": 0.0,
+      "ma_v22_nav": 100000.0,
+      "ma_v22_return_pct": 0.0
     },
     {
       "date": "2026-08-26",
@@ -61,7 +66,11 @@
       "v2_nav": 100000.0,
       "v2_return_pct": 0.0,
       "v3_nav": 100000.0,
-      "v3_return_pct": 0.0
+      "v3_return_pct": 0.0,
+      "v5_nav": 100000.0,
+      "v5_return_pct": 0.0,
+      "ma_v22_nav": 100000.0,
+      "ma_v22_return_pct": 0.0
     },
     {
       "date": "2026-08-27",
@@ -74,7 +83,28 @@
       "v2_nav": 100000.0,
       "v2_return_pct": 0.0,
       "v3_nav": 100000.0,
-      "v3_return_pct": 0.0
+      "v3_return_pct": 0.0,
+      "v5_nav": 100000.0,
+      "v5_return_pct": 0.0,
+      "ma_v22_nav": 100000.0,
+      "ma_v22_return_pct": 0.0
+    },
+    {
+      "date": "2026-08-28",
+      "strategy_nav": 100000.0,
+      "strategy_return_pct": 0.0,
+      "benchmark_nav": 100000.0,
+      "benchmark_return_pct": 0.0,
+      "v1_nav": 100000.0,
+      "v1_return_pct": 0.0,
+      "v2_nav": 100000.0,
+      "v2_return_pct": 0.0,
+      "v3_nav": 100000.0,
+      "v3_return_pct": 0.0,
+      "v5_nav": 100000.0,
+      "v5_return_pct": 0.0,
+      "ma_v22_nav": 100000.0,
+      "ma_v22_return_pct": 0.0
     }
   ],
   "holdings": [],
@@ -83,7 +113,7 @@
     "v1_commit": "c7d128ff0bc1b4b21c60bc7c6e2894dabf513fae",
     "rules_sha256": "d3265a0af79c1915244edb7d54322ea038183dd90b9b01ef00c216238597bd23",
     "journal_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-    "market_content_sha256": "ea21432c24d7c81a023b80938fd387dddd21acf4564a5e49da01d356daffedf9",
+    "market_content_sha256": "1fcd7bc00a75733bdb287ecac6fd5673f4bd3b2b4588f7a5da751246e3240947",
     "price_format": "unadjusted_close",
     "benchmark_sources": {
       "prices": {
@@ -116,34 +146,39 @@
       "v2_can_write_v1_journal": false,
       "shadow_versions": [
         "V2",
-        "V3"
+        "V3",
+        "V5",
+        "V2.2"
       ],
       "shadow_can_write_v1_journal": false
     },
-    "performance_sha256": "23d821539fcb9264e8c1957b33b1ea9556e7d50571efae5f37d16547c61cba54",
+    "performance_sha256": "29cf0ad9393362aac3fbc594d587046793bede540cd0e8ec8f7cb08eeefcf267",
     "strategy_journals": {
       "v1": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
       "v2": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-      "v3": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      "v3": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "v5": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "ma_v22": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
     }
   },
   "limitations": [
-    "这是三套独立的模型模拟账户，不连接券商、不读取真实账户，也不会自动下单。",
-    "V1 是持仓上限 2 只的正式前向模拟；V2/V3 分别为上限 3/4 只的影子观察，不替代 V1。",
-    "三套策略除 max_holdings 外使用相同选股、择时、费用、分红和 10 万元全量投入规则。",
-    "三套策略均在月末形成信号，并在下一真实交易日收盘模拟执行；整数手和费用会留下现金尾差。",
-    "510300 在 V1 首笔模拟成交日同步建仓，此前四条曲线均按现金 0% 收益展示。",
+    "这是五套独立的模型模拟账户，不连接券商、不读取真实账户，也不会自动下单。",
+    "高息动量 V1 是正式前向模拟；高息动量 V2/V3/V5 和多资产风险预算 V2.2 均为独立影子观察。",
+    "高息动量 V1/V2/V3 沿用原规则；高息动量 V5 与多资产风险预算 V2.2 各按独立规则运行。",
+    "五套策略均在月末形成信号；V2.2 在下一真实交易日开盘模拟成交，其余策略在收盘模拟成交。",
+    "510300 在高息动量 V1 首笔模拟成交日同步建仓，此前六条曲线均按现金 0% 收益展示。",
     "历史回测和前向模拟都不代表未来收益，也不是买卖建议。"
   ],
   "comparison": {
     "benchmark": "510300",
     "benchmark_inception_date": null,
-    "rule": "510300 与 V1 首笔模拟成交同日建仓；V2/V3 使用同一基准时间轴"
+    "rule": "510300 与高息动量 V1 首笔模拟成交同日建仓；其余影子策略使用同一基准时间轴"
   },
   "strategies": {
     "v1": {
       "summary": {
-        "name": "月度高息动量 V1",
+        "name": "高息动量 V1（2只正式）",
+        "strategy_id": "v1",
         "version": "V1",
         "shadow": false,
         "status": "等待首期信号",
@@ -178,11 +213,17 @@
           "date": "2026-08-27",
           "nav": 100000.0,
           "return_pct": 0.0
+        },
+        {
+          "date": "2026-08-28",
+          "nav": 100000.0,
+          "return_pct": 0.0
         }
       ],
       "holdings": [],
       "transactions": [],
       "health": {
+        "name": "高息动量 V1（2只正式）",
         "status": "等待首期信号",
         "outcome": "waiting",
         "as_of": "2026-08-28",
@@ -196,7 +237,8 @@
     },
     "v2": {
       "summary": {
-        "name": "月度高息动量 V2",
+        "name": "高息动量 V2（3只影子）",
+        "strategy_id": "v2",
         "version": "V2",
         "shadow": true,
         "status": "等待首期信号",
@@ -231,11 +273,17 @@
           "date": "2026-08-27",
           "nav": 100000.0,
           "return_pct": 0.0
+        },
+        {
+          "date": "2026-08-28",
+          "nav": 100000.0,
+          "return_pct": 0.0
         }
       ],
       "holdings": [],
       "transactions": [],
       "health": {
+        "name": "高息动量 V2（3只影子）",
         "status": "等待首期信号",
         "outcome": "waiting",
         "as_of": "2026-08-28",
@@ -249,7 +297,8 @@
     },
     "v3": {
       "summary": {
-        "name": "月度高息动量 V3",
+        "name": "高息动量 V3（4只影子）",
+        "strategy_id": "v3",
         "version": "V3",
         "shadow": true,
         "status": "等待首期信号",
@@ -284,11 +333,17 @@
           "date": "2026-08-27",
           "nav": 100000.0,
           "return_pct": 0.0
+        },
+        {
+          "date": "2026-08-28",
+          "nav": 100000.0,
+          "return_pct": 0.0
         }
       ],
       "holdings": [],
       "transactions": [],
       "health": {
+        "name": "高息动量 V3（4只影子）",
         "status": "等待首期信号",
         "outcome": "waiting",
         "as_of": "2026-08-28",
@@ -298,6 +353,126 @@
         "rules_sha256": "6f5564ba9939d7098b511a8a563de81b558d5eddd2928307d2b9cb5353a65529",
         "journal_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
         "monthly_journal": "data/forward/shadow/monthly_v3.jsonl"
+      }
+    },
+    "v5": {
+      "summary": {
+        "name": "高息动量 V5（附件规则影子）",
+        "strategy_id": "v5",
+        "version": "V5",
+        "shadow": true,
+        "status": "等待首期信号",
+        "initial_capital": 100000.0,
+        "total_assets": 100000.0,
+        "cash": 100000.0,
+        "total_pnl": 0.0,
+        "cumulative_return_pct": 0.0,
+        "max_drawdown_pct": 0.0,
+        "fees": 0,
+        "dividends": 0,
+        "trade_count": 0,
+        "event_count": 0,
+        "holdings_count": 0,
+        "max_holdings": 6,
+        "target_allocation_pct": 100,
+        "cash_reserve": 0,
+        "excess_return_pct": 0.0
+      },
+      "series": [
+        {
+          "date": "2026-08-25",
+          "nav": 100000.0,
+          "return_pct": 0.0
+        },
+        {
+          "date": "2026-08-26",
+          "nav": 100000.0,
+          "return_pct": 0.0
+        },
+        {
+          "date": "2026-08-27",
+          "nav": 100000.0,
+          "return_pct": 0.0
+        },
+        {
+          "date": "2026-08-28",
+          "nav": 100000.0,
+          "return_pct": 0.0
+        }
+      ],
+      "holdings": [],
+      "transactions": [],
+      "health": {
+        "name": "高息动量 V5（附件规则影子）",
+        "status": "等待首期信号",
+        "outcome": "waiting",
+        "as_of": "2026-08-28",
+        "action": "none"
+      },
+      "audit": {
+        "rules_sha256": "62d628d5ca7f1122fb2435e46776719e15ac1053c59c675446257d2431816b38",
+        "journal_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "monthly_journal": "data/forward/shadow/monthly_v5.jsonl"
+      }
+    },
+    "ma_v22": {
+      "summary": {
+        "name": "多资产风险预算 V2.2（全球版影子）",
+        "strategy_id": "ma_v22",
+        "version": "V2.2",
+        "shadow": true,
+        "status": "等待首期信号",
+        "initial_capital": 100000.0,
+        "total_assets": 100000.0,
+        "cash": 100000.0,
+        "total_pnl": 0.0,
+        "cumulative_return_pct": 0.0,
+        "max_drawdown_pct": 0.0,
+        "fees": 0,
+        "dividends": 0,
+        "trade_count": 0,
+        "event_count": 0,
+        "holdings_count": 0,
+        "max_holdings": 4,
+        "target_allocation_pct": 100,
+        "cash_reserve": 0,
+        "excess_return_pct": 0.0
+      },
+      "series": [
+        {
+          "date": "2026-08-25",
+          "nav": 100000.0,
+          "return_pct": 0.0
+        },
+        {
+          "date": "2026-08-26",
+          "nav": 100000.0,
+          "return_pct": 0.0
+        },
+        {
+          "date": "2026-08-27",
+          "nav": 100000.0,
+          "return_pct": 0.0
+        },
+        {
+          "date": "2026-08-28",
+          "nav": 100000.0,
+          "return_pct": 0.0
+        }
+      ],
+      "holdings": [],
+      "transactions": [],
+      "health": {
+        "name": "多资产风险预算 V2.2（全球版影子）",
+        "status": "等待首期信号",
+        "outcome": "waiting",
+        "as_of": "2026-08-28",
+        "action": "none"
+      },
+      "audit": {
+        "rules_sha256": "4d2534532492ced418d1df961504ec19decf9336b7548a12b5ad0a5d2276ab9f",
+        "journal_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "monthly_journal": "data/forward/shadow/monthly_ma_v22.jsonl"
       }
     }
   }

@@ -9,7 +9,9 @@ sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
 import monthly_forward as forward
 import backtest
+from refresh_v5_inputs import build_v5_inputs
 from universe_manifest import canonical_hash, records_hash
+from v5_strategy import V5_ATTACHMENT_SHA256
 
 
 def _write(path, value):
@@ -292,3 +294,64 @@ def test影子策略核心层禁止写入V1或影子目录之外(tmp_path):
     forward._require_journal_boundary(
         profile, tmp_path / "isolated_v2.jsonl", allow_isolated_journal=True
     )
+
+
+def test_v5使用独立完整合同和独立影子账本():
+    profile = forward.strategy_profile("v5")
+    assert profile["independent_rules"] is True
+    assert profile["max_holdings"] == 6
+    assert profile["rules"] != {**forward.V1_RULES, "max_holdings": 6}
+    assert profile["journal_path"] == forward.SHADOW_DIR / "monthly_v5.jsonl"
+    assert profile["journal_path"] != forward.JOURNAL_PATH
+    metadata = forward.build_metadata("v5")
+    assert metadata["base_strategy"] is None
+    assert "only_rule_change" not in metadata
+    assert set(metadata["attachment_sha256"]) == {"report_pdf", "appendix_xlsx"}
+    assert metadata["capital_policy"]["target_exposure_range_pct"] == [40, 100]
+    assert "target_allocation_pct" not in metadata["capital_policy"]
+
+
+def test_v5合同校验完整规则附件和输入哈希(tmp_path, monkeypatch):
+    input_path = tmp_path / "v5_inputs.json"
+    _write(input_path, build_v5_inputs({
+        "adjustment_factors": [], "fundamentals": [], "industries": [], "h00922": [],
+    }, "2026-08-31", attachment_hashes=V5_ATTACHMENT_SHA256))
+    monkeypatch.setitem(forward.FORWARD_STRATEGIES["v5"], "input_path", input_path)
+    metadata_path = tmp_path / "v5_metadata.json"
+    _write(metadata_path, forward.build_metadata("v5"))
+    contract = forward.verify_forward_contract(metadata_path=metadata_path, strategy_id="v5")
+    assert contract["target_exposure_range_pct"] == [40, 100]
+    assert contract["target_allocation_pct"] is None
+
+    payload = json.loads(input_path.read_text(encoding="utf-8"))
+    payload["inputs"]["h00922"].append({"date": "2026-08-31", "close": 100})
+    _write(input_path, payload)
+    with pytest.raises(ValueError, match="哈希校验失败"):
+        forward.verify_forward_contract(metadata_path=metadata_path, strategy_id="v5")
+
+
+def test_v22使用独立完整合同和开盘成交口径():
+    profile = forward.strategy_profile("ma_v22")
+    metadata = forward.build_metadata("ma_v22")
+    contract = forward.verify_forward_contract(strategy_id="ma_v22")
+
+    assert profile["name"] == "多资产风险预算 V2.2（全球版影子）"
+    assert profile["journal_path"] == forward.SHADOW_DIR / "monthly_ma_v22.jsonl"
+    assert profile["rules"]["execution_timing"] == "next_trading_day_open"
+    assert metadata["base_strategy"] is None
+    assert metadata["frozen_backtest_input"]["assets"] == ["510300", "518880", "513100", "511010"]
+    assert "开盘模拟成交" in metadata["first_execution_rule"]
+    assert contract["target_allocation_pct"] == 100
+    assert contract["cash_reserve"] == 0
+
+
+def test五策略名称和账本路径互不混淆():
+    profiles = {key: forward.strategy_profile(key) for key in forward.FORWARD_STRATEGIES}
+    assert [profiles[key]["name"] for key in profiles] == [
+        "高息动量 V1（2只正式）",
+        "高息动量 V2（3只影子）",
+        "高息动量 V3（4只影子）",
+        "高息动量 V5（附件规则影子）",
+        "多资产风险预算 V2.2（全球版影子）",
+    ]
+    assert len({profile["journal_path"] for profile in profiles.values()}) == 5

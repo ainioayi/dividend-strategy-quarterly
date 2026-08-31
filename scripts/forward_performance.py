@@ -1,4 +1,4 @@
-"""生成 V1/V2/V3 前向模拟盘的每日公开业绩。
+"""生成五策略前向模拟盘的每日公开业绩。
 
 数据层只读取只追加账本，并用未复权收盘价做每日盯市；它不生成信号、不改写
 交易事件，也不连接券商。510300 基准在 V1 首笔模拟成交日同步建仓，之后按场内
@@ -24,6 +24,7 @@ from urllib3.util.retry import Retry
 
 from refresh_backtest_cache import _fetch_dividends_eastmoney
 from tradeable_benchmark import parse_dividends
+from v5_strategy import cash_interest
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -37,11 +38,21 @@ V2_METADATA_PATH = SHADOW_DIR / "v2_metadata.json"
 V2_JOURNAL_PATH = SHADOW_DIR / "monthly_v2.jsonl"
 V3_METADATA_PATH = SHADOW_DIR / "v3_metadata.json"
 V3_JOURNAL_PATH = SHADOW_DIR / "monthly_v3.jsonl"
+V5_METADATA_PATH = SHADOW_DIR / "v5_metadata.json"
+V5_JOURNAL_PATH = SHADOW_DIR / "monthly_v5.jsonl"
+MA_V22_METADATA_PATH = SHADOW_DIR / "ma_v22_metadata.json"
+MA_V22_JOURNAL_PATH = SHADOW_DIR / "monthly_ma_v22.jsonl"
 SHADOW_HEALTH_PATH = SHADOW_DIR / "health.json"
 SECURITY_MASTER_PATH = ROOT / "data" / "historical" / "security_master.json"
 
 BENCHMARK_CODE = "510300"
 BENCHMARK_NAME = "沪深300ETF华泰柏瑞"
+FUND_NAMES = {
+    "510300": "沪深300 ETF",
+    "518880": "黄金 ETF",
+    "513100": "纳指100 ETF",
+    "511010": "国债 ETF",
+}
 PRICE_URL_SINA = (
     "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/"
     "CN_MarketData.getKLineData"
@@ -233,8 +244,8 @@ def fetch_unadjusted_prices(
     }
 
 
-def fetch_benchmark_dividends(as_of: str, *, timeout: int = 30) -> dict[str, Any]:
-    url = DIVIDEND_URL_TEMPLATE.format(code=BENCHMARK_CODE)
+def fetch_fund_dividends(code: str, as_of: str, *, timeout: int = 30) -> dict[str, Any]:
+    url = DIVIDEND_URL_TEMPLATE.format(code=code)
     response = _session().get(
         url,
         headers={"Referer": "https://fundf10.eastmoney.com/"},
@@ -248,6 +259,10 @@ def fetch_benchmark_dividends(as_of: str, *, timeout: int = 30) -> dict[str, Any
         "dividends": rows,
         "dividends_sha256": _sha256(rows),
     }
+
+
+def fetch_benchmark_dividends(as_of: str, *, timeout: int = 30) -> dict[str, Any]:
+    return fetch_fund_dividends(BENCHMARK_CODE, as_of, timeout=timeout)
 
 
 def _security_names(path: Path = SECURITY_MASTER_PATH) -> dict[str, str]:
@@ -290,6 +305,7 @@ def update_market_snapshot(
     price_fetcher: Callable[[str, str, str], dict[str, Any]] = fetch_unadjusted_prices,
     benchmark_dividend_fetcher: Callable[[str], dict[str, Any]] = fetch_benchmark_dividends,
     stock_dividend_fetcher: Callable[[str, str], list[dict[str, Any]]] = _fetch_dividends_eastmoney,
+    fund_dividend_fetcher: Callable[[str, str], dict[str, Any]] = fetch_fund_dividends,
     sleep_seconds: float = 1.1,
     names: dict[str, str] | None = None,
 ) -> dict[str, Any]:
@@ -324,10 +340,20 @@ def update_market_snapshot(
             raise RuntimeError(f"当前或历史持仓 {code} 没有可用盯市价格")
         if sleep_seconds:
             time.sleep(sleep_seconds)
-        dividends = stock_dividend_fetcher(code, as_of)
+        if code in FUND_NAMES:
+            fund_payload = (
+                benchmark_dividends if code == BENCHMARK_CODE
+                else fund_dividend_fetcher(code, as_of)
+            )
+            dividends = [
+                row for row in fund_payload.get("dividends") or []
+                if str(row.get("record_date") or "")[:10] >= start_date
+            ]
+        else:
+            dividends = stock_dividend_fetcher(code, as_of)
         securities[code] = {
             "code": code,
-            "name": name_map.get(code, code),
+            "name": FUND_NAMES.get(code) or name_map.get(code, code),
             "price_format": "unadjusted_close",
             "selected_provider": price_payload["selected_provider"],
             "validated_providers": price_payload.get("validated_providers") or [],
@@ -502,6 +528,9 @@ def _strategy_state(
     execution: dict[str, Any] | None,
     market: dict[str, Any],
     initial_capital: float,
+    *,
+    trading_calendar: list[str] | None = None,
+    accrue_cash_interest: bool = False,
 ) -> dict[str, Any]:
     if execution is None:
         return {"cash": initial_capital, "holdings": {}, "nav": initial_capital, "accrued_dividends": []}
@@ -517,26 +546,49 @@ def _strategy_state(
     entries = _entry_dates(execution.get("cumulative_events") or [])
     cash = float(execution.get("cash") or 0)
     accrued = []
+    dividends_by_date: dict[str, list[tuple[str, dict[str, Any], dict[str, Any], str]]] = {}
     for code, holding in holdings.items():
         security = (market.get("securities") or {}).get(code)
         if not security:
             raise ValueError(f"市场快照缺少持仓 {code}")
         entry_date = entries.get(code, execution_date)
         for item in security.get("dividends") or []:
+            if item.get("cash_per_unit") is not None:
+                pay_date = str(item.get("pay_date") or "")[:10]
+                record_date = str(item.get("record_date") or "")[:10]
+                if execution_date < pay_date <= target and entry_date <= record_date:
+                    dividends_by_date.setdefault(pay_date, []).append((code, holding, item, entry_date))
+                continue
             ex_date = str(item.get("ex_date") or "")[:10]
             if not (execution_date < ex_date <= target) or ex_date <= entry_date:
                 continue
+            dividends_by_date.setdefault(ex_date, []).append((code, holding, item, entry_date))
+
+    event_dates = set(dividends_by_date)
+    interest_dates = {
+        day for day in (trading_calendar or []) if execution_date < day <= target
+    } if accrue_cash_interest else set()
+    for day in sorted(event_dates | interest_dates):
+        if day in interest_dates:
+            cash *= 1 + cash_interest(1.0, date.fromisoformat(day).year)
+        # V5 引擎先结算闲置现金利息，再入账同日分红。
+        for code, holding, item, entry_date in dividends_by_date.get(day, []):
             shares_before = holding["shares"]
+            if item.get("cash_per_unit") is not None:
+                gross = round(float(item.get("cash_per_unit") or 0) * shares_before, 2)
+                cash += gross
+                accrued.append({"date": day, "code": code, "gross": gross, "tax": 0.0, "net_cash": gross})
+                continue
             dps = float(item.get("dps") or 0)
             gross = round(dps * shares_before, 2)
-            tax = round(gross * _tax_rate(entry_date, ex_date), 2)
+            tax = round(gross * _tax_rate(entry_date, day), 2)
             net = round(gross - tax, 2)
             cash += net
             bonus = float(item.get("bonus_ratio") or 0)
             transfer = float(item.get("transfer_ratio") or 0)
             if bonus > 0 or transfer > 0:
                 holding["shares"] = int(round(shares_before * (1 + (bonus + transfer) / 10.0)))
-            accrued.append({"date": ex_date, "code": code, "gross": gross, "tax": tax, "net_cash": net})
+            accrued.append({"date": day, "code": code, "gross": gross, "tax": tax, "net_cash": net})
 
     market_value = 0.0
     marks = {}
@@ -658,6 +710,7 @@ def build_performance(
     market: dict[str, Any],
 ) -> dict[str, Any]:
     version = str(metadata.get("version") or "V1").upper()
+    strategy_id = str(metadata.get("strategy_id") or "v1")
     shadow = bool(metadata.get("shadow"))
     initial = float((metadata.get("rules") or {}).get("initial_capital") or 100000)
     capital_policy = metadata.get("capital_policy") or {
@@ -666,6 +719,7 @@ def build_performance(
         "residual_cash_rule": "仅保留整数手和交易费用约束下无法继续买入的现金",
     }
     observation_policy = metadata.get("observation_policy") or {}
+    accrue_cash_interest = version == "V5"
     start_date = str(metadata.get("forward_start_date") or "")[:10]
     as_of = str(market.get("as_of") or "")[:10]
     benchmark_prices = [
@@ -691,7 +745,14 @@ def build_performance(
     for day in calendar:
         index = bisect_right(execution_dates, day) - 1
         execution = executions[index] if index >= 0 else None
-        state = _strategy_state(day, execution, market, initial)
+        state = _strategy_state(
+            day,
+            execution,
+            market,
+            initial,
+            trading_calendar=calendar,
+            accrue_cash_interest=accrue_cash_interest,
+        )
         strategy_nav = float(execution["nav"]) if execution and day == execution["execution_date"] else state["nav"]
         benchmark_nav = benchmark_result["nav_by_date"][day]
         series.append({
@@ -740,7 +801,8 @@ def build_performance(
     strategy_values = [float(row["strategy_nav"]) for row in series]
     benchmark_values = [float(row["benchmark_nav"]) for row in series]
     strategy = {
-        "name": f"月度高息动量 {version}",
+        "name": str(metadata.get("strategy") or f"高息动量 {version}"),
+        "strategy_id": strategy_id,
         "version": version,
         "shadow": shadow,
         "status": (
@@ -818,24 +880,25 @@ def build_strategy_suite(
     market: dict[str, Any],
     health: dict[str, Any] | None = None,
 ) -> dict[str, Any]:
-    """用同一行情快照计算三套独立账户，并保留旧 V1 顶层字段兼容。"""
-    expected = {"v1", "v2", "v3"}
+    """用同一行情快照计算五套独立账户，并保留旧 V1 顶层字段兼容。"""
+    strategy_ids = ("v1", "v2", "v3", "v5", "ma_v22")
+    expected = set(strategy_ids)
     if set(metadatas) != expected or set(journals) != expected:
-        raise ValueError("公开业绩必须同时提供 V1、V2、V3 元数据和账本")
+        raise ValueError("公开业绩必须同时提供五策略元数据和账本")
     results = {
         strategy_id: build_performance(metadatas[strategy_id], journals[strategy_id], market)
-        for strategy_id in ("v1", "v2", "v3")
+        for strategy_id in strategy_ids
     }
     payload = dict(results["v1"])
-    payload["schema_version"] = 2
+    payload["schema_version"] = 4
     payload["comparison"] = {
         "benchmark": "510300",
         "benchmark_inception_date": payload["benchmark"]["inception_date"],
-        "rule": "510300 与 V1 首笔模拟成交同日建仓；V2/V3 使用同一基准时间轴",
+        "rule": "510300 与高息动量 V1 首笔模拟成交同日建仓；其余影子策略使用同一基准时间轴",
     }
     health = health or {}
     payload["strategies"] = {}
-    for strategy_id in ("v1", "v2", "v3"):
+    for strategy_id in strategy_ids:
         result = results[strategy_id]
         summary = dict(result["strategy"])
         summary["excess_return_pct"] = round(
@@ -873,7 +936,7 @@ def build_strategy_suite(
     for row in results["v1"]["series"]:
         day = row["date"]
         combined = dict(row)
-        for strategy_id in ("v1", "v2", "v3"):
+        for strategy_id in strategy_ids:
             strategy_row = series_by_strategy[strategy_id][day]
             combined[f"{strategy_id}_nav"] = strategy_row["nav"]
             combined[f"{strategy_id}_return_pct"] = strategy_row["return_pct"]
@@ -885,11 +948,11 @@ def build_strategy_suite(
         for key, value in payload["strategies"].items()
     }
     payload["limitations"] = [
-        "这是三套独立的模型模拟账户，不连接券商、不读取真实账户，也不会自动下单。",
-        "V1 是持仓上限 2 只的正式前向模拟；V2/V3 分别为上限 3/4 只的影子观察，不替代 V1。",
-        "三套策略除 max_holdings 外使用相同选股、择时、费用、分红和 10 万元全量投入规则。",
-        "三套策略均在月末形成信号，并在下一真实交易日收盘模拟执行；整数手和费用会留下现金尾差。",
-        "510300 在 V1 首笔模拟成交日同步建仓，此前四条曲线均按现金 0% 收益展示。",
+        "这是五套独立的模型模拟账户，不连接券商、不读取真实账户，也不会自动下单。",
+        "高息动量 V1 是正式前向模拟；高息动量 V2/V3/V5 和多资产风险预算 V2.2 均为独立影子观察。",
+        "高息动量 V1/V2/V3 沿用原规则；高息动量 V5 与多资产风险预算 V2.2 各按独立规则运行。",
+        "五套策略均在月末形成信号；V2.2 在下一真实交易日开盘模拟成交，其余策略在收盘模拟成交。",
+        "510300 在高息动量 V1 首笔模拟成交日同步建仓，此前六条曲线均按现金 0% 收益展示。",
         "历史回测和前向模拟都不代表未来收益，也不是买卖建议。",
     ]
     payload["audit"]["performance_sha256"] = _sha256(
@@ -899,7 +962,7 @@ def build_strategy_suite(
 
 
 def main() -> int:
-    parser = argparse.ArgumentParser(description="刷新 V1/V2/V3 每日公开业绩")
+    parser = argparse.ArgumentParser(description="刷新五策略每日公开业绩")
     parser.add_argument("--as-of", required=True, help="公开数据截止日 YYYY-MM-DD")
     parser.add_argument("--metadata", type=Path, default=METADATA_PATH)
     parser.add_argument("--journal", type=Path, default=JOURNAL_PATH)
@@ -907,6 +970,10 @@ def main() -> int:
     parser.add_argument("--v2-journal", type=Path, default=V2_JOURNAL_PATH)
     parser.add_argument("--v3-metadata", type=Path, default=V3_METADATA_PATH)
     parser.add_argument("--v3-journal", type=Path, default=V3_JOURNAL_PATH)
+    parser.add_argument("--v5-metadata", type=Path, default=V5_METADATA_PATH)
+    parser.add_argument("--v5-journal", type=Path, default=V5_JOURNAL_PATH)
+    parser.add_argument("--ma-v22-metadata", type=Path, default=MA_V22_METADATA_PATH)
+    parser.add_argument("--ma-v22-journal", type=Path, default=MA_V22_JOURNAL_PATH)
     parser.add_argument("--shadow-health", type=Path, default=SHADOW_HEALTH_PATH)
     parser.add_argument("--market-output", type=Path, default=MARKET_PATH)
     parser.add_argument("--performance-output", type=Path, default=PERFORMANCE_PATH)
@@ -917,15 +984,19 @@ def main() -> int:
         "v1": _read_json(args.metadata),
         "v2": _read_json(args.v2_metadata),
         "v3": _read_json(args.v3_metadata),
+        "v5": _read_json(args.v5_metadata),
+        "ma_v22": _read_json(args.ma_v22_metadata),
     }
     if not all(isinstance(value, dict) for value in metadatas.values()):
-        raise ValueError("V1/V2/V3 前向元数据不存在或格式错误")
+        raise ValueError("五策略前向元数据不存在或格式错误")
     journals = {
         "v1": _read_journal(args.journal),
         "v2": _read_journal(args.v2_journal),
         "v3": _read_journal(args.v3_journal),
+        "v5": _read_journal(args.v5_journal),
+        "ma_v22": _read_journal(args.ma_v22_journal),
     }
-    combined_journal = [row for key in ("v1", "v2", "v3") for row in journals[key]]
+    combined_journal = [row for key in ("v1", "v2", "v3", "v5", "ma_v22") for row in journals[key]]
     existing = _read_json(args.market_output, {})
     market = update_market_snapshot(metadatas["v1"], combined_journal, args.as_of, existing)
     health = _read_json(args.shadow_health, {})

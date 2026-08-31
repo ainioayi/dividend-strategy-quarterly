@@ -83,4 +83,4 @@ def test_snapshot_and_chinese_report_are_machine_readable(tmp_path):
     snapshot = json.loads((output / "snapshots/2026-08-27/input_hashes.json").read_text(encoding="utf-8"))
     assert status["signal_count"] == 0
     assert snapshot["cache_files"][0]["sha256"]
-    assert "月度 V1 前向观察状态" in (output / "status.md").read_text(encoding="utf-8")
+    assert "高息动量 V1（2只正式）观察状态" in (output / "status.md").read_text(encoding="utf-8")
