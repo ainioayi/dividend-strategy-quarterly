@@ -1,6 +1,14 @@
 name: 五策略前向观察与公开业绩
 
 on:
+  push:
+    branches: [main]
+    # 前向任务自己提交的产物不再次触发，避免自动提交循环。
+    paths-ignore:
+      - "data/forward/**"
+      - "data/v5_inputs.json"
+      - "data/ma_v22_inputs.json"
+      - "site/performance.json"
   schedule:
     # 北京时间 18:30 首次运行，20:30 同日幂等重试；脚本仍核验真实交易日和当日收盘价。
     - cron: "30 10 * * 1-5"
@@ -90,7 +98,7 @@ jobs:
         if: steps.plan.outputs.action == 'signal' || steps.plan.outputs.action == 'execute'
         shell: pwsh
         run: |
-          python scripts/refresh_backtest_cache.py `
+          timeout 25m python scripts/refresh_backtest_cache.py `
             --as-of "${{ steps.date.outputs.as_of }}" `
             --cache-dir data/forward/cache `
             --source sina `
@@ -129,7 +137,7 @@ jobs:
         if: steps.plan.outputs.action == 'signal' && steps.v5_nav.outcome == 'success'
         shell: pwsh
         run: |
-          python scripts/refresh_v5_inputs.py `
+          timeout 15m python scripts/refresh_v5_inputs.py `
             --manifest data/forward/inputs/universe_manifest.json `
             --industries data/v5_industries.json `
             --cache-dir data/forward/cache `

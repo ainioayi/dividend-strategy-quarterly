@@ -6,6 +6,14 @@ ROOT = Path(__file__).resolve().parents[1]
 
 def test_forward_workflow_has_retry_freeze_gate_and_issue_alert() -> None:
     workflow = (ROOT / ".github/workflows/monthly-forward.yml").read_text(encoding="utf-8")
+    assert "  push:\n    branches: [main]\n" in workflow
+    for generated_path in (
+        "data/forward/**",
+        "data/v5_inputs.json",
+        "data/ma_v22_inputs.json",
+        "site/performance.json",
+    ):
+        assert f'      - "{generated_path}"' in workflow
     assert 'cron: "30 10 * * 1-5"' in workflow
     assert 'cron: "30 12 * * 1-5"' in workflow
     assert "python scripts/verify_v1_freeze.py" in workflow
@@ -23,6 +31,8 @@ def test_forward_workflow_has_retry_freeze_gate_and_issue_alert() -> None:
     assert "steps.v5_nav.outcome == 'failure' || steps.v5_inputs.outcome == 'failure'" in workflow
     assert "[自动告警] 五策略前向更新失败" in workflow
     assert "gh issue close" in workflow
+    assert "timeout 25m python scripts/refresh_backtest_cache.py" in workflow
+    assert "timeout 15m python scripts/refresh_v5_inputs.py" in workflow
 
 
 def test_v2_is_limited_to_shadow_output() -> None:
