@@ -1,6 +1,6 @@
 {
   "schema_version": 4,
-  "generated_at": "2026-08-31T22:36:50+08:00",
+  "generated_at": "2026-08-31T23:52:46+08:00",
   "as_of": "2026-08-31",
   "forward_start_date": "2026-08-25",
   "strategy": {
@@ -169,12 +169,12 @@
       ],
       "shadow_can_write_v1_journal": false
     },
-    "performance_sha256": "43178f6b2c87c7d9b4d0324af8a4b9612d6dd1bff41bb82813a557ec60107126",
+    "performance_sha256": "2b302350557d2cab5a9e37138fe070ab3b391977f5b1e24905d6675c265fca53",
     "strategy_journals": {
       "v1": "cdea860abf6bf7e54476822b0725ba5e1a6df7f323d5041679d343a1e85d90c8",
       "v2": "c86f6a6579b1683bd50d2ee08975e3f3f0f385a1fb126e23a0dbd62ac9ecdb94",
       "v3": "f721d177b79f9e275f4da4c8b256851f195d9f26883f4003912947adcb4db195",
-      "v5": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "v5": "021a19875f7f799b98deb5be979e56e676f56606a6bfef061eec487c2cb8830d",
       "ma_v22": "3410d231e72ee8d926b9b77cf100eb415f44e8f572a89754fabd233689494df5"
     }
   },
@@ -393,7 +393,7 @@
         "strategy_id": "v5",
         "version": "V5",
         "shadow": true,
-        "status": "等待首期信号",
+        "status": "已生成首期信号，等待下一交易日执行",
         "initial_capital": 100000.0,
         "total_assets": 100000.0,
         "cash": 100000.0,
@@ -441,14 +441,14 @@
       "transactions": [],
       "health": {
         "name": "高息动量 V5（附件规则影子）",
-        "status": "失败，未冒充更新成功",
-        "outcome": "failure",
+        "status": "正常",
+        "outcome": "success",
         "as_of": "2026-08-31",
         "action": "signal"
       },
       "audit": {
         "rules_sha256": "62d628d5ca7f1122fb2435e46776719e15ac1053c59c675446257d2431816b38",
-        "journal_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "journal_sha256": "021a19875f7f799b98deb5be979e56e676f56606a6bfef061eec487c2cb8830d",
         "monthly_journal": "data/forward/shadow/monthly_v5.jsonl"
       }
     },

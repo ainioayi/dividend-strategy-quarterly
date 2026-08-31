@@ -5,9 +5,9 @@
   "shadow": false,
   "as_of": "2026-08-31",
   "latest_action": {
-    "action": "signal",
-    "target_date": "2026-08-31",
-    "period": "2026-08",
+    "action": "noop",
+    "reason": "等待下一真实交易日",
+    "target_date": "2026-09-01",
     "is_trading_day": true
   },
   "signal_count": 1,

@@ -2,9 +2,9 @@
   "schema_version": 1,
   "as_of": "2026-08-31",
   "action": {
-    "action": "noop",
-    "reason": "等待下一真实交易日",
-    "target_date": "2026-09-01",
+    "action": "signal",
+    "target_date": "2026-08-31",
+    "period": "2026-08",
     "is_trading_day": true
   },
   "manifest_sha256": "aab31c0b2ea2b006f73bfcb35b20bde077c480e95a0a268af560a142f795273d",
@@ -3166,5 +3166,10 @@
       "sha256": "a993c6d8fd9bb2106a5da3e96f7362515ae34b96de2f6c2c00470ef9f50e50da"
     }
   ],
-  "cache_files_sha256": "372f5843d21c324c34e74e1541f9ffcf44d4c6a2a82d35dacf20d3d3156d7668"
+  "cache_files_sha256": "372f5843d21c324c34e74e1541f9ffcf44d4c6a2a82d35dacf20d3d3156d7668",
+  "strategy_input": {
+    "path": "data/forward/shadow/v5/snapshots/2026-08-31/v5_inputs.json",
+    "sha256": "eb815d5d168c68d0a654991e6258de394189759e95792834fd7d125d7d87a316",
+    "content_sha256": "a6d6345cd3cef879bad43dfd14d46b47d22e6bf4c460d2d7aa7feec7faf1200f"
+  }
 }

@@ -2,9 +2,9 @@
   "schema_version": 1,
   "as_of": "2026-08-31",
   "action": {
-    "action": "signal",
-    "target_date": "2026-08-31",
-    "period": "2026-08",
+    "action": "noop",
+    "reason": "等待下一真实交易日",
+    "target_date": "2026-09-01",
     "is_trading_day": true
   },
   "manifest_sha256": "aab31c0b2ea2b006f73bfcb35b20bde077c480e95a0a268af560a142f795273d",
