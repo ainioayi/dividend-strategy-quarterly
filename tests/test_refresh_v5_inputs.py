@@ -1,5 +1,6 @@
 import hashlib
 import json
+from urllib.error import URLError
 
 import pytest
 
@@ -75,6 +76,32 @@ def test中证基础日期统一为ISO格式(monkeypatch):
         "data": [{"tradeDate": "20260825", "close": 1234.5}],
     })
     assert refresh.fetch_h00922("2026-08-01", "2026-08-25")[0]["date"] == "2026-08-25"
+
+
+def test网络瞬时失败会重试(monkeypatch):
+    class Response:
+        def __enter__(self):
+            return self
+
+        def __exit__(self, *_args):
+            return None
+
+        def read(self):
+            return b'{"ok": true}'
+
+    calls = []
+
+    def urlopen(*_args, **_kwargs):
+        calls.append(1)
+        if len(calls) == 1:
+            raise URLError("temporary timeout")
+        return Response()
+
+    monkeypatch.setattr(refresh.urllib.request, "urlopen", urlopen)
+    monkeypatch.setattr(refresh.time, "sleep", lambda _seconds: None)
+
+    assert refresh._get_json("https://example.test", {}) == {"ok": True}
+    assert len(calls) == 2
 
 
 def test联网采集不遗漏科创板和北交所(monkeypatch, tmp_path):

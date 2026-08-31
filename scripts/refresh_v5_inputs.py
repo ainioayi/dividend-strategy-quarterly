@@ -9,10 +9,12 @@ import argparse
 import hashlib
 import json
 import re
+import time
 import urllib.parse
 import urllib.request
 from pathlib import Path
 from typing import Any
+from urllib.error import HTTPError, URLError
 
 from build_historical_universe import canonical_sha256, write_json_atomic
 
@@ -32,13 +34,28 @@ def file_sha256(path: Path) -> str:
     return hashlib.sha256(path.read_bytes()).hexdigest()
 
 
+def _read_url(request: urllib.request.Request, timeout: int = 30,
+              attempts: int = 3) -> bytes:
+    """重试网络瞬时错误；HTTP 业务错误直接失败。"""
+    for attempt in range(attempts):
+        try:
+            with urllib.request.urlopen(request, timeout=timeout) as response:
+                return response.read()
+        except HTTPError:
+            raise
+        except (URLError, TimeoutError, OSError):
+            if attempt + 1 == attempts:
+                raise
+            time.sleep(2 ** attempt)
+    raise AssertionError("unreachable")
+
+
 def _get_json(url: str, params: dict[str, Any], timeout: int = 30) -> Any:
     request = urllib.request.Request(
         f"{url}?{urllib.parse.urlencode(params)}",
         headers={"User-Agent": "Mozilla/5.0 V5 research input collector"},
     )
-    with urllib.request.urlopen(request, timeout=timeout) as response:
-        return json.loads(response.read().decode("utf-8"))
+    return json.loads(_read_url(request, timeout).decode("utf-8"))
 
 
 def fetch_h00922(start_date: str, as_of: str) -> list[dict[str, Any]]:
@@ -74,8 +91,7 @@ def fetch_sina_adjust_factors(code: str) -> list[dict[str, Any]]:
     url = SINA_QFQ_URL.format(symbol=_sina_symbol(code))
     request = urllib.request.Request(url, headers={"User-Agent": "Mozilla/5.0",
                                                    "Referer": "https://finance.sina.com.cn/"})
-    with urllib.request.urlopen(request, timeout=30) as response:
-        text = response.read().decode("utf-8", "ignore")
+    text = _read_url(request).decode("utf-8", "ignore")
     brace = text.find("{")
     if brace < 0:
         raise RuntimeError(f"新浪复权因子响应无 JSON: {code}")

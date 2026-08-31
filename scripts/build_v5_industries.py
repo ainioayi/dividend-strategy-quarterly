@@ -155,10 +155,10 @@ def build_snapshot(manifest_path: Path, as_of: str, fetch=_fetch) -> dict:
     codes = {
         str(row["code"])
         for row in manifest.get("records", [])
-        if str(row.get("code", "")).startswith(("00", "30", "60"))
+        if re.fullmatch(r"\d{6}", str(row.get("code", "")))
     }
     if not codes:
-        raise ValueError("manifest 没有 V5 主板/创业板代码")
+        raise ValueError("manifest 没有 V5 股票代码")
     records, sources = [], []
     for article in discover_articles(fetch):
         source = article_source(article, fetch)
@@ -185,7 +185,7 @@ def build_snapshot(manifest_path: Path, as_of: str, fetch=_fetch) -> dict:
     payload = {
         "schema_version": 1,
         "as_of": as_of,
-        "market_scope": "沪深主板及创业板；剔除科创板与北交所",
+        "market_scope": "冻结 manifest 内全部 A 股，包含科创板与北交所",
         "manifest_sha256": hashlib.sha256(manifest_path.read_bytes()).hexdigest(),
         "records": records,
         "sources": sources,
