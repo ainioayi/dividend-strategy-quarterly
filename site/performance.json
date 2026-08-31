@@ -1,14 +1,14 @@
 {
   "schema_version": 4,
-  "generated_at": "2026-08-31T00:44:18+08:00",
-  "as_of": "2026-08-28",
+  "generated_at": "2026-08-31T21:03:37+08:00",
+  "as_of": "2026-08-31",
   "forward_start_date": "2026-08-25",
   "strategy": {
     "name": "高息动量 V1（2只正式）",
     "strategy_id": "v1",
     "version": "V1",
     "shadow": false,
-    "status": "等待首期信号",
+    "status": "已生成首期信号，等待下一交易日执行",
     "initial_capital": 100000.0,
     "total_assets": 100000.0,
     "cash": 100000.0,
@@ -105,6 +105,23 @@
       "v5_return_pct": 0.0,
       "ma_v22_nav": 100000.0,
       "ma_v22_return_pct": 0.0
+    },
+    {
+      "date": "2026-08-31",
+      "strategy_nav": 100000.0,
+      "strategy_return_pct": 0.0,
+      "benchmark_nav": 100000.0,
+      "benchmark_return_pct": 0.0,
+      "v1_nav": 100000.0,
+      "v1_return_pct": 0.0,
+      "v2_nav": 100000.0,
+      "v2_return_pct": 0.0,
+      "v3_nav": 100000.0,
+      "v3_return_pct": 0.0,
+      "v5_nav": 100000.0,
+      "v5_return_pct": 0.0,
+      "ma_v22_nav": 100000.0,
+      "ma_v22_return_pct": 0.0
     }
   ],
   "holdings": [],
@@ -112,8 +129,8 @@
   "audit": {
     "v1_commit": "c7d128ff0bc1b4b21c60bc7c6e2894dabf513fae",
     "rules_sha256": "d3265a0af79c1915244edb7d54322ea038183dd90b9b01ef00c216238597bd23",
-    "journal_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-    "market_content_sha256": "1fcd7bc00a75733bdb287ecac6fd5673f4bd3b2b4588f7a5da751246e3240947",
+    "journal_sha256": "cdea860abf6bf7e54476822b0725ba5e1a6df7f323d5041679d343a1e85d90c8",
+    "market_content_sha256": "32634038ea1c3f6df019ab20b567a8eef46c2ce4c00ef5ddab8290897bc02320",
     "price_format": "unadjusted_close",
     "benchmark_sources": {
       "prices": {
@@ -152,13 +169,13 @@
       ],
       "shadow_can_write_v1_journal": false
     },
-    "performance_sha256": "29cf0ad9393362aac3fbc594d587046793bede540cd0e8ec8f7cb08eeefcf267",
+    "performance_sha256": "43178f6b2c87c7d9b4d0324af8a4b9612d6dd1bff41bb82813a557ec60107126",
     "strategy_journals": {
-      "v1": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-      "v2": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-      "v3": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "v1": "cdea860abf6bf7e54476822b0725ba5e1a6df7f323d5041679d343a1e85d90c8",
+      "v2": "c86f6a6579b1683bd50d2ee08975e3f3f0f385a1fb126e23a0dbd62ac9ecdb94",
+      "v3": "f721d177b79f9e275f4da4c8b256851f195d9f26883f4003912947adcb4db195",
       "v5": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
-      "ma_v22": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      "ma_v22": "3410d231e72ee8d926b9b77cf100eb415f44e8f572a89754fabd233689494df5"
     }
   },
   "limitations": [
@@ -181,7 +198,7 @@
         "strategy_id": "v1",
         "version": "V1",
         "shadow": false,
-        "status": "等待首期信号",
+        "status": "已生成首期信号，等待下一交易日执行",
         "initial_capital": 100000.0,
         "total_assets": 100000.0,
         "cash": 100000.0,
@@ -218,20 +235,25 @@
           "date": "2026-08-28",
           "nav": 100000.0,
           "return_pct": 0.0
+        },
+        {
+          "date": "2026-08-31",
+          "nav": 100000.0,
+          "return_pct": 0.0
         }
       ],
       "holdings": [],
       "transactions": [],
       "health": {
         "name": "高息动量 V1（2只正式）",
-        "status": "等待首期信号",
-        "outcome": "waiting",
-        "as_of": "2026-08-28",
-        "action": "none"
+        "status": "正常",
+        "outcome": "success",
+        "as_of": "2026-08-31",
+        "action": "signal"
       },
       "audit": {
         "rules_sha256": "d3265a0af79c1915244edb7d54322ea038183dd90b9b01ef00c216238597bd23",
-        "journal_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "journal_sha256": "cdea860abf6bf7e54476822b0725ba5e1a6df7f323d5041679d343a1e85d90c8",
         "monthly_journal": "data/forward/monthly_v1.jsonl"
       }
     },
@@ -241,7 +263,7 @@
         "strategy_id": "v2",
         "version": "V2",
         "shadow": true,
-        "status": "等待首期信号",
+        "status": "已生成首期信号，等待下一交易日执行",
         "initial_capital": 100000.0,
         "total_assets": 100000.0,
         "cash": 100000.0,
@@ -278,20 +300,25 @@
           "date": "2026-08-28",
           "nav": 100000.0,
           "return_pct": 0.0
+        },
+        {
+          "date": "2026-08-31",
+          "nav": 100000.0,
+          "return_pct": 0.0
         }
       ],
       "holdings": [],
       "transactions": [],
       "health": {
         "name": "高息动量 V2（3只影子）",
-        "status": "等待首期信号",
-        "outcome": "waiting",
-        "as_of": "2026-08-28",
-        "action": "none"
+        "status": "正常",
+        "outcome": "success",
+        "as_of": "2026-08-31",
+        "action": "signal"
       },
       "audit": {
         "rules_sha256": "7bdb8c9302457ad7d9682caf837d5c26ff5fff3378fefd86f9e8d7707848d715",
-        "journal_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "journal_sha256": "c86f6a6579b1683bd50d2ee08975e3f3f0f385a1fb126e23a0dbd62ac9ecdb94",
         "monthly_journal": "data/forward/shadow/monthly_v2.jsonl"
       }
     },
@@ -301,7 +328,7 @@
         "strategy_id": "v3",
         "version": "V3",
         "shadow": true,
-        "status": "等待首期信号",
+        "status": "已生成首期信号，等待下一交易日执行",
         "initial_capital": 100000.0,
         "total_assets": 100000.0,
         "cash": 100000.0,
@@ -338,20 +365,25 @@
           "date": "2026-08-28",
           "nav": 100000.0,
           "return_pct": 0.0
+        },
+        {
+          "date": "2026-08-31",
+          "nav": 100000.0,
+          "return_pct": 0.0
         }
       ],
       "holdings": [],
       "transactions": [],
       "health": {
         "name": "高息动量 V3（4只影子）",
-        "status": "等待首期信号",
-        "outcome": "waiting",
-        "as_of": "2026-08-28",
-        "action": "none"
+        "status": "正常",
+        "outcome": "success",
+        "as_of": "2026-08-31",
+        "action": "signal"
       },
       "audit": {
         "rules_sha256": "6f5564ba9939d7098b511a8a563de81b558d5eddd2928307d2b9cb5353a65529",
-        "journal_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "journal_sha256": "f721d177b79f9e275f4da4c8b256851f195d9f26883f4003912947adcb4db195",
         "monthly_journal": "data/forward/shadow/monthly_v3.jsonl"
       }
     },
@@ -398,16 +430,21 @@
           "date": "2026-08-28",
           "nav": 100000.0,
           "return_pct": 0.0
+        },
+        {
+          "date": "2026-08-31",
+          "nav": 100000.0,
+          "return_pct": 0.0
         }
       ],
       "holdings": [],
       "transactions": [],
       "health": {
         "name": "高息动量 V5（附件规则影子）",
-        "status": "等待首期信号",
-        "outcome": "waiting",
-        "as_of": "2026-08-28",
-        "action": "none"
+        "status": "失败，未冒充更新成功",
+        "outcome": "failure",
+        "as_of": "2026-08-31",
+        "action": "signal"
       },
       "audit": {
         "rules_sha256": "62d628d5ca7f1122fb2435e46776719e15ac1053c59c675446257d2431816b38",
@@ -421,7 +458,7 @@
         "strategy_id": "ma_v22",
         "version": "V2.2",
         "shadow": true,
-        "status": "等待首期信号",
+        "status": "已生成首期信号，等待下一交易日执行",
         "initial_capital": 100000.0,
         "total_assets": 100000.0,
         "cash": 100000.0,
@@ -458,20 +495,25 @@
           "date": "2026-08-28",
           "nav": 100000.0,
           "return_pct": 0.0
+        },
+        {
+          "date": "2026-08-31",
+          "nav": 100000.0,
+          "return_pct": 0.0
         }
       ],
       "holdings": [],
       "transactions": [],
       "health": {
         "name": "多资产风险预算 V2.2（全球版影子）",
-        "status": "等待首期信号",
-        "outcome": "waiting",
-        "as_of": "2026-08-28",
-        "action": "none"
+        "status": "正常",
+        "outcome": "success",
+        "as_of": "2026-08-31",
+        "action": "signal"
       },
       "audit": {
         "rules_sha256": "4d2534532492ced418d1df961504ec19decf9336b7548a12b5ad0a5d2276ab9f",
-        "journal_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+        "journal_sha256": "3410d231e72ee8d926b9b77cf100eb415f44e8f572a89754fabd233689494df5",
         "monthly_journal": "data/forward/shadow/monthly_ma_v22.jsonl"
       }
     }

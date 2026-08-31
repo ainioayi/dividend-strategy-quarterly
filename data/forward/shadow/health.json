@@ -1,13 +1,43 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-28T00:00:00+08:00",
-  "as_of": "2026-08-28",
-  "action": "waiting_first_signal",
+  "generated_at": "2026-08-31T21:03:31+08:00",
+  "as_of": "2026-08-31",
+  "action": "signal",
   "strategies": {
-    "v1": {"name": "高息动量 V1（2只正式）", "status": "等待首期信号", "outcome": "waiting", "as_of": "2026-08-28", "action": "none"},
-    "v2": {"name": "高息动量 V2（3只影子）", "status": "等待首期信号", "outcome": "waiting", "as_of": "2026-08-28", "action": "none"},
-    "v3": {"name": "高息动量 V3（4只影子）", "status": "等待首期信号", "outcome": "waiting", "as_of": "2026-08-28", "action": "none"},
-    "v5": {"name": "高息动量 V5（附件规则影子）", "status": "等待首期信号", "outcome": "waiting", "as_of": "2026-08-28", "action": "none"},
-    "ma_v22": {"name": "多资产风险预算 V2.2（全球版影子）", "status": "等待首期信号", "outcome": "waiting", "as_of": "2026-08-28", "action": "none"}
+    "v1": {
+      "name": "高息动量 V1（2只正式）",
+      "status": "正常",
+      "outcome": "success",
+      "as_of": "2026-08-31",
+      "action": "signal"
+    },
+    "v2": {
+      "name": "高息动量 V2（3只影子）",
+      "status": "正常",
+      "outcome": "success",
+      "as_of": "2026-08-31",
+      "action": "signal"
+    },
+    "v3": {
+      "name": "高息动量 V3（4只影子）",
+      "status": "正常",
+      "outcome": "success",
+      "as_of": "2026-08-31",
+      "action": "signal"
+    },
+    "v5": {
+      "name": "高息动量 V5（附件规则影子）",
+      "status": "失败，未冒充更新成功",
+      "outcome": "failure",
+      "as_of": "2026-08-31",
+      "action": "signal"
+    },
+    "ma_v22": {
+      "name": "多资产风险预算 V2.2（全球版影子）",
+      "status": "正常",
+      "outcome": "success",
+      "as_of": "2026-08-31",
+      "action": "signal"
+    }
   }
 }
