@@ -61,7 +61,12 @@ def fetch_h00922(start_date: str, as_of: str) -> list[dict[str, Any]]:
 
 
 def _sina_symbol(code: str) -> str:
-    return ("sh" if str(code).startswith(("5", "6", "9")) else "sz") + str(code)
+    code = str(code)
+    if code.startswith(("92", "4", "8")):
+        market = "bj"
+    else:
+        market = "sh" if code.startswith(("5", "6", "9")) else "sz"
+    return market + code
 
 
 def fetch_sina_adjust_factors(code: str) -> list[dict[str, Any]]:
@@ -155,9 +160,7 @@ def collect_from_manifest(manifest_path: Path, as_of: str, industries_path: Path
     """按 manifest 实际采集 V5 输入；行业文件必须来自官方分类证据。"""
     manifest = json.loads(manifest_path.read_text(encoding="utf-8"))
     codes = list(manifest.get("codes") or [row.get("code") for row in manifest.get("records", [])])
-    codes = [str(code) for code in codes if str(code).startswith(("000", "001", "002", "003",
-                                                                  "300", "301", "600", "601",
-                                                                  "603", "605"))]
+    codes = [str(code) for code in codes if re.fullmatch(r"\d{6}", str(code))]
     industries = json.loads(industries_path.read_text(encoding="utf-8"))
     if isinstance(industries, dict):
         industries = industries.get("records")

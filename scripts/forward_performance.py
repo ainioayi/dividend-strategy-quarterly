@@ -731,6 +731,7 @@ def build_performance(
         raise ValueError("510300 行情没有完整覆盖前向起点和公开截止日")
 
     executions = _execution_rows(journal)
+    has_signal = any(row.get("event_type") == "signal" for row in journal)
     execution_dates = [str(row["execution_date"]) for row in executions]
     benchmark_inception_date = execution_dates[0] if execution_dates else None
     benchmark_result = _benchmark_series(
@@ -807,7 +808,10 @@ def build_performance(
         "shadow": shadow,
         "status": (
             f"{version} {'影子' if shadow else '前向'}模拟"
-            if executions else "等待首期信号"
+            if executions
+            else "已生成首期信号，等待下一交易日执行"
+            if has_signal
+            else "等待首期信号"
         ),
         "initial_capital": initial,
         "total_assets": latest["strategy_nav"],

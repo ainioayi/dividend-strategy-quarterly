@@ -77,6 +77,33 @@ def test中证基础日期统一为ISO格式(monkeypatch):
     assert refresh.fetch_h00922("2026-08-01", "2026-08-25")[0]["date"] == "2026-08-25"
 
 
+def test联网采集不遗漏科创板和北交所(monkeypatch, tmp_path):
+    manifest = tmp_path / "manifest.json"
+    manifest.write_text(json.dumps({"codes": ["688016", "920982"]}), encoding="utf-8")
+    industries = tmp_path / "industries.json"
+    industries.write_text(json.dumps({"records": [
+        {"code": "688016", "industry": "制造业", "published_date": "2025-12-31"},
+        {"code": "920982", "industry": "制造业", "published_date": "2025-12-31"},
+    ]}), encoding="utf-8")
+    for code in ("688016", "920982"):
+        (tmp_path / f"dv_{code}.json").write_text("[]", encoding="utf-8")
+    monkeypatch.setattr(refresh, "fetch_sina_adjust_factors", lambda _code: [
+        {"date": "1900-01-01", "factor": 1, "source_url": "sina"},
+    ])
+    monkeypatch.setattr(refresh, "fetch_sina_fundamentals", lambda *_args: [])
+    monkeypatch.setattr(refresh, "fetch_h00922", lambda *_args: [
+        {"date": "2026-08-31", "close": 1000, "source_url": "csindex"},
+    ])
+
+    result = refresh.collect_from_manifest(
+        manifest, "2026-08-31", industries, cache_dir=tmp_path,
+    )
+
+    assert {row["code"] for row in result["adjustment_factors"]} == {"688016", "920982"}
+    assert refresh._sina_symbol("688016") == "sh688016"
+    assert refresh._sina_symbol("920982") == "bj920982"
+
+
 def test_build_v5_inputs_rejects_future_information():
     source = _source()
     source["fundamentals"][0]["published_date"] = "2026-08-26"

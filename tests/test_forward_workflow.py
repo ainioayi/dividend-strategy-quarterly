@@ -39,6 +39,8 @@ def test_forward_workflow_has_retry_freeze_gate_and_issue_alert() -> None:
     assert "git fetch origin main" in workflow
     assert "git rebase origin/main" in workflow
     assert "if: success() && steps.plan.outputs.is_trading_day == 'true'" in workflow
+    assert "git add data/forward site/performance.json" in workflow
+    assert "git add data/forward data/v5_inputs.json" not in workflow
 
 
 def test_v2_is_limited_to_shadow_output() -> None:

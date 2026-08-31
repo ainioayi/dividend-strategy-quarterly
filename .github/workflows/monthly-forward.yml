@@ -250,7 +250,7 @@ jobs:
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/forward data/v5_inputs.json data/ma_v22_inputs.json site/performance.json
+          git add data/forward site/performance.json
           git diff --cached --quiet
           if ($LASTEXITCODE -eq 0) {
             Write-Host "没有需要提交的前向业绩变化"

@@ -79,6 +79,21 @@ def test空账本时策略和510300都保持现金等待同步建仓() -> None:
     assert result["transactions"] == []
 
 
+def test已有首期信号时公开页显示等待下一交易日执行() -> None:
+    market = _market("2026-08-25", [("2026-08-25", 10), ("2026-08-31", 11)])
+    journal = [{
+        "event_type": "signal",
+        "period": "2026-08",
+        "signal_date": "2026-08-31",
+    }]
+
+    result = build_performance(_metadata(), journal, market)
+
+    assert result["strategy"]["status"] == "已生成首期信号，等待下一交易日执行"
+    assert result["strategy"]["holdings_count"] == 0
+    assert result["strategy"]["trade_count"] == 0
+
+
 def test执行后每日盯市并按除权日计入持仓分红() -> None:
     buy = {
         "date": "2026-08-26", "side": "买入", "code": "600000",
