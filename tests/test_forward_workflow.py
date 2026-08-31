@@ -8,6 +8,10 @@ def test_forward_workflow_has_retry_freeze_gate_and_issue_alert() -> None:
     workflow = (ROOT / ".github/workflows/monthly-forward.yml").read_text(encoding="utf-8")
     assert "  push:\n    branches: [main]\n" in workflow
     for generated_path in (
+        ".github/workflows/monthly-forward.yml",
+        "README.md",
+        "docs/**",
+        "tests/**",
         "data/forward/**",
         "data/v5_inputs.json",
         "data/ma_v22_inputs.json",
@@ -41,6 +45,8 @@ def test_forward_workflow_has_retry_freeze_gate_and_issue_alert() -> None:
     assert "--output data/forward/ma_v22_inputs.json" in workflow
     assert "git fetch origin main" in workflow
     assert "git rebase origin/main" in workflow
+    assert "  actions: write" in workflow
+    assert "gh workflow run pages.yml --ref main" in workflow
     assert "if: success() && steps.plan.outputs.is_trading_day == 'true'" in workflow
     assert "git add data/forward site/performance.json" in workflow
     assert "git add data/forward data/v5_inputs.json" not in workflow

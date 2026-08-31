@@ -5,6 +5,10 @@ on:
     branches: [main]
     # 前向任务自己提交的产物不再次触发，避免自动提交循环。
     paths-ignore:
+      - ".github/workflows/monthly-forward.yml"
+      - "README.md"
+      - "docs/**"
+      - "tests/**"
       - "data/forward/**"
       - "data/v5_inputs.json"
       - "data/ma_v22_inputs.json"
@@ -27,6 +31,7 @@ on:
         options: [auto, signal, execute, rehearsal]
 
 permissions:
+  actions: write
   contents: write
   issues: write
 
@@ -275,6 +280,13 @@ jobs:
             }
           }
           if (-not $pushed) { throw "连续 3 次推送前向产物失败" }
+
+      - name: 触发最新公开页面部署
+        if: success() && steps.plan.outputs.is_trading_day == 'true'
+        shell: bash
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh workflow run pages.yml --ref main
 
       - name: 影子账本失败时在发布后标记任务失败
         if: always() && (steps.v2.outcome == 'failure' || steps.v3.outcome == 'failure' || steps.v5_nav.outcome == 'failure' || steps.v5_inputs.outcome == 'failure' || steps.v5.outcome == 'failure' || steps.ma_v22_inputs.outcome == 'failure' || steps.ma_v22.outcome == 'failure')
