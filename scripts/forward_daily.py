@@ -8,6 +8,7 @@ import json
 import shutil
 import sys
 from datetime import date, datetime, timedelta
+from functools import cache
 from pathlib import Path
 from zoneinfo import ZoneInfo
 
@@ -25,6 +26,7 @@ def shanghai_today() -> date:
     return datetime.now(ZoneInfo("Asia/Shanghai")).date()
 
 
+@cache
 def baostock_trading_days(start: date, end: date) -> list[date]:
     """查询交易日历；登录、接口或空结果异常时失败关闭。"""
     import baostock as bs
@@ -106,6 +108,34 @@ def decide_action(today: date, rows: list[dict], trading_days) -> dict:
     if today > last_trading_day:
         raise RuntimeError("已错过当月最后真实交易日，禁止补写信号")
     return plan({"action": "signal", "target_date": today.isoformat(), "period": period})
+
+
+def decide_combined_action(today: date, rows_by_strategy: dict[str, list[dict]], trading_days) -> dict:
+    """汇总各策略门禁；部分缺账时继续恢复，动作冲突时失败关闭。"""
+    plans = {
+        strategy_id: decide_action(today, rows, trading_days)
+        for strategy_id, rows in rows_by_strategy.items()
+    }
+    trading_states = {plan["is_trading_day"] for plan in plans.values()}
+    if len(trading_states) != 1:
+        raise RuntimeError("五策略交易日判断不一致")
+    actions = {
+        plan["action"] for plan in plans.values()
+        if plan["action"] != "noop"
+    }
+    if len(actions) > 1:
+        details = ", ".join(f"{key}={plan['action']}" for key, plan in plans.items())
+        raise RuntimeError(f"五策略门禁动作冲突: {details}")
+    action = next(iter(actions), "noop")
+    active = [key for key, plan in plans.items() if plan["action"] == action]
+    reason = "所有策略均无需写入" if action == "noop" else f"{', '.join(active)} 需要 {action}"
+    return {
+        "action": action,
+        "reason": reason,
+        "target_date": today.isoformat(),
+        "is_trading_day": trading_states.pop(),
+        "strategies": plans,
+    }
 
 
 def _file_sha256(path: Path) -> str:
@@ -199,6 +229,7 @@ def main() -> int:
     parser.add_argument("--date", help="必须等于 Asia/Shanghai 当前日期")
     parser.add_argument("--mode", choices=("auto", "signal", "execute"), default="auto")
     parser.add_argument("--plan-only", action="store_true", help="只计算门禁，不刷新账本或生成快照")
+    parser.add_argument("--all-strategies", action="store_true", help="联合计算五本账本门禁，仅用于计划")
     parser.add_argument("--plan-json", type=Path, help="把门禁计划写入 JSON，供自动化读取")
     parser.add_argument("--manifest", type=Path, default=FORWARD_INPUT_DIR / "universe_manifest.json")
     parser.add_argument("--dates", type=Path, default=FORWARD_INPUT_DIR / "rebalance_dates_monthly.json")
@@ -206,18 +237,27 @@ def main() -> int:
     parser.add_argument("--journal", type=Path)
     parser.add_argument("--output-dir", type=Path)
     args = parser.parse_args()
-    profile = strategy_profile(args.strategy)
-    journal_path = args.journal or profile["journal_path"]
-    output_dir = args.output_dir or (
-        ROOT / "data/forward" if args.strategy == "v1"
-        else ROOT / "data/forward/shadow" / args.strategy
-    )
+    if args.all_strategies and not args.plan_only:
+        raise RuntimeError("联合门禁只能与 --plan-only 一起使用")
     actual_today = shanghai_today()
     today = date.fromisoformat(args.date) if args.date else actual_today
     if today != actual_today:
         raise RuntimeError("显式日期不等于 Asia/Shanghai 当前日，禁止历史回写")
-    rows = _load_journal(journal_path)
-    planned = decide_action(today, rows, baostock_trading_days)
+    if args.all_strategies:
+        rows_by_strategy = {
+            key: _load_journal(strategy_profile(key)["journal_path"])
+            for key in FORWARD_STRATEGIES
+        }
+        planned = decide_combined_action(today, rows_by_strategy, baostock_trading_days)
+    else:
+        profile = strategy_profile(args.strategy)
+        journal_path = args.journal or profile["journal_path"]
+        output_dir = args.output_dir or (
+            ROOT / "data/forward" if args.strategy == "v1"
+            else ROOT / "data/forward/shadow" / args.strategy
+        )
+        rows = _load_journal(journal_path)
+        planned = decide_action(today, rows, baostock_trading_days)
     if args.mode != "auto" and args.mode != planned["action"]:
         raise RuntimeError(f"显式模式 {args.mode} 不符合交易日门禁 {planned['action']}")
     if args.plan_only:

@@ -7,7 +7,7 @@ import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
-from forward_daily import decide_action, save_snapshot_and_report
+from forward_daily import decide_action, decide_combined_action, save_snapshot_and_report
 
 
 def _calendar(*values):
@@ -61,6 +61,28 @@ def test_non_trading_day_is_exposed_for_daily_performance_gate():
     )
     assert action["action"] == "noop"
     assert action["is_trading_day"] is False
+
+
+def test_combined_plan_recovers_strategy_missing_current_signal():
+    signal = {"event_type": "signal", "period": "2026-08", "signal_date": "2026-08-31"}
+    action = decide_combined_action(
+        date(2026, 8, 31),
+        {"v1": [signal], "v2": [signal], "v3": [signal], "v5": [], "ma_v22": [signal]},
+        _calendar("2026-08-28", "2026-08-31", "2026-09-01"),
+    )
+    assert action["action"] == "signal"
+    assert action["strategies"]["v1"]["action"] == "noop"
+    assert action["strategies"]["v5"]["action"] == "signal"
+
+
+def test_combined_plan_fails_when_strategy_actions_conflict():
+    pending = {"event_type": "signal", "period": "2026-08", "signal_date": "2026-08-28"}
+    with pytest.raises(RuntimeError, match="门禁动作冲突"):
+        decide_combined_action(
+            date(2026, 8, 31),
+            {"v1": [pending], "v5": []},
+            _calendar("2026-08-28", "2026-08-31"),
+        )
 
 
 def test_snapshot_and_chinese_report_are_machine_readable(tmp_path):

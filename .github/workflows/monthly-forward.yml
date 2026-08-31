@@ -88,6 +88,7 @@ jobs:
           python scripts/forward_daily.py `
             --date "${{ steps.date.outputs.as_of }}" `
             --mode $mode `
+            --all-strategies `
             --plan-only `
             --plan-json $planPath
           $plan = Get-Content -Raw -Encoding UTF8 $planPath | ConvertFrom-Json
@@ -164,7 +165,7 @@ jobs:
         run: |
           python scripts/forward_daily.py `
             --date "${{ steps.date.outputs.as_of }}" `
-            --mode "${{ steps.plan.outputs.action }}"
+            --mode auto
 
       - name: 更新 V2 影子账本
         id: v2
@@ -175,7 +176,7 @@ jobs:
           python scripts/forward_daily.py `
             --strategy v2 `
             --date "${{ steps.date.outputs.as_of }}" `
-            --mode "${{ steps.plan.outputs.action }}"
+            --mode auto
 
       - name: 更新 V3 影子账本
         id: v3
@@ -186,7 +187,7 @@ jobs:
           python scripts/forward_daily.py `
             --strategy v3 `
             --date "${{ steps.date.outputs.as_of }}" `
-            --mode "${{ steps.plan.outputs.action }}"
+            --mode auto
 
       - name: 更新 V5 影子账本
         id: v5
@@ -197,7 +198,7 @@ jobs:
           python scripts/forward_daily.py `
             --strategy v5 `
             --date "${{ steps.date.outputs.as_of }}" `
-            --mode "${{ steps.plan.outputs.action }}"
+            --mode auto
 
       - name: 更新多资产风险预算 V2.2 影子账本
         id: ma_v22
@@ -208,7 +209,7 @@ jobs:
           python scripts/forward_daily.py `
             --strategy ma_v22 `
             --date "${{ steps.date.outputs.as_of }}" `
-            --mode "${{ steps.plan.outputs.action }}"
+            --mode auto
 
       - name: 记录五策略独立健康状态
         if: steps.plan.outputs.action == 'signal' || steps.plan.outputs.action == 'execute'

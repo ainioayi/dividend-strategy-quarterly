@@ -25,6 +25,9 @@ def test_forward_workflow_has_retry_freeze_gate_and_issue_alert() -> None:
     assert "--strategy ma_v22" in workflow
     assert "MA_V22_OUTCOME" in workflow
     assert "options: [auto, signal, execute, rehearsal]" in workflow
+    assert "--all-strategies" in workflow
+    assert workflow.count("--mode auto") == 5
+    assert '--mode "${{ steps.plan.outputs.action }}"' not in workflow
     assert "if: inputs.mode != 'rehearsal'" in workflow
     assert 'if [[ "$RUN_MODE" == "rehearsal" ]]' in workflow
     assert "id: v5_nav\n        continue-on-error: true" in workflow
