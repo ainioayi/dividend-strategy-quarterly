@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "as_of": "2026-08-31",
-  "retrieved_at": "2026-08-31T23:52:46+08:00",
+  "as_of": "2026-09-01",
+  "retrieved_at": "2026-09-01T22:47:20+08:00",
   "price_format": "unadjusted_close",
   "benchmark": {
     "code": "510300",
@@ -31,6 +31,11 @@
         "date": "2026-08-31",
         "close": 4.685,
         "volume_shares": 673126494
+      },
+      {
+        "date": "2026-09-01",
+        "close": 4.684,
+        "volume_shares": 846798312
       }
     ],
     "dividends": [],
@@ -50,13 +55,1052 @@
       }
     },
     "hashes": {
-      "prices_sha256": "641c2099154942a8c5e7b35d5e4036719295ee4e8c09257430c3d81346925e26",
+      "prices_sha256": "40f2b9604272007c3cd9fd3af58cecc1c887714a3814f8effbef351ff461c0e9",
       "dividends_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
     }
   },
-  "securities": {},
-  "active_codes": [],
+  "securities": {
+    "000651": {
+      "code": "000651",
+      "name": "格力电器",
+      "price_format": "unadjusted_close",
+      "selected_provider": "sina_cn_marketdata",
+      "validated_providers": [
+        "sina_cn_marketdata",
+        "tencent_fqkline_raw_day"
+      ],
+      "prices": [
+        {
+          "date": "2026-08-25",
+          "close": 41.62,
+          "volume_shares": 48575709
+        },
+        {
+          "date": "2026-08-26",
+          "close": 41.58,
+          "volume_shares": 53850807
+        },
+        {
+          "date": "2026-08-27",
+          "close": 39.27,
+          "volume_shares": 77946436
+        },
+        {
+          "date": "2026-08-28",
+          "close": 39.0,
+          "volume_shares": 49487325
+        },
+        {
+          "date": "2026-08-31",
+          "close": 38.95,
+          "volume_shares": 37865756
+        },
+        {
+          "date": "2026-09-01",
+          "close": 38.55,
+          "volume_shares": 44568704
+        }
+      ],
+      "dividends": [
+        {
+          "year": 1995,
+          "ex_date": "1996-12-30",
+          "dps": 0.0,
+          "bonus_ratio": 10.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 1996,
+          "ex_date": "1997-11-18",
+          "dps": 1.0,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 1998,
+          "ex_date": "1998-09-11",
+          "dps": 0.0,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 10.0
+        },
+        {
+          "year": 1998,
+          "ex_date": "1999-06-21",
+          "dps": 0.4,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 1999,
+          "ex_date": "2000-06-13",
+          "dps": 0.4,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2000,
+          "ex_date": "2001-06-05",
+          "dps": 0.4,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 5.0
+        },
+        {
+          "year": 2001,
+          "ex_date": "2002-06-13",
+          "dps": 0.3,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2002,
+          "ex_date": "2003-06-27",
+          "dps": 0.32,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2003,
+          "ex_date": "2004-06-30",
+          "dps": 0.33,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2004,
+          "ex_date": "2005-04-08",
+          "dps": 0.38,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2005,
+          "ex_date": "2006-07-11",
+          "dps": 0.4,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 5.0
+        },
+        {
+          "year": 2007,
+          "ex_date": "2008-07-14",
+          "dps": 0.3,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 5.0
+        },
+        {
+          "year": 2008,
+          "ex_date": "2009-06-03",
+          "dps": 0.3,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 5.0
+        },
+        {
+          "year": 2009,
+          "ex_date": "2010-07-13",
+          "dps": 0.5,
+          "bonus_ratio": 5.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2010,
+          "ex_date": "2011-05-31",
+          "dps": 0.3,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2011,
+          "ex_date": "2012-07-06",
+          "dps": 0.5,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2012,
+          "ex_date": "2013-07-11",
+          "dps": 1.0,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2013,
+          "ex_date": "2014-06-06",
+          "dps": 1.5,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2014,
+          "ex_date": "2015-07-03",
+          "dps": 3.0,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 10.0
+        },
+        {
+          "year": 2015,
+          "ex_date": "2016-07-07",
+          "dps": 1.5,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2016,
+          "ex_date": "2017-07-05",
+          "dps": 1.8,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2018,
+          "ex_date": "2019-02-25",
+          "dps": 0.6,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2018,
+          "ex_date": "2019-08-06",
+          "dps": 1.5,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2019,
+          "ex_date": "2020-06-11",
+          "dps": 1.2,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2020,
+          "ex_date": "2020-11-12",
+          "dps": 1.0,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2020,
+          "ex_date": "2021-08-23",
+          "dps": 3.0,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2021,
+          "ex_date": "2022-04-08",
+          "dps": 1.0,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2021,
+          "ex_date": "2022-08-05",
+          "dps": 2.0,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2022,
+          "ex_date": "2023-02-27",
+          "dps": 1.0,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2022,
+          "ex_date": "2023-08-09",
+          "dps": 1.0,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2023,
+          "ex_date": "2024-08-28",
+          "dps": 2.38,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2024,
+          "ex_date": "2025-05-15",
+          "dps": 1.0,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2024,
+          "ex_date": "2025-08-29",
+          "dps": 2.0,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2025,
+          "ex_date": "2026-01-23",
+          "dps": 1.0,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2025,
+          "ex_date": "2026-08-27",
+          "dps": 2.0,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        }
+      ],
+      "hashes": {
+        "prices_sha256": "64418fbda5778066b1749c52976cb6fdcc01dbcede1d6ed03ca04d634e342c35",
+        "dividends_sha256": "036c937310d385442a371dc225d67391c1eab93c9381d38dfdf51fc12e62f778"
+      }
+    },
+    "000915": {
+      "code": "000915",
+      "name": "华特达因",
+      "price_format": "unadjusted_close",
+      "selected_provider": "sina_cn_marketdata",
+      "validated_providers": [
+        "sina_cn_marketdata",
+        "tencent_fqkline_raw_day"
+      ],
+      "prices": [
+        {
+          "date": "2026-08-25",
+          "close": 24.27,
+          "volume_shares": 3654460
+        },
+        {
+          "date": "2026-08-26",
+          "close": 24.27,
+          "volume_shares": 2071000
+        },
+        {
+          "date": "2026-08-27",
+          "close": 24.87,
+          "volume_shares": 3933595
+        },
+        {
+          "date": "2026-08-28",
+          "close": 25.04,
+          "volume_shares": 2470557
+        },
+        {
+          "date": "2026-08-31",
+          "close": 25.11,
+          "volume_shares": 2692700
+        },
+        {
+          "date": "2026-09-01",
+          "close": 25.46,
+          "volume_shares": 2580654
+        }
+      ],
+      "dividends": [
+        {
+          "year": 1998,
+          "ex_date": "1999-09-13",
+          "dps": 0.03,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2002,
+          "ex_date": "2002-09-27",
+          "dps": 0.025,
+          "bonus_ratio": 1.0,
+          "transfer_ratio": 6.0
+        },
+        {
+          "year": 2012,
+          "ex_date": "2013-04-18",
+          "dps": 0.1,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2013,
+          "ex_date": "2014-06-26",
+          "dps": 0.1,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2014,
+          "ex_date": "2015-05-08",
+          "dps": 0.1,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2015,
+          "ex_date": "2016-07-08",
+          "dps": 0.1,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2016,
+          "ex_date": "2017-06-16",
+          "dps": 0.15,
+          "bonus_ratio": 3.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2017,
+          "ex_date": "2018-07-18",
+          "dps": 0.25,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2018,
+          "ex_date": "2019-06-21",
+          "dps": 0.3,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2019,
+          "ex_date": "2020-06-24",
+          "dps": 0.3,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2020,
+          "ex_date": "2021-06-01",
+          "dps": 0.35,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2021,
+          "ex_date": "2022-04-27",
+          "dps": 0.8,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2022,
+          "ex_date": "2023-05-12",
+          "dps": 0.8,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2023,
+          "ex_date": "2024-05-16",
+          "dps": 2.0,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2024,
+          "ex_date": "2024-09-27",
+          "dps": 0.5,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2024,
+          "ex_date": "2025-06-11",
+          "dps": 2.0,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2025,
+          "ex_date": "2025-10-17",
+          "dps": 0.5,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2025,
+          "ex_date": "2026-07-01",
+          "dps": 2.0,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        }
+      ],
+      "hashes": {
+        "prices_sha256": "6721bc0b049faa245c9068179b89ea58eeb3c89e3d7c1d6cda737fc2da685411",
+        "dividends_sha256": "9fc2f65bec23e30f333638f178bbb832fe1b54e9a85f3308df00baaace2393fd"
+      }
+    },
+    "511010": {
+      "code": "511010",
+      "name": "国债 ETF",
+      "price_format": "unadjusted_close",
+      "selected_provider": "sina_cn_marketdata",
+      "validated_providers": [
+        "sina_cn_marketdata",
+        "tencent_fqkline_raw_day"
+      ],
+      "prices": [
+        {
+          "date": "2026-08-25",
+          "close": 141.302,
+          "volume_shares": 8290800
+        },
+        {
+          "date": "2026-08-26",
+          "close": 141.208,
+          "volume_shares": 3430700
+        },
+        {
+          "date": "2026-08-27",
+          "close": 141.134,
+          "volume_shares": 6846100
+        },
+        {
+          "date": "2026-08-28",
+          "close": 141.112,
+          "volume_shares": 18388500
+        },
+        {
+          "date": "2026-08-31",
+          "close": 141.114,
+          "volume_shares": 4206000
+        },
+        {
+          "date": "2026-09-01",
+          "close": 141.187,
+          "volume_shares": 19550200
+        }
+      ],
+      "dividends": [],
+      "hashes": {
+        "prices_sha256": "b729fe796ae59c74cd5e5ce31a65825f04216d9b842bae186c9481e965de3b31",
+        "dividends_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      }
+    },
+    "513100": {
+      "code": "513100",
+      "name": "纳指100 ETF",
+      "price_format": "unadjusted_close",
+      "selected_provider": "sina_cn_marketdata",
+      "validated_providers": [
+        "sina_cn_marketdata",
+        "tencent_fqkline_raw_day"
+      ],
+      "prices": [
+        {
+          "date": "2026-08-25",
+          "close": 2.195,
+          "volume_shares": 253651800
+        },
+        {
+          "date": "2026-08-26",
+          "close": 2.203,
+          "volume_shares": 120221300
+        },
+        {
+          "date": "2026-08-27",
+          "close": 2.229,
+          "volume_shares": 127407528
+        },
+        {
+          "date": "2026-08-28",
+          "close": 2.235,
+          "volume_shares": 108671134
+        },
+        {
+          "date": "2026-08-31",
+          "close": 2.223,
+          "volume_shares": 133235483
+        },
+        {
+          "date": "2026-09-01",
+          "close": 2.233,
+          "volume_shares": 143902167
+        }
+      ],
+      "dividends": [],
+      "hashes": {
+        "prices_sha256": "93c6e7287aea700565e1ab66c048146a50eb094b8e90f370c733114cd30829e7",
+        "dividends_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
+      }
+    },
+    "600066": {
+      "code": "600066",
+      "name": "宇通客车",
+      "price_format": "unadjusted_close",
+      "selected_provider": "sina_cn_marketdata",
+      "validated_providers": [
+        "sina_cn_marketdata",
+        "tencent_fqkline_raw_day"
+      ],
+      "prices": [
+        {
+          "date": "2026-08-25",
+          "close": 29.99,
+          "volume_shares": 12919157
+        },
+        {
+          "date": "2026-08-26",
+          "close": 30.4,
+          "volume_shares": 14577301
+        },
+        {
+          "date": "2026-08-27",
+          "close": 29.91,
+          "volume_shares": 10265100
+        },
+        {
+          "date": "2026-08-28",
+          "close": 30.06,
+          "volume_shares": 8819577
+        },
+        {
+          "date": "2026-08-31",
+          "close": 29.79,
+          "volume_shares": 8352581
+        },
+        {
+          "date": "2026-09-01",
+          "close": 30.54,
+          "volume_shares": 17019112
+        }
+      ],
+      "dividends": [
+        {
+          "year": 1997,
+          "ex_date": "1998-06-05",
+          "dps": 0.6,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 1998,
+          "ex_date": "1998-10-12",
+          "dps": 0.0,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 3.0
+        },
+        {
+          "year": 1998,
+          "ex_date": "1999-07-06",
+          "dps": 0.5,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2000,
+          "ex_date": "2001-07-10",
+          "dps": 0.6,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2001,
+          "ex_date": "2002-04-12",
+          "dps": 0.6,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2003,
+          "ex_date": "2004-04-15",
+          "dps": 0.4,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 5.0
+        },
+        {
+          "year": 2004,
+          "ex_date": "2005-04-19",
+          "dps": 0.5,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 3.0
+        },
+        {
+          "year": 2005,
+          "ex_date": "2006-04-20",
+          "dps": 1.0,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 5.0
+        },
+        {
+          "year": 2006,
+          "ex_date": "2007-04-05",
+          "dps": 0.5,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2007,
+          "ex_date": "2008-05-15",
+          "dps": 0.7,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 3.0
+        },
+        {
+          "year": 2008,
+          "ex_date": "2009-05-15",
+          "dps": 0.6,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2009,
+          "ex_date": "2010-05-18",
+          "dps": 1.0,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2010,
+          "ex_date": "2011-05-16",
+          "dps": 0.3,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2011,
+          "ex_date": "2012-05-09",
+          "dps": 0.3,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2012,
+          "ex_date": "2013-05-15",
+          "dps": 0.7,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 8.0
+        },
+        {
+          "year": 2013,
+          "ex_date": "2014-05-26",
+          "dps": 0.5,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2014,
+          "ex_date": "2015-05-20",
+          "dps": 1.0,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 5.0
+        },
+        {
+          "year": 2015,
+          "ex_date": "2016-05-23",
+          "dps": 1.5,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2016,
+          "ex_date": "2017-06-14",
+          "dps": 1.0,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2017,
+          "ex_date": "2018-07-27",
+          "dps": 0.5,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2018,
+          "ex_date": "2019-05-15",
+          "dps": 0.5,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2019,
+          "ex_date": "2020-05-20",
+          "dps": 1.0,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2020,
+          "ex_date": "2021-05-21",
+          "dps": 0.5,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2021,
+          "ex_date": "2022-05-25",
+          "dps": 0.5,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2022,
+          "ex_date": "2023-05-19",
+          "dps": 1.0,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2023,
+          "ex_date": "2024-05-16",
+          "dps": 1.5,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2024,
+          "ex_date": "2024-12-05",
+          "dps": 0.5,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2024,
+          "ex_date": "2025-05-14",
+          "dps": 1.0,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2025,
+          "ex_date": "2025-09-11",
+          "dps": 0.5,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2025,
+          "ex_date": "2026-05-15",
+          "dps": 2.0,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        }
+      ],
+      "hashes": {
+        "prices_sha256": "79fb125f5021e6df48ee73a987c80fcda7a806b3cf9f5287f626f72d01b334fa",
+        "dividends_sha256": "f36b70f8ce35540c4c64942e9fa655ced5a4fab298c43aef0e2cf978c1783f66"
+      }
+    },
+    "600329": {
+      "code": "600329",
+      "name": "达仁堂",
+      "price_format": "unadjusted_close",
+      "selected_provider": "sina_cn_marketdata",
+      "validated_providers": [
+        "sina_cn_marketdata",
+        "tencent_fqkline_raw_day"
+      ],
+      "prices": [
+        {
+          "date": "2026-08-25",
+          "close": 36.08,
+          "volume_shares": 1841912
+        },
+        {
+          "date": "2026-08-26",
+          "close": 36.58,
+          "volume_shares": 2774074
+        },
+        {
+          "date": "2026-08-27",
+          "close": 36.4,
+          "volume_shares": 1914600
+        },
+        {
+          "date": "2026-08-28",
+          "close": 36.43,
+          "volume_shares": 1328757
+        },
+        {
+          "date": "2026-08-31",
+          "close": 36.04,
+          "volume_shares": 2449756
+        },
+        {
+          "date": "2026-09-01",
+          "close": 36.12,
+          "volume_shares": 1905714
+        }
+      ],
+      "dividends": [
+        {
+          "year": 2001,
+          "ex_date": "2002-07-23",
+          "dps": 0.17,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2002,
+          "ex_date": "2003-07-28",
+          "dps": 0.15,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2003,
+          "ex_date": "2004-07-22",
+          "dps": 0.15,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2004,
+          "ex_date": "2005-06-29",
+          "dps": 0.15,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2005,
+          "ex_date": "2006-06-12",
+          "dps": 0.15,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2009,
+          "ex_date": "2010-07-05",
+          "dps": 0.0,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 10.0
+        },
+        {
+          "year": 2010,
+          "ex_date": "2011-07-06",
+          "dps": 0.2,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2012,
+          "ex_date": "2012-12-13",
+          "dps": 0.2,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2013,
+          "ex_date": "2013-12-19",
+          "dps": 0.1,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2013,
+          "ex_date": "2014-07-15",
+          "dps": 0.05,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2014,
+          "ex_date": "2015-06-01",
+          "dps": 0.15,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2015,
+          "ex_date": "2016-07-15",
+          "dps": 0.15,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2016,
+          "ex_date": "2016-12-23",
+          "dps": 0.1,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2016,
+          "ex_date": "2017-07-14",
+          "dps": 0.15,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2017,
+          "ex_date": "2018-07-13",
+          "dps": 0.2,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2018,
+          "ex_date": "2019-07-15",
+          "dps": 0.22,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2019,
+          "ex_date": "2020-06-24",
+          "dps": 0.3,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2020,
+          "ex_date": "2021-06-24",
+          "dps": 0.3,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2021,
+          "ex_date": "2022-06-02",
+          "dps": 0.5,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2022,
+          "ex_date": "2023-06-06",
+          "dps": 1.12,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2023,
+          "ex_date": "2024-07-12",
+          "dps": 1.28,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2024,
+          "ex_date": "2025-07-04",
+          "dps": 1.28,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2025,
+          "ex_date": "2026-02-12",
+          "dps": 2.45,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        },
+        {
+          "year": 2025,
+          "ex_date": "2026-07-10",
+          "dps": 2.34,
+          "bonus_ratio": 0.0,
+          "transfer_ratio": 0.0
+        }
+      ],
+      "hashes": {
+        "prices_sha256": "e87ec0ead681c713683fc929f27b66455bfbd86e9872a7401119d02c6e02098b",
+        "dividends_sha256": "c8b01490457a1dcd7c658e8861425a1766d654b0a4cb72f77c2f7702b0fccbb0"
+      }
+    }
+  },
+  "active_codes": [
+    "511010",
+    "513100"
+  ],
   "hashes": {
-    "content_sha256": "32634038ea1c3f6df019ab20b567a8eef46c2ce4c00ef5ddab8290897bc02320"
+    "content_sha256": "d3218a8da78424eccce94453a6a8d6cd638e46e7ad518592d49c29e29d362410"
   }
 }
