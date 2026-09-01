@@ -2,6 +2,7 @@ import sys
 from pathlib import Path
 
 import pytest
+import requests
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
@@ -82,6 +83,26 @@ def test_dividend_fetch_reads_all_pages(monkeypatch):
     monkeypatch.setattr("refresh_backtest_cache.requests.get", fake_get)
     assert len(_fetch_dividends_eastmoney("600000", "2026-08-31")) == 2
     assert calls == [1, 2]
+
+
+def test_dividend_fetch_retries_current_page_after_read_timeout(monkeypatch):
+    calls = []
+    sleeps = []
+
+    def fake_get(*args, **kwargs):
+        calls.append(kwargs["params"]["pageNumber"])
+        if len(calls) == 1:
+            raise requests.ReadTimeout("读取超时")
+        row = {"ASSIGNMENT_PROGRESS": "实施", "REPORT_DATE": "2025-12-31",
+               "EX_DIVIDEND_DATE": "2026-06-01", "PRETAX_BONUS_RMB": 10}
+        return _Response({"result": {"data": [row], "pages": 1}})
+
+    monkeypatch.setattr("refresh_backtest_cache.requests.get", fake_get)
+    monkeypatch.setattr("refresh_backtest_cache.time.sleep", sleeps.append)
+
+    assert len(_fetch_dividends_eastmoney("601919", "2026-09-01")) == 1
+    assert calls == [1, 1]
+    assert sleeps == [0.5]
 
 
 def test_dividend_fetch_fails_closed_on_bad_response(monkeypatch):

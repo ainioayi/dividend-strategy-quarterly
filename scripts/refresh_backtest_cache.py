@@ -95,19 +95,31 @@ def _normalize_dividend_rows(rows: list[dict], as_of: str) -> list[dict]:
     return sorted(unique.values(), key=lambda row: (row["ex_date"], row["year"], row["dps"]))
 
 
-def _fetch_dividends_eastmoney(code: str, as_of: str, timeout: float = 20.0) -> list[dict]:
+def _fetch_dividends_eastmoney(
+    code: str, as_of: str, timeout: float = 20.0, retries: int = 2,
+    retry_delay: float = 0.5,
+) -> list[dict]:
     """串行拉取全部分页；失败时抛错，绝不沿用旧缓存。"""
     endpoint = "https://datacenter-web.eastmoney.com/api/data/v1/get"
     raw_rows = []
     page = 1
     while True:
-        response = requests.get(endpoint, params={
-            "reportName": "RPT_SHAREBONUS_DET", "columns": "ALL",
-            "filter": f'(SECURITY_CODE="{code}")', "pageNumber": page,
-            "pageSize": 50, "sortColumns": "REPORT_DATE", "sortTypes": "-1",
-        }, timeout=timeout, headers={"User-Agent": "Mozilla/5.0", "Referer": "https://data.eastmoney.com/"})
-        response.raise_for_status()
-        payload = response.json()
+        for attempt in range(max(retries, 0) + 1):
+            try:
+                response = requests.get(endpoint, params={
+                    "reportName": "RPT_SHAREBONUS_DET", "columns": "ALL",
+                    "filter": f'(SECURITY_CODE="{code}")', "pageNumber": page,
+                    "pageSize": 50, "sortColumns": "REPORT_DATE", "sortTypes": "-1",
+                }, timeout=timeout, headers={
+                    "User-Agent": "Mozilla/5.0", "Referer": "https://data.eastmoney.com/",
+                })
+                response.raise_for_status()
+                payload = response.json()
+                break
+            except (requests.RequestException, json.JSONDecodeError):
+                if attempt >= retries:
+                    raise
+                time.sleep(max(retry_delay, 0.0) * (2 ** attempt))
         result = payload.get("result")
         if not isinstance(result, dict) or not isinstance(result.get("data"), list):
             raise RuntimeError(f"东财分红响应结构异常: {code}")
