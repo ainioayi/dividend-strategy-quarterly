@@ -22,8 +22,12 @@ from monthly_forward import (
 )
 
 
-def shanghai_today() -> date:
-    return datetime.now(ZoneInfo("Asia/Shanghai")).date()
+def latest_closed_market_date(now: datetime | None = None) -> date:
+    """返回北京时间已经具备完整收盘行情的最新自然日。"""
+    current = (now or datetime.now(ZoneInfo("Asia/Shanghai"))).astimezone(
+        ZoneInfo("Asia/Shanghai")
+    )
+    return current.date() if current.hour >= 18 else current.date() - timedelta(days=1)
 
 
 @cache
@@ -226,7 +230,8 @@ def save_snapshot_and_report(
 def main() -> int:
     parser = argparse.ArgumentParser(description="五策略每日交易日门禁")
     parser.add_argument("--strategy", choices=tuple(FORWARD_STRATEGIES), default="v1")
-    parser.add_argument("--date", help="必须等于 Asia/Shanghai 当前日期")
+    parser.add_argument("--date", help="必须等于北京时间最新已收盘数据日期")
+    parser.add_argument("--resolve-date", action="store_true", help="只输出最新已收盘数据日期")
     parser.add_argument("--mode", choices=("auto", "signal", "execute"), default="auto")
     parser.add_argument("--plan-only", action="store_true", help="只计算门禁，不刷新账本或生成快照")
     parser.add_argument("--all-strategies", action="store_true", help="联合计算五本账本门禁，仅用于计划")
@@ -237,12 +242,15 @@ def main() -> int:
     parser.add_argument("--journal", type=Path)
     parser.add_argument("--output-dir", type=Path)
     args = parser.parse_args()
+    effective_date = latest_closed_market_date()
+    today = date.fromisoformat(args.date) if args.date else effective_date
+    if today != effective_date:
+        raise RuntimeError("显式日期不等于北京时间最新已收盘数据日期，禁止历史回写")
+    if args.resolve_date:
+        print(today.isoformat())
+        return 0
     if args.all_strategies and not args.plan_only:
         raise RuntimeError("联合门禁只能与 --plan-only 一起使用")
-    actual_today = shanghai_today()
-    today = date.fromisoformat(args.date) if args.date else actual_today
-    if today != actual_today:
-        raise RuntimeError("显式日期不等于 Asia/Shanghai 当前日，禁止历史回写")
     if args.all_strategies:
         rows_by_strategy = {
             key: _load_journal(strategy_profile(key)["journal_path"])

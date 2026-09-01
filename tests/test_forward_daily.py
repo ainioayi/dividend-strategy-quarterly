@@ -1,18 +1,31 @@
 import json
 import sys
-from datetime import date
+from datetime import date, datetime, timezone
 from pathlib import Path
+from zoneinfo import ZoneInfo
 
 import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
-from forward_daily import decide_action, decide_combined_action, save_snapshot_and_report
+from forward_daily import (
+    decide_action, decide_combined_action, latest_closed_market_date,
+    save_snapshot_and_report,
+)
 
 
 def _calendar(*values):
     days = [date.fromisoformat(value) for value in values]
     return lambda start, end: [day for day in days if start <= day <= end]
+
+
+def test_latest_closed_market_date_handles_delayed_schedule_crossing_midnight():
+    shanghai = ZoneInfo("Asia/Shanghai")
+    assert latest_closed_market_date(datetime(2026, 9, 1, 17, 59, tzinfo=shanghai)) == date(2026, 8, 31)
+    assert latest_closed_market_date(datetime(2026, 9, 1, 18, 0, tzinfo=shanghai)) == date(2026, 9, 1)
+    assert latest_closed_market_date(
+        datetime(2026, 8, 31, 19, 10, tzinfo=timezone.utc)
+    ) == date(2026, 8, 31)
 
 
 def test_august_27_does_not_generate_august_31_signal():

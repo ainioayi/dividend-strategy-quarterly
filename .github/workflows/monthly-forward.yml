@@ -20,7 +20,7 @@ on:
   workflow_dispatch:
     inputs:
       date:
-        description: "Asia/Shanghai 当前日期 YYYY-MM-DD；留空自动取当天"
+        description: "北京时间最新已收盘数据日期 YYYY-MM-DD；留空自动计算"
         required: false
         type: string
       mode:
@@ -76,10 +76,13 @@ jobs:
         env:
           INPUT_DATE: ${{ inputs.date }}
         run: |
-          $today = [System.TimeZoneInfo]::ConvertTimeBySystemTimeZoneId([DateTime]::UtcNow, "Asia/Shanghai").ToString("yyyy-MM-dd")
-          $asOf = if ([string]::IsNullOrWhiteSpace($env:INPUT_DATE)) { $today } else { $env:INPUT_DATE }
-          if ($asOf -ne $today) { throw "显式日期必须等于 Asia/Shanghai 当前日期，禁止历史回写" }
-          "as_of=$asOf" >> $env:GITHUB_OUTPUT
+          if ([string]::IsNullOrWhiteSpace($env:INPUT_DATE)) {
+            $asOf = python scripts/forward_daily.py --resolve-date
+          } else {
+            $asOf = python scripts/forward_daily.py --resolve-date --date $env:INPUT_DATE
+          }
+          if ($LASTEXITCODE -ne 0) { throw "计算最新已收盘数据日期失败" }
+          "as_of=$($asOf.Trim())" >> $env:GITHUB_OUTPUT
 
       - name: 先计算交易日门禁
         if: inputs.mode != 'rehearsal'

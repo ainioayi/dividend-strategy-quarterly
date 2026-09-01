@@ -33,6 +33,8 @@ def test_forward_workflow_has_retry_freeze_gate_and_issue_alert() -> None:
     assert workflow.count("--mode auto") == 5
     assert '--mode "${{ steps.plan.outputs.action }}"' not in workflow
     assert "if: inputs.mode != 'rehearsal'" in workflow
+    assert "python scripts/forward_daily.py --resolve-date" in workflow
+    assert "Asia/Shanghai 当前日期，禁止历史回写" not in workflow
     assert 'if [[ "$RUN_MODE" == "rehearsal" ]]' in workflow
     assert "id: v5_nav\n        continue-on-error: true" in workflow
     assert "id: v5_inputs\n        continue-on-error: true" in workflow
