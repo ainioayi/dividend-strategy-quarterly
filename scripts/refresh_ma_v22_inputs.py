@@ -149,10 +149,7 @@ def fetch_fund_dividends(
         timeout=30,
     )
     response.raise_for_status()
-    try:
-        rows = parse_dividends(response.text, as_of)
-    except ValueError:
-        rows = []
+    rows = parse_dividends(response.text, as_of)
     return [{"code": code, **row} for row in rows], url
 
 

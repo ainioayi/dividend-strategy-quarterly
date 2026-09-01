@@ -91,6 +91,7 @@ def parse_dividends(html: str, as_of: str) -> list[dict[str, Any]]:
     parser = _DividendTableParser()
     parser.feed(html)
     records: list[dict[str, Any]] = []
+    parsed_count = 0
     for cells in parser.rows:
         if len(cells) != 5 or not DATE_RE.fullmatch(cells[1]):
             continue
@@ -100,6 +101,7 @@ def parse_dividends(html: str, as_of: str) -> list[dict[str, Any]]:
         record_date, ex_date, pay_date = cells[1], cells[2], cells[4]
         if not all(DATE_RE.fullmatch(day) for day in (record_date, ex_date, pay_date)):
             continue
+        parsed_count += 1
         if ex_date > as_of:
             continue
         records.append({
@@ -109,9 +111,14 @@ def parse_dividends(html: str, as_of: str) -> list[dict[str, Any]]:
             "cash_per_unit": round(float(match.group(1)) / 10.0, 8),
         })
     records.sort(key=lambda item: (item["ex_date"], item["pay_date"]))
-    if not records:
-        raise ValueError("未从基金分红页面解析到截止日内的分红记录")
-    return records
+    explicitly_empty = any(
+        "暂无分红信息" in cell
+        for cells in parser.rows
+        for cell in cells
+    )
+    if records or parsed_count or explicitly_empty:
+        return records
+    raise ValueError("基金分红页面未识别出分红记录或明确的暂无分红状态")
 
 
 def parse_prices(payload: Any, as_of: str) -> list[dict[str, Any]]:

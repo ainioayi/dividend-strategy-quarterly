@@ -238,6 +238,50 @@ jobs:
             --v5 $env:V5_OUTCOME `
             --ma_v22 $env:MA_V22_OUTCOME
 
+      - name: 验证前向输入与五本账本
+        if: steps.plan.outputs.action == 'signal' || steps.plan.outputs.action == 'execute'
+        shell: pwsh
+        run: |
+          python scripts/monthly_forward.py verify
+          python scripts/monthly_forward.py --strategy v2 verify
+          python scripts/monthly_forward.py --strategy v3 verify
+          python scripts/monthly_forward.py --strategy v5 verify
+          python scripts/monthly_forward.py --strategy ma_v22 verify
+          python -c "from scripts.monthly_forward import FORWARD_STRATEGIES, _load_journal, strategy_profile; [_load_journal(strategy_profile(strategy)['journal_path']) for strategy in FORWARD_STRATEGIES]; print('五本账本 JSONL 可解析')"
+          python -c "import json; from pathlib import Path; [json.loads(path.read_text(encoding='utf-8')) for path in Path('data/forward').rglob('*.json')]; print('前向 JSON 可解析')"
+          git diff --check
+
+      - name: 先提交前向输入与账本
+        if: steps.plan.outputs.action == 'signal' || steps.plan.outputs.action == 'execute'
+        shell: pwsh
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add --all -- data/forward ':(exclude)data/forward/performance.json' ':(exclude)data/forward/performance_market.json'
+          git diff --cached --quiet
+          if ($LASTEXITCODE -eq 0) {
+            Write-Host "没有需要提交的前向输入或账本变化"
+            exit 0
+          }
+          git commit -m "保存五策略前向账本 ${{ steps.date.outputs.as_of }}"
+          $pushed = $false
+          for ($attempt = 1; $attempt -le 3; $attempt++) {
+            git push origin HEAD:main
+            if ($LASTEXITCODE -eq 0) {
+              $pushed = $true
+              break
+            }
+            if ($attempt -lt 3) {
+              Write-Host "远端已更新，第 $attempt 次推送失败，重新同步后重试"
+              git fetch origin main
+              if ($LASTEXITCODE -ne 0) { throw "获取远端 main 失败" }
+              git rebase origin/main
+              if ($LASTEXITCODE -ne 0) { throw "前向账本无法重放到最新 main" }
+              Start-Sleep -Seconds 2
+            }
+          }
+          if (-not $pushed) { throw "连续 3 次推送前向账本失败" }
+
       - name: 刷新每日公开业绩
         if: steps.plan.outputs.is_trading_day == 'true'
         shell: pwsh
@@ -253,19 +297,19 @@ jobs:
           python -m compileall -q scripts tests
           git diff --check
 
-      - name: 提交输入、账本与公开业绩
+      - name: 提交公开业绩
         if: success() && steps.plan.outputs.is_trading_day == 'true'
         shell: pwsh
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add data/forward site/performance.json
+          git add data/forward/performance.json data/forward/performance_market.json site/performance.json
           git diff --cached --quiet
           if ($LASTEXITCODE -eq 0) {
             Write-Host "没有需要提交的前向业绩变化"
             exit 0
           }
-          git commit -m "更新五策略前向业绩 ${{ steps.date.outputs.as_of }}"
+          git commit -m "更新五策略公开业绩 ${{ steps.date.outputs.as_of }}"
           $pushed = $false
           for ($attempt = 1; $attempt -le 3; $attempt++) {
             git push origin HEAD:main
@@ -278,11 +322,11 @@ jobs:
               git fetch origin main
               if ($LASTEXITCODE -ne 0) { throw "获取远端 main 失败" }
               git rebase origin/main
-              if ($LASTEXITCODE -ne 0) { throw "前向产物无法重放到最新 main" }
+              if ($LASTEXITCODE -ne 0) { throw "公开业绩无法重放到最新 main" }
               Start-Sleep -Seconds 2
             }
           }
-          if (-not $pushed) { throw "连续 3 次推送前向产物失败" }
+          if (-not $pushed) { throw "连续 3 次推送公开业绩失败" }
 
       - name: 触发最新公开页面部署
         if: success() && steps.plan.outputs.is_trading_day == 'true'

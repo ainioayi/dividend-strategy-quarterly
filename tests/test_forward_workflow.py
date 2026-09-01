@@ -50,7 +50,10 @@ def test_forward_workflow_has_retry_freeze_gate_and_issue_alert() -> None:
     assert "  actions: write" in workflow
     assert "gh workflow run pages.yml --ref main" in workflow
     assert "if: success() && steps.plan.outputs.is_trading_day == 'true'" in workflow
-    assert "git add data/forward site/performance.json" in workflow
+    assert "git add --all -- data/forward ':(exclude)data/forward/performance.json' ':(exclude)data/forward/performance_market.json'" in workflow
+    assert "git add data/forward/performance.json data/forward/performance_market.json site/performance.json" in workflow
+    assert workflow.index("- name: 先提交前向输入与账本") < workflow.index("- name: 刷新每日公开业绩")
+    assert workflow.index("- name: 刷新每日公开业绩") < workflow.index("- name: 提交公开业绩")
     assert "git add data/forward data/v5_inputs.json" not in workflow
 
 

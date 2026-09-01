@@ -42,7 +42,7 @@ def test四资产截止日不一致时拒绝冻结() -> None:
 
 def test无分红基金页面返回空列表而不是伪造记录() -> None:
     class Response:
-        text = "<html><table class='cfxq'></table></html>"
+        text = "<html><table class='cfxq'><tr><td>暂无分红信息!</td></tr></table></html>"
 
         @staticmethod
         def raise_for_status() -> None:

@@ -3,6 +3,8 @@ from __future__ import annotations
 import sys
 from pathlib import Path
 
+import pytest
+
 
 SCRIPTS = Path(__file__).resolve().parents[1] / "scripts"
 sys.path.insert(0, str(SCRIPTS))
@@ -30,6 +32,22 @@ def test解析ETF未复权行情和分红() -> None:
     """
     records = parse_dividends(html, "2026-01-31")
     assert records[0]["cash_per_unit"] == 0.143
+    assert parse_dividends(html, "2026-01-01") == []
+
+
+def test基金页面明确暂无分红时返回空列表() -> None:
+    html = """
+    <table class="w782 comm cfxq"><tbody>
+      <tr><th>年份</th><th>权益登记日</th><th>除息日</th><th>每10份分红</th><th>分红发放日</th></tr>
+      <tr><td colspan="5">暂无分红信息!</td></tr>
+    </tbody></table>
+    """
+    assert parse_dividends(html, "2026-09-01") == []
+
+
+def test基金分红页面结构异常时拒绝静默返回空列表() -> None:
+    with pytest.raises(ValueError, match="未识别出分红记录或明确的暂无分红状态"):
+        parse_dividends("<html><body>上游返回了非预期页面</body></html>", "2026-09-01")
 
 
 def test基准按整手买入并在分红到账后复投() -> None:
