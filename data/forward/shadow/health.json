@@ -1,43 +1,43 @@
 {
   "schema_version": 1,
-  "generated_at": "2026-08-31T23:52:40+08:00",
-  "as_of": "2026-08-31",
-  "action": "signal",
+  "generated_at": "2026-09-01T22:46:22+08:00",
+  "as_of": "2026-09-01",
+  "action": "execute",
   "strategies": {
     "v1": {
       "name": "高息动量 V1（2只正式）",
       "status": "正常",
       "outcome": "success",
-      "as_of": "2026-08-31",
-      "action": "signal"
+      "as_of": "2026-09-01",
+      "action": "execute"
     },
     "v2": {
       "name": "高息动量 V2（3只影子）",
       "status": "正常",
       "outcome": "success",
-      "as_of": "2026-08-31",
-      "action": "signal"
+      "as_of": "2026-09-01",
+      "action": "execute"
     },
     "v3": {
       "name": "高息动量 V3（4只影子）",
       "status": "正常",
       "outcome": "success",
-      "as_of": "2026-08-31",
-      "action": "signal"
+      "as_of": "2026-09-01",
+      "action": "execute"
     },
     "v5": {
       "name": "高息动量 V5（附件规则影子）",
       "status": "正常",
       "outcome": "success",
-      "as_of": "2026-08-31",
-      "action": "signal"
+      "as_of": "2026-09-01",
+      "action": "execute"
     },
     "ma_v22": {
       "name": "多资产风险预算 V2.2（全球版影子）",
       "status": "正常",
       "outcome": "success",
-      "as_of": "2026-08-31",
-      "action": "signal"
+      "as_of": "2026-09-01",
+      "action": "execute"
     }
   }
 }

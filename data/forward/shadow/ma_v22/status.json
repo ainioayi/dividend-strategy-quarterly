@@ -3,148 +3,124 @@
   "strategy_id": "ma_v22",
   "strategy_version": "V2.2",
   "shadow": true,
-  "as_of": "2026-08-31",
+  "as_of": "2026-09-01",
   "latest_action": {
-    "action": "noop",
-    "reason": "等待下一真实交易日",
+    "action": "execute",
+    "period": "2026-08",
     "target_date": "2026-09-01",
     "is_trading_day": true
   },
   "signal_count": 1,
-  "execution_count": 0,
-  "pending_signal": {
-    "candidate_pool": {
-      "codes": [
-        "510300",
-        "518880",
-        "513100",
-        "511010"
-      ],
-      "count": 4
-    },
-    "decision_snapshot": {
-      "active_assets": [
-        "nq"
-      ],
-      "details": {
-        "bond": {
-          "active": true,
-          "momentum": null,
-          "volatility": 0.006089402158988795,
-          "weight": 0.6332703880080486
-        },
-        "csi": {
-          "active": false,
-          "momentum": -0.00721500721500723,
-          "volatility": 0.1968459760245927,
-          "weight": 0.0
-        },
-        "gold": {
-          "active": false,
-          "momentum": -0.16444659723904076,
-          "volatility": 0.23676036667916003,
-          "weight": 0.0
-        },
-        "nq": {
-          "active": true,
-          "momentum": 0.22210005497526097,
-          "volatility": 0.2726804619262507,
-          "weight": 0.3667296119919515
-        }
-      },
-      "eligible_entry_codes": [
-        "513100",
-        "511010"
-      ],
-      "held_codes": [],
-      "portfolio_volatility": 0.2726804619262507,
-      "scale": 0.3667296119919515
-    },
-    "event_type": "signal",
-    "ma_v22_input_sha256": "6c316deec89abf63dc617ca303e5d3c8d4e6cd852759e99472b1c0828faedb8a",
-    "period": "2026-08",
-    "schema_version": 1,
-    "shadow": true,
-    "signal_date": "2026-08-31",
-    "signal_prices_sha256": "41bf865d343fad3ec90f1a542be4498eb624673debea589086ae0243442ed3cc",
-    "status": "等待下一真实交易日开盘模拟执行",
-    "strategy_id": "ma_v22",
-    "strategy_version": "V2.2",
-    "target_codes": [
-      "513100",
-      "511010"
-    ],
-    "target_weights": {
-      "bond": 0.6332703880080486,
-      "nq": 0.3667296119919515
-    }
-  },
+  "execution_count": 1,
+  "pending_signal": null,
   "latest_event": {
-    "candidate_pool": {
-      "codes": [
-        "510300",
-        "518880",
-        "513100",
-        "511010"
-      ],
-      "count": 4
+    "cash": 6852.7458,
+    "closing_prices": {
+      "510300": 4.684,
+      "511010": 141.187,
+      "513100": 2.233,
+      "518880": 9.118
     },
-    "decision_snapshot": {
-      "active_assets": [
-        "nq"
-      ],
-      "details": {
-        "bond": {
-          "active": true,
-          "momentum": null,
-          "volatility": 0.006089402158988795,
-          "weight": 0.6332703880080486
+    "content_sha256": "74a720a6b2a226d3f251264670a79f48bb7d4ffd432dfc345807dd30fb20aaaa",
+    "cumulative_events": [
+      {
+        "code": "513100",
+        "date": "2026-09-01",
+        "fees": {
+          "model_cost": 36.597,
+          "total": 36.597
         },
-        "csi": {
-          "active": false,
-          "momentum": -0.00721500721500723,
-          "volatility": 0.1968459760245927,
-          "weight": 0.0
-        },
-        "gold": {
-          "active": false,
-          "momentum": -0.16444659723904076,
-          "volatility": 0.23676036667916003,
-          "weight": 0.0
-        },
-        "nq": {
-          "active": true,
-          "momentum": 0.22210005497526097,
-          "volatility": 0.2726804619262507,
-          "weight": 0.3667296119919515
-        }
+        "gross": 36597.0,
+        "name": "纳指100 ETF",
+        "net_cash": 36633.597,
+        "price": 2.218,
+        "reason": "V2.2 月度目标权重",
+        "shares": 16500,
+        "side": "买入"
       },
-      "eligible_entry_codes": [
-        "513100",
-        "511010"
-      ],
-      "held_codes": [],
-      "portfolio_volatility": 0.2726804619262507,
-      "scale": 0.3667296119919515
+      {
+        "code": "511010",
+        "date": "2026-09-01",
+        "fees": {
+          "model_cost": 56.4572,
+          "total": 56.4572
+        },
+        "gross": 56457.2,
+        "name": "国债 ETF",
+        "net_cash": 56513.657199999994,
+        "price": 141.143,
+        "reason": "V2.2 月度目标权重",
+        "shares": 400,
+        "side": "买入"
+      }
+    ],
+    "event_type": "execution",
+    "execution_date": "2026-09-01",
+    "execution_prices": {
+      "510300": 4.683,
+      "511010": 141.143,
+      "513100": 2.218,
+      "518880": 9.128
     },
-    "event_type": "signal",
-    "ma_v22_input_sha256": "6c316deec89abf63dc617ca303e5d3c8d4e6cd852759e99472b1c0828faedb8a",
+    "execution_timing": "open",
+    "fees": 93.0542,
+    "holdings": [
+      {
+        "code": "513100",
+        "entry_price": 2.218,
+        "shares": 16500
+      },
+      {
+        "code": "511010",
+        "entry_price": 141.143,
+        "shares": 400
+      }
+    ],
+    "ma_v22_input_sha256": "bc87ffa481d3b177fa4e45473554358c6b4ea83c8e4aa0c9fc95e0a10e7fc183",
+    "nav": 100172.0458,
+    "operations": [
+      {
+        "code": "513100",
+        "date": "2026-09-01",
+        "fees": {
+          "model_cost": 36.597,
+          "total": 36.597
+        },
+        "gross": 36597.0,
+        "name": "纳指100 ETF",
+        "net_cash": 36633.597,
+        "price": 2.218,
+        "reason": "V2.2 月度目标权重",
+        "shares": 16500,
+        "side": "买入"
+      },
+      {
+        "code": "511010",
+        "date": "2026-09-01",
+        "fees": {
+          "model_cost": 56.4572,
+          "total": 56.4572
+        },
+        "gross": 56457.2,
+        "name": "国债 ETF",
+        "net_cash": 56513.657199999994,
+        "price": 141.143,
+        "reason": "V2.2 月度目标权重",
+        "shares": 400,
+        "side": "买入"
+      }
+    ],
     "period": "2026-08",
     "schema_version": 1,
     "shadow": true,
     "signal_date": "2026-08-31",
-    "signal_prices_sha256": "41bf865d343fad3ec90f1a542be4498eb624673debea589086ae0243442ed3cc",
-    "status": "等待下一真实交易日开盘模拟执行",
+    "status": "已按下一真实交易日开盘价完成模型执行，并按当日收盘价估值",
     "strategy_id": "ma_v22",
     "strategy_version": "V2.2",
-    "target_codes": [
-      "513100",
-      "511010"
-    ],
     "target_weights": {
       "bond": 0.6332703880080486,
       "nq": 0.3667296119919515
     }
   },
-  "input_snapshot": "data/forward/shadow/ma_v22/snapshots/2026-08-31/input_hashes.json"
+  "input_snapshot": "data/forward/shadow/ma_v22/snapshots/2026-09-01/input_hashes.json"
 }
