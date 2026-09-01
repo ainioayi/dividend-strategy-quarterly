@@ -50,6 +50,19 @@ def _fetch_kline_sina(code: str, as_of: str) -> dict[str, float]:
     return result
 
 
+def _merge_price_rows(existing: dict, fetched: dict, as_of: str) -> dict[str, float]:
+    """保留行情接口滚动窗口挤出的旧记录，并拒绝重叠价格漂移。"""
+    old_rows = {str(day)[:10]: float(value) for day, value in existing.items()
+                if str(day)[:10] <= as_of}
+    new_rows = {str(day)[:10]: float(value) for day, value in fetched.items()
+                if str(day)[:10] <= as_of}
+    changed = sorted(day for day in old_rows.keys() & new_rows.keys()
+                     if old_rows[day] != new_rows[day])
+    if changed:
+        raise RuntimeError(f"历史收盘价发生变化: {changed[-5:]}")
+    return dict(sorted({**old_rows, **new_rows}.items()))
+
+
 def _positive_float(value) -> float:
     try:
         number = float(value)
@@ -194,7 +207,16 @@ def main() -> None:
         if not rows:
             failed.append(code)
         else:
-            staged_prices[code] = rows
+            try:
+                old_path = cache_dir / f"kl_{code}.json"
+                existing = (
+                    json.loads(old_path.read_text(encoding="utf-8"))
+                    if old_path.exists() else {}
+                )
+                staged_prices[code] = _merge_price_rows(existing, rows, args.as_of)
+            except Exception as exc:
+                print(f"行情合并失败 {code}: {exc}")
+                failed.append(code)
         if index % 10 == 0 or index == len(codes):
             print(f"进度 {index}/{len(codes)}，有效 {index - len(failed)}，失败 {len(failed)}")
         if index < len(codes):

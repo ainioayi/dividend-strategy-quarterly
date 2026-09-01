@@ -9,6 +9,7 @@ from refresh_backtest_cache import (
     _dividend_summary,
     _fetch_dividends_eastmoney,
     _fetch_kline_sina,
+    _merge_price_rows,
     _normalize_dividend_rows,
     refresh_dividend_cache,
 )
@@ -56,6 +57,16 @@ def test_sina_kline_is_unadjusted_and_cut_off_by_explicit_date(monkeypatch):
     assert captured["symbol"] == "bj920982"
     assert captured["ma"] == "no"
     assert result == {"2026-08-25": 10.5}
+
+
+def test_price_merge_preserves_rolled_off_history_and_rejects_drift():
+    existing = {"2005-09-29": 5.0, "2026-08-31": 10.0}
+    fetched = {"2026-08-31": 10.0, "2026-09-01": 10.2}
+    assert _merge_price_rows(existing, fetched, "2026-09-01") == {
+        "2005-09-29": 5.0, "2026-08-31": 10.0, "2026-09-01": 10.2,
+    }
+    with pytest.raises(RuntimeError, match="历史收盘价发生变化"):
+        _merge_price_rows(existing, {"2026-08-31": 10.1}, "2026-09-01")
 
 
 def test_dividend_fetch_reads_all_pages(monkeypatch):
