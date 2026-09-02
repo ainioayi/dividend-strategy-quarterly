@@ -18,8 +18,7 @@ def test_forward_workflow_has_retry_freeze_gate_and_issue_alert() -> None:
         "site/performance.json",
     ):
         assert f'      - "{generated_path}"' in workflow
-    assert 'cron: "30 10 * * 1-5"' in workflow
-    assert 'cron: "30 12 * * 1-5"' in workflow
+    assert 'cron: "30 10-14 * * 1-5"' in workflow
     assert "cancel-in-progress: true" in workflow
     assert "python scripts/verify_v1_freeze.py" in workflow
     assert "python scripts/monthly_forward.py verify" in workflow
