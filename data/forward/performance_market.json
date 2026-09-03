@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "as_of": "2026-09-02",
-  "retrieved_at": "2026-09-02T22:40:12+08:00",
+  "as_of": "2026-09-03",
+  "retrieved_at": "2026-09-03T22:42:50+08:00",
   "price_format": "unadjusted_close",
   "benchmark": {
     "code": "510300",
@@ -41,6 +41,11 @@
         "date": "2026-09-02",
         "close": 4.62,
         "volume_shares": 636459777
+      },
+      {
+        "date": "2026-09-03",
+        "close": 4.621,
+        "volume_shares": 498182963
       }
     ],
     "dividends": [],
@@ -60,7 +65,7 @@
       }
     },
     "hashes": {
-      "prices_sha256": "acba360eca1adf4fd273f62c90addcb49fbec0194a53ce825d831f859fe45e5d",
+      "prices_sha256": "a9fe58ab68a55238514ca2a82a852c6281dfb47c5a9fada58bdf2b8d5151cb66",
       "dividends_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
     }
   },
@@ -576,11 +581,16 @@
           "date": "2026-09-02",
           "close": 141.166,
           "volume_shares": 35557100
+        },
+        {
+          "date": "2026-09-03",
+          "close": 141.23,
+          "volume_shares": 28715200
         }
       ],
       "dividends": [],
       "hashes": {
-        "prices_sha256": "16381892dd912c2d9553996cbaa42e720a5bced4a7ec80722056b6feee99bb3b",
+        "prices_sha256": "a6e2279047f6dcd3ed83c82b9246ee63af5f990ee5de726a0257bc48bbf954e8",
         "dividends_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
       }
     },
@@ -628,11 +638,16 @@
           "date": "2026-09-02",
           "close": 2.195,
           "volume_shares": 121684084
+        },
+        {
+          "date": "2026-09-03",
+          "close": 2.196,
+          "volume_shares": 116546526
         }
       ],
       "dividends": [],
       "hashes": {
-        "prices_sha256": "7faf820a2238aed134ca55584ac12f76a1d2823af6ce2021fb2ac021997312e6",
+        "prices_sha256": "31dbbf5f2c1e66c51fbdf7b8979f43874ef8bfe420c54d607f095b1fab86c385",
         "dividends_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
       }
     },
@@ -1116,6 +1131,6 @@
     "513100"
   ],
   "hashes": {
-    "content_sha256": "10f3ea392c042ba7b0e521eea558ac6c2af7d47a2f31d1860aecd6d5a19888f3"
+    "content_sha256": "629acf398b23414518d83539e1a226824a0b4841be312f481693088cfe6d4b6d"
   }
 }
