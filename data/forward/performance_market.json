@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
   "as_of": "2026-09-04",
-  "retrieved_at": "2026-09-04T22:30:40+08:00",
+  "retrieved_at": "2026-09-05T01:46:03+08:00",
   "price_format": "unadjusted_close",
   "benchmark": {
     "code": "510300",
