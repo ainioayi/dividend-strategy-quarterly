@@ -1,7 +1,7 @@
 {
   "schema_version": 4,
-  "generated_at": "2026-09-03T22:42:50+08:00",
-  "as_of": "2026-09-03",
+  "generated_at": "2026-09-04T22:30:40+08:00",
+  "as_of": "2026-09-04",
   "forward_start_date": "2026-08-25",
   "strategy": {
     "name": "高息动量 V1（2只正式）",
@@ -30,13 +30,13 @@
     "status": "与 V1 同日建仓",
     "inception_date": "2026-09-01",
     "method": "与 V1 首笔模拟成交同日用 10 万元收盘整手买入，现金分红到账后整手复投，计最低佣金",
-    "total_assets": 98628.17,
-    "cumulative_return_pct": -1.37183,
-    "max_drawdown_pct": 1.3931,
+    "total_assets": 98521.67,
+    "cumulative_return_pct": -1.47833,
+    "max_drawdown_pct": 1.4783,
     "fees": 29.93,
     "dividends": 0.0
   },
-  "excess_return_pct": 1.33724,
+  "excess_return_pct": 1.44374,
   "series": [
     {
       "date": "2026-08-25",
@@ -173,6 +173,23 @@
       "v5_return_pct": -0.01494,
       "ma_v22_nav": 99578.75,
       "ma_v22_return_pct": -0.42125
+    },
+    {
+      "date": "2026-09-04",
+      "strategy_nav": 99965.41,
+      "strategy_return_pct": -0.03459,
+      "benchmark_nav": 98521.67,
+      "benchmark_return_pct": -1.47833,
+      "v1_nav": 99965.41,
+      "v1_return_pct": -0.03459,
+      "v2_nav": 99965.41,
+      "v2_return_pct": -0.03459,
+      "v3_nav": 99965.41,
+      "v3_return_pct": -0.03459,
+      "v5_nav": 99985.88,
+      "v5_return_pct": -0.01412,
+      "ma_v22_nav": 100004.15,
+      "ma_v22_return_pct": 0.00415
     }
   ],
   "holdings": [
@@ -249,7 +266,7 @@
     "v1_commit": "c7d128ff0bc1b4b21c60bc7c6e2894dabf513fae",
     "rules_sha256": "d3265a0af79c1915244edb7d54322ea038183dd90b9b01ef00c216238597bd23",
     "journal_sha256": "b4274835ad00e5ddca3ec3496efb50995f1045a0b631f702b0b3111e67f7d7e8",
-    "market_content_sha256": "629acf398b23414518d83539e1a226824a0b4841be312f481693088cfe6d4b6d",
+    "market_content_sha256": "fca0b987c620a61f4dba532bc5169af62d5e0ca8f64a93519d44b8eb6eda483b",
     "price_format": "unadjusted_close",
     "benchmark_sources": {
       "prices": {
@@ -288,7 +305,7 @@
       ],
       "shadow_can_write_v1_journal": false
     },
-    "performance_sha256": "fae331f7306ddbd27d084bcb7e9547dcdcde894e1700dae651b811b07a1f520c",
+    "performance_sha256": "98bf2b008a5771cba88f20ad40e91f7977fb9fd0969945fa031b7940948edd1a",
     "strategy_journals": {
       "v1": "b4274835ad00e5ddca3ec3496efb50995f1045a0b631f702b0b3111e67f7d7e8",
       "v2": "1144d7c41026ab5ffa9a6f4043bf96d487448665ac961b7b98177d8906e6ac58",
@@ -332,7 +349,7 @@
         "max_holdings": 2,
         "target_allocation_pct": 100,
         "cash_reserve": 0,
-        "excess_return_pct": 1.33724
+        "excess_return_pct": 1.44374
       },
       "series": [
         {
@@ -372,6 +389,11 @@
         },
         {
           "date": "2026-09-03",
+          "nav": 99965.41,
+          "return_pct": -0.03459
+        },
+        {
+          "date": "2026-09-04",
           "nav": 99965.41,
           "return_pct": -0.03459
         }
@@ -480,7 +502,7 @@
         "max_holdings": 3,
         "target_allocation_pct": 100,
         "cash_reserve": 0,
-        "excess_return_pct": 1.33724
+        "excess_return_pct": 1.44374
       },
       "series": [
         {
@@ -520,6 +542,11 @@
         },
         {
           "date": "2026-09-03",
+          "nav": 99965.41,
+          "return_pct": -0.03459
+        },
+        {
+          "date": "2026-09-04",
           "nav": 99965.41,
           "return_pct": -0.03459
         }
@@ -628,7 +655,7 @@
         "max_holdings": 4,
         "target_allocation_pct": 100,
         "cash_reserve": 0,
-        "excess_return_pct": 1.33724
+        "excess_return_pct": 1.44374
       },
       "series": [
         {
@@ -668,6 +695,11 @@
         },
         {
           "date": "2026-09-03",
+          "nav": 99965.41,
+          "return_pct": -0.03459
+        },
+        {
+          "date": "2026-09-04",
           "nav": 99965.41,
           "return_pct": -0.03459
         }
@@ -763,10 +795,10 @@
         "shadow": true,
         "status": "V5 影子模拟",
         "initial_capital": 100000.0,
-        "total_assets": 99985.06,
-        "cash": 14824.06,
-        "total_pnl": -14.94,
-        "cumulative_return_pct": -0.01494,
+        "total_assets": 99985.88,
+        "cash": 14824.88,
+        "total_pnl": -14.12,
+        "cumulative_return_pct": -0.01412,
         "max_drawdown_pct": 0.0166,
         "fees": 22.15,
         "dividends": 0,
@@ -776,7 +808,7 @@
         "max_holdings": 6,
         "target_allocation_pct": 100,
         "cash_reserve": 0,
-        "excess_return_pct": 1.35689
+        "excess_return_pct": 1.46421
       },
       "series": [
         {
@@ -818,6 +850,11 @@
           "date": "2026-09-03",
           "nav": 99985.06,
           "return_pct": -0.01494
+        },
+        {
+          "date": "2026-09-04",
+          "nav": 99985.88,
+          "return_pct": -0.01412
         }
       ],
       "holdings": [
@@ -911,10 +948,10 @@
         "shadow": true,
         "status": "V2.2 影子模拟",
         "initial_capital": 100000.0,
-        "total_assets": 99578.75,
+        "total_assets": 100004.15,
         "cash": 6852.75,
-        "total_pnl": -421.25,
-        "cumulative_return_pct": -0.42125,
+        "total_pnl": 4.15,
+        "cumulative_return_pct": 0.00415,
         "max_drawdown_pct": 0.6343,
         "fees": 93.06,
         "dividends": 0,
@@ -924,7 +961,7 @@
         "max_holdings": 4,
         "target_allocation_pct": 100,
         "cash_reserve": 0,
-        "excess_return_pct": 0.95058
+        "excess_return_pct": 1.48248
       },
       "series": [
         {
@@ -966,6 +1003,11 @@
           "date": "2026-09-03",
           "nav": 99578.75,
           "return_pct": -0.42125
+        },
+        {
+          "date": "2026-09-04",
+          "nav": 100004.15,
+          "return_pct": 0.00415
         }
       ],
       "holdings": [
@@ -974,24 +1016,24 @@
           "name": "国债 ETF",
           "shares": 400,
           "entry_price": 141.143,
-          "last_price": 141.23,
-          "price_date": "2026-09-03",
-          "market_value": 56492.0,
+          "last_price": 141.221,
+          "price_date": "2026-09-04",
+          "market_value": 56488.4,
           "cost_value": 56457.2,
-          "unrealized_pnl": 34.8,
-          "unrealized_return_pct": 0.0616
+          "unrealized_pnl": 31.2,
+          "unrealized_return_pct": 0.0553
         },
         {
           "code": "513100",
           "name": "纳指100 ETF",
           "shares": 16500,
           "entry_price": 2.218,
-          "last_price": 2.196,
-          "price_date": "2026-09-03",
-          "market_value": 36234.0,
+          "last_price": 2.222,
+          "price_date": "2026-09-04",
+          "market_value": 36663.0,
           "cost_value": 36597.0,
-          "unrealized_pnl": -363.0,
-          "unrealized_return_pct": -0.9919
+          "unrealized_pnl": 66.0,
+          "unrealized_return_pct": 0.1803
         }
       ],
       "transactions": [
