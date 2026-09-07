@@ -35,6 +35,16 @@ jobs:
           test -s site/performance.json
           python -m json.tool site/performance.json >/dev/null
 
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.11"
+          cache: pip
+
+      - name: 核验五策略发布完整性与观察评估
+        run: |
+          pip install -r requirements.txt
+          python scripts/forward_performance.py --verify-only
+
       - name: 配置 Pages
         uses: actions/configure-pages@v5
         with:

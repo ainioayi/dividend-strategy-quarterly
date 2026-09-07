@@ -333,6 +333,21 @@
     .summary-item span { display: block; margin-bottom: 7px; color: var(--muted); font-size: 10px; }
     .summary-item strong { font-family: var(--mono); font-size: 14px; }
 
+    .observation-panel { border-top: 1px solid var(--line-strong); border-bottom: 1px solid var(--line); background: var(--surface); }
+    .observation-message { margin: 0; padding: 15px 18px; border-bottom: 1px solid var(--line); font-size: 12px; font-weight: 650; }
+    .observation-grid { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); }
+    .observation-metric { min-width: 0; padding: 14px 18px; border-right: 1px solid var(--line); }
+    .observation-metric:last-child { border-right: 0; }
+    .observation-metric span { display: block; margin-bottom: 5px; color: var(--muted); font-size: 10px; }
+    .observation-metric strong { display: block; overflow-wrap: anywhere; font-family: var(--mono); font-size: 13px; }
+    .checkpoint-row { display: flex; flex-wrap: wrap; gap: 8px 22px; padding: 11px 18px; border-top: 1px solid var(--line); color: var(--muted); font-size: 10px; }
+    .observation-table { width: 100%; min-width: 1040px; border-collapse: collapse; font-size: 11px; }
+    .observation-table th, .observation-table td { padding: 11px 14px; border-bottom: 1px solid var(--line); text-align: right; white-space: nowrap; }
+    .observation-table th { color: var(--muted); background: var(--surface-soft); font-size: 10px; }
+    .observation-table th:first-child, .observation-table td:first-child { text-align: left; }
+    .observation-table tbody tr:last-child td { border-bottom: 0; }
+    .month-pending { color: var(--muted); font-size: 9px; }
+
     .holding-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
     .holding-item { min-height: 150px; padding: 22px; border: 1px solid var(--line); border-radius: var(--radius); background: var(--surface); }
     .holding-head { display: flex; justify-content: space-between; gap: 18px; }
@@ -389,6 +404,8 @@
       .summary-item:nth-child(2n) { border-right: 0; }
       .summary-item:last-child { grid-column: 1 / -1; border-bottom: 0; }
       .holding-grid { grid-template-columns: 1fr; }
+      .observation-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      .observation-metric { border-bottom: 1px solid var(--line); }
       .method-inner { grid-template-columns: 1fr; gap: 22px; }
     }
 
@@ -418,6 +435,8 @@
       .chart-foot { display: block; min-height: auto; padding: 10px 13px; }
       .chart-foot span { display: block; margin-top: 3px; }
       .holding-stats { grid-template-columns: 1fr 1fr; }
+      .observation-grid { grid-template-columns: 1fr; }
+      .observation-metric { border-right: 0; }
       .empty-holding { min-height: 190px; grid-template-columns: 1fr; gap: 20px; }
       .empty-row { padding: 28px 12px !important; text-align: left !important; }
       .method-grid { grid-template-columns: 1fr; }
@@ -530,7 +549,7 @@
         const lag = businessDayLag(data.as_of);
         return lag > 1
           ? { stale: true, message: `数据可能滞后：当前仍截至 ${data.as_of}，请检查自动更新告警。` }
-          : { stale: false, message: '每日 18:30 更新，20:30 自动重试。仅模型模拟，不连接券商。' };
+          : { stale: false, message: '工作日 18:30 至 22:30 每小时尝试更新。仅模型模拟，不连接券商。' };
       }
 
       function capitalPolicyLabel(data) {
@@ -640,7 +659,59 @@
         </div>`;
       }
 
-      function holdings(data) {
+      function observation(data) {
+        const report = data.observation;
+        if (!report?.strategies?.[state.strategy]) {
+          const awaiting = report?.conclusion?.status === 'awaiting_execution';
+          return `<div class="observation-panel"><p class="observation-message muted">${awaiting ? '等待首次执行，执行后开始计算观察期。' : '暂无观察评估'}</p></div>`;
+        }
+        const result = report.strategies[state.strategy];
+        const period = report.period || {};
+        const checkpoints = (report.checkpoints || []).map(item => {
+          const status = item.status === 'ready_for_manual_review'
+            ? `已到期，复核日 ${item.review_date || item.due_date}`
+            : item.due_date ? `待观察至 ${item.due_date}` : '等待首次执行';
+          return `<span>${number(item.months)} 个月检查点：${escapeHtml(status)}</span>`;
+        }).join('');
+        const months = (report.monthly_records || []).map(row => {
+          const item = row.strategies?.[state.strategy] || {};
+          const value = item.return_pct;
+          return `<tr><td>${escapeHtml(row.month)} ${row.is_complete ? '' : '<span class="month-pending">进行中</span>'}</td>
+            <td class="${tone(value)}">${pct(value)}</td><td class="negative">${item.max_drawdown_pct == null ? '--' : pct(-Math.abs(Number(item.max_drawdown_pct)))}</td>
+            <td>${pct(item.two_way_turnover_pct)}</td><td>${money(item.fees)}</td><td>${pct(row.benchmark_return_pct)}</td>
+            <td class="${tone(item.excess_return_pct)}">${pct(item.excess_return_pct)}</td>
+            <td>${escapeHtml(row.start_date)} 至 ${escapeHtml(row.end_date)}</td></tr>`;
+        }).join('');
+        const periodLabel = period.start_date
+          ? `观察期 ${period.start_date} 至 ${period.as_of || '--'} · 已满 ${number(period.observation_months)} 个月`
+          : '等待首次执行后开始观察';
+        return `<div class="observation-panel">
+          <p class="observation-message">${escapeHtml(report.conclusion?.message || '暂无观察结论')}</p>
+          <div class="observation-grid">
+            <div class="observation-metric"><span>区间收益</span><strong class="${tone(result.return_pct)}">${pct(result.return_pct)}</strong></div>
+            <div class="observation-metric"><span>日频最大回撤</span><strong class="negative">${result.max_drawdown_pct == null ? '--' : pct(-Math.abs(Number(result.max_drawdown_pct)))}</strong></div>
+            <div class="observation-metric"><span>买卖双边换手</span><strong>${pct(result.two_way_turnover_pct)}</strong></div>
+            <div class="observation-metric"><span>交易费用</span><strong>${money(result.fees)}</strong></div>
+            <div class="observation-metric"><span>相对 510300</span><strong class="${tone(result.excess_return_pct)}">${pct(result.excess_return_pct)}</strong></div>
+          </div>
+          <div class="checkpoint-row"><span>${escapeHtml(periodLabel)}</span>${checkpoints}</div>
+          <div class="trade-wrap"><table class="observation-table"><thead><tr><th>月份</th><th>策略收益</th><th>最大回撤</th><th>双边换手</th><th>费用</th><th>510300 收益</th><th>相对收益</th><th>统计区间</th></tr></thead>
+            <tbody>${months || '<tr><td colspan="8" class="empty-row">暂无月度记录</td></tr>'}</tbody></table></div>
+        </div>`;
+      }
+
+      function qualityState(data) {
+        const quality = data.data_quality;
+        const selected = quality?.strategies?.[state.strategy];
+        if (quality?.status !== 'passed' || !selected) {
+          return { passed: false, selected: null, label: '尚未完成完整性检查', action: '最近账本动作日期 --' };
+        }
+        const actionDate = [selected.last_execution_date, selected.last_signal_date].filter(Boolean).sort().at(-1) || '--';
+        const actionKind = actionDate === selected.last_execution_date ? '执行' : actionDate === selected.last_signal_date ? '信号' : '无';
+        return { passed: true, selected, label: `每日数据检查通过 · 截至 ${selected.as_of}`, action: `最近账本动作日期 ${actionDate}（${actionKind}）` };
+      }
+
+      function holdings(data, quality) {
         if (!data.holdings.length) {
           return `<div class="holding-item empty-holding">
             <div><h3>尚无模拟持仓</h3><p class="muted">首期信号执行后，这里会显示持仓成本、最新收盘价和浮动盈亏。</p></div>
@@ -650,7 +721,13 @@
             </div>
           </div>`;
         }
-        return data.holdings.map(row => `<article class="holding-item">
+        const qualityByCode = Object.fromEntries((quality?.holdings || []).map(row => [row.code, row]));
+        return data.holdings.map(row => {
+          const mark = qualityByCode[row.code];
+          const priceNote = mark?.status === 'confirmed_suspension'
+            ? `价格日期 ${row.price_date} · 已确认停牌，沿用此前价格`
+            : mark?.status === 'current' ? `价格日期 ${row.price_date}` : `价格日期 ${row.price_date} · 缺价待核验`;
+          return `<article class="holding-item">
           <div class="holding-head">
             <div><h3>${escapeHtml(row.name)}</h3><div class="holding-code">${escapeHtml(row.code)}</div></div>
             <div class="holding-pnl ${tone(row.unrealized_pnl)}">${money(row.unrealized_pnl)}<div class="holding-code">${pct(row.unrealized_return_pct)}</div></div>
@@ -661,8 +738,9 @@
             <div><span>最新收盘</span><strong class="num">${money(row.last_price)}</strong></div>
             <div><span>参考市值</span><strong class="num">${money(row.market_value)}</strong></div>
           </div>
-          <div class="holding-code" style="margin-top:14px">价格日期 ${escapeHtml(row.price_date)}</div>
-        </article>`).join('');
+          <div class="holding-code" style="margin-top:14px">${escapeHtml(priceNote)}</div>
+        </article>`;
+        }).join('');
       }
 
       function transactions(data) {
@@ -689,16 +767,19 @@
         const summary = selected.summary;
         const selectedLabel = strategyLabels[state.strategy];
         const failed = selected.health?.outcome === 'failure';
+        const quality = qualityState(data);
+        const corrections = data.audit?.history_corrections || [];
+        const latestCorrection = corrections.at(-1);
         document.title = `五策略公开业绩 · ${data.as_of}`;
         app.className = '';
         app.innerHTML = `<div class="page">
           <header class="site-header"><div class="shell header-row">
             <a class="brand" href="#top" aria-label="返回页面顶部"><span class="brand-mark">V</span><span class="brand-copy"><strong>公开业绩</strong><small>五策略独立模拟账本</small></span></a>
-            <nav class="nav-links" aria-label="页面导航"><a href="#curve">收益曲线</a><a href="#holdings">当前持仓</a><a href="#transactions">交易明细</a><a href="#method">数据口径</a></nav>
+            <nav class="nav-links" aria-label="页面导航"><a href="#curve">收益曲线</a><a href="#observation">观察评估</a><a href="#holdings">当前持仓</a><a href="#transactions">交易明细</a><a href="#method">数据口径</a></nav>
             <div class="asof"><span>数据截至</span><strong>${escapeHtml(data.as_of)}</strong></div>
           </div></header>
           <div class="shell" id="top">
-            <div class="status-bar ${freshness.stale || failed ? 'stale' : ''}"><strong>${escapeHtml(summary.status)}</strong><span class="status-copy">${escapeHtml(selected.health?.status || '正常')} · ${escapeHtml(freshness.message)}</span></div>
+            <div class="status-bar ${freshness.stale || failed || !quality.passed ? 'stale' : ''}"><strong>${escapeHtml(quality.label)}</strong><span class="status-copy">${escapeHtml(quality.action)} · ${escapeHtml(selected.health?.status || '正常')} · ${escapeHtml(freshness.message)}</span></div>
             ${strategyTabs(data)}
             <section class="score" aria-labelledby="strategy-name">
               <div class="score-primary">
@@ -719,9 +800,13 @@
               <div class="section-title"><h2>收益曲线</h2><span class="hint">五策略与 510300 沪深300 ETF 使用同一起点对比</span></div>${rangeControl()}
             </div>${chartBlock(data)}${summaryStrip(data)}</section>
 
+            <section class="section" id="observation"><div class="section-head">
+              <div class="section-title"><h2>观察评估</h2><span class="hint">固定 6 / 12 个月检查点，仅供人工复核，不自动排名或切换策略</span></div>
+            </div>${observation(data)}</section>
+
             <section class="section" id="holdings"><div class="section-head">
               <div class="section-title"><h2>当前持仓</h2><span class="hint">按每日未复权收盘价盯市，不读取真实账户</span></div>
-            </div><div class="holding-grid">${holdings(selected)}</div></section>
+            </div><div class="holding-grid">${holdings(selected, quality.selected)}</div></section>
 
             <section class="section" id="transactions"><div class="section-head">
               <div class="section-title"><h2>交易明细</h2><span class="hint">${escapeHtml(selectedLabel.name)} 累计 ${number(summary.event_count)} 条账本事件，买卖费用单列</span></div>
@@ -738,6 +823,7 @@
               <div><span>基准方法</span><strong>${escapeHtml(data.benchmark.method)}</strong></div>
               <div><span>${escapeHtml(selectedLabel.name)}账本指纹</span><strong>${escapeHtml(selected.audit.journal_sha256 || '--')}</strong></div>
               <div><span>业绩指纹</span><strong>${escapeHtml(data.audit.performance_sha256 || '--')}</strong></div>
+              <div><span>历史行情修复</span><strong>${number(corrections.length)} 次${latestCorrection ? ` · 最近：${escapeHtml(latestCorrection.reason || '未注明原因')}` : ''}</strong></div>
               <div class="limitations">${data.limitations.map(item => `<p>${escapeHtml(item)}</p>`).join('')}</div>
             </div>
           </div></section>

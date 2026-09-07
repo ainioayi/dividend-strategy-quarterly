@@ -54,6 +54,13 @@ def test_forward_workflow_has_retry_freeze_gate_and_issue_alert() -> None:
     assert workflow.index("- name: 先提交前向输入与账本") < workflow.index("- name: 刷新每日公开业绩")
     assert workflow.index("- name: 刷新每日公开业绩") < workflow.index("- name: 提交公开业绩")
     assert "git add data/forward data/v5_inputs.json" not in workflow
+    assert "python scripts/forward_performance.py --verify-only" in workflow
+    assert workflow.index("- name: 核验待发布快照与观察评估") < workflow.index("- name: 提交公开业绩")
+
+
+def test_pages部署前必须离线复核数据和观察评估():
+    workflow = (ROOT / ".github/workflows/pages.yml").read_text(encoding="utf-8")
+    assert workflow.index("python scripts/forward_performance.py --verify-only") < workflow.index("uses: actions/upload-pages-artifact")
 
 
 def test_v2_is_limited_to_shadow_output() -> None:

@@ -296,6 +296,12 @@ jobs:
           python -m compileall -q scripts tests
           git diff --check
 
+      - name: 核验待发布快照与观察评估
+        if: success() && steps.plan.outputs.is_trading_day == 'true'
+        run: |
+          python scripts/forward_performance.py --verify-only
+          pytest -q tests/test_forward_quality.py tests/test_forward_observation.py
+
       - name: 提交公开业绩
         if: success() && steps.plan.outputs.is_trading_day == 'true'
         shell: pwsh

@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import sys
 from pathlib import Path
+from unittest.mock import Mock
 
 import pytest
 
@@ -10,6 +11,63 @@ SCRIPTS = Path(__file__).resolve().parents[1] / "scripts"
 sys.path.insert(0, str(SCRIPTS))
 
 from forward_performance import build_performance, build_strategy_suite, update_market_snapshot
+import forward_performance as performance
+
+
+@pytest.mark.parametrize("sina_days,expected", [
+    (["2026-08-24"], "tencent_fqkline_raw_day"),
+    (["2026-08-25"], "tencent_fqkline_raw_day"),
+    (["2026-08-25", "2026-08-26"], "sina_cn_marketdata"),
+])
+def test行情源按有效覆盖回退且同覆盖时保持主源(monkeypatch, sina_days, expected):
+    session = Mock()
+    session.get.side_effect = [
+        Mock(json=lambda: [{"day": day, "close": "10", "volume": "100"} for day in sina_days]),
+        Mock(json=lambda: {"data": {"sh510300": {"day": [
+            [day, "10", "10", "10", "10", "1"]
+            for day in ["2026-08-25", "2026-08-26", "2026-08-27"]
+        ]}}}),
+    ]
+    monkeypatch.setattr(performance, "_session", lambda: session)
+    result = performance.fetch_unadjusted_prices("510300", "2026-08-25", "2026-08-26")
+    assert result["selected_provider"] == expected
+    assert [row["date"] for row in result["prices"]] == ["2026-08-25", "2026-08-26"]
+    session.close.assert_called_once()
+
+
+@pytest.mark.parametrize("sina,tencent,error,expected", [
+    ([("2026-08-25", 10)], [("2026-08-26", 10)], None, "sina_cn_marketdata"),
+    ([("2026-08-25", 10)], [("2026-08-25", 11)], "收盘价不一致", None),
+    ([("2026-08-24", 10)], [("2026-08-24", 10)], "均失败", None),
+])
+def test行情回退保留历史覆盖和失败关闭边界(monkeypatch, sina, tencent, error, expected):
+    session = Mock()
+    session.get.side_effect = [
+        Mock(json=lambda: [{"day": day, "close": close, "volume": 100} for day, close in sina]),
+        Mock(json=lambda: {"data": {"sh510300": {"day": [
+            [day, close, close, close, close, 1] for day, close in tencent
+        ]}}}),
+    ]
+    monkeypatch.setattr(performance, "_session", lambda: session)
+    if error:
+        with pytest.raises(RuntimeError, match=error):
+            performance.fetch_unadjusted_prices("510300", "2026-08-25", "2026-08-26")
+    else:
+        result = performance.fetch_unadjusted_prices("510300", "2026-08-25", "2026-08-26")
+        assert result["selected_provider"] == expected
+        assert result["prices"][0]["date"] == "2026-08-25"
+    session.close.assert_called_once()
+
+
+@pytest.mark.parametrize("close,volume", [("inf", "100"), ("NaN", "100"), ("10", "inf")])
+def test行情解析忽略非有限数值(close, volume):
+    assert performance._parse_sina_prices(
+        [{"day": "2026-08-25", "close": close, "volume": volume}], "2026-08-25"
+    ) == []
+    assert performance._parse_tencent_prices(
+        {"data": {"sh510300": {"day": [["2026-08-25", "10", close, "10", "10", volume]]}}},
+        "sh510300", "2026-08-25",
+    ) == []
 
 
 def _metadata(start: str = "2026-08-25") -> dict:
@@ -227,15 +285,19 @@ def test510300从V1首笔模拟成交日开始计算收益() -> None:
     assert result["benchmark"]["cumulative_return_pct"] == 9
 
 
-def test市场快照只抓取账本涉及证券并保留来源哈希() -> None:
+@pytest.mark.parametrize("code", ["600000", "510300"])
+def test市场快照只抓取账本涉及证券并保留来源哈希(code) -> None:
     journal = [{
         "event_type": "execution",
         "execution_date": "2026-08-26",
-        "holdings": [{"code": "600000", "shares": 100, "entry_price": 10}],
+        "holdings": [{"code": code, "shares": 100, "entry_price": 10}],
         "operations": [],
     }]
 
+    calls = []
+
     def prices(code: str, start: str, as_of: str) -> dict:
+        calls.append(code)
         return {
             "code": code,
             "price_format": "unadjusted_close",
@@ -256,8 +318,11 @@ def test市场快照只抓取账本涉及证券并保留来源哈希() -> None:
         sleep_seconds=0,
         names={"600000": "浦发银行"},
     )
-    assert snapshot["active_codes"] == ["600000"]
-    assert snapshot["securities"]["600000"]["name"] == "浦发银行"
+    assert snapshot["active_codes"] == [code]
+    assert snapshot["securities"][code]["name"] == ("浦发银行" if code == "600000" else "沪深300 ETF")
+    assert calls == (["510300", "600000"] if code == "600000" else ["510300"])
+    if code == "510300":
+        assert snapshot["securities"][code]["prices"] == snapshot["benchmark"]["prices"]
     assert snapshot["benchmark"]["hashes"]["prices_sha256"] == "price-510300"
     assert snapshot["hashes"]["content_sha256"]
 

@@ -3,15 +3,43 @@ import sys
 from datetime import date, datetime, timezone
 from pathlib import Path
 from zoneinfo import ZoneInfo
+from unittest.mock import Mock
 
 import pytest
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "scripts"))
 
 from forward_daily import (
+    baostock_trading_days,
     decide_action, decide_combined_action, latest_closed_market_date,
     save_snapshot_and_report,
 )
+
+
+def test交易日历读取中途失败不得缓存部分结果(monkeypatch):
+    result = Mock(error_code="0", fields=["calendar_date", "is_trading_day"])
+    result.get_row_data.return_value = ["2026-09-01", "1"]
+
+    def interrupted():
+        result.error_code = "网络中断"
+        result.error_msg = "读取中断"
+        return False
+
+    count = iter([True, False])
+
+    def next_row():
+        return True if next(count) else interrupted()
+
+    result.next.side_effect = next_row
+    bs = Mock()
+    bs.login.return_value.error_code = "0"
+    bs.query_trade_dates.return_value = result
+    monkeypatch.setitem(sys.modules, "baostock", bs)
+    baostock_trading_days.cache_clear()
+    with pytest.raises(RuntimeError, match="读取中断"):
+        baostock_trading_days(date(2026, 9, 1), date(2026, 9, 2))
+    assert baostock_trading_days.cache_info().currsize == 0
+    bs.logout.assert_called_once()
 
 
 def _calendar(*values):

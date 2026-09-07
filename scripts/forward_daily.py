@@ -46,6 +46,8 @@ def baostock_trading_days(start: date, end: date) -> list[date]:
             row = dict(zip(result.fields, result.get_row_data()))
             if str(row.get("is_trading_day")) == "1":
                 days.append(date.fromisoformat(str(row["calendar_date"])))
+        if getattr(result, "error_code", "") != "0":
+            raise RuntimeError(f"BaoStock 交易日历读取中断: {getattr(result, 'error_msg', '')}")
         if not days:
             raise RuntimeError("BaoStock 交易日历返回空结果")
         return sorted(set(days))

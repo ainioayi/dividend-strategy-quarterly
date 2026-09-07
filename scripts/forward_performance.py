@@ -25,6 +25,7 @@ from urllib3.util.retry import Retry
 from refresh_backtest_cache import _fetch_dividends_eastmoney
 from tradeable_benchmark import parse_dividends
 from v5_strategy import cash_interest
+from forward_quality import history_changes, required_price_dates, validate_publication
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -98,7 +99,7 @@ def _atomic_write_json(path: Path, payload: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     temporary = path.with_name(path.name + ".tmp")
     temporary.write_text(
-        json.dumps(payload, ensure_ascii=False, indent=2) + "\n",
+        json.dumps(payload, ensure_ascii=False, indent=2, allow_nan=False) + "\n",
         encoding="utf-8",
         newline="\n",
     )
@@ -140,15 +141,17 @@ def _market_symbol(code: str) -> str:
 def _parse_sina_prices(payload: Any, as_of: str) -> list[dict[str, Any]]:
     rows = []
     for raw in payload if isinstance(payload, list) else []:
+        if not isinstance(raw, dict):
+            continue
         day = str(raw.get("day") or raw.get("date") or "")[:10]
         if not DATE_RE.fullmatch(day) or day > as_of:
             continue
         try:
             close = float(raw.get("close") or 0)
             volume = int(float(raw.get("volume") or 0))
-        except (TypeError, ValueError):
+        except (TypeError, ValueError, OverflowError):
             continue
-        if close > 0:
+        if math.isfinite(close) and close > 0:
             rows.append({"date": day, "close": close, "volume_shares": max(volume, 0)})
     return sorted({row["date"]: row for row in rows}.values(), key=lambda row: row["date"])
 
@@ -167,9 +170,9 @@ def _parse_tencent_prices(payload: Any, market_symbol: str, as_of: str) -> list[
         try:
             close = float(raw[2])
             volume_shares = int(float(raw[5]) * 100)
-        except (TypeError, ValueError):
+        except (TypeError, ValueError, OverflowError):
             continue
-        if close > 0:
+        if math.isfinite(close) and close > 0:
             rows.append({"date": day, "close": close, "volume_shares": max(volume_shares, 0)})
     return sorted({row["date"]: row for row in rows}.values(), key=lambda row: row["date"])
 
@@ -212,12 +215,14 @@ def fetch_unadjusted_prices(
         )
     except Exception as exc:  # pragma: no cover - 网络异常由集成运行覆盖
         errors["tencent_fqkline_raw_day"] = str(exc)
+    finally:
+        session.close()
 
     providers = {
         name: [row for row in rows if row["date"] >= start_date]
         for name, rows in providers.items()
-        if rows
     }
+    providers = {name: rows for name, rows in providers.items() if rows}
     if not providers:
         raise RuntimeError(f"{code} 两个未复权行情源均失败: {errors}")
 
@@ -230,9 +235,14 @@ def fetch_unadjusted_prices(
             raise RuntimeError(f"{code} 新浪与腾讯未复权收盘价不一致: {mismatches[-5:]}")
 
     selected = "sina_cn_marketdata" if "sina_cn_marketdata" in providers else next(iter(providers))
+    # 备源更新且覆盖主源全部日期时才切换，防止有限长度接口截断历史。
+    selected_dates = {row["date"] for row in providers[selected]}
+    for name, candidate in providers.items():
+        if candidate[-1]["date"] > providers[selected][-1]["date"] and selected_dates <= {
+            row["date"] for row in candidate
+        }:
+            selected = name
     rows = providers[selected]
-    if not rows:
-        raise RuntimeError(f"{code} 没有覆盖 {start_date} 至 {as_of} 的行情")
     return {
         "code": market_symbol[2:],
         "price_format": "unadjusted_close",
@@ -288,12 +298,44 @@ def _journal_codes(journal: list[dict[str, Any]]) -> tuple[set[str], set[str]]:
         for item in list(row.get("holdings") or []) + list(row.get("operations") or [])
         if item.get("code")
     }
+    latest_by_strategy = {str(row.get("strategy_id") or "v1"): row for row in executions}
     active = {
         str(item.get("code") or "").zfill(6)
-        for item in (executions[-1].get("holdings") or [])
-        if item.get("code")
-    } if executions else set()
+        for row in latest_by_strategy.values()
+        for item in row.get("holdings") or []
+        if item.get("code") and float(item.get("shares") or 0) > 0
+    }
     return all_codes, active
+
+
+def fetch_suspension_evidence(code: str, days: list[str]) -> dict:
+    """只有接口明确返回停牌状态，才允许把缺价当作停牌。"""
+    import baostock as bs
+
+    if not code.startswith(("60", "68", "00", "30")):
+        raise RuntimeError(f"{code} 缺价且现有交易状态源不支持该证券，停止发布")
+    login = bs.login()
+    if login.error_code != "0":
+        raise RuntimeError(f"停牌核验登录失败：{login.error_msg}")
+    try:
+        symbol = _market_symbol(code)
+        result = bs.query_history_k_data_plus(
+            symbol[:2] + "." + code, "date,tradestatus",
+            start_date=min(days), end_date=max(days), frequency="d", adjustflag="3",
+        )
+        confirmed = []
+        while result.error_code == "0" and result.next():
+            row = dict(zip(result.fields, result.get_row_data()))
+            if row.get("date") in days and row.get("tradestatus") == "0":
+                confirmed.append(row["date"])
+        if result.error_code != "0":
+            raise RuntimeError(f"{code} 停牌核验失败：{result.error_msg}")
+        if set(confirmed) != set(days):
+            raise RuntimeError(f"{code} 行情缺失且停牌未确认：{sorted(set(days) - set(confirmed))}")
+        return {"provider": "baostock_tradestatus", "dates": sorted(set(confirmed)),
+                "retrieved_at": datetime.now(ZoneInfo("Asia/Shanghai")).isoformat(timespec="seconds")}
+    finally:
+        bs.logout()
 
 
 def update_market_snapshot(
@@ -306,6 +348,7 @@ def update_market_snapshot(
     benchmark_dividend_fetcher: Callable[[str], dict[str, Any]] = fetch_benchmark_dividends,
     stock_dividend_fetcher: Callable[[str, str], list[dict[str, Any]]] = _fetch_dividends_eastmoney,
     fund_dividend_fetcher: Callable[[str, str], dict[str, Any]] = fetch_fund_dividends,
+    suspension_fetcher: Callable[[str, list[str]], dict] = fetch_suspension_evidence,
     sleep_seconds: float = 1.1,
     names: dict[str, str] | None = None,
 ) -> dict[str, Any]:
@@ -331,14 +374,22 @@ def update_market_snapshot(
     securities = dict(previous.get("securities") or {})
     all_codes, active_codes = _journal_codes(journal)
     missing_codes = all_codes - set(securities)
-    to_fetch = sorted(active_codes | missing_codes)
     name_map = names if names is not None else _security_names()
+    required = required_price_dates(journal, [row["date"] for row in prices])
+    incomplete_codes = {
+        code for code, days in required.items()
+        if days - {row["date"] for row in securities.get(code, {}).get("prices", [])}
+    }
+    to_fetch = sorted(active_codes | missing_codes | incomplete_codes)
 
     for index, code in enumerate(to_fetch):
-        price_payload = price_fetcher(code, start_date, as_of)
+        price_payload = (
+            benchmark_prices if code == BENCHMARK_CODE
+            else price_fetcher(code, start_date, as_of)
+        )
         if not price_payload.get("prices"):
             raise RuntimeError(f"当前或历史持仓 {code} 没有可用盯市价格")
-        if sleep_seconds:
+        if sleep_seconds and code != BENCHMARK_CODE:
             time.sleep(sleep_seconds)
         if code in FUND_NAMES:
             fund_payload = (
@@ -364,6 +415,9 @@ def update_market_snapshot(
                 "dividends_sha256": _sha256(dividends),
             },
         }
+        missing = sorted(required.get(code, set()) - {row["date"] for row in price_payload["prices"]})
+        if missing:
+            securities[code]["suspension_evidence"] = suspension_fetcher(code, missing)
         if sleep_seconds and index + 1 < len(to_fetch):
             time.sleep(sleep_seconds)
 
@@ -477,7 +531,7 @@ def build_transactions(
             "price": round(price, 4) if price is not None else None,
             "gross": round(gross, 2),
             "realized_pnl": round(realized_pnl, 2) if realized_pnl is not None else None,
-            "fees": round(fees, 2),
+            "fees": round(fees, 6),
             "cash_flow": round(cash_flow, 2),
             "reason": str(operation.get("reason") or "模型事件"),
         })
@@ -959,6 +1013,7 @@ def build_strategy_suite(
         "510300 在高息动量 V1 首笔模拟成交日同步建仓，此前六条曲线均按现金 0% 收益展示。",
         "历史回测和前向模拟都不代表未来收益，也不是买卖建议。",
     ]
+    payload["audit"].pop("performance_sha256", None)
     payload["audit"]["performance_sha256"] = _sha256(
         {key: value for key, value in payload.items() if key != "generated_at"}
     )
@@ -967,7 +1022,11 @@ def build_strategy_suite(
 
 def main() -> int:
     parser = argparse.ArgumentParser(description="刷新五策略每日公开业绩")
-    parser.add_argument("--as-of", required=True, help="公开数据截止日 YYYY-MM-DD")
+    parser.add_argument("--as-of", help="公开数据截止日 YYYY-MM-DD；离线模式默认使用快照日期")
+    mode = parser.add_mutually_exclusive_group()
+    mode.add_argument("--offline", action="store_true", help="只用已落盘行情重建公开业绩，不联网、不写账本")
+    mode.add_argument("--verify-only", action="store_true", help="离线复算并核验两份发布文件，不写入")
+    parser.add_argument("--correction-reason", help="明确说明历史净值修复原因；旧新数值与指纹永久保存在公开审计记录")
     parser.add_argument("--metadata", type=Path, default=METADATA_PATH)
     parser.add_argument("--journal", type=Path, default=JOURNAL_PATH)
     parser.add_argument("--v2-metadata", type=Path, default=V2_METADATA_PATH)
@@ -983,6 +1042,13 @@ def main() -> int:
     parser.add_argument("--performance-output", type=Path, default=PERFORMANCE_PATH)
     parser.add_argument("--site-output", type=Path, default=SITE_PATH)
     args = parser.parse_args()
+
+    from monthly_forward import verify_forward_contract
+    for key, path in {
+        "v1": args.metadata, "v2": args.v2_metadata, "v3": args.v3_metadata,
+        "v5": args.v5_metadata, "ma_v22": args.ma_v22_metadata,
+    }.items():
+        verify_forward_contract(metadata_path=path, strategy_id=key)
 
     metadatas = {
         "v1": _read_json(args.metadata),
@@ -1002,11 +1068,53 @@ def main() -> int:
     }
     combined_journal = [row for key in ("v1", "v2", "v3", "v5", "ma_v22") for row in journals[key]]
     existing = _read_json(args.market_output, {})
-    market = update_market_snapshot(metadatas["v1"], combined_journal, args.as_of, existing)
+    previous = _read_json(args.performance_output, {})
+    if args.offline or args.verify_only:
+        market = existing
+        if not market or (args.as_of and args.as_of != market.get("as_of")):
+            raise ValueError("离线行情不存在或截止日不一致")
+    else:
+        from forward_daily import baostock_trading_days, latest_closed_market_date
+        if args.as_of != latest_closed_market_date().isoformat():
+            raise ValueError("联网发布日期必须等于北京时间最新已收盘日期")
+        market = update_market_snapshot(metadatas["v1"], combined_journal, args.as_of, existing)
+        market["trading_calendar"] = {
+            "provider": "baostock_trade_dates",
+            "dates": [day.isoformat() for day in baostock_trading_days(
+                date.fromisoformat(metadatas["v1"]["forward_start_date"]), date.fromisoformat(args.as_of)
+            )],
+        }
+        market["hashes"] = {}
+        market["hashes"]["content_sha256"] = _sha256({k: v for k, v in market.items() if k != "retrieved_at"})
     health = _read_json(args.shadow_health, {})
     performance = build_strategy_suite(metadatas, journals, market, health)
+    performance["data_quality"] = validate_publication(
+        metadatas, journals, market, performance, previous, correction_reason=args.correction_reason,
+    )
+    corrections = list(previous.get("audit", {}).get("history_corrections") or [])
+    changes = history_changes(previous, performance)
+    if changes:
+        corrections.append({"reason": args.correction_reason.strip(), "as_of": market["as_of"],
+                            "previous_performance_sha256": previous["audit"]["performance_sha256"],
+                            "previous_market_sha256": previous["audit"]["market_content_sha256"],
+                            "corrected_market_sha256": market["hashes"]["content_sha256"], "changes": changes})
+    performance["audit"]["history_corrections"] = corrections
+    from forward_observation import build_observation
+    performance["observation"] = build_observation(performance)
+    performance["audit"].pop("performance_sha256", None)
+    performance["audit"]["performance_sha256"] = _sha256({k: v for k, v in performance.items() if k != "generated_at"})
 
-    _atomic_write_json(args.market_output, market)
+    if args.verify_only:
+        site = _read_json(args.site_output, {})
+        expected = {k: v for k, v in performance.items() if k != "generated_at"}
+        if previous != site or {k: v for k, v in previous.items() if k != "generated_at"} != expected:
+            raise ValueError("发布文件与当前账本、行情或观察计划复算结果不一致")
+        print(json.dumps({"status": "通过", "as_of": performance["as_of"],
+                          "performance_sha256": performance["audit"]["performance_sha256"]}, ensure_ascii=False))
+        return 0
+
+    if not args.offline:
+        _atomic_write_json(args.market_output, market)
     _atomic_write_json(args.performance_output, performance)
     _atomic_write_json(args.site_output, performance)
     print(json.dumps({
