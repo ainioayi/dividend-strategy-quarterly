@@ -1,7 +1,7 @@
 {
   "schema_version": 1,
-  "as_of": "2026-09-14",
-  "retrieved_at": "2026-09-15T00:29:55+08:00",
+  "as_of": "2026-09-15",
+  "retrieved_at": "2026-09-15T23:13:01+08:00",
   "price_format": "unadjusted_close",
   "benchmark": {
     "code": "510300",
@@ -81,6 +81,11 @@
         "date": "2026-09-14",
         "close": 4.552,
         "volume_shares": 629177442
+      },
+      {
+        "date": "2026-09-15",
+        "close": 4.523,
+        "volume_shares": 697341799
       }
     ],
     "dividends": [],
@@ -100,7 +105,7 @@
       }
     },
     "hashes": {
-      "prices_sha256": "dcc41587d707b305ad4c156e880004131aa240665d1296155f06dd78dafbcb28",
+      "prices_sha256": "7f6dd5cd99eec4c7195a88596a425005d28119a6b9b17aad439bd661877a57ff",
       "dividends_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
     }
   },
@@ -189,6 +194,11 @@
           "date": "2026-09-14",
           "close": 38.71,
           "volume_shares": 21909932
+        },
+        {
+          "date": "2026-09-15",
+          "close": 38.3,
+          "volume_shares": 23830306
         }
       ],
       "dividends": [
@@ -439,7 +449,7 @@
         }
       ],
       "hashes": {
-        "prices_sha256": "76881af0719774ad2c0404ea91c7d17bfb0d13b4c7769f6af06c88ba77a076ac",
+        "prices_sha256": "aa727e736adfd28da61259988abcd73ef6a7560b89b42d6e03a5ae6d7b87d3f4",
         "dividends_sha256": "036c937310d385442a371dc225d67391c1eab93c9381d38dfdf51fc12e62f778"
       }
     },
@@ -527,6 +537,11 @@
           "date": "2026-09-14",
           "close": 24.73,
           "volume_shares": 4893722
+        },
+        {
+          "date": "2026-09-15",
+          "close": 24.31,
+          "volume_shares": 1615000
         }
       ],
       "dividends": [
@@ -658,7 +673,7 @@
         }
       ],
       "hashes": {
-        "prices_sha256": "5517d9727b0d713812c905d8b239fdfc60f72d07432b8cca1e18a40b91a7ee18",
+        "prices_sha256": "da1a93c342d7907efecd4b6c33db4c9787fc74fb27fa0264b7feb4b45a9460b4",
         "dividends_sha256": "9fc2f65bec23e30f333638f178bbb832fe1b54e9a85f3308df00baaace2393fd"
       }
     },
@@ -746,11 +761,16 @@
           "date": "2026-09-14",
           "close": 141.173,
           "volume_shares": 32822800
+        },
+        {
+          "date": "2026-09-15",
+          "close": 141.203,
+          "volume_shares": 25364100
         }
       ],
       "dividends": [],
       "hashes": {
-        "prices_sha256": "5a6bcc0c4ceb931337905a4a9e7b5a233fd9dda6f7ba3c743596c33c1f5c9b5a",
+        "prices_sha256": "73b8d36c8c4a48a00b4259ecade5cfca4b18b191032a5a41b350761753a8b9e5",
         "dividends_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
       }
     },
@@ -838,11 +858,16 @@
           "date": "2026-09-14",
           "close": 2.191,
           "volume_shares": 108306329
+        },
+        {
+          "date": "2026-09-15",
+          "close": 2.196,
+          "volume_shares": 140304824
         }
       ],
       "dividends": [],
       "hashes": {
-        "prices_sha256": "7e7029e118abfd8ccee0b1ddbf14dff4e5095219d92b6744ebfc373154f4db09",
+        "prices_sha256": "161fc710b2e5167a832a91939570301885d841a55d7ce5281f3bef0349670b42",
         "dividends_sha256": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945"
       }
     },
@@ -930,6 +955,11 @@
           "date": "2026-09-14",
           "close": 27.01,
           "volume_shares": 18713282
+        },
+        {
+          "date": "2026-09-15",
+          "close": 27.02,
+          "volume_shares": 15269571
         }
       ],
       "dividends": [
@@ -1145,7 +1175,7 @@
         }
       ],
       "hashes": {
-        "prices_sha256": "7e71ca3d5cb8edb74fe1fbcc39cf399e6b205b2c167b9de62bf66c0d3b88da1d",
+        "prices_sha256": "eb0fc0ee3ba8e03a4bb2ef98442730b8f22f4f9f614438afcb04707e8cb54f44",
         "dividends_sha256": "f36b70f8ce35540c4c64942e9fa655ced5a4fab298c43aef0e2cf978c1783f66"
       }
     },
@@ -1233,6 +1263,11 @@
           "date": "2026-09-14",
           "close": 34.63,
           "volume_shares": 1307043
+        },
+        {
+          "date": "2026-09-15",
+          "close": 34.08,
+          "volume_shares": 1731508
         }
       ],
       "dividends": [
@@ -1406,7 +1441,7 @@
         }
       ],
       "hashes": {
-        "prices_sha256": "e3c7a2a46f8de9c31bfe74a75bdc7f26ce6276b9618c8977b83f1966d779686f",
+        "prices_sha256": "406f1a793bb7e1db50cb58e0bc2ee71d372e812ea89583a52296fcca1cfb2b66",
         "dividends_sha256": "c8b01490457a1dcd7c658e8861425a1766d654b0a4cb72f77c2f7702b0fccbb0"
       }
     }
@@ -1420,7 +1455,7 @@
     "600329"
   ],
   "hashes": {
-    "content_sha256": "d03530b338f1bafd1718c43fe557b1999d425f5773d2123f4830dc296a4acbf2"
+    "content_sha256": "e5f5669cacd752b7475c35542465306bebce0ecb79952924ec0985abca426b65"
   },
   "trading_calendar": {
     "provider": "baostock_trade_dates",
@@ -1439,7 +1474,8 @@
       "2026-09-09",
       "2026-09-10",
       "2026-09-11",
-      "2026-09-14"
+      "2026-09-14",
+      "2026-09-15"
     ]
   }
 }
