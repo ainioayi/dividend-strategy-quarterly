@@ -1,7 +1,7 @@
 {
   "schema_version": 4,
-  "generated_at": "2026-09-29T02:15:35+08:00",
-  "as_of": "2026-09-28",
+  "generated_at": "2026-09-30T00:37:46+08:00",
+  "as_of": "2026-09-29",
   "forward_start_date": "2026-08-25",
   "strategy": {
     "name": "高息动量 V1（2只正式）",
@@ -10,11 +10,11 @@
     "shadow": false,
     "status": "V1 前向模拟",
     "initial_capital": 100000.0,
-    "total_assets": 95058.41,
+    "total_assets": 94265.41,
     "cash": 1023.41,
-    "total_pnl": -4941.59,
-    "cumulative_return_pct": -4.94159,
-    "max_drawdown_pct": 6.5761,
+    "total_pnl": -5734.59,
+    "cumulative_return_pct": -5.73459,
+    "max_drawdown_pct": 6.6276,
     "fees": 34.59,
     "dividends": 0,
     "trade_count": 3,
@@ -30,13 +30,13 @@
     "status": "与 V1 同日建仓",
     "inception_date": "2026-09-01",
     "method": "与 V1 首笔模拟成交同日用 10 万元收盘整手买入，现金分红到账后整手复投，计最低佣金",
-    "total_assets": 94282.97,
-    "cumulative_return_pct": -5.71703,
-    "max_drawdown_pct": 5.717,
+    "total_assets": 94261.67,
+    "cumulative_return_pct": -5.73833,
+    "max_drawdown_pct": 5.7383,
     "fees": 29.93,
     "dividends": 0.0
   },
-  "excess_return_pct": 0.77544,
+  "excess_return_pct": 0.00374,
   "series": [
     {
       "date": "2026-08-25",
@@ -445,6 +445,23 @@
       "v5_return_pct": -6.21476,
       "ma_v22_nav": 101390.51,
       "ma_v22_return_pct": 1.39051
+    },
+    {
+      "date": "2026-09-29",
+      "strategy_nav": 94265.41,
+      "strategy_return_pct": -5.73459,
+      "benchmark_nav": 94261.67,
+      "benchmark_return_pct": -5.73833,
+      "v1_nav": 94265.41,
+      "v1_return_pct": -5.73459,
+      "v2_nav": 94265.41,
+      "v2_return_pct": -5.73459,
+      "v3_nav": 94265.41,
+      "v3_return_pct": -5.73459,
+      "v5_nav": 93624.07,
+      "v5_return_pct": -6.37593,
+      "ma_v22_nav": 101745.71,
+      "ma_v22_return_pct": 1.74571
     }
   ],
   "holdings": [
@@ -453,24 +470,24 @@
       "name": "达仁堂",
       "shares": 1400,
       "entry_price": 36.12,
-      "last_price": 35.18,
-      "price_date": "2026-09-28",
-      "market_value": 49252.0,
+      "last_price": 34.6,
+      "price_date": "2026-09-29",
+      "market_value": 48440.0,
       "cost_value": 50568.0,
-      "unrealized_pnl": -1316.0,
-      "unrealized_return_pct": -2.6024
+      "unrealized_pnl": -2128.0,
+      "unrealized_return_pct": -4.2082
     },
     {
       "code": "000915",
       "name": "华特达因",
       "shares": 1900,
       "entry_price": 25.46,
-      "last_price": 23.57,
-      "price_date": "2026-09-28",
-      "market_value": 44783.0,
+      "last_price": 23.58,
+      "price_date": "2026-09-29",
+      "market_value": 44802.0,
       "cost_value": 48374.0,
-      "unrealized_pnl": -3591.0,
-      "unrealized_return_pct": -7.4234
+      "unrealized_pnl": -3572.0,
+      "unrealized_return_pct": -7.3841
     }
   ],
   "transactions": [
@@ -521,7 +538,7 @@
     "v1_commit": "c7d128ff0bc1b4b21c60bc7c6e2894dabf513fae",
     "rules_sha256": "d3265a0af79c1915244edb7d54322ea038183dd90b9b01ef00c216238597bd23",
     "journal_sha256": "b4274835ad00e5ddca3ec3496efb50995f1045a0b631f702b0b3111e67f7d7e8",
-    "market_content_sha256": "73ab18dd602b379fbad395c806971eeae3705142d3745919514066c8b3c60e1e",
+    "market_content_sha256": "3627ae719e5425e335e1bd1414d486a602d343d7b589a15d5bf7e0fd6012ee0e",
     "price_format": "unadjusted_close",
     "benchmark_sources": {
       "prices": {
@@ -650,7 +667,7 @@
         ]
       }
     ],
-    "performance_sha256": "552ec7fc69dc24afa645752957b885135618aa7d2787febfccd4caa068b3baa7"
+    "performance_sha256": "24277cf11dfc6014dd2096b3fbb1c9857445d0c8086c46b5770a40ac266ec22a"
   },
   "limitations": [
     "这是五套独立的模型模拟账户，不连接券商、不读取真实账户，也不会自动下单。",
@@ -674,11 +691,11 @@
         "shadow": false,
         "status": "V1 前向模拟",
         "initial_capital": 100000.0,
-        "total_assets": 95058.41,
+        "total_assets": 94265.41,
         "cash": 1023.41,
-        "total_pnl": -4941.59,
-        "cumulative_return_pct": -4.94159,
-        "max_drawdown_pct": 6.5761,
+        "total_pnl": -5734.59,
+        "cumulative_return_pct": -5.73459,
+        "max_drawdown_pct": 6.6276,
         "fees": 34.59,
         "dividends": 0,
         "trade_count": 3,
@@ -687,7 +704,7 @@
         "max_holdings": 2,
         "target_allocation_pct": 100,
         "cash_reserve": 0,
-        "excess_return_pct": 0.77544
+        "excess_return_pct": 0.00374
       },
       "series": [
         {
@@ -809,6 +826,11 @@
           "date": "2026-09-28",
           "nav": 95058.41,
           "return_pct": -4.94159
+        },
+        {
+          "date": "2026-09-29",
+          "nav": 94265.41,
+          "return_pct": -5.73459
         }
       ],
       "holdings": [
@@ -817,24 +839,24 @@
           "name": "达仁堂",
           "shares": 1400,
           "entry_price": 36.12,
-          "last_price": 35.18,
-          "price_date": "2026-09-28",
-          "market_value": 49252.0,
+          "last_price": 34.6,
+          "price_date": "2026-09-29",
+          "market_value": 48440.0,
           "cost_value": 50568.0,
-          "unrealized_pnl": -1316.0,
-          "unrealized_return_pct": -2.6024
+          "unrealized_pnl": -2128.0,
+          "unrealized_return_pct": -4.2082
         },
         {
           "code": "000915",
           "name": "华特达因",
           "shares": 1900,
           "entry_price": 25.46,
-          "last_price": 23.57,
-          "price_date": "2026-09-28",
-          "market_value": 44783.0,
+          "last_price": 23.58,
+          "price_date": "2026-09-29",
+          "market_value": 44802.0,
           "cost_value": 48374.0,
-          "unrealized_pnl": -3591.0,
-          "unrealized_return_pct": -7.4234
+          "unrealized_pnl": -3572.0,
+          "unrealized_return_pct": -7.3841
         }
       ],
       "transactions": [
@@ -902,11 +924,11 @@
         "shadow": true,
         "status": "V2 影子模拟",
         "initial_capital": 100000.0,
-        "total_assets": 95058.41,
+        "total_assets": 94265.41,
         "cash": 1023.41,
-        "total_pnl": -4941.59,
-        "cumulative_return_pct": -4.94159,
-        "max_drawdown_pct": 6.5761,
+        "total_pnl": -5734.59,
+        "cumulative_return_pct": -5.73459,
+        "max_drawdown_pct": 6.6276,
         "fees": 34.59,
         "dividends": 0,
         "trade_count": 3,
@@ -915,7 +937,7 @@
         "max_holdings": 3,
         "target_allocation_pct": 100,
         "cash_reserve": 0,
-        "excess_return_pct": 0.77544
+        "excess_return_pct": 0.00374
       },
       "series": [
         {
@@ -1037,6 +1059,11 @@
           "date": "2026-09-28",
           "nav": 95058.41,
           "return_pct": -4.94159
+        },
+        {
+          "date": "2026-09-29",
+          "nav": 94265.41,
+          "return_pct": -5.73459
         }
       ],
       "holdings": [
@@ -1045,24 +1072,24 @@
           "name": "达仁堂",
           "shares": 1400,
           "entry_price": 36.12,
-          "last_price": 35.18,
-          "price_date": "2026-09-28",
-          "market_value": 49252.0,
+          "last_price": 34.6,
+          "price_date": "2026-09-29",
+          "market_value": 48440.0,
           "cost_value": 50568.0,
-          "unrealized_pnl": -1316.0,
-          "unrealized_return_pct": -2.6024
+          "unrealized_pnl": -2128.0,
+          "unrealized_return_pct": -4.2082
         },
         {
           "code": "000915",
           "name": "华特达因",
           "shares": 1900,
           "entry_price": 25.46,
-          "last_price": 23.57,
-          "price_date": "2026-09-28",
-          "market_value": 44783.0,
+          "last_price": 23.58,
+          "price_date": "2026-09-29",
+          "market_value": 44802.0,
           "cost_value": 48374.0,
-          "unrealized_pnl": -3591.0,
-          "unrealized_return_pct": -7.4234
+          "unrealized_pnl": -3572.0,
+          "unrealized_return_pct": -7.3841
         }
       ],
       "transactions": [
@@ -1130,11 +1157,11 @@
         "shadow": true,
         "status": "V3 影子模拟",
         "initial_capital": 100000.0,
-        "total_assets": 95058.41,
+        "total_assets": 94265.41,
         "cash": 1023.41,
-        "total_pnl": -4941.59,
-        "cumulative_return_pct": -4.94159,
-        "max_drawdown_pct": 6.5761,
+        "total_pnl": -5734.59,
+        "cumulative_return_pct": -5.73459,
+        "max_drawdown_pct": 6.6276,
         "fees": 34.59,
         "dividends": 0,
         "trade_count": 3,
@@ -1143,7 +1170,7 @@
         "max_holdings": 4,
         "target_allocation_pct": 100,
         "cash_reserve": 0,
-        "excess_return_pct": 0.77544
+        "excess_return_pct": 0.00374
       },
       "series": [
         {
@@ -1265,6 +1292,11 @@
           "date": "2026-09-28",
           "nav": 95058.41,
           "return_pct": -4.94159
+        },
+        {
+          "date": "2026-09-29",
+          "nav": 94265.41,
+          "return_pct": -5.73459
         }
       ],
       "holdings": [
@@ -1273,24 +1305,24 @@
           "name": "达仁堂",
           "shares": 1400,
           "entry_price": 36.12,
-          "last_price": 35.18,
-          "price_date": "2026-09-28",
-          "market_value": 49252.0,
+          "last_price": 34.6,
+          "price_date": "2026-09-29",
+          "market_value": 48440.0,
           "cost_value": 50568.0,
-          "unrealized_pnl": -1316.0,
-          "unrealized_return_pct": -2.6024
+          "unrealized_pnl": -2128.0,
+          "unrealized_return_pct": -4.2082
         },
         {
           "code": "000915",
           "name": "华特达因",
           "shares": 1900,
           "entry_price": 25.46,
-          "last_price": 23.57,
-          "price_date": "2026-09-28",
-          "market_value": 44783.0,
+          "last_price": 23.58,
+          "price_date": "2026-09-29",
+          "market_value": 44802.0,
           "cost_value": 48374.0,
-          "unrealized_pnl": -3591.0,
-          "unrealized_return_pct": -7.4234
+          "unrealized_pnl": -3572.0,
+          "unrealized_return_pct": -7.3841
         }
       ],
       "transactions": [
@@ -1358,10 +1390,10 @@
         "shadow": true,
         "status": "V5 影子模拟",
         "initial_capital": 100000.0,
-        "total_assets": 93785.24,
-        "cash": 14837.24,
-        "total_pnl": -6214.76,
-        "cumulative_return_pct": -6.21476,
+        "total_assets": 93624.07,
+        "cash": 14838.07,
+        "total_pnl": -6375.93,
+        "cumulative_return_pct": -6.37593,
         "max_drawdown_pct": 7.6184,
         "fees": 22.14,
         "dividends": 0,
@@ -1371,7 +1403,7 @@
         "max_holdings": 6,
         "target_allocation_pct": 100,
         "cash_reserve": 0,
-        "excess_return_pct": -0.49773
+        "excess_return_pct": -0.6376
       },
       "series": [
         {
@@ -1493,6 +1525,11 @@
           "date": "2026-09-28",
           "nav": 93785.24,
           "return_pct": -6.21476
+        },
+        {
+          "date": "2026-09-29",
+          "nav": 93624.07,
+          "return_pct": -6.37593
         }
       ],
       "holdings": [
@@ -1501,24 +1538,24 @@
           "name": "格力电器",
           "shares": 1100,
           "entry_price": 38.55,
-          "last_price": 38.4,
-          "price_date": "2026-09-28",
-          "market_value": 42240.0,
+          "last_price": 38.1,
+          "price_date": "2026-09-29",
+          "market_value": 41910.0,
           "cost_value": 42405.0,
-          "unrealized_pnl": -165.0,
-          "unrealized_return_pct": -0.3891
+          "unrealized_pnl": -495.0,
+          "unrealized_return_pct": -1.1673
         },
         {
           "code": "600066",
           "name": "宇通客车",
           "shares": 1400,
           "entry_price": 30.54,
-          "last_price": 26.22,
-          "price_date": "2026-09-28",
-          "market_value": 36708.0,
+          "last_price": 26.34,
+          "price_date": "2026-09-29",
+          "market_value": 36876.0,
           "cost_value": 42756.0,
-          "unrealized_pnl": -6048.0,
-          "unrealized_return_pct": -14.1454
+          "unrealized_pnl": -5880.0,
+          "unrealized_return_pct": -13.7525
         }
       ],
       "transactions": [
@@ -1586,10 +1623,10 @@
         "shadow": true,
         "status": "V2.2 影子模拟",
         "initial_capital": 100000.0,
-        "total_assets": 101390.51,
+        "total_assets": 101745.71,
         "cash": 7100.91,
-        "total_pnl": 1390.51,
-        "cumulative_return_pct": 1.39051,
+        "total_pnl": 1745.71,
+        "cumulative_return_pct": 1.74571,
         "max_drawdown_pct": 0.7603,
         "fees": 93.05,
         "dividends": 248.16,
@@ -1599,7 +1636,7 @@
         "max_holdings": 4,
         "target_allocation_pct": 100,
         "cash_reserve": 0,
-        "excess_return_pct": 7.10754
+        "excess_return_pct": 7.48404
       },
       "series": [
         {
@@ -1721,6 +1758,11 @@
           "date": "2026-09-28",
           "nav": 101390.51,
           "return_pct": 1.39051
+        },
+        {
+          "date": "2026-09-29",
+          "nav": 101745.71,
+          "return_pct": 1.74571
         }
       ],
       "holdings": [
@@ -1729,24 +1771,24 @@
           "name": "国债 ETF",
           "shares": 400,
           "entry_price": 141.143,
-          "last_price": 140.684,
-          "price_date": "2026-09-28",
-          "market_value": 56273.6,
+          "last_price": 140.747,
+          "price_date": "2026-09-29",
+          "market_value": 56298.8,
           "cost_value": 56457.2,
-          "unrealized_pnl": -183.6,
-          "unrealized_return_pct": -0.3252
+          "unrealized_pnl": -158.4,
+          "unrealized_return_pct": -0.2806
         },
         {
           "code": "513100",
           "name": "纳指100 ETF",
           "shares": 16500,
           "entry_price": 2.218,
-          "last_price": 2.304,
-          "price_date": "2026-09-28",
-          "market_value": 38016.0,
+          "last_price": 2.324,
+          "price_date": "2026-09-29",
+          "market_value": 38346.0,
           "cost_value": 36597.0,
-          "unrealized_pnl": 1419.0,
-          "unrealized_return_pct": 3.8774
+          "unrealized_pnl": 1749.0,
+          "unrealized_return_pct": 4.7791
         }
       ],
       "transactions": [
@@ -1795,10 +1837,10 @@
   },
   "data_quality": {
     "status": "passed",
-    "as_of": "2026-09-28",
+    "as_of": "2026-09-29",
     "strategies": {
       "v1": {
-        "as_of": "2026-09-28",
+        "as_of": "2026-09-29",
         "last_signal_date": "2026-08-31",
         "last_execution_date": "2026-09-01",
         "pending_signal_date": null,
@@ -1806,13 +1848,13 @@
         "holdings": [
           {
             "code": "600329",
-            "price_date": "2026-09-28",
+            "price_date": "2026-09-29",
             "status": "current",
             "source": "sina_cn_marketdata"
           },
           {
             "code": "000915",
-            "price_date": "2026-09-28",
+            "price_date": "2026-09-29",
             "status": "current",
             "source": "sina_cn_marketdata"
           }
@@ -1821,7 +1863,7 @@
         "rules_sha256": "d3265a0af79c1915244edb7d54322ea038183dd90b9b01ef00c216238597bd23"
       },
       "v2": {
-        "as_of": "2026-09-28",
+        "as_of": "2026-09-29",
         "last_signal_date": "2026-08-31",
         "last_execution_date": "2026-09-01",
         "pending_signal_date": null,
@@ -1829,13 +1871,13 @@
         "holdings": [
           {
             "code": "600329",
-            "price_date": "2026-09-28",
+            "price_date": "2026-09-29",
             "status": "current",
             "source": "sina_cn_marketdata"
           },
           {
             "code": "000915",
-            "price_date": "2026-09-28",
+            "price_date": "2026-09-29",
             "status": "current",
             "source": "sina_cn_marketdata"
           }
@@ -1844,7 +1886,7 @@
         "rules_sha256": "7bdb8c9302457ad7d9682caf837d5c26ff5fff3378fefd86f9e8d7707848d715"
       },
       "v3": {
-        "as_of": "2026-09-28",
+        "as_of": "2026-09-29",
         "last_signal_date": "2026-08-31",
         "last_execution_date": "2026-09-01",
         "pending_signal_date": null,
@@ -1852,13 +1894,13 @@
         "holdings": [
           {
             "code": "600329",
-            "price_date": "2026-09-28",
+            "price_date": "2026-09-29",
             "status": "current",
             "source": "sina_cn_marketdata"
           },
           {
             "code": "000915",
-            "price_date": "2026-09-28",
+            "price_date": "2026-09-29",
             "status": "current",
             "source": "sina_cn_marketdata"
           }
@@ -1867,7 +1909,7 @@
         "rules_sha256": "6f5564ba9939d7098b511a8a563de81b558d5eddd2928307d2b9cb5353a65529"
       },
       "v5": {
-        "as_of": "2026-09-28",
+        "as_of": "2026-09-29",
         "last_signal_date": "2026-08-31",
         "last_execution_date": "2026-09-01",
         "pending_signal_date": null,
@@ -1875,13 +1917,13 @@
         "holdings": [
           {
             "code": "000651",
-            "price_date": "2026-09-28",
+            "price_date": "2026-09-29",
             "status": "current",
             "source": "sina_cn_marketdata"
           },
           {
             "code": "600066",
-            "price_date": "2026-09-28",
+            "price_date": "2026-09-29",
             "status": "current",
             "source": "sina_cn_marketdata"
           }
@@ -1890,7 +1932,7 @@
         "rules_sha256": "62d628d5ca7f1122fb2435e46776719e15ac1053c59c675446257d2431816b38"
       },
       "ma_v22": {
-        "as_of": "2026-09-28",
+        "as_of": "2026-09-29",
         "last_signal_date": "2026-08-31",
         "last_execution_date": "2026-09-01",
         "pending_signal_date": null,
@@ -1898,13 +1940,13 @@
         "holdings": [
           {
             "code": "511010",
-            "price_date": "2026-09-28",
+            "price_date": "2026-09-29",
             "status": "current",
             "source": "sina_cn_marketdata"
           },
           {
             "code": "513100",
-            "price_date": "2026-09-28",
+            "price_date": "2026-09-29",
             "status": "current",
             "source": "sina_cn_marketdata"
           }
@@ -1945,8 +1987,8 @@
     "plan_sha256": "ba886363f571be2c8cdc203e77f11d6c738fa22e1b72a6f6f2d4541c8c970140",
     "period": {
       "start_date": "2026-09-01",
-      "as_of": "2026-09-28",
-      "calendar_days": 27,
+      "as_of": "2026-09-29",
+      "calendar_days": 28,
       "observation_months": 0
     },
     "data_quality": {
@@ -1971,97 +2013,97 @@
     "strategies": {
       "v1": {
         "name": "高息动量 V1（2只正式）",
-        "return_pct": -4.94159,
-        "max_drawdown_pct": 6.5761,
-        "two_way_turnover_pct": 101.5028,
+        "return_pct": -5.73459,
+        "max_drawdown_pct": 6.6276,
+        "two_way_turnover_pct": 101.6623,
         "fees": 34.59,
-        "benchmark_return_pct": -5.71703,
-        "excess_return_pct": 0.77544,
-        "daily_observations": 19
+        "benchmark_return_pct": -5.73833,
+        "excess_return_pct": 0.00374,
+        "daily_observations": 20
       },
       "v2": {
         "name": "高息动量 V2（3只影子）",
-        "return_pct": -4.94159,
-        "max_drawdown_pct": 6.5761,
-        "two_way_turnover_pct": 101.5028,
+        "return_pct": -5.73459,
+        "max_drawdown_pct": 6.6276,
+        "two_way_turnover_pct": 101.6623,
         "fees": 34.59,
-        "benchmark_return_pct": -5.71703,
-        "excess_return_pct": 0.77544,
-        "daily_observations": 19
+        "benchmark_return_pct": -5.73833,
+        "excess_return_pct": 0.00374,
+        "daily_observations": 20
       },
       "v3": {
         "name": "高息动量 V3（4只影子）",
-        "return_pct": -4.94159,
-        "max_drawdown_pct": 6.5761,
-        "two_way_turnover_pct": 101.5028,
+        "return_pct": -5.73459,
+        "max_drawdown_pct": 6.6276,
+        "two_way_turnover_pct": 101.6623,
         "fees": 34.59,
-        "benchmark_return_pct": -5.71703,
-        "excess_return_pct": 0.77544,
-        "daily_observations": 19
+        "benchmark_return_pct": -5.73833,
+        "excess_return_pct": 0.00374,
+        "daily_observations": 20
       },
       "v5": {
         "name": "高息动量 V5（附件规则影子）",
-        "return_pct": -6.21476,
+        "return_pct": -6.37593,
         "max_drawdown_pct": 7.6184,
-        "two_way_turnover_pct": 89.129,
+        "two_way_turnover_pct": 89.2146,
         "fees": 22.14,
-        "benchmark_return_pct": -5.71703,
-        "excess_return_pct": -0.49773,
-        "daily_observations": 19
+        "benchmark_return_pct": -5.73833,
+        "excess_return_pct": -0.6376,
+        "daily_observations": 20
       },
       "ma_v22": {
         "name": "多资产风险预算 V2.2（全球版影子）",
-        "return_pct": 1.39051,
+        "return_pct": 1.74571,
         "max_drawdown_pct": 0.7603,
-        "two_way_turnover_pct": 92.7785,
+        "two_way_turnover_pct": 92.7148,
         "fees": 93.05,
-        "benchmark_return_pct": -5.71703,
-        "excess_return_pct": 7.10754,
-        "daily_observations": 19
+        "benchmark_return_pct": -5.73833,
+        "excess_return_pct": 7.48404,
+        "daily_observations": 20
       }
     },
     "monthly_records": [
       {
         "month": "2026-09",
         "start_date": "2026-09-01",
-        "end_date": "2026-09-28",
+        "end_date": "2026-09-29",
         "is_complete": false,
-        "benchmark_return_pct": -5.71703,
+        "benchmark_return_pct": -5.73833,
         "strategies": {
           "v1": {
-            "return_pct": -4.94159,
-            "max_drawdown_pct": 6.5761,
-            "two_way_turnover_pct": 101.5028,
+            "return_pct": -5.73459,
+            "max_drawdown_pct": 6.6276,
+            "two_way_turnover_pct": 101.6623,
             "fees": 34.59,
-            "excess_return_pct": 0.77544
+            "excess_return_pct": 0.00374
           },
           "v2": {
-            "return_pct": -4.94159,
-            "max_drawdown_pct": 6.5761,
-            "two_way_turnover_pct": 101.5028,
+            "return_pct": -5.73459,
+            "max_drawdown_pct": 6.6276,
+            "two_way_turnover_pct": 101.6623,
             "fees": 34.59,
-            "excess_return_pct": 0.77544
+            "excess_return_pct": 0.00374
           },
           "v3": {
-            "return_pct": -4.94159,
-            "max_drawdown_pct": 6.5761,
-            "two_way_turnover_pct": 101.5028,
+            "return_pct": -5.73459,
+            "max_drawdown_pct": 6.6276,
+            "two_way_turnover_pct": 101.6623,
             "fees": 34.59,
-            "excess_return_pct": 0.77544
+            "excess_return_pct": 0.00374
           },
           "v5": {
-            "return_pct": -6.21476,
+            "return_pct": -6.37593,
             "max_drawdown_pct": 7.6184,
-            "two_way_turnover_pct": 89.129,
+            "two_way_turnover_pct": 89.2146,
             "fees": 22.14,
-            "excess_return_pct": -0.49773
+            "excess_return_pct": -0.6376
           },
           "ma_v22": {
-            "return_pct": 1.39051,
+            "return_pct": 1.74571,
             "max_drawdown_pct": 0.7603,
-            "two_way_turnover_pct": 92.7785,
+            "two_way_turnover_pct": 92.7148,
             "fees": 93.05,
-            "excess_return_pct": 7.10754
+            "excess_return_pct": 7.48404
           }
         }
       }
