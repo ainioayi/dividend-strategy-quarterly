@@ -1,0 +1,81 @@
+{
+  "requested_as_of": "2026-11-13",
+  "downloaded_at_utc": "2026-11-13T16:18:33.677676+00:00",
+  "base_date": "2004-12-31",
+  "stock": {
+    "code": "H00300.CSI",
+    "basis": "官方全收益收盘点位",
+    "rows": 5308,
+    "first": "2004-12-31",
+    "last": "2026-11-11"
+  },
+  "bond": {
+    "code": "885007.WI",
+    "name": "万得混合债券型二级基金指数",
+    "basis": "第三方累计收益百分比加100，不是官方绝对收盘价",
+    "rows": 5544,
+    "first": "2003-12-31",
+    "last": "2026-11-12",
+    "precision_pp": 0.01
+  },
+  "excluded_stock_nontrading_dates": [
+    "2018-06-18"
+  ],
+  "sources": [
+    {
+      "file": "h00300-raw.json.gz",
+      "url": "https://www.csindex.com.cn/csindex-home/perf/index-perf?indexCode=H00300&startDate=20041231&endDate=20261113",
+      "method": "GET",
+      "body": null,
+      "raw_sha256": "ae8f5e51204a918edcb97045b57313205f81695b6415acad28b588c64c31b6c7",
+      "file_sha256": "f7d4a0db6359b9db2a62bde460e05756394bb96619494cd5ee70d883f8703049"
+    },
+    {
+      "file": "000300-raw.json.gz",
+      "url": "https://www.csindex.com.cn/csindex-home/perf/index-perf?indexCode=000300&startDate=20041231&endDate=20261113",
+      "method": "GET",
+      "body": null,
+      "raw_sha256": "b8509d8abba4fc717b59ccd840c3573cc4221109fcdcdf271b95da4fa49adcda",
+      "file_sha256": "ca4265f3f6a6e4d28bb079fac8430b112b73e099a5928aff775e80756a438043"
+    },
+    {
+      "file": "885007-basic-raw.json.gz",
+      "url": "https://api.jiucaishuo.com/v2/guzhi-new2/index-basic",
+      "method": "POST",
+      "body": {
+        "gu_code": "885007.WI",
+        "category": "pe",
+        "year": 10,
+        "type": "h5",
+        "version": "2.5.9",
+        "ss": ""
+      },
+      "raw_sha256": "2258ac52d59f65fcd30b85f0338c91d16f8f4d94a573834557077625083c0e65",
+      "file_sha256": "5078759d7271b078423bc017417d07317c9c33e83fd36fb448f1e1c06ba262ed"
+    },
+    {
+      "file": "885007-raw.json.gz",
+      "url": "https://api.jiucaishuo.com/v2/fundindex/detail",
+      "method": "POST",
+      "body": {
+        "gu_code": "885007.WI",
+        "date": "all",
+        "ben": "",
+        "search_code": "",
+        "s_time": "",
+        "e_time": "",
+        "line_type": "sy",
+        "is_close": 2,
+        "type": "h5",
+        "version": "2.5.9",
+        "ss": ""
+      },
+      "raw_sha256": "52ca4057b309b84430d7d73d4c6209611581fe2ec1aa6e002fbe441d2ce52b74",
+      "file_sha256": "d8aca9bb218f442e3d1c1673b1bbafad93fd801a9314d79e6cb75eae7022ae2c"
+    }
+  ],
+  "normalized_sha256": {
+    "stock.csv": "b4987857a0aeed757f2e5a30d91d0b84a54239f7a6bcc759c83c1e995b801a36",
+    "bond.csv": "51a9d180963114947a59d6e0835f3a554f11accbdaefc552fe2a6b53318cc00f"
+  }
+}

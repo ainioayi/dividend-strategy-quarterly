@@ -1,9 +1,6 @@
-name: 季度策略自动更新
+name: 历史季度策略更新（仅手动）
 
 on:
-  schedule:
-    # UTC 11:30 = 北京时间 19:30；季度后首月前 10 日逐日检查，脚本负责幂等门禁。
-    - cron: "30 11 1-10 1,4,7,10 *"
   workflow_dispatch:
     inputs:
       force:

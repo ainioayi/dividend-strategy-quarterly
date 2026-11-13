@@ -1,21 +1,7 @@
-name: 五策略前向观察与公开业绩
+name: 历史五策略前向观察（仅手动）
 
 on:
-  push:
-    branches: [main]
-    # 前向任务自己提交的产物不再次触发，避免自动提交循环。
-    paths-ignore:
-      - ".github/workflows/monthly-forward.yml"
-      - "README.md"
-      - "docs/**"
-      - "tests/**"
-      - "data/forward/**"
-      - "data/v5_inputs.json"
-      - "data/ma_v22_inputs.json"
-      - "site/performance.json"
-  schedule:
-    # 北京时间 18:30 首次运行，此后每小时幂等重试至 22:30；脚本仍核验真实交易日和当日收盘价。
-    - cron: "30 10-14 * * 1-5"
+  # 旧研究入口保留手动执行，公开页面由股债交点任务独立维护。
   workflow_dispatch:
     inputs:
       date:
@@ -332,13 +318,6 @@ jobs:
             }
           }
           if (-not $pushed) { throw "连续 3 次推送公开业绩失败" }
-
-      - name: 触发最新公开页面部署
-        if: success() && steps.plan.outputs.is_trading_day == 'true'
-        shell: bash
-        env:
-          GH_TOKEN: ${{ github.token }}
-        run: gh workflow run pages.yml --ref main
 
       - name: 影子账本失败时在发布后标记任务失败
         if: always() && (steps.v2.outcome == 'failure' || steps.v3.outcome == 'failure' || steps.v5_nav.outcome == 'failure' || steps.v5_inputs.outcome == 'failure' || steps.v5.outcome == 'failure' || steps.ma_v22_inputs.outcome == 'failure' || steps.ma_v22.outcome == 'failure')

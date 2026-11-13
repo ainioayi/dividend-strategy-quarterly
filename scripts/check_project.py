@@ -86,7 +86,8 @@ def run_checks(*, rehearsal: bool = False, run_command: RunCommand = _run_comman
             "--output", str(artifact_dir / "forward_rehearsal.json"),
         ]))
     stages.extend([
-        ("公开业绩离线复核", [sys.executable, "scripts/forward_performance.py", "--verify-only"]),
+        ("股债交点发布快照离线复核", [sys.executable, "scripts/stock_bond_page.py", "--verify-only"]),
+        ("历史业绩离线复核", [sys.executable, "scripts/forward_performance.py", "--verify-only"]),
         ("统一入口测试", [sys.executable, "-m", "pytest", "-q", "tests/test_check_project.py"]),
         ("完整测试", [sys.executable, "-m", "pytest", "-q"]),
         ("Python 编译", [sys.executable, "-m", "compileall", "-q", "scripts", "tests"]),

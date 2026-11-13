@@ -52,3 +52,5 @@ def test复算产物只能写入系统隔离目录(monkeypatch, tmp_path):
     assert artifact_dir == isolated
     assert Path(backtest[backtest.index("--json") + 1]) == isolated / "current_best.json"
     assert not any("--verify-live-calendar" in command for command in commands)
+    assert any("scripts/stock_bond_page.py" in command and "--verify-only" in command for command in commands)
+    assert not any("--refresh" in command for command in commands)

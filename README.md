@@ -1,11 +1,26 @@
-# 月度高息动量策略
+# 股债交点图与历史策略研究
 
-这是一个可复现、可审计的 A 股策略研究项目。模型只使用落盘数据，不连接券商、
-不读取账户，也不会自动下单。
+公开首页展示沪深300全收益与万得二级债基公开曲线，支持选择下穿点、查看全部历史或放大信号前后。右上角“数据截至”显示两条序列实际共同覆盖的日期，不是网页生成日期。
 
-公开业绩：<https://ainioayi.github.io/dividend-strategy-quarterly/>
+公开页面：<https://ainioayi.github.io/dividend-strategy-quarterly/>
 
-## 当前结论
+## 图表数据与复算
+
+H00300.CSI来自中证指数官方全收益收盘数据；885007.WI来自韭圈儿公开转发的原指数累计收益曲线，存在年度数值和日期疑点，页面保留质量说明，不能称为万得官方高精度复现。
+
+`config/stock_bond.json` 固定共同起点和冷却间隔，默认2004-12-31归一为1000、间隔126个交易日。自动更新会按当前配置重算交点、下拉选项和曲线，不会根据已知收益择优改规则。
+
+```powershell
+# 用保存的输入离线重算，再核对页面数据。
+python scripts/stock_bond_page.py
+python scripts/stock_bond_page.py --verify-only
+# 显式联网刷新时写出截止日；实际共同日期可以更早。
+python scripts/stock_bond_page.py --refresh --as-of 2026-11-13
+```
+
+独立输入、原始响应和指纹保存在 `data/stock-bond/`，不修改原高息策略冻结数据和模拟账户。触线后仍可能继续下跌，历史表现不保证未来收益，不构成买卖建议。项目不连接券商、不读取账户、不自动下单。
+
+## 历史主策略结论
 
 当前主策略是冻结的高息动量 V1。数据截止 `2026-08-25`，共 128 个信号点，
 信号在月末形成，默认在下一可用交易日收盘模拟成交。
@@ -26,7 +41,7 @@
 完整策略规则、输入指纹和各轮结论以 [策略状态](docs/STRATEGY_STATUS.md)为准。
 详细实验见 [探索日志](docs/EXPLORATION_LOG.md)。
 
-## 前向观察
+## 历史前向观察
 
 项目独立跟踪五套 10 万元模拟账户：高息动量 V1（正式）、V2/V3/V5（影子）
 和多资产风险预算 V2.2（影子），并以 510300 沪深 300 ETF 作基准。历史回测
@@ -46,7 +61,7 @@ python scripts/check_project.py
 ```
 
 这条命令校验冻结输入指纹、五策略合同，在系统临时目录复算并完整比较
-`data/current_best.json`，离线复核公开快照，再运行相关测试、完整测试、Python 编译和 Git 差异
+`data/current_best.json`，离线复核股债图表与历史快照，再运行相关测试、完整测试、Python 编译和 Git 差异
 检查。它默认不联网，也不会覆盖正式输入、结果或账本；失败时返回非零退出码，
 并打印隔离产物路径。
 
@@ -74,15 +89,13 @@ python scripts/ma_v22_strategy.py --input data/ma_v22_inputs.json --output data/
 
 ## 自动更新与部署
 
-GitHub Actions 在工作日北京时间 18:30 至 22:30 按小时尝试更新。任务先检查
-五策略合同、交易日历和当日行情；门禁失败时不发布旧数据。成功后更新前向业绩
-并部署 GitHub Pages。手动触发隔离演练：
+`.github/workflows/pages.yml` 每天北京时间18:30、21:30尝试刷新来源，按当前配置重算、校验和测试后部署。GitHub调度可能排队；取数失败时保留最后成功的页面与实际日期，不把旧数据伪装为当天数据。修改配置、采集代码或页面并推送到 `main` 后，也会用保存的输入重算发布。手动运行完整取数与部署：
 
 ```powershell
-gh workflow run monthly-forward.yml -f mode=rehearsal
+gh workflow run pages.yml --ref main
 ```
 
-该模式不会修改正式账本，也不会创建或关闭正式更新告警。
+公开部署只打包 `site/index.html`、`site/chart.css`、`site/chart.js`、`site/stock-bond.json`。旧模拟盘首页已替换；旧业绩和审计JSON仅保留仓库审计，不再打包到公网。历史五策略、季度工作流退为手动入口，不再定时运行或触发首页发布。
 
 发布门禁、停牌核验和历史净值更正流程见 [公开数据运维](docs/FORWARD_OPERATIONS.md)。
 
@@ -91,7 +104,8 @@ gh workflow run monthly-forward.yml -f mode=rehearsal
 - `data/current_best.json`：冻结 V1 的完整回测结果。
 - `data/v1_freeze.json`：V1 参数、输入和结果指纹。
 - `data/forward/`：前向缓存、版本化输入和只追加模拟账本。
-- `site/`：公开业绩页面与发布数据。
+- `site/`：股债交点页面与发布数据；旧研究JSON不打包。
+- `data/stock-bond/`、`config/stock_bond.json`：独立曲线输入、来源指纹与固定规则。
 - `docs/STRATEGY_STATUS.md`：当前结果的唯一权威说明。
 - `docs/EXPLORATION_LOG.md`：历轮实验、限制和取舍。
 

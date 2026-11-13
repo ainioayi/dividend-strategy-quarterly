@@ -4,21 +4,11 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 
-def test_forward_workflow_has_retry_freeze_gate_and_issue_alert() -> None:
+def test_manual_forward_workflow_keeps_research_gates_without_overwriting_public_page() -> None:
     workflow = (ROOT / ".github/workflows/monthly-forward.yml").read_text(encoding="utf-8")
-    assert "  push:\n    branches: [main]\n" in workflow
-    for generated_path in (
-        ".github/workflows/monthly-forward.yml",
-        "README.md",
-        "docs/**",
-        "tests/**",
-        "data/forward/**",
-        "data/v5_inputs.json",
-        "data/ma_v22_inputs.json",
-        "site/performance.json",
-    ):
-        assert f'      - "{generated_path}"' in workflow
-    assert 'cron: "30 10-14 * * 1-5"' in workflow
+    assert "  workflow_dispatch:" in workflow
+    assert "  push:" not in workflow
+    assert "  schedule:" not in workflow
     assert "cancel-in-progress: true" in workflow
     assert "python scripts/verify_v1_freeze.py" in workflow
     assert "python scripts/monthly_forward.py verify" in workflow
@@ -47,7 +37,7 @@ def test_forward_workflow_has_retry_freeze_gate_and_issue_alert() -> None:
     assert "git fetch origin main" in workflow
     assert "git rebase origin/main" in workflow
     assert "  actions: write" in workflow
-    assert "gh workflow run pages.yml --ref main" in workflow
+    assert "gh workflow run pages.yml" not in workflow
     assert "if: success() && steps.plan.outputs.is_trading_day == 'true'" in workflow
     assert "git add --all -- data/forward ':(exclude)data/forward/performance.json' ':(exclude)data/forward/performance_market.json'" in workflow
     assert "git add data/forward/performance.json data/forward/performance_market.json site/performance.json" in workflow
@@ -58,9 +48,20 @@ def test_forward_workflow_has_retry_freeze_gate_and_issue_alert() -> None:
     assert workflow.index("- name: 核验待发布快照与观察评估") < workflow.index("- name: 提交公开业绩")
 
 
-def test_pages部署前必须离线复核数据和观察评估():
+def test_pages_validates_new_inputs_and_excludes_old_public_artifacts():
     workflow = (ROOT / ".github/workflows/pages.yml").read_text(encoding="utf-8")
-    assert workflow.index("python scripts/forward_performance.py --verify-only") < workflow.index("uses: actions/upload-pages-artifact")
+    assert workflow.index("python scripts/stock_bond_page.py --verify-only") < workflow.index("git commit")
+    assert workflow.index("python scripts/stock_bond_page.py --verify-only") < workflow.index("uses: actions/upload-pages-artifact")
+    assert 'cron: "30 10,13 * * *"' in workflow
+    assert "if: github.event_name != 'push'" in workflow
+    assert 'cp site/index.html site/chart.css site/chart.js site/stock-bond.json "$RUNNER_TEMP/stock-bond-site/"' in workflow
+    assert "path: site\n" not in workflow
+    assert "site/performance.json" not in workflow
+    assert "site/audit.json" not in workflow
+    assert "git rebase origin/main" in workflow
+    assert workflow.index("git rebase origin/main") < workflow.rindex("python scripts/stock_bond_page.py --verify-only")
+    quarterly = (ROOT / ".github/workflows/quarterly-update.yml").read_text(encoding="utf-8")
+    assert "  schedule:" not in quarterly
 
 
 def test_v2_is_limited_to_shadow_output() -> None:

@@ -388,14 +388,14 @@ def test组合业绩同时保留五套独立账户和共同基准() -> None:
     assert result["holdings"] == result["strategies"]["v1"]["holdings"]
 
 
-def test公开页面声明并渲染五策略契约() -> None:
-    html = (Path(__file__).resolve().parents[1] / "site" / "index.html").read_text(encoding="utf-8")
-    assert "const strategyIds = Object.keys(strategyLabels)" in html
-    assert "v5: { name: '高息动量 V5（附件规则影子）'" in html
-    assert "ma_v22: { name: '多资产风险预算 V2.2（全球版影子）'" in html
-    assert "['v1', 'v2', 'v3', 'v5', 'ma_v22'].includes(query.get('strategy'))" in html
-    assert "data.schema_version !== 4" in html
-    assert "`${state.strategy}_nav`" in html
+def test公开首页已切换为独立股债曲线数据() -> None:
+    site = Path(__file__).resolve().parents[1] / "site"
+    html = (site / "index.html").read_text(encoding="utf-8")
+    script = (site / "chart.js").read_text(encoding="utf-8")
+    assert 'id="data-as-of"' in html
+    assert "fetch('stock-bond.json'" in script
+    assert "performance.json" not in html + script
+    assert "$('#data-as-of').textContent = data.as_of" in script
 
 
 def testV22基金分红按到账日入账且不扣股票红利税() -> None:
