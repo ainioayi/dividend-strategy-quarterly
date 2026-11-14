@@ -386,7 +386,8 @@ function renderResearch() {
   const costs = parameters && ['initial_capital', 'lot_size', 'commission_rate', 'minimum_commission', 'slippage_rate'].every(key => Number.isFinite(parameters[key]))
     ? `每笔${parameters.initial_capital.toLocaleString('zh-CN')}元，${parameters.lot_size}份整手；买卖各${(parameters.commission_rate * 100).toFixed(2)}%佣金、单笔最低${parameters.minimum_commission}元，各${(parameters.slippage_rate * 100).toFixed(2)}%滑点。`
     : '具体交易成本以回放数据的核算约定为准。';
-  $('#research-note').textContent = `${costs}${research.methodology.cash_dividends || ''}。最大回撤指24个月持有期间从高点跌下来的幅度，负数表示下跌。${research.limitations.filter(value => typeof value === 'string').join(' ')}`;
+  const sourceWarnings = Array.isArray(asset.quality?.warnings) ? asset.quality.warnings.filter(value => typeof value === 'string').join(' ') : '';
+  $('#research-note').textContent = `${costs}${research.methodology.cash_dividends || ''}。最大回撤指24个月持有期间从高点跌下来的幅度，负数表示下跌。${sourceWarnings}有效窗口不代表每一天都已获双源或权威确认。${research.limitations.filter(value => typeof value === 'string').join(' ')}`;
   renderSelectedRisk();
   renderComparisons(asset);
 }
