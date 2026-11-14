@@ -1,0 +1,10 @@
+{
+  "initial_capital": 100000,
+  "lot_size": 100,
+  "commission_rate": 0.0003,
+  "minimum_commission": 5,
+  "slippage_rate": 0.0005,
+  "entry_lag_sessions": 1,
+  "holding_months": [6, 12, 24],
+  "reinvest_dividends": false
+}

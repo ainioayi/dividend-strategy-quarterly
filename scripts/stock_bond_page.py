@@ -180,14 +180,26 @@ def load_inputs(folder):
     expected_raw = {"h00300-raw.json.gz", "000300-raw.json.gz", "885007-basic-raw.json.gz", "885007-raw.json.gz"}
     if {source["file"] for source in manifest["sources"]} != expected_raw or len(manifest["sources"]) != 4:
         raise ValueError("冻结清单缺少原始数据来源")
+    original = {}
     for source in manifest["sources"]:
         name = source["file"]
         if Path(name).name != name or not name.endswith("-raw.json.gz"):
             raise ValueError("原始文件路径无效")
         path = folder / name
-        if fingerprint(path) != source["file_sha256"] or hashlib.sha256(gzip.decompress(path.read_bytes())).hexdigest() != source["raw_sha256"]:
+        raw = gzip.decompress(path.read_bytes())
+        if fingerprint(path) != source["file_sha256"] or hashlib.sha256(raw).hexdigest() != source["raw_sha256"]:
             raise ValueError("原始输入指纹不符：" + name)
+        original[name] = json.loads(raw)
     stock, bond = load_values(folder / "stock.csv", as_of), load_values(folder / "bond.csv", as_of)
+    reported_stock = parse_csi(original["h00300-raw.json.gz"], "H00300", as_of)
+    market_days = parse_csi(original["000300-raw.json.gz"], "000300", as_of)
+    if set(market_days) - set(reported_stock):
+        raise ValueError("原始响应的市场日期未被全收益覆盖")
+    reported_bond, _ = parse_bond(original["885007-basic-raw.json.gz"], original["885007-raw.json.gz"], as_of)
+    if stock != {day: reported_stock[day] for day in market_days} or bond != reported_bond:
+        raise ValueError("规范化曲线与原始响应不一致，禁止仅更新校验指纹后发布")
+    if sorted(set(reported_stock) - set(market_days)) != manifest["excluded_stock_nontrading_dates"]:
+        raise ValueError("排除日期与原始响应不一致")
     if min(stock) != BASE or stock[BASE] != 1000 or min(bond) < "2003-12-31":
         raise ValueError("冻结曲线基日或基点异常")
     for name, values in [("stock", stock), ("bond", bond)]:
@@ -219,6 +231,15 @@ def merge_signals(signals, cooldown):
     return kept
 
 
+def precision_sensitive(stock_value, stock_base, bond_value, bond_base):
+    """按一个末位显示单位扰动两源；这是敏感性检查，不是统计置信区间。"""
+    if min(stock_base, bond_base) <= 0.01:
+        return True
+    lower = (stock_value - 0.01) / (stock_base + 0.01) - (bond_value + 0.01) / (bond_base - 0.01)
+    upper = (stock_value + 0.01) / (stock_base - 0.01) - (bond_value - 0.01) / (bond_base + 0.01)
+    return lower <= 0 <= upper
+
+
 def build(folder, parameters, parameter_hash, generated_at=None):
     manifest, stock, bond = load_inputs(folder)
     base = parameters["base_date"]
@@ -232,6 +253,12 @@ def build(folder, parameters, parameter_hash, generated_at=None):
     stock_line = [positive(stock[day] / stock[base] * 1000) for day in days]
     bond_line = [positive(bond[day] / bond[base] * 1000) if day in bond else None for day in days]
     crossings = find_signals(days, stock, bond, base)
+    for crossing in crossings:
+        crossing["verification_status"] = "pending_date_validation"
+        crossing["precision_sensitive"] = any(
+            precision_sensitive(stock[day], stock[base], bond[day], bond[base])
+            for day in [days[crossing["index"] - 1], crossing["date"]]
+        )
     warnings = ["债基来自第三方累计收益曲线，精度为0.01个百分点；存在日期错位疑点，保留原日期，未做事后平移修正。"]
     annual_checks = []
     for year, expected in {2020: 9.12, 2021: 7.82, 2022: -5.07, 2023: 0.57, 2024: 4.90}.items():
@@ -248,11 +275,19 @@ def build(folder, parameters, parameter_hash, generated_at=None):
     missing = [day for day in days if day not in bond]
     if missing:
         warnings.append(f"共同区间内债基缺少{len(missing)}个市场交易日，保留曲线断点，不跨缺口识别交点。")
+    details = [
+        "原始响应已重新解析并与规范化曲线逐日比对；这证明转换一致，不能替代供应商数值的独立核验。",
+        "债基历史净值所属日期及公布时间未获得逐日权威对账，全部下穿均为待核验事件，不能直接发出买入指令。",
+        "precision_sensitive表示在一个末位显示单位扰动下可改变相对高低，不是统计置信区间；未擅自移动日期。",
+    ]
     return {"schema_version": 1, "as_of": end, "requested_as_of": manifest["requested_as_of"],
             "generated_at": generated_at or datetime.now(timezone.utc).isoformat(), "parameters": parameters,
+            "source_dates": {"stock_as_of": max(stock), "bond_as_of": max(bond), "checked_at": manifest.get("downloaded_at_utc")},
             "chart": {"dates": days, "stock": stock_line, "bond": bond_line}, "crossings": crossings,
             "signals": merge_signals(crossings, parameters["cooldown_sessions"]),
-            "quality": {"warnings": warnings, "bond_source": BOND_SOURCE},
+            "quality": {"warnings": warnings, "bond_source": BOND_SOURCE, "status": "pending_date_validation",
+                        "historical_availability_verified": False, "can_issue_buy_signal": False, "verification_details": details,
+                        "precision_sensitive_downcrossings": sum(crossing["direction"] == "down" and crossing["precision_sensitive"] for crossing in crossings)},
             "audit": {"parameters_sha256": parameter_hash, "manifest_sha256": fingerprint(folder / "manifest.json"),
                       "input_sha256": manifest["normalized_sha256"], "missing_bond_dates": missing,
                       "excluded_nontrading_dates": manifest["excluded_stock_nontrading_dates"], "annual_checks": annual_checks,

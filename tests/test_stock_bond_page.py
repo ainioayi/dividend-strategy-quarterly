@@ -22,7 +22,14 @@ def make_inputs(folder, *, requested="2005-01-12", stock=None, bond=None):
     page.write_csv(folder / "bond.csv", bond)
     sources = []
     for name in ["h00300", "000300", "885007-basic", "885007"]:
-        raw = json.dumps({"source": name}).encode()
+        if name in {"h00300", "000300"}:
+            code = "H00300" if name == "h00300" else "000300"
+            payload = {"code": 200, "data": [{"indexCode": code, "indexNameCnAll": "沪深300全收益指数" if name == "h00300" else "沪深300指数", "tradeDate": day.replace("-", ""), "close": value} for day, value in sorted(stock.items())]}
+        elif name == "885007-basic":
+            payload = {"code": 0, "data": {"files": [{"title": "代码", "name": "885007.WI"}, {"title": "全称", "name": "万得混合债券型二级基金指数"}]}}
+        else:
+            payload = {"code": 0, "data": {"index_create_time": "2003-12-31", "tb_data": {"x_data": sorted(bond), "series": [{"name": "本指数", "data": [bond[day] - 100 for day in sorted(bond)]}]}}}
+        raw = json.dumps(payload).encode()
         path = folder / (name + "-raw.json.gz")
         path.write_bytes(gzip.compress(raw, mtime=0))
         sources.append({"file": path.name, "file_sha256": page.fingerprint(path), "raw_sha256": hashlib.sha256(raw).hexdigest()})
@@ -66,6 +73,26 @@ def test_build_uses_latest_common_day_and_preserves_null(files):
     assert result["chart"]["stock"][0] == result["chart"]["bond"][0] == 1000
     assert result["chart"]["bond"][-2] is None
     assert page.verify(folder, parameter_path, output) == result
+
+
+def test_source_dates_and_candidate_status_are_not_a_buy_instruction(files):
+    folder, parameters, output = files
+    result = page.update(folder, parameters, output)
+    assert result["source_dates"]["stock_as_of"] == "2005-01-11"
+    assert result["source_dates"]["bond_as_of"] == "2005-01-10"
+    assert result["quality"]["historical_availability_verified"] is False
+    assert result["quality"]["can_issue_buy_signal"] is False
+    assert all(row["verification_status"] == "pending_date_validation" for row in result["crossings"])
+
+
+def test_rounding_sensitive_crossing_is_identified_without_moving_date(tmp_path):
+    stock = {page.BASE: 1000, "2005-01-04": 1000.001, "2005-01-05": 999.999}
+    bond = dict.fromkeys(stock, 100)
+    folder = make_inputs(tmp_path / "cache", stock=stock, bond=bond)
+    parameters = {"base_date": page.BASE, "cooldown_sessions": 126}
+    result = page.build(folder, parameters, "test")
+    assert result["crossings"][0]["date"] == "2005-01-05"
+    assert result["crossings"][0]["precision_sensitive"] is True
 
 
 def test_changed_parameters_require_rebuild_and_change_normalization(files):
@@ -152,6 +179,21 @@ def test_tampered_inputs_and_output_are_rejected(files):
     (folder / "stock.csv").write_text("date,value\n2004-12-31,999\n", encoding="utf-8")
     with pytest.raises(ValueError, match="输入指纹"):
         page.build(folder, page.load_parameters(parameters), page.fingerprint(parameters))
+
+
+def test_csv_and_updated_checksum_must_still_match_provider_response(files):
+    folder, parameters, output = files
+    page.update(folder, parameters, output)
+    before = output.read_bytes()
+    _, stock, _ = page.load_inputs(folder)
+    stock["2005-01-04"] = 1110
+    page.write_csv(folder / "stock.csv", stock)
+    manifest = page.read_json(folder / "manifest.json")
+    manifest["normalized_sha256"]["stock.csv"] = page.fingerprint(folder / "stock.csv")
+    (folder / "manifest.json").write_text(page.json_text(manifest), encoding="utf-8")
+    with pytest.raises(ValueError, match="原始响应"):
+        page.update(folder, parameters, output)
+    assert output.read_bytes() == before
 
 
 def test_future_generation_timestamp_is_rejected(files):

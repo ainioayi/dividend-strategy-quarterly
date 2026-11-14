@@ -1,6 +1,6 @@
 # 股债交点图与历史策略研究
 
-公开首页展示沪深300全收益与万得二级债基公开曲线，支持选择下穿点、查看全部历史或放大信号前后。右上角“数据截至”显示两条序列实际共同覆盖的日期，不是网页生成日期。
+公开首页以累计收益百分比展示沪深300全收益与万得二级债基公开曲线，0%为共同起点；全部原始下穿都有编号和常显日期索引，可逐个放大。右上角“数据截至”显示两条序列实际共同覆盖的日期，不是网页生成日期。
 
 公开页面：<https://ainioayi.github.io/dividend-strategy-quarterly/>
 
@@ -19,6 +19,28 @@ python scripts/stock_bond_page.py --refresh --as-of 2026-11-13
 ```
 
 独立输入、原始响应和指纹保存在 `data/stock-bond/`，不修改原高息策略冻结数据和模拟账户。触线后仍可能继续下跌，历史表现不保证未来收益，不构成买卖建议。项目不连接券商、不读取账户、不自动下单。
+
+## 下穿后的真实产品回放
+
+用户已固定规则：510300 ETF主验证，160706 LOF单独补充2008年；每笔独立10万元，信号后下一可用交易日收盘一次买入，100份整手，分别持有6/12/24个月。买卖各计万三佣金、每笔最低5元，再各计0.05%滑点；分红现金不复投。费用翻倍和额外延迟两交易日作为固定压力检查，不按结果选择参数。
+
+这是按事后公开曲线定义的条件性回放，没有证明债基信号当年何时可知，也不是实时可执行胜率。510300上市前事件不纳入ETF业绩，LOF与ETF不拼接。每个信号独立投入，窗口可能重叠，不能把逐笔结果当成一个10万元账户的连续收益。
+
+价格统一采用完整新浪未复权场内日线，并与腾讯全历史对账；价格冲突、未核实的停牌或公司事件对应窗口会排除并列出原因。160706的部分场内分红日期已逐份按管理人公告核实，不使用场外日期冒充。除息后未到账分红计应收权益，现金到账后才转为可用资金；不重复加入复权收益。
+
+来源原响应、管理人公告和指纹保存在 `data/crossing-assets/`，固定参数在 `config/crossing_entry_research.json`；完整结果与[独立报告](data/crossing-entry/report.md)在 `data/crossing-entry/`，公开表来自同内容的 `site/entry-research.json`。
+
+```powershell
+# 从保存的原响应完整重建核验，不联网。
+python scripts/refresh_crossing_assets.py --verify-only
+# 按固定规则离线生成结果和报告，再同步公开副本。
+python scripts/crossing_entry_research.py --output data/crossing-entry/result.json --summary-md data/crossing-entry/report.md
+Copy-Item -LiteralPath data/crossing-entry/result.json -Destination site/entry-research.json
+# 核对结果与输入、信号、参数一致。
+python scripts/crossing_entry_research.py --output data/crossing-entry/result.json --verify-only
+```
+
+显式刷新真实产品数据：`python scripts/refresh_crossing_assets.py --refresh --as-of 2026-11-13`。所有研究输入与原高息策略隔离，不能把不完整观察期缩短后计为成功。
 
 ## 历史主策略结论
 
@@ -61,7 +83,7 @@ python scripts/check_project.py
 ```
 
 这条命令校验冻结输入指纹、五策略合同，在系统临时目录复算并完整比较
-`data/current_best.json`，离线复核股债图表与历史快照，再运行相关测试、完整测试、Python 编译和 Git 差异
+`data/current_best.json`，离线重建基金输入并复核条件性回放、股债图表与历史快照，再运行相关测试、完整测试、Python 编译和 Git 差异
 检查。它默认不联网，也不会覆盖正式输入、结果或账本；失败时返回非零退出码，
 并打印隔离产物路径。
 
@@ -97,7 +119,7 @@ python scripts/ma_v22_strategy.py --input data/ma_v22_inputs.json --output data/
 gh workflow run pages.yml --ref main
 ```
 
-公开部署只打包 `site/index.html`、`site/chart.css`、`site/chart.js`、`site/stock-bond.json`。旧模拟盘首页已替换；旧业绩和审计JSON仅保留仓库审计，不再打包到公网。历史五策略、季度工作流退为手动入口，不再定时运行或触发首页发布。
+公开部署只打包 `site/index.html`、`site/chart.css`、`site/chart.js`、`site/stock-bond.json` 和 `site/entry-research.json`。定时任务同时刷新信号及ETF/LOF输入，并按当前固定参数重算、校验两份公开JSON；任一关键门禁失败都不发布。旧业绩和审计JSON仅保留仓库审计，不再打包到公网。历史五策略、季度工作流退为手动入口，不再定时运行或触发首页发布。
 
 发布门禁、停牌核验和历史净值更正流程见 [公开数据运维](docs/FORWARD_OPERATIONS.md)。
 

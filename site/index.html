@@ -6,8 +6,8 @@
   <meta name="color-scheme" content="light">
   <meta name="description" content="沪深300全收益与万得二级债基的历史曲线及下穿点观察。">
   <link rel="icon" href="data:,">
-  <link rel="stylesheet" href="chart.css">
-  <script src="chart.js" defer></script>
+  <link rel="stylesheet" href="chart.css?v=20261114-accuracy">
+  <script src="chart.js?v=20261114-accuracy" defer></script>
   <title>股债交点</title>
 </head>
 <body>
@@ -19,34 +19,64 @@
   </header>
   <main class="wrap">
     <aside class="real-warning" aria-label="数据质量提醒">
-      <b>这是有数据质量限制的初步复算，不是万得官方精确复现。</b>
-      <div id="quality-warnings"></div>
+      <b>第三方债基日期仍待核验，下穿不等于买入指令。</b>
+      <details class="quality-details">
+        <summary>查看数据限制与核验详情</summary>
+        <div id="quality-warnings"></div>
+      </details>
     </aside>
+    <p id="source-dates" class="source-dates"></p>
     <p id="load-status" class="load-status" role="status" aria-live="polite">正在加载历史曲线…</p>
     <button id="retry" class="retry-button" type="button" hidden>重新加载</button>
     <section id="real-frame" class="real-frame" aria-label="股债历史曲线" hidden>
       <div class="real-toolbar">
-        <label for="real-signal">选择一个保留的下穿点
+        <label for="real-signal">选择原始下穿点 · 日期待核验
           <select id="real-signal"></select>
         </label>
         <button id="real-range" type="button" aria-pressed="false">放大信号前后</button>
       </div>
       <div class="real-legend" aria-label="图例">
-        <span>沪深300全收益 · 官方</span>
-        <span>万得二级债基 · 公开曲线重建</span>
-        <span>原始下穿</span>
+        <span>沪深300全收益（分红再投入）</span>
+        <span>万得二级债基（第三方公开曲线）</span>
+        <span id="point-count">原始下穿 · 编号对应下方日期</span>
       </div>
+      <div class="chart-context"><b>指数信号曲线，不是510300实际账户收益</b><p id="axis-explanation">0%＝共同起点；+100%＝翻倍；+400%＝原来的5倍。</p></div>
       <svg id="real-chart" class="real-chart" viewBox="0 0 1000 350" role="img" aria-labelledby="real-chart-title real-chart-desc">
-        <title id="real-chart-title">沪深300全收益与二级债基的历史曲线</title>
-        <desc id="real-chart-desc">统一起点后叠图，红点标记股票线下穿债基线；债基缺失日期断线，不填补。</desc>
-        <g id="real-grid"></g>
-        <path id="real-stock" stroke="#245b45" stroke-width="1.9" fill="none" stroke-linejoin="round"></path>
-        <path id="real-bond" stroke="#94714f" stroke-width="1.8" fill="none" stroke-linejoin="round"></path>
-        <g id="real-points"></g>
-        <g id="real-selection"></g>
+        <title id="real-chart-title">两条指数自共同起点以来的累计收益</title>
+        <desc id="real-chart-desc">红点编号对应下方全部下穿日期；原始日期待核验，不是买入指令。债基缺失日期断线，不填补。</desc>
       </svg>
       <p class="real-note" id="real-chart-period" role="status" aria-live="polite" aria-atomic="true"></p>
+      <section class="date-index" aria-labelledby="date-index-title">
+        <div class="date-heading"><h2 id="date-index-title">全部下穿日期</h2><span id="date-count"></span></div>
+        <p class="index-help">点击任一日期，放大该点前后。编号与红点一一对应；这些是待核验的历史事件，不是买入建议。</p>
+        <div id="dates"></div>
+      </section>
     </section>
+    <details id="entry-research" class="research-panel" hidden>
+      <summary>下穿后实际产品表现（条件性回放）</summary>
+      <div class="research-content">
+        <p class="research-boundary">使用实际产品价格和固定持有期，单独核算费用与分红。信号日期未核验，结果仅用于检验假设，不能当成已验证的交易策略。</p>
+        <p id="research-status" class="load-status" role="status"></p>
+        <div id="research-results" hidden>
+          <label class="asset-label" for="research-asset">查看产品<select id="research-asset"></select></label>
+          <p id="research-basis" class="research-basis"></p>
+          <h3 id="selected-risk-title" class="research-heading">当前选中下穿的逐期限风险</h3>
+          <p class="table-help">左右滑动表格，查看本金跌幅、回撤与回本等待。</p>
+          <div class="research-table-wrap" tabindex="0" role="region" aria-label="当前选中下穿的逐期限风险，可横向滚动"><table class="research-table risk-table"><thead><tr><th scope="col">持有期</th><th scope="col">净收益</th><th scope="col">相对本金最差跌幅</th><th scope="col">最大回撤</th><th scope="col">首次可清算回本</th><th scope="col">状态 / 缺失原因</th></tr></thead><tbody id="selected-risk-rows"></tbody></table></div>
+          <p class="research-basis">本金跌幅与最初投入比较；最大回撤与持有期间的最高权益比较。回本等待按自然日计，仅指按回放费用假设首次清算不亏，不代表以后持续赚钱。</p>
+          <details class="comparison-panel">
+            <summary>同期限普通日期与压力检查</summary>
+            <p class="research-basis">固定使用全部原始下穿候选，不是126日冷却后的保留点。只统计资料完整的窗口，上市前与未核验窗口排除；各情形有效数量可能不同。普通日期窗口与候选窗口大量重叠，不能据此宣称显著优于普通日期或未来胜率。</p>
+            <p class="table-help">左右滑动表格，查看中位收益、最差收益与回撤。</p>
+            <div class="research-table-wrap" tabindex="0" role="region" aria-label="普通日期对照和压力检查，可横向滚动"><table class="research-table comparison-table"><thead><tr><th scope="col">持有期</th><th scope="col">情形</th><th scope="col">有效窗口数</th><th scope="col">平均净收益</th><th scope="col">中位净收益</th><th scope="col">最差净收益</th><th scope="col">最差回撤</th></tr></thead><tbody id="comparison-rows"></tbody></table></div>
+          </details>
+          <h3 class="research-heading">全部下穿的条件性回放</h3>
+          <p class="table-help">左右滑动表格，查看回撤与排除原因。</p>
+          <div class="research-table-wrap" tabindex="0" role="region" aria-label="产品回放结果，可横向滚动"><table class="research-table"><thead><tr><th scope="col">下穿日期</th><th scope="col">6个月净收益</th><th scope="col">12个月净收益</th><th scope="col">24个月净收益</th><th scope="col">24个月最大回撤</th><th scope="col">状态 / 不完整原因</th></tr></thead><tbody id="research-rows"></tbody></table></div>
+          <p id="research-note" class="research-basis"></p>
+        </div>
+      </div>
+    </details>
     <p class="boundary-note">历史曲线仅供研究，不代表未来收益，也不构成买卖建议。</p>
     <noscript><p class="load-status">请开启 JavaScript，以加载真实数据和切换图表。</p></noscript>
   </main>
