@@ -1,13 +1,14 @@
 {
   "requested_as_of": "2026-11-13",
-  "downloaded_at_utc": "2026-11-14T05:51:53.343042+00:00",
+  "downloaded_at_utc": "2026-11-14T06:45:58.742598+00:00",
   "base_date": "2004-12-31",
   "stock": {
     "code": "H00300.CSI",
-    "basis": "官方全收益收盘点位",
-    "rows": 5308,
+    "basis": "中证官方历史＋Tushare同代码补充",
+    "rows": 5310,
     "first": "2004-12-31",
-    "last": "2026-11-11"
+    "last": "2026-11-13",
+    "official_as_of": "2026-11-11"
   },
   "bond": {
     "code": "885007.WI",
@@ -37,6 +38,38 @@
       "body": null,
       "raw_sha256": "b8509d8abba4fc717b59ccd840c3573cc4221109fcdcdf271b95da4fa49adcda",
       "file_sha256": "e2fc7737ba89f52de7623f36d7722b1d907425ec0d009eb948a9a021df23d7be"
+    },
+    {
+      "file": "tushare-h00300-raw.json.gz",
+      "url": "https://api.tushare.pro",
+      "method": "POST",
+      "body": {
+        "api_name": "index_daily",
+        "params": {
+          "ts_code": "H00300.CSI",
+          "start_date": "20261111",
+          "end_date": "20261113"
+        },
+        "fields": "ts_code,trade_date,close"
+      },
+      "raw_sha256": "69a56b98628ce169649de873c00dd288372a8afe079be7ffe00fd7bc5618273a",
+      "file_sha256": "b01fb04c84066537942ca01017c59ee182780a81fb87c7fc8d0b45e4676a0cb8"
+    },
+    {
+      "file": "tushare-calendar-raw.json.gz",
+      "url": "https://api.tushare.pro",
+      "method": "POST",
+      "body": {
+        "api_name": "trade_cal",
+        "params": {
+          "exchange": "SSE",
+          "start_date": "20261111",
+          "end_date": "20261113"
+        },
+        "fields": "exchange,cal_date,is_open"
+      },
+      "raw_sha256": "376b386e128fd7e6f094b275113d9f6d1e5097e07386cccfb270e9f0c15cc8be",
+      "file_sha256": "90d06ca628fd5b24d2c962f84782be2a6a54b80d0a7ec46e916fcd1c58c56d5f"
     },
     {
       "file": "885007-basic-raw.json.gz",
@@ -75,7 +108,14 @@
     }
   ],
   "normalized_sha256": {
-    "stock.csv": "b4987857a0aeed757f2e5a30d91d0b84a54239f7a6bcc759c83c1e995b801a36",
+    "stock.csv": "96bdcb5f3fc8887f6194c8d60688c034727ffb6123c6be83f32c64467e4e4116",
     "bond.csv": "51a9d180963114947a59d6e0835f3a554f11accbdaefc552fe2a6b53318cc00f"
+  },
+  "stock_supplement": {
+    "provider": "Tushare",
+    "stock_code": "H00300.CSI",
+    "status": "applied",
+    "message": "中证官方历史保留原值，Tushare同代码与SSE日历核验后补充尾段。",
+    "last_success_at": "2026-11-14T06:45:55.997472+00:00"
   }
 }

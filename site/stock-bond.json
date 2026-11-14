@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
-  "as_of": "2026-11-11",
+  "as_of": "2026-11-12",
   "requested_as_of": "2026-11-13",
-  "generated_at": "2026-11-14T06:15:13.577570+00:00",
+  "generated_at": "2026-11-14T06:45:59.174369+00:00",
   "parameters": {
     "base_date": "2004-12-31",
     "cooldown_sessions": 126
   },
   "source_dates": {
-    "stock_as_of": "2026-11-11",
+    "stock_as_of": "2026-11-13",
     "bond_as_of": "2026-11-12",
-    "checked_at": "2026-11-14T05:51:53.343042+00:00"
+    "checked_at": "2026-11-14T06:45:58.742598+00:00"
   },
   "chart": {
     "dates": [
@@ -5321,7 +5321,8 @@
       "2026-11-06",
       "2026-11-09",
       "2026-11-10",
-      "2026-11-11"
+      "2026-11-11",
+      "2026-11-12"
     ],
     "stock": [
       1000.0,
@@ -10631,7 +10632,8 @@
       6105.32,
       6108.28,
       6112.8,
-      6137.8
+      6137.8,
+      6089.937
     ],
     "bond": [
       1000.0,
@@ -15941,7 +15943,8 @@
       5013.639906469213,
       5014.809041309431,
       5017.829306313328,
-      5024.064692127827
+      5024.064692127827,
+      5010.814497272018
     ]
   },
   "crossings": [
@@ -16342,8 +16345,14 @@
     ],
     "bond_source": "韭圈儿公开转发的万得885007.WI累计收益曲线",
     "status": "pending_date_validation",
-    "stock_source": "官方全收益收盘点位",
-    "stock_supplement": null,
+    "stock_source": "中证官方历史＋Tushare同代码补充",
+    "stock_supplement": {
+      "provider": "Tushare",
+      "stock_code": "H00300.CSI",
+      "status": "applied",
+      "message": "中证官方历史保留原值，Tushare同代码与SSE日历核验后补充尾段。",
+      "last_success_at": "2026-11-14T06:45:55.997472+00:00"
+    },
     "historical_availability_verified": false,
     "can_issue_buy_signal": false,
     "verification_details": [
@@ -16355,9 +16364,9 @@
   },
   "audit": {
     "parameters_sha256": "629567642adabc4d9c1df5db5ca10f945b1abfd8394ed4ff8e1b2ead21dc7b88",
-    "manifest_sha256": "4a541fde0e7f6c57912de8a9ff81d5e1623581014483c64daf6e815f4382bbd8",
+    "manifest_sha256": "ea035906dc59578921114939b3c695667b1813ab781b361ce01819f984cef096",
     "input_sha256": {
-      "stock.csv": "b4987857a0aeed757f2e5a30d91d0b84a54239f7a6bcc759c83c1e995b801a36",
+      "stock.csv": "96bdcb5f3fc8887f6194c8d60688c034727ffb6123c6be83f32c64467e4e4116",
       "bond.csv": "51a9d180963114947a59d6e0835f3a554f11accbdaefc552fe2a6b53318cc00f"
     },
     "missing_bond_dates": [
