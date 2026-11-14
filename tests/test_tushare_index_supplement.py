@@ -99,6 +99,7 @@ def test_hourly_limit_is_optional_safe_failure_and_never_calls_calendar(tmp_path
     stock, _, status = supplement.fetch(*official(), tmp_path, sources, "2026-11-13")
     assert max(stock) == "2026-11-11" and status["status"] == "unavailable"
     assert "40203" in status["message"]
+    assert "调用频率或额度受限" in status["message"] and "不重试" in status["message"]
     assert len(calls) == 1 and not sources and not list(tmp_path.iterdir())
 
 

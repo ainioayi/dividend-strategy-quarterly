@@ -26,6 +26,8 @@ def table(payload, fields):
         raise Unavailable("补充响应不是JSON对象")
     if payload.get("code") != 0:
         code = payload.get("code")
+        if code == 40203:
+            raise Unavailable("Tushare调用频率或额度受限(code=40203)，本轮不重试")
         suffix = str(code) if type(code) is int else "unknown"
         raise Unavailable("供应商业务错误(code=" + suffix + ")")
     data = payload.get("data")
