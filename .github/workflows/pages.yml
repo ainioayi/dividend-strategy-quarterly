@@ -10,14 +10,17 @@ on:
       - "site/stock-bond.json"
       - "config/stock_bond.json"
       - "scripts/stock_bond_page.py"
+      - "scripts/tushare_index_supplement.py"
       - "tests/test_stock_bond_page.py"
+      - "tests/test_tushare_index_supplement.py"
       - "tests/test_pages_publication.py"
       - "data/stock-bond/**"
       - "requirements.txt"
       - ".github/workflows/pages.yml"
   schedule:
-    # UTC 10:30、13:30 = 北京时间每天18:30、21:30，兼顾来源延迟发布。
-    - cron: "30 10,13 * * *"
+    # 北京时间交易日19:30主更新；次日08:30补查，周六早晨覆盖周五。
+    - cron: "30 11 * * 1-5"
+    - cron: "30 0 * * 2-6"
   workflow_dispatch:
 
 permissions:
@@ -55,6 +58,8 @@ jobs:
       - name: 自动获取最新已收盘数据
         if: github.event_name != 'push'
         shell: bash
+        env:
+          TUSHARE_TOKEN: ${{ secrets.TUSHARE_TOKEN }}
         run: |
           set -euo pipefail
           as_of="$(python -c 'from datetime import datetime,timedelta; from zoneinfo import ZoneInfo; now=datetime.now(ZoneInfo("Asia/Shanghai")); print((now.date() if now.hour>=18 else now.date()-timedelta(days=1)).isoformat())')"
@@ -67,7 +72,7 @@ jobs:
       - name: 验证日期、输入指纹和交点规则
         run: |
           python scripts/stock_bond_page.py --verify-only
-          python -m pytest -q tests/test_stock_bond_page.py tests/test_forward_workflow.py tests/test_pages_publication.py
+          python -m pytest -q tests/test_stock_bond_page.py tests/test_tushare_index_supplement.py tests/test_forward_workflow.py tests/test_pages_publication.py
           python -m compileall -q scripts tests
           git diff --check
 
@@ -91,7 +96,7 @@ jobs:
               # 参数可能随远端推进而变化，同步后必须重算再校验。
               python scripts/stock_bond_page.py
               python scripts/stock_bond_page.py --verify-only
-              python -m pytest -q tests/test_stock_bond_page.py tests/test_forward_workflow.py tests/test_pages_publication.py
+              python -m pytest -q tests/test_stock_bond_page.py tests/test_tushare_index_supplement.py tests/test_forward_workflow.py tests/test_pages_publication.py
               git add -- data/stock-bond site/stock-bond.json
               if ! git diff --cached --quiet; then
                 git commit --amend --no-edit

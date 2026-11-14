@@ -13,6 +13,7 @@ from pathlib import Path
 import tempfile
 
 import requests
+import tushare_index_supplement as tushare_supplement
 
 ROOT = Path(__file__).resolve().parents[1]
 BASE = "2004-12-31"
@@ -113,7 +114,16 @@ def write_csv(path, values):
         writer.writerows(sorted(values.items()))
 
 
-def acquire(folder, as_of):
+def official_history(reported, market):
+    if not reported or not market:
+        raise ValueError("官方全收益或市场日历为空")
+    last = max(reported)
+    if any(stamp <= last and stamp not in reported for stamp in market):
+        raise ValueError("官方全收益历史内部缺少市场交易日")
+    return {stamp: reported[stamp] for stamp in market if stamp in reported}
+
+
+def acquire(folder, as_of, *, previous=None):
     iso_day(as_of)
     folder.mkdir(parents=True, exist_ok=True)
     sources = []
@@ -135,11 +145,15 @@ def acquire(folder, as_of):
             payload = request(code.lower(), CSI_URL, params={"indexCode": code, "startDate": BASE.replace("-", ""), "endDate": as_of.replace("-", "")})
             csi[code] = parse_csi(payload, code, as_of)
         days = sorted(csi["000300"])
-        if len(days) < 5000 or set(days) - set(csi["H00300"]):
+        if len(days) < 5000:
             raise ValueError("官方全收益未覆盖完整市场交易日")
-        stock = {day: csi["H00300"][day] for day in days}
+        stock = official_history(csi["H00300"], csi["000300"])
         if stock.get(BASE) != 1000:
             raise ValueError("官方基日与1000基点不符")
+        official_last = max(stock)
+        supplement = None
+        if os.environ.get("TUSHARE_TOKEN") or previous is not None:
+            stock, _, supplement = tushare_supplement.fetch(stock, csi["000300"], folder, sources, as_of, previous=previous)
         session.headers["Referer"] = "https://app.jiucaishuo.com/"
         common = {"type": "h5", "version": "2.5.9", "ss": ""}
         basic = request("885007-basic", JCS_BASIC, body={"gu_code": "885007.WI", "category": "pe", "year": 10, **common})
@@ -150,10 +164,13 @@ def acquire(folder, as_of):
     write_csv(folder / "stock.csv", stock)
     write_csv(folder / "bond.csv", bond)
     manifest = {"requested_as_of": as_of, "downloaded_at_utc": datetime.now(timezone.utc).isoformat(), "base_date": BASE,
-                "stock": {"code": "H00300.CSI", "basis": "官方全收益收盘点位", "rows": len(stock), "first": min(stock), "last": max(stock)},
+                "stock": {"code": "H00300.CSI", "basis": "中证官方历史＋Tushare同代码补充" if max(stock) > official_last else "官方全收益收盘点位", "rows": len(stock), "first": min(stock), "last": max(stock)},
                 "bond": {"code": "885007.WI", "name": name, "basis": "第三方累计收益百分比加100，不是官方绝对收盘价", "rows": len(bond), "first": min(bond), "last": max(bond), "precision_pp": 0.01},
                 "excluded_stock_nontrading_dates": sorted(set(csi["H00300"]) - set(days)), "sources": sources,
                 "normalized_sha256": {name: fingerprint(folder / name) for name in ["stock.csv", "bond.csv"]}}
+    if supplement is not None:
+        manifest["stock_supplement"] = supplement
+        manifest["stock"]["official_as_of"] = official_last
     (folder / "manifest.json").write_text(json_text(manifest), encoding="utf-8", newline="\n")
     return manifest
 
@@ -182,7 +199,17 @@ def load_inputs(folder):
         if fingerprint(folder / name) != manifest["normalized_sha256"][name]:
             raise ValueError("冻结输入指纹不符：" + name)
     expected_raw = {"h00300-raw.json.gz", "000300-raw.json.gz", "885007-basic-raw.json.gz", "885007-raw.json.gz"}
-    if {source["file"] for source in manifest["sources"]} != expected_raw or len(manifest["sources"]) != 4:
+    supplied = {source["file"] for source in manifest["sources"]}
+    has_supplement = bool(supplied & tushare_supplement.FILES)
+    if has_supplement:
+        expected_raw |= tushare_supplement.FILES
+        supplement = manifest.get("stock_supplement", {})
+        if supplement.get("provider") != "Tushare" or supplement.get("stock_code") != "H00300.CSI" or supplement.get("status") not in {"applied", "cached"}:
+            raise ValueError("补充来源身份记录不完整")
+        success = datetime.fromisoformat(supplement["last_success_at"])
+        if success.tzinfo is None or success > datetime.now(timezone.utc):
+            raise ValueError("补充来源成功时间无效")
+    if supplied != expected_raw or len(manifest["sources"]) != len(expected_raw):
         raise ValueError("冻结清单缺少原始数据来源")
     original = {}
     for source in manifest["sources"]:
@@ -197,10 +224,17 @@ def load_inputs(folder):
     stock, bond = load_values(folder / "stock.csv", as_of), load_values(folder / "bond.csv", as_of)
     reported_stock = parse_csi(original["h00300-raw.json.gz"], "H00300", as_of)
     market_days = parse_csi(original["000300-raw.json.gz"], "000300", as_of)
-    if set(market_days) - set(reported_stock):
-        raise ValueError("原始响应的市场日期未被全收益覆盖")
+    official_stock = official_history(reported_stock, market_days)
+    rebuilt_stock = official_stock
+    if has_supplement:
+        rebuilt_stock, _ = tushare_supplement.replay(official_stock, market_days, original, manifest["sources"], as_of)
+        if manifest["stock"].get("official_as_of") != max(official_stock):
+            raise ValueError("官方历史截止日期与补充来源记录不一致")
+        basis = "中证官方历史＋Tushare同代码补充" if max(rebuilt_stock) > max(official_stock) else "官方全收益收盘点位"
+        if manifest["stock"].get("basis") != basis:
+            raise ValueError("补充点位来源口径不一致")
     reported_bond, _ = parse_bond(original["885007-basic-raw.json.gz"], original["885007-raw.json.gz"], as_of)
-    if stock != {day: reported_stock[day] for day in market_days} or bond != reported_bond:
+    if stock != rebuilt_stock or bond != reported_bond:
         raise ValueError("规范化曲线与原始响应不一致，禁止仅更新校验指纹后发布")
     if sorted(set(reported_stock) - set(market_days)) != manifest["excluded_stock_nontrading_dates"]:
         raise ValueError("排除日期与原始响应不一致")
@@ -264,6 +298,9 @@ def build(folder, parameters, parameter_hash, generated_at=None):
             for day in [days[crossing["index"] - 1], crossing["date"]]
         )
     warnings = ["债基来自第三方累计收益曲线，精度为0.01个百分点；存在日期错位疑点，保留原日期，未做事后平移修正。"]
+    supplement = manifest.get("stock_supplement")
+    if supplement and supplement["status"] in {"unavailable", "cached"}:
+        warnings.append(supplement["message"])
     annual_checks = []
     for year, expected in {2020: 9.12, 2021: 7.82, 2022: -5.07, 2023: 0.57, 2024: 4.90}.items():
         if str(year + 1) > end or not any(day.startswith(str(year)) for day in stock):
@@ -290,6 +327,8 @@ def build(folder, parameters, parameter_hash, generated_at=None):
             "chart": {"dates": days, "stock": stock_line, "bond": bond_line}, "crossings": crossings,
             "signals": merge_signals(crossings, parameters["cooldown_sessions"]),
             "quality": {"warnings": warnings, "bond_source": BOND_SOURCE, "status": "pending_date_validation",
+                        "stock_source": manifest["stock"].get("basis", "官方全收益收盘点位"),
+                        "stock_supplement": supplement,
                         "historical_availability_verified": False, "can_issue_buy_signal": False, "verification_details": details,
                         "precision_sensitive_downcrossings": sum(crossing["direction"] == "down" and crossing["precision_sensitive"] for crossing in crossings)},
             "audit": {"parameters_sha256": parameter_hash, "manifest_sha256": fingerprint(folder / "manifest.json"),
@@ -331,7 +370,10 @@ def update(folder, parameter_path, output, *, refresh=False, as_of=None):
     with tempfile.TemporaryDirectory(prefix=".stock-bond-", dir=folder.parent) as temp:
         stage = Path(temp) / "new"
         if refresh:
-            acquire(stage, as_of)
+            if folder.exists() and (folder / "tushare-h00300-raw.json.gz").exists():
+                acquire(stage, as_of, previous=folder)
+            else:
+                acquire(stage, as_of)
             source = stage
         else:
             source = folder

@@ -14,6 +14,11 @@ import pytest
 import stock_bond_page as page
 
 
+@pytest.fixture(autouse=True)
+def no_live_tushare_credentials(monkeypatch):
+    monkeypatch.delenv("TUSHARE_TOKEN", raising=False)
+
+
 def make_inputs(folder, *, requested="2005-01-12", stock=None, bond=None):
     folder.mkdir(parents=True)
     stock = stock or {page.BASE: 1000, "2005-01-04": 1100, "2005-01-05": 900, "2005-01-06": 1200, "2005-01-07": 800, "2005-01-10": 900, "2005-01-11": 800}
@@ -352,3 +357,142 @@ def test_unchanged_refresh_and_offline_rebuild_keep_generated_at(files, monkeypa
     after_refresh = output.read_bytes()
     page.update(folder, parameters, output)
     assert output.read_bytes() == after_refresh
+
+
+def install_complete_provider_fixture(monkeypatch, *, calendar_ahead=False, internal_gap=False):
+    values = {(date(2004, 12, 31) + timedelta(days=i)).isoformat(): 1000 for i in range(5000)}
+    values["2026-11-11"] = 6137.8
+    bond = {stamp: 100 for stamp in values}
+    bond["2026-11-12"] = 100
+    def response(payload, url):
+        return SimpleNamespace(content=json.dumps(payload).encode(), url=url, json=lambda: payload, raise_for_status=lambda: None)
+    def csi_get(url, *, params, timeout):
+        code = params["indexCode"]
+        current = dict(values)
+        if code == "000300" and calendar_ahead:
+            current.update({"2026-11-12": 4000, "2026-11-13": 4001})
+        if code == "H00300" and internal_gap:
+            current.pop("2005-01-04")
+        payload = {"code": 200, "data": [{"indexCode": code, "indexNameCnAll": "沪深300全收益指数" if code == "H00300" else "沪深300指数", "tradeDate": stamp.replace("-", ""), "close": value} for stamp, value in sorted(current.items())]}
+        return response(payload, url)
+    def jcs_response(url, *, json, timeout):
+        if url == page.JCS_BASIC:
+            payload = {"code": 0, "data": {"files": [{"title": "代码", "name": "885007.WI"}, {"title": "全称", "name": "万得混合债券型二级基金指数"}]}}
+        else:
+            payload = {"code": 0, "data": {"index_create_time": "2003-12-31", "tb_data": {"x_data": sorted(bond), "series": [{"name": "本指数", "data": [bond[stamp] - 100 for stamp in sorted(bond)]}]}}}
+        return response(payload, url)
+    session = SimpleNamespace(headers={}, get=csi_get, post=jcs_response)
+    monkeypatch.setattr(page.requests, "Session", lambda: nullcontext(session))
+
+
+def install_supplement_fixture(monkeypatch, *, limited=False):
+    calls = []
+    def response(url, *, json: object, timeout):
+        calls.append(json["api_name"])
+        if limited:
+            payload = {"code": 40203, "msg": "每小时一次", "data": None}
+        elif json["api_name"] == "index_daily":
+            payload = {"code": 0, "data": {"fields": ["ts_code", "trade_date", "close"], "items": [["H00300.CSI", "20261113", 6048.3191], ["H00300.CSI", "20261112", 6089.937], ["H00300.CSI", "20261111", 6137.8019]]}}
+        else:
+            payload = {"code": 0, "data": {"fields": ["exchange", "cal_date", "is_open"], "items": [["SSE", "20261113", 1], ["SSE", "20261112", 1], ["SSE", "20261111", 1]]}}
+        return SimpleNamespace(content=__import__("json").dumps(payload).encode(), raise_for_status=lambda: None)
+    monkeypatch.setattr(page.tushare_supplement.requests, "post", response)
+    return calls
+
+
+def test_real_shape_supplement_acquisition_rebuilds_and_only_advances_shared_day(tmp_path, monkeypatch):
+    install_complete_provider_fixture(monkeypatch)
+    monkeypatch.setenv("TUSHARE_TOKEN", "test-token-not-a-credential")
+    calls = install_supplement_fixture(monkeypatch)
+    folder = tmp_path / "cache"
+    manifest = page.acquire(folder, "2026-11-13")
+    assert calls == ["index_daily", "trade_cal"]
+    assert manifest["stock"]["last"] == "2026-11-13"
+    assert manifest["stock"]["official_as_of"] == "2026-11-11"
+    _, stock, _ = page.load_inputs(folder)
+    assert stock["2026-11-11"] == 6137.8
+    assert stock["2026-11-12"] == 6089.937
+    result = page.build(folder, {"base_date": page.BASE, "cooldown_sessions": 126}, "test")
+    assert result["as_of"] == "2026-11-12"
+    assert result["source_dates"]["stock_as_of"] == "2026-11-13"
+    assert result["source_dates"]["bond_as_of"] == "2026-11-12"
+    assert result["quality"]["stock_source"] == "中证官方历史＋Tushare同代码补充"
+    assert result["quality"]["stock_supplement"]["status"] == "applied"
+    assert result["quality"]["stock_supplement"]["last_success_at"] <= result["source_dates"]["checked_at"]
+    # 即使CSV与自身校验同时被改，仍须与脱敏原始响应重建一致。
+    stock["2026-11-13"] = 6000
+    page.write_csv(folder / "stock.csv", stock)
+    manifest["normalized_sha256"]["stock.csv"] = page.fingerprint(folder / "stock.csv")
+    (folder / "manifest.json").write_text(page.json_text(manifest), encoding="utf-8", newline="\n")
+    with pytest.raises(ValueError, match="原始响应"):
+        page.load_inputs(folder)
+
+
+def test_first_hourly_limit_keeps_original_csi_jcs_usable(tmp_path, monkeypatch):
+    install_complete_provider_fixture(monkeypatch)
+    monkeypatch.setenv("TUSHARE_TOKEN", "test-token-not-a-credential")
+    calls = install_supplement_fixture(monkeypatch, limited=True)
+    folder = tmp_path / "cache"
+    page.acquire(folder, "2026-11-13")
+    result = page.build(folder, {"base_date": page.BASE, "cooldown_sessions": 126}, "test")
+    assert calls == ["index_daily"]
+    assert result["as_of"] == "2026-11-11"
+    assert result["source_dates"]["stock_as_of"] == "2026-11-11"
+    assert any("40203" in warning for warning in result["quality"]["warnings"])
+    assert not (folder / "tushare-h00300-raw.json.gz").exists()
+
+
+def test_refresh_limit_reuses_old_supplement_and_offline_rebuild_never_calls_tushare(tmp_path, monkeypatch):
+    install_complete_provider_fixture(monkeypatch)
+    monkeypatch.setenv("TUSHARE_TOKEN", "test-token-not-a-credential")
+    install_supplement_fixture(monkeypatch)
+    previous, current = tmp_path / "previous", tmp_path / "current"
+    page.acquire(previous, "2026-11-13")
+    calls = install_supplement_fixture(monkeypatch, limited=True)
+    manifest = page.acquire(current, "2026-11-13", previous=previous)
+    assert calls == ["index_daily"]
+    assert manifest["stock_supplement"]["status"] == "cached"
+    assert manifest["stock"]["last"] == "2026-11-13"
+    assert manifest["stock_supplement"]["last_success_at"] == page.read_json(previous / "manifest.json")["stock_supplement"]["last_success_at"]
+    assert [row for row in manifest["sources"] if row["file"] in page.tushare_supplement.FILES] == [row for row in page.read_json(previous / "manifest.json")["sources"] if row["file"] in page.tushare_supplement.FILES]
+    monkeypatch.setattr(page.tushare_supplement.requests, "post", lambda *a, **k: pytest.fail("离线重建不得联网"))
+    _, values, _ = page.load_inputs(current)
+    assert values["2026-11-13"] == 6048.3191
+
+
+def test_official_calendar_can_lead_all_return_index_and_tushare_fills_only_tail(tmp_path, monkeypatch):
+    install_complete_provider_fixture(monkeypatch, calendar_ahead=True)
+    monkeypatch.setenv("TUSHARE_TOKEN", "test-token-not-a-credential")
+    calls = install_supplement_fixture(monkeypatch)
+    folder = tmp_path / "calendar-ahead"
+    manifest = page.acquire(folder, "2026-11-13")
+    assert calls == ["index_daily", "trade_cal"]
+    assert manifest["stock"]["official_as_of"] == "2026-11-11"
+    assert manifest["stock"]["last"] == "2026-11-13"
+    result = page.build(folder, {"base_date": page.BASE, "cooldown_sessions": 126}, "test")
+    assert result["as_of"] == "2026-11-12"
+    assert result["source_dates"]["stock_as_of"] == "2026-11-13"
+
+
+@pytest.mark.parametrize("limited", [True, False])
+def test_official_calendar_tail_without_supplement_keeps_available_day(tmp_path, monkeypatch, limited):
+    install_complete_provider_fixture(monkeypatch, calendar_ahead=True)
+    if limited:
+        monkeypatch.setenv("TUSHARE_TOKEN", "test-token-not-a-credential")
+        calls = install_supplement_fixture(monkeypatch, limited=True)
+    else:
+        calls = []
+        monkeypatch.setattr(page.tushare_supplement.requests, "post", lambda *a, **k: pytest.fail("无token不得调用"))
+    folder = tmp_path / "calendar-tail"
+    page.acquire(folder, "2026-11-13")
+    result = page.build(folder, {"base_date": page.BASE, "cooldown_sessions": 126}, "test")
+    assert result["as_of"] == "2026-11-11"
+    assert calls == (["index_daily"] if limited else [])
+
+
+def test_internal_official_gap_still_fails_before_optional_provider(tmp_path, monkeypatch):
+    install_complete_provider_fixture(monkeypatch, calendar_ahead=True, internal_gap=True)
+    monkeypatch.setenv("TUSHARE_TOKEN", "test-token-not-a-credential")
+    monkeypatch.setattr(page.tushare_supplement.requests, "post", lambda *a, **k: pytest.fail("不能用补尾掩盖历史内部缺口"))
+    with pytest.raises(ValueError, match="历史内部"):
+        page.acquire(tmp_path / "internal-gap", "2026-11-13")

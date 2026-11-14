@@ -186,6 +186,12 @@ function buildDateIndex() {
 
 function renderQuality() {
   const lines = [...data.quality.warnings];
+  if (typeof data.quality.stock_source === 'string') lines.unshift(`股票数据来源：${data.quality.stock_source}。`);
+  const supplementTime = data.quality.stock_supplement?.last_success_at;
+  if (supplementTime && Number.isFinite(Date.parse(supplementTime))) {
+    const acquiredSupplement = new Intl.DateTimeFormat('zh-CN', { timeZone: 'Asia/Shanghai', dateStyle: 'medium', timeStyle: 'short' }).format(new Date(supplementTime));
+    lines.push(`Tushare补充段最近取得于${acquiredSupplement}（北京时间）；补充缓存复用不代表本轮取得了更新行情。`);
+  }
   const sensitive = data.crossings.filter(point => point.direction === 'down' && point.precision_sensitive).map(point => point.date);
   if (sensitive.length) lines.push(`公布小数精度的末位扰动可能改变${sensitive.length}个下穿点的相对高低：${sensitive.join('、')}。这只是敏感性检查，不是统计置信度。`);
   const details = data.quality.verification_details;

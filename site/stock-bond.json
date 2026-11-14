@@ -2,7 +2,7 @@
   "schema_version": 1,
   "as_of": "2026-11-11",
   "requested_as_of": "2026-11-13",
-  "generated_at": "2026-11-14T04:50:25.056994+00:00",
+  "generated_at": "2026-11-14T06:15:13.577570+00:00",
   "parameters": {
     "base_date": "2004-12-31",
     "cooldown_sessions": 126
@@ -16342,6 +16342,8 @@
     ],
     "bond_source": "韭圈儿公开转发的万得885007.WI累计收益曲线",
     "status": "pending_date_validation",
+    "stock_source": "官方全收益收盘点位",
+    "stock_supplement": null,
     "historical_availability_verified": false,
     "can_issue_buy_signal": false,
     "verification_details": [
