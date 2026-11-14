@@ -1,10 +1,13 @@
 """股债独立页面的数据边界、参数重算和失败保护。"""
 from copy import deepcopy
+from contextlib import nullcontext
+from datetime import date, timedelta
 import gzip
 import hashlib
 import json
 from pathlib import Path
 import shutil
+from types import SimpleNamespace
 
 import pytest
 
@@ -111,6 +114,22 @@ def test_provider_identity_and_cumulative_return_conversion():
     payload["data"]["tb_data"]["series"][0]["data"][1] = float("nan")
     with pytest.raises(ValueError):
         page.parse_bond(basic, payload, "2005-01-04")
+
+
+def test_downloaded_manifest_and_csv_keep_identical_lf_bytes_on_windows(tmp_path, monkeypatch):
+    values = {(date(2004, 12, 31) + timedelta(days=i)).isoformat(): 1000 for i in range(5000)}
+    response = SimpleNamespace(content=b"{}", url="https://example.invalid/", json=lambda: {}, raise_for_status=lambda: None)
+    session = SimpleNamespace(headers={}, get=lambda *a, **k: response, post=lambda *a, **k: response)
+    monkeypatch.setattr(page.requests, "Session", lambda: nullcontext(session))
+    monkeypatch.setattr(page, "parse_csi", lambda *a: values)
+    monkeypatch.setattr(page, "parse_bond", lambda *a: (values, "万得混合债券型二级基金指数"))
+    folder = tmp_path / "cache"
+    manifest = page.acquire(folder, "2026-11-13")
+    assert (folder / "manifest.json").read_bytes() == page.json_text(manifest).encode("utf-8")
+    for name in ["stock.csv", "bond.csv"]:
+        raw = (folder / name).read_bytes()
+        assert b"\r" not in raw
+        assert hashlib.sha256(raw).hexdigest() == manifest["normalized_sha256"][name]
 
 
 def test_csi_rejects_price_index_and_clips_to_requested_date():

@@ -154,7 +154,7 @@ def acquire(folder, as_of):
                 "bond": {"code": "885007.WI", "name": name, "basis": "第三方累计收益百分比加100，不是官方绝对收盘价", "rows": len(bond), "first": min(bond), "last": max(bond), "precision_pp": 0.01},
                 "excluded_stock_nontrading_dates": sorted(set(csi["H00300"]) - set(days)), "sources": sources,
                 "normalized_sha256": {name: fingerprint(folder / name) for name in ["stock.csv", "bond.csv"]}}
-    (folder / "manifest.json").write_text(json_text(manifest), encoding="utf-8")
+    (folder / "manifest.json").write_text(json_text(manifest), encoding="utf-8", newline="\n")
     return manifest
 
 
