@@ -53,7 +53,7 @@ def test_pages_validates_new_inputs_and_excludes_old_public_artifacts():
     assert workflow.index("python scripts/stock_bond_page.py --verify-only") < workflow.index("git commit")
     assert workflow.index("python scripts/stock_bond_page.py --verify-only") < workflow.index("uses: actions/upload-pages-artifact")
     assert 'cron: "30 11 * * 1-5"' in workflow
-    assert 'cron: "30 0 * * 2-6"' in workflow
+    assert 'cron: "30 0 * * *"' in workflow
     assert "if: github.event_name != 'push'" in workflow
     assert 'cp site/index.html site/chart.css site/chart.js site/stock-bond.json "$RUNNER_TEMP/stock-bond-site/"' in workflow
     assert "entry-research.json" not in workflow
