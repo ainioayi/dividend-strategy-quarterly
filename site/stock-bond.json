@@ -2,7 +2,7 @@
   "schema_version": 1,
   "as_of": "2026-11-11",
   "requested_as_of": "2026-11-13",
-  "generated_at": "2026-11-13T16:26:00.523498+00:00",
+  "generated_at": "2026-11-14T02:54:26.585512+00:00",
   "parameters": {
     "base_date": "2004-12-31",
     "cooldown_sessions": 126
@@ -16229,7 +16229,7 @@
   },
   "audit": {
     "parameters_sha256": "629567642adabc4d9c1df5db5ca10f945b1abfd8394ed4ff8e1b2ead21dc7b88",
-    "manifest_sha256": "f5a4ad19f3ebf07cb1918483f90614fa2f3649004feba4fb611bcef8876dc0ce",
+    "manifest_sha256": "e5154f4d2c1cff8cd86bf7a8505da9757361041106af00efe5adbd95e0e82adc",
     "input_sha256": {
       "stock.csv": "b4987857a0aeed757f2e5a30d91d0b84a54239f7a6bcc759c83c1e995b801a36",
       "bond.csv": "51a9d180963114947a59d6e0835f3a554f11accbdaefc552fe2a6b53318cc00f"
