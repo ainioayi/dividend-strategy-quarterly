@@ -1,178 +1,8 @@
 {
   "schema_version": 1,
   "requested_as_of": "2026-11-13",
-  "generated_at": "2026-11-14T04:52:07.955492+00:00",
+  "generated_at": "2026-11-14T05:16:13.877518+00:00",
   "inputs_sha256": "2bd1e35038dd77a7fc26233b26533cbf6cbb0de9867dd6284c36cb91ebbf6a1f",
-  "sources": [
-    {
-      "file": "raw/000300-calendar.response.gz",
-      "url": "https://www.csindex.com.cn/csindex-home/perf/index-perf?indexCode=000300&startDate=20050101&endDate=20261113",
-      "retrieved_at": "2026-11-14T04:52:03.924556+00:00",
-      "raw_sha256": "5afcc4ec273bb311660af3abdd23a1c0ddee0d68915a463faf246acbeaed4ce7",
-      "file_sha256": "169b48d8f2824caf7a8083a80d06e23c6095fe40c318a34481f92007e852330b"
-    },
-    {
-      "file": "raw/510300-tencent-1.response.gz",
-      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sh510300%2Cday%2C2012-05-28%2C2026-11-13%2C640%2Cday",
-      "retrieved_at": "2026-11-14T04:52:04.122217+00:00",
-      "raw_sha256": "6fcdf65c8b935ef4f3ca129d6bd614460f76830301973b98f072bee74c4009e9",
-      "file_sha256": "13ae5b2f3607ff10f88c94580a1fc3a0c334bc0db8e6e624a154d909a7c8d3da"
-    },
-    {
-      "file": "raw/510300-tencent-2.response.gz",
-      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sh510300%2Cday%2C2012-05-28%2C2024-03-24%2C640%2Cday",
-      "retrieved_at": "2026-11-14T04:52:04.278810+00:00",
-      "raw_sha256": "96e1d92537f12a712e136c74b68796c69165fd6d46ebc7386fe3f93f537ac234",
-      "file_sha256": "26371109fd7e3bdef2384a33f3d4a378289adaecd51c52329bf9e356d8d79d5c"
-    },
-    {
-      "file": "raw/510300-tencent-3.response.gz",
-      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sh510300%2Cday%2C2012-05-28%2C2021-08-01%2C640%2Cday",
-      "retrieved_at": "2026-11-14T04:52:04.435324+00:00",
-      "raw_sha256": "53949b6b470463f3bbaaffdb5246e6937d3db2ab3cbc1d7e8c561eef5c274654",
-      "file_sha256": "faad1d8666aa1b544b5a5ec83ed83c2585bfb4a817a423aa38fc2e541cdaeb1f"
-    },
-    {
-      "file": "raw/510300-tencent-4.response.gz",
-      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sh510300%2Cday%2C2012-05-28%2C2018-12-11%2C640%2Cday",
-      "retrieved_at": "2026-11-14T04:52:04.590641+00:00",
-      "raw_sha256": "9a74d3c5fec423b27f167189fb0eaf7313a222a876588297d40158e62173b8e8",
-      "file_sha256": "c0ea1eb5d7ab627ad00b5f5c3bce941bb99b8d0e3945da313d8f7c3e4080ad11"
-    },
-    {
-      "file": "raw/510300-tencent-5.response.gz",
-      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sh510300%2Cday%2C2012-05-28%2C2016-04-28%2C640%2Cday",
-      "retrieved_at": "2026-11-14T04:52:04.744592+00:00",
-      "raw_sha256": "7d480d6ee3b4ce4b426ede8c9dfc57432c86f283ab6566101cf143d5499b4810",
-      "file_sha256": "2cdc5eccdadfbba99af7ba7e6e6f72ad624a4d205e2d4759212440d3ad830bdb"
-    },
-    {
-      "file": "raw/510300-tencent-6.response.gz",
-      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sh510300%2Cday%2C2012-05-28%2C2013-09-10%2C640%2Cday",
-      "retrieved_at": "2026-11-14T04:52:04.885967+00:00",
-      "raw_sha256": "39d8a3118cd8d481c87432a0ed02f327bbcbecc8b4cfc4e3835f2060b01f93c7",
-      "file_sha256": "24af93b6b3c1924af8a75f760ce3ab19d52b1028b0d45d405030253c56aad9a5"
-    },
-    {
-      "file": "raw/510300-sina.response.gz",
-      "url": "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData?symbol=sh510300&scale=240&ma=no&datalen=10000",
-      "retrieved_at": "2026-11-14T04:52:05.263068+00:00",
-      "raw_sha256": "ab79906aba9fb5f562d770316f5cbf8c8c9fd0f41dd35cadbafda35d1b6b6664",
-      "file_sha256": "492b64cfd28449299b274bde87b85d0eb5f2809abe1547e90097b0a7178ae108"
-    },
-    {
-      "file": "raw/510300-actions.html.gz",
-      "url": "https://fundf10.eastmoney.com/fhsp_510300.html",
-      "retrieved_at": "2026-11-14T04:52:05.577676+00:00",
-      "raw_sha256": "48268392a9e0df288e207f03a2778bf12991ebc397fad1ff1154ddab1db32075",
-      "file_sha256": "712e5c10319b6ecd34a018b5fd5bde168b54a0e521f8a0aa95cb8e5dc68657d1"
-    },
-    {
-      "file": "raw/160706-tencent-1.response.gz",
-      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz160706%2Cday%2C2005-10-17%2C2026-11-13%2C640%2Cday",
-      "retrieved_at": "2026-11-14T04:52:05.642367+00:00",
-      "raw_sha256": "3fe4d5b6ea4f0510566674506aa4b1e9b3b2b7b3c6d8f222efafa37d5d4afcf0",
-      "file_sha256": "a7378257a80b33d6406383a2f180795dd00270659e80ee4ab18619d9c2cb07cd"
-    },
-    {
-      "file": "raw/160706-tencent-2.response.gz",
-      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz160706%2Cday%2C2005-10-17%2C2024-03-24%2C640%2Cday",
-      "retrieved_at": "2026-11-14T04:52:05.796933+00:00",
-      "raw_sha256": "def77c855bdcf811f181f0bd4db5c858ebeef6a05e9200608438cae5b7c92d59",
-      "file_sha256": "186351e7d6e150fbdd0d0531f628fb7114bd47adfe75655e60c0bf7e158b933a"
-    },
-    {
-      "file": "raw/160706-tencent-3.response.gz",
-      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz160706%2Cday%2C2005-10-17%2C2021-08-01%2C640%2Cday",
-      "retrieved_at": "2026-11-14T04:52:05.944381+00:00",
-      "raw_sha256": "18e2fe8a993291569d81ede1de61c19d855d30e99cbe02514fb33abbcc4ed7bf",
-      "file_sha256": "ae2a9787a7014ced891ccca6c942b1ad9bc52e2ec40489f13b864864ae01669a"
-    },
-    {
-      "file": "raw/160706-tencent-4.response.gz",
-      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz160706%2Cday%2C2005-10-17%2C2018-12-11%2C640%2Cday",
-      "retrieved_at": "2026-11-14T04:52:06.093910+00:00",
-      "raw_sha256": "0400758417039333c1d9473ff0147baa1f0b0c1d302f44bcf8b16e80aede85c5",
-      "file_sha256": "4d90b95755d4d4e2ee08764537a6d101da352b261c31a8c441d894de90aece37"
-    },
-    {
-      "file": "raw/160706-tencent-5.response.gz",
-      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz160706%2Cday%2C2005-10-17%2C2016-04-28%2C640%2Cday",
-      "retrieved_at": "2026-11-14T04:52:06.242530+00:00",
-      "raw_sha256": "8a051b52013bef3dc3c288c8f52e1641a9bf90069175c534065a75067f4ed841",
-      "file_sha256": "05b49826d245dac9ff4cd801b23f3143a96f913168822f13c146c9182d096fb9"
-    },
-    {
-      "file": "raw/160706-tencent-6.response.gz",
-      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz160706%2Cday%2C2005-10-17%2C2013-09-10%2C640%2Cday",
-      "retrieved_at": "2026-11-14T04:52:06.395109+00:00",
-      "raw_sha256": "427df6aa205f612952502408b3c774db453d413b0f014411963fdfed84cf46e4",
-      "file_sha256": "35e04beda0bfbb1f58345440479ada86a0f76f7353b0320b70838bf4784729f7"
-    },
-    {
-      "file": "raw/160706-tencent-7.response.gz",
-      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz160706%2Cday%2C2005-10-17%2C2010-12-28%2C640%2Cday",
-      "retrieved_at": "2026-11-14T04:52:06.551652+00:00",
-      "raw_sha256": "e4e53865e0c19c3481b27b3b601af9b1419b84cd16c6696e0bcff8ce1513e678",
-      "file_sha256": "d8ac8074e49281cf11227105fa6b290d5dc822c2f0a211f1cbe32dd2e4e9d90f"
-    },
-    {
-      "file": "raw/160706-tencent-8.response.gz",
-      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz160706%2Cday%2C2005-10-17%2C2007-10-14%2C640%2Cday",
-      "retrieved_at": "2026-11-14T04:52:06.698611+00:00",
-      "raw_sha256": "ee0663e4699f24bf41de323f28e2b0c45a72a1ad0f9e1d4bcd329e6289e892bc",
-      "file_sha256": "5b22dd9e80fd5664a77d34180210cd721de67a25d919f49ef03a8d656bc0acda"
-    },
-    {
-      "file": "raw/160706-sina.response.gz",
-      "url": "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData?symbol=sz160706&scale=240&ma=no&datalen=10000",
-      "retrieved_at": "2026-11-14T04:52:07.040158+00:00",
-      "raw_sha256": "66b7d7c9c74d4312c0ad1d076000308d6c6436e035941001851571b4210d756b",
-      "file_sha256": "0b51f1e097d902809013ffdc53aeffd425ef1750b516a958d5387c6dce4f8ecf"
-    },
-    {
-      "file": "raw/160706-actions.html.gz",
-      "url": "https://fundf10.eastmoney.com/fhsp_160706.html",
-      "retrieved_at": "2026-11-14T04:52:07.326931+00:00",
-      "raw_sha256": "4af32911cef6e5d192634e981e01aab3b112cc7ffdaf6876e10b4f33e1bfc07e",
-      "file_sha256": "de3cc28b832663a1954801a3acdd5187744f76b246f53cc85838693a82d12f01"
-    },
-    {
-      "file": "raw/160706-AN201801101075891990.pdf.gz",
-      "url": "https://pdf.dfcfw.com/pdf/H2_AN201801101075891990_1.pdf",
-      "retrieved_at": "2026-11-14T04:52:07.410215+00:00",
-      "raw_sha256": "db3d64dfc75f6215b930ed90dae0a254d13e3f35a33ca47e85ce993bc5eb68ae",
-      "file_sha256": "28d9b5154224b4683919e08ccd5b07d18880098a14ff0ab050da7ac7716a0c90"
-    },
-    {
-      "file": "raw/160706-AN202003301377198390.pdf.gz",
-      "url": "https://pdf.dfcfw.com/pdf/H2_AN202003301377198390_1.pdf",
-      "retrieved_at": "2026-11-14T04:52:07.500066+00:00",
-      "raw_sha256": "b26a923c43790e24292d4070534803cf945c4837ab5b8bbf333187a175896e39",
-      "file_sha256": "26a78e13f93e326e10ed594fa63086cb882ad3debc50851406904e560226e0dc"
-    },
-    {
-      "file": "raw/160706-AN202104161485519975.pdf.gz",
-      "url": "https://pdf.dfcfw.com/pdf/H2_AN202104161485519975_1.pdf",
-      "retrieved_at": "2026-11-14T04:52:07.621622+00:00",
-      "raw_sha256": "764d2b71a26174f9e8234129e615d5c9e9a6d11c993065115de5112f3f864397",
-      "file_sha256": "c40b7459ebef37aaa9f21d9c17794b2a9adf9eb9928d06783e5d723849f91baa"
-    },
-    {
-      "file": "raw/160706-AN202501121641896576.pdf.gz",
-      "url": "https://pdf.dfcfw.com/pdf/H2_AN202501121641896576_1.pdf",
-      "retrieved_at": "2026-11-14T04:52:07.711932+00:00",
-      "raw_sha256": "586dc7f3bb3d76fdf99e208ea7893cb42a6d8447fae6aebf5ed9e7b9df2837f5",
-      "file_sha256": "2bc4d3f9d9b785915b568f0fa3a52dfa29ca1a10484e51378c85e69eb8f479b0"
-    },
-    {
-      "file": "raw/160706-AN202601131816982257.pdf.gz",
-      "url": "https://pdf.dfcfw.com/pdf/H2_AN202601131816982257_1.pdf",
-      "retrieved_at": "2026-11-14T04:52:07.794233+00:00",
-      "raw_sha256": "0cade6e182a34119befb8192c0452496cdcd854bff945e1027825a004ee0fa34",
-      "file_sha256": "f117bb9fdc4793ec822cb7abbdb807a019f49956e69dc3c7146bc7732f3e354e"
-    }
-  ],
   "calendar": {
     "first": "2005-01-04",
     "last": "2026-11-11",
@@ -181,5 +11,175 @@
     "excluded_request_boundary_dates": [
       "2005-01-01"
     ]
-  }
+  },
+  "sources": [
+    {
+      "file": "raw/000300-calendar.response.gz",
+      "url": "https://www.csindex.com.cn/csindex-home/perf/index-perf?indexCode=000300&startDate=20050101&endDate=20261113",
+      "retrieved_at": "2026-11-14T05:15:58.928665+00:00",
+      "raw_sha256": "5afcc4ec273bb311660af3abdd23a1c0ddee0d68915a463faf246acbeaed4ce7",
+      "file_sha256": "31315f4a9111225ea972b2d641fdcb076c999b764436e36d22c8c5e18c651b49"
+    },
+    {
+      "file": "raw/510300-tencent-1.response.gz",
+      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sh510300%2Cday%2C2012-05-28%2C2026-11-13%2C640%2Cday",
+      "retrieved_at": "2026-11-14T05:16:00.499914+00:00",
+      "raw_sha256": "72f52ff559a5980fbf44e064bb4c74daa5a46c10a088bb4dbbcdc220491ff5ed",
+      "file_sha256": "ece7640fe1eab856b55b08d2e21852b9f1ae891a3e4d5479b00c6b598783ee6b"
+    },
+    {
+      "file": "raw/510300-tencent-2.response.gz",
+      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sh510300%2Cday%2C2012-05-28%2C2024-03-24%2C640%2Cday",
+      "retrieved_at": "2026-11-14T05:16:00.773505+00:00",
+      "raw_sha256": "093cb7c82fbd3f6afaf1cd6d4812bf83bb07f07abdc1134703b544dbf60dd84f",
+      "file_sha256": "e90b8aad0939867a42911f4003f492a060cfa784356543719ab0ef9768279b05"
+    },
+    {
+      "file": "raw/510300-tencent-3.response.gz",
+      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sh510300%2Cday%2C2012-05-28%2C2021-08-01%2C640%2Cday",
+      "retrieved_at": "2026-11-14T05:16:01.042147+00:00",
+      "raw_sha256": "5d9cfcd6069d57c143b583ca054413a2a77c9311f3c249e4e46d8380da2bdf0d",
+      "file_sha256": "21b81ac788eaaa29bc84d0bc62bf2665d277c949c975dda150eca11f087b2922"
+    },
+    {
+      "file": "raw/510300-tencent-4.response.gz",
+      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sh510300%2Cday%2C2012-05-28%2C2018-12-11%2C640%2Cday",
+      "retrieved_at": "2026-11-14T05:16:01.311790+00:00",
+      "raw_sha256": "b3255d7dfcbc203224201dd583f5f1919a5743ec011a8c7eb5dfa79919d277fe",
+      "file_sha256": "dc99b4566ac4d5466bc34305aea27e54444fe8a4331b1c68d52e1da7121ef02e"
+    },
+    {
+      "file": "raw/510300-tencent-5.response.gz",
+      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sh510300%2Cday%2C2012-05-28%2C2016-04-28%2C640%2Cday",
+      "retrieved_at": "2026-11-14T05:16:01.586750+00:00",
+      "raw_sha256": "a3a1130e9c635a11b3fe7b466c241eeaadce31c77d3ed94df6ce88f501cfb403",
+      "file_sha256": "40677847bc720d3cfd97e5654f4c2e03a4737dc87a1f27ef15c3c3557c31ff24"
+    },
+    {
+      "file": "raw/510300-tencent-6.response.gz",
+      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sh510300%2Cday%2C2012-05-28%2C2013-09-10%2C640%2Cday",
+      "retrieved_at": "2026-11-14T05:16:01.847264+00:00",
+      "raw_sha256": "47093c4423e4a7982370382c1895cb51d8837cd3e322f6e21f6df443552a0244",
+      "file_sha256": "b9944a666b60b6e51ef917991ce9cc9657354940693264c9ca7f555ac27d985b"
+    },
+    {
+      "file": "raw/510300-sina.response.gz",
+      "url": "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData?symbol=sh510300&scale=240&ma=no&datalen=10000",
+      "retrieved_at": "2026-11-14T05:16:04.017060+00:00",
+      "raw_sha256": "ab79906aba9fb5f562d770316f5cbf8c8c9fd0f41dd35cadbafda35d1b6b6664",
+      "file_sha256": "dd639970c93f77537acf55f3cbecd8a5a4745ce37a4a201f7ebf4276d3eeb626"
+    },
+    {
+      "file": "raw/510300-actions.html.gz",
+      "url": "https://fundf10.eastmoney.com/fhsp_510300.html",
+      "retrieved_at": "2026-11-14T05:16:05.289105+00:00",
+      "raw_sha256": "48268392a9e0df288e207f03a2778bf12991ebc397fad1ff1154ddab1db32075",
+      "file_sha256": "3fdd8f71d0abe670ea006cb7309991dee591a32c1c90c988249ad43f98d7b494"
+    },
+    {
+      "file": "raw/160706-tencent-1.response.gz",
+      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz160706%2Cday%2C2005-10-17%2C2026-11-13%2C640%2Cday",
+      "retrieved_at": "2026-11-14T05:16:05.464666+00:00",
+      "raw_sha256": "38e20568d5c4793e8301f9a5dac4a2198514bc39fe1930e4c04f22a0826f4b53",
+      "file_sha256": "a49420ff2051e9a162f95616b9f7bcde56e78ce9397523fe673ae47b38730751"
+    },
+    {
+      "file": "raw/160706-tencent-2.response.gz",
+      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz160706%2Cday%2C2005-10-17%2C2024-03-24%2C640%2Cday",
+      "retrieved_at": "2026-11-14T05:16:05.732675+00:00",
+      "raw_sha256": "217e2bb0ca7882eafd58333cf35d334262ce9c7d4788b03f9a0e9d7fa691f4af",
+      "file_sha256": "329d687c1ba48a015ffbda497f3df591356fafd70c09c15e216545826854c63f"
+    },
+    {
+      "file": "raw/160706-tencent-3.response.gz",
+      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz160706%2Cday%2C2005-10-17%2C2021-08-01%2C640%2Cday",
+      "retrieved_at": "2026-11-14T05:16:06.001293+00:00",
+      "raw_sha256": "b1ccc29ddb838b17a728a8bcdffec2af2115a01894a40cd45c9d1711c25d579f",
+      "file_sha256": "ee32a6c7353093006f8d0085f320aab9832e85e441676b64d34b621e15583919"
+    },
+    {
+      "file": "raw/160706-tencent-4.response.gz",
+      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz160706%2Cday%2C2005-10-17%2C2018-12-11%2C640%2Cday",
+      "retrieved_at": "2026-11-14T05:16:06.269705+00:00",
+      "raw_sha256": "923a63eed61f6a430fe63faa2733c580018acb4a8841c7aa039131a99c532e32",
+      "file_sha256": "b67e816e5961af27ccbecebb454664f0c329a1d45562076325e438cac7ff7c09"
+    },
+    {
+      "file": "raw/160706-tencent-5.response.gz",
+      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz160706%2Cday%2C2005-10-17%2C2016-04-28%2C640%2Cday",
+      "retrieved_at": "2026-11-14T05:16:06.537923+00:00",
+      "raw_sha256": "21c5b844ffc7d42561709de257c5413e4cb9ea55abe0a2e919aab9e8fc17bf1b",
+      "file_sha256": "c4b0643f7d3fd4c5d7592d0d6c374c4a0cdd3ccf588d73bce80b12b974880638"
+    },
+    {
+      "file": "raw/160706-tencent-6.response.gz",
+      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz160706%2Cday%2C2005-10-17%2C2013-09-10%2C640%2Cday",
+      "retrieved_at": "2026-11-14T05:16:06.805608+00:00",
+      "raw_sha256": "e8a0d431ed1744f9c96e275379b6ce02ce38631e28d284ab0f7372c38fd18548",
+      "file_sha256": "953818c1a18f2f672318d5cef2b84822d9472c2f199b65b9da7ba887dd091346"
+    },
+    {
+      "file": "raw/160706-tencent-7.response.gz",
+      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz160706%2Cday%2C2005-10-17%2C2010-12-28%2C640%2Cday",
+      "retrieved_at": "2026-11-14T05:16:07.077715+00:00",
+      "raw_sha256": "3764d7627618253abfe212d6e36dd7330953d48af581481a622ca7304c029a85",
+      "file_sha256": "8aaeea2d7eb579f6b1e808aff8857021f65b4c053d6f629187c51915697aa33f"
+    },
+    {
+      "file": "raw/160706-tencent-8.response.gz",
+      "url": "https://web.ifzq.gtimg.cn/appstock/app/fqkline/get?param=sz160706%2Cday%2C2005-10-17%2C2007-10-14%2C640%2Cday",
+      "retrieved_at": "2026-11-14T05:16:07.344532+00:00",
+      "raw_sha256": "1818f6e1f81b86cfa14abaa11575f715bcca65abb62dbb4103ebd6b734f530d2",
+      "file_sha256": "6a269b4d4a5cb66d166429f421d6a87c9584d07b173509defc62a5f8965ab84d"
+    },
+    {
+      "file": "raw/160706-sina.response.gz",
+      "url": "https://money.finance.sina.com.cn/quotes_service/api/json_v2.php/CN_MarketData.getKLineData?symbol=sz160706&scale=240&ma=no&datalen=10000",
+      "retrieved_at": "2026-11-14T05:16:08.214957+00:00",
+      "raw_sha256": "66b7d7c9c74d4312c0ad1d076000308d6c6436e035941001851571b4210d756b",
+      "file_sha256": "943966d2a076a70a4a84a7b89eae7d83293b7338e37ea445fa0433ddbf592ec4"
+    },
+    {
+      "file": "raw/160706-actions.html.gz",
+      "url": "https://fundf10.eastmoney.com/fhsp_160706.html",
+      "retrieved_at": "2026-11-14T05:16:08.560242+00:00",
+      "raw_sha256": "4af32911cef6e5d192634e981e01aab3b112cc7ffdaf6876e10b4f33e1bfc07e",
+      "file_sha256": "e47868f052b93793d07f9e843f891180e64530ea5275a2e7717e8dda27835ea0"
+    },
+    {
+      "file": "raw/160706-AN201801101075891990.pdf.gz",
+      "url": "https://pdf.dfcfw.com/pdf/H2_AN201801101075891990_1.pdf",
+      "retrieved_at": "2026-11-14T05:16:09.194583+00:00",
+      "raw_sha256": "db3d64dfc75f6215b930ed90dae0a254d13e3f35a33ca47e85ce993bc5eb68ae",
+      "file_sha256": "4a32a88c2a786a9a321601a90d7158e5609e37c6633c345527eec70e45b04bdd"
+    },
+    {
+      "file": "raw/160706-AN202003301377198390.pdf.gz",
+      "url": "https://pdf.dfcfw.com/pdf/H2_AN202003301377198390_1.pdf",
+      "retrieved_at": "2026-11-14T05:16:10.700320+00:00",
+      "raw_sha256": "b26a923c43790e24292d4070534803cf945c4837ab5b8bbf333187a175896e39",
+      "file_sha256": "fcfc5885d3b754fd60d6c54306bd14d35c17bc5bbdd597a658d3c352159871c2"
+    },
+    {
+      "file": "raw/160706-AN202104161485519975.pdf.gz",
+      "url": "https://pdf.dfcfw.com/pdf/H2_AN202104161485519975_1.pdf",
+      "retrieved_at": "2026-11-14T05:16:12.056774+00:00",
+      "raw_sha256": "764d2b71a26174f9e8234129e615d5c9e9a6d11c993065115de5112f3f864397",
+      "file_sha256": "8ceb5cebd1df6612e2701fedbe4fb40c37f9a4e973edbcaac6347dd46c3c2072"
+    },
+    {
+      "file": "raw/160706-AN202501121641896576.pdf.gz",
+      "url": "https://pdf.dfcfw.com/pdf/H2_AN202501121641896576_1.pdf",
+      "retrieved_at": "2026-11-14T05:16:13.347068+00:00",
+      "raw_sha256": "586dc7f3bb3d76fdf99e208ea7893cb42a6d8447fae6aebf5ed9e7b9df2837f5",
+      "file_sha256": "0cd771caba918b704316c79555a89a9d7317dc90ccc171cccf2b74bf4fe79088"
+    },
+    {
+      "file": "raw/160706-AN202601131816982257.pdf.gz",
+      "url": "https://pdf.dfcfw.com/pdf/H2_AN202601131816982257_1.pdf",
+      "retrieved_at": "2026-11-14T05:16:13.810722+00:00",
+      "raw_sha256": "0cade6e182a34119befb8192c0452496cdcd854bff945e1027825a004ee0fa34",
+      "file_sha256": "6c574d150f4f07265592b12c5fee086ba05298fd849ed818c1b984bba1212175"
+    }
+  ]
 }
