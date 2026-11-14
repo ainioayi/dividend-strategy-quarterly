@@ -11,6 +11,7 @@ on:
       - "config/stock_bond.json"
       - "scripts/stock_bond_page.py"
       - "tests/test_stock_bond_page.py"
+      - "tests/test_pages_publication.py"
       - "requirements.txt"
       - ".github/workflows/pages.yml"
   schedule:
@@ -39,6 +40,7 @@ jobs:
       - name: 检出仓库
         uses: actions/checkout@v4
         with:
+          ref: main
           fetch-depth: 0
 
       - uses: actions/setup-python@v5
@@ -63,7 +65,7 @@ jobs:
       - name: 验证日期、输入指纹和交点规则
         run: |
           python scripts/stock_bond_page.py --verify-only
-          python -m pytest -q tests/test_stock_bond_page.py tests/test_forward_workflow.py
+          python -m pytest -q tests/test_stock_bond_page.py tests/test_forward_workflow.py tests/test_pages_publication.py
           python -m compileall -q scripts tests
           git diff --check
 
@@ -87,7 +89,7 @@ jobs:
               # 参数可能随远端推进而变化，同步后必须重算再校验。
               python scripts/stock_bond_page.py
               python scripts/stock_bond_page.py --verify-only
-              python -m pytest -q tests/test_stock_bond_page.py tests/test_forward_workflow.py
+              python -m pytest -q tests/test_stock_bond_page.py tests/test_forward_workflow.py tests/test_pages_publication.py
               git add -- data/stock-bond site/stock-bond.json
               if ! git diff --cached --quiet; then
                 git commit --amend --no-edit
@@ -97,6 +99,17 @@ jobs:
               echo "同步后仍无法推送，保留线上上次成功页面。"
               exit 1
             fi
+          fi
+
+      - name: 发布前核对主分支版本
+        id: publish_revision
+        shell: bash
+        run: |
+          set -euo pipefail
+          git fetch origin main
+          if [ "$(git rev-parse HEAD)" != "$(git rev-parse origin/main)" ]; then
+            echo "main已更新，停止发布旧快照；保留线上页面，等待最新任务重算后发布。"
+            exit 1
           fi
 
       - name: 只打包新图表页面

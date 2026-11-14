@@ -91,6 +91,8 @@ python scripts/ma_v22_strategy.py --input data/ma_v22_inputs.json --output data/
 
 `.github/workflows/pages.yml` 每天北京时间18:30、21:30尝试刷新来源，按当前配置重算、校验和测试后部署。GitHub调度可能排队；取数失败时保留最后成功的页面与实际日期，不把旧数据伪装为当天数据。修改配置、采集代码或页面并推送到 `main` 后，也会用保存的输入重算发布。手动运行完整取数与部署：
 
+排队任务启动时读取最新 `main`，不使用排队前的旧提交；打包前再次核对远端版本。如果运行期间 `main` 已变化，就停止旧快照发布，由最新任务重新计算和校验，避免网页数据倒退。
+
 ```powershell
 gh workflow run pages.yml --ref main
 ```
