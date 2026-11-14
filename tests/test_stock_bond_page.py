@@ -1,7 +1,7 @@
 """股债独立页面的数据边界、参数重算和失败保护。"""
 from copy import deepcopy
 from contextlib import nullcontext
-from datetime import date, timedelta
+from datetime import date, datetime, timedelta, timezone
 import gzip
 import hashlib
 import json
@@ -205,6 +205,19 @@ def test_future_generation_timestamp_is_rejected(files):
         page.verify(folder, parameters, output)
 
 
+@pytest.mark.parametrize("stamp", ["2099-01-01T00:00:00+00:00", "2026-01-01T00:00:00"])
+def test_invalid_check_timestamp_cannot_replace_existing_page(files, stamp):
+    folder, parameters, output = files
+    page.update(folder, parameters, output)
+    before = output.read_bytes()
+    manifest = page.read_json(folder / "manifest.json")
+    manifest["downloaded_at_utc"] = stamp
+    (folder / "manifest.json").write_text(page.json_text(manifest), encoding="utf-8", newline="\n")
+    with pytest.raises(ValueError, match="成功检查时间"):
+        page.update(folder, parameters, output)
+    assert output.read_bytes() == before
+
+
 def test_failed_download_does_not_touch_existing_output_or_cache(files, monkeypatch):
     folder, parameters, output = files
     page.update(folder, parameters, output)
@@ -220,20 +233,27 @@ def test_failed_download_does_not_touch_existing_output_or_cache(files, monkeypa
     assert (folder / "manifest.json").read_bytes() == before_input
 
 
-def test_next_day_without_new_common_data_succeeds_without_changes(files, monkeypatch, tmp_path):
+def test_next_day_without_new_prices_records_successful_check_at_same_asof(files, monkeypatch, tmp_path):
     folder, parameters, output = files
     page.update(folder, parameters, output)
     before, before_manifest = output.read_bytes(), (folder / "manifest.json").read_bytes()
     source = make_inputs(tmp_path / "stale", requested="2005-01-13")
+    manifest = page.read_json(source / "manifest.json")
+    checked = datetime.now(timezone.utc).isoformat()
+    manifest["downloaded_at_utc"] = checked
+    (source / "manifest.json").write_text(page.json_text(manifest), encoding="utf-8", newline="\n")
     monkeypatch.setattr(page, "acquire", lambda stage, _: shutil.copytree(source, stage))
     result = page.update(folder, parameters, output, refresh=True, as_of="2005-01-13")
     assert result["as_of"] == "2005-01-10"
-    assert output.read_bytes() == before
-    assert (folder / "manifest.json").read_bytes() == before_manifest
-    assert page.read_json(folder / "manifest.json")["requested_as_of"] == "2005-01-12"
+    assert result["source_dates"]["checked_at"] == checked
+    assert result["generated_at"] == json.loads(before)["generated_at"]
+    assert result["chart"] == json.loads(before)["chart"]
+    assert page.read_json(folder / "manifest.json")["requested_as_of"] == "2005-01-13"
+    assert (folder / "manifest.json").read_bytes() != before_manifest
+    assert page.verify(folder, parameters, output) == result
 
 
-def test_one_sided_update_without_new_common_day_is_not_published(files, monkeypatch, tmp_path):
+def test_one_sided_update_keeps_shared_chart_and_reports_source_latest_date(files, monkeypatch, tmp_path):
     folder, parameters, output = files
     page.update(folder, parameters, output)
     before, before_manifest = output.read_bytes(), (folder / "manifest.json").read_bytes()
@@ -241,9 +261,12 @@ def test_one_sided_update_without_new_common_day_is_not_published(files, monkeyp
     stock["2005-01-12"] = 1500
     source = make_inputs(tmp_path / "one-sided", requested="2005-01-13", stock=stock, bond=bond)
     monkeypatch.setattr(page, "acquire", lambda stage, _: shutil.copytree(source, stage))
-    page.update(folder, parameters, output, refresh=True, as_of="2005-01-13")
-    assert output.read_bytes() == before
-    assert (folder / "manifest.json").read_bytes() == before_manifest
+    result = page.update(folder, parameters, output, refresh=True, as_of="2005-01-13")
+    assert result["as_of"] == json.loads(before)["as_of"]
+    assert result["chart"] == json.loads(before)["chart"]
+    assert result["source_dates"]["stock_as_of"] == "2005-01-12"
+    assert result["source_dates"]["bond_as_of"] == "2005-01-10"
+    assert (folder / "manifest.json").read_bytes() != before_manifest
 
 
 def test_regressing_common_cutoff_is_rejected(files, monkeypatch, tmp_path):
@@ -318,9 +341,14 @@ def test_unchanged_refresh_and_offline_rebuild_keep_generated_at(files, monkeypa
     def same_inputs(stage, _):
         shutil.copytree(folder, stage)
         manifest = page.read_json(stage / "manifest.json")
-        manifest["downloaded_at_utc"] = "2099-01-01T00:00:00+00:00"
+        manifest["downloaded_at_utc"] = datetime.now(timezone.utc).isoformat()
         (stage / "manifest.json").write_text(page.json_text(manifest), encoding="utf-8")
     monkeypatch.setattr(page, "acquire", same_inputs)
-    assert page.update(folder, parameters, output, refresh=True, as_of="2005-01-12") == original
-    assert output.read_bytes() == before_output
-    assert (folder / "manifest.json").read_bytes() == before_manifest
+    refreshed = page.update(folder, parameters, output, refresh=True, as_of="2005-01-12")
+    assert refreshed["generated_at"] == original["generated_at"]
+    assert refreshed["chart"] == original["chart"]
+    assert refreshed["source_dates"]["checked_at"] != original["source_dates"]["checked_at"]
+    assert (folder / "manifest.json").read_bytes() != before_manifest
+    after_refresh = output.read_bytes()
+    page.update(folder, parameters, output)
+    assert output.read_bytes() == after_refresh

@@ -393,8 +393,11 @@ def test公开首页已切换为独立股债曲线数据() -> None:
     html = (site / "index.html").read_text(encoding="utf-8")
     script = (site / "chart.js").read_text(encoding="utf-8")
     assert 'id="data-as-of"' in html
+    assert 'id="data-checked-at"' in html
     assert "fetch('stock-bond.json'" in script
     assert "performance.json" not in html + script
+    assert "entry-research" not in html + script
+    assert "research-asset" not in html + script
     assert "$('#data-as-of').textContent = data.as_of" in script
 
 

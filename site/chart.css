@@ -24,6 +24,8 @@ body {
 .header-row { min-height: 68px; display: flex; align-items: center; justify-content: space-between; gap: 18px; }
 h1 { margin: 0; font-size: 17px; font-weight: 700; white-space: nowrap; }
 .data-date { margin: 0; color: var(--muted); font-size: 12px; font-variant-numeric: tabular-nums; }
+.update-dates { text-align: right; font-variant-numeric: tabular-nums; }
+.checked-date { margin: 2px 0 0; color: var(--muted); font-size: 11px; }
 main.wrap { padding-top: 30px; padding-bottom: 28px; }
 .real-warning {
   background: var(--amber-bg);
@@ -37,7 +39,7 @@ main.wrap { padding-top: 30px; padding-bottom: 28px; }
 .real-warning p { margin: 6px 0 0; }
 .quality-details { margin-top: 5px; }
 summary { cursor: pointer; }
-summary:focus-visible, .date-button:focus-visible, .research-table-wrap:focus-visible { outline: 3px solid var(--green); outline-offset: 4px; }
+summary:focus-visible, .date-button:focus-visible { outline: 3px solid var(--green); outline-offset: 4px; }
 .source-dates { margin: -10px 0 18px; color: var(--muted); font-size: 11px; font-variant-numeric: tabular-nums; }
 .real-frame { background: white; border: 1px solid var(--line); border-radius: 12px; overflow: hidden; }
 .real-toolbar { display: flex; align-items: end; justify-content: space-between; padding: 20px 24px; gap: 16px; border-bottom: 1px solid var(--line); }
@@ -76,31 +78,10 @@ h2 { margin: 0; font-size: 15px; }
 .date-button { min-height: 44px; display: flex; align-items: center; gap: 10px; padding: 8px 11px; color: var(--ink); background: #fff; border: 1px solid var(--line); border-radius: 5px; cursor: pointer; text-align: left; font-size: 12px; font-variant-numeric: tabular-nums; }
 .date-button[aria-pressed="true"] { border-color: var(--red); background: #f9efea; }
 .date-number { color: var(--red); font-size: 11px; font-weight: 600; }
-.research-panel { margin-top: 22px; border: 1px solid var(--line); background: white; border-radius: 9px; }
-.research-panel > summary { padding: 17px 24px; font-size: 14px; font-weight: 600; }
-.research-content { padding: 0 24px 22px; }
-.research-heading { font-size: 13px; margin: 20px 0 12px; }
-.comparison-panel { margin: 20px 0; padding: 14px 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); }
-.comparison-panel > summary { margin-bottom: 10px; font-size: 13px; font-weight: 600; }
-.research-boundary, .research-basis { font-size: 12px; color: var(--muted); margin: 0 0 14px; }
-.asset-label { display: block; font-size: 12px; font-weight: 600; margin: 16px 0; }
-.asset-label select { display: block; width: min(100%, 360px); min-height: 44px; margin-top: 5px; padding: 8px; color: var(--ink); background: white; border: 1px solid #a7b9ac; border-radius: 5px; }
-.research-table-wrap { width: 100%; overflow: auto; margin-bottom: 14px; }
-.table-help { display: none; margin: 0 0 10px; color: var(--muted); font-size: 11px; }
-.research-table { border-collapse: collapse; width: 100%; min-width: 720px; font-size: 12px; text-align: left; font-variant-numeric: tabular-nums; }
-.research-table th { background: #f5f7f1; font-size: 11px; font-weight: 600; }
-.research-table th, .research-table td { padding: 12px 10px; border-bottom: 1px solid var(--line); vertical-align: top; }
-.research-table td:first-child { white-space: nowrap; }
-.research-table td:last-child { min-width: 180px; }
-.comparison-table { min-width: 780px; }
-.comparison-table th, .comparison-table td { white-space: nowrap; }
-.comparison-table td:last-child { min-width: 100px; }
-.research-table .positive { color: var(--green); }
-.research-table .negative { color: var(--red); }
 
 @media (max-width: 680px) {
   .wrap { padding-left: 18px; padding-right: 18px; }
-  .header-row { min-height: 60px; gap: 10px; }
+  .header-row { min-height: 60px; gap: 10px; flex-wrap: wrap; padding-top: 10px; padding-bottom: 10px; }
   h1 { font-size: 16px; }
   .data-date { font-size: 11px; }
   main.wrap { padding-top: 22px; }
@@ -118,9 +99,6 @@ h2 { margin: 0; font-size: 15px; }
   .date-year h3 { margin-bottom: 8px; }
   .date-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .date-button { padding: 8px; gap: 7px; font-size: 11px; }
-  .research-panel > summary { padding: 16px 17px; }
-  .research-content { padding: 0 17px 18px; }
-  .table-help { display: block; }
 }
 
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }

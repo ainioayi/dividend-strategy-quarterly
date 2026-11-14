@@ -10,7 +10,7 @@
   "source_dates": {
     "stock_as_of": "2026-11-11",
     "bond_as_of": "2026-11-12",
-    "checked_at": "2026-11-13T16:18:33.677676+00:00"
+    "checked_at": "2026-11-14T05:33:20.361405+00:00"
   },
   "chart": {
     "dates": [
@@ -16353,7 +16353,7 @@
   },
   "audit": {
     "parameters_sha256": "629567642adabc4d9c1df5db5ca10f945b1abfd8394ed4ff8e1b2ead21dc7b88",
-    "manifest_sha256": "e5154f4d2c1cff8cd86bf7a8505da9757361041106af00efe5adbd95e0e82adc",
+    "manifest_sha256": "28228d4857830c17a2bbfef07f0d37b7db7fdeadf20054418a4247021e090387",
     "input_sha256": {
       "stock.csv": "b4987857a0aeed757f2e5a30d91d0b84a54239f7a6bcc759c83c1e995b801a36",
       "bond.csv": "51a9d180963114947a59d6e0835f3a554f11accbdaefc552fe2a6b53318cc00f"

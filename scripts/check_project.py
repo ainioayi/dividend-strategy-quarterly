@@ -88,7 +88,7 @@ def run_checks(*, rehearsal: bool = False, run_command: RunCommand = _run_comman
     stages.extend([
         ("股债交点发布快照离线复核", [sys.executable, "scripts/stock_bond_page.py", "--verify-only"]),
         ("真实基金输入重建核验", [sys.executable, "scripts/refresh_crossing_assets.py", "--verify-only"]),
-        ("下穿买入条件性结果离线复核", [sys.executable, "scripts/crossing_entry_research.py", "--output", "data/crossing-entry/result.json", "--verify-only"]),
+        ("历史下穿买入结果离线复核", [sys.executable, "scripts/crossing_entry_research.py", "--signals", "data/crossing-entry/signals.json", "--output", "data/crossing-entry/result.json", "--verify-only"]),
         ("历史业绩离线复核", [sys.executable, "scripts/forward_performance.py", "--verify-only"]),
         ("统一入口测试", [sys.executable, "-m", "pytest", "-q", "tests/test_check_project.py"]),
         ("完整测试", [sys.executable, "-m", "pytest", "-q"]),

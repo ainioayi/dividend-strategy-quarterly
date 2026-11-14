@@ -171,6 +171,10 @@ def load_values(path, as_of):
 
 def load_inputs(folder):
     manifest = read_json(folder / "manifest.json")
+    if manifest.get("downloaded_at_utc") is not None:
+        checked = datetime.fromisoformat(manifest["downloaded_at_utc"])
+        if checked.tzinfo is None or checked > datetime.now(timezone.utc):
+            raise ValueError("成功检查时间必须包含时区且不能晚于当前时间")
     as_of = iso_day(manifest["requested_as_of"])
     if manifest["stock"]["code"] != "H00300.CSI" or manifest["bond"]["code"] != "885007.WI":
         raise ValueError("冻结输入代码不符")
@@ -345,7 +349,8 @@ def update(folder, parameter_path, output, *, refresh=False, as_of=None):
             if (refresh and folder.exists() and result["audit"]["parameters_sha256"] == prior["audit"]["parameters_sha256"]
                     and all(result[key] == prior[key] for key in visible)):
                 verify(folder, parameter_path, output)
-                return prior  # 周末、来源延迟或仅单边更新时，保留已校验的同一份共同曲线。
+                # 行情未变也记录本次成功检查；行情截至与曲线生成时间保持原值。
+                result["generated_at"] = prior["generated_at"]
             comparison = {**result, "generated_at": prior["generated_at"]}
             if refresh and folder.exists():
                 comparison["audit"] = {**result["audit"], "manifest_sha256": fingerprint(folder / "manifest.json")}
