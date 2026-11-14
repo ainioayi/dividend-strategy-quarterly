@@ -1,6 +1,6 @@
 {
   "requested_as_of": "2026-11-13",
-  "downloaded_at_utc": "2026-11-14T05:33:20.361405+00:00",
+  "downloaded_at_utc": "2026-11-14T05:51:53.343042+00:00",
   "base_date": "2004-12-31",
   "stock": {
     "code": "H00300.CSI",
@@ -28,7 +28,7 @@
       "method": "GET",
       "body": null,
       "raw_sha256": "ae8f5e51204a918edcb97045b57313205f81695b6415acad28b588c64c31b6c7",
-      "file_sha256": "f7d4a0db6359b9db2a62bde460e05756394bb96619494cd5ee70d883f8703049"
+      "file_sha256": "e5812e55a2f711a8cc7dc500f2997603d3c427925111057e3939f414e5883b20"
     },
     {
       "file": "000300-raw.json.gz",
@@ -36,7 +36,7 @@
       "method": "GET",
       "body": null,
       "raw_sha256": "b8509d8abba4fc717b59ccd840c3573cc4221109fcdcdf271b95da4fa49adcda",
-      "file_sha256": "ca4265f3f6a6e4d28bb079fac8430b112b73e099a5928aff775e80756a438043"
+      "file_sha256": "e2fc7737ba89f52de7623f36d7722b1d907425ec0d009eb948a9a021df23d7be"
     },
     {
       "file": "885007-basic-raw.json.gz",
@@ -51,7 +51,7 @@
         "ss": ""
       },
       "raw_sha256": "2258ac52d59f65fcd30b85f0338c91d16f8f4d94a573834557077625083c0e65",
-      "file_sha256": "5078759d7271b078423bc017417d07317c9c33e83fd36fb448f1e1c06ba262ed"
+      "file_sha256": "404f17ad334d256c6dc9a326c448e9ee91ca82475a94367a3dc4301888a4c6ca"
     },
     {
       "file": "885007-raw.json.gz",
@@ -71,7 +71,7 @@
         "ss": ""
       },
       "raw_sha256": "52ca4057b309b84430d7d73d4c6209611581fe2ec1aa6e002fbe441d2ce52b74",
-      "file_sha256": "d8aca9bb218f442e3d1c1673b1bbafad93fd801a9314d79e6cb75eae7022ae2c"
+      "file_sha256": "24a7993058f695345e9c4503d791c09207e3296501712791dd270ffe594e0b68"
     }
   ],
   "normalized_sha256": {
