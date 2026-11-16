@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
-  "as_of": "2026-11-12",
-  "requested_as_of": "2026-11-14",
-  "generated_at": "2026-11-15T06:58:30.218800+00:00",
+  "as_of": "2026-11-13",
+  "requested_as_of": "2026-11-16",
+  "generated_at": "2026-11-16T21:10:04.406294+00:00",
   "parameters": {
     "base_date": "2004-12-31",
     "cooldown_sessions": 126
   },
   "source_dates": {
-    "stock_as_of": "2026-11-13",
-    "bond_as_of": "2026-11-12",
-    "checked_at": "2026-11-15T06:58:29.725250+00:00"
+    "stock_as_of": "2026-11-16",
+    "bond_as_of": "2026-11-13",
+    "checked_at": "2026-11-16T21:10:03.747316+00:00"
   },
   "chart": {
     "dates": [
@@ -5322,7 +5322,8 @@
       "2026-11-09",
       "2026-11-10",
       "2026-11-11",
-      "2026-11-12"
+      "2026-11-12",
+      "2026-11-13"
     ],
     "stock": [
       1000.0,
@@ -10633,7 +10634,8 @@
       6108.28,
       6112.8,
       6137.8,
-      6089.937
+      6089.94,
+      6048.32
     ],
     "bond": [
       1000.0,
@@ -15944,7 +15946,8 @@
       5014.809041309431,
       5017.829306313328,
       5024.064692127827,
-      5010.814497272018
+      5010.814497272018,
+      4990.3546375682
     ]
   },
   "crossings": [
@@ -16345,13 +16348,13 @@
     ],
     "bond_source": "韭圈儿公开转发的万得885007.WI累计收益曲线",
     "status": "pending_date_validation",
-    "stock_source": "中证官方历史＋Tushare同代码补充",
+    "stock_source": "官方全收益收盘点位",
     "stock_supplement": {
       "provider": "Tushare",
       "stock_code": "H00300.CSI",
       "status": "applied",
       "message": "中证官方历史保留原值，Tushare同代码与SSE日历核验后补充尾段。",
-      "last_success_at": "2026-11-15T06:58:23.754289+00:00"
+      "last_success_at": "2026-11-16T21:10:01.131774+00:00"
     },
     "historical_availability_verified": false,
     "can_issue_buy_signal": false,
@@ -16364,10 +16367,10 @@
   },
   "audit": {
     "parameters_sha256": "629567642adabc4d9c1df5db5ca10f945b1abfd8394ed4ff8e1b2ead21dc7b88",
-    "manifest_sha256": "e14676a3adee7720009b57e9b3685dee2ff93cd50e83d359c84e5c3e65b2cd81",
+    "manifest_sha256": "0dc5857aad0837655969ca3eb66a0706f46db4ec072bc2e0bd191b9cfcba5796",
     "input_sha256": {
-      "stock.csv": "96bdcb5f3fc8887f6194c8d60688c034727ffb6123c6be83f32c64467e4e4116",
-      "bond.csv": "51a9d180963114947a59d6e0835f3a554f11accbdaefc552fe2a6b53318cc00f"
+      "stock.csv": "956958c195c2d4ce1a9255a89d5a68f474845b71754d552a9dd734efa50aac07",
+      "bond.csv": "fb296f24e60cafa90731b502554a7552115be537e85ba9d58cc758c64f79ee22"
     },
     "missing_bond_dates": [
       "2026-05-18",
