@@ -1,6 +1,6 @@
 {
   "requested_as_of": "2026-11-20",
-  "downloaded_at_utc": "2026-11-20T19:12:32.857673+00:00",
+  "downloaded_at_utc": "2026-11-21T07:34:56.484695+00:00",
   "base_date": "2004-12-31",
   "stock": {
     "code": "H00300.CSI",
@@ -52,8 +52,8 @@
         },
         "fields": "ts_code,trade_date,close"
       },
-      "raw_sha256": "6c3349a24057bfaeba93bdd9f2e814605295c59591c2f815dfe5afc839c5e950",
-      "file_sha256": "84372e95a33bae6ff884b9c55dc0a664ed7e6c56cb0cb44bbf814c87854c4293"
+      "raw_sha256": "de4a7c9e3fd58031c5240dd50e711d344e2046431e1a7bd982afb0e2d636ec23",
+      "file_sha256": "7d6d3d1eb293d7d496bfec79cdbb213f6e15f3a3926934c7e0f597dc972a19e8"
     },
     {
       "file": "tushare-calendar-raw.json.gz",
@@ -68,8 +68,8 @@
         },
         "fields": "exchange,cal_date,is_open"
       },
-      "raw_sha256": "a8612d7a2eaefdd554a5250d1692f7ae3fe26b746e0619fe0bd6f535ba9ba9b8",
-      "file_sha256": "70fd75a2bbb18b6f470d983770c6a30033e35b7d34c9bd355edbe775fc7ffbf5"
+      "raw_sha256": "90149dedf0bcc62866dfe6a4a16dbb739525839618d72c79b7efc90d2dc25ff6",
+      "file_sha256": "4fe39aac89ffc902f2f9a11f52571af3dbf7c76b761a1758e61cb322f0fcdb3e"
     },
     {
       "file": "885007-basic-raw.json.gz",
@@ -116,6 +116,6 @@
     "stock_code": "H00300.CSI",
     "status": "applied",
     "message": "中证官方历史保留原值，Tushare同代码与SSE日历核验后补充尾段。",
-    "last_success_at": "2026-11-20T19:12:29.977760+00:00"
+    "last_success_at": "2026-11-21T07:34:54.032440+00:00"
   }
 }
