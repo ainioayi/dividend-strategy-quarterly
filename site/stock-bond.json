@@ -1,8 +1,8 @@
 {
   "schema_version": 1,
   "as_of": "2026-11-13",
-  "requested_as_of": "2026-11-20",
-  "generated_at": "2026-11-21T07:34:57.102648+00:00",
+  "requested_as_of": "2026-11-21",
+  "generated_at": "2026-11-22T07:17:17.969198+00:00",
   "parameters": {
     "base_date": "2004-12-31",
     "cooldown_sessions": 126
@@ -10,7 +10,7 @@
   "source_dates": {
     "stock_as_of": "2026-11-20",
     "bond_as_of": "2026-11-13",
-    "checked_at": "2026-11-21T07:34:56.484695+00:00"
+    "checked_at": "2026-11-22T07:17:17.310311+00:00"
   },
   "chart": {
     "dates": [
@@ -16354,7 +16354,7 @@
       "stock_code": "H00300.CSI",
       "status": "applied",
       "message": "中证官方历史保留原值，Tushare同代码与SSE日历核验后补充尾段。",
-      "last_success_at": "2026-11-21T07:34:54.032440+00:00"
+      "last_success_at": "2026-11-22T07:17:14.851203+00:00"
     },
     "historical_availability_verified": false,
     "can_issue_buy_signal": false,
@@ -16367,7 +16367,7 @@
   },
   "audit": {
     "parameters_sha256": "629567642adabc4d9c1df5db5ca10f945b1abfd8394ed4ff8e1b2ead21dc7b88",
-    "manifest_sha256": "6556b8adec0ed60c0aee835113beff25417165582421e266ef96023ff2c9fec9",
+    "manifest_sha256": "50809aeaad09ff6fe5bb08e9bf503c74d3a4be7734588ac6bbb666d53ace21a2",
     "input_sha256": {
       "stock.csv": "17f00959fd1d6c2cf53b45637500cc90586eb6ece9e64d6eeb473c079b6818c2",
       "bond.csv": "fb296f24e60cafa90731b502554a7552115be537e85ba9d58cc758c64f79ee22"

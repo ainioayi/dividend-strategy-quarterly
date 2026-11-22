@@ -1,6 +1,6 @@
 {
-  "requested_as_of": "2026-11-20",
-  "downloaded_at_utc": "2026-11-21T07:34:56.484695+00:00",
+  "requested_as_of": "2026-11-21",
+  "downloaded_at_utc": "2026-11-22T07:17:17.310311+00:00",
   "base_date": "2004-12-31",
   "stock": {
     "code": "H00300.CSI",
@@ -25,7 +25,7 @@
   "sources": [
     {
       "file": "h00300-raw.json.gz",
-      "url": "https://www.csindex.com.cn/csindex-home/perf/index-perf?indexCode=H00300&startDate=20041231&endDate=20261120",
+      "url": "https://www.csindex.com.cn/csindex-home/perf/index-perf?indexCode=H00300&startDate=20041231&endDate=20261121",
       "method": "GET",
       "body": null,
       "raw_sha256": "3b86969d8f10f281902cc400a73efbe106cdf340dc106f94aafb8344a659d370",
@@ -33,7 +33,7 @@
     },
     {
       "file": "000300-raw.json.gz",
-      "url": "https://www.csindex.com.cn/csindex-home/perf/index-perf?indexCode=000300&startDate=20041231&endDate=20261120",
+      "url": "https://www.csindex.com.cn/csindex-home/perf/index-perf?indexCode=000300&startDate=20041231&endDate=20261121",
       "method": "GET",
       "body": null,
       "raw_sha256": "880753c357472543983e3aea9210e5743e7dc9fc9aa1e80bfad07b0723adbbe0",
@@ -48,12 +48,12 @@
         "params": {
           "ts_code": "H00300.CSI",
           "start_date": "20261120",
-          "end_date": "20261120"
+          "end_date": "20261121"
         },
         "fields": "ts_code,trade_date,close"
       },
-      "raw_sha256": "de4a7c9e3fd58031c5240dd50e711d344e2046431e1a7bd982afb0e2d636ec23",
-      "file_sha256": "7d6d3d1eb293d7d496bfec79cdbb213f6e15f3a3926934c7e0f597dc972a19e8"
+      "raw_sha256": "22c0b81dbeb8c89ce873727807cff10d13602818376e247f3be0c3967135c382",
+      "file_sha256": "08012381171ca5ca9ca1ce9c5fa1e569e11ca1da6cfa32c38287c6d56b783811"
     },
     {
       "file": "tushare-calendar-raw.json.gz",
@@ -64,12 +64,12 @@
         "params": {
           "exchange": "SSE",
           "start_date": "20261120",
-          "end_date": "20261120"
+          "end_date": "20261121"
         },
         "fields": "exchange,cal_date,is_open"
       },
-      "raw_sha256": "90149dedf0bcc62866dfe6a4a16dbb739525839618d72c79b7efc90d2dc25ff6",
-      "file_sha256": "4fe39aac89ffc902f2f9a11f52571af3dbf7c76b761a1758e61cb322f0fcdb3e"
+      "raw_sha256": "4aa9c3c69502cec64975d8cd194d07b13c476e4afce633b749dd5c45254304a5",
+      "file_sha256": "3c599d9fa067b1edca4f0236791d4f876c94e7d4a37090a1b1f5964a9a110d82"
     },
     {
       "file": "885007-basic-raw.json.gz",
@@ -83,8 +83,8 @@
         "version": "2.5.9",
         "ss": ""
       },
-      "raw_sha256": "c9280e99e46dd14ba22b6fe62a4cecebda737c90cd014858bcbda6d21eacdcba",
-      "file_sha256": "9466270399169528dd06062233784f2d886b7266576fd55eea3fd1f9ff696a2d"
+      "raw_sha256": "78630079958ef80178ebee4fb8358f8f2e0c4b714117ac58189e75b763eac6bb",
+      "file_sha256": "8316bae895bd623d17783b165d40698ef99a1bc5a0bbbbdf5157e871e2951f19"
     },
     {
       "file": "885007-raw.json.gz",
@@ -116,6 +116,6 @@
     "stock_code": "H00300.CSI",
     "status": "applied",
     "message": "中证官方历史保留原值，Tushare同代码与SSE日历核验后补充尾段。",
-    "last_success_at": "2026-11-21T07:34:54.032440+00:00"
+    "last_success_at": "2026-11-22T07:17:14.851203+00:00"
   }
 }
