@@ -1,14 +1,14 @@
 {
-  "requested_as_of": "2026-11-22",
-  "downloaded_at_utc": "2026-11-23T08:00:11.493138+00:00",
+  "requested_as_of": "2026-11-23",
+  "downloaded_at_utc": "2026-11-23T22:48:12.898779+00:00",
   "base_date": "2004-12-31",
   "stock": {
     "code": "H00300.CSI",
     "basis": "官方全收益收盘点位",
-    "rows": 5315,
+    "rows": 5316,
     "first": "2004-12-31",
-    "last": "2026-11-20",
-    "official_as_of": "2026-11-20"
+    "last": "2026-11-23",
+    "official_as_of": "2026-11-23"
   },
   "bond": {
     "code": "885007.WI",
@@ -25,19 +25,19 @@
   "sources": [
     {
       "file": "h00300-raw.json.gz",
-      "url": "https://www.csindex.com.cn/csindex-home/perf/index-perf?indexCode=H00300&startDate=20041231&endDate=20261122",
+      "url": "https://www.csindex.com.cn/csindex-home/perf/index-perf?indexCode=H00300&startDate=20041231&endDate=20261123",
       "method": "GET",
       "body": null,
-      "raw_sha256": "3b86969d8f10f281902cc400a73efbe106cdf340dc106f94aafb8344a659d370",
-      "file_sha256": "165c7289c6685aead09bdbf046651ebe2554f584f4d68b039d9e329653288da0"
+      "raw_sha256": "f844a91ec9849bf67ea36acf99cc0c4352eb15146d47d438622ae4db5e790780",
+      "file_sha256": "61028121515264462f40480ba37117cfa9b9ae1f45ca70536ccca9c36ecf715b"
     },
     {
       "file": "000300-raw.json.gz",
-      "url": "https://www.csindex.com.cn/csindex-home/perf/index-perf?indexCode=000300&startDate=20041231&endDate=20261122",
+      "url": "https://www.csindex.com.cn/csindex-home/perf/index-perf?indexCode=000300&startDate=20041231&endDate=20261123",
       "method": "GET",
       "body": null,
-      "raw_sha256": "880753c357472543983e3aea9210e5743e7dc9fc9aa1e80bfad07b0723adbbe0",
-      "file_sha256": "b9d2cecb2518d832ffc402ffc9c317922231515156286cda055846bec8070e19"
+      "raw_sha256": "197b423a85c58ea3dd3fdd11a59073205cf3fec9ef757f95ff247f2e693be40b",
+      "file_sha256": "f8e7669d0084a654bc235f12941d000c5126c7dd1cd2649bcd2efa6676b4faee"
     },
     {
       "file": "tushare-h00300-raw.json.gz",
@@ -47,13 +47,13 @@
         "api_name": "index_daily",
         "params": {
           "ts_code": "H00300.CSI",
-          "start_date": "20261120",
-          "end_date": "20261122"
+          "start_date": "20261123",
+          "end_date": "20261123"
         },
         "fields": "ts_code,trade_date,close"
       },
-      "raw_sha256": "7aeb8c8b2ef1b5c563695953a3642f3007b7dd993b1fecbd56918b5ae1c486a1",
-      "file_sha256": "f81484c0983a3c4aecf65df0f562ae1793bdd1f87a96597a0a03d6f59411fa3e"
+      "raw_sha256": "1cb15a51b4c81925fdf1008bcce063d57de32d51449dd7b8d2778db64a166566",
+      "file_sha256": "c003bacc66866e924a88c19ba2726a39473b1dbba167952018afcf3ae4dc2502"
     },
     {
       "file": "tushare-calendar-raw.json.gz",
@@ -63,13 +63,13 @@
         "api_name": "trade_cal",
         "params": {
           "exchange": "SSE",
-          "start_date": "20261120",
-          "end_date": "20261122"
+          "start_date": "20261123",
+          "end_date": "20261123"
         },
         "fields": "exchange,cal_date,is_open"
       },
-      "raw_sha256": "838a60cdf2ff4f5e2ee17c0087bd775ff5a5606e6acd1a61fbe15caa052f0e43",
-      "file_sha256": "e1c063f8757f602081b8abd3726a43e3a3207f55e8e59199ee75e78ecd4c174a"
+      "raw_sha256": "54aad1f77ebd0c41fc46e745ac7bc7e3ce6ec74ceeff68ace3a9da0e655b4c85",
+      "file_sha256": "c88d06810c54b510457d0174d673d43000d657ae729d71a19e1326cf5eff6ea2"
     },
     {
       "file": "885007-basic-raw.json.gz",
@@ -108,7 +108,7 @@
     }
   ],
   "normalized_sha256": {
-    "stock.csv": "17f00959fd1d6c2cf53b45637500cc90586eb6ece9e64d6eeb473c079b6818c2",
+    "stock.csv": "697c95501a1ee0239b8ba1e7b0e9b59af7d13a00292da2ba243afecd07526a15",
     "bond.csv": "5ecc485c007419f633a608f0d9bd70b7a74095d08c52377c74fa62ac7bc457d2"
   },
   "stock_supplement": {
@@ -116,6 +116,6 @@
     "stock_code": "H00300.CSI",
     "status": "applied",
     "message": "中证官方历史保留原值，Tushare同代码与SSE日历核验后补充尾段。",
-    "last_success_at": "2026-11-23T08:00:08.533656+00:00"
+    "last_success_at": "2026-11-23T22:48:10.118145+00:00"
   }
 }
