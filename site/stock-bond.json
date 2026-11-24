@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
-  "as_of": "2026-11-20",
-  "requested_as_of": "2026-11-23",
-  "generated_at": "2026-11-23T22:48:13.567594+00:00",
+  "as_of": "2026-11-23",
+  "requested_as_of": "2026-11-24",
+  "generated_at": "2026-11-24T10:15:38.408016+00:00",
   "parameters": {
     "base_date": "2004-12-31",
     "cooldown_sessions": 126
   },
   "source_dates": {
-    "stock_as_of": "2026-11-23",
-    "bond_as_of": "2026-11-20",
-    "checked_at": "2026-11-23T22:48:12.898779+00:00"
+    "stock_as_of": "2026-11-24",
+    "bond_as_of": "2026-11-23",
+    "checked_at": "2026-11-24T10:15:37.740054+00:00"
   },
   "chart": {
     "dates": [
@@ -5328,7 +5328,8 @@
       "2026-11-17",
       "2026-11-18",
       "2026-11-19",
-      "2026-11-20"
+      "2026-11-20",
+      "2026-11-23"
     ],
     "stock": [
       1000.0,
@@ -10645,7 +10646,8 @@
       5988.43,
       5999.43,
       6001.04,
-      5955.83
+      5955.83,
+      5961.5925
     ],
     "bond": [
       1000.0,
@@ -15962,7 +15964,8 @@
       4967.7513639906465,
       4966.777084957132,
       4961.418550272798,
-      4943.491816056118
+      4943.491816056118,
+      4953.916601714731
     ]
   },
   "crossings": [
@@ -16363,13 +16366,13 @@
     ],
     "bond_source": "韭圈儿公开转发的万得885007.WI累计收益曲线",
     "status": "pending_date_validation",
-    "stock_source": "官方全收益收盘点位",
+    "stock_source": "中证官方历史＋Tushare同代码补充",
     "stock_supplement": {
       "provider": "Tushare",
       "stock_code": "H00300.CSI",
       "status": "applied",
       "message": "中证官方历史保留原值，Tushare同代码与SSE日历核验后补充尾段。",
-      "last_success_at": "2026-11-23T22:48:10.118145+00:00"
+      "last_success_at": "2026-11-24T10:15:34.993441+00:00"
     },
     "historical_availability_verified": false,
     "can_issue_buy_signal": false,
@@ -16382,10 +16385,10 @@
   },
   "audit": {
     "parameters_sha256": "629567642adabc4d9c1df5db5ca10f945b1abfd8394ed4ff8e1b2ead21dc7b88",
-    "manifest_sha256": "e03f2d0800f0fdfde54399a536d1bc2010a83341b2df722cd2c4bdd00d5b1c92",
+    "manifest_sha256": "e08e381ccee863980b8d4cc9c70fc98a8bbf90e18ea0ae6617c8d24f4e59aa7e",
     "input_sha256": {
-      "stock.csv": "697c95501a1ee0239b8ba1e7b0e9b59af7d13a00292da2ba243afecd07526a15",
-      "bond.csv": "5ecc485c007419f633a608f0d9bd70b7a74095d08c52377c74fa62ac7bc457d2"
+      "stock.csv": "793e2fd9e0864c63f7452186df0762fe3d9b5aa160baf62163f4b572ff7f2988",
+      "bond.csv": "d2b3ddfaba4bcf4a09ffb001a928eaed4a842a5ca58c2c51f5a551ac0921060f"
     },
     "missing_bond_dates": [
       "2026-05-18",
@@ -16398,7 +16401,9 @@
       "2026-09-09"
     ],
     "excluded_nontrading_dates": [
-      "2018-06-18"
+      "2018-06-18",
+      "2026-11-23",
+      "2026-11-24"
     ],
     "annual_checks": [
       {

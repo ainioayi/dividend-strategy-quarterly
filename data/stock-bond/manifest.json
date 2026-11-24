@@ -1,43 +1,45 @@
 {
-  "requested_as_of": "2026-11-23",
-  "downloaded_at_utc": "2026-11-23T22:48:12.898779+00:00",
+  "requested_as_of": "2026-11-24",
+  "downloaded_at_utc": "2026-11-24T10:15:37.740054+00:00",
   "base_date": "2004-12-31",
   "stock": {
     "code": "H00300.CSI",
-    "basis": "官方全收益收盘点位",
-    "rows": 5316,
+    "basis": "中证官方历史＋Tushare同代码补充",
+    "rows": 5317,
     "first": "2004-12-31",
-    "last": "2026-11-23",
-    "official_as_of": "2026-11-23"
+    "last": "2026-11-24",
+    "official_as_of": "2026-11-20"
   },
   "bond": {
     "code": "885007.WI",
     "name": "万得混合债券型二级基金指数",
     "basis": "第三方累计收益百分比加100，不是官方绝对收盘价",
-    "rows": 5550,
+    "rows": 5551,
     "first": "2003-12-31",
-    "last": "2026-11-20",
+    "last": "2026-11-23",
     "precision_pp": 0.01
   },
   "excluded_stock_nontrading_dates": [
-    "2018-06-18"
+    "2018-06-18",
+    "2026-11-23",
+    "2026-11-24"
   ],
   "sources": [
     {
       "file": "h00300-raw.json.gz",
-      "url": "https://www.csindex.com.cn/csindex-home/perf/index-perf?indexCode=H00300&startDate=20041231&endDate=20261123",
+      "url": "https://www.csindex.com.cn/csindex-home/perf/index-perf?indexCode=H00300&startDate=20041231&endDate=20261124",
       "method": "GET",
       "body": null,
-      "raw_sha256": "f844a91ec9849bf67ea36acf99cc0c4352eb15146d47d438622ae4db5e790780",
-      "file_sha256": "61028121515264462f40480ba37117cfa9b9ae1f45ca70536ccca9c36ecf715b"
+      "raw_sha256": "0ddb56db3ac7dccbf172fbe354630e156bfd7c362c6092dd9ecabcdd1552f1d8",
+      "file_sha256": "ac7cb615282f40ba89681385b05643f2fdd5e7e286f06815668cedb60c84662f"
     },
     {
       "file": "000300-raw.json.gz",
-      "url": "https://www.csindex.com.cn/csindex-home/perf/index-perf?indexCode=000300&startDate=20041231&endDate=20261123",
+      "url": "https://www.csindex.com.cn/csindex-home/perf/index-perf?indexCode=000300&startDate=20041231&endDate=20261124",
       "method": "GET",
       "body": null,
-      "raw_sha256": "197b423a85c58ea3dd3fdd11a59073205cf3fec9ef757f95ff247f2e693be40b",
-      "file_sha256": "f8e7669d0084a654bc235f12941d000c5126c7dd1cd2649bcd2efa6676b4faee"
+      "raw_sha256": "880753c357472543983e3aea9210e5743e7dc9fc9aa1e80bfad07b0723adbbe0",
+      "file_sha256": "b9d2cecb2518d832ffc402ffc9c317922231515156286cda055846bec8070e19"
     },
     {
       "file": "tushare-h00300-raw.json.gz",
@@ -47,13 +49,13 @@
         "api_name": "index_daily",
         "params": {
           "ts_code": "H00300.CSI",
-          "start_date": "20261123",
-          "end_date": "20261123"
+          "start_date": "20261120",
+          "end_date": "20261124"
         },
         "fields": "ts_code,trade_date,close"
       },
-      "raw_sha256": "1cb15a51b4c81925fdf1008bcce063d57de32d51449dd7b8d2778db64a166566",
-      "file_sha256": "c003bacc66866e924a88c19ba2726a39473b1dbba167952018afcf3ae4dc2502"
+      "raw_sha256": "2a741544f519ba90672e94afdb43a8d857a25249cac639f36807b650510a3295",
+      "file_sha256": "d1e58f7dcec2c339c8754b3fece4dac774253aeb19076dbeb4418c71b2f508ba"
     },
     {
       "file": "tushare-calendar-raw.json.gz",
@@ -63,13 +65,13 @@
         "api_name": "trade_cal",
         "params": {
           "exchange": "SSE",
-          "start_date": "20261123",
-          "end_date": "20261123"
+          "start_date": "20261120",
+          "end_date": "20261124"
         },
         "fields": "exchange,cal_date,is_open"
       },
-      "raw_sha256": "54aad1f77ebd0c41fc46e745ac7bc7e3ce6ec74ceeff68ace3a9da0e655b4c85",
-      "file_sha256": "c88d06810c54b510457d0174d673d43000d657ae729d71a19e1326cf5eff6ea2"
+      "raw_sha256": "f305e47386f50bf867407e0efc0ea3aea166fb87964700316975458bd8951049",
+      "file_sha256": "4b688fd2e9e10e117332a4d4ade4d84cde28f824182c15868c538d96fb2dec6a"
     },
     {
       "file": "885007-basic-raw.json.gz",
@@ -83,8 +85,8 @@
         "version": "2.5.9",
         "ss": ""
       },
-      "raw_sha256": "518a449eefa8747aee2f79b5bb1d1fd6e6bfaf470879c4ea87fe81fc282a7be7",
-      "file_sha256": "22b6aaf694c485623fd7a6764df4371e5b6c3cd3a4635d360ecb8b63292d444a"
+      "raw_sha256": "a816e0cdf24d8c232d4c014e67083129d074b3733c03262c624960df5b03b7bf",
+      "file_sha256": "971ba66e6b536d5c81d54fae456de4cb75b2357e24a615acec5ea7c115ccbe88"
     },
     {
       "file": "885007-raw.json.gz",
@@ -103,19 +105,19 @@
         "version": "2.5.9",
         "ss": ""
       },
-      "raw_sha256": "676a8abaea06d5c730ce18be3617ceac39b1952cfc5928410c5d0464455ddea9",
-      "file_sha256": "c0f4bab77bc69a111beaa4cba688ef1c31f038d99eaac2d0600eacc73eaba2ba"
+      "raw_sha256": "5ed9c5eb3cd7d6309c2254fc21594beed0941cf384b734b4dfe1466b5ef76d4b",
+      "file_sha256": "a5973226c662e2814a88598ddf994c8496a3d324ff84a9dc6f7d053335f1399e"
     }
   ],
   "normalized_sha256": {
-    "stock.csv": "697c95501a1ee0239b8ba1e7b0e9b59af7d13a00292da2ba243afecd07526a15",
-    "bond.csv": "5ecc485c007419f633a608f0d9bd70b7a74095d08c52377c74fa62ac7bc457d2"
+    "stock.csv": "793e2fd9e0864c63f7452186df0762fe3d9b5aa160baf62163f4b572ff7f2988",
+    "bond.csv": "d2b3ddfaba4bcf4a09ffb001a928eaed4a842a5ca58c2c51f5a551ac0921060f"
   },
   "stock_supplement": {
     "provider": "Tushare",
     "stock_code": "H00300.CSI",
     "status": "applied",
     "message": "中证官方历史保留原值，Tushare同代码与SSE日历核验后补充尾段。",
-    "last_success_at": "2026-11-23T22:48:10.118145+00:00"
+    "last_success_at": "2026-11-24T10:15:34.993441+00:00"
   }
 }
