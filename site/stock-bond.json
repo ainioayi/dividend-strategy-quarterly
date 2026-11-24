@@ -2,7 +2,7 @@
   "schema_version": 1,
   "as_of": "2026-11-23",
   "requested_as_of": "2026-11-24",
-  "generated_at": "2026-11-24T10:15:38.408016+00:00",
+  "generated_at": "2026-11-24T21:26:46.315798+00:00",
   "parameters": {
     "base_date": "2004-12-31",
     "cooldown_sessions": 126
@@ -10,7 +10,7 @@
   "source_dates": {
     "stock_as_of": "2026-11-24",
     "bond_as_of": "2026-11-23",
-    "checked_at": "2026-11-24T10:15:37.740054+00:00"
+    "checked_at": "2026-11-24T21:26:45.612721+00:00"
   },
   "chart": {
     "dates": [
@@ -10647,7 +10647,7 @@
       5999.43,
       6001.04,
       5955.83,
-      5961.5925
+      5961.59
     ],
     "bond": [
       1000.0,
@@ -16366,13 +16366,13 @@
     ],
     "bond_source": "韭圈儿公开转发的万得885007.WI累计收益曲线",
     "status": "pending_date_validation",
-    "stock_source": "中证官方历史＋Tushare同代码补充",
+    "stock_source": "官方全收益收盘点位",
     "stock_supplement": {
       "provider": "Tushare",
       "stock_code": "H00300.CSI",
       "status": "applied",
       "message": "中证官方历史保留原值，Tushare同代码与SSE日历核验后补充尾段。",
-      "last_success_at": "2026-11-24T10:15:34.993441+00:00"
+      "last_success_at": "2026-11-24T21:26:42.855532+00:00"
     },
     "historical_availability_verified": false,
     "can_issue_buy_signal": false,
@@ -16385,9 +16385,9 @@
   },
   "audit": {
     "parameters_sha256": "629567642adabc4d9c1df5db5ca10f945b1abfd8394ed4ff8e1b2ead21dc7b88",
-    "manifest_sha256": "e08e381ccee863980b8d4cc9c70fc98a8bbf90e18ea0ae6617c8d24f4e59aa7e",
+    "manifest_sha256": "9ba67e12973cbab7e2916bf5e09343d640ad9e637fc6bacf79d1fb663b617e09",
     "input_sha256": {
-      "stock.csv": "793e2fd9e0864c63f7452186df0762fe3d9b5aa160baf62163f4b572ff7f2988",
+      "stock.csv": "b9466dbc0f76e74aabafd799bac75c28eca31fa626c33cec19f1bc45365466c6",
       "bond.csv": "d2b3ddfaba4bcf4a09ffb001a928eaed4a842a5ca58c2c51f5a551ac0921060f"
     },
     "missing_bond_dates": [
@@ -16401,9 +16401,7 @@
       "2026-09-09"
     ],
     "excluded_nontrading_dates": [
-      "2018-06-18",
-      "2026-11-23",
-      "2026-11-24"
+      "2018-06-18"
     ],
     "annual_checks": [
       {
