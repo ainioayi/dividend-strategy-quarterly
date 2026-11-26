@@ -1,6 +1,6 @@
 {
   "requested_as_of": "2026-11-25",
-  "downloaded_at_utc": "2026-11-25T20:34:46.773626+00:00",
+  "downloaded_at_utc": "2026-11-26T08:45:15.357022+00:00",
   "base_date": "2004-12-31",
   "stock": {
     "code": "H00300.CSI",
@@ -14,9 +14,9 @@
     "code": "885007.WI",
     "name": "万得混合债券型二级基金指数",
     "basis": "第三方累计收益百分比加100，不是官方绝对收盘价",
-    "rows": 5552,
+    "rows": 5553,
     "first": "2003-12-31",
-    "last": "2026-11-24",
+    "last": "2026-11-25",
     "precision_pp": 0.01
   },
   "excluded_stock_nontrading_dates": [
@@ -52,8 +52,8 @@
         },
         "fields": "ts_code,trade_date,close"
       },
-      "raw_sha256": "ba86e7e814afe98e65276786cac53d862d29f0edc723994bf232ab1c8f7b57ea",
-      "file_sha256": "c1625456cbbe8d4d8f459f65eb364b897a4173a4c7cafdedd67ed24afbf7b0ed"
+      "raw_sha256": "7ebf6f293e9c70af3d2e482103413336136cad7e879d15df88d87dcfba4433e7",
+      "file_sha256": "15486dfc84dfc0a30dd7a7ee09280ec6552311245c9e31f91046a3a52ec8750d"
     },
     {
       "file": "tushare-calendar-raw.json.gz",
@@ -68,8 +68,8 @@
         },
         "fields": "exchange,cal_date,is_open"
       },
-      "raw_sha256": "d7d192176a8b03c9ad4d871dcfdf74055e1325861446ef5588ba10c258cfe35c",
-      "file_sha256": "2b350bbfb2a656ffea88401503dfe9c11a905389e0a699fbdd7674cc69fc4b3b"
+      "raw_sha256": "51ab0615322eb0dba6234057481ae223252cb461890a1ef714428e138feeece1",
+      "file_sha256": "1590f76a459af9874045716b0c7efba2b5ebc5af4ddd19dc41055f95237efee5"
     },
     {
       "file": "885007-basic-raw.json.gz",
@@ -83,8 +83,8 @@
         "version": "2.5.9",
         "ss": ""
       },
-      "raw_sha256": "6c61136d6c630e98d72b94590427444b688a9d84009cb0d38d13a20cba2bd5a2",
-      "file_sha256": "9fa59498f636a0cb5a336d5095879681b928b33b9a060aa4b29265b9908422ba"
+      "raw_sha256": "0310123c256972588b742f8389c47248fd1a956139bf58dbddba2bf61b56341c",
+      "file_sha256": "615009685e4702fc69b9d024c390efb62c390f108e1d50838e38f7a343138e49"
     },
     {
       "file": "885007-raw.json.gz",
@@ -103,19 +103,19 @@
         "version": "2.5.9",
         "ss": ""
       },
-      "raw_sha256": "84bd07f2ebf75a711f2e836275bb85c51de51450bddedc84410fba18f1e5bab4",
-      "file_sha256": "4543c177d37452b7b3fa0855dfd955180944197247377bd7d639e3f12508a4c2"
+      "raw_sha256": "bc049c5c17ee1aaaa62305438b178f8d9c3c5d86a6f77704bc156d5e01b2d9d1",
+      "file_sha256": "527ba0ae8316f8c5ae18f7c5c63bac507e367c7a0da45b65b1c1a4608c8aecc6"
     }
   ],
   "normalized_sha256": {
     "stock.csv": "c06d9fee6556d440d9b601762482b4005481a421e11e3f5a63d2d2c0669d9482",
-    "bond.csv": "52ede27da5441949f4efe734a79129f4dc11638cae92df9905e70ef967550344"
+    "bond.csv": "89623359ea10ca14501023dbac18ca3eb2c5bae9d5037a806e275f4aa46b17b3"
   },
   "stock_supplement": {
     "provider": "Tushare",
     "stock_code": "H00300.CSI",
     "status": "applied",
     "message": "中证官方历史保留原值，Tushare同代码与SSE日历核验后补充尾段。",
-    "last_success_at": "2026-11-25T20:34:43.954865+00:00"
+    "last_success_at": "2026-11-26T08:45:13.136567+00:00"
   }
 }

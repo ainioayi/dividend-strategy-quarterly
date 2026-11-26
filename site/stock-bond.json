@@ -1,16 +1,16 @@
 {
   "schema_version": 1,
-  "as_of": "2026-11-24",
+  "as_of": "2026-11-25",
   "requested_as_of": "2026-11-25",
-  "generated_at": "2026-11-25T20:34:47.458954+00:00",
+  "generated_at": "2026-11-26T08:45:15.893359+00:00",
   "parameters": {
     "base_date": "2004-12-31",
     "cooldown_sessions": 126
   },
   "source_dates": {
     "stock_as_of": "2026-11-25",
-    "bond_as_of": "2026-11-24",
-    "checked_at": "2026-11-25T20:34:46.773626+00:00"
+    "bond_as_of": "2026-11-25",
+    "checked_at": "2026-11-26T08:45:15.357022+00:00"
   },
   "chart": {
     "dates": [
@@ -5330,7 +5330,8 @@
       "2026-11-19",
       "2026-11-20",
       "2026-11-23",
-      "2026-11-24"
+      "2026-11-24",
+      "2026-11-25"
     ],
     "stock": [
       1000.0,
@@ -10649,7 +10650,8 @@
       6001.04,
       5955.83,
       5961.59,
-      5969.92
+      5969.92,
+      5871.67
     ],
     "bond": [
       1000.0,
@@ -15968,7 +15970,8 @@
       4961.418550272798,
       4943.491816056118,
       4953.916601714731,
-      4952.747466874513
+      4952.747466874513,
+      4927.318784099766
     ]
   },
   "crossings": [
@@ -16375,7 +16378,7 @@
       "stock_code": "H00300.CSI",
       "status": "applied",
       "message": "中证官方历史保留原值，Tushare同代码与SSE日历核验后补充尾段。",
-      "last_success_at": "2026-11-25T20:34:43.954865+00:00"
+      "last_success_at": "2026-11-26T08:45:13.136567+00:00"
     },
     "historical_availability_verified": false,
     "can_issue_buy_signal": false,
@@ -16388,10 +16391,10 @@
   },
   "audit": {
     "parameters_sha256": "629567642adabc4d9c1df5db5ca10f945b1abfd8394ed4ff8e1b2ead21dc7b88",
-    "manifest_sha256": "400d2620759ad73862a96a59d7dcc69b6abf1818a2eb8e182987d59f7ad97031",
+    "manifest_sha256": "04e3b18411ecde1bf57678866ec1a6e857d4343fe1b52eaac8d80a2bdc7e61cd",
     "input_sha256": {
       "stock.csv": "c06d9fee6556d440d9b601762482b4005481a421e11e3f5a63d2d2c0669d9482",
-      "bond.csv": "52ede27da5441949f4efe734a79129f4dc11638cae92df9905e70ef967550344"
+      "bond.csv": "89623359ea10ca14501023dbac18ca3eb2c5bae9d5037a806e275f4aa46b17b3"
     },
     "missing_bond_dates": [
       "2026-05-18",
